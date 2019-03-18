@@ -1,0 +1,40 @@
+/* Mobile Nav Styles */
+
+.mobile-nav {
+  display: flex;
+  position: fixed;
+
+  flex-wrap: nowrap;
+  align-items: flex-start;
+  /* Inverse source order from bottom to top to match flow of touch devices  */
+  flex-direction: column-reverse;
+  justify-content: flex-start;
+
+  width: 100vw;
+  height: calc(100vh - 3rem);
+  padding: 1rem;
+
+  /* background color fallback incase svg doesnt load */
+  background: var(--bg-gray);
+  background: url('../assets/nav-bg.svg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: bottom right;
+  font-family: var(--baskerville);
+}
+
+.mobile-nav .nav-link {
+  display: block;
+  padding: 0.5rem 0;
+  margin: 0.5rem 0;
+  font-size: 2.5rem;
+}
+
+/* active link
+thick vertical border left in orange?
+bold type?
+*/
+
+/* hover link
+type color orange
+*/
