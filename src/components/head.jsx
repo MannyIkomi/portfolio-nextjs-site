@@ -1,6 +1,6 @@
 import { Head as NextHead } from 'next/head'
 // https://nextjs.org/docs#populating-head
-const Head = props => {
+const HtmlHead = props => {
   const { pageTitle, children } = props
   return (
     <NextHead>
@@ -11,9 +11,8 @@ const Head = props => {
         name="viewport"
         content="width=device-width, initial-scale=1, shrink-to-fit=no"
       />
-      {this.props.children}
     </NextHead>
   )
 }
 
-export default Head
+export default HtmlHead

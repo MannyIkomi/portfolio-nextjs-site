@@ -1,10 +1,12 @@
-import Head from '../src/components/head'
+// https://nextjs.org/docs/
+import { HtmlHead } from '../src/components/head'
+// import { Head as NextHead } from 'next/head'
 
-function Home() {
+const Home = props => {
   return (
     <div>
-      <Head pageTitle={'Home Page Head'} />
-      Welcome to next.js!
+      <HtmlHead pageTitle={'Home page test'} />
+      <h1>Welcome to next.js!</h1>
       <img src="static/logos/logo-master.svg" alt="logo" />
     </div>
   )
