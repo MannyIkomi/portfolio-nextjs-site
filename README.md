@@ -1,13 +1,34 @@
 # portfolio-nextjs-site
 
-## Test
+[NextJS Docs](https://nextjs.org/docs/)
 
-- [ ] util/dates.js
+## Tests
+
+- [x] util/dates.js
 
 ## Components
 
-- [ ] Navigation
-- [ ] Footer
+- [ ] `MenuBar`
+  - logotype
+  - menu button + animation
+  - [ ] `Navigation`
+    - [ ] `NavLink`
+- [ ] `Footer`
 
-- [ ] Gallery
-  - [ ] Project Preview
+- [ ] `Gallery`
+  - [ ] `ProjectPreview`
+    - cover img
+    - Project Preview:hover
+    - title
+    - subtitle
+
+## [Behance API](api.behance.com) Integration
+
+- [ ] getInitialProps() from behance api to store project data as pseudo CMS
+- [ ] process + store data
+  - cover photo
+  - timestamp
+  - tags
+  - description (for seo)
+  - related project
+- [ ] render once on next.js server to reduce api calls

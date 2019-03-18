@@ -17,6 +17,12 @@
     "react-dom": "^16.8.4"
   },
   "devDependencies": {
+    "babel-jest": "^24.5.0",
     "jest": "^24.5.0"
+  },
+  "jest": {
+    "transform": {
+      "^.+\\.jsx?$": "babel-jest"
+    }
   }
 }
