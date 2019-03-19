@@ -12,13 +12,16 @@
   "author": "Manny Ikomi",
   "license": "ISC",
   "dependencies": {
+    "@zeit/next-sass": "^1.0.1",
     "next": "^8.0.3",
+    "node-sass": "^4.11.0",
     "react": "^16.8.4",
     "react-dom": "^16.8.4"
   },
   "devDependencies": {
     "babel-jest": "^24.5.0",
-    "jest": "^24.5.0"
+    "jest": "^24.5.0",
+    "mockdate": "^2.0.2"
   },
   "jest": {
     "transform": {

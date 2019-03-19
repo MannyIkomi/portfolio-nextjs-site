@@ -1,13 +1,17 @@
 // https://nextjs.org/docs/
-import { HtmlHead } from '../src/components/head'
+import HtmlHead from '../components/head'
+import DockedHeader from '../components/navigation/mobileNav.jsx'
+import Gallery from '../components/gallery/gallery.jsx'
+import '../sass/base.scss'
 // import { Head as NextHead } from 'next/head'
 
 const Home = props => {
   return (
     <div>
-      <HtmlHead pageTitle={'Home page test'} />
-      <h1>Welcome to next.js!</h1>
-      <img src="static/logos/logo-master.svg" alt="logo" />
+      <HtmlHead pageTitle={'Welcome! 🤓 — Manny Ikomi'} />
+      <h1>Portfolio Page</h1>
+      <Gallery />
+      {/* <img src="static/logos/logo-master.svg" alt="logo" /> */}
     </div>
   )
 }

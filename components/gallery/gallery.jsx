@@ -1,11 +1,12 @@
 import React, { Component } from 'react'
 import ProjectPreview from './projectPreview.jsx'
-import '../../css/gallery.css'
+import '../../sass/base.scss'
+import '../../sass/gallery.scss'
 
 class Gallery extends Component {
   projects = {
     // array of projects (project details/modules are GET by api/project/project_id )
-    array: [
+    projects: [
       {
         id: 52442951,
         name: 'Coca Cola Logo',
@@ -339,11 +340,10 @@ class Gallery extends Component {
           }
         ]
       }
-    ],
-    http_code: 200
+    ]
   }
 
-  generatePreviews(projects) {
+  generatePreviews(projects = []) {
     return projects.map(p => <ProjectPreview project={p} key={p.id} />)
   }
 

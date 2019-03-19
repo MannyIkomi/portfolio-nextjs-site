@@ -1,0 +1,37 @@
+$baskerville: baskerville-urw, Georgia, serif;
+$futura: futura-pt, 'Helvetica Neue', Helvetica, sans-serif;
+
+:root {
+  font-size: 100%;
+  font-family: $futura;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-family: $baskerville;
+  text-transform: lowercase;
+  font-weight: 400;
+  font-size: 2rem;
+  line-height: 1.1;
+}
+
+@media screen and (min-width: 700px) {
+  :root {
+    font-size: 106%;
+  }
+  h1 {
+    font-size: 2.5rem;
+  }
+}
+
+@media screen and (min-width: 1100px) {
+  :root {
+    font-size: 112%;
+  }
+  h1 {
+    font-size: 3rem;
+  }
+}
