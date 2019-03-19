@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import NavItem from './navItem.jsx'
-import '../../css/nav.css'
+import '../../sass/nav.scss'
 
 class MobileNav extends Component {
   generateNavItem = props => {

@@ -111,12 +111,20 @@ q {
   quotes: none;
 }
 
-blockquote:before,
-blockquote:after,
-q:before,
-q:after {
-  content: '';
-  content: none;
+blockquote {
+  &:before,
+  &:after {
+    content: '';
+    content: none;
+  }
+}
+
+q {
+  &:before,
+  &:after {
+    content: '';
+    content: none;
+  }
 }
 
 a {
@@ -128,6 +136,7 @@ a {
 }
 
 /* change colours to suit your needs */
+
 ins {
   background-color: #ff9;
   color: #000;
@@ -135,6 +144,7 @@ ins {
 }
 
 /* change colours to suit your needs */
+
 mark {
   background-color: #ff9;
   color: #000;
@@ -158,6 +168,7 @@ table {
 }
 
 /* change border color to suit your needs */
+
 hr {
   display: block;
   height: 1px;
