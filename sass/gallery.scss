@@ -1,11 +1,6 @@
 @import 'index';
 
-.project-title {
-  font-family: $futura;
-  text-transform: capitalize;
-}
-
-.project-subtitle {
-  font-family: $baskerville;
-  font-style: italic;
+.gallery {
+  max-width: 100%;
+  padding: 2rem;
 }
