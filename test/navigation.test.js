@@ -13,6 +13,33 @@ describe('Page Navigation Factory', () => {
   it('returns an array by default', () => {
     expect(Array.isArray(getPages())).toBe(true)
   })
+  it('returns all pages by default', () => {
+    expect(getPages()).toEqual([
+      {
+        title: 'Logo & Identity',
+        path: '/#identity',
+        id: 'identity'
+      },
+      {
+        title: 'User Interface',
+        path: '/#ui',
+        id: 'ui'
+      },
+      {
+        title: 'Other Works',
+        path: '/#other',
+        id: 'other'
+      },
+      {
+        title: 'Say Hello',
+        path: '/contact'
+      },
+      {
+        title: 'About Me',
+        path: '/about'
+      }
+    ])
+  })
   it('filters for a specific object', () => {
     expect(getPages('ui')).toEqual([
       {
