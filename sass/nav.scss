@@ -1,31 +1,75 @@
 /* Mobile Nav Styles */
+@import 'index';
 
-.mobile-nav {
+$menubar-height: 3rem;
+
+%flex-col {
   display: flex;
-  position: fixed;
+  flex-direction: column;
+}
 
+%bg-cover {
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.nav.mobile {
+  z-index: 999;
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  @extend %flex-col;
   flex-wrap: nowrap;
   align-items: flex-start;
-  /* Inverse source order from bottom to top to match flow of touch devices  */
-  flex-direction: column-reverse;
-  justify-content: flex-start;
+  justify-content: flex-end;
 
   width: 100vw;
-  height: calc(100vh - 3rem);
+  height: calc(100vh - 3rem); //$menubar-height?
   padding: 1rem;
 
   /* background color fallback incase svg doesnt load */
-  background: var(--bg-gray);
+  background: $mute;
   background: url('/static/nav-bg.svg');
   background-size: cover;
   background-repeat: no-repeat;
-  background-position: bottom right;
+  background-position: bottom center;
   font-family: var(--baskerville);
+
+  .link {
+    font-family: $baskerville;
+    text-transform: lowercase;
+    display: block;
+    padding: 0.5rem 0;
+    margin: 0.5rem 0;
+    font-size: 2.5rem;
+  }
+  .link:hover {
+    color: $orange;
+  }
 }
 
-.mobile-nav .nav-link {
-  display: block;
-  padding: 0.5rem 0;
-  margin: 0.5rem 0;
-  font-size: 2.5rem;
+.shadow {
+  box-shadow: 0rem -0.5rem 0.5rem 0px rgba(38, 38, 38, 0.2);
+}
+
+.dock-bottom {
+  z-index: 1000;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+
+  display: flex;
+  justify-content: space-between;
+  height: $menubar-height;
+  width: 100vw;
+  padding: 0.5rem;
+
+  background-color: $mute;
+
+  .logo {
+    object-fit: contain;
+    width: auto;
+    height: 100%;
+  }
 }
