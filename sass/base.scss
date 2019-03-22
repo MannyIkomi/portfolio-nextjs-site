@@ -1,4 +1,6 @@
-@import 'index';
+@import 'reset';
+@import 'color';
+@import 'typography';
 
 body {
   background-color: $mute;
@@ -10,4 +12,14 @@ a {
 }
 a:hover {
   color: $orange;
+}
+
+.mute-bg {
+  background-color: $mute;
+}
+
+.logo {
+  object-fit: contain;
+  width: auto;
+  height: 100%;
 }
