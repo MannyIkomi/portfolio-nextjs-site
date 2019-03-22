@@ -6,16 +6,31 @@ $futura: futura-pt, 'Helvetica Neue', Helvetica, sans-serif;
   font-family: $futura;
 }
 
+@mixin header-style($typeface: $baskerville) {
+  font-family: $typeface;
+  text-transform: lowercase;
+  font-weight: 400;
+}
+@mixin body-style($typeface: $futura) {
+  font-family: $typeface;
+  font-weight: 300;
+}
+
 h1,
 h2,
 h3,
 h4,
 h5 {
-  font-family: $baskerville;
-  text-transform: lowercase;
-  font-weight: 400;
+  @include header-style();
   font-size: 2rem;
   line-height: 1.1;
+}
+
+p,
+span {
+  @include body-style();
+  font-size: 1rem;
+  line-height: 1.4;
 }
 
 @media screen and (min-width: 700px) {

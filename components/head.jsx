@@ -1,6 +1,5 @@
 // https://nextjs.org/docs#populating-head
 import Head from 'next/head'
-import '../sass/reset.scss'
 
 const HtmlHead = props => {
   const { pageTitle, children } = props

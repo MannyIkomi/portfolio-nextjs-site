@@ -5,13 +5,15 @@ import {
   MobileNav,
   MenuBar,
   MenuNav,
-  MenuButton
+  MenuButton,
+  Logo
 } from '../components/navigation.jsx'
 import Gallery from '../components/gallery/gallery.jsx'
 import '../sass/base.scss'
 // import { Head as NextHead } from 'next/head'
 
 class Home extends Component {
+  // refactor nav state into WithNavToggle Component?
   state = { navToggled: false }
   handleMenuClick = e => this.setState({ navToggled: !this.state.navToggled })
 
@@ -19,10 +21,13 @@ class Home extends Component {
     return (
       <React.Fragment>
         <HtmlHead pageTitle={'Welcome! 🤓 — Manny Ikomi'} />
-        <MenuBar>
-          <MenuButton click={this.handleMenuClick} />
-        </MenuBar>
-        {this.state.navToggled ? <MenuNav /> : null}
+        <header className={`dock-bottom`}>
+          {this.state.navToggled ? <MenuNav /> : null}
+          <MenuBar>
+            <Logo lockup={`type`} />
+            <MenuButton click={this.handleMenuClick} />
+          </MenuBar>
+        </header>
         <main>
           {/* Categorize <Gallery/> by #ui, #Identity Design, and #Other Works */}
           <Gallery id={'identity'} />

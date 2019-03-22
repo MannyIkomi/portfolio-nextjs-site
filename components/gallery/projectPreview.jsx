@@ -4,13 +4,16 @@ import { convertEpochToDate } from '../../util/dates.js'
 import '../../sass/projects.scss'
 import { kebabCase } from 'lodash'
 
-const ProjectHover = props => {
-  const { title, subtitle } = props
+const WithFillOverlay = props => {
+  return <div className="overlay">{props.children}</div>
+}
+
+const ProjectCaption = ({ title, subtitle }) => {
   return (
-    <div className="project hover">
+    <Fragment>
       <h2 className="title">{title}</h2>
       <h3 className="subtitle">{subtitle}</h3>
-    </div>
+    </Fragment>
   )
 }
 
@@ -48,17 +51,27 @@ const ProjectPreview = props => {
   // refactor project preview to stateful component to manage <HoverProject />
   return (
     <figure
-      className="project preview"
+      className="project preview "
       onMouseEnter={props.handleMouseEnter}
       onMouseLeave={props.handleMouseLeave}
     >
-      <a href={`${menuPath}/${kebabCase(name)}`} className="link">
-        <CoverImg src={covers[selectCoverSize]} alt={name} />
+      <div className={`aspect`}>
+        <a href={`${menuPath}/${kebabCase(name)}`} className="link">
+          <CoverImg src={covers[selectCoverSize]} alt={name} />
 
-        {props.isHovered ? (
-          <ProjectHover title={name} subtitle={'subtitle description text'} />
-        ) : null}
-      </a>
+          {props.isHovered ? (
+            <WithFillOverlay>
+              <ProjectCaption
+                title={name}
+                subtitle={'subtitle description text'}
+              />
+            </WithFillOverlay>
+          ) : null}
+        </a>
+      </div>
+      {/* <figcaption>
+        <ProjectCaption title={name} subtitle={'subtitle description text'} />
+      </figcaption> */}
     </figure>
   )
 }

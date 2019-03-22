@@ -11,18 +11,6 @@ const NavLink = props => {
   ))
 }
 
-// const MobileNav = props => {
-//   const generateNavItems = props => {
-//     return props.map(p => <NavItem navData={p} />)
-//   }
-
-//   return <nav>{generateNavItems(pages)}</nav>
-// }
-
-// logo component
-// menu button component
-// menu nav
-
 const MenuNav = props => {
   return (
     <nav className="nav mobile">
@@ -32,13 +20,13 @@ const MenuNav = props => {
 }
 
 const Logo = props => {
-  const { type } = props
+  const { lockup } = props
 
   return (
     <a href={`/`}>
       <img
         className={`logo`}
-        src={`static/logos/logo-${type || `master`}.svg`}
+        src={`static/logos/logo-${lockup || `master`}.svg`} // type = ['master','type','wide' ]
         alt={`Manny Ikomi's Logo`}
       />
     </a>
@@ -55,12 +43,7 @@ const MenuButton = props => {
   )
 }
 const MenuBar = props => {
-  return (
-    <header className={`nav dock-bottom shadow`}>
-      <Logo type={`type`} />
-      {props.children || <MenuButton />}
-    </header>
-  )
+  return <section className={`nav menubar shadow`}>{props.children}</section>
 }
 
-export { MenuBar, MenuNav, MenuButton }
+export { MenuBar, MenuNav, MenuButton, Logo }
