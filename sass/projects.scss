@@ -2,41 +2,53 @@
 @import 'color';
 @import 'mixin';
 
+.gallery {
+  background-color: $deep-gray;
+  width: 100%;
+  padding: 2rem;
+}
+
 .aspect {
   height: 0;
   overflow: hidden;
   padding-bottom: 100% * 17 / 22;
 }
 
-.project.preview {
-  position: relative;
-
-  margin-bottom: 4rem;
-  width: 100%;
-
-  box-shadow: -0.5rem 0.5rem 0.5rem 0px rgba(38, 38, 38, 0.2);
-
-  .link {
-    display: block;
-  }
-}
-
-.cover {
+.project .cover {
   display: block;
-  width: 100%;
-  height: 100%;
+  @include size(100%);
   object-fit: cover;
 }
 
 .project {
+  &.preview {
+    position: relative;
+
+    margin-bottom: 4rem;
+    width: 100%;
+
+    box-shadow: -0.5rem 0.5rem 0.5rem 0px rgba(38, 38, 38, 0.2);
+    .link {
+      display: block;
+    }
+  }
   .overlay {
-    // @extend %overlay;
     @include overlay();
     @include flex(column);
 
     justify-content: flex-end;
     padding: 1rem;
     background-color: $trans-orange;
+    // mix-blend-mode: multiply;
+    ::before {
+      content: url('/static/motif-gallery.svg');
+
+      position: absolute;
+      top: -1px;
+      right: -1px;
+
+      @include size(75%, auto);
+    }
   }
 
   .title {

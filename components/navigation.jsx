@@ -46,4 +46,29 @@ const MenuBar = props => {
   return <section className={`nav menubar shadow`}>{props.children}</section>
 }
 
-export { MenuBar, MenuNav, MenuButton, Logo }
+class WithNavigationToggle extends Component {
+  state = { navToggled: false }
+  handleMenuClick = e => this.setState({ navToggled: !this.state.navToggled })
+  render() {
+    return (
+      <Fragment>
+        {this.props.render(this.state.navToggled, this.handleMenuClick)}
+      </Fragment>
+    )
+  }
+}
+
+const MobileMenu = props => {
+  const { toggle: navToggled, handler: handleMenuClick } = props
+  return (
+    <Fragment>
+      {navToggled ? <MenuNav /> : null}
+      <MenuBar>
+        <Logo lockup={`type`} />
+        <MenuButton click={handleMenuClick} />
+      </MenuBar>
+    </Fragment>
+  )
+}
+
+export { MenuBar, MenuNav, MenuButton, Logo, WithNavigationToggle, MobileMenu }

@@ -1,7 +1,5 @@
 import React, { Component } from 'react'
 import { ProjectPreview, WithHoverState } from './projectPreview.jsx'
-import '../../sass/base.scss'
-import '../../sass/gallery.scss'
 
 class Gallery extends Component {
   state = {
@@ -266,23 +264,6 @@ class Gallery extends Component {
 
   projectDetails = {}
 
-  renderProjects = (projects = [], Component) => {
-    return projects.map((project, index) => (
-      <WithHoverState
-        key={index}
-        render={(isHovered, handleEnter, handleLeave) => (
-          <Component
-            project={project}
-            key={project.id}
-            handleMouseEnter={handleEnter}
-            handleMouseLeave={handleLeave}
-            isHovered={isHovered}
-          />
-        )}
-      />
-    ))
-  }
-
   render() {
     const { renderProjects } = this
     const { id } = this.props
@@ -290,7 +271,10 @@ class Gallery extends Component {
 
     return (
       <section className="gallery" id={id}>
-        {renderProjects(behanceApi.projects, ProjectPreview)}
+        {/* {renderProjects(behanceApi.projects, ProjectPreview)} */}
+        {behanceApi.projects.map((project, index) => (
+          <ProjectPreview project={project} key={project.id} />
+        ))}
       </section>
     )
   }

@@ -15,7 +15,7 @@
   flex-direction: $direction;
 }
 
-@mixin size($width, $height) {
+@mixin size($width, $height: auto) {
   width: $width;
   height: $height;
 }
