@@ -4,16 +4,17 @@ import { convertEpochToDate } from '../../util/dates.js'
 import '../../sass/projects.scss'
 import { kebabCase } from 'lodash'
 
-const WithFillOverlay = props => {
+const FillOverlay = props => {
   return <div className="overlay">{props.children}</div>
 }
 
-const ProjectCaption = ({ title, subtitle }) => {
+const ProjectCaption = props => {
+  const { title, subtitle } = props
   return (
-    <Fragment>
+    <figcaption>
       <h2 className="title">{title}</h2>
       <h3 className="subtitle">{subtitle}</h3>
-    </Fragment>
+    </figcaption>
   )
 }
 
@@ -44,35 +45,38 @@ const CoverImg = ({ src, alt }) => <img className="cover" src={src} alt={alt} />
 
 const ProjectPreview = props => {
   const selectCoverSize = 'original'
-  const menuPath = 'projects'
-  const cssClassRoot = 'project'
+  const linkPath = 'projects'
 
+  const { handleMouseEnter, handleMouseLeave } = props
   const { name, covers, published_on: epoch, id, description } = props.project
-  // refactor project preview to stateful component to manage <HoverProject />
-  return (
-    <figure
-      className="project preview "
-      onMouseEnter={props.handleMouseEnter}
-      onMouseLeave={props.handleMouseLeave}
-    >
-      <div className={`aspect`}>
-        <a href={`${menuPath}/${kebabCase(name)}`} className="link">
-          <CoverImg src={covers[selectCoverSize]} alt={name} />
 
-          {props.isHovered ? (
-            <WithFillOverlay>
-              <ProjectCaption
-                title={name}
-                subtitle={'subtitle description text'}
-              />
-            </WithFillOverlay>
-          ) : null}
-        </a>
-      </div>
-      {/* <figcaption>
-        <ProjectCaption title={name} subtitle={'subtitle description text'} />
-      </figcaption> */}
-    </figure>
+  return (
+    <WithHoverState
+      render={(isHovered, handleMouseEnter, handleMouseLeave) => (
+        <figure
+          className="project preview "
+          onMouseEnter={handleMouseEnter}
+          onMouseLeave={handleMouseLeave}
+        >
+          <a
+            href={`${linkPath}/${kebabCase(name)}`}
+            className="aspect link"
+            id={kebabCase(name)}
+          >
+            <CoverImg src={covers[selectCoverSize]} alt={name} />
+
+            {isHovered ? (
+              <FillOverlay>
+                <ProjectCaption
+                  title={name}
+                  subtitle={'subtitle description text'}
+                />
+              </FillOverlay>
+            ) : null}
+          </a>
+        </figure>
+      )}
+    />
   )
 }
 

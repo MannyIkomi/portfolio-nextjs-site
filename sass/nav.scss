@@ -4,6 +4,10 @@
 
 $menubar-height: 3rem;
 
+#__next {
+  margin-bottom: $menubar-height;
+}
+
 .nav {
   &.mobile {
     z-index: 999;
