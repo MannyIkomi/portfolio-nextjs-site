@@ -3,6 +3,8 @@ import React, { Component, Fragment } from 'react'
 import HtmlHead from '../components/head'
 import { MobileMenu, WithNavigationToggle } from '../components/navigation'
 
+import '../sass/base.scss'
+
 class About extends Component {
   state = {}
   render() {
@@ -22,7 +24,7 @@ class About extends Component {
               <img src="static/headshot.jpg" alt="Portrait photo of Manny" />
             </div>
             <figcaption>
-              <h1>Design thinker, lifetime learner, crazy in love guncle.</h1>
+              <h1>Design thinker, lifetime learner, crazy in love guncle</h1>
             </figcaption>
           </header>
           <p>
@@ -40,6 +42,9 @@ class About extends Component {
             {/* <div className={`motif-right`} /> */}
           </button>
         </section>
+        <br />
+        <br />
+        <br />
       </Fragment>
     )
   }
