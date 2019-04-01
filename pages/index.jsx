@@ -1,7 +1,14 @@
 // https://nextjs.org/docs/
 import React, { Component, Fragment } from 'react'
 import HtmlHead from '../components/head'
-import { WithNavigationToggle, MobileMenu } from '../components/navigation.jsx'
+import {
+  WithNavigationToggle,
+  MobileMenu,
+  SideMenu,
+  NavLink,
+  Logo,
+  MenuNav
+} from '../components/navigation.jsx'
 import Gallery from '../components/gallery/gallery.jsx'
 import '../sass/base.scss'
 // import { Head as NextHead } from 'next/head'
@@ -15,7 +22,10 @@ class Home extends Component {
     return (
       <Fragment>
         <HtmlHead pageTitle={'Welcome! 🤓 — Manny Ikomi'} />
-
+        <header className={`dock-sidebar`}>
+          <Logo lockup={`master`} />
+          <MenuNav />
+        </header>
         <header className={`dock-bottom`}>
           <WithNavigationToggle
             render={(navToggledState, handler) => {
@@ -28,7 +38,6 @@ class Home extends Component {
           <h1>the work</h1>
           <Gallery id={'identity'} />
         </main>
-        {/* <Footer /> */}
       </Fragment>
     )
   }
