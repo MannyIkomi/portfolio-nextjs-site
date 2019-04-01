@@ -2,7 +2,7 @@ import React, { Component, Fragment } from 'react'
 import '../sass/nav.scss'
 import { getPages } from '../util/navigation'
 
-const NavLink = props => {
+export const NavLink = props => {
   const { pages } = props
   return pages.map((page, index) => (
     <a href={page.path} className="nav link" key={index}>
@@ -11,15 +11,16 @@ const NavLink = props => {
   ))
 }
 
-const MenuNav = props => {
+export const MenuNav = props => {
+  const { type } = props
   return (
-    <nav className="nav mobile">
+    <nav className={`nav ${type}`}>
       <NavLink pages={getPages()} />
     </nav>
   )
 }
 
-const Logo = props => {
+export const Logo = props => {
   const { lockup } = props
 
   return (
@@ -33,7 +34,7 @@ const Logo = props => {
   )
 }
 
-const MenuButton = props => {
+export const MenuButton = props => {
   const handleClick = props.click
 
   return (
@@ -42,11 +43,11 @@ const MenuButton = props => {
     </button>
   )
 }
-const MenuBar = props => {
+export const MenuBar = props => {
   return <section className={`nav menubar shadow`}>{props.children}</section>
 }
 
-class WithNavigationToggle extends Component {
+export class WithNavigationToggle extends Component {
   state = { navToggled: false }
   handleMenuClick = e => this.setState({ navToggled: !this.state.navToggled })
   render() {
@@ -58,11 +59,11 @@ class WithNavigationToggle extends Component {
   }
 }
 
-const MobileMenu = props => {
+export const MobileMenu = props => {
   const { toggle: navToggled, handler: handleMenuClick } = props
   return (
     <Fragment>
-      {navToggled ? <MenuNav /> : null}
+      {navToggled ? <MenuNav type={`mobile`} /> : null}
       <MenuBar>
         <Logo lockup={`type`} />
         <MenuButton click={handleMenuClick} />
@@ -71,4 +72,15 @@ const MobileMenu = props => {
   )
 }
 
-export { MenuBar, MenuNav, MenuButton, Logo, WithNavigationToggle, MobileMenu }
+export const SideMenu = props => {
+  const { toggle: navToggled, handler: handleMenuClick } = props
+
+  return (
+    <Fragment>
+      <MenuBar>
+        <Logo lockup={`master`} />
+        <MenuNav type={`sidebar`} />
+      </MenuBar>
+    </Fragment>
+  )
+}

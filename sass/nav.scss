@@ -32,6 +32,9 @@ $menubar-height: 3rem;
 
     font-family: $baskerville;
   }
+  .sidebar {
+    display: none;
+  }
 
   &.menubar {
     z-index: 1000;
@@ -54,6 +57,14 @@ $menubar-height: 3rem;
     font-size: 2.5rem;
     &:hover {
       color: $orange;
+    }
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  nav {
+    &.sidebar {
+      max-width: 10rem;
     }
   }
 }

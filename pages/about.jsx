@@ -36,11 +36,7 @@ class About extends Component {
             possimus quaerat necessitatibus neque, pariatur voluptates ipsum
             ipsam natus sint?
           </p>
-          <button className={`cta layout`}>
-            {/* <div className={`motif-left`} />  */}
-            say hello
-            {/* <div className={`motif-right`} /> */}
-          </button>
+          <button className={`cta layout`}>Say Hello</button>
         </section>
         <br />
         <br />
