@@ -29,8 +29,8 @@ class About extends Component {
           </header>
           <p>
             I use creativity, context, and critical thinking skills to design
-            purposeful solutions that solve visual problems. In short, I like
-            designing great things for good people. Lorem ipsum dolor sit amet
+            purposeful solutions that solve business problems. In short, I like
+            making great things for good people. Lorem ipsum dolor sit amet
             consectetur adipisicing elit. Corporis incidunt asperiores nisi
             voluptates. Consequatur atque dolorem non distinctio. Vero soluta
             possimus quaerat necessitatibus neque, pariatur voluptates ipsum

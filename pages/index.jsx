@@ -22,10 +22,10 @@ class Home extends Component {
     return (
       <Fragment>
         <HtmlHead pageTitle={'Welcome! 🤓 — Manny Ikomi'} />
-        <header className={`dock-sidebar`}>
+        {/* <header className={`dock-sidebar`}>
           <Logo lockup={`master`} />
           <MenuNav />
-        </header>
+        </header> */}
         <header className={`dock-bottom`}>
           <WithNavigationToggle
             render={(navToggledState, handler) => {
@@ -35,7 +35,7 @@ class Home extends Component {
         </header>
         <main>
           {/* Categorize <Gallery/> by #ui, #Identity Design, and #Other Works */}
-          <h1>the work</h1>
+          <h1>the werk</h1>
           <Gallery id={'identity'} />
         </main>
       </Fragment>
