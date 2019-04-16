@@ -1,5 +1,5 @@
 const getPages = (filterId = '') => {
-  const values = [
+  const pages = [
     {
       title: 'Logo & Identity',
       path: '/#identity',
@@ -11,14 +11,14 @@ const getPages = (filterId = '') => {
       id: 'ui'
     },
     {
-      title: 'Other Works',
+      title: 'Other Werk',
       path: '/#other',
       id: 'other'
     },
-    {
-      title: 'Say Hello',
-      path: '/contact'
-    },
+    // {
+    //   title: 'Say Hello',
+    //   path: '/contact'
+    // },
     {
       title: 'About Me',
       path: '/about'
@@ -26,10 +26,10 @@ const getPages = (filterId = '') => {
   ]
 
   return filterId
-    ? values.filter(item => {
-        return item.id === filterId
+    ? pages.filter(page => {
+        return page.id === filterId
       })
-    : values
+    : pages
 }
 
 export { getPages }

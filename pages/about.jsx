@@ -27,15 +27,7 @@ class About extends Component {
               <h1>Design thinker, lifetime learner, crazy in love guncle</h1>
             </figcaption>
           </header>
-          <p>
-            I use creativity, context, and critical thinking skills to design
-            purposeful solutions that solve business problems. In short, I like
-            making great things for good people. Lorem ipsum dolor sit amet
-            consectetur adipisicing elit. Corporis incidunt asperiores nisi
-            voluptates. Consequatur atque dolorem non distinctio. Vero soluta
-            possimus quaerat necessitatibus neque, pariatur voluptates ipsum
-            ipsam natus sint?
-          </p>
+          <p>Lorem Ipsum</p>
           <button className={`cta layout`}>Say Hello</button>
         </section>
         <br />
