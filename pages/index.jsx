@@ -14,6 +14,8 @@ import {
 import Portfolio from '../components/portfolio/portfolio.jsx'
 import '../sass/base.scss'
 import { awaitExpression } from '../node_modules/@babel/types'
+import { resolve } from 'url'
+import { rejects } from 'assert'
 // import { Head as NextHead } from 'next/head'
 
 const Home = props => {
@@ -47,7 +49,7 @@ const Home = props => {
 // https://graphql.org/graphql-js/graphql-clients/
 // sending GraphQL queries without frameworks like Apollo
 
-const GraphReq = axios.create({
+const axiosGraphql = axios.create({
   method: 'POST',
   baseURL: 'http://localhost:3001',
   url: 'graphql',
@@ -57,29 +59,31 @@ const GraphReq = axios.create({
   }
 })
 
-Home.getInitialProps = async ({ req }) => {
-  // try {
-  //   const response = await GraphReq({
-  //     data: JSON.stringify({
-  //       query: `{
-  //   portfolio{
-  //     projects{
-  //       id
-  //       name
-  //       description
-  //       covers{
-  //         original
-  //         size_404
-  //         size_808
-  //       }
-  //     }
-  //   }
-  // }`
-  //     })
-  //   })
-  //   const portfolio = await response.data
-  //   console.log('AXIOS DATA', prettyJson(portfolio))
-  //   return portfolio
+Home.getInitialProps = async () => {
+  try {
+    const response = await axiosGraphql({
+      data: JSON.stringify({
+        query: `{
+    portfolio{
+      projects{
+        id
+        name
+        description
+        covers{
+          original
+          size_404
+          size_808
+        }
+      }
+    }
+  }`
+      })
+    })
+    const { portfolio } = await response
+    console.log('INITIAL PROPS:\n', prettyJson(portfolio))
+    return portfolio
+  } catch (err) {
+    console.error(err)
+  }
 }
-
 export default Home
