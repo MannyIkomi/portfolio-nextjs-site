@@ -65,7 +65,7 @@ export const MobileMenu = props => {
     <Fragment>
       {navToggled ? <MenuNav type={`mobile`} /> : null}
       <MenuBar>
-        <Logo lockup={`type`} />
+        <Logo lockup={`type-long`} />
         <MenuButton click={handleMenuClick} />
       </MenuBar>
     </Fragment>

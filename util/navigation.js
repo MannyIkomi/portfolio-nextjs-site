@@ -1,24 +1,19 @@
 const getPages = (filterId = '') => {
   const pages = [
     {
+      title: 'The Werk',
+      path: '/'
+    },
+    {
       title: 'Logo & Identity',
       path: '/#identity',
-      id: 'identity'
+      category: 'logo & identity'
     },
     {
       title: 'User Interface',
       path: '/#ui',
-      id: 'ui'
+      category: 'user'
     },
-    {
-      title: 'Other Werk',
-      path: '/#other',
-      id: 'other'
-    },
-    // {
-    //   title: 'Say Hello',
-    //   path: '/contact'
-    // },
     {
       title: 'About Me',
       path: '/about'

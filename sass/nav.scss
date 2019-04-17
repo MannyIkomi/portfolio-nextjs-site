@@ -2,7 +2,7 @@
 @import 'typography';
 @import 'mixin';
 
-$menubar-height: 3rem;
+$menubar-height: 2.5rem;
 
 #__next {
   margin-bottom: $menubar-height;
@@ -21,7 +21,7 @@ $menubar-height: 3rem;
 
     @include size(100vw, 100%);
     height: 100vh;
-    height: calc(100vh - 3rem + 1px); // remaining menu space
+    height: calc(100vh - 2.5rem + 1px); // remaining menu space
     padding: 1rem;
 
     /* background color fallback incase svg doesnt load */
