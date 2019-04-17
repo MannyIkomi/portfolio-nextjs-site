@@ -24,7 +24,8 @@
   "devDependencies": {
     "babel-jest": "^24.5.0",
     "jest": "^24.5.0",
-    "mockdate": "^2.0.2"
+    "mockdate": "^2.0.2",
+    "supersniff": "^2.1.0"
   },
   "jest": {
     "transform": {

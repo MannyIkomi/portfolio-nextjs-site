@@ -1,8 +1,8 @@
-import React, { Component, Fragment } from 'react'
+import React, { Component, Fragment, useState } from 'react'
 
 import { convertEpochToDate } from '../../util/dates.js'
 import '../../sass/projects.scss'
-import { kebabCase } from 'lodash'
+// import { kebabCase } from 'lodash'
 
 const FillOverlay = props => {
   return <div className="overlay">{props.children}</div>
@@ -18,59 +18,51 @@ const ProjectCaption = props => {
   )
 }
 
-class WithHoverState extends Component {
-  state = { isHovered: false }
+const WithHoverState = props => {
+  const [isHovered, setIsHovered] = useState(false)
+  const { render } = props
 
-  handleOnMouseEnter = e => {
+  function handleOnMouseEnter(e) {
     // console.log(e)
-    this.setState({ isHovered: true })
+    setIsHovered({ isHovered: true })
   }
-  handleMouseLeave = e => {
+  function handleMouseLeave(e) {
     // console.log(e)
-    this.setState({ isHovered: false })
+    setIsHovered({ isHovered: false })
   }
-
-  render() {
-    const { render } = this.props
-    const { isHovered } = this.state
-    return (
-      <Fragment>
-        {render(isHovered, this.handleOnMouseEnter, this.handleMouseLeave)}
-      </Fragment>
-    )
-  }
+  return (
+    <Fragment>
+      {render(isHovered, handleOnMouseEnter, handleMouseLeave)}
+    </Fragment>
+  )
 }
 
 const CoverImg = ({ src, alt }) => <img className="cover" src={src} alt={alt} />
 
-const ProjectPreview = props => {
+const ProjectCover = props => {
   const selectCoverSize = 'original'
   const linkPath = 'projects'
 
   const { handleMouseEnter, handleMouseLeave } = props
-  const { name, covers, published_on: epoch, id, description } = props.project
+  const { id, name, description, covers, slug } = props.project
 
   return (
     <WithHoverState
       render={(isHovered, handleMouseEnter, handleMouseLeave) => (
         <figure
           className="project preview "
-          onMouseEnter={handleMouseEnter}
-          onMouseLeave={handleMouseLeave}
+          onMouseEnter={handleMouseEnter || null}
+          onMouseLeave={handleMouseLeave || null}
         >
           <a
-            href={`${linkPath}/${kebabCase(name)}`}
+            href={`${linkPath}/${slug || id}`}
             className="aspect link"
-            id={kebabCase(name)}
+            id={slug || id}
           >
             <CoverImg src={covers[selectCoverSize]} alt={name} />
-
             {isHovered ? (
               <FillOverlay>
-                <ProjectCaption
-                  title={name}
-                  subtitle={'subtitle description text'}
-                />
+                <ProjectCaption title={name} subtitle={description} />
               </FillOverlay>
             ) : null}
           </a>
@@ -80,4 +72,4 @@ const ProjectPreview = props => {
   )
 }
 
-export { ProjectPreview, WithHoverState }
+export { ProjectCover, WithHoverState }
