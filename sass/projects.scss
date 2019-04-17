@@ -34,20 +34,25 @@
   }
   .overlay {
     @include overlay();
-    @include flex(column);
+    background-color: $orange;
+    opacity: 1;
+    mix-blend-mode: color;
 
-    justify-content: flex-end;
-    padding: 1rem;
-    background-color: $trans-orange;
-    // mix-blend-mode: multiply;
-    ::before {
-      content: url('/static/motif-gallery.svg');
+    & + .children {
+      @include flex(column);
 
-      position: absolute;
-      top: -1px;
-      right: -1px;
+      justify-content: flex-end;
+      padding: 1rem;
+      ::before {
+        content: url('/static/motif-gallery.svg');
 
-      @include size(75%, auto);
+        position: absolute;
+        top: -1px;
+        right: -1px;
+
+        @include size(66%, auto);
+      }
+      background: red;
     }
   }
 

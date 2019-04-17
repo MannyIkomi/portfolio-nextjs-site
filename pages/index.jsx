@@ -18,15 +18,15 @@ import {
 } from '../components/portfolio/projectPreview'
 import '../sass/base.scss'
 
-// import { Head as NextHead } from 'next/head'
-
 const Home = props => {
-  const { projects } = props // from getInitialProps Next.js
-  console.log('PORTFOLIO PROPS:', projects)
+  const { projects, url } = props // from getInitialProps Next.js
+
+  console.log('URL from Next.js', url) //use url to determine the :active navigation link
+  // console.log('PORTFOLIO PROPS:', projects)
 
   return (
     <Fragment>
-      <HtmlHead pageTitle={'Welcome! 🤓 — Manny Ikomi'} />
+      <HtmlHead pageTitle={'Design Thinker, Lifetime Learner — Manny Ikomi'} />
       {/* <header className={`dock-sidebar`}>
           <Logo lockup={`master`} />
           <MenuNav />
@@ -39,9 +39,9 @@ const Home = props => {
         />
       </header>
       <main>
-        {/* Categorize <Gallery/> by #ui, #Identity Design, and #Other Works */}
+        {/* Categorize <Gallery/> by #ui, #Identity Design*/}
         <h1>the werk</h1>
-        <Portfolio id={''}>
+        <Portfolio id={``}>
           {projects.map(project => (
             <ProjectCover project={project} key={project.id} />
           ))}
@@ -73,6 +73,7 @@ Home.getInitialProps = async () => {
             id
             name
             description
+            slug
             covers {
               original
               size_404
@@ -94,6 +95,7 @@ Home.getInitialProps = async () => {
           name: 'An Empire of Shattered Glass',
           description:
             'Short Story Collection Book Cover\nhttp://www.readshortfiction.com/2017/09/an-empire-of-shattered-glass-by-gunnar-de-winter/',
+          slug: 'An-Empire-of-Shattered-Glass',
           covers: {
             original:
               'https://mir-s3-cdn-cf.behance.net/projects/original/72f45c75805377.Y3JvcCwxMTgyLDkyNSwxMDIsNzk.png',
@@ -107,6 +109,7 @@ Home.getInitialProps = async () => {
           id: '75810981',
           name: 'NuFlow',
           description: 'Personal Finance Lifestyle Magazine',
+          slug: 'NuFlow',
           covers: {
             original:
               'https://mir-s3-cdn-cf.behance.net/projects/original/c49aa175810981.Y3JvcCwxMzgzLDEwODIsNiww.png',
@@ -121,6 +124,7 @@ Home.getInitialProps = async () => {
           name: 'Breaking Up With God',
           description:
             'Literary Magazine Feature Illustration: Tell, Spring 2018 https://bhcc.digication.com/Tellmagazine/Links_to_Faculty_e-Portfolios/\n',
+          slug: 'Breaking-Up-With-God',
           covers: {
             original:
               'https://mir-s3-cdn-cf.behance.net/projects/original/4e4a5e75799775.Y3JvcCwxMzgzLDEwODIsNiww.png',
@@ -134,6 +138,7 @@ Home.getInitialProps = async () => {
           id: '52442951',
           name: 'Coca Cola Logo',
           description: 'International Style Logo using the Coca Cola Brand',
+          slug: 'Coca-Cola-Logo',
           covers: {
             original:
               'https://mir-s3-cdn-cf.behance.net/projects/original/0288cf52442951.Y3JvcCwzMDQ0LDIzODEsMTA1LDgy.png',
@@ -147,6 +152,7 @@ Home.getInitialProps = async () => {
           id: '50678567',
           name: 'Mystic Parker Printing Identity',
           description: 'Identity System Refresh',
+          slug: 'Mystic-Parker-Printing-Identity',
           covers: {
             original:
               'https://mir-s3-cdn-cf.behance.net/projects/original/c4544f50678567.Y3JvcCwxNDAwLDEwOTUsMCwzMjMz.jpg',

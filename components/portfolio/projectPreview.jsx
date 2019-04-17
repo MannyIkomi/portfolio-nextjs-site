@@ -5,13 +5,18 @@ import '../../sass/projects.scss'
 // import { kebabCase } from 'lodash'
 
 const FillOverlay = props => {
-  return <div className="overlay">{props.children}</div>
+  return (
+    <Fragment>
+      <div className="overlay" />
+      <div className="children">{props.children}</div>
+    </Fragment>
+  )
 }
 
 const ProjectCaption = props => {
   const { title, subtitle } = props
   return (
-    <figcaption>
+    <figcaption className="display">
       <h2 className="title">{title}</h2>
       <h3 className="subtitle">{subtitle}</h3>
     </figcaption>
@@ -24,11 +29,11 @@ const WithHoverState = props => {
 
   function handleOnMouseEnter(e) {
     // console.log(e)
-    setIsHovered({ isHovered: true })
+    setIsHovered(true)
   }
   function handleMouseLeave(e) {
     // console.log(e)
-    setIsHovered({ isHovered: false })
+    setIsHovered(false)
   }
   return (
     <Fragment>
