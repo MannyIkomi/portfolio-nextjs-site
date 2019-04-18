@@ -1,0 +1,84 @@
+@import 'color';
+@import 'typography';
+@import 'mixin';
+
+.footer {
+  @include flex(column);
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+
+  width: 100%;
+  min-height: 100vh;
+  padding: 1rem;
+  overflow: hidden;
+
+  color: $mute;
+  background-color: $deep-gray;
+  section {
+    margin: 2rem 0;
+  }
+  .logo {
+    width: 25%;
+  }
+
+  .quote {
+    pointer-events: none;
+    position: absolute;
+
+    opacity: 0.25;
+    z-index: 0;
+
+    font-family: $baskerville;
+    color: $med-gray;
+
+    blockquote {
+      transform: rotate(-12deg);
+
+      color: $med-gray;
+      font-size: 5rem;
+      text-transform: lowercase;
+      line-height: 1.5;
+    }
+  }
+  .link {
+    &[href*='design@mannyikomi.com'] {
+      //href *=containing selector
+      font-size: 1.5rem;
+    }
+    &.inline {
+      text-decoration: underline;
+      &:hover {
+        color: $orange;
+      }
+    }
+  }
+}
+
+section.social {
+  z-index: 1;
+  @include flex(row);
+  width: 75%;
+  align-items: center;
+  justify-content: space-around;
+
+  .social.link {
+    margin: 1rem;
+    display: block;
+    max-width: 3rem;
+    min-height: 2rem;
+  }
+  .social.logo {
+    @include size(100%);
+    margin: auto;
+  }
+}
+
+section.code {
+  text-align: center;
+}
+
+.copyright {
+  color: $med-gray;
+  font-size: 1rem;
+}
