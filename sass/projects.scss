@@ -2,10 +2,8 @@
 @import 'color';
 @import 'mixin';
 
-.gallery {
-  background-color: $deep-gray;
-  width: 100%;
-  padding: 2rem;
+.relative {
+  position: relative;
 }
 
 .aspect {
@@ -21,52 +19,53 @@
 }
 
 .project {
+  &:hover {
+    box-shadow: -0.5rem 0.5rem 0.5rem 0px hsla(0, 0%, 0%, 0.85);
+  }
   &.preview {
     position: relative;
 
     margin-bottom: 4rem;
     width: 100%;
-
-    box-shadow: -0.5rem 0.5rem 0.5rem 0px rgba(38, 38, 38, 0.2);
     .link {
       display: block;
     }
   }
-  .overlay {
-    @include overlay();
-    background-color: $orange;
-    opacity: 1;
-    mix-blend-mode: color;
+}
+.overlay {
+  @include overlay();
+  background-color: $orange;
+  opacity: 1;
+  mix-blend-mode: multiply;
+  + .content {
+    @include size(100%, 100%);
+    @include flex(column);
+    position: absolute;
+    bottom: 0;
+    justify-content: flex-end;
+    padding: 1rem;
+    ::before {
+      content: url('/static/motif-gallery.svg');
 
-    & + .children {
-      @include flex(column);
+      position: absolute;
+      top: -1px;
+      right: -1px;
 
-      justify-content: flex-end;
-      padding: 1rem;
-      ::before {
-        content: url('/static/motif-gallery.svg');
-
-        position: absolute;
-        top: -1px;
-        right: -1px;
-
-        @include size(66%, auto);
-      }
-      background: red;
+      @include size(66%, auto);
     }
-  }
-
-  .title {
-    font-family: $futura;
-    font-weight: bold;
-    font-size: 2rem;
     color: white;
-    text-transform: capitalize;
-  }
-  .subtitle {
-    font-family: $baskerville;
-    font-style: italic;
-    font-size: 1rem;
-    color: white;
+    .title {
+      font-family: $futura;
+      font-weight: bold;
+      font-size: 2rem;
+      color: white;
+      text-transform: capitalize;
+    }
+    .subtitle {
+      font-family: $baskerville;
+      font-style: italic;
+      font-size: 1rem;
+      color: white;
+    }
   }
 }
