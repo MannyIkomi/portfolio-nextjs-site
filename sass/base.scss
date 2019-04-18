@@ -29,34 +29,6 @@ button {
   @include size(auto, 100%);
 }
 
-.about {
-  @include flex(column);
-  header {
-    padding: 2rem;
-  }
-  p {
-    padding: 2rem;
-  }
-}
-
-.headshot {
-  position: relative;
-  // padding: 2rem;
-  max-width: 320px;
-
-  img {
-    display: block;
-    @include size(100%, auto);
-  }
-  &::after {
-    content: url('/static/motif-left.svg');
-    display: block;
-    position: absolute;
-    bottom: -4px;
-    @include size(100%, auto);
-  }
-}
-
 .cta {
   cursor: pointer;
 
