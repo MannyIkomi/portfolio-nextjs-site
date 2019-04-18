@@ -1,0 +1,9 @@
+@import 'typography';
+@import 'color';
+@import 'mixin';
+
+.gallery {
+  background-color: $deep-gray;
+  width: 100%;
+  padding: 2rem;
+}

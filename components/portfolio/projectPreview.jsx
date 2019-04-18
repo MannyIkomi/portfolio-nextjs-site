@@ -1,6 +1,7 @@
 import React, { Component, Fragment, useState } from 'react'
 
 import { convertEpochToDate } from '../../util/dates.js'
+import '../../sass/portfolio.scss'
 import '../../sass/projects.scss'
 // import { kebabCase } from 'lodash'
 
@@ -8,17 +9,27 @@ const FillOverlay = props => {
   return (
     <Fragment>
       <div className="overlay" />
-      <div className="children">{props.children}</div>
+      <div className="content">{props.children}</div>
     </Fragment>
+  )
+}
+
+const PreviewCaption = props => {
+  const { title, subtitle } = props
+  return (
+    <figcaption className="caption">
+      <h2 className="title">{title}</h2>
+      <h3 className="subtitle">{subtitle}</h3>
+    </figcaption>
   )
 }
 
 const ProjectCaption = props => {
   const { title, subtitle } = props
   return (
-    <figcaption className="display">
-      <h2 className="title">{title}</h2>
+    <figcaption className="caption">
       <h3 className="subtitle">{subtitle}</h3>
+      <h2 className="title">{title}</h2>
     </figcaption>
   )
 }
@@ -61,16 +72,19 @@ const ProjectCover = props => {
         >
           <a
             href={`${linkPath}/${slug || id}`}
-            className="aspect link"
+            className="aspect link relative"
             id={slug || id}
           >
             <CoverImg src={covers[selectCoverSize]} alt={name} />
             {isHovered ? (
               <FillOverlay>
-                <ProjectCaption title={name} subtitle={description} />
+                <PreviewCaption title={name} subtitle={description} />
               </FillOverlay>
             ) : null}
           </a>
+          {/* {isHovered ? null : (
+            <ProjectCaption title={name} subtitle={description} />
+          )} */}
         </figure>
       )}
     />
