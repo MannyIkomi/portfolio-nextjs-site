@@ -1,12 +1,12 @@
 // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date
 const convertEpochToDate = (epoch = 1) => new Date(epoch * 1000)
 
-const naturalDate = (month = 0, day = 0, year = 0) => {
+export const naturalDate = (month = 0, day = 0, year = 0) => {
   const monthIndex = month - 1
   return new Date(year, monthIndex, day)
 }
 
-const formatDate = (formatOptions = {}, date = new Date()) => {
+export const formatDate = (formatOptions = {}, date = new Date()) => {
   // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/DateTimeFormat
   // converts date object to specified format
   const customFormat = new Intl.DateTimeFormat('default', formatOptions).format(
@@ -14,7 +14,7 @@ const formatDate = (formatOptions = {}, date = new Date()) => {
   )
   return customFormat
 }
-const getWeekday = (option = '') => {
+export const getWeekday = (option = '') => {
   // weekday
   // The representation of the weekday. Possible values are:
   // "long" (e.g., Thursday)
@@ -24,7 +24,7 @@ const getWeekday = (option = '') => {
   const format = { weekday: option }
   return formatDate(format, new Date())
 }
-const getDay = (option = '') => {
+export const getDay = (option = '') => {
   // day
   // The representation of the day. Possible values are:
   // "numeric" (e.g., 1)
@@ -32,7 +32,7 @@ const getDay = (option = '') => {
   const format = { day: option }
   return formatDate(format, new Date())
 }
-const getMonth = (option = '') => {
+export const getMonth = (option = '') => {
   // month
   // The representation of the month. Possible values are:
   // "numeric" (e.g., 2)
@@ -44,7 +44,7 @@ const getMonth = (option = '') => {
   const format = { month: option }
   return formatDate(format, new Date())
 }
-const getYear = (option = '') => {
+export const getYear = (option = '') => {
   // year
   // The representation of the year. Possible values are:
   // "numeric" (e.g., 2012)
@@ -54,12 +54,12 @@ const getYear = (option = '') => {
   return formatDate(format, new Date())
 }
 
-export {
-  convertEpochToDate,
-  formatDate,
-  getWeekday,
-  getDay,
-  getMonth,
-  getYear,
-  naturalDate
-}
+// export {
+//   convertEpochToDate,
+//   formatDate,
+//   getWeekday,
+//   getDay,
+//   getMonth,
+//   getYear,
+//   naturalDate
+// }
