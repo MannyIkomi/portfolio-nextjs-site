@@ -1,6 +1,6 @@
 // https://nextjs.org/docs/
-import React, { Component, Fragment } from 'react'
-import { prettyJson } from '../util/debug'
+import React, { Fragment } from 'react'
+
 import HtmlHead from '../components/head'
 import axios from 'axios'
 import {
@@ -10,13 +10,15 @@ import {
   NavLink,
   Logo,
   MenuNav
-} from '../components/navigation.jsx'
-import Portfolio from '../components/portfolio/portfolio.jsx'
+} from '../components/navigation'
+import Portfolio from '../components/portfolio/portfolio'
 import {
   ProjectCover,
   WithHoverState
-} from '../components/portfolio/projectPreview'
+} from '../components/portfolio/projectCover'
+import Footer from '../components/footer'
 import '../sass/base.scss'
+import '../sass/portfolio.scss'
 
 const Home = props => {
   const { projects, url } = props // from getInitialProps Next.js
@@ -47,6 +49,7 @@ const Home = props => {
           ))}
         </Portfolio>
       </main>
+      <Footer />
     </Fragment>
   )
 }

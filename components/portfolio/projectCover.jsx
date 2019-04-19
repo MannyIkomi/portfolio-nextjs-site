@@ -1,9 +1,7 @@
 import React, { Component, Fragment, useState } from 'react'
 
-import { convertEpochToDate } from '../../util/dates.js'
-import '../../sass/portfolio.scss'
-import '../../sass/projects.scss'
-// import { kebabCase } from 'lodash'
+// import '../../sass/portfolio.scss'
+import '../../sass/projectCover.scss'
 
 const FillOverlay = props => {
   return (
@@ -34,7 +32,7 @@ const ProjectCaption = props => {
   )
 }
 
-const WithHoverState = props => {
+export const WithHoverState = props => {
   const [isHovered, setIsHovered] = useState(false)
   const { render } = props
 
@@ -55,11 +53,10 @@ const WithHoverState = props => {
 
 const CoverImg = ({ src, alt }) => <img className="cover" src={src} alt={alt} />
 
-const ProjectCover = props => {
+export const ProjectCover = props => {
   const selectCoverSize = 'original'
-  const linkPath = 'projects'
+  const projectPath = 'projects'
 
-  const { handleMouseEnter, handleMouseLeave } = props
   const { id, name, description, covers, slug } = props.project
 
   return (
@@ -71,7 +68,7 @@ const ProjectCover = props => {
           onMouseLeave={handleMouseLeave || null}
         >
           <a
-            href={`${linkPath}/${slug || id}`}
+            href={`${projectPath}/${slug || id}`}
             className="aspect link relative"
             id={slug || id}
           >
@@ -90,5 +87,4 @@ const ProjectCover = props => {
     />
   )
 }
-
-export { ProjectCover, WithHoverState }
+export default ProjectCover

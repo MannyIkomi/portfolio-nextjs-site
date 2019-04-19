@@ -27,6 +27,9 @@
     // z-index: 1;
     width: 25%;
     margin: 2rem 0;
+    @media screen and (min-width: 500px) {
+      max-width: 10rem;
+    }
   }
 
   .quote {
@@ -49,11 +52,12 @@
 section.social {
   z-index: 1;
   @include flex(column);
-
   width: 75%;
-
   text-align: center;
 
+  @media screen and (min-width: 500px) {
+    max-width: 320px;
+  }
   .icons {
     align-items: center;
     justify-content: space-around;
@@ -117,7 +121,7 @@ section.code {
         // pointer-events: none;
         // position: absolute;
 
-        opacity: 0.25;
+        opacity: 0.5;
         z-index: 0;
 
         // font-family: $baskerville;
