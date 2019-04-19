@@ -17,64 +17,69 @@ export const Footer = props => {
         alt="Manny's Logo"
         className={`logo`}
       />
-      <a href="mailto:design@mannyikomi.com" className={`link inline`}>
-        design@
-        <wbr />
-        mannyikomi.com
-      </a>
-      <span>
-        Member{` `}
-        <a href="https://www.aiga.org/" className={`inline link`}>
-          AIGA
-        </a>
-      </span>
       <section className="social">
-        <a href="https://www.behance.net/ikomi" className={`link social`}>
-          <img
-            src="static/social/be.svg"
-            alt="Behance Logo"
-            className={`social logo`}
-          />
+        <a href="mailto:design@mannyikomi.com" className={`link inline`}>
+          design@
+          <wbr />
+          mannyikomi.com
         </a>
-        <a
-          href="https://www.instagram.com/designbymanny/"
-          className={`social link`}
-        >
-          <img
-            src="static/social/ig.svg"
-            alt="Instagram Logo"
-            className={`social logo`}
-          />
-        </a>
-        <a href="https://www.linkedin.com/in/ikomi" className={`link social`}>
-          <img
-            src="static/social/in.svg"
-            alt="LinkedIn Logo"
-            className={`social logo`}
-          />
-        </a>
+        <br />
+        <span />
+        <div className="icons">
+          <a href="https://www.behance.net/ikomi" className={`link social`}>
+            <img
+              src="static/social/be.svg"
+              alt="Behance Logo"
+              className={`social logo`}
+            />
+          </a>
+          <a
+            href="https://www.instagram.com/designbymanny/"
+            className={`social link`}
+          >
+            <img
+              src="static/social/ig.svg"
+              alt="Instagram Logo"
+              className={`social logo`}
+            />
+          </a>
+          <a href="https://www.linkedin.com/in/ikomi" className={`link social`}>
+            <img
+              src="static/social/in.svg"
+              alt="LinkedIn Logo"
+              className={`social logo`}
+            />
+          </a>
+        </div>
       </section>
       <section className="code">
         <p>
+          Member{` `}
+          <a href="https://www.aiga.org/" className={`inline link`}>
+            AIGA
+          </a>{' '}
+          <br />
+          <br />
           Oh, and{' '}
           <a href="https://github.com/MannyIkomi" className={`link inline`}>
             {' '}
             I code too!
           </a>
+          {` `}🛠
           <br />
-          My portfolio site is made with{` `} <br />
+          My portfolio site is developed with{` `} <br />
           <a href="https://reactjs.org/" className={`link inline`}>
             React
           </a>
           ,{` `}
-          <a href="https://expressjs.com/" className={`link inline`}>
-            Express
-          </a>
-          {` `}and{` `}
           <a href="https://graphql.org/" className={`link inline`}>
             GraphQL
           </a>
-          <br />
+          {` `}and{` `}
+          <a href="https://expressjs.com/" className={`link inline`}>
+            Express
+          </a>
+          <br /> <br />
           Powered by the{` `}
           <a href="https://www.behance.net/dev" className={`link inline`}>
             Behance API
