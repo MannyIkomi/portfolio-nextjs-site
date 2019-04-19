@@ -1,0 +1,74 @@
+@import 'reset';
+@import 'color';
+@import 'typography';
+@import 'mixin';
+
+#__next {
+  // root div from next.js render
+  background-color: $mute;
+}
+
+a {
+  color: inherit;
+  text-decoration: inherit;
+  &:hover {
+    color: $orange;
+  }
+}
+
+button {
+  border: 0;
+}
+
+// .mute-bg {
+//   background-color: $mute;
+// }
+
+.logo {
+  object-fit: contain;
+  @include size(auto, 100%);
+}
+
+.cta {
+  cursor: pointer;
+
+  @include header-style($futura);
+  font-size: 2rem;
+  font-weight: 800;
+
+  color: white;
+  background-color: $orange;
+
+  &:hover {
+    background-color: $deep-gray;
+  }
+  &.layout {
+    position: relative;
+    padding: 1rem 4rem;
+    margin: auto;
+  }
+  &::before,
+  &::after {
+    display: block;
+    position: absolute;
+    @include size(4rem, 100%);
+
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+
+  &::before {
+    content: '';
+    background-image: url('/static/motif-left.svg');
+    background-position: left bottom;
+    left: -1px;
+    bottom: 0;
+  }
+  &::after {
+    content: '';
+    background-image: url('/static/motif-right.svg');
+    background-position: right top;
+    right: -1px;
+    top: 0;
+  }
+}
