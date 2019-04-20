@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 
 // import '../../sass/portfolio.scss'
 import '../../sass/projectCover.scss'
-import Project from '../../pages/projectPageView'
+import ProjectView from '../../pages/projectView'
 
 const FillOverlay = props => {
   return (
@@ -60,8 +60,8 @@ export const ProjectCover = props => {
           onMouseLeave={handleMouseLeave || null}
         >
           <Link
-            href={`projectPageView/${slug.toLowerCase() || id}`}
-            as={`portfolio/`}
+            href={`projectView?slug=${id}`}
+            as={`portfolio/${slug.toLowerCase() || id}`}
           >
             <a className="aspect link relative" id={slug || id}>
               <CoverImg src={covers[coversize]} alt={name} />
