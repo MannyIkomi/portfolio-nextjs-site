@@ -92,7 +92,7 @@ section.code {
       grid-template-areas:
         'logo social'
         'code quote';
-      grid-template-columns: 1fr 2fr;
+      grid-template-columns: 1fr 1fr;
       grid-gap: 2rem;
       justify-content: stretch;
       .logo {
@@ -129,7 +129,9 @@ section.code {
 
         blockquote {
           // transform: rotate(-12deg);
-
+          min-width: 10rem;
+          max-width: 40rem;
+          margin: auto;
           color: $med-gray;
           text-align: right;
           // font-size: 5rem;

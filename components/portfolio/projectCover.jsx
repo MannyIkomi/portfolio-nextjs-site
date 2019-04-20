@@ -1,7 +1,10 @@
-import React, { Component, Fragment, useState } from 'react'
+import React, { Fragment, useState } from 'react'
+import Link from 'next/link'
+import PropTypes from 'prop-types'
 
 // import '../../sass/portfolio.scss'
 import '../../sass/projectCover.scss'
+import Project from '../../pages/projectPageView'
 
 const FillOverlay = props => {
   return (
@@ -12,22 +15,12 @@ const FillOverlay = props => {
   )
 }
 
-const PreviewCaption = props => {
+const CoverCaption = props => {
   const { title, subtitle } = props
   return (
     <figcaption className="caption">
       <h2 className="title">{title}</h2>
       <h3 className="subtitle">{subtitle}</h3>
-    </figcaption>
-  )
-}
-
-const ProjectCaption = props => {
-  const { title, subtitle } = props
-  return (
-    <figcaption className="caption">
-      <h3 className="subtitle">{subtitle}</h3>
-      <h2 className="title">{title}</h2>
     </figcaption>
   )
 }
@@ -54,10 +47,9 @@ export const WithHoverState = props => {
 const CoverImg = ({ src, alt }) => <img className="cover" src={src} alt={alt} />
 
 export const ProjectCover = props => {
-  const selectCoverSize = 'original'
-  const projectPath = 'projects'
-
-  const { id, name, description, covers, slug } = props.project
+  const coversize = 'original'
+  const { coverSize, project } = props
+  const { id, name, description, covers, slug } = project
 
   return (
     <WithHoverState
@@ -67,18 +59,19 @@ export const ProjectCover = props => {
           onMouseEnter={handleMouseEnter || null}
           onMouseLeave={handleMouseLeave || null}
         >
-          <a
-            href={`${projectPath}/${slug || id}`}
-            className="aspect link relative"
-            id={slug || id}
+          <Link
+            href={`projectPageView/${slug.toLowerCase() || id}`}
+            as={`portfolio/`}
           >
-            <CoverImg src={covers[selectCoverSize]} alt={name} />
-            {isHovered ? (
-              <FillOverlay>
-                <PreviewCaption title={name} subtitle={description} />
-              </FillOverlay>
-            ) : null}
-          </a>
+            <a className="aspect link relative" id={slug || id}>
+              <CoverImg src={covers[coversize]} alt={name} />
+              {isHovered ? (
+                <FillOverlay>
+                  <CoverCaption title={name} subtitle={description} />
+                </FillOverlay>
+              ) : null}
+            </a>
+          </Link>
           {/* {isHovered ? null : (
             <ProjectCaption title={name} subtitle={description} />
           )} */}
@@ -87,4 +80,15 @@ export const ProjectCover = props => {
     />
   )
 }
+
+ProjectCover.propTypes = {
+  coverSize: PropTypes.string,
+  project: PropTypes.shape({
+    id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+    name: PropTypes.string,
+    description: PropTypes.string,
+    slug: PropTypes.string
+  })
+}
+
 export default ProjectCover
