@@ -23,7 +23,7 @@ import '../sass/portfolio.scss'
 const Home = props => {
   const { projects, url } = props // from getInitialProps Next.js
 
-  console.log('URL from Next.js', url) //use url to determine the :active navigation link
+  console.log('URL from Next.js\n', url) //use url to determine the :active navigation link
   // console.log('PORTFOLIO PROPS:', projects)
 
   return (
@@ -82,8 +82,8 @@ Home.getInitialProps = async () => {
             slug
             covers {
               original
-              size_404
-              size_808
+              _404
+              _808
             }
           }
         }`
@@ -94,82 +94,82 @@ Home.getInitialProps = async () => {
   } catch (err) {
     console.error(err.error)
 
-    return {
-      projects: [
-        {
-          id: '75805377',
-          name: 'An Empire of Shattered Glass',
-          description:
-            'Short Story Collection Book Cover\nhttp://www.readshortfiction.com/2017/09/an-empire-of-shattered-glass-by-gunnar-de-winter/',
-          slug: 'An-Empire-of-Shattered-Glass',
-          covers: {
-            original:
-              'https://mir-s3-cdn-cf.behance.net/projects/original/72f45c75805377.Y3JvcCwxMTgyLDkyNSwxMDIsNzk.png',
-            size_404:
-              'https://mir-s3-cdn-cf.behance.net/projects/404/72f45c75805377.Y3JvcCwxMTgyLDkyNSwxMDIsNzk.png',
-            size_808:
-              'https://mir-s3-cdn-cf.behance.net/projects/808/72f45c75805377.Y3JvcCwxMTgyLDkyNSwxMDIsNzk.png'
-          }
-        },
-        {
-          id: '75810981',
-          name: 'NuFlow',
-          description: 'Personal Finance Lifestyle Magazine',
-          slug: 'NuFlow',
-          covers: {
-            original:
-              'https://mir-s3-cdn-cf.behance.net/projects/original/c49aa175810981.Y3JvcCwxMzgzLDEwODIsNiww.png',
-            size_404:
-              'https://mir-s3-cdn-cf.behance.net/projects/404/c49aa175810981.Y3JvcCwxMzgzLDEwODIsNiww.png',
-            size_808:
-              'https://mir-s3-cdn-cf.behance.net/projects/808/c49aa175810981.Y3JvcCwxMzgzLDEwODIsNiww.png'
-          }
-        },
-        {
-          id: '75799775',
-          name: 'Breaking Up With God',
-          description:
-            'Literary Magazine Feature Illustration: Tell, Spring 2018 https://bhcc.digication.com/Tellmagazine/Links_to_Faculty_e-Portfolios/\n',
-          slug: 'Breaking-Up-With-God',
-          covers: {
-            original:
-              'https://mir-s3-cdn-cf.behance.net/projects/original/4e4a5e75799775.Y3JvcCwxMzgzLDEwODIsNiww.png',
-            size_404:
-              'https://mir-s3-cdn-cf.behance.net/projects/404/4e4a5e75799775.Y3JvcCwxMzgzLDEwODIsNiww.png',
-            size_808:
-              'https://mir-s3-cdn-cf.behance.net/projects/808/4e4a5e75799775.Y3JvcCwxMzgzLDEwODIsNiww.png'
-          }
-        },
-        {
-          id: '52442951',
-          name: 'Coca Cola Logo',
-          description: 'International Style Logo using the Coca Cola Brand',
-          slug: 'Coca-Cola-Logo',
-          covers: {
-            original:
-              'https://mir-s3-cdn-cf.behance.net/projects/original/0288cf52442951.Y3JvcCwzMDQ0LDIzODEsMTA1LDgy.png',
-            size_404:
-              'https://mir-s3-cdn-cf.behance.net/projects/404/0288cf52442951.Y3JvcCwzMDQ0LDIzODEsMTA1LDgy.png',
-            size_808:
-              'https://mir-s3-cdn-cf.behance.net/projects/808/0288cf52442951.Y3JvcCwzMDQ0LDIzODEsMTA1LDgy.png'
-          }
-        },
-        {
-          id: '50678567',
-          name: 'Mystic Parker Printing Identity',
-          description: 'Identity System Refresh',
-          slug: 'Mystic-Parker-Printing-Identity',
-          covers: {
-            original:
-              'https://mir-s3-cdn-cf.behance.net/projects/original/c4544f50678567.Y3JvcCwxNDAwLDEwOTUsMCwzMjMz.jpg',
-            size_404:
-              'https://mir-s3-cdn-cf.behance.net/projects/404/c4544f50678567.Y3JvcCwxNDAwLDEwOTUsMCwzMjMz.jpg',
-            size_808:
-              'https://mir-s3-cdn-cf.behance.net/projects/808/c4544f50678567.Y3JvcCwxNDAwLDEwOTUsMCwzMjMz.jpg'
-          }
-        }
-      ]
-    }
+    // return {
+    //   projects: [
+    //     {
+    //       id: '75805377',
+    //       name: 'An Empire of Shattered Glass',
+    //       description:
+    //         'Short Story Collection Book Cover\nhttp://www.readshortfiction.com/2017/09/an-empire-of-shattered-glass-by-gunnar-de-winter/',
+    //       slug: 'An-Empire-of-Shattered-Glass',
+    //       covers: {
+    //         original:
+    //           'https://mir-s3-cdn-cf.behance.net/projects/original/72f45c75805377.Y3JvcCwxMTgyLDkyNSwxMDIsNzk.png',
+    //         _404:
+    //           'https://mir-s3-cdn-cf.behance.net/projects/404/72f45c75805377.Y3JvcCwxMTgyLDkyNSwxMDIsNzk.png',
+    //         _808:
+    //           'https://mir-s3-cdn-cf.behance.net/projects/808/72f45c75805377.Y3JvcCwxMTgyLDkyNSwxMDIsNzk.png'
+    //       }
+    //     },
+    //     {
+    //       id: '75810981',
+    //       name: 'NuFlow',
+    //       description: 'Personal Finance Lifestyle Magazine',
+    //       slug: 'NuFlow',
+    //       covers: {
+    //         original:
+    //           'https://mir-s3-cdn-cf.behance.net/projects/original/c49aa175810981.Y3JvcCwxMzgzLDEwODIsNiww.png',
+    //         _404:
+    //           'https://mir-s3-cdn-cf.behance.net/projects/404/c49aa175810981.Y3JvcCwxMzgzLDEwODIsNiww.png',
+    //         _808:
+    //           'https://mir-s3-cdn-cf.behance.net/projects/808/c49aa175810981.Y3JvcCwxMzgzLDEwODIsNiww.png'
+    //       }
+    //     },
+    //     {
+    //       id: '75799775',
+    //       name: 'Breaking Up With God',
+    //       description:
+    //         'Literary Magazine Feature Illustration: Tell, Spring 2018 https://bhcc.digication.com/Tellmagazine/Links_to_Faculty_e-Portfolios/\n',
+    //       slug: 'Breaking-Up-With-God',
+    //       covers: {
+    //         original:
+    //           'https://mir-s3-cdn-cf.behance.net/projects/original/4e4a5e75799775.Y3JvcCwxMzgzLDEwODIsNiww.png',
+    //         _404:
+    //           'https://mir-s3-cdn-cf.behance.net/projects/404/4e4a5e75799775.Y3JvcCwxMzgzLDEwODIsNiww.png',
+    //         _808:
+    //           'https://mir-s3-cdn-cf.behance.net/projects/808/4e4a5e75799775.Y3JvcCwxMzgzLDEwODIsNiww.png'
+    //       }
+    //     },
+    //     {
+    //       id: '52442951',
+    //       name: 'Coca Cola Logo',
+    //       description: 'International Style Logo using the Coca Cola Brand',
+    //       slug: 'Coca-Cola-Logo',
+    //       covers: {
+    //         original:
+    //           'https://mir-s3-cdn-cf.behance.net/projects/original/0288cf52442951.Y3JvcCwzMDQ0LDIzODEsMTA1LDgy.png',
+    //         _404:
+    //           'https://mir-s3-cdn-cf.behance.net/projects/404/0288cf52442951.Y3JvcCwzMDQ0LDIzODEsMTA1LDgy.png',
+    //         _808:
+    //           'https://mir-s3-cdn-cf.behance.net/projects/808/0288cf52442951.Y3JvcCwzMDQ0LDIzODEsMTA1LDgy.png'
+    //       }
+    //     },
+    //     {
+    //       id: '50678567',
+    //       name: 'Mystic Parker Printing Identity',
+    //       description: 'Identity System Refresh',
+    //       slug: 'Mystic-Parker-Printing-Identity',
+    //       covers: {
+    //         original:
+    //           'https://mir-s3-cdn-cf.behance.net/projects/original/c4544f50678567.Y3JvcCwxNDAwLDEwOTUsMCwzMjMz.jpg',
+    //         _404:
+    //           'https://mir-s3-cdn-cf.behance.net/projects/404/c4544f50678567.Y3JvcCwxNDAwLDEwOTUsMCwzMjMz.jpg',
+    //         _808:
+    //           'https://mir-s3-cdn-cf.behance.net/projects/808/c4544f50678567.Y3JvcCwxNDAwLDEwOTUsMCwzMjMz.jpg'
+    //       }
+    //     }
+    //   ]
+    // }
   }
 }
 export default Home

@@ -5,9 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "jest",
-    "dev": "next",
+    "dev": "NODE_ENV=development node server.js",
     "build": "next build",
-    "start": "next start"
+    "start": "NODE_ENV=production node server.js"
   },
   "author": "Manny Ikomi",
   "license": "ISC",
@@ -15,6 +15,7 @@
     "@babel/types": "^7.4.0",
     "@zeit/next-sass": "^1.0.1",
     "axios": "^0.18.0",
+    "express": "^4.16.4",
     "lodash": "^4.17.11",
     "next": "^8.0.4",
     "node-sass": "^4.11.0",

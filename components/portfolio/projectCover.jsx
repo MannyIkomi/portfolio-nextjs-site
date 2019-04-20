@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 
 // import '../../sass/portfolio.scss'
 import '../../sass/projectCover.scss'
-import ProjectView from '../../pages/projectView'
+import ProjectPage from '../../pages/portfolio'
 
 const FillOverlay = props => {
   return (
@@ -47,7 +47,7 @@ export const WithHoverState = props => {
 const CoverImg = ({ src, alt }) => <img className="cover" src={src} alt={alt} />
 
 export const ProjectCover = props => {
-  const coversize = 'original'
+  const size = 'original'
   const { coverSize, project } = props
   const { id, name, description, covers, slug } = project
 
@@ -60,11 +60,11 @@ export const ProjectCover = props => {
           onMouseLeave={handleMouseLeave || null}
         >
           <Link
-            href={`projectView?slug=${id}`}
-            as={`portfolio/${slug.toLowerCase() || id}`}
+            href={`portfolio/?id=${id}`}
+            as={`portfolio/${slug.toLowerCase()}`}
           >
-            <a className="aspect link relative" id={slug || id}>
-              <CoverImg src={covers[coversize]} alt={name} />
+            <a className="aspect link relative">
+              <CoverImg src={covers[size]} alt={name} />
               {isHovered ? (
                 <FillOverlay>
                   <CoverCaption title={name} subtitle={description} />
