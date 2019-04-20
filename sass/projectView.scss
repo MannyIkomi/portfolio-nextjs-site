@@ -1,0 +1,9 @@
+@import 'base';
+@import 'typography';
+@import 'color';
+@import 'mixin';
+
+.project.modules {
+  background: red;
+  margin: 2rem;
+}
