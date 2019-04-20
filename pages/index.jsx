@@ -28,7 +28,10 @@ const Home = props => {
 
   return (
     <Fragment>
-      <HtmlHead pageTitle={'Design Thinker, Lifetime Learner — Manny Ikomi'} />
+      <HtmlHead
+        pageTitle={'Design Thinker, Lifetime Learner — Manny Ikomi'}
+        description={`Design thinker, lifetime learner, adoring guncle. I like making great things for good people.`}
+      />
       {/* <header className={`dock-sidebar`}>
           <Logo lockup={`master`} />
           <MenuNav />

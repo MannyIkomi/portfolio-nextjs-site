@@ -10,7 +10,12 @@ import '../sass/about.scss'
 const About = props => {
   return (
     <Fragment>
-      <HtmlHead pageTitle={'Hi 🤓'} />
+      <HtmlHead
+        pageTitle={'Hi 🤓'}
+        description={`With over 5 years of experience in the print industry I’ve gained the
+          skills and foresight required to take design ideas and develop them
+          into a high quality product`}
+      />
       <header className={`dock-bottom`}>
         <WithNavigationToggle
           render={(navToggledState, handler) => {
