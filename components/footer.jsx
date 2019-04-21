@@ -13,7 +13,7 @@ export const Footer = props => {
         <cite>— John Heskett</cite>
       </div>
       <img
-        src="static/logos/logo-master-white.svg"
+        src="/static/logos/logo-master-white.svg"
         alt="Manny's Logo"
         className={`logo`}
       />
@@ -28,7 +28,7 @@ export const Footer = props => {
         <div className="icons">
           <a href="https://www.behance.net/ikomi" className={`link social`}>
             <img
-              src="static/social/be.svg"
+              src="/static/social/be.svg"
               alt="Behance Logo"
               className={`social logo`}
             />
@@ -38,14 +38,14 @@ export const Footer = props => {
             className={`social link`}
           >
             <img
-              src="static/social/ig.svg"
+              src="/static/social/ig.svg"
               alt="Instagram Logo"
               className={`social logo`}
             />
           </a>
           <a href="https://www.linkedin.com/in/ikomi" className={`link social`}>
             <img
-              src="static/social/in.svg"
+              src="/static/social/in.svg"
               alt="LinkedIn Logo"
               className={`social logo`}
             />
@@ -76,8 +76,8 @@ export const Footer = props => {
             GraphQL
           </a>
           {` `}and{` `}
-          <a href="https://expressjs.com/" className={`link inline`}>
-            Express
+          <a href="https://nodejs.org/en/" className={`link inline`}>
+            Node.js
           </a>
           <br /> <br />
           Powered by the{` `}

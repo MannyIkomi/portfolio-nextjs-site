@@ -9,8 +9,8 @@ const handle = app.getRequestHandler()
 app.prepare().then(() => {
   // https://nextjs.org/docs#routing
   const server = express()
-  const slug = /^[a-z0-9]+(?:-[a-z0-9]+)*$/
-  const id = /^[0-9]*$/
+  // const slug = /^[a-z0-9]+(?:-[a-z0-9]+)*$/
+  // const id = /^[0-9]*$/
 
   server.get(`/portfolio`, (req, res) => {
     console.log(`Portfolio Redirect`)
@@ -22,20 +22,7 @@ app.prepare().then(() => {
     return app.render(req, res, `portfolio`, { slug: req.params.slug })
   })
 
-  // server.get(`/portfolio/:slug(/^[a-z0-9]+(?:-[a-z0-9]+)*$/)`, (req, res) => {
-  //   console.log(`REQ URL: `, req.originalUrl)
-  //   const reqProject = req.params.slug[0]
-  //   return app.render(req, res, `projectView`, { slug: reqProject })
-  // })
-
-  // server.get(`/portfolio/:id(/^[0-9]*$/)`, (req, res) => {
-  //   console.log(`REQ URL: `, req.originalUrl)
-  //   const reqProject = req.params.id[0]
-  //   return app.render(req, res, `projectView`, { id: reqProject })
-  // })
-
   server.get('*', (req, res) => {
-    console.log(`all routes`)
     return handle(req, res)
   })
 

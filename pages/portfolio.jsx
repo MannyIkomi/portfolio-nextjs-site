@@ -1,12 +1,16 @@
 import React, { Fragment } from 'react'
-import { withRouter } from 'next/router'
+// import { withRouter } from 'next/router'
 import axios from 'axios'
+
+import '../sass/projectView.scss'
+import Footer from '../components/footer'
+import Head from '../components/head'
 
 const ImageModule = props => {
   const { type, sizes } = props.module
 
   return (
-    <figure>
+    <figure className={`module image`}>
       <img src={sizes['_1400']} />
     </figure>
   )
@@ -15,7 +19,7 @@ const ImageModule = props => {
 const TextModule = props => {
   const { text } = props
   return (
-    <figure>
+    <figure className={`module text`}>
       <p>{text}</p>
     </figure>
   )
@@ -38,22 +42,28 @@ const mapModules = modules => {
 
 // <img class="js-project-module--picture" src="https://mir-s3-cdn-cf.behance.net/project_modules/1400/eb636e75805377.5c57a09602e94.png" srcset="https://mir-s3-cdn-cf.behance.net/project_modules/disp/eb636e75805377.5c57a09602e94.png 600w,https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/eb636e75805377.5c57a09602e94.png 1200w,https://mir-s3-cdn-cf.behance.net/project_modules/1400/eb636e75805377.5c57a09602e94.png 1400w,https://mir-s3-cdn-cf.behance.net/project_modules/fs/eb636e75805377.5c57a09602e94.png 1920w,https://mir-s3-cdn-cf.behance.net/project_modules/2800/eb636e75805377.5c57a09602e94.png 2800w,https://mir-s3-cdn-cf.behance.net/project_modules/max_3840/eb636e75805377.5c57a09602e94.png 3300w," sizes="(max-width: 1400px) 100vw, 1400px">
 
-const ProjectView = withRouter(props => {
-  const { projects } = props
-  const { id, name, description, modules } = projects[0]
+const ProjectView = props => {
+  const { project } = props
+  const { id, name, description, modules } = project
   return (
-    <article>
-      <header>
-        <h1>{name}</h1>
-        <h2>{description}</h2>
-      </header>
-      <main className="project modules">
-        {mapModules(modules)}
-        {/* modules.map(module => <Component module={module}/>) */}
-      </main>
-    </article>
+    <Fragment>
+      <Head pageTitle={`${project.name} by Manny`} description={description} />
+      <article className={`project viewer`}>
+        <header>
+          <h1>{name}</h1>
+          <h2>{description}</h2>
+        </header>
+        <main className={`modules`}>
+          <div className={`offset`}>{mapModules(modules)}</div>
+        </main>
+        <footer>
+          <h3>You might also like...</h3>
+        </footer>
+      </article>
+      <Footer />
+    </Fragment>
   )
-})
+}
 
 const axiosGraphql = axios.create({
   method: 'POST',
@@ -70,11 +80,11 @@ const axiosGraphql = axios.create({
 ProjectView.getInitialProps = async context => {
   const { query } = context
   try {
-    console.log(query.id)
+    console.log(query.slug)
     const response = await axiosGraphql({
       data: JSON.stringify({
         query: `{
-          projects(id: ${query.id}) {
+          projects(slug: "${query.slug}") {
             id
             name
             description
@@ -106,8 +116,7 @@ ProjectView.getInitialProps = async context => {
       })
     })
     const { projects } = await response.data.data
-    // return { project: projects[0] }
-    return { projects }
+    return { project: projects[0] }
   } catch (err) {
     console.error(err.error)
     // return {

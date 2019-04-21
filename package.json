@@ -21,7 +21,8 @@
     "node-sass": "^4.11.0",
     "prop-types": "^15.7.2",
     "react": "^16.8.6",
-    "react-dom": "^16.8.6"
+    "react-dom": "^16.8.6",
+    "styled-jsx": "^3.2.1"
   },
   "devDependencies": {
     "babel-jest": "^24.5.0",

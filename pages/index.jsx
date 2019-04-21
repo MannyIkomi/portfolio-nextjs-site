@@ -32,10 +32,7 @@ const Home = props => {
         pageTitle={'Design Thinker, Lifetime Learner — Manny Ikomi'}
         description={`Design thinker, lifetime learner, adoring guncle. I like making great things for good people.`}
       />
-      {/* <header className={`dock-sidebar`}>
-          <Logo lockup={`master`} />
-          <MenuNav />
-        </header> */}
+
       <header className={`dock-bottom`}>
         <WithNavigationToggle
           render={(navToggledState, handler) => {
@@ -44,7 +41,6 @@ const Home = props => {
         />
       </header>
       <main>
-        {/* Categorize <Gallery/> by #ui, #Identity Design*/}
         <h1>the werk</h1>
         <Portfolio id={``}>
           {projects.map(project => (
