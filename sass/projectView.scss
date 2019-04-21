@@ -10,21 +10,21 @@
   // margin: 2rem;
 
   header {
+    @include flex(column);
+    // justify-content: center;
+    align-items: center;
+    max-width: 40rem;
+
     min-height: 50vh;
-    text-align: center;
     padding: 2rem;
+    text-align: center;
     @media screen and (min-width: 700px) {
-      padding: 4rem;
     }
   }
   h1 {
     font-family: $futura;
     font-weight: 500;
     text-transform: initial;
-    font-size: 2rem;
-    // @media screen and (min-width: 700px) {
-    //   font-size: 3rem;
-    // }
   }
   h2 {
     font-family: $baskerville;
@@ -37,11 +37,13 @@
     margin: 2rem 0;
     background-color: $deep-gray;
     padding: 0 2rem;
+    width: 100%;
 
     div.offset {
       position: relative;
       top: -25vh;
-      max-width: 30rem;
+      max-width: 40rem;
+      margin: auto;
     }
 
     .module {
