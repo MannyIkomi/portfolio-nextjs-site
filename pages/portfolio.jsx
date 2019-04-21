@@ -106,6 +106,7 @@ ProjectView.getInitialProps = async context => {
               
             ...on TextModule{
               type
+              text_plain
               text
             }
             }
