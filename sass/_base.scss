@@ -24,6 +24,12 @@ button {
 //   background-color: $mute;
 // }
 
+.aspect {
+  height: 0;
+  // overflow: hidden;
+  padding-bottom: 100% * 17 / 22;
+}
+
 .logo {
   object-fit: contain;
   @include size(auto, 100%);
