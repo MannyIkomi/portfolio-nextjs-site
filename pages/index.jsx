@@ -1,6 +1,5 @@
-// https://nextjs.org/docs/
 import React, { Fragment } from 'react'
-
+import { css, jsx } from '@emotion/core'
 import HtmlHead from '../components/head'
 import axios from 'axios'
 import {
@@ -11,7 +10,8 @@ import {
   Logo,
   MenuNav
 } from '../components/navigation'
-import Portfolio from '../components/portfolio/portfolio'
+
+import Gallery from '../components/portfolio/projectGallery'
 
 import {
   ProjectCover,
@@ -25,7 +25,8 @@ import Footer from '../components/footer'
 const Home = props => {
   const { projects, url } = props // from getInitialProps Next.js
 
-  console.log('URL from Next.js\n', url) // use url to determine the :active navigation link
+  console.log('URL from Next.js\n', url)
+  // use url to determine the :active navigation link
   // console.log('PORTFOLIO PROPS:', projects)
 
   return (
@@ -44,11 +45,11 @@ const Home = props => {
       </header>
       <main>
         <h1>the werk</h1>
-        <Portfolio id={``}>
+        <Gallery id={0}>
           {projects.map(project => (
             <ProjectCover project={project} key={project.id} />
           ))}
-        </Portfolio>
+        </Gallery>
       </main>
       <Footer />
     </Fragment>

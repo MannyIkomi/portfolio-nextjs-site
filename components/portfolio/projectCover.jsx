@@ -1,28 +1,49 @@
+/** @jsx jsx */
 import React, { Fragment, useState } from 'react'
+import { css, jsx } from '@emotion/core'
+import { colors } from '../../styles'
 import Link from 'next/link'
 import PropTypes from 'prop-types'
 
 // import '../../sass/portfolio.scss'
 // import '../../sass/projectCover.scss'
 import ProjectPage from '../../pages/portfolio'
-
-const FillOverlay = props => {
-  return (
-    <Fragment>
-      <div className="overlay" />
-      <div className="content">{props.children}</div>
-    </Fragment>
-  )
-}
+import FillOverlay from '../overlay'
 
 const CoverCaption = props => {
   const { title, subtitle } = props
   return (
     <figcaption className="caption">
-      <h2 className="title">{title}</h2>
-      <h3 className="subtitle">{subtitle}</h3>
+      <h2
+        // className="title"
+        css={css`
+          font-family: $futura;
+          font-weight: bold;
+          font-size: 2rem;
+          color: white;
+          text-transform: capitalize;
+        `}
+      >
+        {title}
+      </h2>
+      <h3
+        // className="subtitle"
+        css={css`
+          font-family: $baskerville;
+          text-transform: capitalize;
+          font-style: italic;
+          font-size: 1rem;
+          color: white;
+        `}
+      >
+        {subtitle}
+      </h3>
     </figcaption>
   )
+}
+CoverCaption.propTypes = {
+  title: PropTypes.string.isRequired,
+  subtitle: PropTypes.string.isRequired
 }
 
 export const WithHoverState = props => {
@@ -44,7 +65,22 @@ export const WithHoverState = props => {
   )
 }
 
-const CoverImg = ({ src, alt }) => <img className="cover" src={src} alt={alt} />
+const CoverImg = ({ src, alt }) => (
+  <img
+    css={css`
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    `}
+    src={src}
+    alt={alt}
+  />
+)
+CoverImg.propTypes = {
+  src: PropTypes.string.isRequired,
+  alt: PropTypes.string
+}
 
 export const ProjectCover = props => {
   const size = 'original'
@@ -55,7 +91,15 @@ export const ProjectCover = props => {
     <WithHoverState
       render={(isHovered, handleMouseEnter, handleMouseLeave) => (
         <figure
-          className="project preview"
+          // className="project preview"
+          css={css`
+            position: relative;
+            margin-bottom: 4rem;
+            width: 100%;
+            &:hover {
+              box-shadow: -0.5rem 0.5rem 0.5rem 0px hsla(0, 0%, 0%, 0.85);
+            }
+          `}
           onMouseEnter={handleMouseEnter || null}
           onMouseLeave={handleMouseLeave || null}
         >
@@ -63,7 +107,13 @@ export const ProjectCover = props => {
             href={`/portfolio/?slug=${slug}`}
             as={`/portfolio/${slug.toLowerCase()}`}
           >
-            <a className="aspect link relative">
+            <a
+              // className="aspect link relative"
+              css={css`
+                display: block;
+                position: relative;
+              `}
+            >
               <CoverImg src={covers[size]} alt={name} />
               {isHovered ? (
                 <FillOverlay>
