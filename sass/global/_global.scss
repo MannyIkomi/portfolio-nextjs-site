@@ -30,10 +30,10 @@ button {
   padding-bottom: 100% * 17 / 22;
 }
 
-.logo {
-  object-fit: contain;
-  @include size(auto, 100%);
-}
+// .logo {
+//   object-fit: contain;
+//   @include size(auto, 100%);
+// }
 
 .cta {
   cursor: pointer;

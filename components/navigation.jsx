@@ -1,6 +1,8 @@
 import React, { Component, Fragment } from 'react'
 // import '../sass/nav.scss'
 import { getPages } from '../util/navigation'
+import { css } from '@emotion/core'
+import { colors } from '../styles'
 
 export const NavLink = props => {
   const { pages } = props
@@ -26,7 +28,11 @@ export const Logo = props => {
   return (
     <a href={`/`}>
       <img
-        className={`logo`}
+        css={css`
+          object-fit: contain;
+          width: auto;
+          height: 100%;
+        `}
         src={`static/logos/logo-${lockup || `master`}.svg`} // type = ['master','type','wide' ]
         alt={`Manny Ikomi's Logo`}
       />
