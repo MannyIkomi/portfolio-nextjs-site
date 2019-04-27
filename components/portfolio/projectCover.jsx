@@ -3,7 +3,7 @@ import Link from 'next/link'
 import PropTypes from 'prop-types'
 
 // import '../../sass/portfolio.scss'
-import '../../sass/projectCover.scss'
+// import '../../sass/projectCover.scss'
 import ProjectPage from '../../pages/portfolio'
 
 const FillOverlay = props => {
