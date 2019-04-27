@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { getYear } from '../util/dates'
 
-import '../sass/footer.scss'
+// import './footer.scss'
 
 export const Footer = props => {
   return (

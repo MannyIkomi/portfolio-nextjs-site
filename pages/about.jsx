@@ -4,9 +4,6 @@ import HtmlHead from '../components/head'
 import { MobileMenu, WithNavigationToggle } from '../components/navigation'
 import { Footer } from '../components/footer'
 
-// import '../sass/base.scss'
-import '../sass/about.scss'
-
 const About = props => {
   return (
     <Fragment>

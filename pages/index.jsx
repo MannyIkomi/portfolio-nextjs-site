@@ -20,12 +20,12 @@ import {
 
 import Footer from '../components/footer'
 // import '../sass/base.scss'
-import '../sass/portfolio.scss'
+// import '../sass/portfolio.scss'
 
 const Home = props => {
   const { projects, url } = props // from getInitialProps Next.js
 
-  console.log('URL from Next.js\n', url) //use url to determine the :active navigation link
+  console.log('URL from Next.js\n', url) // use url to determine the :active navigation link
   // console.log('PORTFOLIO PROPS:', projects)
 
   return (

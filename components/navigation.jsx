@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react'
-import '../sass/nav.scss'
+// import '../sass/nav.scss'
 import { getPages } from '../util/navigation'
 
 export const NavLink = props => {
