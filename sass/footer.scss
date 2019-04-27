@@ -116,28 +116,41 @@ section.code {
         text-align: right;
       }
       .quote {
-        grid-area: quote;
+        @include flex(column);
+
         display: initial;
+        grid-area: quote;
+
+        justify-content: center;
+        margin-bottom: 2rem;
         padding: 0;
-        // pointer-events: none;
-        // position: absolute;
 
         opacity: 0.5;
         z-index: 0;
-
-        // font-family: $baskerville;
         color: $med-gray;
 
         blockquote {
-          // transform: rotate(-12deg);
+          font-size: 3rem;
+          font-weight: 100;
+
           min-width: 10rem;
           max-width: 40rem;
+
           margin: auto;
           color: $med-gray;
           text-align: right;
-          // font-size: 5rem;
-          // text-transform: lowercase;
           line-height: 1.25;
+        }
+        cite {
+          display: block;
+          margin: 1rem 0;
+
+          font-family: $baskerville;
+          font-weight: 100;
+          font-size: 1.5rem;
+          font-style: italic;
+          color: inherit;
+          text-align: right;
         }
       }
     }

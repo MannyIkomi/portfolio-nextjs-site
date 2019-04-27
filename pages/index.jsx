@@ -12,12 +12,14 @@ import {
   MenuNav
 } from '../components/navigation'
 import Portfolio from '../components/portfolio/portfolio'
+
 import {
   ProjectCover,
   WithHoverState
 } from '../components/portfolio/projectCover'
+
 import Footer from '../components/footer'
-import '../sass/base.scss'
+// import '../sass/base.scss'
 import '../sass/portfolio.scss'
 
 const Home = props => {

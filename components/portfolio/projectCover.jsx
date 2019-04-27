@@ -55,13 +55,13 @@ export const ProjectCover = props => {
     <WithHoverState
       render={(isHovered, handleMouseEnter, handleMouseLeave) => (
         <figure
-          className="project preview "
+          className="project preview"
           onMouseEnter={handleMouseEnter || null}
           onMouseLeave={handleMouseLeave || null}
         >
           <Link
-            href={`portfolio/?id=${id}`}
-            as={`portfolio/${slug.toLowerCase()}`}
+            href={`/portfolio/?slug=${slug}`}
+            as={`/portfolio/${slug.toLowerCase()}`}
           >
             <a className="aspect link relative">
               <CoverImg src={covers[size]} alt={name} />

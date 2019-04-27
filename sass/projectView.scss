@@ -54,8 +54,8 @@
     .module.image {
       width: 100%;
       img {
-        object-fit: contain;
-        @include size(100%);
+        object-fit: fill;
+        @include size(100%, 100%);
       }
     }
   }
