@@ -80,9 +80,9 @@ export const Footer = props => {
             Node.js
           </a>
           <br /> <br />
-          Powered by the{` `}
+          Powered by{` `}
           <a href="https://www.behance.net/dev" className={`link inline`}>
-            Behance API
+            Behance
           </a>
         </p>
       </section>

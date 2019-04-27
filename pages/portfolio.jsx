@@ -28,12 +28,12 @@ const TextModule = props => {
 }
 
 const mapModules = modules => {
-  return modules.map(module => {
+  return modules.map((module, index) => {
     switch (module.type) {
       case 'image':
-        return <ImageModule module={module} />
+        return <ImageModule module={module} key={index} />
       case 'text':
-        return <TextModule module={module} />
+        return <TextModule module={module} key={index} />
       default:
         throw new Error(
           `Could not find matching Component for Module:${module.type}`
@@ -56,9 +56,9 @@ const ProjectView = props => {
         <main className={`modules`}>
           <div className={`offset`}>{mapModules(modules)}</div>
         </main>
-        <footer>
+        {/* <footer>
           <h3>You might also like...</h3>
-        </footer>
+        </footer> */}
       </article>
       <Footer />
     </Fragment>
