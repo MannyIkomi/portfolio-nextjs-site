@@ -3,6 +3,7 @@ import React, { Component, Fragment, useState } from 'react'
 import { getPages } from '../../util/navigation'
 import { css, jsx } from '@emotion/core'
 import { colors, measure, typography, mixin } from '../../styles'
+import { prototype } from 'events'
 
 export const NavLink = props => {
   const { pages } = props
@@ -34,7 +35,6 @@ export const NavLink = props => {
 
 export const MenuNav = props => {
   const { styles } = props
-
   return <nav css={styles}>{props.children}</nav>
 }
 
@@ -67,25 +67,8 @@ export const MenuButton = props => {
 }
 
 export const MenuBar = props => {
-  return (
-    <section
-      css={css`
-        z-index: 1000;
-        position: relative;
-        padding: 0.5rem;
-
-        ${mixin.flex('row')}
-        ${mixin.size('100vw')}
-        height: ${measure.menubarHeight};
-        justify-content: space-between;
-
-        background-color: ${colors.muteGray};
-        box-shadow: 0rem -0.5rem 0.5rem 0px rgba(38, 38, 38, 0.2);
-      `}
-    >
-      {props.children}
-    </section>
-  )
+  const { position } = props
+  return <div css={position}>{props.children}</div>
 }
 
 export const WithSwitchToggle = props => {
@@ -100,7 +83,7 @@ export const WithSwitchToggle = props => {
 
 export const DockedMenu = props => {
   const { menuToggled, handleMenuToggle } = props
-  const mobileStyles = css`
+  const dockedMenuStyle = css`
     z-index: 999;
     position: relative;
     bottom: -1px;
@@ -131,7 +114,7 @@ export const DockedMenu = props => {
     }
   `
   return (
-    <div
+    <section
       css={css`
         z-index: 999;
         position: fixed;
@@ -140,15 +123,29 @@ export const DockedMenu = props => {
       `}
     >
       {menuToggled ? (
-        <MenuNav type={`mobile`} styles={mobileStyles}>
+        <MenuNav styles={dockedMenuStyle}>
           <NavLink pages={getPages()} />
         </MenuNav>
       ) : null}
-      <MenuBar>
+      <MenuBar
+        position={css`
+        z-index: 1000;
+        position: relative;
+        padding: 0.5rem;
+
+        ${mixin.flex('row')}
+        ${mixin.size('100vw')}
+        height: ${measure.menubarHeight};
+        justify-content: space-between;
+
+        background-color: ${colors.muteGray};
+        box-shadow: 0rem -0.5rem 0.5rem 0px rgba(38, 38, 38, 0.2);
+      `}
+      >
         <Logo lockup={`type-long`} />
         <MenuButton click={handleMenuToggle} />
       </MenuBar>
-    </div>
+    </section>
   )
 }
 
@@ -156,11 +153,20 @@ export const SideMenu = props => {
   const { toggle: navToggled, handler: handleMenuClick } = props
 
   return (
-    <Fragment>
+    <section
+      css={css`
+        display: none;
+        ${mixin.desktopGridSupport(`
+          ${mixin.flex('column')};
+        `)}
+      `}
+    >
       <MenuBar>
         <Logo lockup={`master`} />
-        <MenuNav type={`sidebar`} />
+        <MenuNav>
+          <NavLink pages={getPages()} />
+        </MenuNav>
       </MenuBar>
-    </Fragment>
+    </section>
   )
 }

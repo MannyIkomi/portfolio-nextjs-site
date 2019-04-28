@@ -1,8 +1,8 @@
-@import 'color';
-@import 'typography';
-@import 'mixin';
+// @import 'color';
+// @import 'typography';
+// @import 'mixin';
 
-$menubar-height: 2.5rem;
+// $menubar-height: 2.5rem;
 
 // #__next {
 //   margin-bottom: $menubar-height;
@@ -10,62 +10,62 @@ $menubar-height: 2.5rem;
 
 .nav {
   // &.mobile {
-    // z-index: 999;
-    // position: relative;
-    // bottom: -1px;
+  // z-index: 999;
+  // position: relative;
+  // bottom: -1px;
 
-    // @include flex(column);
-    // flex-wrap: nowrap;
-    // align-items: flex-start;
-    // justify-content: flex-end;
+  // @include flex(column);
+  // flex-wrap: nowrap;
+  // align-items: flex-start;
+  // justify-content: flex-end;
 
-    // @include size(100vw, 100%);
-    // height: 100vh;
-    // height: calc(100vh - 2.5rem + 1px); // remaining menu space
-    // padding: 1rem;
+  // @include size(100vw, 100%);
+  // height: 100vh;
+  // height: calc(100vh - 2.5rem + 1px); // remaining menu space
+  // padding: 1rem;
 
-    /* background color fallback incase svg doesnt load */
-    // background: $mute;
-    // background: url('/static/nav-bg.svg');
-    // @include bg-cover();
-    // background-position: bottom center;
-  }
-  .sidebar {
-    display: none;
-  }
-
-  // &.menubar {
-  //   z-index: 1000;
-  //   position: relative;
-  //   @include flex(row);
-  //   @include size(100vw, $menubar-height);
-  //   // width: 100vw;
-  //   padding: 0.5rem;
-
-  //   justify-content: space-between;
-  //   background-color: $mute;
-  // }
-
-  // .link {
-  //   font-family: $baskerville;
-  //   text-transform: lowercase;
-  //   display: block;
-  //   padding: 0.5rem 0;
-  //   margin: 0.5rem 0;
-  //   font-size: 2.5rem;
-  //   &:hover {
-  //     color: $orange;
-  //   }
-  // }
+  /* background color fallback incase svg doesnt load */
+  // background: $mute;
+  // background: url('/static/nav-bg.svg');
+  // @include bg-cover();
+  // background-position: bottom center;
+}
+.sidebar {
+  display: none;
 }
 
-@media screen and (min-width: 1200px) {
-  nav {
-    &.sidebar {
-      max-width: 10rem;
-    }
-  }
-}
+// &.menubar {
+//   z-index: 1000;
+//   position: relative;
+//   @include flex(row);
+//   @include size(100vw, $menubar-height);
+//   // width: 100vw;
+//   padding: 0.5rem;
+
+//   justify-content: space-between;
+//   background-color: $mute;
+// }
+
+// .link {
+//   font-family: $baskerville;
+//   text-transform: lowercase;
+//   display: block;
+//   padding: 0.5rem 0;
+//   margin: 0.5rem 0;
+//   font-size: 2.5rem;
+//   &:hover {
+//     color: $orange;
+//   }
+// }
+// }
+
+// @media screen and (min-width: 1200px) {
+//   nav {
+//     &.sidebar {
+//       max-width: 10rem;
+//     }
+//   }
+// }
 
 .shadow {
   box-shadow: 0rem -0.5rem 0.5rem 0px rgba(38, 38, 38, 0.2);
