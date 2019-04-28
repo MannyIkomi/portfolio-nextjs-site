@@ -6,7 +6,7 @@ import HtmlHead from '../components/head'
 import axios from 'axios'
 import {
   WithSwitchToggle,
-  MobileMenu,
+  DockedMenu,
   SideMenu,
   NavLink,
   Logo,
@@ -42,7 +42,7 @@ const Home = props => {
         <WithSwitchToggle
           render={(menuToggled, handleMenuToggled) => {
             return (
-              <MobileMenu
+              <DockedMenu
                 menuToggled={menuToggled}
                 handleMenuToggle={handleMenuToggled}
               />
@@ -53,6 +53,7 @@ const Home = props => {
       <main>
         <h1>the werk</h1>
         <Gallery id={0}>
+          {/* WithInteractiveLink render=ProjectImg */}
           {projects.map(project => (
             <ProjectCover project={project} key={project.id} />
           ))}

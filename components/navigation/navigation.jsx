@@ -33,13 +33,9 @@ export const NavLink = props => {
 }
 
 export const MenuNav = props => {
-  const { type } = props
+  const { styles } = props
 
-  return (
-    <nav className={`nav ${type}`}>
-      <NavLink pages={getPages()} />
-    </nav>
-  )
+  return <nav css={styles}>{props.children}</nav>
 }
 
 export const Logo = props => {
@@ -73,14 +69,13 @@ export const MenuButton = props => {
 export const MenuBar = props => {
   return (
     <section
-      className={`nav menubar shadow`}
       css={css`
         z-index: 1000;
         position: relative;
         padding: 0.5rem;
 
         ${mixin.flex('row')}
-        ${mixin.size('100%')}
+        ${mixin.size('100vw')}
         height: ${measure.menubarHeight};
         justify-content: space-between;
 
@@ -103,16 +98,57 @@ export const WithSwitchToggle = props => {
   return <Fragment>{props.render(toggled, handleToggle)}</Fragment>
 }
 
-export const MobileMenu = props => {
+export const DockedMenu = props => {
   const { menuToggled, handleMenuToggle } = props
+  const mobileStyles = css`
+    z-index: 999;
+    position: relative;
+    bottom: -1px;
+
+    ${mixin.flex('column')}
+    flex-wrap: nowrap;
+    align-items: flex-start;
+    justify-content: flex-end;
+
+    ${mixin.size('100vw', '100%')};
+    height: 100vh;
+    height: calc(100vh - ${measure.menubarHeight} + 1px);
+    padding: 1rem;
+
+    background: ${colors.muteGray};
+    background: url('/static/nav-bg.svg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: bottom center;
+    font-family: ${typography.serif};
+
+    @media screen and (orientation: landscape) and (max-height: 450px) {
+      background: ${colors.muteGray};
+      ${mixin.flex('row')}
+      flex-wrap: wrap;
+      align-items: flex-end;
+      justify-content: flex-end;
+    }
+  `
   return (
-    <Fragment>
-      {menuToggled ? <MenuNav type={`mobile`} /> : null}
+    <div
+      css={css`
+        z-index: 999;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+      `}
+    >
+      {menuToggled ? (
+        <MenuNav type={`mobile`} styles={mobileStyles}>
+          <NavLink pages={getPages()} />
+        </MenuNav>
+      ) : null}
       <MenuBar>
         <Logo lockup={`type-long`} />
         <MenuButton click={handleMenuToggle} />
       </MenuBar>
-    </Fragment>
+    </div>
   )
 }
 

@@ -24,12 +24,16 @@ export const mixin = {
 }
 
 export const GlobalStyles = props => {
+  // menubarPosition state to match the containing element margin?
   return (
     <Global
       styles={css`
         ${reset}
+        #__next {
+          margin-bottom: ${measure.menubarHeight};
+        }
         * {
-          box-sizing: 'border-box';
+          box-sizing: border-box;
         }
         a {
           color: inherit;
