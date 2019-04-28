@@ -1,12 +1,12 @@
 /** @jsx jsx */
 import React, { Component, Fragment, useState } from 'react'
+import PropTypes from 'prop-types'
 import { getPages } from '../../util/navigation'
 import { css, jsx } from '@emotion/core'
 import { colors, measure, typography, mixin } from '../../styles'
-import { prototype } from 'events'
 
 export const NavLink = props => {
-  const { pages } = props
+  const { pages, styles } = props
   return pages.map((page, index) => (
     <a
       href={page.path}
@@ -22,10 +22,8 @@ export const NavLink = props => {
         &:hover {
           color: ${colors.orange};
         }
-        @media screen and (orientation: landscape) and (max-height: 450px) {
-          padding: 0.5rem;
-          margin: 0.5rem;
-        }
+
+        ${styles}
       `}
     >
       {page.title}
@@ -42,7 +40,13 @@ export const Logo = props => {
   const { lockup } = props
 
   return (
-    <a href={`/`}>
+    <a
+      href={`/`}
+      css={css`
+        display: block;
+        padding: 2rem;
+      `}
+    >
       <img
         css={css`
           object-fit: contain;
@@ -55,10 +59,12 @@ export const Logo = props => {
     </a>
   )
 }
+Logo.propTypes = {
+  lockup: PropTypes.oneOf(['master', 'type', 'type-long'])
+}
 
 export const MenuButton = props => {
   const handleClick = props.click
-
   return (
     <button type={`button`} onClick={handleClick}>
       Menu
@@ -67,8 +73,8 @@ export const MenuButton = props => {
 }
 
 export const MenuBar = props => {
-  const { position } = props
-  return <div css={position}>{props.children}</div>
+  const { styles } = props
+  return <div css={styles}>{props.children}</div>
 }
 
 export const WithSwitchToggle = props => {
@@ -124,11 +130,19 @@ export const DockedMenu = props => {
     >
       {menuToggled ? (
         <MenuNav styles={dockedMenuStyle}>
-          <NavLink pages={getPages()} />
+          <NavLink
+            pages={getPages()}
+            styles={css`
+              @media screen and (orientation: landscape) and (max-height: 450px) {
+                padding: 0.5rem;
+                margin: 0.5rem;
+              }
+            `}
+          />
         </MenuNav>
       ) : null}
       <MenuBar
-        position={css`
+        styles={css`
         z-index: 1000;
         position: relative;
         padding: 0.5rem;
@@ -150,21 +164,32 @@ export const DockedMenu = props => {
 }
 
 export const SideMenu = props => {
-  const { toggle: navToggled, handler: handleMenuClick } = props
-
   return (
     <section
       css={css`
         display: none;
-        ${mixin.desktopGridSupport(`
+        ${mixin.desktopMediaGridSupport(`
+          position: relative; 
+          ${mixin.size('100%', '100vh')}
           ${mixin.flex('column')};
+          align-items: center;
+          justify-content: space-between;
         `)}
       `}
     >
-      <MenuBar>
+      <MenuBar
+        styles={css`
+          position: fixed;
+        `}
+      >
         <Logo lockup={`master`} />
         <MenuNav>
-          <NavLink pages={getPages()} />
+          <NavLink
+            pages={getPages()}
+            styles={css`
+              font-size: 1.5rem;
+            `}
+          />
         </MenuNav>
       </MenuBar>
     </section>
