@@ -22,7 +22,7 @@ export const mixin = {
   flex: direction => `display: flex; flex-direction: ${direction};`,
   size: (width = '100%', height = 'auto') =>
     `width: ${width}; height: ${height};`,
-  desktopGridSupport: (hasSupport = '') => {
+  desktopMediaGridSupport: (hasSupport = '') => {
     return `
       @media screen and (${measure.desktopMediaWidth}) {
         @supports (display: grid) {
