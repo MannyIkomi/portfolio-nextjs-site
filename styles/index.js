@@ -9,7 +9,8 @@ export const colors = {
 }
 
 export const measure = {
-  menubarHeight: '2.5rem'
+  menubarHeight: '2.5rem',
+  desktopMediaWidth: `min-width: 1200px`
 }
 
 export const typography = {
@@ -20,7 +21,15 @@ export const typography = {
 export const mixin = {
   flex: direction => `display: flex; flex-direction: ${direction};`,
   size: (width = '100%', height = 'auto') =>
-    `width: ${width}; height: ${height};`
+    `width: ${width}; height: ${height};`,
+  desktopGridSupport: (hasSupport = '') => {
+    return `
+      @media screen and (${measure.desktopMediaWidth}) {
+        @supports (display: grid) {
+          ${hasSupport}
+        }
+      }`
+  }
 }
 
 export const GlobalStyles = props => {

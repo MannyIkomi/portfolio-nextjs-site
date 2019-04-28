@@ -1,7 +1,8 @@
 /** @jsx jsx */
 import React, { Fragment } from 'react'
+import PropTypes from 'prop-types'
 import { css, jsx, Global } from '@emotion/core'
-import { GlobalStyles } from '../styles/index'
+import { GlobalStyles, mixin } from '../styles/index'
 import HtmlHead from '../components/head'
 import axios from 'axios'
 import {
@@ -24,21 +25,36 @@ import Footer from '../components/footer'
 // import '../sass/base.scss'
 // import '../sass/portfolio.scss'
 
-const Home = props => {
-  const { projects, url } = props // from getInitialProps Next.js
-
-  console.log('URL from Next.js\n', url)
-  // use url to determine the :active navigation link
-  // console.log('PORTFOLIO PROPS:', projects)
-
+const PageLayout = props => {
+  const { title, description } = props
+  // Page level template
   return (
-    <Fragment>
+    <div
+      css={css`
+        ${mixin.desktopGridSupport(`
+          display: grid;
+          
+          grid-template-areas:
+          'header main'
+          'header footer';
+
+          grid-template-columns: minmax(10rem, 20rem);
+        `)}
+      `}
+    >
       <HtmlHead
-        pageTitle={'Design Thinker, Lifetime Learner — Manny Ikomi'}
-        description={`Design thinker, lifetime learner, adoring guncle. I like making great things for good people.`}
+        pageTitle={title || 'Design Thinker, Lifetime Learner — Manny Ikomi'}
+        description={
+          description ||
+          `Design thinker, lifetime learner, adoring guncle. I like making great things for good people.`
+        }
       />
       <GlobalStyles />
-      <header className={`dock-bottom`}>
+      <header
+        css={css`
+          grid-area: header;
+        `}
+      >
         <WithSwitchToggle
           render={(menuToggled, handleMenuToggled) => {
             return (
@@ -49,8 +65,39 @@ const Home = props => {
             )
           }}
         />
+        <SideMenu />
       </header>
-      <main>
+      <main
+        css={css`
+          gride-area: main;
+        `}
+      >
+        {props.children}
+      </main>
+      <Footer
+        css={css`
+          grid-area: footer;
+        `}
+      />
+    </div>
+  )
+}
+
+PageLayout.propTypes = {
+  title: PropTypes.string.isRequired,
+  description: PropTypes.string.isRequired
+}
+
+const HomePage = props => {
+  const { projects, url } = props // from getInitialProps Next.js
+
+  console.log('URL from Next.js\n', url)
+  // use url to determine the :active navigation link
+  // console.log('PORTFOLIO PROPS:', projects)
+
+  return (
+    <Fragment>
+      <PageLayout>
         <h1>the werk</h1>
         <Gallery id={0}>
           {/* WithInteractiveLink render=ProjectImg */}
@@ -58,8 +105,7 @@ const Home = props => {
             <ProjectCover project={project} key={project.id} />
           ))}
         </Gallery>
-      </main>
-      <Footer />
+      </PageLayout>
     </Fragment>
   )
 }
@@ -77,7 +123,7 @@ const axiosGraphql = axios.create({
   }
 })
 
-Home.getInitialProps = async () => {
+HomePage.getInitialProps = async () => {
   try {
     const response = await axiosGraphql({
       data: JSON.stringify({
@@ -756,4 +802,4 @@ Home.getInitialProps = async () => {
     }
   }
 }
-export default Home
+export default HomePage
