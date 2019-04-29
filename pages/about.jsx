@@ -1,29 +1,26 @@
-import React, { Component, Fragment } from 'react'
-
-import HtmlHead from '../components/head'
-import { MobileMenu, WithNavigationToggle } from '../components/navigation'
-import { Footer } from '../components/footer'
-
+/** @jsx jsx */
+// Modules
+import React, { Fragment } from 'react'
+import { css, jsx } from '@emotion/core'
+//
+// Components
+import PageLayout from '../components/pageLayout'
+//
+// Styles
+import { mixin, color, typography } from '../styles'
+//
 const About = props => {
   return (
-    <Fragment>
-      <HtmlHead
-        pageTitle={'Hi 🤓'}
-        description={`With over 5 years of experience in the print industry I’ve gained the
+    <PageLayout
+      title={'Hi 🤓'}
+      description={`With over 5 years of experience in the print industry I’ve gained the
           skills and foresight required to take design ideas and develop them
           into a high quality product`}
-      />
-      <header className={`dock-bottom`}>
-        <WithNavigationToggle
-          render={(navToggledState, handler) => {
-            return <MobileMenu toggle={navToggledState} handler={handler} />
-          }}
-        />
-      </header>
+    >
       <section className={`about viewport`}>
         <header>
           <div className={`headshot motif-left`}>
-            <img src="static/headshot-touchup.jpg" alt="photo of Manny" />
+            <img src="static/headshot-touchup.jpg" alt="Photo of Manny" />
           </div>
           <h1 className={`page-head`} style={{ padding: `0 2rem` }}>
             Design thinker,
@@ -74,8 +71,7 @@ const About = props => {
         </div>
       </section>
       <br />
-      <Footer />
-    </Fragment>
+    </PageLayout>
   )
 }
 
