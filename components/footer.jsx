@@ -44,7 +44,7 @@ SocialIcon.propTypes = {
   styles: PropTypes.any
 }
 
-export const Footer = props => {
+const Footer = props => {
   const inlineLinkStyles = css`
       text-decoration: underline;
       &:hover {
