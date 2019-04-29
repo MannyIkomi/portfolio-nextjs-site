@@ -31,7 +31,7 @@ const socialMedia = [
 const SocialIcon = props => {
   const { link, icon, alt, styles } = props
   return (
-    <a href={link}>
+    <a href={link} css={styles}>
       <img src={icon} alt={alt} />
     </a>
   )
@@ -44,16 +44,15 @@ SocialIcon.propTypes = {
 }
 
 export const Footer = props => {
-  const linkInlineStyles = css`
+  const inlineLinkStyles = css`
       text-decoration: underline;
       &:hover {
         color: ${colors.orange};
       }
     }
   `
-
   return (
-    <footer
+    <footer // footer tag container
       css={css`
         ${mixin.flex('column')}
         align-items: center;
@@ -73,13 +72,26 @@ export const Footer = props => {
         section {
           margin: 2rem 0;
         }
+
+        @media screen and (min-width: 700px) {
+          @supports (display: grid) {
+            padding: 4rem;
+            display: grid;
+            grid-template-areas:
+              'logo social'
+              'code quote';
+            grid-template-columns: 1fr 1fr;
+            grid-gap: 2rem;
+            justify-content: stretch;
+          }
+        }
       `}
     >
-      <div
+      <div // quote
         css={css`
           display: none;
-          @supports (display: grid) {
-            @media screen and (min-width: 700px) {
+          @media screen and (min-width: 700px) {
+            @supports (display: grid) {
               ${mixin.flex('column')};
 
               display: initial;
@@ -131,27 +143,43 @@ export const Footer = props => {
           margin: 2rem 0;
           @media screen and (min-width: 500px) {
             max-width: 10rem;
+
+            @media screen and (min-width: 700px) {
+              @supports (display: grid) {
+                grid-area: logo;
+                width: 8rem;
+                margin: auto;
+              }
+            }
           }
         `}
       />
-      <section
-        className="social"
+      <section // social + connect + email
         css={css`
           // z-index: 1;
           ${mixin.flex('column')};
+          justify-self: center;
           width: 75%;
           text-align: center;
 
           @media screen and (min-width: 500px) {
             max-width: 320px;
           }
+
+          ${mixin.tabletMedia(`
+            ${mixin.supportsGrid(`
+                grid-area: social;
+                align-self: center;
+                margin: auto;
+                width: auto;
+            `)}
+          `)}
         `}
       >
         <a
           href="mailto:design@mannyikomi.com"
-          className={`link inline`}
           css={css`
-            ${linkInlineStyles}
+            ${inlineLinkStyles}
             font-size: 1.5rem;
           `}
         >
@@ -162,9 +190,9 @@ export const Footer = props => {
         <br />
         <div
           css={css`
+            ${mixin.flex('row')};
             align-items: center;
             justify-content: space-around;
-            ${mixin.flex('row')};
           `}
         >
           {socialMedia.map(socialIcon => {
@@ -175,10 +203,9 @@ export const Footer = props => {
                 icon={socialIcon.icon}
                 alt={socialIcon.alt}
                 styles={css`
-                  ${mixin.size('100%', 'auto')};
-                  // margin: auto;
-                  // margin: 1rem;
                   display: block;
+                  ${mixin.size('100%', 'auto')};
+                  margin: 1rem;
                   max-width: 3rem;
                   min-height: 2rem;
                 `}
@@ -187,49 +214,61 @@ export const Footer = props => {
           })}
         </div>
       </section>
-      <section
+      <section // code section
         css={css`
           text-align: center;
+          ${mixin.tabletMedia(`
+            ${mixin.supportsGrid(`
+              grid-area: code;
+            `)}
+          `)}
         `}
       >
         <p>
           Member{` `}
-          <a href="https://www.aiga.org/" css={linkInlineStyles}>
+          <a href="https://www.aiga.org/" css={inlineLinkStyles}>
             AIGA
           </a>{' '}
           <br />
           <br />
           Oh, and{' '}
-          <a href="https://github.com/MannyIkomi" css={linkInlineStyles}>
+          <a href="https://github.com/MannyIkomi" css={inlineLinkStyles}>
             {' '}
             I code too!
           </a>
           {` `}🛠
           <br />
           My portfolio site is developed with{` `} <br />
-          <a href="https://reactjs.org/" css={linkInlineStyles}>
+          <a href="https://reactjs.org/" css={inlineLinkStyles}>
             React
           </a>
           ,{` `}
-          <a href="https://graphql.org/" css={linkInlineStyles}>
+          <a href="https://graphql.org/" css={inlineLinkStyles}>
             GraphQL
           </a>
           {` `}and{` `}
-          <a href="https://nodejs.org/en/" css={linkInlineStyles}>
+          <a href="https://nodejs.org/en/" css={inlineLinkStyles}>
             Node.js
           </a>
           <br /> <br />
           Powered by{` `}
-          <a href="https://www.behance.net/dev" css={linkInlineStyles}>
+          <a href="https://www.behance.net/dev" css={inlineLinkStyles}>
             Behance
           </a>
         </p>
       </section>
-      <p
-        className={`copyright`}
+      <p // copyright line
         css={css`
           color: ${colors.mediumGray};
           font-size: 1rem;
+
+          @media screen and (min-width: 700px) {
+            @supports (display: grid) {
+              grid-area: quote;
+              align-self: flex-end;
+              text-align: right;
+            }
+          }
         `}
       >
         Copyright &copy; {getYear('numeric')} Manny Ikomi

@@ -144,7 +144,7 @@ export const SideMenu = props => {
     <section
       css={css`
         display: none;
-        ${mixin.desktopMediaGridSupport(`
+        ${mixin.desktopMediaSupportsGrid(`
           position: relative; 
           ${mixin.size('100%', '100vh')}
           ${mixin.flex('column')};

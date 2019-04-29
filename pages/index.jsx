@@ -31,7 +31,7 @@ const PageLayout = props => {
   return (
     <div
       css={css`
-        ${mixin.desktopMediaGridSupport(`
+        ${mixin.desktopMediaSupportsGrid(`
           display: grid;
 
           grid-template-areas:
