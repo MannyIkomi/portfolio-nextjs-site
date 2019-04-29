@@ -11,7 +11,7 @@ export const colors = {
 export const measure = {
   menubarHeight: '2.5rem',
   desktopMediaWidth: `min-width: 1200px`,
-  tabletMediaWidth: `min-width: 700px`
+  tabletMediaWidth: `min-width: 750px`
 }
 
 export const typography = {

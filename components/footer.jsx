@@ -7,6 +7,7 @@ import { LogoMasterWhite } from './logo'
 
 import { getYear } from '../util/dates'
 import { mixin, colors, typography } from '../styles'
+import { memberExpression } from '../node_modules/@babel/types'
 
 // import './footer.scss'
 
@@ -49,8 +50,8 @@ export const Footer = props => {
       &:hover {
         color: ${colors.orange};
       }
-    }
-  `
+    }`
+
   return (
     <footer // footer tag container
       css={css`
@@ -73,69 +74,72 @@ export const Footer = props => {
           margin: 2rem 0;
         }
 
-        @media screen and (min-width: 700px) {
-          @supports (display: grid) {
-            padding: 4rem;
+        ${mixin.tabletMedia(`
+          ${mixin.supportsGrid(`
             display: grid;
             grid-template-areas:
-              'logo social'
-              'code quote';
+            'logo social'
+            'code quote';
             grid-template-columns: 1fr 1fr;
             grid-gap: 2rem;
+            padding: 4rem;
             justify-content: stretch;
-          }
-        }
+          `)}
+        `)}
       `}
     >
       <div // quote
         css={css`
           display: none;
-          @media screen and (min-width: 700px) {
-            @supports (display: grid) {
-              ${mixin.flex('column')};
+          ${mixin.tabletMedia(`
+            ${mixin.supportsGrid(`
+            ${mixin.flex('column')};
 
-              display: initial;
-              grid-area: quote;
-
-              justify-content: center;
-              margin-bottom: 2rem;
-              padding: 0;
-
+            display: initial;
+            grid-area: quote;
+    
+            justify-content: center;
+            margin-bottom: 2rem;
+            padding: 0;
+    
               opacity: 0.5;
               z-index: 0;
               color: ${colors.mediumGray};
-
-              blockquote {
-                font-size: 3rem;
-                font-weight: 100;
-
-                min-width: 10rem;
-                max-width: 40rem;
-
-                margin: auto;
-                color: ${colors.mediumGray};
-                text-align: right;
-                line-height: 1.25;
-              }
-              cite {
-                display: block;
-                margin: 1rem 0;
-
-                font-family: ${typography.serif};
-                font-weight: 100;
-                font-size: 1.5rem;
-                font-style: italic;
-                color: inherit;
-                text-align: right;
-              }
-            }
-          }
+            `)}
+          `)}
         `}
       >
-        <blockquote>
+        <blockquote
+          css={css`
+            font-size: 3rem;
+            font-weight: 100;
+
+            min-width: 10rem;
+            max-width: 40rem;
+
+            margin: auto;
+            color: ${colors.mediumGray};
+            text-align: right;
+            line-height: 1.25;
+          `}
+        >
           “Design is to design a design to produce a design.”
         </blockquote>
-        <cite>— John Heskett</cite>
+        <cite
+          css={css`
+            display: block;
+            margin: 1rem 0;
+
+            font-family: ${typography.serif};
+            font-weight: 100;
+            font-size: 1.5rem;
+            font-style: italic;
+            color: inherit;
+            text-align: right;
+          `}
+        >
+          — John Heskett
+        </cite>
       </div>
       <LogoMasterWhite
         styles={css`
@@ -190,7 +194,7 @@ export const Footer = props => {
         <br />
         <div
           css={css`
-            ${mixin.flex('row')};
+            ${mixin.flex('row')}
             align-items: center;
             justify-content: space-around;
           `}
