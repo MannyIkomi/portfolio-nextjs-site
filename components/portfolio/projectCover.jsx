@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import React, { Fragment, useState } from 'react'
 import { css, jsx } from '@emotion/core'
-import { colors } from '../../styles'
+import { colors, measure, mixin, typography } from '../../styles'
 import Link from 'next/link'
 import PropTypes from 'prop-types'
 
@@ -13,27 +13,33 @@ import FillOverlay from '../overlay'
 const CoverCaption = props => {
   const { title, subtitle } = props
   return (
-    <figcaption className="caption">
+    <figcaption
+      css={css`
+        h2,
+        h3 {
+          color: white;
+        }
+      `}
+    >
       <h2
-        // className="title"
         css={css`
-          font-family: $futura;
+          font-family: ${typography.sans};
           font-weight: bold;
           font-size: 2rem;
-          color: white;
-          text-transform: capitalize;
+          @media screen and (min-width: 1200px) {
+            font-size: 3rem;
+          }
         `}
       >
         {title}
       </h2>
       <h3
-        // className="subtitle"
         css={css`
-          font-family: $baskerville;
-          text-transform: capitalize;
+          font-family: ${typography.serif};
           font-style: italic;
-          font-size: 1rem;
-          color: white;
+          font-weight: 400;
+          font-size: 1.5rem;
+          line-height: 1.4;
         `}
       >
         {subtitle}
@@ -65,7 +71,7 @@ export const WithHoverState = props => {
   )
 }
 
-const CoverImg = ({ src, alt }) => (
+const ProjectPhoto = ({ src, alt }) => (
   <img
     css={css`
       display: block;
@@ -77,7 +83,8 @@ const CoverImg = ({ src, alt }) => (
     alt={alt}
   />
 )
-CoverImg.propTypes = {
+
+ProjectPhoto.propTypes = {
   src: PropTypes.string.isRequired,
   alt: PropTypes.string
 }
@@ -91,7 +98,6 @@ export const ProjectCover = props => {
     <WithHoverState
       render={(isHovered, handleMouseEnter, handleMouseLeave) => (
         <figure
-          // className="project preview"
           css={css`
             position: relative;
             margin-bottom: 4rem;
@@ -99,6 +105,8 @@ export const ProjectCover = props => {
             &:hover {
               box-shadow: -0.5rem 0.5rem 0.5rem 0px hsla(0, 0%, 0%, 0.85);
             }
+            ${mixin.aspectRatioLetter()}
+            overflow: hidden; // clips aspect ratio overflow
           `}
           onMouseEnter={handleMouseEnter || null}
           onMouseLeave={handleMouseLeave || null}
@@ -114,7 +122,7 @@ export const ProjectCover = props => {
                 position: relative;
               `}
             >
-              <CoverImg src={covers[size]} alt={name} />
+              <ProjectPhoto src={covers[size]} alt={name} />
               {isHovered ? (
                 <FillOverlay>
                   <CoverCaption title={name} subtitle={description} />

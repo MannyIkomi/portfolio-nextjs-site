@@ -37,7 +37,7 @@ const FillOverlay = props => {
             position: absolute;
             top: -1px;
             right: -1px;
-            width: 66%;
+            width: 50%;
             height: auto;
           }
         `}

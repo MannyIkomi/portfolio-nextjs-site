@@ -1,8 +1,11 @@
 /** @jsx jsx */
 import React, { Component, Fragment, useState } from 'react'
 import PropTypes from 'prop-types'
-import { getPages } from '../../util/navigation'
 import { css, jsx } from '@emotion/core'
+
+import Logo, { LogoTypeWide } from '../logo'
+
+import { getPages } from '../../util/navigation'
 import { colors, measure, typography, mixin } from '../../styles'
 
 export const NavLink = props => {
@@ -34,33 +37,6 @@ export const NavLink = props => {
 export const MenuNav = props => {
   const { styles } = props
   return <nav css={styles}>{props.children}</nav>
-}
-
-export const Logo = props => {
-  const { lockup } = props
-
-  return (
-    <a
-      href={`/`}
-      css={css`
-        display: block;
-        padding: 2rem;
-      `}
-    >
-      <img
-        css={css`
-          object-fit: contain;
-          width: auto;
-          height: 100%;
-        `}
-        src={`static/logos/logo-${lockup || `master`}.svg`} // type = ['master','type','wide' ]
-        alt={`Manny Ikomi's Logo`}
-      />
-    </a>
-  )
-}
-Logo.propTypes = {
-  lockup: PropTypes.oneOf(['master', 'type', 'type-long'])
 }
 
 export const MenuButton = props => {
@@ -156,7 +132,7 @@ export const DockedMenu = props => {
         box-shadow: 0rem -0.5rem 0.5rem 0px rgba(38, 38, 38, 0.2);
       `}
       >
-        <Logo lockup={`type-long`} />
+        <LogoTypeWide />
         <MenuButton click={handleMenuToggle} />
       </MenuBar>
     </section>

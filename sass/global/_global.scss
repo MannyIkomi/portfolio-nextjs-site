@@ -3,10 +3,10 @@
 @import 'typography';
 @import 'mixin';
 
-#__next {
-  // root div from next.js render
-  background-color: $mute;
-}
+// #__next {
+//   // root div from next.js render
+//   background-color: $mute;
+// }
 
 // a {
 //   color: inherit;
@@ -24,11 +24,11 @@
 //   background-color: $mute;
 // }
 
-.aspect {
-  height: 0;
-  overflow: hidden;
-  padding-bottom: 100% * 17 / 22;
-}
+// .aspect {
+//   height: 0;
+//   overflow: hidden;
+//   padding-bottom: 100% * 17 / 22;
+// }
 
 // .logo {
 //   object-fit: contain;
