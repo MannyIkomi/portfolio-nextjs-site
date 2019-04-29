@@ -10,7 +10,8 @@ export const colors = {
 
 export const measure = {
   menubarHeight: '2.5rem',
-  desktopMediaWidth: `min-width: 1200px`
+  desktopMediaWidth: `min-width: 1200px`,
+  tabletMediaWidth: `min-width: 700px`
 }
 
 export const typography = {
@@ -24,7 +25,28 @@ export const mixin = {
   size: (width = '100%', height = 'auto') =>
     `width: ${width}; height: ${height};`,
 
-  desktopMediaGridSupport: (hasSupport = '') => {
+  supportsGrid: (hasSupport = '') => {
+    return `
+      @supports (display: grid) {
+        ${hasSupport}
+      }
+    `
+  },
+
+  tabletMedia: (tabletStyles = '') => {
+    return `
+    @media screen and (${measure.desktopMediaWidth}) {
+      ${tabletStyles}
+    }`
+  },
+  desktopMedia: (desktopStyles = '') => {
+    return `
+    @media screen and (${measure.desktopMediaWidth}) {
+      ${desktopStyles}
+    }`
+  },
+
+  desktopMediaSupportsGrid: (hasSupport = '') => {
     return `
       @media screen and (${measure.desktopMediaWidth}) {
         @supports (display: grid) {
