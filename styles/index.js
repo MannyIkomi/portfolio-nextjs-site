@@ -20,8 +20,10 @@ export const typography = {
 
 export const mixin = {
   flex: direction => `display: flex; flex-direction: ${direction};`,
+
   size: (width = '100%', height = 'auto') =>
     `width: ${width}; height: ${height};`,
+
   desktopMediaGridSupport: (hasSupport = '') => {
     return `
       @media screen and (${measure.desktopMediaWidth}) {
@@ -29,7 +31,8 @@ export const mixin = {
           ${hasSupport}
         }
       }`
-  }
+  },
+  aspectRatioLetter: () => `height: 0; padding-bottom: calc(100% * (17 / 22));`
 }
 
 export const GlobalStyles = props => {
@@ -41,6 +44,16 @@ export const GlobalStyles = props => {
         #__next {
           margin-bottom: ${measure.menubarHeight};
         }
+
+        :root {
+          transition-property: font-size;
+          transition-timing-function: ease;
+          transition-duration: 0.5s;
+          transition-delay: 0.5s;
+          font-size: 100%;
+          font-family: ${typography.sans};
+        }
+
         * {
           box-sizing: border-box;
         }
@@ -53,6 +66,43 @@ export const GlobalStyles = props => {
         }
         button {
           border: 0;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5 {
+          line-height: 1.1;
+        }
+
+        p,
+        span {
+          font-family: ${typography.sans};
+          font-size: 1.25rem;
+          line-height: 1.4;
+        }
+
+        h1 {
+          font-size: 2rem;
+        }
+
+        @media screen and (min-width: 700px) {
+          :root {
+            font-size: 106%;
+          }
+          h1 {
+            font-size: 3rem;
+          }
+        }
+
+        @media screen and (min-width: 1100px) {
+          :root {
+            font-size: 112%;
+          }
+          h1 {
+            font-size: 4rem;
+          }
         }
       `}
     />
