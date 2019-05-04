@@ -1,10 +1,14 @@
 /** @jsx jsx */
 import React, { Fragment } from 'react'
 import PropTypes from 'prop-types'
+import axios from 'axios'
+
+// Styles
 import { css, jsx, Global } from '@emotion/core'
 import { GlobalStyles, mixin } from '../styles/index'
+
+// Components
 import HtmlHead from '../components/head'
-import axios from 'axios'
 import {
   WithSwitchToggle,
   DockedMenu,
@@ -15,7 +19,7 @@ import {
 } from '../components/navigation/navigation'
 
 import Gallery from '../components/portfolio/projectGallery'
-
+import PageLayout from '../components/pageLayout'
 import {
   ProjectCover,
   WithHoverState
@@ -34,7 +38,7 @@ const HomePage = props => {
 
   return (
     <Fragment>
-      <PageLayout>
+      <PageLayout title={''}>
         <h1>the werk</h1>
         <Gallery id={0}>
           {/* WithInteractiveLink render=ProjectImg */}
