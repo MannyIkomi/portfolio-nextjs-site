@@ -38,7 +38,7 @@ const HomePage = props => {
 
   return (
     <Fragment>
-      <PageLayout title={''}>
+      <PageLayout title={''} description={''}>
         <h1>the werk</h1>
         <Gallery id={0}>
           {/* WithInteractiveLink render=ProjectImg */}
