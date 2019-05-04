@@ -97,7 +97,10 @@ const ProjectView = props => {
     // }
   `
   return (
-    <PageLayout title={`${project.name} by Manny`}>
+    <PageLayout
+      title={`${project.name} by Manny`}
+      description={`${project.name}, ${project.description} by Manny Ikomi`}
+    >
       <article css={projectView}>
         <header css={headingStyle}>
           <h1>{name}</h1>
