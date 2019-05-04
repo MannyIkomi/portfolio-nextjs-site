@@ -14,7 +14,7 @@ const About = props => {
     <PageLayout
       title={'Hi 🤓'}
       description={`With over 5 years of experience in the print industry I’ve gained the
-          skills and foresight required to take design ideas and develop them
+          skills and know how required to take design ideas and develop them
           into a high quality product`}
     >
       <section className={`about viewport`}>
