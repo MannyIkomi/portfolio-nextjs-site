@@ -1,23 +1,18 @@
 const getPages = (filterId = '') => {
-  const values = [
+  const pages = [
+    {
+      title: 'The Werk',
+      path: '/'
+    },
     {
       title: 'Logo & Identity',
       path: '/#identity',
-      id: 'identity'
+      category: 'logo & identity'
     },
     {
       title: 'User Interface',
       path: '/#ui',
-      id: 'ui'
-    },
-    {
-      title: 'Other Works',
-      path: '/#other',
-      id: 'other'
-    },
-    {
-      title: 'Say Hello',
-      path: '/contact'
+      category: 'user'
     },
     {
       title: 'About Me',
@@ -26,10 +21,10 @@ const getPages = (filterId = '') => {
   ]
 
   return filterId
-    ? values.filter(item => {
-        return item.id === filterId
+    ? pages.filter(page => {
+        return page.id === filterId
       })
-    : values
+    : pages
 }
 
 export { getPages }

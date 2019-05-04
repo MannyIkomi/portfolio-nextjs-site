@@ -1,0 +1,73 @@
+@import 'base';
+@import 'typography';
+@import 'color';
+@import 'mixin';
+
+.relative {
+  position: relative;
+}
+
+// .aspect {
+//   height: 0;
+//   overflow: hidden;
+//   padding-bottom: 100% * 17 / 22;
+// }
+
+.project .cover {
+  display: block;
+  @include size(100%);
+  object-fit: cover;
+}
+
+.project {
+  &:hover {
+    box-shadow: -0.5rem 0.5rem 0.5rem 0px hsla(0, 0%, 0%, 0.85);
+  }
+  &.preview {
+    position: relative;
+
+    margin-bottom: 4rem;
+    width: 100%;
+    .link {
+      display: block;
+    }
+  }
+}
+.overlay {
+  @include overlay();
+  background-color: $orange;
+  opacity: 1;
+  mix-blend-mode: multiply;
+  + .content {
+    @include size(100%, 100%);
+    @include flex(column);
+    position: absolute;
+    bottom: 0;
+    justify-content: flex-end;
+    padding: 1rem;
+    ::before {
+      content: url('/static/motif-gallery.svg');
+
+      position: absolute;
+      top: -1px;
+      right: -1px;
+
+      @include size(66%, auto);
+    }
+    color: white;
+    .title {
+      font-family: $futura;
+      font-weight: bold;
+      font-size: 2rem;
+      color: white;
+      text-transform: capitalize;
+    }
+    .subtitle {
+      font-family: $baskerville;
+      text-transform: capitalize;
+      font-style: italic;
+      font-size: 1rem;
+      color: white;
+    }
+  }
+}

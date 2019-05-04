@@ -1,0 +1,62 @@
+@import 'base';
+@import 'typography';
+@import 'color';
+@import 'mixin';
+
+.project.viewer {
+  @include flex(column);
+  align-items: center;
+  background: $mute;
+  // margin: 2rem;
+
+  header {
+    @include flex(column);
+    // justify-content: center;
+    align-items: center;
+    max-width: 40rem;
+
+    min-height: 50vh;
+    padding: 2rem;
+    text-align: center;
+    @media screen and (min-width: 700px) {
+    }
+  }
+  h1 {
+    font-family: $futura;
+    font-weight: 500;
+    text-transform: initial;
+  }
+  h2 {
+    font-family: $baskerville;
+    text-transform: initial;
+    font-style: italic;
+    font-size: 1.5rem;
+  }
+
+  main.modules {
+    margin: 2rem 0;
+    background-color: $deep-gray;
+    padding: 0 2rem;
+    width: 100%;
+
+    div.offset {
+      position: relative;
+      top: -25vh;
+      max-width: 40rem;
+      margin: auto;
+    }
+
+    .module {
+      margin: 4rem 0;
+      box-shadow: -0.5rem 0.5rem 0.5rem 0px hsla(0, 0%, 0%, 0.85);
+    }
+
+    .module.image {
+      width: 100%;
+      img {
+        object-fit: fill;
+        @include size(100%, 100%);
+      }
+    }
+  }
+}
