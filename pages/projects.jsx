@@ -1,15 +1,37 @@
-import React, { Fragment } from 'react'
-import axios from 'axios'
+/** @jsx jsx */
 
-// import '../sass/projectView.scss'
+import React, { Fragment } from 'react'
+import { css, jsx } from '@emotion/core'
+import axios from 'axios'
+// import PropTypes from 'prop-types'
+
+// Components
 import Footer from '../components/footer'
 import Head from '../components/head'
+import PageLayout from '../components/pageLayout'
+
+// Utility
+import { mixin, colors, typography } from '../styles'
+const moduleContainer = css`
+  margin: 4rem 0;
+  box-shadow: -0.5rem 0.5rem 0.5rem 0px hsla(0, 0%, 0%, 0.85);
+`
 
 const ImageModule = props => {
   const { type, sizes } = props.module
-
   return (
-    <figure className={`module image`}>
+    <figure
+      css={[
+        moduleContainer,
+        css`
+          width: 100%;
+          img {
+            object-fit: fill;
+            ${mixin.size('100%', '100%')};
+          }
+        `
+      ]}
+    >
       <img src={sizes['_1400']} />
     </figure>
   )
@@ -20,7 +42,7 @@ const ImageModule = props => {
 const TextModule = props => {
   const { text } = props
   return (
-    <figure className={`module text`}>
+    <figure css={[moduleContainer]}>
       <p>{text}</p>
     </figure>
   )
@@ -44,23 +66,67 @@ const mapModules = modules => {
 const ProjectView = props => {
   const { project } = props
   const { id, name, description, modules } = project
+
+  const projectView = css`
+    ${mixin.flex('column')}
+    align-items: center;
+    background: ${colors.muteGray};
+  `
+
+  const headingStyle = css`
+    ${mixin.flex('column')}
+    align-items: center;
+    max-width: 40rem;
+
+    min-height: 50vh;
+    padding: 2rem;
+    text-align: center;
+    h1 {
+      font-family: ${typography.sans};
+      font-weight: 500;
+      text-transform: initial;
+    }
+    h2 {
+      font-family: ${typography.serif};
+      font-size: 1.5rem;
+      font-weight: 300;
+      font-style: italic;
+      text-transform: initial;
+    }
+    // @media screen and (min-width: 700px) {
+    // }
+  `
   return (
-    <Fragment>
-      <Head pageTitle={`${project.name} by Manny`} description={description} />
-      <article className={`project viewer`}>
-        <header>
+    <PageLayout title={`${project.name} by Manny`}>
+      <article css={projectView}>
+        <header css={headingStyle}>
           <h1>{name}</h1>
           <h2>{description}</h2>
         </header>
-        <main className={`modules`}>
-          <div className={`offset`}>{mapModules(modules)}</div>
+        <main
+          css={css`
+            margin: 2rem 0;
+            background-color: ${colors.darkGray};
+            padding: 0 2rem;
+            width: 100%;
+          `}
+        >
+          <div // offset modules to overlap the heading area
+            css={css`
+              position: relative;
+              top: -25vh;
+              max-width: 40rem;
+              margin: auto;
+            `}
+          >
+            {mapModules(modules)}
+          </div>
         </main>
         {/* <footer>
           <h3>You might also like...</h3>
         </footer> */}
       </article>
-      <Footer />
-    </Fragment>
+    </PageLayout>
   )
 }
 

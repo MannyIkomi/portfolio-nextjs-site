@@ -3,13 +3,12 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { css, jsx } from '@emotion/core'
 
+// Components
 import { LogoMasterWhite } from './logo'
 
+//  Utility
 import { getYear } from '../util/dates'
 import { mixin, colors, typography } from '../styles'
-import { memberExpression } from '../node_modules/@babel/types'
-
-// import './footer.scss'
 
 const socialMedia = [
   {
@@ -240,9 +239,9 @@ const Footer = props => {
             {' '}
             I code too!
           </a>
-          {` `}🛠
-          <br />
-          My portfolio site is developed with{` `} <br />
+          {` `}🦄
+          <br />I built my portfolio site with
+          {` `} <br />
           <a href="https://reactjs.org/" css={inlineLinkStyles}>
             React
           </a>
