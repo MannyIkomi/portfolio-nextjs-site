@@ -16,7 +16,13 @@ export const measure = {
 
 export const typography = {
   serif: 'baskerville-urw, Georgia, serif',
-  sans: 'futura-pt, "Helvetica Neue", Helvetica, sans-serif'
+  sans: 'futura-pt, "Helvetica Neue", Helvetica, sans-serif',
+  sizeTransition: css`
+    transition-property: font-size;
+    transition-timing-function: ease;
+    transition-duration: 0.5s;
+    transition-delay: 0.5s;
+  `
 }
 
 export const mixin = {
@@ -68,10 +74,6 @@ export const GlobalStyles = props => {
         }
 
         :root {
-          transition-property: font-size;
-          transition-timing-function: ease;
-          transition-duration: 0.5s;
-          transition-delay: 0.5s;
           font-size: 100%;
           font-family: ${typography.sans};
         }
@@ -96,11 +98,13 @@ export const GlobalStyles = props => {
         h4,
         h5 {
           line-height: 1.1;
+          ${typography.sizeTransition}
         }
 
         p,
         span {
           font-family: ${typography.sans};
+          ${typography.sizeTransition}
           font-size: 1.25rem;
           line-height: 1.4;
         }
