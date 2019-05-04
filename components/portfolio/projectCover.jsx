@@ -1,28 +1,53 @@
+/** @jsx jsx */
 import React, { Fragment, useState } from 'react'
+import { css, jsx } from '@emotion/core'
+import { colors, measure, mixin, typography } from '../../styles'
 import Link from 'next/link'
 import PropTypes from 'prop-types'
 
-// import '../../sass/portfolio.scss'
-import '../../sass/projectCover.scss'
 import ProjectPage from '../../pages/portfolio'
-
-const FillOverlay = props => {
-  return (
-    <Fragment>
-      <div className="overlay" />
-      <div className="content">{props.children}</div>
-    </Fragment>
-  )
-}
+import FillOverlay from '../overlay'
 
 const CoverCaption = props => {
   const { title, subtitle } = props
   return (
-    <figcaption className="caption">
-      <h2 className="title">{title}</h2>
-      <h3 className="subtitle">{subtitle}</h3>
+    <figcaption
+      css={css`
+        h2,
+        h3 {
+          color: white;
+        }
+      `}
+    >
+      <h2
+        css={css`
+          font-family: ${typography.sans};
+          font-weight: bold;
+          font-size: 2rem;
+          @media screen and (min-width: 1200px) {
+            font-size: 3rem;
+          }
+        `}
+      >
+        {title}
+      </h2>
+      <h3
+        css={css`
+          font-family: ${typography.serif};
+          font-style: italic;
+          font-weight: 400;
+          font-size: 1.5rem;
+          line-height: 1.4;
+        `}
+      >
+        {subtitle}
+      </h3>
     </figcaption>
   )
+}
+CoverCaption.propTypes = {
+  title: PropTypes.string.isRequired,
+  subtitle: PropTypes.string.isRequired
 }
 
 export const WithHoverState = props => {
@@ -44,7 +69,23 @@ export const WithHoverState = props => {
   )
 }
 
-const CoverImg = ({ src, alt }) => <img className="cover" src={src} alt={alt} />
+const ProjectPhoto = ({ src, alt }) => (
+  <img
+    css={css`
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    `}
+    src={src}
+    alt={alt}
+  />
+)
+
+ProjectPhoto.propTypes = {
+  src: PropTypes.string.isRequired,
+  alt: PropTypes.string
+}
 
 export const ProjectCover = props => {
   const size = 'original'
@@ -55,7 +96,16 @@ export const ProjectCover = props => {
     <WithHoverState
       render={(isHovered, handleMouseEnter, handleMouseLeave) => (
         <figure
-          className="project preview"
+          css={css`
+            position: relative;
+            margin-bottom: 4rem;
+            width: 100%;
+            &:hover {
+              box-shadow: -0.5rem 0.5rem 0.5rem 0px hsla(0, 0%, 0%, 0.85);
+            }
+            ${mixin.aspectRatioLetter()}
+            overflow: hidden; // clips aspect ratio overflow
+          `}
           onMouseEnter={handleMouseEnter || null}
           onMouseLeave={handleMouseLeave || null}
         >
@@ -63,8 +113,14 @@ export const ProjectCover = props => {
             href={`/portfolio/?slug=${slug}`}
             as={`/portfolio/${slug.toLowerCase()}`}
           >
-            <a className="aspect link relative">
-              <CoverImg src={covers[size]} alt={name} />
+            <a
+              // className="aspect link relative"
+              css={css`
+                display: block;
+                position: relative;
+              `}
+            >
+              <ProjectPhoto src={covers[size]} alt={name} />
               {isHovered ? (
                 <FillOverlay>
                   <CoverCaption title={name} subtitle={description} />

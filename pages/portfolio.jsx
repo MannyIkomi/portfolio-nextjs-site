@@ -2,7 +2,7 @@ import React, { Fragment } from 'react'
 // import { withRouter } from 'next/router'
 import axios from 'axios'
 
-import '../sass/projectView.scss'
+// import '../sass/projectView.scss'
 import Footer from '../components/footer'
 import Head from '../components/head'
 

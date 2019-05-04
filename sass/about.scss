@@ -1,13 +1,12 @@
-@import 'base';
-@import 'color';
-@import 'typography';
-@import 'mixin';
+@import '../sass/global';
 
 .viewport {
   min-height: 100vh;
 }
 .about {
-  @include flex(column);
+  // @include flex(column);
+  display: flex;
+  flex-direction: column;
   background-color: $deep-gray;
   header {
     padding: 0;
