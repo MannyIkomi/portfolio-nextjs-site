@@ -15,7 +15,7 @@ import {
   SideMenu,
   NavLink,
   Logo,
-  MenuNav
+  NavContainer
 } from '../components/navigation/navigation'
 
 import Gallery from '../components/portfolio/projectGallery'

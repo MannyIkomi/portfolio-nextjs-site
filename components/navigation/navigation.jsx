@@ -34,7 +34,7 @@ export const NavLink = props => {
   ))
 }
 
-export const MenuNav = props => {
+export const NavContainer = props => {
   const { styles } = props
   return <nav css={styles}>{props.children}</nav>
 }
@@ -61,119 +61,4 @@ export const WithSwitchToggle = props => {
   }
 
   return <Fragment>{props.render(toggled, handleToggle)}</Fragment>
-}
-
-export const DockedMenu = props => {
-  const { menuToggled, handleMenuToggle } = props
-  const dockedNavToggled = css`
-    z-index: 999;
-    position: fixed;
-    bottom: -1px;
-
-    ${mixin.flex('column')}
-    flex-wrap: nowrap;
-    align-items: flex-start;
-    justify-content: flex-end;
-
-    ${mixin.size('100vw', '100%')};
-    height: 100vh;
-    padding: calc(${measure.menubarHeight} + 1rem) 1rem;
-
-    background: ${colors.muteGray};
-    background: url('/static/nav-bg.svg');
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: bottom center;
-
-    font-family: ${typography.serif};
-
-    @media screen and (orientation: landscape) and (max-height: 450px) {
-      background: ${colors.muteGray};
-      ${mixin.flex('row')}
-      flex-wrap: wrap;
-      align-items: flex-end;
-      justify-content: flex-end;
-    }
-  `
-  return (
-    <section
-      css={css`
-        z-index: 999;
-        position: fixed;
-        bottom: 0;
-        left: 0;
-        @media (hover: hover), (${measure.tabletMediaWidth}) {
-          top: 0;
-          bottom: initial;
-        }
-      `}
-    >
-      <MenuBar
-        styles={css`
-          z-index: 1000;
-          position: relative;
-          padding: 0.5rem;
-
-          ${mixin.flex('row')}
-          ${mixin.size(
-            '100vw',
-            measure.menubarHeight
-          )}
-        justify-content: space-between;
-
-          background-color: ${colors.muteGray};
-          box-shadow: 0rem -0.5rem 0.5rem 0px rgba(38, 38, 38, 0.2);
-        `}
-      >
-        <LogoTypeWide />
-        <MenuButton click={handleMenuToggle} />
-      </MenuBar>
-      {menuToggled ? (
-        <MenuNav styles={dockedNavToggled}>
-          <NavLink
-            pages={getPages()}
-            styles={css`
-              @media screen and (orientation: landscape) and (max-height: 450px) {
-                padding: 0.5rem;
-                margin: 0.5rem;
-              }
-            `}
-          />
-        </MenuNav>
-      ) : null}
-    </section>
-  )
-}
-
-export const SideMenu = props => {
-  return (
-    <section
-      css={css`
-        display: none;
-        ${mixin.desktopMediaSupportsGrid(`
-        position: relative; 
-        ${mixin.size('100%', '100vh')}
-        ${mixin.flex('column')}
-        align-items: center;
-        justify-content: space-between;
-      `)}
-      `}
-    >
-      <MenuBar
-        styles={css`
-          position: fixed;
-        `}
-      >
-        <Logo lockup={`master`} />
-        <MenuNav>
-          <NavLink
-            pages={getPages()}
-            styles={css`
-              font-size: 1.5rem;
-            `}
-          />
-        </MenuNav>
-      </MenuBar>
-    </section>
-  )
 }

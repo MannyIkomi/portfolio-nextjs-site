@@ -6,7 +6,9 @@ import { css, jsx } from '@emotion/core'
 //
 
 // Components
-import { WithSwitchToggle, DockedMenu, SideMenu } from './navigation/navigation'
+import { WithSwitchToggle } from './navigation/navigation'
+import DockedMenu from './navigation/dockedMenu'
+import SideMenu from './navigation/sideMenu'
 import HtmlHead from './head'
 import Footer from './footer'
 
