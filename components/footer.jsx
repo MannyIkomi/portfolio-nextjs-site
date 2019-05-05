@@ -8,7 +8,7 @@ import { LogoMasterWhite } from './logo'
 
 //  Utility
 import { getYear } from '../util/dates'
-import { mixin, colors, typography } from '../styles'
+import { mixin, colors, typography, measure } from '../styles'
 
 const socialMedia = [
   {
@@ -55,7 +55,6 @@ const Footer = props => {
   return (
     <footer // footer tag container
       css={[
-        styles,
         css`
           ${mixin.flex('column')}
           align-items: center;
@@ -65,7 +64,8 @@ const Footer = props => {
           z-index: 0;
 
           width: 100%;
-          min-height: 100vh;
+          height: calc(100vh - ${measure.menubarHeight});
+          // min-height: 100vh;
           padding: 1rem;
           overflow: hidden;
 
@@ -88,7 +88,8 @@ const Footer = props => {
             justify-content: stretch;
           `)}
         `)}
-        `
+        `,
+        styles
       ]}
     >
       <div // quote
@@ -282,6 +283,10 @@ const Footer = props => {
       </p>
     </footer>
   )
+}
+
+Footer.propTypes = {
+  styles: PropTypes.any
 }
 
 export default Footer

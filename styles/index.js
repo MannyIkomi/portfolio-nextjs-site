@@ -69,10 +69,6 @@ export const GlobalStyles = props => {
     <Global
       styles={css`
         ${reset}
-        #__next {
-          margin-bottom: ${measure.menubarHeight};
-        }
-
         :root {
           font-size: 100%;
           font-family: ${typography.sans};

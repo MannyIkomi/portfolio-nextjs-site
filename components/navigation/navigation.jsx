@@ -65,9 +65,9 @@ export const WithSwitchToggle = props => {
 
 export const DockedMenu = props => {
   const { menuToggled, handleMenuToggle } = props
-  const dockedMenuStyle = css`
+  const dockedNavToggled = css`
     z-index: 999;
-    position: relative;
+    position: fixed;
     bottom: -1px;
 
     ${mixin.flex('column')}
@@ -77,14 +77,14 @@ export const DockedMenu = props => {
 
     ${mixin.size('100vw', '100%')};
     height: 100vh;
-    height: calc(100vh - ${measure.menubarHeight} + 1px);
-    padding: 1rem;
+    padding: calc(${measure.menubarHeight} + 1rem) 1rem;
 
     background: ${colors.muteGray};
     background: url('/static/nav-bg.svg');
     background-size: cover;
     background-repeat: no-repeat;
     background-position: bottom center;
+
     font-family: ${typography.serif};
 
     @media screen and (orientation: landscape) and (max-height: 450px) {
@@ -102,15 +102,34 @@ export const DockedMenu = props => {
         position: fixed;
         bottom: 0;
         left: 0;
-
-        ${mixin.tabletMedia(`
+        @media (hover: hover), (${measure.tabletMediaWidth}) {
           top: 0;
           bottom: initial;
-        `)}
+        }
       `}
     >
+      <MenuBar
+        styles={css`
+          z-index: 1000;
+          position: relative;
+          padding: 0.5rem;
+
+          ${mixin.flex('row')}
+          ${mixin.size(
+            '100vw',
+            measure.menubarHeight
+          )}
+        justify-content: space-between;
+
+          background-color: ${colors.muteGray};
+          box-shadow: 0rem -0.5rem 0.5rem 0px rgba(38, 38, 38, 0.2);
+        `}
+      >
+        <LogoTypeWide />
+        <MenuButton click={handleMenuToggle} />
+      </MenuBar>
       {menuToggled ? (
-        <MenuNav styles={dockedMenuStyle}>
+        <MenuNav styles={dockedNavToggled}>
           <NavLink
             pages={getPages()}
             styles={css`
@@ -122,31 +141,12 @@ export const DockedMenu = props => {
           />
         </MenuNav>
       ) : null}
-      <MenuBar
-        styles={css`
-        z-index: 1000;
-        position: relative;
-        padding: 0.5rem;
-
-        ${mixin.flex('row')}
-        ${mixin.size('100vw')}
-        height: ${measure.menubarHeight};
-        justify-content: space-between;
-
-        background-color: ${colors.muteGray};
-        box-shadow: 0rem -0.5rem 0.5rem 0px rgba(38, 38, 38, 0.2);
-      `}
-      >
-        <LogoTypeWide />
-        <MenuButton click={handleMenuToggle} />
-      </MenuBar>
     </section>
   )
 }
 
 export const SideMenu = props => {
-  const { isDisabled } = props
-  return isDisabled ? null : (
+  return (
     <section
       css={css`
         display: none;
@@ -176,12 +176,4 @@ export const SideMenu = props => {
       </MenuBar>
     </section>
   )
-}
-
-SideMenu.propTypes = {
-  isDisabled: PropTypes.bool.isRequired
-}
-
-SideMenu.defaultProps = {
-  isDisabled: false
 }
