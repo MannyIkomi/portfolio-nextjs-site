@@ -100,6 +100,7 @@ const ProjectView = props => {
     <PageLayout
       title={`${project.name} by Manny`}
       description={`${project.name}, ${project.description} by Manny Ikomi`}
+      isSideMenuDisabled={true}
     >
       <article css={projectView}>
         <header css={headingStyle}>

@@ -9,36 +9,39 @@ import { css, jsx } from '@emotion/core'
 import { WithSwitchToggle, DockedMenu, SideMenu } from './navigation/navigation'
 import HtmlHead from './head'
 import Footer from './footer'
-//
 
 // Styling
-import { GlobalStyles, mixin, color, typography } from '../styles'
-//
+import { GlobalStyles, mixin, color, typography, measure } from '../styles'
 
 const PageLayout = props => {
-  const { title, description } = props
+  const { title, description, isSideMenuDisabled } = props
   // Page level template
   return (
     <div
       css={css`
         ${mixin.desktopMediaSupportsGrid(`
           display: grid;
-
-          grid-template-areas:
-          'header main'
-          'header footer';
-
-          grid-template-columns: minmax(10rem, 20rem);
+          ${
+            isSideMenuDisabled
+              ? `
+            grid-template-areas:
+            'header'
+            'main'
+            'footer';
+            grid-template-columns: 1fr;`
+              : `
+                grid-template-areas:
+                'header main'
+                'footer footer';    
+               grid-template-columns: minmax(10rem, 15rem) 1fr;
+               grid-template-rows: min-content calc(100vh - ${
+                 measure.menubarHeight
+               });`
+          }
         `)}
       `}
     >
-      <HtmlHead
-        pageTitle={title || 'Design Thinker, Lifetime Learner — Manny Ikomi'}
-        description={
-          description ||
-          `Design thinker, lifetime learner, adoring guncle. I like making great things for good people.`
-        }
-      />
+      <HtmlHead pageTitle={title} description={description} />
       <GlobalStyles />
       <header
         css={css`
@@ -55,17 +58,17 @@ const PageLayout = props => {
             )
           }}
         />
-        <SideMenu />
+        {isSideMenuDisabled ? null : <SideMenu />}
       </header>
       <main
         css={css`
-          gride-area: main;
+          grid-area: main;
         `}
       >
         {props.children}
       </main>
       <Footer
-        css={css`
+        styles={css`
           grid-area: footer;
         `}
       />
@@ -75,7 +78,12 @@ const PageLayout = props => {
 
 PageLayout.propTypes = {
   title: PropTypes.string.isRequired,
-  description: PropTypes.string.isRequired
+  description: PropTypes.string.isRequired,
+  isSideMenuDisabled: PropTypes.bool.isRequired
+}
+PageLayout.defaultProps = {
+  title: 'Design Thinker, Lifetime Learner — Manny Ikomi',
+  description: `I like making great things for good people.`
 }
 
 export default PageLayout

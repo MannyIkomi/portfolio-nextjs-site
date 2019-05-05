@@ -44,6 +44,7 @@ SocialIcon.propTypes = {
 }
 
 const Footer = props => {
+  const { styles } = props
   const inlineLinkStyles = css`
       text-decoration: underline;
       &:hover {
@@ -53,27 +54,29 @@ const Footer = props => {
 
   return (
     <footer // footer tag container
-      css={css`
-        ${mixin.flex('column')}
-        align-items: center;
-        justify-content: space-between;
+      css={[
+        styles,
+        css`
+          ${mixin.flex('column')}
+          align-items: center;
+          justify-content: space-between;
 
-        position: relative;
-        z-index: 0;
+          position: relative;
+          z-index: 0;
 
-        width: 100%;
-        min-height: 100vh;
-        padding: 1rem;
-        overflow: hidden;
+          width: 100%;
+          min-height: 100vh;
+          padding: 1rem;
+          overflow: hidden;
 
-        color: ${colors.muteGray};
-        background-color: ${colors.darkGray};
+          color: ${colors.muteGray};
+          background-color: ${colors.darkGray};
 
-        section {
-          margin: 2rem 0;
-        }
+          section {
+            margin: 2rem 0;
+          }
 
-        ${mixin.tabletMedia(`
+          ${mixin.tabletMedia(`
           ${mixin.supportsGrid(`
             display: grid;
             grid-template-areas:
@@ -85,7 +88,8 @@ const Footer = props => {
             justify-content: stretch;
           `)}
         `)}
-      `}
+        `
+      ]}
     >
       <div // quote
         css={css`

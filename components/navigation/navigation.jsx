@@ -102,6 +102,11 @@ export const DockedMenu = props => {
         position: fixed;
         bottom: 0;
         left: 0;
+
+        ${mixin.tabletMedia(`
+          top: 0;
+          bottom: initial;
+        `)}
       `}
     >
       {menuToggled ? (
@@ -140,17 +145,18 @@ export const DockedMenu = props => {
 }
 
 export const SideMenu = props => {
-  return (
+  const { isDisabled } = props
+  return isDisabled ? null : (
     <section
       css={css`
         display: none;
         ${mixin.desktopMediaSupportsGrid(`
-          position: relative; 
-          ${mixin.size('100%', '100vh')}
-          ${mixin.flex('column')};
-          align-items: center;
-          justify-content: space-between;
-        `)}
+        position: relative; 
+        ${mixin.size('100%', '100vh')}
+        ${mixin.flex('column')}
+        align-items: center;
+        justify-content: space-between;
+      `)}
       `}
     >
       <MenuBar
@@ -170,4 +176,12 @@ export const SideMenu = props => {
       </MenuBar>
     </section>
   )
+}
+
+SideMenu.propTypes = {
+  isDisabled: PropTypes.bool.isRequired
+}
+
+SideMenu.defaultProps = {
+  isDisabled: false
 }

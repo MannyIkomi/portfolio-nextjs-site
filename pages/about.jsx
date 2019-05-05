@@ -28,6 +28,7 @@ const About = props => {
             <br /> adoring guncle.
           </h1>
         </header>
+        {/* USE CH UNITS TO MEASURE THE WIDTH OF ABOUT BLURBS? */}
         <p className={`bio`}>
           My background in design comes from a combination of technical training
           and formal education, including printing, prepress, problem solving
