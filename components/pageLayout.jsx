@@ -3,7 +3,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { css, jsx } from '@emotion/core'
-//
 
 // Components
 import { WithSwitchToggle } from './navigation/navigation'

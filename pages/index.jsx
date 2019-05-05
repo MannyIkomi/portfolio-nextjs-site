@@ -5,7 +5,7 @@ import axios from 'axios'
 
 // Styles
 import { css, jsx, Global } from '@emotion/core'
-import { GlobalStyles, mixin } from '../styles/index'
+import { GlobalStyles, mixin, typography, colors } from '../styles/index'
 
 // Components
 import HtmlHead from '../components/head'
@@ -39,7 +39,19 @@ const HomePage = props => {
   return (
     <Fragment>
       <PageLayout title={''} description={''} isSideMenuDisabled={false}>
-        <h1>the werk</h1>
+        <h1
+          css={css`
+            font-family: ${typography.serif};
+            font-weight: 400;
+            line-height: 0.75;
+
+            color: ${colors.darkGray};
+
+            margin: 0 2rem;
+          `}
+        >
+          the werk
+        </h1>
         <Gallery id={0}>
           {/* WithInteractiveLink render=ProjectImg */}
           {projects.map(project => (
