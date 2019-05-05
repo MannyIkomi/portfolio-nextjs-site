@@ -5,7 +5,7 @@ import { css, jsx } from '@emotion/core'
 
 // Components
 import Logo, { LogoTypeWide } from '../logo'
-import { MenuBar, MenuButton } from './navigation'
+import { MenuBar, MenuButton, NavContainer, NavLink } from './navigation'
 
 import { getPages } from '../../util/navigation'
 import { colors, measure, typography, mixin } from '../../styles'

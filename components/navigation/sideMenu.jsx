@@ -22,17 +22,19 @@ export const SideMenu = props => {
       css={css`
         display: none;
         ${mixin.desktopMediaSupportsGrid(`
-        position: relative; 
-        ${mixin.size('100%', '100vh')}
-        ${mixin.flex('column')}
-        align-items: center;
-        justify-content: space-between;
+          position: relative;        
+          ${mixin.size('100%', '100vh')}
+          ${mixin.flex('column')}
+          align-items: center;
+          justify-content: space-between;
       `)}
       `}
     >
       <MenuBar
         styles={css`
           position: fixed;
+          margin: 4rem auto;
+          // ${mixin.size('100%', '100%')}
         `}
       >
         <Logo lockup={`master`} />
