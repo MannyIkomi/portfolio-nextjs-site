@@ -5,7 +5,7 @@ import { colors, measure, mixin, typography } from '../../styles'
 import Link from 'next/link'
 import PropTypes from 'prop-types'
 
-import ProjectPage from '../../pages/portfolio'
+import ProjectPage from '../../pages/projects'
 import FillOverlay from '../overlay'
 
 const CoverCaption = props => {
@@ -110,8 +110,8 @@ export const ProjectCover = props => {
           onMouseLeave={handleMouseLeave || null}
         >
           <Link
-            href={`/portfolio/?slug=${slug}`}
-            as={`/portfolio/${slug.toLowerCase()}`}
+            href={`/projects/?slug=${slug}`}
+            as={`/projects/${slug.toLowerCase()}`}
           >
             <a
               // className="aspect link relative"

@@ -21,7 +21,7 @@ export const Logo = props => {
           object-fit: contain;
           ${mixin.size('100%', '100%')}
         `}
-        src={`static/logos/logo-${lockup || `master`}.svg`} // type = ['master','type','wide' ]
+        src={`/static/logos/logo-${lockup || `master`}.svg`} // type = ['master','type','wide' ]
         alt={`Manny Ikomi's Logo`}
       />
     </a>

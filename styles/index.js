@@ -63,16 +63,58 @@ export const mixin = {
   aspectRatioLetter: () => `height: 0; padding-bottom: calc(100% * (17 / 22));`
 }
 
+/* SASS syntax CTA Button
+.cta {
+  cursor: pointer;
+
+  @include header-style($futura);
+  font-size: 2rem;
+  font-weight: 800;
+
+  color: white;
+  background-color: $orange;
+
+  &:hover {
+    background-color: $deep-gray;
+  }
+  &.layout {
+    position: relative;
+    padding: 1rem 4rem;
+    margin: auto;
+  }
+  &::before,
+  &::after {
+    display: block;
+    position: absolute;
+    @include size(4rem, 100%);
+
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+
+  &::before {
+    content: '';
+    background-image: url('/static/motif-left.svg');
+    background-position: left bottom;
+    left: -1px;
+    bottom: 0;
+  }
+  &::after {
+    content: '';
+    background-image: url('/static/motif-right.svg');
+    background-position: right top;
+    right: -1px;
+    top: 0;
+  }
+}
+ */
+
 export const GlobalStyles = props => {
   // menubarPosition state to match the containing element margin?
   return (
     <Global
       styles={css`
         ${reset}
-        #__next {
-          margin-bottom: ${measure.menubarHeight};
-        }
-
         :root {
           font-size: 100%;
           font-family: ${typography.sans};
@@ -99,6 +141,8 @@ export const GlobalStyles = props => {
         h5 {
           line-height: 1.1;
           ${typography.sizeTransition}
+          font-family: ${typography.serif};
+          
         }
 
         p,
@@ -115,20 +159,26 @@ export const GlobalStyles = props => {
 
         @media screen and (min-width: 700px) {
           :root {
-            font-size: 106%;
+            font-size: 105%;
           }
           h1 {
             font-size: 3rem;
           }
+          h2 {
+            font-size: 2.5rem;
+          }
         }
-
+        
         @media screen and (min-width: 1100px) {
           :root {
-            font-size: 112%;
+            font-size: 110%;
           }
           h1 {
             font-size: 4rem;
           }
+                      h2 {
+                        font-size: 3rem;
+                      }
         }
       `}
     />

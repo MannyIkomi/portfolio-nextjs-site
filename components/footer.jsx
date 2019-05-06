@@ -3,13 +3,12 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { css, jsx } from '@emotion/core'
 
+// Components
 import { LogoMasterWhite } from './logo'
 
+//  Utility
 import { getYear } from '../util/dates'
-import { mixin, colors, typography } from '../styles'
-import { memberExpression } from '../node_modules/@babel/types'
-
-// import './footer.scss'
+import { mixin, colors, typography, measure } from '../styles'
 
 const socialMedia = [
   {
@@ -45,6 +44,7 @@ SocialIcon.propTypes = {
 }
 
 const Footer = props => {
+  const { styles } = props
   const inlineLinkStyles = css`
       text-decoration: underline;
       &:hover {
@@ -54,27 +54,29 @@ const Footer = props => {
 
   return (
     <footer // footer tag container
-      css={css`
-        ${mixin.flex('column')}
-        align-items: center;
-        justify-content: space-between;
+      css={[
+        css`
+          ${mixin.flex('column')}
+          align-items: center;
+          justify-content: space-between;
 
-        position: relative;
-        z-index: 0;
+          position: relative;
+          z-index: 0;
 
-        width: 100%;
-        min-height: 100vh;
-        padding: 1rem;
-        overflow: hidden;
+          width: 100%;
+          height: calc(100vh - ${measure.menubarHeight});
+          // min-height: 100vh;
+          padding: 1rem;
+          overflow: hidden;
 
-        color: ${colors.muteGray};
-        background-color: ${colors.darkGray};
+          color: ${colors.muteGray};
+          background-color: ${colors.darkGray};
 
-        section {
-          margin: 2rem 0;
-        }
+          section {
+            margin: 2rem 0;
+          }
 
-        ${mixin.tabletMedia(`
+          ${mixin.tabletMedia(`
           ${mixin.supportsGrid(`
             display: grid;
             grid-template-areas:
@@ -86,7 +88,9 @@ const Footer = props => {
             justify-content: stretch;
           `)}
         `)}
-      `}
+        `,
+        styles
+      ]}
     >
       <div // quote
         css={css`
@@ -240,9 +244,9 @@ const Footer = props => {
             {' '}
             I code too!
           </a>
-          {` `}🛠
-          <br />
-          My portfolio site is developed with{` `} <br />
+          {` `}🦄
+          <br />I built my portfolio site with
+          {` `} <br />
           <a href="https://reactjs.org/" css={inlineLinkStyles}>
             React
           </a>
@@ -279,6 +283,10 @@ const Footer = props => {
       </p>
     </footer>
   )
+}
+
+Footer.propTypes = {
+  styles: PropTypes.any
 }
 
 export default Footer
