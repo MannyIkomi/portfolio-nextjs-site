@@ -1,26 +1,4 @@
-# portfolio-nextjs-site
-
-[NextJS Docs](https://nextjs.org/docs/)
-
-## Tests
-
-- [x] util/dates.js
-
-## Components
-
-- [ ] `MenuBar`
-  - logotype
-  - menu button + animation
-  - [ ] `Navigation`
-    - [ ] `NavLink`
-- [ ] `Footer`
-
-- [ ] `Gallery`
-  - [ ] `ProjectPreview`
-    - cover img
-    - Project Preview:hover
-    - title
-    - subtitle
+# [Manny's Portfolio](https://manny-ikomi-portfolio.herokuapp.com)
 
 ## [Behance API](api.behance.com) Integration
 
@@ -32,3 +10,7 @@
   - description (for seo)
   - related project
 - [ ] render once on next.js server to reduce api calls
+
+## [NextJS Docs](https://nextjs.org/docs/)
+
+## [GraphQL w/ Express](https://graphql.org/graphql-js/running-an-express-graphql-server/)
