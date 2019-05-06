@@ -2,6 +2,141 @@ export const mockGraphqlData = {
   data: {
     projects: [
       {
+        id: '79828263',
+        name: 'Bean',
+        description: 'Coffee Company Branding & Packaging',
+        slug: 'Bean',
+        fields: ['Packaging', 'Graphic Design', 'Branding'],
+        tags: [
+          'Coffee',
+          'jacqueline casey ',
+          'coffee beans',
+          'flavors',
+          'keurig',
+          'K-Cup'
+        ],
+        covers: {
+          original:
+            'https://mir-s3-cdn-cf.behance.net/projects/original/7d70b779828263.Y3JvcCwxMzgzLDEwODIsNiww.png',
+          _404:
+            'https://mir-s3-cdn-cf.behance.net/projects/404/7d70b779828263.Y3JvcCwxMzgzLDEwODIsNiww.png',
+          _808:
+            'https://mir-s3-cdn-cf.behance.net/projects/808/7d70b779828263.Y3JvcCwxMzgzLDEwODIsNiww.png'
+        },
+        modules: [
+          {
+            type: 'image',
+            sizes: {
+              original:
+                'https://mir-s3-cdn-cf.behance.net/project_modules/source/97c40679828263.5ccfad3c7cf24.png',
+              _1400:
+                'https://mir-s3-cdn-cf.behance.net/project_modules/1400/97c40679828263.5ccfad3c7cf24.png',
+              disp:
+                'https://mir-s3-cdn-cf.behance.net/project_modules/disp/97c40679828263.5ccfad3c7cf24.png'
+            }
+          },
+          {
+            type: 'image',
+            sizes: {
+              original:
+                'https://mir-s3-cdn-cf.behance.net/project_modules/source/c0e1fb79828263.5ccfad3c7b176.png',
+              _1400:
+                'https://mir-s3-cdn-cf.behance.net/project_modules/1400/c0e1fb79828263.5ccfad3c7b176.png',
+              disp:
+                'https://mir-s3-cdn-cf.behance.net/project_modules/disp/c0e1fb79828263.5ccfad3c7b176.png'
+            }
+          },
+          {
+            type: 'image',
+            sizes: {
+              original:
+                'https://mir-s3-cdn-cf.behance.net/project_modules/source/6fd64c79828263.5ccfad3c7c3f7.png',
+              _1400:
+                'https://mir-s3-cdn-cf.behance.net/project_modules/1400/6fd64c79828263.5ccfad3c7c3f7.png',
+              disp:
+                'https://mir-s3-cdn-cf.behance.net/project_modules/disp/6fd64c79828263.5ccfad3c7c3f7.png'
+            }
+          },
+          {
+            type: 'image',
+            sizes: {
+              original:
+                'https://mir-s3-cdn-cf.behance.net/project_modules/source/6cab7279828263.5ccfad3c7c0ea.png',
+              _1400:
+                'https://mir-s3-cdn-cf.behance.net/project_modules/1400/6cab7279828263.5ccfad3c7c0ea.png',
+              disp:
+                'https://mir-s3-cdn-cf.behance.net/project_modules/disp/6cab7279828263.5ccfad3c7c0ea.png'
+            }
+          },
+          {
+            type: 'image',
+            sizes: {
+              original:
+                'https://mir-s3-cdn-cf.behance.net/project_modules/source/c5252379828263.5ccfad3c7d316.png',
+              _1400:
+                'https://mir-s3-cdn-cf.behance.net/project_modules/1400/c5252379828263.5ccfad3c7d316.png',
+              disp:
+                'https://mir-s3-cdn-cf.behance.net/project_modules/disp/c5252379828263.5ccfad3c7d316.png'
+            }
+          },
+          {
+            type: 'image',
+            sizes: {
+              original:
+                'https://mir-s3-cdn-cf.behance.net/project_modules/source/d1289979828263.5ccfad3c7ccbf.png',
+              _1400:
+                'https://mir-s3-cdn-cf.behance.net/project_modules/1400/d1289979828263.5ccfad3c7ccbf.png',
+              disp:
+                'https://mir-s3-cdn-cf.behance.net/project_modules/disp/d1289979828263.5ccfad3c7ccbf.png'
+            }
+          },
+          {
+            type: 'image',
+            sizes: {
+              original:
+                'https://mir-s3-cdn-cf.behance.net/project_modules/source/6c0dcc79828263.5ccfad3c7bb42.png',
+              _1400:
+                'https://mir-s3-cdn-cf.behance.net/project_modules/1400/6c0dcc79828263.5ccfad3c7bb42.png',
+              disp:
+                'https://mir-s3-cdn-cf.behance.net/project_modules/disp/6c0dcc79828263.5ccfad3c7bb42.png'
+            }
+          },
+          {
+            type: 'image',
+            sizes: {
+              original:
+                'https://mir-s3-cdn-cf.behance.net/project_modules/source/92500e79828263.5ccfad3c7b4ec.png',
+              _1400:
+                'https://mir-s3-cdn-cf.behance.net/project_modules/1400/92500e79828263.5ccfad3c7b4ec.png',
+              disp:
+                'https://mir-s3-cdn-cf.behance.net/project_modules/disp/92500e79828263.5ccfad3c7b4ec.png'
+            }
+          },
+          {
+            type: 'image',
+            sizes: {
+              original:
+                'https://mir-s3-cdn-cf.behance.net/project_modules/source/c3e2af79828263.5ccfad3c7bdb0.png',
+              _1400:
+                'https://mir-s3-cdn-cf.behance.net/project_modules/1400/c3e2af79828263.5ccfad3c7bdb0.png',
+              disp:
+                'https://mir-s3-cdn-cf.behance.net/project_modules/disp/c3e2af79828263.5ccfad3c7bdb0.png'
+            }
+          },
+          {
+            type: 'image',
+            sizes: {
+              original:
+                'https://mir-s3-cdn-cf.behance.net/project_modules/source/ad9b9e79828263.5ccfad3c7c66a.png',
+              _1400:
+                'https://mir-s3-cdn-cf.behance.net/project_modules/1400/ad9b9e79828263.5ccfad3c7c66a.png',
+              disp:
+                'https://mir-s3-cdn-cf.behance.net/project_modules/disp/ad9b9e79828263.5ccfad3c7c66a.png'
+            }
+          }
+        ]
+      },
+      {
         id: '75805377',
         name: 'An Empire of Shattered Glass',
         description: 'Short Story Collection Book Cover',
@@ -191,92 +326,84 @@ export const mockGraphqlData = {
           'cashflow',
           'personal finance',
           'millennial',
-          'magazine'
+          'magazine',
+          'Beyonce',
+          'money',
+          'formation'
         ],
         covers: {
           original:
-            'https://mir-s3-cdn-cf.behance.net/projects/original/c49aa175810981.Y3JvcCwxMzgzLDEwODIsNiww.png',
+            'https://mir-s3-cdn-cf.behance.net/projects/original/7f0f3375810981.Y3JvcCwxMzgzLDEwODIsNiww.png',
           _404:
-            'https://mir-s3-cdn-cf.behance.net/projects/404/c49aa175810981.Y3JvcCwxMzgzLDEwODIsNiww.png',
+            'https://mir-s3-cdn-cf.behance.net/projects/404/7f0f3375810981.Y3JvcCwxMzgzLDEwODIsNiww.png',
           _808:
-            'https://mir-s3-cdn-cf.behance.net/projects/808/c49aa175810981.Y3JvcCwxMzgzLDEwODIsNiww.png'
+            'https://mir-s3-cdn-cf.behance.net/projects/808/7f0f3375810981.Y3JvcCwxMzgzLDEwODIsNiww.png'
         },
         modules: [
           {
             type: 'image',
             sizes: {
               original:
-                'https://mir-s3-cdn-cf.behance.net/project_modules/source/8b19b175810981.5c57a6c9b0dc9.png',
+                'https://mir-s3-cdn-cf.behance.net/project_modules/source/8df71875810981.5ccfa96306061.png',
               _1400:
-                'https://mir-s3-cdn-cf.behance.net/project_modules/1400/8b19b175810981.5c57a6c9b0dc9.png',
+                'https://mir-s3-cdn-cf.behance.net/project_modules/1400/8df71875810981.5ccfa96306061.png',
               disp:
-                'https://mir-s3-cdn-cf.behance.net/project_modules/disp/8b19b175810981.5c57a6c9b0dc9.png'
+                'https://mir-s3-cdn-cf.behance.net/project_modules/disp/8df71875810981.5ccfa96306061.png'
             }
           },
           {
             type: 'image',
             sizes: {
               original:
-                'https://mir-s3-cdn-cf.behance.net/project_modules/source/18eb1c75810981.5c57a6c9af919.png',
+                'https://mir-s3-cdn-cf.behance.net/project_modules/source/6929c275810981.5ccfa96305acf.png',
               _1400:
-                'https://mir-s3-cdn-cf.behance.net/project_modules/1400/18eb1c75810981.5c57a6c9af919.png',
+                'https://mir-s3-cdn-cf.behance.net/project_modules/1400/6929c275810981.5ccfa96305acf.png',
               disp:
-                'https://mir-s3-cdn-cf.behance.net/project_modules/disp/18eb1c75810981.5c57a6c9af919.png'
+                'https://mir-s3-cdn-cf.behance.net/project_modules/disp/6929c275810981.5ccfa96305acf.png'
             }
           },
           {
             type: 'image',
             sizes: {
               original:
-                'https://mir-s3-cdn-cf.behance.net/project_modules/source/4d616475810981.5c57a6c9af4cc.png',
+                'https://mir-s3-cdn-cf.behance.net/project_modules/source/fc226d75810981.5ccfa9630573d.png',
               _1400:
-                'https://mir-s3-cdn-cf.behance.net/project_modules/1400/4d616475810981.5c57a6c9af4cc.png',
+                'https://mir-s3-cdn-cf.behance.net/project_modules/1400/fc226d75810981.5ccfa9630573d.png',
               disp:
-                'https://mir-s3-cdn-cf.behance.net/project_modules/disp/4d616475810981.5c57a6c9af4cc.png'
+                'https://mir-s3-cdn-cf.behance.net/project_modules/disp/fc226d75810981.5ccfa9630573d.png'
             }
           },
           {
             type: 'image',
             sizes: {
               original:
-                'https://mir-s3-cdn-cf.behance.net/project_modules/source/58f8bb75810981.5c57a6c9b0465.png',
+                'https://mir-s3-cdn-cf.behance.net/project_modules/source/5318f475810981.5ccfa9630632f.png',
               _1400:
-                'https://mir-s3-cdn-cf.behance.net/project_modules/1400/58f8bb75810981.5c57a6c9b0465.png',
+                'https://mir-s3-cdn-cf.behance.net/project_modules/1400/5318f475810981.5ccfa9630632f.png',
               disp:
-                'https://mir-s3-cdn-cf.behance.net/project_modules/disp/58f8bb75810981.5c57a6c9b0465.png'
+                'https://mir-s3-cdn-cf.behance.net/project_modules/disp/5318f475810981.5ccfa9630632f.png'
             }
           },
           {
             type: 'image',
             sizes: {
               original:
-                'https://mir-s3-cdn-cf.behance.net/project_modules/source/d44ef675810981.5c57a6c9afbbc.png',
+                'https://mir-s3-cdn-cf.behance.net/project_modules/source/67d6ac75810981.5ccfa96306d12.png',
               _1400:
-                'https://mir-s3-cdn-cf.behance.net/project_modules/1400/d44ef675810981.5c57a6c9afbbc.png',
+                'https://mir-s3-cdn-cf.behance.net/project_modules/1400/67d6ac75810981.5ccfa96306d12.png',
               disp:
-                'https://mir-s3-cdn-cf.behance.net/project_modules/disp/d44ef675810981.5c57a6c9afbbc.png'
+                'https://mir-s3-cdn-cf.behance.net/project_modules/disp/67d6ac75810981.5ccfa96306d12.png'
             }
           },
           {
             type: 'image',
             sizes: {
               original:
-                'https://mir-s3-cdn-cf.behance.net/project_modules/source/dc9d8775810981.5c57a6c9b1318.png',
+                'https://mir-s3-cdn-cf.behance.net/project_modules/source/8c0c8f75810981.5ccfa96306706.png',
               _1400:
-                'https://mir-s3-cdn-cf.behance.net/project_modules/1400/dc9d8775810981.5c57a6c9b1318.png',
+                'https://mir-s3-cdn-cf.behance.net/project_modules/1400/8c0c8f75810981.5ccfa96306706.png',
               disp:
-                'https://mir-s3-cdn-cf.behance.net/project_modules/disp/dc9d8775810981.5c57a6c9b1318.png'
-            }
-          },
-          {
-            type: 'image',
-            sizes: {
-              original:
-                'https://mir-s3-cdn-cf.behance.net/project_modules/source/eda61675810981.5c57a6c9b084b.png',
-              _1400:
-                'https://mir-s3-cdn-cf.behance.net/project_modules/1400/eda61675810981.5c57a6c9b084b.png',
-              disp:
-                'https://mir-s3-cdn-cf.behance.net/project_modules/disp/eda61675810981.5c57a6c9b084b.png'
+                'https://mir-s3-cdn-cf.behance.net/project_modules/disp/8c0c8f75810981.5ccfa96306706.png'
             }
           }
         ]
@@ -302,154 +429,88 @@ export const mockGraphqlData = {
             type: 'image',
             sizes: {
               original:
-                'https://mir-s3-cdn-cf.behance.net/project_modules/source/32a2be75799775.5c573d495faec.png',
+                'https://mir-s3-cdn-cf.behance.net/project_modules/source/7ebcd675799775.5ccfafaf05d78.png',
               _1400:
-                'https://mir-s3-cdn-cf.behance.net/project_modules/1400/32a2be75799775.5c573d495faec.png',
+                'https://mir-s3-cdn-cf.behance.net/project_modules/1400/7ebcd675799775.5ccfafaf05d78.png',
               disp:
-                'https://mir-s3-cdn-cf.behance.net/project_modules/disp/32a2be75799775.5c573d495faec.png'
+                'https://mir-s3-cdn-cf.behance.net/project_modules/disp/7ebcd675799775.5ccfafaf05d78.png'
             }
           },
           {
             type: 'image',
             sizes: {
               original:
-                'https://mir-s3-cdn-cf.behance.net/project_modules/source/2cec9f75799775.5c573d495d114.png',
+                'https://mir-s3-cdn-cf.behance.net/project_modules/source/429eec75799775.5ccfafaf06339.png',
               _1400:
-                'https://mir-s3-cdn-cf.behance.net/project_modules/1400/2cec9f75799775.5c573d495d114.png',
+                'https://mir-s3-cdn-cf.behance.net/project_modules/1400/429eec75799775.5ccfafaf06339.png',
               disp:
-                'https://mir-s3-cdn-cf.behance.net/project_modules/disp/2cec9f75799775.5c573d495d114.png'
+                'https://mir-s3-cdn-cf.behance.net/project_modules/disp/429eec75799775.5ccfafaf06339.png'
             }
           },
           {
             type: 'image',
             sizes: {
               original:
-                'https://mir-s3-cdn-cf.behance.net/project_modules/source/e7354b75799775.5c574440c1038.png',
+                'https://mir-s3-cdn-cf.behance.net/project_modules/source/da067e75799775.5ccfafaf06068.png',
               _1400:
-                'https://mir-s3-cdn-cf.behance.net/project_modules/1400/e7354b75799775.5c574440c1038.png',
+                'https://mir-s3-cdn-cf.behance.net/project_modules/1400/da067e75799775.5ccfafaf06068.png',
               disp:
-                'https://mir-s3-cdn-cf.behance.net/project_modules/disp/e7354b75799775.5c574440c1038.png'
+                'https://mir-s3-cdn-cf.behance.net/project_modules/disp/da067e75799775.5ccfafaf06068.png'
             }
           },
           {
             type: 'image',
             sizes: {
               original:
-                'https://mir-s3-cdn-cf.behance.net/project_modules/source/3c7cc675799775.5c573d495f18f.png',
+                'https://mir-s3-cdn-cf.behance.net/project_modules/source/01516175799775.5ccfafaf054a3.png',
               _1400:
-                'https://mir-s3-cdn-cf.behance.net/project_modules/1400/3c7cc675799775.5c573d495f18f.png',
+                'https://mir-s3-cdn-cf.behance.net/project_modules/1400/01516175799775.5ccfafaf054a3.png',
               disp:
-                'https://mir-s3-cdn-cf.behance.net/project_modules/disp/3c7cc675799775.5c573d495f18f.png'
+                'https://mir-s3-cdn-cf.behance.net/project_modules/disp/01516175799775.5ccfafaf054a3.png'
             }
           },
           {
             type: 'image',
             sizes: {
               original:
-                'https://mir-s3-cdn-cf.behance.net/project_modules/source/00617975799775.5c573d495ef4c.png',
+                'https://mir-s3-cdn-cf.behance.net/project_modules/source/7ec86e75799775.5ccfafaf06769.png',
               _1400:
-                'https://mir-s3-cdn-cf.behance.net/project_modules/1400/00617975799775.5c573d495ef4c.png',
+                'https://mir-s3-cdn-cf.behance.net/project_modules/1400/7ec86e75799775.5ccfafaf06769.png',
               disp:
-                'https://mir-s3-cdn-cf.behance.net/project_modules/disp/00617975799775.5c573d495ef4c.png'
+                'https://mir-s3-cdn-cf.behance.net/project_modules/disp/7ec86e75799775.5ccfafaf06769.png'
             }
           },
           {
             type: 'image',
             sizes: {
               original:
-                'https://mir-s3-cdn-cf.behance.net/project_modules/source/0be82975799775.5c573d495f87e.png',
+                'https://mir-s3-cdn-cf.behance.net/project_modules/source/929f5175799775.5ccfafaf05a53.png',
               _1400:
-                'https://mir-s3-cdn-cf.behance.net/project_modules/1400/0be82975799775.5c573d495f87e.png',
+                'https://mir-s3-cdn-cf.behance.net/project_modules/1400/929f5175799775.5ccfafaf05a53.png',
               disp:
-                'https://mir-s3-cdn-cf.behance.net/project_modules/disp/0be82975799775.5c573d495f87e.png'
+                'https://mir-s3-cdn-cf.behance.net/project_modules/disp/929f5175799775.5ccfafaf05a53.png'
             }
           },
           {
             type: 'image',
             sizes: {
               original:
-                'https://mir-s3-cdn-cf.behance.net/project_modules/source/f19a5775799775.5c573d495df32.png',
+                'https://mir-s3-cdn-cf.behance.net/project_modules/source/722fc375799775.5ccfafaf06a7e.png',
               _1400:
-                'https://mir-s3-cdn-cf.behance.net/project_modules/1400/f19a5775799775.5c573d495df32.png',
+                'https://mir-s3-cdn-cf.behance.net/project_modules/1400/722fc375799775.5ccfafaf06a7e.png',
               disp:
-                'https://mir-s3-cdn-cf.behance.net/project_modules/disp/f19a5775799775.5c573d495df32.png'
+                'https://mir-s3-cdn-cf.behance.net/project_modules/disp/722fc375799775.5ccfafaf06a7e.png'
             }
           },
           {
             type: 'image',
             sizes: {
               original:
-                'https://mir-s3-cdn-cf.behance.net/project_modules/source/bc73f775799775.5c573d495e62b.png',
+                'https://mir-s3-cdn-cf.behance.net/project_modules/source/00425e75799775.5ccfafaf04d9a.png',
               _1400:
-                'https://mir-s3-cdn-cf.behance.net/project_modules/1400/bc73f775799775.5c573d495e62b.png',
+                'https://mir-s3-cdn-cf.behance.net/project_modules/1400/00425e75799775.5ccfafaf04d9a.png',
               disp:
-                'https://mir-s3-cdn-cf.behance.net/project_modules/disp/bc73f775799775.5c573d495e62b.png'
-            }
-          },
-          {
-            type: 'image',
-            sizes: {
-              original:
-                'https://mir-s3-cdn-cf.behance.net/project_modules/source/290a9f75799775.5c573d495cc6c.png',
-              _1400:
-                'https://mir-s3-cdn-cf.behance.net/project_modules/1400/290a9f75799775.5c573d495cc6c.png',
-              disp:
-                'https://mir-s3-cdn-cf.behance.net/project_modules/disp/290a9f75799775.5c573d495cc6c.png'
-            }
-          },
-          {
-            type: 'image',
-            sizes: {
-              original:
-                'https://mir-s3-cdn-cf.behance.net/project_modules/source/feb43575799775.5c573d495e9fb.png',
-              _1400:
-                'https://mir-s3-cdn-cf.behance.net/project_modules/1400/feb43575799775.5c573d495e9fb.png',
-              disp:
-                'https://mir-s3-cdn-cf.behance.net/project_modules/disp/feb43575799775.5c573d495e9fb.png'
-            }
-          },
-          {
-            type: 'image',
-            sizes: {
-              original:
-                'https://mir-s3-cdn-cf.behance.net/project_modules/source/e07ee675799775.5c573d495f45d.png',
-              _1400:
-                'https://mir-s3-cdn-cf.behance.net/project_modules/1400/e07ee675799775.5c573d495f45d.png',
-              disp:
-                'https://mir-s3-cdn-cf.behance.net/project_modules/disp/e07ee675799775.5c573d495f45d.png'
-            }
-          },
-          {
-            type: 'image',
-            sizes: {
-              original:
-                'https://mir-s3-cdn-cf.behance.net/project_modules/source/cda82475799775.5c573d495daec.png',
-              _1400:
-                'https://mir-s3-cdn-cf.behance.net/project_modules/1400/cda82475799775.5c573d495daec.png',
-              disp:
-                'https://mir-s3-cdn-cf.behance.net/project_modules/disp/cda82475799775.5c573d495daec.png'
-            }
-          },
-          {
-            type: 'image',
-            sizes: {
-              original:
-                'https://mir-s3-cdn-cf.behance.net/project_modules/source/5fa9e575799775.5c573d495fd55.png',
-              _1400:
-                'https://mir-s3-cdn-cf.behance.net/project_modules/1400/5fa9e575799775.5c573d495fd55.png',
-              disp:
-                'https://mir-s3-cdn-cf.behance.net/project_modules/disp/5fa9e575799775.5c573d495fd55.png'
-            }
-          },
-          {
-            type: 'image',
-            sizes: {
-              original:
-                'https://mir-s3-cdn-cf.behance.net/project_modules/source/c29d6b75799775.5c573d495d849.png',
-              _1400:
-                'https://mir-s3-cdn-cf.behance.net/project_modules/1400/c29d6b75799775.5c573d495d849.png',
-              disp:
-                'https://mir-s3-cdn-cf.behance.net/project_modules/disp/c29d6b75799775.5c573d495d849.png'
+                'https://mir-s3-cdn-cf.behance.net/project_modules/disp/00425e75799775.5ccfafaf04d9a.png'
             }
           },
           {
@@ -462,17 +523,17 @@ export const mockGraphqlData = {
       },
       {
         id: '52442951',
-        name: 'Coca Cola Logo',
-        description: 'International Style redesign using the Coca-Cola brand',
-        slug: 'Coca-Cola-Logo',
+        name: 'Coca-Cola',
+        description: 'International Typographic Style Logo Redesign',
+        slug: 'Coca-Cola',
         fields: ['Branding', 'Graphic Design'],
         tags: [
-          'Coca Cola Logo',
           'international style',
           'swiss design',
           'Logo Design',
           'redesign',
-          'branding '
+          'branding ',
+          'Coca-Cola'
         ],
         covers: {
           original:
@@ -487,121 +548,110 @@ export const mockGraphqlData = {
             type: 'image',
             sizes: {
               original:
-                'https://mir-s3-cdn-cf.behance.net/project_modules/source/ef881852442951.5c3fdea081534.png',
+                'https://mir-s3-cdn-cf.behance.net/project_modules/source/1b5fd452442951.5ccfa713b92df.png',
               _1400:
-                'https://mir-s3-cdn-cf.behance.net/project_modules/1400/ef881852442951.5c3fdea081534.png',
+                'https://mir-s3-cdn-cf.behance.net/project_modules/1400/1b5fd452442951.5ccfa713b92df.png',
               disp:
-                'https://mir-s3-cdn-cf.behance.net/project_modules/disp/ef881852442951.5c3fdea081534.png'
+                'https://mir-s3-cdn-cf.behance.net/project_modules/disp/1b5fd452442951.5ccfa713b92df.png'
             }
           },
           {
             type: 'image',
             sizes: {
               original:
-                'https://mir-s3-cdn-cf.behance.net/project_modules/source/b7b7fe52442951.5c3fdea080b77.png',
+                'https://mir-s3-cdn-cf.behance.net/project_modules/source/64707252442951.5ccfa7b46ea6b.png',
               _1400:
-                'https://mir-s3-cdn-cf.behance.net/project_modules/1400/b7b7fe52442951.5c3fdea080b77.png',
+                'https://mir-s3-cdn-cf.behance.net/project_modules/1400/64707252442951.5ccfa7b46ea6b.png',
               disp:
-                'https://mir-s3-cdn-cf.behance.net/project_modules/disp/b7b7fe52442951.5c3fdea080b77.png'
+                'https://mir-s3-cdn-cf.behance.net/project_modules/disp/64707252442951.5ccfa7b46ea6b.png'
             }
           },
           {
             type: 'image',
             sizes: {
               original:
-                'https://mir-s3-cdn-cf.behance.net/project_modules/source/c811d552442951.5c3fdd9a076ed.png',
+                'https://mir-s3-cdn-cf.behance.net/project_modules/source/50c0ef52442951.5ccfa7b46de14.png',
               _1400:
-                'https://mir-s3-cdn-cf.behance.net/project_modules/1400/c811d552442951.5c3fdd9a076ed.png',
+                'https://mir-s3-cdn-cf.behance.net/project_modules/1400/50c0ef52442951.5ccfa7b46de14.png',
               disp:
-                'https://mir-s3-cdn-cf.behance.net/project_modules/disp/c811d552442951.5c3fdd9a076ed.png'
+                'https://mir-s3-cdn-cf.behance.net/project_modules/disp/50c0ef52442951.5ccfa7b46de14.png'
             }
           },
           {
             type: 'image',
             sizes: {
               original:
-                'https://mir-s3-cdn-cf.behance.net/project_modules/source/83ac5952442951.5c3fdd9a0653d.png',
+                'https://mir-s3-cdn-cf.behance.net/project_modules/source/c807a152442951.5ccfa7b46e6a4.png',
               _1400:
-                'https://mir-s3-cdn-cf.behance.net/project_modules/1400/83ac5952442951.5c3fdd9a0653d.png',
+                'https://mir-s3-cdn-cf.behance.net/project_modules/1400/c807a152442951.5ccfa7b46e6a4.png',
               disp:
-                'https://mir-s3-cdn-cf.behance.net/project_modules/disp/83ac5952442951.5c3fdd9a0653d.png'
+                'https://mir-s3-cdn-cf.behance.net/project_modules/disp/c807a152442951.5ccfa7b46e6a4.png'
             }
           },
           {
             type: 'image',
             sizes: {
               original:
-                'https://mir-s3-cdn-cf.behance.net/project_modules/source/722fd452442951.5c3fdd9a07c31.png',
+                'https://mir-s3-cdn-cf.behance.net/project_modules/source/4a9c8152442951.5ccfa7b46e453.png',
               _1400:
-                'https://mir-s3-cdn-cf.behance.net/project_modules/1400/722fd452442951.5c3fdd9a07c31.png',
+                'https://mir-s3-cdn-cf.behance.net/project_modules/1400/4a9c8152442951.5ccfa7b46e453.png',
               disp:
-                'https://mir-s3-cdn-cf.behance.net/project_modules/disp/722fd452442951.5c3fdd9a07c31.png'
+                'https://mir-s3-cdn-cf.behance.net/project_modules/disp/4a9c8152442951.5ccfa7b46e453.png'
             }
           },
           {
             type: 'image',
             sizes: {
               original:
-                'https://mir-s3-cdn-cf.behance.net/project_modules/source/ad209f52442951.5c3fdd9a06ec4.png',
+                'https://mir-s3-cdn-cf.behance.net/project_modules/source/fc10f952442951.5ccfa7b46f0ee.png',
               _1400:
-                'https://mir-s3-cdn-cf.behance.net/project_modules/1400/ad209f52442951.5c3fdd9a06ec4.png',
+                'https://mir-s3-cdn-cf.behance.net/project_modules/1400/fc10f952442951.5ccfa7b46f0ee.png',
               disp:
-                'https://mir-s3-cdn-cf.behance.net/project_modules/disp/ad209f52442951.5c3fdd9a06ec4.png'
+                'https://mir-s3-cdn-cf.behance.net/project_modules/disp/fc10f952442951.5ccfa7b46f0ee.png'
             }
           },
           {
             type: 'image',
             sizes: {
               original:
-                'https://mir-s3-cdn-cf.behance.net/project_modules/source/f33bb752442951.5c3fdd9a0735d.png',
+                'https://mir-s3-cdn-cf.behance.net/project_modules/source/88e05652442951.5ccfa7b46d50a.png',
               _1400:
-                'https://mir-s3-cdn-cf.behance.net/project_modules/1400/f33bb752442951.5c3fdd9a0735d.png',
+                'https://mir-s3-cdn-cf.behance.net/project_modules/1400/88e05652442951.5ccfa7b46d50a.png',
               disp:
-                'https://mir-s3-cdn-cf.behance.net/project_modules/disp/f33bb752442951.5c3fdd9a0735d.png'
+                'https://mir-s3-cdn-cf.behance.net/project_modules/disp/88e05652442951.5ccfa7b46d50a.png'
             }
           },
           {
             type: 'image',
             sizes: {
               original:
-                'https://mir-s3-cdn-cf.behance.net/project_modules/source/eb369c52442951.5c3fdd9a06855.png',
+                'https://mir-s3-cdn-cf.behance.net/project_modules/source/ba83d652442951.5ccfa7b46db02.png',
               _1400:
-                'https://mir-s3-cdn-cf.behance.net/project_modules/1400/eb369c52442951.5c3fdd9a06855.png',
+                'https://mir-s3-cdn-cf.behance.net/project_modules/1400/ba83d652442951.5ccfa7b46db02.png',
               disp:
-                'https://mir-s3-cdn-cf.behance.net/project_modules/disp/eb369c52442951.5c3fdd9a06855.png'
+                'https://mir-s3-cdn-cf.behance.net/project_modules/disp/ba83d652442951.5ccfa7b46db02.png'
             }
           },
           {
             type: 'image',
             sizes: {
               original:
-                'https://mir-s3-cdn-cf.behance.net/project_modules/source/d5aaf452442951.5c3fdd9a05443.png',
+                'https://mir-s3-cdn-cf.behance.net/project_modules/source/8bb54852442951.5ccfa7b46d201.png',
               _1400:
-                'https://mir-s3-cdn-cf.behance.net/project_modules/1400/d5aaf452442951.5c3fdd9a05443.png',
+                'https://mir-s3-cdn-cf.behance.net/project_modules/1400/8bb54852442951.5ccfa7b46d201.png',
               disp:
-                'https://mir-s3-cdn-cf.behance.net/project_modules/disp/d5aaf452442951.5c3fdd9a05443.png'
+                'https://mir-s3-cdn-cf.behance.net/project_modules/disp/8bb54852442951.5ccfa7b46d201.png'
             }
           },
           {
             type: 'image',
             sizes: {
               original:
-                'https://mir-s3-cdn-cf.behance.net/project_modules/source/b700c552442951.5c3fdd9a050b6.png',
+                'https://mir-s3-cdn-cf.behance.net/project_modules/source/7bf18752442951.5ccfa7f1168c0.png',
               _1400:
-                'https://mir-s3-cdn-cf.behance.net/project_modules/1400/b700c552442951.5c3fdd9a050b6.png',
+                'https://mir-s3-cdn-cf.behance.net/project_modules/1400/7bf18752442951.5ccfa7f1168c0.png',
               disp:
-                'https://mir-s3-cdn-cf.behance.net/project_modules/disp/b700c552442951.5c3fdd9a050b6.png'
-            }
-          },
-          {
-            type: 'image',
-            sizes: {
-              original:
-                'https://mir-s3-cdn-cf.behance.net/project_modules/source/188d2852442951.5c3fdd9a05784.png',
-              _1400:
-                'https://mir-s3-cdn-cf.behance.net/project_modules/1400/188d2852442951.5c3fdd9a05784.png',
-              disp:
-                'https://mir-s3-cdn-cf.behance.net/project_modules/disp/188d2852442951.5c3fdd9a05784.png'
+                'https://mir-s3-cdn-cf.behance.net/project_modules/disp/7bf18752442951.5ccfa7f1168c0.png'
             }
           }
         ]
@@ -609,5 +659,4 @@ export const mockGraphqlData = {
     ]
   }
 }
-
 export default mockGraphqlData
