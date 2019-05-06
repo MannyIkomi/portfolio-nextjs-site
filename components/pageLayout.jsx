@@ -12,7 +12,7 @@ import HtmlHead from './head'
 import Footer from './footer'
 
 // Styling
-import { GlobalStyles, mixin, color, typography, measure } from '../styles'
+import { GlobalStyles, mixin, colors, typography, measure } from '../styles'
 
 const shouldShowSideMenuGrid = (isSideMenuDisabled = false) => {
   if (isSideMenuDisabled === true) {
@@ -45,6 +45,7 @@ const PageLayout = props => {
     <div
       css={css`
         margin: 0 0 ${measure.menubarHeight} 0;
+        background-color: ${colors.muteGray};
         @media (hover: hover), (${measure.tabletMediaWidth}) {
           margin: ${measure.menubarHeight} 0 0 0;
         }

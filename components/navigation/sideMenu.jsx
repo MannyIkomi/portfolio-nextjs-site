@@ -23,10 +23,13 @@ export const SideMenu = props => {
         display: none;
         ${mixin.desktopMediaSupportsGrid(`
           position: relative;        
-          ${mixin.size('100%', '100vh')}
+          // ${mixin.size('100%', '100vh')}
+          min-height: 100%;
           ${mixin.flex('column')}
           align-items: center;
           justify-content: space-between;
+
+          background-color: ${colors.muteGray};
       `)}
       `}
     >

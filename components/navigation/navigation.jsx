@@ -34,6 +34,29 @@ export const NavLink = props => {
   ))
 }
 
+export const InlineLink = props => {
+  const { href, text, styleOverrides } = props
+
+  const baseStyle = css`
+    display: inline-block;
+    text-decoration: underline;
+    &:hover {
+      color: ${colors.orange};
+    }
+  }`
+
+  return (
+    <a href={href} css={[baseStyle, styleOverrides]}>
+      {props.children || text}
+    </a>
+  )
+}
+InlineLink.propTypes = {
+  href: PropTypes.string.isRequired,
+  text: PropTypes.string.isRequired,
+  styleOverrides: PropTypes.any
+}
+
 export const NavContainer = props => {
   const { styles } = props
   return <nav css={styles}>{props.children}</nav>

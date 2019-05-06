@@ -5,9 +5,10 @@ import { css, jsx } from '@emotion/core'
 //
 // Components
 import PageLayout from '../components/pageLayout'
+import { InlineLink } from '../components/navigation/navigation'
 //
 // Styles
-import { mixin, color, typography } from '../styles'
+import { mixin, color, typography, colors } from '../styles'
 //
 const About = props => {
   return (
@@ -17,33 +18,113 @@ const About = props => {
           skills and know-how required to take design ideas and develop them
           into a high quality product`}
     >
-      <section className={`about viewport`}>
+      <section
+        // className={`about viewport`}
+        css={css`
+          display: flex;
+          ${mixin.flex('column')};
+          background-color: ${colors.darkGray};
+          min-height: 100vh;
+          header {
+            padding: 0;
+          }
+          p {
+            padding: 2rem;
+          }
+        `}
+      >
         <header>
-          <div className={`headshot motif-left`}>
-            <img src="static/headshot-touchup.jpg" alt="Photo of Manny" />
+          <div
+            // className={`headshot motif-left`}
+            css={css`
+              align-self: flex-end;
+              margin: 0 0 auto auto;
+              position: relative;
+              width: 50%;
+              max-width: 320px;
+
+              &::after {
+                content: url('/static/motif-bottom.svg');
+                display: block;
+                position: absolute;
+                bottom: -4px;
+                left: -1px;
+                ${mixin.size('100%', 'auto')};
+              }
+            `}
+          >
+            <img
+              src="static/headshot-touchup.jpg"
+              alt="Photo of Manny"
+              css={css`
+                display: block;
+                ${mixin.size('100%', 'auto')};
+              `}
+            />
           </div>
-          <h1 className={`page-head`} style={{ padding: `0 2rem` }}>
+          <h1
+            className={`page-head`}
+            style={{ padding: `0 2rem` }}
+            css={css`
+              font-family: ${typography.serif};
+              font-weight: 300;
+              text-transform: lowercase;
+
+              color: ${colors.orange};
+            `}
+          >
             Design thinker,
             <br /> lifetime learner,
             <br /> adoring guncle.
           </h1>
         </header>
         {/* USE CH UNITS TO MEASURE THE WIDTH OF ABOUT BLURBS? */}
-        <p className={`bio`}>
+        <p
+          className={`bio`}
+          css={css`
+            color: ${colors.muteGray};
+            font-size: 1.25rem;
+          `}
+        >
           My background in design comes from a combination of technical training
           and formal education, including printing, prepress, problem solving
-          and concept development. Utilizing both these skillsets enables me to
-          identify a problem and design a solution from start to finish.
+          and concept development. With over 5 years of experience in the print
+          industry gained the skills and knowledge required to take design ideas
+          and develop them into a high quality product.
           <br />
-          With over 5 years of experience in the print industry I’ve gained the
-          skills and foresight required to take design ideas and develop them
-          into a high quality product. In recent years, I’ve been using code and
-          the web as a creative medium to design unique and effective user
-          interfaces.
+          In recent years, I’ve been learning code and the web as a new creative
+          medium to design and build applications. 🤓
         </p>
         {/* <button className={`cta layout`}>Say Hello</button> */}
       </section>
-      <section className="quote viewport">
+      <section
+        className="quote viewport"
+        css={css`
+          ${mixin.flex('column')}
+          padding: 2rem;
+          justify-content: center;
+
+          blockquote {
+            margin: 1rem 0;
+            font-weight: 100;
+            font-size: 3rem;
+            line-height: 1.25;
+            color: ${colors.darkGray};
+          }
+
+          cite {
+            display: block;
+            margin: 1rem 0;
+
+            font-family: ${typography.serif};
+            font-weight: 100;
+            font-size: 1.5rem;
+            font-style: italic;
+            color: inherit;
+            text-align: right;
+          }
+        `}
+      >
         <blockquote>
           “A designer is an emerging synthesis of artist, inventor, mechanic,
           objective economist, and evolutionary strategist.”
@@ -51,19 +132,37 @@ const About = props => {
 
         <cite>— R. Buckminster Fuller</cite>
       </section>
-      <section className="inspiration viewport">
+      <section
+        className="inspiration viewport"
+        css={[
+          css`
+            background-color: ${colors.darkGray};
+            padding: 2rem;
+            h2 {
+              font-family: ${typography.serif};
+              color: ${colors.orange};
+              font-weight: 400;
+              font-size: 2rem;
+
+              margin: 1rem 0;
+            }
+          `
+        ]}
+      >
         <h2>designers who inspire me...</h2>
-        <div className="designer">
+        <div className="designer" css={[inspirationStyles]}>
           <h3>Chris Do</h3>
           <p>
             Founder of{' '}
-            <a href="https://www.youtube.com/user/TheSkoolRocks">The Futur</a>{' '}
+            <InlineLink href={'https://www.youtube.com/user/TheSkoolRocks'}>
+              The Futur
+            </InlineLink>{' '}
             an online education platform changing the way we think about design
             education and strategy, teaching the business of design and the
             design of business.
           </p>
         </div>
-        <div className="designer">
+        <div className="designer" css={[inspirationStyles]}>
           <h3>Jacqueline Casey</h3>
           <p>
             Master of visual puns and Helvetica. A local Massachusetts design
@@ -75,6 +174,17 @@ const About = props => {
     </PageLayout>
   )
 }
+
+const inspirationStyles = css`
+  margin: 2rem 0;
+  color: ${colors.muteGray};
+  h3 {
+    font-family: ${typography.sans};
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-transform: capitalize;
+  }
+`
 
 /*
  Chris Do
