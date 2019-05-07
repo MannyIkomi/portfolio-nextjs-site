@@ -77,14 +77,14 @@ const ProjectView = props => {
   const headingStyle = css`
     ${mixin.flex('column')}
     align-items: center;
-    max-width: 40rem;
+    // max-width: 40rem;
 
     min-height: 50vh;
     padding: 2rem;
     text-align: center;
     h1 {
       font-family: ${typography.sans};
-      font-weight: 500;
+      font-weight: 700;
       text-transform: initial;
     }
     h2 {
@@ -120,7 +120,7 @@ const ProjectView = props => {
             css={css`
               position: relative;
               top: -25vh;
-              max-width: 40rem;
+              max-width: 50rem;
               margin: auto;
             `}
           >
@@ -189,7 +189,6 @@ ProjectView.getInitialProps = async context => {
     return { project: projects[0] }
   } catch (err) {
     console.error(err.error)
-
     const projects = mockGraphqlData.data.projects.filter(
       project => project.slug.toUpperCase() === query.slug.toUpperCase()
     )
