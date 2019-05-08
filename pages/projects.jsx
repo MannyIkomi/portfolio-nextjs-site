@@ -84,7 +84,7 @@ const ProjectView = props => {
     text-align: center;
     h1 {
       font-family: ${typography.sans};
-      font-weight: 700;
+      font-weight: 800;
       text-transform: initial;
     }
     h2 {
