@@ -28,7 +28,8 @@ export const Logo = props => {
   )
 }
 Logo.propTypes = {
-  lockup: PropTypes.oneOf(['master', 'type', 'type-wide', 'master-white'])
+  lockup: PropTypes.oneOf(['master', 'type', 'type-wide', 'master-white']),
+  styles: PropTypes.any
 }
 
 export const LogoTypeWide = props => (

@@ -38,7 +38,7 @@ const HomePage = props => {
   return (
     <Fragment>
       <PageLayout title={''} description={''} isSideMenuDisabled={false}>
-        <h1
+        {/* <h1
           css={css`
             font-family: ${typography.serif};
             font-weight: 400;
@@ -50,7 +50,7 @@ const HomePage = props => {
           `}
         >
           the werk
-        </h1>
+        </h1> */}
         <Gallery id={0}>
           {/* WithInteractiveLink render=ProjectImg */}
           {projects.map(project => (

@@ -93,47 +93,51 @@ export const ProjectCover = props => {
   const { id, name, description, covers, slug } = project
 
   return (
-    <WithHoverState
-      render={(isHovered, handleMouseEnter, handleMouseLeave) => (
-        <figure
-          css={css`
-            position: relative;
-            margin-bottom: 4rem;
-            width: 100%;
-            &:hover {
-              box-shadow: -0.5rem 0.5rem 0.5rem 0px hsla(0, 0%, 0%, 0.85);
-            }
-            ${mixin.aspectRatioLetter()}
-            overflow: hidden; // clips aspect ratio overflow
-          `}
-          onMouseEnter={handleMouseEnter || null}
-          onMouseLeave={handleMouseLeave || null}
-        >
-          <Link
-            href={`/projects/?slug=${slug}`}
-            as={`/projects/${slug.toLowerCase()}`}
+    <Fragment>
+      <WithHoverState
+        render={(isHovered, handleMouseEnter, handleMouseLeave) => (
+          <figure
+            css={css`
+              position: relative;
+              margin-bottom: 4rem;
+              width: 100%;
+              @media (hover: hover) {
+                &:hover {
+                  box-shadow: -0.5rem 0.5rem 0.5rem 0px hsla(0, 0%, 0%, 0.85);
+                }
+              }
+              ${mixin.aspectRatioLetter()}
+              overflow: hidden; // clips aspect ratio overflow
+            `}
+            onMouseEnter={handleMouseEnter || null}
+            onMouseLeave={handleMouseLeave || null}
           >
-            <a
-              // className="aspect link relative"
-              css={css`
-                display: block;
-                position: relative;
-              `}
+            <Link
+              href={`/projects/?slug=${slug}`}
+              as={`/projects/${slug.toLowerCase()}`}
             >
-              <ProjectPhoto src={covers[size]} alt={name} />
-              {isHovered ? (
-                <FillOverlay>
-                  <CoverCaption title={name} subtitle={description} />
-                </FillOverlay>
-              ) : null}
-            </a>
-          </Link>
-          {/* {isHovered ? null : (
+              <a
+                // className="aspect link relative"
+                css={css`
+                  display: block;
+                  position: relative;
+                `}
+              >
+                <ProjectPhoto src={covers[size]} alt={name} />
+                {isHovered ? (
+                  <FillOverlay>
+                    <CoverCaption title={name} subtitle={description} />
+                  </FillOverlay>
+                ) : null}
+              </a>
+            </Link>
+            {/* {isHovered ? null : (
             <ProjectCaption title={name} subtitle={description} />
           )} */}
-        </figure>
-      )}
-    />
+          </figure>
+        )}
+      />
+    </Fragment>
   )
 }
 

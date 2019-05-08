@@ -36,10 +36,15 @@ export const SideMenu = props => {
       <MenuBar
         styles={css`
           position: fixed;
-          margin: 4rem auto;
+          margin: 2rem auto;
         `}
       >
-        <Logo lockup={`master`} />
+        <Logo
+          // lockup={`master`}
+          styles={css`
+            max-width: 5rem;
+          `}
+        />
         <NavContainer>
           <NavLink
             pages={getPages()}
