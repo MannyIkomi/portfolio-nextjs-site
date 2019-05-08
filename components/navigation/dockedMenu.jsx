@@ -31,6 +31,16 @@ export const DockedMenu = props => {
     background-size: cover;
     background-repeat: no-repeat;
     background-position: bottom center;
+    @media (hover: hover), (${measure.tabletMediaWidth}) {
+      flex-wrap: nowrap;
+      align-items: flex-end;
+      justify-content: flex-start;
+
+      background: url('/static/nav-bg-top-right.svg');
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: top right;
+    }
 
     font-family: ${typography.serif};
 
