@@ -148,6 +148,9 @@ const Footer = props => {
       <LogoMasterWhite
         styles={css`
           width: 25%;
+          img {
+            width: 100%;
+          }
           margin: 2rem 0;
           @media screen and (min-width: 500px) {
             max-width: 10rem;

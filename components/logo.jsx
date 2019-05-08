@@ -19,7 +19,7 @@ export const Logo = props => {
       <img
         css={css`
           object-fit: contain;
-          ${mixin.size('100%', '100%')}
+          height: 100%;
         `}
         src={`/static/logos/logo-${lockup || `master`}.svg`} // type = ['master','type','wide' ]
         alt={`Manny Ikomi's Logo`}

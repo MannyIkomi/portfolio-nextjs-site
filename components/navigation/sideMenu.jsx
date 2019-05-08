@@ -37,7 +37,6 @@ export const SideMenu = props => {
         styles={css`
           position: fixed;
           margin: 4rem auto;
-          // ${mixin.size('100%', '100%')}
         `}
       >
         <Logo lockup={`master`} />
