@@ -17,6 +17,7 @@ const About = props => {
       description={`With over 5 years of experience in the print industry and formal design education I’ve gained the
           skills and know-how required to take design ideas and develop them
           into a high quality product`}
+      isSideMenuDisabled={false}
     >
       <section
         // className={`about viewport`}
@@ -95,7 +96,13 @@ const About = props => {
           In recent years I’ve been learning how to code as a new creative
           medium to build websites and web-apps 🤓.
           <br />
-          <strong>In short, I like making great things for good people.</strong>
+          <strong
+            css={css`
+              font-weight: 800;
+            `}
+          >
+            In short, I like making great things for good people.
+          </strong>
         </p>
         {/* <button className={`cta layout`}>Say Hello</button> */}
       </section>
@@ -172,7 +179,6 @@ const About = props => {
           </p>
         </div>
       </section>
-      <br />
     </PageLayout>
   )
 }
