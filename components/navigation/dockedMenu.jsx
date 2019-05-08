@@ -19,12 +19,13 @@ export const DockedMenu = props => {
 
     ${mixin.flex('column')}
     flex-wrap: nowrap;
-    align-items: flex-start;
+    align-items: flex-end;
     justify-content: flex-end;
 
     ${mixin.size('100vw', '100%')};
     height: 100vh;
     padding: calc(${measure.menubarHeight} + 1rem) 1rem;
+    padding: ${measure.menubarHeight} 1rem;
 
     background: ${colors.muteGray};
     background: url('/static/nav-bg.svg');
@@ -32,10 +33,15 @@ export const DockedMenu = props => {
     background-repeat: no-repeat;
     background-position: bottom center;
     @media (hover: hover), (${measure.tabletMediaWidth}) {
-      flex-wrap: nowrap;
-      align-items: flex-end;
-      justify-content: flex-start;
+      bottom: initial;
+      top: 0;
+      right: 0;
 
+      flex-wrap: nowrap;
+      justify-content: flex-start;
+      width: 66%;
+
+      background: ${colors.muteGray};
       background: url('/static/nav-bg-top-right.svg');
       background-size: cover;
       background-repeat: no-repeat;
@@ -79,7 +85,10 @@ export const DockedMenu = props => {
         justify-content: space-between;
 
           background-color: ${colors.muteGray};
-          box-shadow: 0rem -0.5rem 0.5rem 0px rgba(38, 38, 38, 0.2);
+          box-shadow: 0rem -0.25rem 0.25rem 0px rgba(38, 38, 38, 0.25);
+          @media (hover: hover), (${measure.tabletMediaWidth}) {
+            box-shadow: 0rem 0.25rem 0.25rem 0px rgba(38, 38, 38, 0.2);
+          }
         `}
       >
         <LogoTypeWide />
@@ -93,6 +102,10 @@ export const DockedMenu = props => {
               @media screen and (orientation: landscape) and (max-height: 450px) {
                 padding: 0.5rem;
                 margin: 0.5rem;
+              }
+              @media (hover: hover), (${measure.tabletMediaWidth}) {
+                // box-shadow: 0rem 0.25rem 0.25rem 0px rgba(38, 38, 38, 0.2);
+                font-size: 1.5rem;
               }
             `}
           />
