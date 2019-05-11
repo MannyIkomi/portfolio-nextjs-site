@@ -1,5 +1,4 @@
 /** @jsx jsx */
-
 import React, { Fragment } from 'react'
 import { css, jsx } from '@emotion/core'
 import axios from 'axios'
@@ -66,7 +65,7 @@ const mapModules = modules => {
 
 const ProjectView = props => {
   const { project } = props
-  const { id, name, description, modules } = project
+  const { name, description, modules } = project
 
   const projectView = css`
     ${mixin.flex('column')}
@@ -159,6 +158,8 @@ ProjectView.getInitialProps = async context => {
             name
             description
             slug
+            fields
+            tags
             covers {
               original
               _404
@@ -176,8 +177,8 @@ ProjectView.getInitialProps = async context => {
               
             ...on TextModule{
               type
-              text_plain
               text
+              text_plain
             }
             }
           }
@@ -185,14 +186,15 @@ ProjectView.getInitialProps = async context => {
       `
       })
     })
+    console.log(response.data.data)
     const { projects } = await response.data.data
     return { project: projects[0] }
   } catch (err) {
     console.error(err.error)
-    const projects = mockGraphqlData.data.projects.filter(
-      project => project.slug.toUpperCase() === query.slug.toUpperCase()
-    )
-    return { project: projects[0] }
+    // const projects = mockGraphqlData.data.projects.filter(
+    //   project => project.slug.toUpperCase() === query.slug.toUpperCase()
+    // )
+    // return { project: projects[0] }
   }
 }
 
