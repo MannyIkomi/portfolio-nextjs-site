@@ -62,14 +62,6 @@ export const NavContainer = props => {
   return <nav css={styles}>{props.children}</nav>
 }
 
-// export const MenuButton = props => {
-//   const handleClick = props.click
-//   return (
-//     <button type={`button`} onClick={handleClick}>
-//       Menu
-//     </button>
-//   )
-// }
 export const MenuButton = props => {
   // https://codepen.io/MannyIkomi/pen/vwKJar
   const { handleToggle, isToggled } = props
@@ -120,6 +112,10 @@ export const MenuButton = props => {
       <span class="line" />
     </button>
   )
+}
+MenuButton.propTypes = {
+  isToggled: PropTypes.bool.isRequired,
+  handleToggle: PropTypes.func.isRequired
 }
 
 export const MenuBar = props => {
