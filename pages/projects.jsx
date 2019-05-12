@@ -12,6 +12,7 @@ import PageLayout from '../components/pageLayout'
 // Utility
 import { mixin, colors, typography } from '../styles'
 import mockGraphqlData from '../util/mock'
+import graphqlQuery from '../util/http'
 const moduleContainer = css`
   margin: 4rem 0;
   box-shadow: -0.5rem 0.5rem 0.5rem 0px hsla(0, 0%, 0%, 0.85);
@@ -63,7 +64,7 @@ const renderModules = modules => {
   })
 }
 
-const ProjectView = props => {
+const ProjectPage = props => {
   const { project } = props
   const { name, description, modules } = project
 
@@ -135,59 +136,42 @@ const ProjectView = props => {
   )
 }
 
-const axiosGraphql = axios.create({
-  method: 'POST',
-  baseURL: 'http://localhost:3001',
-  url: 'graphql',
-  headers: {
-    'Content-Type': 'application/json',
-    Accept: 'application/json'
-  }
-})
-
-// const ProjectPage = withRouter(props => <ProjectView {...props} />)
-
-ProjectView.getInitialProps = async context => {
+ProjectPage.getInitialProps = async context => {
   const { query } = context
   try {
     console.log(query.slug)
-    const response = await axiosGraphql({
-      data: JSON.stringify({
-        query: `{
-          projects(slug: "${query.slug}") {
-            id
-            name
-            description
-            slug
-            fields
-            tags
-            covers {
+    const response = await graphqlQuery(`{
+      projects(slug: "${query.slug}") {
+        id
+        name
+        description
+        slug
+        fields
+        tags
+        covers {
+          original
+          _404
+          _808
+        }
+        modules{
+          ...on ImageModule {
+            type
+            sizes{
               original
-              _404
-              _808
-            }
-            modules{
-              ...on ImageModule {
-                type
-                sizes{
-                  original
-                  _1400
-                  disp
-                }
-              }
-              
-            ...on TextModule{
-              type
-              text
-              text_plain
-            }
+              _1400
+              disp
             }
           }
+          
+        ...on TextModule{
+          type
+          text
+          text_plain
         }
-      `
-      })
-    })
-    console.log(response.data.data)
+        }
+      }
+    }
+  `)
     const { projects } = await response.data.data
     return { project: projects[0] }
   } catch (err) {
@@ -199,4 +183,4 @@ ProjectView.getInitialProps = async context => {
   }
 }
 
-export default ProjectView
+export default ProjectPage

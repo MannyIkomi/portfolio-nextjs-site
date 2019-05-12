@@ -7,6 +7,7 @@ import axios from 'axios'
 import { css, jsx, Global } from '@emotion/core'
 import { GlobalStyles, mixin, typography, colors } from '../styles/index'
 import mockGraphqlData from '../util/mock'
+import graphqlQuery from '../util/http'
 
 // Components
 import HtmlHead from '../components/head'
@@ -67,38 +68,21 @@ const HomePage = props => {
   )
 }
 
-// https://graphql.org/graphql-js/graphql-clients/
-// sending GraphQL queries without frameworks like Apollo
-
-const axiosGraphql = axios.create({
-  method: 'POST',
-  baseURL: 'http://localhost:3001',
-  url: 'graphql',
-  headers: {
-    'Content-Type': 'application/json',
-    Accept: 'application/json'
-  }
-})
-
 HomePage.getInitialProps = async () => {
   try {
-    const response = await axiosGraphql({
-      data: JSON.stringify({
-        query: `{
-          projects {
-            id
-            name
-            description
-            slug
-            covers {
-              original
-              _404
-              _808
-            }
-          }
-        }`
-      })
-    })
+    const response = await graphqlQuery(`{
+      projects {
+        id
+        name
+        description
+        slug
+        covers {
+          original
+          _404
+          _808
+        }
+      }
+    }`)
     const { projects } = await response.data.data
     return { projects }
   } catch (err) {
