@@ -62,7 +62,6 @@ export const NavContainer = props => {
 }
 
 export const MenuButton = props => {
-  // https://codepen.io/MannyIkomi/pen/vwKJar
   const { handleToggle, isToggled } = props
   const coordinates = '0.66rem' //'0.125rem'
 
