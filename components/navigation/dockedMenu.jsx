@@ -92,7 +92,7 @@ export const DockedMenu = props => {
         `}
       >
         <LogoTypeWide />
-        <MenuButton click={handleMenuToggle} />
+        <MenuButton handleToggle={handleMenuToggle} isToggled={menuToggled} />
       </MenuBar>
       {menuToggled ? (
         <NavContainer styles={dockedNavToggled}>

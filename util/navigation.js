@@ -4,16 +4,16 @@ const getPages = (filterId = '') => {
       title: 'The Werk',
       path: '/'
     },
-    {
-      title: 'Logo & Identity',
-      path: '/#identity',
-      category: 'logo & identity'
-    },
-    {
-      title: 'User Interface',
-      path: '/#ui',
-      category: 'user'
-    },
+    // {
+    //   title: 'Logo & Identity',
+    //   path: '/#identity',
+    //   category: 'logo & identity'
+    // },
+    // {
+    //   title: 'User Interface',
+    //   path: '/#ui',
+    //   category: 'user'
+    // },
     {
       title: 'About Me',
       path: '/about'
