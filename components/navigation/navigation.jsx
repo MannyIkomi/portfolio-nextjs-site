@@ -36,7 +36,6 @@ export const NavLink = props => {
 
 export const InlineLink = props => {
   const { href, text, styleOverrides } = props
-
   const baseStyle = css`
     display: inline-block;
     text-decoration: underline;
@@ -53,7 +52,7 @@ export const InlineLink = props => {
 }
 InlineLink.propTypes = {
   href: PropTypes.string.isRequired,
-  text: PropTypes.string.isRequired,
+  text: PropTypes.string,
   styleOverrides: PropTypes.any
 }
 

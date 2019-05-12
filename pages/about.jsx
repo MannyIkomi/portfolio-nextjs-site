@@ -91,11 +91,11 @@ const About = props => {
           My background in design comes from a combination of technical training
           and formal education, including printing, prepress, problem solving
           and concept development. With over 5 years of experience in the print
-          industry, I've gained the skills and knowledge required to craft
-          design ideas into a high quality product.
+          industry, I've gained the skills required to craft design ideas into a
+          high quality product.
           <br />
           In recent years I’ve been learning how to code as a new creative
-          medium to build websites and web-apps 🤓.
+          medium to build websites and user interfaces. 🤓
           <br />
           <strong
             css={css`
