@@ -39,7 +39,7 @@ const shouldShowSideMenuGrid = (isSideMenuDisabled = false) => {
 }
 
 const PageLayout = props => {
-  const { title, description, isSideMenuDisabled } = props
+  const { title, description, isSideMenuDisabled, persistDockedMenu } = props
   // Page level template
   return (
     <div
@@ -48,6 +48,7 @@ const PageLayout = props => {
         background-color: ${colors.muteGray};
         @media (hover: hover), (${measure.tabletMediaWidth}) {
           margin: ${measure.menubarHeight} 0 0 0;
+          ${persistDockedMenu ? null : 'margin: 0;'}
         }
         ${mixin.desktopMedia(`
           ${mixin.supportsGrid(`
@@ -70,6 +71,7 @@ const PageLayout = props => {
               <DockedMenu
                 menuToggled={menuToggled}
                 handleMenuToggle={handleMenuToggled}
+                persistOnDesktop={persistDockedMenu}
               />
             )
           }}

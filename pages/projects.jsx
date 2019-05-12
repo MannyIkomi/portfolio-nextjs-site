@@ -101,6 +101,7 @@ const ProjectView = props => {
       title={`${project.name} by Manny`}
       description={`${project.name}, ${project.description} by Manny Ikomi`}
       isSideMenuDisabled={true}
+      persistDockedMenu={true}
     >
       <article css={projectView}>
         <header css={headingStyle}>

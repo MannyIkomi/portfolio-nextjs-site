@@ -18,6 +18,7 @@ const About = props => {
           skills and know-how required to take design ideas and develop them
           into a high quality product`}
       isSideMenuDisabled={false}
+      persistDockedMenu={false}
     >
       <section
         // className={`about viewport`}

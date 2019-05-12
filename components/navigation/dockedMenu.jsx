@@ -11,7 +11,7 @@ import { getPages } from '../../util/navigation'
 import { colors, measure, typography, mixin } from '../../styles'
 
 export const DockedMenu = props => {
-  const { menuToggled, handleMenuToggle } = props
+  const { menuToggled, handleMenuToggle, persistOnDesktop } = props
   const animateToggle = css`
     transition-duration: 0.5s;
     transition-timing-function: ease-in-out;
@@ -37,7 +37,7 @@ export const DockedMenu = props => {
     ${mixin.size('100vw', '100%')};
 
     height: 100vh;
-    padding: calc(${measure.menubarHeight} + 1rem) 1rem;
+    // padding: calc(${measure.menubarHeight} + 1rem) 1rem;
     padding: ${measure.menubarHeight} 1rem;
 
     background: ${colors.muteGray};
@@ -45,6 +45,8 @@ export const DockedMenu = props => {
     background-size: cover;
     background-repeat: no-repeat;
     background-position: bottom center;
+
+    font-family: ${typography.serif};
 
     @media (hover: hover), (${measure.tabletMediaWidth}) {
       bottom: initial;
@@ -61,8 +63,6 @@ export const DockedMenu = props => {
       background-repeat: no-repeat;
       background-position: top right;
     }
-
-    font-family: ${typography.serif};
 
     @media screen and (orientation: landscape) and (max-height: 450px) {
       background: ${colors.muteGray};
@@ -85,6 +85,11 @@ export const DockedMenu = props => {
           top: 0;
           bottom: initial;
         }
+        ${persistOnDesktop
+          ? null
+          : `@media(hover:hover) and (${measure.desktopMediaWidth}){
+          display:none;
+        }`}
       `}
     >
       <MenuBar
@@ -94,11 +99,8 @@ export const DockedMenu = props => {
           padding: 0.5rem;
 
           ${mixin.flex('row')}
-          ${mixin.size(
-            '100vw',
-            measure.menubarHeight
-          )}
-        justify-content: space-between;
+          ${mixin.size('100vw', measure.menubarHeight)};
+          justify-content: space-between;
 
           background-color: ${colors.muteGray};
           box-shadow: 0rem -0.25rem 0.25rem 0px rgba(38, 38, 38, 0.25);
@@ -127,6 +129,12 @@ export const DockedMenu = props => {
       </NavContainer>
     </section>
   )
+}
+
+DockedMenu.propTypes = {
+  persistOnDesktop: PropTypes.bool.isRequired,
+  handleMenuToggle: PropTypes.func.isRequired,
+  menuToggled: PropTypes.bool.isRequired
 }
 
 export default DockedMenu

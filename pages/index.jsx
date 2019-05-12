@@ -37,7 +37,12 @@ const HomePage = props => {
 
   return (
     <Fragment>
-      <PageLayout title={''} description={''} isSideMenuDisabled={false}>
+      <PageLayout
+        title={''}
+        description={''}
+        isSideMenuDisabled={false}
+        persistDockedMenu={false}
+      >
         {/* <h1
           css={css`
             font-family: ${typography.serif};
