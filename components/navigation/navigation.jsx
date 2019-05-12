@@ -120,7 +120,7 @@ export const MenuBar = props => {
   return <div css={styles}>{props.children}</div>
 }
 
-export const WithSwitchToggle = props => {
+export const WithToggleSwitch = props => {
   const [toggled, setToggled] = useState(false)
 
   function handleToggle(e) {

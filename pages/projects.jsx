@@ -48,7 +48,7 @@ const TextModule = props => {
   )
 }
 
-const mapModules = modules => {
+const renderModules = modules => {
   return modules.map((module, index) => {
     switch (module.type) {
       case 'image':
@@ -124,7 +124,7 @@ const ProjectView = props => {
               margin: auto;
             `}
           >
-            {mapModules(modules)}
+            {renderModules(modules)}
           </div>
         </main>
         {/* <footer>

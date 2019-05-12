@@ -200,7 +200,7 @@ const inspirationStyles = css`
 Founder of The Futur an online education platform changing the way we think about design education and strategy, teaching the design of business and the business of design.
 
 Anne Carter
-A pivotal professor in my design education, her passion for history, art and design is infectious. She taught me how to grow and refine my creativity and process into a high quality solution.
+A pivotal professor in my design education, her passion for history, art and design is infectious. She taught me how to refine my creativity and develop strong design concepts.
 
 Jacqueline Casey
 Master of visual puns and Helvetica. A local Massachusetts design hero best known for her poster design work at MIT.

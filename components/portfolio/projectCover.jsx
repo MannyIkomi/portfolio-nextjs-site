@@ -54,7 +54,7 @@ export const WithHoverState = props => {
   const [isHovered, setIsHovered] = useState(false)
   const { render } = props
 
-  function handleOnMouseEnter(e) {
+  function handleMouseEnter(e) {
     // console.log(e)
     setIsHovered(true)
   }
@@ -63,9 +63,7 @@ export const WithHoverState = props => {
     setIsHovered(false)
   }
   return (
-    <Fragment>
-      {render(isHovered, handleOnMouseEnter, handleMouseLeave)}
-    </Fragment>
+    <Fragment>{render(isHovered, handleMouseEnter, handleMouseLeave)}</Fragment>
   )
 }
 
@@ -81,7 +79,6 @@ const ProjectPhoto = ({ src, alt }) => (
     alt={alt}
   />
 )
-
 ProjectPhoto.propTypes = {
   src: PropTypes.string.isRequired,
   alt: PropTypes.string

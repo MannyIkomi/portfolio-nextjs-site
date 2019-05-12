@@ -5,7 +5,7 @@ import PropTypes from 'prop-types'
 import { css, jsx } from '@emotion/core'
 
 // Components
-import { WithSwitchToggle } from './navigation/navigation'
+import { WithToggleSwitch } from './navigation/navigation'
 import DockedMenu from './navigation/dockedMenu'
 import SideMenu from './navigation/sideMenu'
 import HtmlHead from './head'
@@ -65,7 +65,7 @@ const PageLayout = props => {
           grid-area: header;
         `}
       >
-        <WithSwitchToggle
+        <WithToggleSwitch
           render={(menuToggled, handleMenuToggled) => {
             return (
               <DockedMenu
