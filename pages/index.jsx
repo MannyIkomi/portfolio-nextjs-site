@@ -39,8 +39,8 @@ const HomePage = props => {
   return (
     <Fragment>
       <PageLayout
-        title={''}
-        description={''}
+        // title={''}
+        // description={''}
         isSideMenuDisabled={false}
         persistDockedMenu={false}
       >
@@ -56,9 +56,10 @@ const HomePage = props => {
           `}
         >
           the werk
-        </h1> */}
+          </h1> */}
         <Gallery id={0}>
           {/* WithInteractiveLink render=ProjectImg */}
+
           {projects.map(project => (
             <ProjectCover project={project} key={project.id} />
           ))}
