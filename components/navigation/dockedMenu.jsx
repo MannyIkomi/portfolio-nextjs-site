@@ -12,17 +12,30 @@ import { colors, measure, typography, mixin } from '../../styles'
 
 export const DockedMenu = props => {
   const { menuToggled, handleMenuToggle } = props
+  const animateToggle = css`
+    transition-duration: 0.5s;
+    transition-timing-function: ease-in-out;
+    transition-property: transform, opacity;
+    transform-origin: right center;
+    transform: rotateY(180deg);
+  `
   const dockedNavToggled = css`
     z-index: 999;
     position: fixed;
-    bottom: -1px;
+    bottom: 0;
 
     ${mixin.flex('column')}
     flex-wrap: nowrap;
     align-items: flex-end;
     justify-content: flex-end;
-
+    ${animateToggle}
+    ${
+      menuToggled
+        ? 'transform: rotateY(0); opacity: 1; pointer-events: auto;'
+        : 'opacity: 0; pointer-events: none;'
+    }
     ${mixin.size('100vw', '100%')};
+
     height: 100vh;
     padding: calc(${measure.menubarHeight} + 1rem) 1rem;
     padding: ${measure.menubarHeight} 1rem;
@@ -32,6 +45,7 @@ export const DockedMenu = props => {
     background-size: cover;
     background-repeat: no-repeat;
     background-position: bottom center;
+
     @media (hover: hover), (${measure.tabletMediaWidth}) {
       bottom: initial;
       top: 0;
@@ -52,12 +66,14 @@ export const DockedMenu = props => {
 
     @media screen and (orientation: landscape) and (max-height: 450px) {
       background: ${colors.muteGray};
+      width:100%;
       ${mixin.flex('row')}
       flex-wrap: wrap;
       align-items: flex-end;
       justify-content: flex-end;
     }
   `
+
   return (
     <section
       css={css`
@@ -94,23 +110,21 @@ export const DockedMenu = props => {
         <LogoTypeWide />
         <MenuButton handleToggle={handleMenuToggle} isToggled={menuToggled} />
       </MenuBar>
-      {menuToggled ? (
-        <NavContainer styles={dockedNavToggled}>
-          <NavLink
-            pages={getPages()}
-            styles={css`
-              @media screen and (orientation: landscape) and (max-height: 450px) {
-                padding: 0.5rem;
-                margin: 0.5rem;
-              }
-              @media (hover: hover), (${measure.tabletMediaWidth}) {
-                // box-shadow: 0rem 0.25rem 0.25rem 0px rgba(38, 38, 38, 0.2);
-                font-size: 1.5rem;
-              }
-            `}
-          />
-        </NavContainer>
-      ) : null}
+      <NavContainer styles={dockedNavToggled}>
+        <NavLink
+          pages={getPages()}
+          styles={css`
+            @media screen and (orientation: landscape) and (max-height: 450px) {
+              padding: 0.5rem;
+              margin: 0.5rem;
+            }
+            @media (hover: hover), (${measure.tabletMediaWidth}) {
+              // box-shadow: 0rem 0.25rem 0.25rem 0px rgba(38, 38, 38, 0.2);
+              font-size: 1.5rem;
+            }
+          `}
+        />
+      </NavContainer>
     </section>
   )
 }

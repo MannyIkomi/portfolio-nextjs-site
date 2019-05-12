@@ -99,17 +99,16 @@ export const MenuButton = props => {
           background-color: ${colors.darkGray};
           display: block;
           // margin: 0.5rem auto;
-          -webkit-transition: all 0.3s ease-in-out;
-          -o-transition: all 0.3s ease-in-out;
-          transition: all 0.3s ease-in-out;
+
+          transition: all 0.5s ease-in-out;
         }
 
         ${isToggled && animateHamburger}
       `}
     >
-      <span class="line" />
-      <span class="line" />
-      <span class="line" />
+      <span className="line" />
+      <span className="line" />
+      <span className="line" />
     </button>
   )
 }
