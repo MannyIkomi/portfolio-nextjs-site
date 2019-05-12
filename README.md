@@ -11,7 +11,6 @@
 ## Components
 
 - `HtmlHead` – Set page title and description, links typekit fonts, wraps `next/head`
--
 - `Footer` – Page footer info with logo, social, and copyright
 - `PageLayout` – Wraps each page as template that includes navigation, footer, seo information and a content container
 
