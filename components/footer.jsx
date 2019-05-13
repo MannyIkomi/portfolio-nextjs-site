@@ -5,43 +5,11 @@ import { css, jsx } from '@emotion/core'
 
 // Components
 import { LogoMasterWhite } from './logo'
+import SocialIcon, { socialData } from './social'
 
 //  Utility
 import { getYear } from '../util/dates'
 import { mixin, colors, typography, measure } from '../styles'
-
-const socialMedia = [
-  {
-    link: 'https://www.behance.net/ikomi',
-    icon: '/static/social/be.svg',
-    alt: 'Behance Logo'
-  },
-  {
-    link: 'https://www.instagram.com/designbymanny/',
-    icon: '/static/social/ig.svg',
-    alt: 'Instagram Logo'
-  },
-  {
-    link: 'https://www.linkedin.com/in/ikomi',
-    icon: '/static/social/in.svg',
-    alt: 'LinkedIn Logo'
-  }
-]
-
-const SocialIcon = props => {
-  const { link, icon, alt, styles } = props
-  return (
-    <a href={link} css={styles}>
-      <img src={icon} alt={alt} />
-    </a>
-  )
-}
-SocialIcon.propTypes = {
-  link: PropTypes.string.isRequired,
-  icon: PropTypes.string.isRequired,
-  alt: PropTypes.string.isRequired,
-  styles: PropTypes.any
-}
 
 const Footer = props => {
   const { styles } = props
@@ -64,9 +32,9 @@ const Footer = props => {
           z-index: 0;
 
           width: 100%;
-          height: calc(100vh - ${measure.menubarHeight});
-          // min-height: 100vh;
-          padding: 1rem;
+          // height: calc(100vh - ${measure.menubarHeight});
+          min-height: 100vh;
+          padding: ${measure.menubarHeight};
           overflow: hidden;
 
           color: ${colors.muteGray};
@@ -206,7 +174,7 @@ const Footer = props => {
             justify-content: space-around;
           `}
         >
-          {socialMedia.map(socialIcon => {
+          {socialData.map(socialIcon => {
             return (
               <SocialIcon
                 key={socialIcon.icon}
