@@ -48,20 +48,22 @@ export const DockedMenu = props => {
 
     font-family: ${typography.serif};
 
-    @media (hover: hover), (${measure.tabletMediaWidth}) {
-      bottom: initial;
-      top: 0;
-      right: 0;
+    @media (${measure.tabletMediaWidth}){
+      @media (hover: hover){
+        bottom: initial;
+        top: 0;
+        right: 0;
 
-      flex-wrap: nowrap;
-      justify-content: flex-start;
-      width: 66%;
+        flex-wrap: nowrap;
+        justify-content: flex-start;
+        width: 66%;
 
-      background: ${colors.muteGray};
-      background: url('/static/nav-bg-top-right.svg');
-      background-size: cover;
-      background-repeat: no-repeat;
-      background-position: top right;
+        background: ${colors.muteGray};
+        background: url('/static/nav-bg-top-right.svg');
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: top right;
+      }
     }
 
     @media screen and (orientation: landscape) and (max-height: 450px) {
@@ -85,11 +87,9 @@ export const DockedMenu = props => {
           top: 0;
           bottom: initial;
         }
-        ${persistOnDesktop
-          ? null
-          : `@media(hover:hover) and (${measure.desktopMediaWidth}){
-          display:none;
-        }`}
+        @media (${measure.desktopMediaWidth}) {
+          ${persistOnDesktop ? null : 'display: none;'}
+        }
       `}
     >
       <MenuBar

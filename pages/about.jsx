@@ -14,9 +14,9 @@ const About = props => {
   return (
     <PageLayout
       title={'Hi 🤓'}
-      description={`With over 5 years of experience in the print industry and formal design education I’ve gained the
-          skills and know-how required to take design ideas and develop them
-          into a high quality product`}
+      description={`With over 5 years of experience in the print
+      industry, I've gained the skills required to craft design ideas into a
+      high quality product.`}
       isSideMenuDisabled={false}
       persistDockedMenu={false}
     >

@@ -46,10 +46,16 @@ const PageLayout = props => {
       css={css`
         margin: 0 0 ${measure.menubarHeight} 0;
         background-color: ${colors.muteGray};
-        @media (hover: hover), (${measure.tabletMediaWidth}) {
+
+        @media (${measure.tabletMediaWidth}) {
           margin: ${measure.menubarHeight} 0 0 0;
-          ${persistDockedMenu ? null : 'margin: 0;'}
+          ${persistDockedMenu && `margin: ${measure.menubarHeight} 0 0 0;`}
         }
+
+        @media (${measure.desktopMediaWidth}) {
+          margin: 0;
+        }
+
         ${mixin.desktopMedia(`
           ${mixin.supportsGrid(`
             display: grid;
