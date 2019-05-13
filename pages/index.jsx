@@ -1,11 +1,10 @@
 /** @jsx jsx */
 import React, { Fragment } from 'react'
 import PropTypes from 'prop-types'
-import axios from 'axios'
 
 // Utility
 import { css, jsx, Global } from '@emotion/core'
-import { GlobalStyles, mixin, typography, colors } from '../styles/index'
+
 import mockGraphqlData from '../util/mock'
 import graphqlQuery from '../util/http'
 
@@ -21,13 +20,7 @@ import {
 } from '../components/navigation/navigation'
 import Gallery from '../components/portfolio/projectGallery'
 import PageLayout from '../components/pageLayout'
-import {
-  ProjectCover,
-  WithHoverState
-} from '../components/portfolio/projectCover'
-import Footer from '../components/footer'
-// import '../sass/base.scss'
-// import '../sass/portfolio.scss'
+import { ProjectCover } from '../components/portfolio/projectCover'
 
 const HomePage = props => {
   const { projects, url } = props // from getInitialProps Next.js
