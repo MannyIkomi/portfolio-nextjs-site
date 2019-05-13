@@ -2,6 +2,7 @@
 // Modules
 import React, { Fragment } from 'react'
 import { css, jsx } from '@emotion/core'
+import PropTypes from 'prop-types'
 //
 // Components
 import PageLayout from '../components/pageLayout'
@@ -196,40 +197,51 @@ const About = props => {
         ]}
       >
         <h2>designers who inspire me...</h2>
-        <div className="designer" css={[inspirationStyles]}>
-          <h3>Chris Do</h3>
-          <p>
-            Founder of{' '}
-            <InlineLink href={'https://www.youtube.com/user/TheSkoolRocks'}>
-              The Futur
-            </InlineLink>{' '}
-            an online education platform changing the way we think about design
-            education and strategy, teaching the business of design and the
-            design of business.
-          </p>
-        </div>
-        <div className="designer" css={[inspirationStyles]}>
-          <h3>Jacqueline Casey</h3>
-          <p>
-            Master of visual puns and Helvetica. A local Massachusetts design
-            hero best known for her poster design work at MIT.
-          </p>
-        </div>
+        <Designer name={`Chris Do`}>
+          Founder of{' '}
+          <InlineLink href={'https://www.youtube.com/user/TheSkoolRocks'}>
+            The Futur
+          </InlineLink>{' '}
+          an online education platform changing the way we think about design
+          education and strategy, teaching the business of design and the design
+          of business.
+        </Designer>
+        <Designer
+          name={'Jacqueline Casey'}
+          blurb={`Master of visual puns and Helvetica. A local Massachusetts design
+            hero best known for her poster design work at MIT.`}
+        />
       </section>
     </PageLayout>
   )
 }
 
-const inspirationStyles = css`
-  margin: 2rem 0;
-  color: ${colors.muteGray};
-  h3 {
-    font-family: ${typography.sans};
-    font-size: 1.5rem;
-    font-weight: bold;
-    text-transform: capitalize;
-  }
-`
+const Designer = props => {
+  const { name, blurb } = props
+  const designerInspirationStyles = css`
+    margin: 2rem 0;
+    color: ${colors.muteGray};
+    h3 {
+      font-family: ${typography.sans};
+      font-size: 1.5rem;
+      font-weight: bold;
+      text-transform: capitalize;
+    }
+    p {
+      max-width: 50ch;
+    }
+  `
+  return (
+    <section className="designer" css={[designerInspirationStyles]}>
+      <h3>{name}</h3>
+      <p>{blurb || props.children}</p>
+    </section>
+  )
+}
+Designer.propTypes = {
+  name: PropTypes.string.isRequired,
+  blurb: PropTypes.string
+}
 
 /*
  Chris Do
