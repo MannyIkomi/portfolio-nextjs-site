@@ -129,7 +129,7 @@ const About = props => {
           industry, I've gained the skills required to craft design ideas into a
           high quality product.
           <br />
-          In recent years I’ve been learning how to code as a new creative
+          In recent years I’ve been learning web development as a new creative
           medium to build websites and user interfaces. 🤓
           <br />
           <strong
@@ -154,6 +154,7 @@ const About = props => {
             font-weight: 100;
             font-size: 3rem;
             line-height: 1.25;
+            max-width: 35ch;
             color: ${colors.darkGray};
           }
 
