@@ -6,7 +6,7 @@ function graphqlQuery(queryString = '') {
     baseURL:
       process.env.NODE_ENV === 'development'
         ? 'http://localhost:3001'
-        : process.env.API_URL,
+        : 'http://api.mannyikomi.com',
 
     url: 'graphql',
     headers: {
