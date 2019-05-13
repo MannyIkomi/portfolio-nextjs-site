@@ -54,6 +54,7 @@ const PageLayout = props => {
 
         @media (${measure.desktopMediaWidth}) {
           margin: 0;
+          ${persistDockedMenu && `margin: ${measure.menubarHeight} 0 0 0;`}
         }
 
         ${mixin.desktopMedia(`

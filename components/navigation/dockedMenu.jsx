@@ -48,8 +48,8 @@ export const DockedMenu = props => {
 
     font-family: ${typography.serif};
 
-    @media (${measure.tabletMediaWidth}){
-      @media (hover: hover){
+    @media (${measure.tabletMediaWidth}), @media (hover: hover){
+      
         bottom: initial;
         top: 0;
         right: 0;
@@ -63,7 +63,7 @@ export const DockedMenu = props => {
         background-size: cover;
         background-repeat: no-repeat;
         background-position: top right;
-      }
+      
     }
 
     @media screen and (orientation: landscape) and (max-height: 450px) {
@@ -84,8 +84,10 @@ export const DockedMenu = props => {
         bottom: 0;
         left: 0;
         @media (hover: hover), (${measure.tabletMediaWidth}) {
-          top: 0;
-          bottom: initial;
+          @media (${measure.tabletMediaWidth}) {
+            top: 0;
+            bottom: initial;
+          }
         }
         @media (${measure.desktopMediaWidth}) {
           ${persistOnDesktop ? null : 'display: none;'}
