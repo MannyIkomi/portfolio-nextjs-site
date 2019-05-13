@@ -180,23 +180,27 @@ const About = props => {
         <cite>— R. Buckminster Fuller</cite>
       </section>
       <section
-        className="inspiration viewport"
-        css={[
-          css`
-            background-color: ${colors.darkGray};
-            padding: 2rem;
-            h2 {
-              font-family: ${typography.serif};
-              color: ${colors.orange};
-              font-weight: 400;
-              font-size: 2rem;
+        // designer inspiration
+        css={css`
+          background-color: ${colors.darkGray};
+          padding: 2rem;
+          h2 {
+            font-family: ${typography.serif};
+            color: ${colors.orange};
+            font-weight: 400;
+            font-size: 2rem;
 
-              margin: 1rem 0;
-            }
-          `
-        ]}
+            margin: 1rem 0;
+          }
+        `}
       >
-        <h2>designers who inspire me...</h2>
+        <h2
+          css={css`
+            grid-area: ;
+          `}
+        >
+          designers who inspire me...
+        </h2>
         <Designer name={`Chris Do`}>
           Founder of{' '}
           <InlineLink href={'https://www.youtube.com/user/TheSkoolRocks'}>

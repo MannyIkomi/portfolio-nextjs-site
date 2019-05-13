@@ -8,7 +8,7 @@ function graphqlQuery(queryString = '') {
     baseURL:
       process.env.NODE_ENV === 'development'
         ? 'http://localhost:3001'
-        : 'api.mannyikomi.com',
+        : 'https://graphql-behance-api.herokuapp.com/',
 
     url: 'graphql',
     headers: {
