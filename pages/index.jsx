@@ -87,7 +87,7 @@ HomePage.getInitialProps = async () => {
     const { projects } = await response.data.data
     return { projects }
   } catch (err) {
-    console.log(err.error)
+    console.error(err)
     // const { projects } = mockGraphqlData.data
     // return { projects }
   }
