@@ -28,7 +28,7 @@ export const SideMenu = props => {
           ${mixin.flex('column')}
           align-items: center;
           justify-content: space-between;
-
+          box-shadow: 0.25rem 0.25rem 0.25rem 0px rgba(38, 38, 38, 0.25);
           background-color: ${colors.muteGray};
       `)}
       `}

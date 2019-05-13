@@ -107,7 +107,7 @@ export const DockedMenu = props => {
           background-color: ${colors.muteGray};
           box-shadow: 0rem -0.25rem 0.25rem 0px rgba(38, 38, 38, 0.25);
           @media (hover: hover), (${measure.tabletMediaWidth}) {
-            box-shadow: 0rem 0.25rem 0.25rem 0px rgba(38, 38, 38, 0.2);
+            box-shadow: 0rem 0.25rem 0.25rem 0px rgba(38, 38, 38, 0.25);
           }
         `}
       >
