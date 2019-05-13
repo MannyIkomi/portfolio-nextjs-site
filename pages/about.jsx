@@ -21,7 +21,7 @@ const About = props => {
       persistDockedMenu={false}
     >
       <section
-        // className={`about viewport`}
+        // about heading + paragraph blurb
         css={css`
           display: flex;
           ${mixin.flex('column')};
@@ -33,59 +33,94 @@ const About = props => {
           p {
             padding: 2rem;
           }
+
+          ${mixin.tabletMedia(`
+            display: grid;
+            grid-template-areas: 'headshot h1 h1' 'negative body body';
+            grid-template-columns: 1fr 1fr 1fr;
+          `)}
         `}
       >
-        <header>
-          <div
-            // className={`headshot motif-left`}
+        <div
+          // headshot portrait
+          css={css`
+            align-self: flex-end;
+            margin: 0 0 auto auto;
+            position: relative;
+            width: 50%;
+            max-width: 320px;
+
+            &::after {
+              content: url('/static/motif-bottom.svg');
+              display: block;
+              position: absolute;
+              bottom: -4px;
+              left: -1px;
+              ${mixin.size('100%', 'auto')};
+            }
+
+            ${mixin.tabletMedia(`
+                grid-area: headshot;
+                width: initial;
+                margin: 0;
+                align-self: flex-end;
+                justify-self: flex-end;
+                // justify-content: flex-end; 
+                // align-items: center;
+                &::after {
+                  content: url('/static/motif-bottom.svg');
+                  display: block;
+                  position: absolute;
+                  bottom: -4px;
+                  // left: 0;
+                  ${mixin.size('101%', 'auto')};
+                }
+    
+
+              `)}
+          `}
+        >
+          <img
+            src="static/headshot-touchup.jpg"
+            alt="Photo of Manny"
             css={css`
+              display: block;
+              ${mixin.size('100%', 'auto')};
+            `}
+          />
+        </div>
+        <h1
+          className={`page-head`}
+          style={{ padding: `0 2rem` }}
+          css={css`
+            font-family: ${typography.serif};
+            font-weight: 300;
+            text-transform: lowercase;
+
+            color: ${colors.orange};
+
+            ${mixin.tabletMedia(`
+              grid-area: h1;
               align-self: flex-end;
-              margin: 0 0 auto auto;
-              position: relative;
-              width: 50%;
-              max-width: 320px;
+            `)}
+          `}
+        >
+          Design thinker,
+          <br /> lifetime learner,
+          <br /> adoring guncle.
+        </h1>
 
-              &::after {
-                content: url('/static/motif-bottom.svg');
-                display: block;
-                position: absolute;
-                bottom: -4px;
-                left: -1px;
-                ${mixin.size('100%', 'auto')};
-              }
-            `}
-          >
-            <img
-              src="static/headshot-touchup.jpg"
-              alt="Photo of Manny"
-              css={css`
-                display: block;
-                ${mixin.size('100%', 'auto')};
-              `}
-            />
-          </div>
-          <h1
-            className={`page-head`}
-            style={{ padding: `0 2rem` }}
-            css={css`
-              font-family: ${typography.serif};
-              font-weight: 300;
-              text-transform: lowercase;
-
-              color: ${colors.orange};
-            `}
-          >
-            Design thinker,
-            <br /> lifetime learner,
-            <br /> adoring guncle.
-          </h1>
-        </header>
         {/* USE CH UNITS TO MEASURE THE WIDTH OF ABOUT BLURBS? */}
         <p
           className={`bio`}
           css={css`
             color: ${colors.muteGray};
             font-size: 1.25rem;
+
+            ${mixin.tabletMedia(`
+            max-width: 50ch;
+            grid-area: body;
+          `)}
           `}
         >
           My background in design comes from a combination of technical training
