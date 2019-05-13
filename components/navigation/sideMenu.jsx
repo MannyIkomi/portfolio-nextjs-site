@@ -28,7 +28,7 @@ export const SideMenu = props => {
           min-height: 100%;
           ${mixin.flex('column')}
           align-items: center;
-          justify-content: space-between;
+          // justify-content: center;
           box-shadow: 0.25rem 0.25rem 0.25rem 0px rgba(38, 38, 38, 0.25);
           background-color: ${colors.muteGray};
       `)}
@@ -37,10 +37,10 @@ export const SideMenu = props => {
       <MenuBar
         styles={css`
           ${mixin.flex('column')};
-          justify-content: space-around;
-          height: 100%;
+          justify-content: space-between;
+          height: 100vh;
           position: fixed;
-          margin: 2rem auto;
+          padding: 3rem 0;
         `}
       >
         <Logo
@@ -57,23 +57,30 @@ export const SideMenu = props => {
             `}
           />
         </NavContainer>
-        {socialData.map(socialIcon => {
-          return (
-            <SocialIcon
-              key={socialIcon.iconDark}
-              link={socialIcon.link}
-              icon={socialIcon.iconDark}
-              alt={socialIcon.alt}
-              styles={css`
-                display: block;
-                ${mixin.size('100%', 'auto')};
-                margin: 1rem;
-                max-width: 3rem;
-                min-height: 2rem;
-              `}
-            />
-          )
-        })}
+        <div
+          css={css`
+            ${mixin.flex('row')}
+            align-items: center;
+          `}
+        >
+          {socialData.map(socialIcon => {
+            return (
+              <SocialIcon
+                key={socialIcon.iconDark}
+                link={socialIcon.link}
+                icon={socialIcon.iconDark}
+                alt={socialIcon.alt}
+                styles={css`
+                  display: block;
+                  ${mixin.size('100%', 'auto')};
+                  padding: 0.25rem;
+                  max-width: 2rem;
+                  min-height: 1rem;
+                `}
+              />
+            )
+          })}
+        </div>
       </MenuBar>
     </section>
   )

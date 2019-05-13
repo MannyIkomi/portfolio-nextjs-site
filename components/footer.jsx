@@ -209,6 +209,10 @@ const Footer = props => {
             AIGA
           </a>{' '}
           <br />
+          <a href="/static/ikomi-resume.pdf" css={inlineLinkStyles} download>
+            Resume
+          </a>{' '}
+          <br />
           <br />
           Oh, and{' '}
           <a href="https://github.com/MannyIkomi" css={inlineLinkStyles}>
