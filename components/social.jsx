@@ -7,22 +7,25 @@ export const socialData = [
   {
     link: 'https://www.behance.net/ikomi',
     icon: '/static/social/be.svg',
+    iconDark: '/static/social/be-dark.svg',
     alt: 'Behance Logo'
   },
   {
     link: 'https://www.instagram.com/designbymanny/',
     icon: '/static/social/ig.svg',
+    iconDark: '/static/social/ig-dark.svg',
     alt: 'Instagram Logo'
   },
   {
     link: 'https://www.linkedin.com/in/ikomi',
     icon: '/static/social/in.svg',
+    iconDark: '/static/social/in-dark.svg',
     alt: 'LinkedIn Logo'
   }
 ]
 
 export const SocialIcon = props => {
-  const { link, icon, alt, styles } = props
+  const { link, icon, alt, styles, dark } = props
   return (
     <a href={link} css={styles}>
       <img src={icon} alt={alt} />

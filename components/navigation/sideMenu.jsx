@@ -11,6 +11,7 @@ import {
   NavContainer,
   NavLink
 } from '../navigation/navigation'
+import SocialIcon, { socialData } from '../social'
 
 // Utility
 import { getPages } from '../../util/navigation'
@@ -35,6 +36,9 @@ export const SideMenu = props => {
     >
       <MenuBar
         styles={css`
+          ${mixin.flex('column')};
+          justify-content: space-around;
+          height: 100%;
           position: fixed;
           margin: 2rem auto;
         `}
@@ -53,6 +57,23 @@ export const SideMenu = props => {
             `}
           />
         </NavContainer>
+        {socialData.map(socialIcon => {
+          return (
+            <SocialIcon
+              key={socialIcon.iconDark}
+              link={socialIcon.link}
+              icon={socialIcon.iconDark}
+              alt={socialIcon.alt}
+              styles={css`
+                display: block;
+                ${mixin.size('100%', 'auto')};
+                margin: 1rem;
+                max-width: 3rem;
+                min-height: 2rem;
+              `}
+            />
+          )
+        })}
       </MenuBar>
     </section>
   )

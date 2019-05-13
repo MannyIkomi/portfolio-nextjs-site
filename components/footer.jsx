@@ -184,7 +184,7 @@ const Footer = props => {
                 styles={css`
                   display: block;
                   ${mixin.size('100%', 'auto')};
-                  margin: 1rem;
+                  // margin: 1rem;
                   max-width: 3rem;
                   min-height: 2rem;
                 `}
