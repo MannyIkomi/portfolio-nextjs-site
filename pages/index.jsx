@@ -32,9 +32,8 @@ import Footer from '../components/footer'
 const HomePage = props => {
   const { projects, url } = props // from getInitialProps Next.js
 
-  console.log('URL from Next.js\n', url)
   // use url to determine the :active navigation link
-  // console.log('PORTFOLIO PROPS:', projects)
+  // console.log('URL from Next.js\n', url)
 
   return (
     <Fragment>
@@ -87,7 +86,7 @@ HomePage.getInitialProps = async () => {
     const { projects } = await response.data.data
     return { projects }
   } catch (err) {
-    console.error(err)
+    console.error(err.error)
     // const { projects } = mockGraphqlData.data
     // return { projects }
   }
