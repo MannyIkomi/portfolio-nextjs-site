@@ -25,9 +25,15 @@ export const socialData = [
 ]
 
 export const SocialIcon = props => {
-  const { link, icon, alt, styles, dark } = props
+  const { link, icon, alt, styles } = props
+  const animate = css`
+    transition: transform 1s ease-in-out;
+    :hover {
+      transform: rotateY(180deg);
+    }
+  `
   return (
-    <a href={link} css={styles}>
+    <a href={link} css={[animate, styles]}>
       <img src={icon} alt={alt} />
     </a>
   )

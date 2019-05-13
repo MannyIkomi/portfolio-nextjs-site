@@ -37,7 +37,6 @@ export const SideMenu = props => {
       <MenuBar
         styles={css`
           ${mixin.flex('column')};
-          justify-content: space-between;
           height: 100vh;
           position: fixed;
           padding: 3rem 0;
@@ -49,7 +48,11 @@ export const SideMenu = props => {
             max-width: 5rem;
           `}
         />
-        <NavContainer>
+        <NavContainer
+          styles={css`
+            margin: 4rem 0;
+          `}
+        >
           <NavLink
             pages={getPages()}
             styles={css`

@@ -77,7 +77,6 @@ const ProjectPage = props => {
   const headingStyle = css`
     ${mixin.flex('column')}
     align-items: center;
-    // max-width: 40rem;
 
     min-height: 50vh;
     padding: 2rem;
@@ -94,8 +93,6 @@ const ProjectPage = props => {
       font-style: italic;
       text-transform: initial;
     }
-    // @media screen and (min-width: 700px) {
-    // }
   `
   return (
     <PageLayout
