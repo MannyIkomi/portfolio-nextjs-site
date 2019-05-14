@@ -98,6 +98,9 @@ export const ProjectCover = props => {
               position: relative;
               margin-bottom: 4rem;
               width: 100%;
+              :hover {
+                cursor: pointer;
+              }
               @media (hover: hover) {
                 &:hover {
                   box-shadow: -0.5rem 0.5rem 0.5rem 0px hsla(0, 0%, 0%, 0.85);
