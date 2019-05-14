@@ -247,6 +247,9 @@ Designer.propTypes = {
   blurb: PropTypes.string
 }
 
+// Mind your p's and q's
+// Typography is king
+
 /*
  Chris Do
 Founder of The Futur an online education platform changing the way we think about design education and strategy, teaching the design of business and the business of design.

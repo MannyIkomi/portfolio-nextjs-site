@@ -35,7 +35,7 @@ export const NavLink = props => {
 }
 
 export const InlineLink = props => {
-  const { href, text, styleOverrides } = props
+  const { href, text, styles } = props
   const baseStyle = css`
     display: inline-block;
     text-decoration: underline;
@@ -45,7 +45,7 @@ export const InlineLink = props => {
   }`
 
   return (
-    <a href={href} css={[baseStyle, styleOverrides]}>
+    <a href={href} css={[baseStyle, typography.animateTypeSlug, styles]}>
       {props.children || text}
     </a>
   )

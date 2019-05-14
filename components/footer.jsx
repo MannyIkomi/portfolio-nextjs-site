@@ -6,6 +6,7 @@ import { css, jsx } from '@emotion/core'
 // Components
 import { LogoMasterWhite } from './logo'
 import SocialIcon, { socialData } from './social'
+import { InlineLink } from './navigation/navigation'
 
 //  Utility
 import { getYear } from '../util/dates'
@@ -205,39 +206,26 @@ const Footer = props => {
       >
         <p>
           Member{` `}
-          <a href="https://www.aiga.org/" css={inlineLinkStyles}>
-            AIGA
-          </a>{' '}
+          <InlineLink href={'https://www.aiga.org/'} text={'AIGA'} />
           <br />
-          <a href="/static/ikomi-resume.pdf" css={inlineLinkStyles} download>
-            Resume
-          </a>{' '}
+          <InlineLink href={'/static/ikomi-resume.pdf'} text={'Resume'} />
           <br />
           <br />
           Oh, and{' '}
-          <a href="https://github.com/MannyIkomi" css={inlineLinkStyles}>
-            {' '}
-            I code too!
-          </a>
+          <InlineLink
+            href={'https://github.com/MannyIkomi'}
+            text={'I code too!'}
+          />
           {` `}🦄
           <br />I built my portfolio site with
           {` `} <br />
-          <a href="https://reactjs.org/" css={inlineLinkStyles}>
-            React
-          </a>
-          ,{` `}
-          <a href="https://graphql.org/" css={inlineLinkStyles}>
-            GraphQL
-          </a>
+          <InlineLink href={'https://reactjs.org/'} text={'React'} />,{` `}
+          <InlineLink href={'https://graphql.org/'} text={'GraphQl'} />
           {` `}and{` `}
-          <a href="https://nodejs.org/en/" css={inlineLinkStyles}>
-            Node.js
-          </a>
+          <InlineLink href={'https://nodejs.org/en/'} text={'Node.js'} />
           <br /> <br />
           Powered by{` `}
-          <a href="https://www.behance.net/dev" css={inlineLinkStyles}>
-            Behance
-          </a>
+          <InlineLink href={'https://www.behance.net/dev'} text={'Behance'} />
         </p>
       </section>
       <p // copyright line

@@ -2,6 +2,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { css, jsx } from '@emotion/core'
+import { typography } from '../styles'
 
 export const socialData = [
   {
@@ -26,14 +27,9 @@ export const socialData = [
 
 export const SocialIcon = props => {
   const { link, icon, alt, styles } = props
-  const animate = css`
-    transition: transform 1s ease-in-out;
-    :hover {
-      transform: rotateY(180deg);
-    }
-  `
+
   return (
-    <a href={link} css={[animate, styles]}>
+    <a href={link} css={[typography.animateTypeSlug, styles]}>
       <img src={icon} alt={alt} />
     </a>
   )

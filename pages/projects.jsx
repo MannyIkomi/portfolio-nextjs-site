@@ -64,6 +64,12 @@ const renderModules = modules => {
   })
 }
 
+const removeFirstItem = array => {
+  const arrayCopy = [...array]
+  arrayCopy.shift()
+  return arrayCopy
+}
+
 const ProjectPage = props => {
   const { project } = props
   const { name, description, modules } = project
@@ -122,7 +128,7 @@ const ProjectPage = props => {
               margin: auto;
             `}
           >
-            {renderModules(modules)}
+            {renderModules(removeFirstItem(modules))}
           </div>
         </main>
         {/* <footer>

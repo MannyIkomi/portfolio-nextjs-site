@@ -22,6 +22,12 @@ export const typography = {
     transition-timing-function: ease;
     transition-duration: 0.5s;
     transition-delay: 0.5s;
+  `,
+  animateTypeSlug: css`
+    transition: transform 0.5s ease-in-out;
+    :hover {
+      transform: rotateX(180deg);
+    }
   `
 }
 
