@@ -192,11 +192,17 @@ const About = props => {
 
             margin: 1rem 0;
           }
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(50ch, 1fr));
+          grid-gap: 2rem;
+          ${mixin.tabletMedia(`
+            
+          `)}
         `}
       >
         <h2
           css={css`
-            grid-area: ;
+            grid-column: 1 / -1;
           `}
         >
           designers who inspire me...
@@ -205,10 +211,10 @@ const About = props => {
           Founder of{' '}
           <InlineLink href={'https://www.youtube.com/user/TheSkoolRocks'}>
             The Futur
-          </InlineLink>{' '}
-          an online education platform changing the way we think about design
-          education and strategy, teaching the business of design and the design
-          of business.
+          </InlineLink>
+          , teaching the business of design and the design of business. A new
+          online education platform changing the way we think about design
+          education and strategy.
         </Designer>
         <Designer
           name={'Jacqueline Casey'}
