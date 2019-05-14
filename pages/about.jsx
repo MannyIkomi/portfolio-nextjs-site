@@ -215,6 +215,17 @@ const About = props => {
           blurb={`Master of visual puns and Helvetica. A local Massachusetts design
             hero best known for her poster design work at MIT.`}
         />
+        <Designer name={'Walter Gropius'}>
+          Architect, Founder of the Bauhaus. He brought together art and
+          technology to solve problems in design and industrialism.{' '}
+          <InlineLink
+            href={`https://www.historicnewengland.org/property/gropius-house/`}
+          >
+            Walter's historic home
+          </InlineLink>{' '}
+          in Lincoln, MA is an exceptional example of his philosophy and design
+          thinking.
+        </Designer>
       </section>
     </PageLayout>
   )
@@ -251,20 +262,8 @@ Designer.propTypes = {
 // Typography is king
 
 /*
- Chris Do
-Founder of The Futur an online education platform changing the way we think about design education and strategy, teaching the design of business and the business of design.
-
 Anne Carter
-A pivotal professor in my design education, her passion for history, art and design is infectious. She taught me how to refine my creativity and develop strong design concepts.
-
-Jacqueline Casey
-Master of visual puns and Helvetica. A local Massachusetts design hero best known for her poster design work at MIT.
-
-Walter Gropius
-Architect, Founder of the Bauhaus. Brought together art and craftsmanship to 
-
-Elon Musk
-Founder of Tesla and SpaceX. A man with vision, solving problems on the largest scale.
+A pivotal professor in my design education, her passion for art and design is infectious. She taught me how to exercise my creativity and develop strong design concepts.
  */
 
 const Motif = props => {
