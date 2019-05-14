@@ -156,17 +156,17 @@ const Footer = props => {
           `)}
         `}
       >
-        <a
-          href="mailto:design@mannyikomi.com"
-          css={css`
-            ${inlineLinkStyles}
+        <InlineLink
+          href={`mailto:design@mannyikomi.com`}
+          styles={css`
             font-size: 1.5rem;
           `}
         >
           design@
           <wbr />
           mannyikomi.com
-        </a>
+        </InlineLink>
+
         <br />
         <div
           css={css`
