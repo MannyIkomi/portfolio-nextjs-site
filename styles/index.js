@@ -1,6 +1,8 @@
 import React from 'react'
 import { css, Global } from '@emotion/core'
 
+// https://webkit.org/blog/7929/designing-websites-for-iphone-x/
+
 export const colors = {
   orange: '#ff5e00',
   muteGray: '#f2f2f2',
