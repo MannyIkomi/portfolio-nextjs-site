@@ -193,9 +193,10 @@ const About = props => {
             margin: 1rem 0;
           }
           display: grid;
-          grid-template-columns: repeat(auto-fit, minmax(50ch, 1fr));
-          grid-gap: 2rem;
+          grid-template-columns: repeat(auto-fit, minmax(100%, 1fr));
           ${mixin.tabletMedia(`
+          grid-gap: 2rem;
+          grid-template-columns: repeat(auto-fit, minmax(40ch, 1fr));
             
           `)}
         `}
@@ -249,7 +250,6 @@ const Designer = props => {
       text-transform: capitalize;
     }
     p {
-      max-width: 50ch;
     }
   `
   return (
