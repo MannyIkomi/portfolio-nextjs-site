@@ -15,7 +15,7 @@ const HtmlHead = props => {
         content="width=device-width, initial-scale=1, shrink-to-fit=no"
       />
       
-      {* <!-- Global site tag (gtag.js) - Google Analytics --> *}
+      {/* <!-- Global site tag (gtag.js) - Google Analytics --> */}
       <script async src="https://www.googletagmanager.com/gtag/js?id=UA-143395225-1"></script>
       <script>
         window.dataLayer = window.dataLayer || [];
