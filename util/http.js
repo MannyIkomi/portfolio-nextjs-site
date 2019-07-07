@@ -5,10 +5,10 @@ function graphqlQuery(queryString = '') {
 
   const axiosGraphql = Axios.create({
     method: 'POST',
-    baseURL:
-      process.env.NODE_ENV === 'development'
-        ? 'http://localhost:3001'
-        : 'https://graphql-behance-api.herokuapp.com/',
+    baseURL: 'https://api.mannyikomi.com',
+    // process.env.NODE_ENV === 'development'
+    //   ? 'http://localhost:3001'
+    //   : 'https://graphql-behance-api.herokuapp.com/',
 
     url: 'graphql',
     headers: {
