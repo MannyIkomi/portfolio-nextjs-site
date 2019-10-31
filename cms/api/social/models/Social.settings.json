@@ -1,0 +1,33 @@
+{
+  "connection": "default",
+  "collectionName": "socials",
+  "info": {
+    "name": "social",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": [
+      "created_at",
+      "updated_at"
+    ],
+    "comment": ""
+  },
+  "attributes": {
+    "icon": {
+      "model": "file",
+      "via": "related",
+      "plugin": "upload",
+      "required": true
+    },
+    "url": {
+      "unique": true,
+      "required": true,
+      "type": "string"
+    },
+    "platform": {
+      "type": "string",
+      "required": true
+    }
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "connection": "default",
+  "collectionName": "inspirations",
+  "info": {
+    "name": "inspiration",
+    "description": "Designers who inspire me"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "comment": ""
+  },
+  "attributes": {
+    "name": {
+      "type": "string",
+      "unique": true,
+      "required": true
+    },
+    "description": {
+      "required": true,
+      "type": "richtext"
+    },
+    "headshot": {
+      "model": "file",
+      "via": "related",
+      "plugin": "upload"
+    }
+  }
+}

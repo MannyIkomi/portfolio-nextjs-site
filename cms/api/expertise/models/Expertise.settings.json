@@ -1,0 +1,30 @@
+{
+  "connection": "default",
+  "collectionName": "expertise",
+  "info": {
+    "name": "expertise",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "comment": ""
+  },
+  "attributes": {
+    "type": {
+      "required": true,
+      "enum": [
+        "skill",
+        "tool"
+      ],
+      "type": "enumeration"
+    },
+    "description": {
+      "required": true,
+      "type": "text"
+    },
+    "url": {
+      "type": "string"
+    }
+  }
+}

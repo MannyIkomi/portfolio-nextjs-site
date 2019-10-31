@@ -1,0 +1,37 @@
+{
+  "connection": "default",
+  "collectionName": "resumetools",
+  "info": {
+    "name": "experience",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": [
+      "created_at",
+      "updated_at"
+    ],
+    "comment": ""
+  },
+  "attributes": {
+    "url": {
+      "type": "string"
+    },
+    "organization": {
+      "required": true,
+      "type": "string"
+    },
+    "description": {
+      "type": "richtext"
+    },
+    "started": {
+      "type": "date"
+    },
+    "ended": {
+      "type": "date"
+    },
+    "roles": {
+      "type": "string"
+    }
+  }
+}
