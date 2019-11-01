@@ -5,7 +5,15 @@
   "main": "index.js",
   "scripts": {
     "test": "test",
-    "cms": "cd cms npm run develop"
+    "dev-cms": "cd cms && npm run dev",
+    "dev-site": "cd site && npm run dev",
+    "build-cms": "cd cms && npm build",
+    "build-site": "cd site && npm build",
+    "start-cms": "cd cms && npm start",
+    "start-site": "cd site && npm start",
+    "dev": "npm run dev-cms && npm run dev-site",
+    "build": "npm run build-cms && npm run build-site",
+    "start": "npm run start-cms && npm run start-site"
   },
   "repository": {
     "type": "git",
@@ -16,5 +24,6 @@
   "bugs": {
     "url": "https://github.com/MannyIkomi/portfolio-nextjs-site/issues"
   },
-  "homepage": "https://github.com/MannyIkomi/portfolio-nextjs-site#readme"
+  "homepage": "https://github.com/MannyIkomi/portfolio-nextjs-site#readme",
+  "dependencies": {}
 }
