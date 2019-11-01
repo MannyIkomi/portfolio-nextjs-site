@@ -1,5 +1,5 @@
-'use strict';
-
+'use strict'
+const slugify = require('slugify')
 /**
  * Lifecycle callbacks for the `Project` model.
  */
@@ -7,7 +7,14 @@
 module.exports = {
   // Before saving a value.
   // Fired before an `insert` or `update` query.
-  // beforeSave: async (model, attrs, options) => {},
+  beforeSave: async (model, attrs, options) => {
+    const slugOptions = { lower: true }
+    if (options.method === 'insert' && attrs.title) {
+      model.set('slug', slugify(attrs.title, slugOptions))
+    } else if (options.method === 'update' && attrs.title) {
+      attrs.slug = slugify(attrs.title, slugOptions)
+    }
+  }
 
   // After saving a value.
   // Fired after an `insert` or `update` query.
@@ -20,7 +27,7 @@ module.exports = {
   // After fetching a value.
   // Fired after a `fetch` operation.
   // afterFetch: async (model, response, options) => {},
-  
+
   // Before fetching all values.
   // Fired before a `fetchAll` operation.
   // beforeFetchAll: async (model, columns, options) => {},
@@ -39,7 +46,7 @@ module.exports = {
 
   // Before updating a value.
   // Fired before an `update` query.
-  // beforeUpdate: async (model, attrs, options) => {},
+  // beforeUpdate: async (model, attrs, options) => {}
 
   // After updating a value.
   // Fired after an `update` query.
@@ -52,4 +59,4 @@ module.exports = {
   // After destroying a value.
   // Fired after a `delete` query.
   // afterDestroy: async (model, attrs, options) => {}
-};
+}

@@ -3,6 +3,9 @@
   "version": "2.0.0",
   "description": "Portfolio site with built cms backend",
   "main": "index.js",
+  "engines": {
+    "node": "10.8.0"
+  },
   "scripts": {
     "test": "test",
     "dev-cms": "cd cms && npm run dev",

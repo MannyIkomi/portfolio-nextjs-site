@@ -1,30 +1,20 @@
 /** @jsx jsx */
 import React, { Fragment } from 'react'
 import PropTypes from 'prop-types'
-
-// Utility
 import { css, jsx, Global } from '@emotion/core'
 
-import mockGraphqlData from '../util/mock'
-import graphqlQuery from '../util/http'
+// Utility
+import { CMS_URL } from '../config'
 
 // Components
-import HtmlHead from '../components/head'
-import {
-  WithSwitchToggle,
-  DockedMenu,
-  SideMenu,
-  NavLink,
-  Logo,
-  NavContainer
-} from '../components/navigation/navigation'
+
 import Gallery from '../components/portfolio/projectGallery'
 import PageLayout from '../components/pageLayout'
 import { ProjectCover } from '../components/portfolio/projectCover'
+import Axios from 'axios'
 
 const HomePage = props => {
   const { projects, url } = props // from getInitialProps Next.js
-
   // use url to determine the :active navigation link
   // console.log('URL from Next.js\n', url)
 
@@ -36,22 +26,7 @@ const HomePage = props => {
         isSideMenuDisabled={false}
         persistDockedMenu={false}
       >
-        {/* <h1
-          css={css`
-            font-family: ${typography.serif};
-            font-weight: 400;
-            line-height: 0.75;
-
-            color: ${colors.darkGray};
-
-            margin: 0 2rem;
-          `}
-        >
-          the werk
-          </h1> */}
         <Gallery id={0}>
-          {/* WithInteractiveLink render=ProjectImg */}
-
           {projects.map(project => (
             <ProjectCover project={project} key={project.id} />
           ))}
@@ -63,7 +38,9 @@ const HomePage = props => {
 
 HomePage.getInitialProps = async () => {
   try {
-    const response = await graphqlQuery(`{
+    const response = await Axios(`${CMS_URL}/projects`)
+
+    /* graphqlQuery(`{
       projects {
         id
         name
@@ -75,8 +52,10 @@ HomePage.getInitialProps = async () => {
           _808
         }
       }
-    }`)
-    const { projects } = await response.data.data
+    }`) */
+
+    const projects = response.data
+    console.log(projects)
     return { projects }
   } catch (err) {
     console.error(err.error)

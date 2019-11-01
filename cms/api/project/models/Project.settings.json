@@ -33,6 +33,10 @@
       "group": "modules",
       "repeatable": true,
       "type": "group"
+    },
+    "slug": {
+      "unique": true,
+      "type": "string"
     }
   }
 }

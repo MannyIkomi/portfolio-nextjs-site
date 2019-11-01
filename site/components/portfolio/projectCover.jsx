@@ -7,6 +7,7 @@ import PropTypes from 'prop-types'
 
 import ProjectPage from '../../pages/projects'
 import FillOverlay from '../overlay'
+import { CMS_URL } from '../../config'
 
 const CoverCaption = props => {
   const { title, subtitle } = props
@@ -87,7 +88,7 @@ ProjectPhoto.propTypes = {
 export const ProjectCover = props => {
   const size = 'original'
   const { coverSize, project } = props
-  const { id, name, description, covers, slug } = project
+  const { id, name, description, cover, slug } = project
 
   return (
     <Fragment>
@@ -113,8 +114,8 @@ export const ProjectCover = props => {
             onMouseLeave={handleMouseLeave || null}
           >
             <Link
-              href={`/projects/?slug=${slug}`}
-              as={`/projects/${slug.toLowerCase()}`}
+              href={`${CMS_URL}/projects/?slug=${slug}`}
+              as={`/projects/${slug}`}
             >
               <a
                 // className="aspect link relative"
@@ -123,7 +124,7 @@ export const ProjectCover = props => {
                   position: relative;
                 `}
               >
-                <ProjectPhoto src={covers[size]} alt={name} />
+                <ProjectPhoto src={`${CMS_URL}${cover.url}`} alt={name} />
                 {isHovered ? (
                   <FillOverlay>
                     <CoverCaption title={name} subtitle={description} />

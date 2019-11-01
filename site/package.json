@@ -1,7 +1,6 @@
 {
-  "name": "portfolio-nextjs-site",
+  "name": "portfolio-site-frontend",
   "version": "1.0.0",
-  "description": "Manny Ikomi's personal portfolio website",
   "main": "index.js",
   "engines": {
     "node": "10.8.0"
