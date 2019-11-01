@@ -7,13 +7,13 @@ import { css, jsx } from '@emotion/core'
 import PageLayout from '../components/pageLayout'
 
 // Utility
-import Showdown from 'showdown'
-import { showdown } from '../util/markdown'
 
-import { mixin, colors, typography } from '../styles'
+import { mixin, colors, typography, measure } from '../styles'
 import { cms } from '../util/http'
 import { projectProps, moduleProps } from '../util/props'
 import { CMS_URL } from '../config'
+import Markdown from '../components/markdown'
+
 const moduleContainer = css`
   margin: 4rem 0;
   box-shadow: -0.5rem 0.5rem 0.5rem 0px hsla(0, 0%, 0%, 0.85);
@@ -43,7 +43,20 @@ const ImageModule = props => {
 const TextModule = props => {
   const { text } = props.module
 
-  return <figure css={[moduleContainer]}>{convertMarkdown(text)}</figure>
+  return (
+    <figure
+      css={[
+        moduleContainer,
+        {
+          backgroundColor: colors.muteGray,
+          padding: '2rem',
+          h1: { color: colors.orange }
+        }
+      ]}
+    >
+      <Markdown>{text}</Markdown>
+    </figure>
+  )
 }
 TextModule.propTypes = moduleProps
 ImageModule.propTypes = moduleProps
@@ -61,12 +74,6 @@ const renderModules = modules => {
         )
     }
   })
-}
-
-const removeFirstItem = array => {
-  const arrayCopy = [...array]
-  arrayCopy.shift()
-  return arrayCopy
 }
 
 const ProjectPage = props => {
