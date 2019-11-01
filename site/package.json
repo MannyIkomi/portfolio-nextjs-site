@@ -1,0 +1,47 @@
+{
+  "name": "portfolio-nextjs-site",
+  "version": "1.0.0",
+  "description": "Manny Ikomi's personal portfolio website",
+  "main": "index.js",
+  "engines": {
+    "node": "10.8.0"
+  },
+  "scripts": {
+    "test": "jest",
+    "dev": "NODE_ENV=development node server.js",
+    "build": "next build",
+    "start": "NODE_ENV=production node server.js"
+  },
+  "author": "Manny Ikomi",
+  "license": "ISC",
+  "dependencies": {
+    "@babel/types": "^7.4.0",
+    "@emotion/core": "^10.0.10",
+    "axios": "^0.18.0",
+    "dotenv-webpack": "^1.7.0",
+    "express": "^4.16.4",
+    "next": "^8.0.4",
+    "prop-types": "^15.7.2",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6"
+  },
+  "devDependencies": {
+    "babel-jest": "^24.5.0",
+    "eslint": "^5.16.0",
+    "eslint-config-standard": "^12.0.0",
+    "eslint-plugin-emotion": "^10.0.7",
+    "eslint-plugin-import": "^2.17.2",
+    "eslint-plugin-node": "^8.0.1",
+    "eslint-plugin-promise": "^4.1.1",
+    "eslint-plugin-react": "^7.13.0",
+    "eslint-plugin-standard": "^4.0.0",
+    "jest": "^24.5.0",
+    "mockdate": "^2.0.2",
+    "supersniff": "^2.1.0"
+  },
+  "jest": {
+    "transform": {
+      "^.+\\.jsx?$": "babel-jest"
+    }
+  }
+}
