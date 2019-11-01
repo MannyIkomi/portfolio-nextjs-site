@@ -37,6 +37,11 @@
     "slug": {
       "unique": true,
       "type": "string"
+    },
+    "coverAlt": {
+      "default": "Project Cover Photo",
+      "required": true,
+      "type": "string"
     }
   }
 }

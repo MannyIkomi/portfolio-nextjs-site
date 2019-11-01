@@ -1,6 +1,14 @@
 import Axios from 'axios'
+import { CMS_URL } from '../config'
 
-function graphqlQuery(queryString = '') {
+export const cms = Axios.create({
+  baseURL: CMS_URL
+  // process.env.NODE_ENV === 'development'
+  //   ? 'http://localhost:3001'
+  //   : 'https://graphql-behance-api.herokuapp.com/',
+})
+
+export function graphqlQuery(queryString = '') {
   console.log('GRAPHQL QUERY:', queryString)
 
   const axiosGraphql = Axios.create({
@@ -23,4 +31,4 @@ function graphqlQuery(queryString = '') {
   })
 }
 
-export default graphqlQuery
+export default cms

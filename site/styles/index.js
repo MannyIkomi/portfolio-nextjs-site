@@ -147,7 +147,7 @@ export const GlobalStyles = props => {
         h3,
         h4,
         h5 {
-          line-height: 1.1;
+          line-height: 1.2;
           ${typography.sizeTransition}
           font-family: ${typography.serif};
           

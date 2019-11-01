@@ -14,7 +14,7 @@
     "build-site": "cd site && npm build",
     "start-cms": "cd cms && npm start",
     "start-site": "cd site && npm start",
-    "dev": "npm run dev-cms && npm run dev-site",
+    "dev": "concurrently 'npm:dev-*'",
     "build": "npm run build-cms && npm run build-site",
     "start": "npm run start-cms && npm run start-site"
   },

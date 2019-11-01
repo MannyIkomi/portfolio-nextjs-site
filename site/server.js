@@ -11,6 +11,7 @@ app.prepare().then(() => {
   const server = express()
   // const slug = /^[a-z0-9]+(?:-[a-z0-9]+)*$/
   // const id = /^[0-9]*$/
+  server.get('/cms', (req, res) => {})
 
   server.get(`/projects`, (req, res) => {
     console.log(`Portfolio Redirect`)

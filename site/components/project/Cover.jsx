@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import React, { Fragment, useState } from 'react'
+import React, { Fragment } from 'react'
 import { css, jsx } from '@emotion/core'
 import { colors, measure, mixin, typography } from '../../styles'
 import Link from 'next/link'
@@ -8,19 +8,22 @@ import PropTypes from 'prop-types'
 import ProjectPage from '../../pages/projects'
 import FillOverlay from '../overlay'
 import { CMS_URL } from '../../config'
+import { ProjectPhoto } from './Photo'
+import { WithHoverState } from '../WithHoverState'
+import { projectProps } from '../../util/props'
 
 const CoverCaption = props => {
   const { title, subtitle } = props
   return (
     <figcaption
       css={css`
-        h2,
-        h3 {
+        h1,
+        h2 {
           color: white;
         }
       `}
     >
-      <h2
+      <h1
         css={css`
           font-family: ${typography.sans};
           font-weight: bold;
@@ -31,8 +34,8 @@ const CoverCaption = props => {
         `}
       >
         {title}
-      </h2>
-      <h3
+      </h1>
+      <h2
         css={css`
           font-family: ${typography.serif};
           font-style: italic;
@@ -42,7 +45,7 @@ const CoverCaption = props => {
         `}
       >
         {subtitle}
-      </h3>
+      </h2>
     </figcaption>
   )
 }
@@ -51,44 +54,9 @@ CoverCaption.propTypes = {
   subtitle: PropTypes.string.isRequired
 }
 
-export const WithHoverState = props => {
-  const [isHovered, setIsHovered] = useState(false)
-  const { render } = props
-
-  function handleMouseEnter(e) {
-    // console.log(e)
-    setIsHovered(true)
-  }
-  function handleMouseLeave(e) {
-    // console.log(e)
-    setIsHovered(false)
-  }
-  return (
-    <Fragment>{render(isHovered, handleMouseEnter, handleMouseLeave)}</Fragment>
-  )
-}
-
-const ProjectPhoto = ({ src, alt }) => (
-  <img
-    css={css`
-      display: block;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    `}
-    src={src}
-    alt={alt}
-  />
-)
-ProjectPhoto.propTypes = {
-  src: PropTypes.string.isRequired,
-  alt: PropTypes.string
-}
-
-export const ProjectCover = props => {
-  const size = 'original'
-  const { coverSize, project } = props
-  const { id, name, description, cover, slug } = project
+export const Cover = props => {
+  const { project } = props
+  const { id, name, description, cover, slug, title } = project
 
   return (
     <Fragment>
@@ -113,10 +81,7 @@ export const ProjectCover = props => {
             onMouseEnter={handleMouseEnter || null}
             onMouseLeave={handleMouseLeave || null}
           >
-            <Link
-              href={`${CMS_URL}/projects/?slug=${slug}`}
-              as={`/projects/${slug}`}
-            >
+            <Link href={`/projects/?slug=${slug}`} as={`/projects/${slug}`}>
               <a
                 // className="aspect link relative"
                 css={css`
@@ -124,10 +89,13 @@ export const ProjectCover = props => {
                   position: relative;
                 `}
               >
-                <ProjectPhoto src={`${CMS_URL}${cover.url}`} alt={name} />
+                <ProjectPhoto
+                  src={`${CMS_URL}${cover.url}`}
+                  alt={project.coverAlt}
+                />
                 {isHovered ? (
                   <FillOverlay>
-                    <CoverCaption title={name} subtitle={description} />
+                    <CoverCaption title={title} subtitle={description} />
                   </FillOverlay>
                 ) : null}
               </a>
@@ -142,14 +110,9 @@ export const ProjectCover = props => {
   )
 }
 
-ProjectCover.propTypes = {
+Cover.propTypes = {
   coverSize: PropTypes.string,
-  project: PropTypes.shape({
-    id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-    name: PropTypes.string,
-    description: PropTypes.string,
-    slug: PropTypes.string
-  })
+  project: projectProps
 }
 
-export default ProjectCover
+export default Cover

@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import React, { Fragment } from 'react'
 import { css, jsx } from '@emotion/core'
-import axios from 'axios'
+import Axios from 'axios'
 // import PropTypes from 'prop-types'
 
 // Components
@@ -11,15 +11,15 @@ import PageLayout from '../components/pageLayout'
 
 // Utility
 import { mixin, colors, typography } from '../styles'
-import mockGraphqlData from '../util/mock'
-import graphqlQuery from '../util/http'
+import { cms } from '../util/http'
+import { projectProps, moduleProps } from '../util/props'
 const moduleContainer = css`
   margin: 4rem 0;
   box-shadow: -0.5rem 0.5rem 0.5rem 0px hsla(0, 0%, 0%, 0.85);
 `
 
 const ImageModule = props => {
-  const { type, sizes } = props.module
+  const { type, image } = props.module
   return (
     <figure
       css={[
@@ -33,12 +33,10 @@ const ImageModule = props => {
         `
       ]}
     >
-      <img src={sizes['_1400']} />
+      <img src={image.url} />
     </figure>
   )
 }
-
-// <img class="js-project-module--picture" src="https://mir-s3-cdn-cf.behance.net/project_modules/1400/eb636e75805377.5c57a09602e94.png" srcset="https://mir-s3-cdn-cf.behance.net/project_modules/disp/eb636e75805377.5c57a09602e94.png 600w,https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/eb636e75805377.5c57a09602e94.png 1200w,https://mir-s3-cdn-cf.behance.net/project_modules/1400/eb636e75805377.5c57a09602e94.png 1400w,https://mir-s3-cdn-cf.behance.net/project_modules/fs/eb636e75805377.5c57a09602e94.png 1920w,https://mir-s3-cdn-cf.behance.net/project_modules/2800/eb636e75805377.5c57a09602e94.png 2800w,https://mir-s3-cdn-cf.behance.net/project_modules/max_3840/eb636e75805377.5c57a09602e94.png 3300w," sizes="(max-width: 1400px) 100vw, 1400px">
 
 const TextModule = props => {
   const { text } = props
@@ -48,6 +46,8 @@ const TextModule = props => {
     </figure>
   )
 }
+TextModule.propTypes = moduleProps
+ImageModule.propTypes = moduleProps
 
 const renderModules = modules => {
   return modules.map((module, index) => {
@@ -72,7 +72,7 @@ const removeFirstItem = array => {
 
 const ProjectPage = props => {
   const { project } = props
-  const { name, description, modules } = project
+  const { title, description, modules, slug } = project
 
   const projectView = css`
     ${mixin.flex('column')}
@@ -103,13 +103,13 @@ const ProjectPage = props => {
   return (
     <PageLayout
       title={`${project.name} by Manny`}
-      description={`${project.name}, ${project.description} by Manny Ikomi`}
+      description={`${project.title}, ${project.description} by Manny Ikomi`}
       isSideMenuDisabled={true}
       persistDockedMenu={true}
     >
       <article css={projectView}>
         <header css={headingStyle}>
-          <h1>{name}</h1>
+          <h1>{title}</h1>
           <h2>{description}</h2>
         </header>
         <main
@@ -138,47 +138,19 @@ const ProjectPage = props => {
     </PageLayout>
   )
 }
+ProjectPage.propTypes = {
+  project: projectProps
+}
 
 ProjectPage.getInitialProps = async context => {
   const { query } = context
   try {
     console.log(query.slug)
-    const response = await graphqlQuery(`{
-      projects(slug: "${query.slug}") {
-        id
-        name
-        description
-        slug
-        fields
-        tags
-        covers {
-          original
-          _404
-          _808
-        }
-        modules{
-          ...on ImageModule {
-            type
-            sizes{
-              original
-              _1400
-              disp
-            }
-          }
-          
-        ...on TextModule{
-          type
-          text
-          text_plain
-        }
-        }
-      }
-    }
-  `)
-    const { projects } = await response.data.data
+    const response = await cms(`/projects?slug=${query.slug}`)
+    const projects = response.data
     return { project: projects[0] }
   } catch (err) {
-    console.error(err.error)
+    console.error(err)
     // const projects = mockGraphqlData.data.projects.filter(
     //   project => project.slug.toUpperCase() === query.slug.toUpperCase()
     // )

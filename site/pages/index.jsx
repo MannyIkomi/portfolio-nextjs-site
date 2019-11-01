@@ -7,10 +7,9 @@ import { css, jsx, Global } from '@emotion/core'
 import { CMS_URL } from '../config'
 
 // Components
-
-import Gallery from '../components/portfolio/projectGallery'
+import Gallery from '../components/project/Gallery'
 import PageLayout from '../components/pageLayout'
-import { ProjectCover } from '../components/portfolio/projectCover'
+import { Cover } from '../components/project/Cover'
 import Axios from 'axios'
 
 const HomePage = props => {
@@ -28,7 +27,7 @@ const HomePage = props => {
       >
         <Gallery id={0}>
           {projects.map(project => (
-            <ProjectCover project={project} key={project.id} />
+            <Cover project={project} key={project.id} />
           ))}
         </Gallery>
       </PageLayout>
@@ -39,26 +38,11 @@ const HomePage = props => {
 HomePage.getInitialProps = async () => {
   try {
     const response = await Axios(`${CMS_URL}/projects`)
-
-    /* graphqlQuery(`{
-      projects {
-        id
-        name
-        description
-        slug
-        covers {
-          original
-          _404
-          _808
-        }
-      }
-    }`) */
-
     const projects = response.data
-    console.log(projects)
     return { projects }
   } catch (err) {
-    console.error(err.error)
+    console.error(err)
+    throw new Error('Oops, looks like I cant load my projects at this time.')
     // const { projects } = mockGraphqlData.data
     // return { projects }
   }
