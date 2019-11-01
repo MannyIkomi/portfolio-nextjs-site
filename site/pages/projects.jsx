@@ -1,25 +1,26 @@
 /** @jsx jsx */
 import React, { Fragment } from 'react'
 import { css, jsx } from '@emotion/core'
-import Axios from 'axios'
 // import PropTypes from 'prop-types'
 
 // Components
-import Footer from '../components/footer'
-import Head from '../components/head'
 import PageLayout from '../components/pageLayout'
 
 // Utility
+import Showdown from 'showdown'
+import { showdown } from '../util/markdown'
+
 import { mixin, colors, typography } from '../styles'
 import { cms } from '../util/http'
 import { projectProps, moduleProps } from '../util/props'
+import { CMS_URL } from '../config'
 const moduleContainer = css`
   margin: 4rem 0;
   box-shadow: -0.5rem 0.5rem 0.5rem 0px hsla(0, 0%, 0%, 0.85);
 `
 
 const ImageModule = props => {
-  const { type, image } = props.module
+  const { image, imageAlt } = props.module
   return (
     <figure
       css={[
@@ -33,18 +34,16 @@ const ImageModule = props => {
         `
       ]}
     >
-      <img src={image.url} />
+      <img src={CMS_URL + image.url} alt={imageAlt} />
     </figure>
   )
 }
 
+// const convertMarkdown = new Showdown.Converter()
 const TextModule = props => {
-  const { text } = props
-  return (
-    <figure css={[moduleContainer]}>
-      <p>{text}</p>
-    </figure>
-  )
+  const { text } = props.module
+
+  return <figure css={[moduleContainer]}>{convertMarkdown(text)}</figure>
 }
 TextModule.propTypes = moduleProps
 ImageModule.propTypes = moduleProps
@@ -53,9 +52,9 @@ const renderModules = modules => {
   return modules.map((module, index) => {
     switch (module.type) {
       case 'image':
-        return <ImageModule module={module} key={index} />
+        return <ImageModule module={module} key={module.id} />
       case 'text':
-        return <TextModule module={module} key={index} />
+        return <TextModule module={module} key={module.id} />
       default:
         throw new Error(
           `Could not find matching Component for Module:${module.type}`
@@ -128,7 +127,7 @@ const ProjectPage = props => {
               margin: auto;
             `}
           >
-            {renderModules(removeFirstItem(modules))}
+            {renderModules(modules)}
           </div>
         </main>
         {/* <footer>
