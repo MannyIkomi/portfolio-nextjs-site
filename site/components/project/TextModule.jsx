@@ -3,12 +3,7 @@ import React, { Fragment } from 'react'
 import { css, jsx } from '@emotion/core'
 
 import Markdown from '../markdown'
-import {
-  colors,
-  moduleContainer,
-  typography,
-  linkStylingBase
-} from '../../styles'
+import { colors, moduleContainer, typography } from '../../styles'
 import { moduleProps } from '../../util/props'
 
 export const TextModule = props => {
@@ -37,7 +32,7 @@ export const TextModule = props => {
             fontSize: '1rem',
             paddingLeft: '1rem'
           },
-          a: [typography.animateTypeSlug, linkStylingBase]
+          a: [typography.typesetAnimation, typography.linkStylingBase]
         }
       ]}
     >

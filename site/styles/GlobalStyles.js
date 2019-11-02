@@ -36,6 +36,7 @@ export const GlobalStyles = props => {
           line-height: 1.2;
           ${typography.sizeTransition}
           font-family: ${typography.serif};
+          text-transform: lowercase;
           
         }
 

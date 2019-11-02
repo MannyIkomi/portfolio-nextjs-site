@@ -2,16 +2,21 @@
 // Modules
 import React, { Fragment } from 'react'
 import { css, jsx } from '@emotion/core'
-import PropTypes from 'prop-types'
+import { cms } from '../util/http'
 //
 // Components
 import PageLayout from '../components/pageLayout'
 import { InlineLink } from '../components/navigation/navigation'
 //
 // Styles
-import { mixin, color, typography, colors } from '../styles'
+import { mixin, color, typography, colors, linkStylingBase } from '../styles'
+import { Inspiration } from '../components/Inspiration'
+import Axios from 'axios'
+import Markdown from '../components/markdown'
+import { inspirationProps } from '../util/props'
 //
 const About = props => {
+  const { inspirations, about } = props
   return (
     <PageLayout
       title={'Hi 🤓'}
@@ -112,6 +117,7 @@ const About = props => {
         </h1>
 
         {/* USE CH UNITS TO MEASURE THE WIDTH OF ABOUT BLURBS? */}
+        <Markdown>{about.bio}</Markdown>
         <p
           className={`bio`}
           css={css`
@@ -206,62 +212,28 @@ const About = props => {
             grid-column: 1 / -1;
           `}
         >
-          designers who inspire me...
+          People who inspire me...
         </h2>
-        <Designer name={`Chris Do`}>
-          Founder of{' '}
-          <InlineLink href={'https://www.youtube.com/user/TheSkoolRocks'}>
-            The Futur
-          </InlineLink>
-          , teaching the business of design and the design of business. A new
-          online education platform changing the way we think about design
-          education and strategy.
-        </Designer>
-        <Designer
-          name={'Jacqueline Casey'}
-          blurb={`Master of visual puns and Helvetica. A local Massachusetts design
-            hero best known for her poster design work at MIT.`}
-        />
-        <Designer name={'Walter Gropius'}>
-          Architect, Founder of the Bauhaus. He brought together art and
-          technology to solve problems in design and industrialism.{' '}
-          <InlineLink
-            href={`https://www.historicnewengland.org/property/gropius-house/`}
-          >
-            Walter's historic home
-          </InlineLink>{' '}
-          in Lincoln, MA is an exceptional example of his philosophy and design
-          thinking.
-        </Designer>
+        {inspirations.map(person => {
+          return (
+            <Inspiration {...person}>
+              <Markdown
+                styles={[
+                  typography.linkStylingBase,
+                  typography.typesetAnimation
+                ]}
+              >
+                {person.description}
+              </Markdown>
+            </Inspiration>
+          )
+        })}
       </section>
     </PageLayout>
   )
 }
-
-const Designer = props => {
-  const { name, blurb } = props
-  const designerInspirationStyles = css`
-    margin: 2rem 0;
-    color: ${colors.muteGray};
-    h3 {
-      font-family: ${typography.sans};
-      font-size: 1.5rem;
-      font-weight: bold;
-      text-transform: capitalize;
-    }
-    p {
-    }
-  `
-  return (
-    <section className="designer" css={[designerInspirationStyles]}>
-      <h3>{name}</h3>
-      <p>{blurb || props.children}</p>
-    </section>
-  )
-}
-Designer.propTypes = {
-  name: PropTypes.string.isRequired,
-  blurb: PropTypes.string
+About.propTypes = {
+  inspirations: inspirationProps
 }
 
 // Mind your p's and q's
@@ -272,9 +244,28 @@ Anne Carter
 A pivotal professor in my design education, her passion for art and design is infectious. She taught me how to exercise my creativity and develop strong design concepts.
  */
 
-const Motif = props => {
-  const { side } = props
-  return <div className={`motif-${side}`} />
+// const Motif = props => {
+//   const { side } = props
+//   return <div className={`motif-${side}`} />
+// }
+
+About.getInitialProps = async () => {
+  const getInspirations = () => cms('/inspirations')
+  const getAbout = () => cms('/abouts')
+
+  try {
+    const [inspirations, about] = await Axios.all([
+      getInspirations(),
+      getAbout()
+    ])
+
+    return { inspirations: inspirations.data, about: about.data }
+  } catch (err) {
+    console.error(err)
+    throw new Error('Oops, something is wrong with me!')
+    // const { projects } = mockGraphqlData.data
+    // return { projects }
+  }
 }
 
 export default About

@@ -1,9 +1,9 @@
 {
   "connection": "default",
-  "collectionName": "inspirations",
+  "collectionName": "abouts",
   "info": {
-    "name": "inspiration",
-    "description": "Designers who inspire me"
+    "name": "about",
+    "description": ""
   },
   "options": {
     "increments": true,
@@ -14,14 +14,16 @@
     "comment": ""
   },
   "attributes": {
-    "name": {
-      "type": "string",
-      "unique": true,
-      "required": true
+    "heading": {
+      "type": "string"
     },
-    "description": {
+    "bio": {
       "required": true,
       "type": "richtext"
+    },
+    "email": {
+      "default": "design@mannyikomi.com",
+      "type": "email"
     },
     "photo": {
       "model": "file",
@@ -29,6 +31,7 @@
       "plugin": "upload"
     },
     "website": {
+      "unique": true,
       "type": "string"
     }
   }

@@ -36,10 +36,15 @@ export const NavLink = props => {
 
 export const InlineLink = props => {
   const { href, text, styles } = props
+  // Animate each character in a string for more authentic typesetting effect
+  const string = props.children || text
 
   return (
-    <a href={href} css={[linkStylingBase, typography.animateTypeSlug, styles]}>
-      {props.children || text}
+    <a
+      href={href}
+      css={[typography.linkStylingBase, typography.typesetAnimation, styles]}
+    >
+      {string}
     </a>
   )
 }

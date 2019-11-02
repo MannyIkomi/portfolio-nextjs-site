@@ -12,13 +12,14 @@ export const convertMarkdown = markdown => {
 }
 
 export const Markdown = props => {
-  const { render, children } = props
+  const { render, children, styles } = props
   const markdownString = children || render
   console.warn('The Markdown component uses dangerouslySetInnerHtml')
   return (
     <div
+      css={styles}
       dangerouslySetInnerHTML={{ __html: convertMarkdown(markdownString) }}
-    ></div>
+    />
   )
 }
 

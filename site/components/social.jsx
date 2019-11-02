@@ -29,7 +29,7 @@ export const SocialIcon = props => {
   const { link, icon, alt, styles } = props
 
   return (
-    <a href={link} css={[typography.animateTypeSlug, styles]}>
+    <a href={link} css={[typography.typesetAnimation, styles]}>
       <img src={icon} alt={alt} />
     </a>
   )

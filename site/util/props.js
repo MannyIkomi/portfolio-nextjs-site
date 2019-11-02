@@ -24,3 +24,10 @@ export const projectProps = PropTypes.shape({
   modules: moduleProps,
   cover: imageProps
 })
+
+export const inspirationProps = PropTypes.shape({
+  name: PropTypes.string.isRequired,
+  description: PropTypes.string,
+  photo: imageProps,
+  website: PropTypes.string
+})
