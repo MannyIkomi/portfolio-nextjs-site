@@ -1,14 +1,15 @@
 /** @jsx jsx */
-import React, { Component, Fragment, useState } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 import { css, jsx } from '@emotion/core'
 
 // Components
 import Logo, { LogoTypeWide } from '../logo'
-import { MenuBar, MenuButton, NavContainer, NavLink } from './navigation'
+import { MenuBar, NavContainer, NavLink } from './navigation'
+import { MenuButton } from './MenuButton'
 
 import { getPages } from '../../util/navigation'
-import { colors, measure, typography, mixin } from '../../styles'
+import { mixin, measure, colors, typography } from '../../styles'
 
 export const DockedMenu = props => {
   const { menuToggled, handleMenuToggle, persistOnDesktop } = props

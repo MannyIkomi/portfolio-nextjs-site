@@ -1,68 +1,19 @@
 /** @jsx jsx */
 import React, { Fragment } from 'react'
 import { css, jsx } from '@emotion/core'
-// import PropTypes from 'prop-types'
 
 // Components
 import PageLayout from '../components/pageLayout'
+import { ImageModule } from '../components/project/ImageModule'
+import { TextModule } from '../components/project/TextModule'
 
 // Utility
-
-import { mixin, colors, typography, measure } from '../styles'
+import { mixin, typography, colors } from '../styles'
 import { cms } from '../util/http'
-import { projectProps, moduleProps } from '../util/props'
-import { CMS_URL } from '../config'
-import Markdown from '../components/markdown'
-
-const moduleContainer = css`
-  margin: 4rem 0;
-  box-shadow: -0.5rem 0.5rem 0.5rem 0px hsla(0, 0%, 0%, 0.85);
-`
-
-const ImageModule = props => {
-  const { image, imageAlt } = props.module
-  return (
-    <figure
-      css={[
-        moduleContainer,
-        css`
-          width: 100%;
-          img {
-            object-fit: fill;
-            ${mixin.size('100%', '100%')};
-          }
-        `
-      ]}
-    >
-      <img src={CMS_URL + image.url} alt={imageAlt} />
-    </figure>
-  )
-}
-
-// const convertMarkdown = new Showdown.Converter()
-const TextModule = props => {
-  const { text } = props.module
-
-  return (
-    <figure
-      css={[
-        moduleContainer,
-        {
-          backgroundColor: colors.muteGray,
-          padding: '2rem',
-          h1: { color: colors.orange }
-        }
-      ]}
-    >
-      <Markdown>{text}</Markdown>
-    </figure>
-  )
-}
-TextModule.propTypes = moduleProps
-ImageModule.propTypes = moduleProps
+import { projectProps } from '../util/props'
 
 const renderModules = modules => {
-  return modules.map((module, index) => {
+  return modules.map(module => {
     switch (module.type) {
       case 'image':
         return <ImageModule module={module} key={module.id} />
@@ -108,7 +59,7 @@ const ProjectPage = props => {
   `
   return (
     <PageLayout
-      title={`${project.name} by Manny`}
+      title={`${project.title} by Manny`}
       description={`${project.title}, ${project.description} by Manny Ikomi`}
       isSideMenuDisabled={true}
       persistDockedMenu={true}

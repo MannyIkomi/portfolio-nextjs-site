@@ -1,16 +1,16 @@
 /** @jsx jsx */
 import React, { Fragment } from 'react'
-import PropTypes from 'prop-types'
-import { css, jsx, Global } from '@emotion/core'
+import { css, jsx } from '@emotion/core'
 
 // Utility
+import Axios from 'axios'
 import { CMS_URL } from '../config'
+import { typography } from '../styles'
 
 // Components
 import Gallery from '../components/project/Gallery'
 import PageLayout from '../components/pageLayout'
 import { Cover } from '../components/project/Cover'
-import Axios from 'axios'
 
 const HomePage = props => {
   const { projects, url } = props // from getInitialProps Next.js

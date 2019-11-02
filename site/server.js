@@ -1,7 +1,9 @@
+require = require('esm')(module)
+const { PORT, CMS_URL } = require('./config')
 const express = require('express')
 const next = require('next')
 
-const PORT = parseInt(process.env.PORT, 10) || 3000
+// const PORT = parseInt(process.env.PORT, 10) || 3000
 const dev = process.env.NODE_ENV !== 'production'
 const app = next({ dev })
 const handle = app.getRequestHandler()
@@ -12,7 +14,7 @@ app.prepare().then(() => {
   // const slug = /^[a-z0-9]+(?:-[a-z0-9]+)*$/
   // const id = /^[0-9]*$/
   server.get('/cms', (req, res) => {
-    res.sendDate('/cms route')
+    return res.redirect(CMS_URL + '/admin')
   })
 
   server.get(`/projects`, (req, res) => {

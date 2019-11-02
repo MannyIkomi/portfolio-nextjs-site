@@ -5,17 +5,13 @@ import { css, jsx } from '@emotion/core'
 
 // Components
 import Logo, { LogoTypeWide } from '../logo'
-import {
-  MenuButton,
-  MenuBar,
-  NavContainer,
-  NavLink
-} from '../navigation/navigation'
+import { MenuBar, NavContainer, NavLink } from '../navigation/navigation'
+import { MenuButton } from '../navigation/MenuButton'
 import SocialIcon, { socialData } from '../social'
 
 // Utility
 import { getPages } from '../../util/navigation'
-import { colors, measure, typography, mixin } from '../../styles'
+import { mixin, typography, measure, colors } from '../../styles'
 
 export const SideMenu = props => {
   return (

@@ -4,15 +4,14 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { css, jsx } from '@emotion/core'
 
-// Components
-import { WithToggleSwitch } from './navigation/navigation'
+import { WithToggleSwitch } from './navigation/WithToggleSwitch'
 import DockedMenu from './navigation/dockedMenu'
 import SideMenu from './navigation/sideMenu'
 import HtmlHead from './head'
 import Footer from './footer'
 
 // Styling
-import { GlobalStyles, mixin, colors, typography, measure } from '../styles'
+import { mixin, GlobalStyles, typography, measure, colors } from '../styles'
 
 const shouldShowSideMenuGrid = (isSideMenuDisabled = false) => {
   if (isSideMenuDisabled === true) {

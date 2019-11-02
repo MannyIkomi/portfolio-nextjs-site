@@ -213,19 +213,19 @@ const Footer = props => {
           <br />
           Oh, and{' '}
           <InlineLink
-            href={'https://github.com/MannyIkomi'}
+            href={'https://github.com/MannyIkomi/portfolio-site'}
             text={'I code too!'}
           />
           {` `}🦄
           <br />I built my portfolio site with
           {` `} <br />
           <InlineLink href={'https://reactjs.org/'} text={'React'} />,{` `}
-          <InlineLink href={'https://graphql.org/'} text={'GraphQl'} />
+          <InlineLink href={'https://strapi.io/'} text={'Strapi'} />
           {` `}and{` `}
           <InlineLink href={'https://nodejs.org/en/'} text={'Node.js'} />
           <br /> <br />
-          Powered by{` `}
-          <InlineLink href={'https://www.behance.net/dev'} text={'Behance'} />
+          Deployed with{` `}
+          <InlineLink href={'https://www.heroku.com/'} text={'Heroku'} />
         </p>
       </section>
       <p // copyright line
