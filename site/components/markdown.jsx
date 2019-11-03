@@ -1,4 +1,8 @@
+/** @jsx jsx */
 import React from 'react'
+import PropTypes from 'prop-types'
+
+import { css, jsx } from '@emotion/core'
 
 const showdown = require('showdown')
 
@@ -21,6 +25,10 @@ export const Markdown = props => {
       dangerouslySetInnerHTML={{ __html: convertMarkdown(markdownString) }}
     />
   )
+}
+Markdown.propTypes = {
+  children: PropTypes.any.isRequired,
+  styles: PropTypes.any
 }
 
 export default Markdown

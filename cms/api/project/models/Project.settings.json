@@ -26,9 +26,6 @@
       "plugin": "upload",
       "required": true
     },
-    "explanation": {
-      "type": "richtext"
-    },
     "modules": {
       "group": "modules",
       "repeatable": true,
@@ -42,6 +39,11 @@
       "default": "Project Cover Photo",
       "required": true,
       "type": "string"
+    },
+    "metaDescription": {
+      "required": true,
+      "default": "For SEO purposes, will be used in the meta description.",
+      "type": "text"
     }
   }
 }

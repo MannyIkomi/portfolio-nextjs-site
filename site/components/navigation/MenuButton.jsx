@@ -1,6 +1,9 @@
+/** @jsx jsx */
+import { css, jsx } from '@emotion/core'
+import React, { Fragment } from 'react'
 import PropTypes from 'prop-types'
-import { css } from '@emotion/core'
 import { mixin, colors } from '../../styles'
+
 export const MenuButton = props => {
   const { handleToggle, isToggled } = props
   const coordinates = '0.66rem' //'0.125rem'

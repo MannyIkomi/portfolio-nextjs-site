@@ -1,7 +1,7 @@
 /** @jsx jsx */
+import { css, jsx } from '@emotion/core'
 // Modules
 import React, { Fragment } from 'react'
-import { css, jsx } from '@emotion/core'
 import { cms } from '../util/http'
 //
 // Components
@@ -17,6 +17,7 @@ import { inspirationProps } from '../util/props'
 //
 const About = props => {
   const { inspirations, about } = props
+
   return (
     <PageLayout
       title={'Hi 🤓'}
@@ -111,14 +112,22 @@ const About = props => {
             `)}
           `}
         >
-          Design thinker,
+          {about.heading}
+          {/* Design thinker,
           <br /> lifetime learner,
-          <br /> adoring guncle.
+          <br /> adoring guncle. */}
         </h1>
 
-        {/* USE CH UNITS TO MEASURE THE WIDTH OF ABOUT BLURBS? */}
-        <Markdown>{about.bio}</Markdown>
-        <p
+        <Markdown
+          styles={css([
+            {
+              color: 'white'
+            }
+          ])}
+        >
+          {about.bio}
+        </Markdown>
+        {/* <p
           className={`bio`}
           css={css`
             color: ${colors.muteGray};
@@ -146,8 +155,7 @@ const About = props => {
           >
             In short, I like making great things for good people.
           </strong>
-        </p>
-        {/* <button className={`cta layout`}>Say Hello</button> */}
+        </p> */}
       </section>
       <section
         className="quote viewport"
@@ -212,15 +220,20 @@ const About = props => {
             grid-column: 1 / -1;
           `}
         >
-          People who inspire me...
+          Creatives who inspire me...
         </h2>
         {inspirations.map(person => {
+          // Roberto Blake?
           return (
             <Inspiration {...person}>
               <Markdown
                 styles={[
-                  typography.linkStylingBase,
-                  typography.typesetAnimation
+                  {
+                    a: {
+                      ...typography.linkStylingBase,
+                      ...typography.typesetAnimation
+                    }
+                  }
                 ]}
               >
                 {person.description}
@@ -236,19 +249,6 @@ About.propTypes = {
   inspirations: inspirationProps
 }
 
-// Mind your p's and q's
-// Typography is king
-
-/*
-Anne Carter
-A pivotal professor in my design education, her passion for art and design is infectious. She taught me how to exercise my creativity and develop strong design concepts.
- */
-
-// const Motif = props => {
-//   const { side } = props
-//   return <div className={`motif-${side}`} />
-// }
-
 About.getInitialProps = async () => {
   const getInspirations = () => cms('/inspirations')
   const getAbout = () => cms('/abouts')
@@ -259,7 +259,7 @@ About.getInitialProps = async () => {
       getAbout()
     ])
 
-    return { inspirations: inspirations.data, about: about.data }
+    return { inspirations: inspirations.data, about: about.data[0] }
   } catch (err) {
     console.error(err)
     throw new Error('Oops, something is wrong with me!')
