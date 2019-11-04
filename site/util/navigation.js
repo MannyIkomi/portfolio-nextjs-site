@@ -1,7 +1,7 @@
 const getPages = (filterId = '') => {
   const pages = [
     {
-      title: 'The Werk',
+      title: 'werk',
       path: '/'
     },
     // {
@@ -15,7 +15,7 @@ const getPages = (filterId = '') => {
     //   category: 'user'
     // },
     {
-      title: 'About Me',
+      title: 'about',
       path: '/about'
     }
   ]
