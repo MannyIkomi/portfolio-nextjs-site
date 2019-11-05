@@ -3,7 +3,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { css, jsx } from '@emotion/core'
 
-import Logo, { LogoTypeWide } from '../logo'
+import Logo, { LogoType } from '../logo'
 
 import { getPages } from '../../util/navigation'
 import { typography, measure, colors, linkStylingBase } from '../../styles'
@@ -50,8 +50,9 @@ export const InlineLink = props => {
 }
 InlineLink.propTypes = {
   href: PropTypes.string.isRequired,
+  children: PropTypes.any.isRequired,
   text: PropTypes.string,
-  styleOverrides: PropTypes.any
+  styles: PropTypes.any
 }
 
 export const NavContainer = props => {

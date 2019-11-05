@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 import { css, jsx } from '@emotion/core'
 
 // Components
-import Logo, { LogoTypeWide } from '../logo'
+import Logo, { LogoType } from '../logo'
 import { MenuBar, NavContainer, NavLink } from './navigation'
 import { MenuButton } from './MenuButton'
 
@@ -112,7 +112,7 @@ export const DockedMenu = props => {
           }
         `}
       >
-        <LogoTypeWide />
+        <LogoType />
         <MenuButton handleToggle={handleMenuToggle} isToggled={menuToggled} />
       </MenuBar>
       <NavContainer styles={dockedNavToggled}>

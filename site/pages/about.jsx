@@ -50,46 +50,28 @@ const About = props => {
       >
         <div
           // headshot portrait
-          css={css`
-            align-self: flex-end;
-            margin: 0 0 auto auto;
-            position: relative;
-            width: 50%;
-            max-width: 320px;
+          css={[
+            css`
+              align-self: flex-end;
+              margin: 0 0 auto auto;
+              position: relative;
+              width: 50%;
+              max-width: 320px;
 
-            &::after {
-              content: url('/static/motif-bottom.svg');
-              display: block;
-              position: absolute;
-              bottom: -4px;
-              left: -1px;
-              ${mixin.size('100%', 'auto')};
-            }
-
-            ${mixin.tabletMedia(`
+              ${mixin.tabletMedia(`
                 grid-area: headshot;
                 width: initial;
                 margin: 0;
                 align-self: flex-end;
                 justify-self: flex-end;
-                // justify-content: flex-end; 
-                // align-items: center;
-                &::after {
-                  content: url('/static/motif-bottom.svg');
-                  display: block;
-                  position: absolute;
-                  bottom: -4px;
-                  // left: 0;
-                  ${mixin.size('101%', 'auto')};
-                }
-    
-
+                
               `)}
-          `}
+            `
+          ]}
         >
           <img
-            src="static/headshot-touchup.jpg"
-            alt="Photo of Manny"
+            src="static/headshot-touchup.png"
+            alt="Portrait photo of Manny"
             css={css`
               display: block;
               ${mixin.size('100%', 'auto')};

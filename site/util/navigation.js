@@ -2,21 +2,21 @@ const getPages = (filterId = '') => {
   const pages = [
     {
       title: 'werk',
-      path: '/'
+      href: '/'
     },
     // {
     //   title: 'Logo & Identity',
-    //   path: '/#identity',
+    //   href: '/#identity',
     //   category: 'logo & identity'
     // },
     // {
     //   title: 'User Interface',
-    //   path: '/#ui',
+    //   href: '/#ui',
     //   category: 'user'
     // },
     {
       title: 'about',
-      path: '/about'
+      href: '/about'
     }
   ]
 

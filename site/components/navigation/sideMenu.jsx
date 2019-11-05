@@ -4,8 +4,8 @@ import PropTypes from 'prop-types'
 import { css, jsx } from '@emotion/core'
 
 // Components
-import Logo, { LogoTypeWide } from '../logo'
-import { MenuBar, NavContainer, NavLink } from '../navigation/navigation'
+import Logo, { LogoType, LogoMaster } from '../logo'
+import { MenuBar, NavContainer, InlineLink } from '../navigation/navigation'
 import { MenuButton } from '../navigation/MenuButton'
 import SocialIcon, { socialData } from '../social'
 
@@ -38,7 +38,7 @@ export const SideMenu = props => {
           padding: 3rem 0;
         `}
       >
-        <Logo
+        <LogoMaster
           // lockup={`master`}
           styles={css`
             max-width: 5rem;
@@ -49,12 +49,26 @@ export const SideMenu = props => {
             margin: 4rem 0;
           `}
         >
-          <NavLink
+          {getPages().map(page => (
+            <InlineLink
+              href={page.href}
+              styles={{
+                display: 'block',
+                color: colors.darkGray,
+                padding: '0.5rem 0',
+                margin: '0.5rem 0',
+                fontSize: '1.5rem'
+              }}
+            >
+              {page.title}
+            </InlineLink>
+          ))}
+          {/* <NavLink
             pages={getPages()}
             styles={css`
               font-size: 1.5rem;
             `}
-          />
+          /> */}
         </NavContainer>
         <div
           css={css`

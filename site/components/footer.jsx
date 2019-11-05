@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 import { css, jsx } from '@emotion/core'
 
 // Components
-import { LogoMasterWhite } from './logo'
+import { LogoMaster } from './logo'
 import SocialIcon, { socialData } from './social'
 import { InlineLink } from './navigation/navigation'
 
@@ -114,7 +114,7 @@ const Footer = props => {
           — John Heskett
         </cite>
       </div>
-      <LogoMasterWhite
+      <LogoMaster
         styles={css`
           width: 25%;
           img {
@@ -185,7 +185,6 @@ const Footer = props => {
                 styles={css`
                   display: block;
                   ${mixin.size('100%', 'auto')};
-                  // margin: 1rem;
                   max-width: 3rem;
                   min-height: 2rem;
                 `}
