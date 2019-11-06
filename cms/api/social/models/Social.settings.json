@@ -14,20 +14,18 @@
     "comment": ""
   },
   "attributes": {
-    "icon": {
-      "model": "file",
-      "via": "related",
-      "plugin": "upload",
-      "required": true
-    },
-    "url": {
+    "href": {
       "unique": true,
       "required": true,
       "type": "string"
     },
     "platform": {
       "type": "string",
-      "required": true
+      "required": true,
+      "unique": true
+    },
+    "alt": {
+      "type": "string"
     }
   }
 }

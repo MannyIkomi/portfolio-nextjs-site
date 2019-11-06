@@ -1,6 +1,5 @@
 /** @jsx jsx */
 import React, { Component } from 'react'
-import PropTypes from 'prop-types'
 import { css, jsx } from '@emotion/core'
 
 import Logo, { LogoType } from '../logo'
@@ -14,7 +13,7 @@ export const NavLink = props => {
     <a
       href={page.path}
       className="nav link"
-      key={index}
+      key={page.title}
       css={css`
         font-family: ${typography.serif};
         text-transform: lowercase;
@@ -32,27 +31,6 @@ export const NavLink = props => {
       {page.title}
     </a>
   ))
-}
-
-export const InlineLink = props => {
-  const { href, text, styles } = props
-  // Animate each character in a string for more authentic typesetting effect
-  const string = props.children || text
-
-  return (
-    <a
-      href={href}
-      css={[typography.linkStylingBase, typography.typesetAnimation, styles]}
-    >
-      {string}
-    </a>
-  )
-}
-InlineLink.propTypes = {
-  href: PropTypes.string.isRequired,
-  children: PropTypes.any.isRequired,
-  text: PropTypes.string,
-  styles: PropTypes.any
 }
 
 export const NavContainer = props => {

@@ -6,7 +6,7 @@ import PropTypes from 'prop-types'
 import { size, mixin } from '../styles'
 
 export const Logo = props => {
-  const { lockup, styles } = props
+  const { lockup, styles, color } = props
 
   const getLockup = lockup => {
     switch (lockup) {
@@ -63,9 +63,10 @@ export const Logo = props => {
       css={[
         {
           display: 'block',
-          objectFit: 'contain',
-          height: '100%'
+          objectFit: 'contain'
+          // height: '100%'
         },
+        { svg: { fill: color } },
         styles
       ]}
     >
@@ -78,9 +79,7 @@ Logo.propTypes = {
   styles: PropTypes.any
 }
 
-export const LogoType = props => <Logo lockup={`type`} styles={props.styles} />
-export const LogoMaster = props => (
-  <Logo lockup={`master`} styles={props.styles} />
-)
+export const LogoType = props => <Logo lockup={`type`} {...props} />
+export const LogoMaster = props => <Logo lockup={`master`} {...props} />
 
 export default Logo

@@ -6,7 +6,7 @@ import { css, jsx } from '@emotion/core'
 // Components
 import { LogoMaster } from './logo'
 import SocialIcon, { socialData } from './social'
-import { InlineLink } from './navigation/navigation'
+import { InlineLink } from './InlineLink'
 
 //  Utility
 import { getYear } from '../util/dates'
@@ -115,6 +115,7 @@ const Footer = props => {
         </cite>
       </div>
       <LogoMaster
+        color={'white'}
         styles={css`
           width: 25%;
           img {
@@ -205,26 +206,25 @@ const Footer = props => {
       >
         <p>
           Member{` `}
-          <InlineLink href={'https://www.aiga.org/'} text={'AIGA'} />
+          <InlineLink href={'https://www.aiga.org/'}>AIGA</InlineLink>
           <br />
-          <InlineLink href={'/static/ikomi-resume.pdf'} text={'Resume'} />
+          <InlineLink href={'/static/ikomi-resume.pdf'}>Resume</InlineLink>
           <br />
           <br />
           Oh, and{' '}
-          <InlineLink
-            href={'https://github.com/MannyIkomi/portfolio-site'}
-            text={'I code too!'}
-          />
+          <InlineLink href={'https://github.com/MannyIkomi/portfolio-site'}>
+            I code too!
+          </InlineLink>
           {` `}🦄
           <br />I built my portfolio site with
           {` `} <br />
-          <InlineLink href={'https://reactjs.org/'} text={'React'} />,{` `}
-          <InlineLink href={'https://strapi.io/'} text={'Strapi'} />
+          <InlineLink href={'https://reactjs.org/'}>React</InlineLink>,{` `}
+          <InlineLink href={'https://strapi.io/'}>Strapi</InlineLink>
           {` `}and{` `}
-          <InlineLink href={'https://nodejs.org/en/'} text={'Node.js'} />
+          <InlineLink href={'https://nodejs.org/en/'}>Node.js</InlineLink>
           <br /> <br />
           Deployed with{` `}
-          <InlineLink href={'https://www.heroku.com/'} text={'Heroku'} />
+          <InlineLink href={'https://www.heroku.com/'}>Heroku</InlineLink>
         </p>
       </section>
       <p // copyright line

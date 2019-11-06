@@ -1,19 +1,33 @@
 /** @jsx jsx */
-import React, { Component, Fragment, useState } from 'react'
+import React, { Component, Fragment, useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { css, jsx } from '@emotion/core'
 
 // Components
 import Logo, { LogoType, LogoMaster } from '../logo'
-import { MenuBar, NavContainer, InlineLink } from '../navigation/navigation'
+import { MenuBar, NavContainer } from '../navigation/navigation'
+import { InlineLink } from '../InlineLink'
 import { MenuButton } from '../navigation/MenuButton'
-import SocialIcon, { socialData } from '../social'
+import SocialIcon, { socialData, getSocialData } from '../social'
 
 // Utility
+import { cms } from '../../util/http'
 import { getPages } from '../../util/navigation'
 import { mixin, typography, measure, colors } from '../../styles'
 
 export const SideMenu = props => {
+  const [socialPlatforms, setSocialPlatforms] = useState([])
+
+  useEffect(() => {
+    cms('/socials')
+      .then(response => {
+        const socialData = response.data
+        console.table(socialData)
+        setSocialPlatforms(socialData)
+      })
+      .catch(err => console.warn(err))
+  }, [])
+
   return (
     <section
       css={css`
@@ -39,9 +53,8 @@ export const SideMenu = props => {
         `}
       >
         <LogoMaster
-          // lockup={`master`}
           styles={css`
-            max-width: 5rem;
+            max-width: 6rem;
           `}
         />
         <NavContainer
@@ -63,12 +76,6 @@ export const SideMenu = props => {
               {page.title}
             </InlineLink>
           ))}
-          {/* <NavLink
-            pages={getPages()}
-            styles={css`
-              font-size: 1.5rem;
-            `}
-          /> */}
         </NavContainer>
         <div
           css={css`
@@ -76,23 +83,26 @@ export const SideMenu = props => {
             align-items: center;
           `}
         >
-          {socialData.map(socialIcon => {
-            return (
-              <SocialIcon
-                key={socialIcon.iconDark}
-                link={socialIcon.link}
-                icon={socialIcon.iconDark}
-                alt={socialIcon.alt}
-                styles={css`
-                  display: block;
-                  ${mixin.size('100%', 'auto')};
-                  padding: 0.25rem;
-                  max-width: 2rem;
-                  min-height: 1rem;
-                `}
-              />
-            )
-          })}
+          {socialPlatforms.map(social => (
+            <SocialIcon
+              key={social.platform}
+              color={'black'}
+              styles={css`
+                display: block;
+                ${mixin.size('100%', 'auto')};
+                padding: 0.25rem;
+                max-width: 2rem;
+                min-height: 1rem;
+                min-width: 1rem;
+                :hover {
+                  svg {
+                    fill: ${colors.orange};
+                  }
+                }
+              `}
+              {...social}
+            />
+          ))}
         </div>
       </MenuBar>
     </section>

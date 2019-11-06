@@ -33,6 +33,9 @@
     "website": {
       "unique": true,
       "type": "string"
+    },
+    "cardsCollected": {
+      "type": "integer"
     }
   }
 }

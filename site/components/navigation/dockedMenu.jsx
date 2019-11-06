@@ -5,6 +5,7 @@ import { css, jsx } from '@emotion/core'
 
 // Components
 import Logo, { LogoType } from '../logo'
+import { InlineLink } from '../InlineLink'
 import { MenuBar, NavContainer, NavLink } from './navigation'
 import { MenuButton } from './MenuButton'
 
@@ -116,7 +117,21 @@ export const DockedMenu = props => {
         <MenuButton handleToggle={handleMenuToggle} isToggled={menuToggled} />
       </MenuBar>
       <NavContainer styles={dockedNavToggled}>
-        <NavLink
+        {getPages().map(page => (
+          <InlineLink
+            href={page.href}
+            styles={{
+              display: 'block',
+              color: colors.darkGray,
+              padding: '0.5rem 0',
+              margin: '0.5rem 0',
+              fontSize: '1.5rem'
+            }}
+          >
+            {page.title}
+          </InlineLink>
+        ))}
+        {/* <NavLink
           pages={getPages()}
           styles={css`
             @media screen and (orientation: landscape) and (max-height: 450px) {
@@ -128,7 +143,7 @@ export const DockedMenu = props => {
               font-size: 1.5rem;
             }
           `}
-        />
+        /> */}
       </NavContainer>
     </section>
   )

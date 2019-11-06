@@ -43,12 +43,14 @@ const PageLayout = props => {
   return (
     <div
       css={css`
-        margin: 0 0 ${measure.menubarHeight} 0;
-        background-color: ${colors.muteGray};
+         {
+          margin: 0 0 ${measure.menubarHeight} 0;
+          background-color: ${colors.muteGray};
 
-        @media (${measure.tabletMediaWidth}) {
-          margin: ${measure.menubarHeight} 0 0 0;
-          ${persistDockedMenu && `margin: ${measure.menubarHeight} 0 0 0;`}
+          @media (${measure.tabletMediaWidth}) {
+            margin: ${measure.menubarHeight} 0 0 0;
+            ${persistDockedMenu && `margin: ${measure.menubarHeight} 0 0 0;`}
+          }
         }
 
         @media (${measure.desktopMediaWidth}) {
