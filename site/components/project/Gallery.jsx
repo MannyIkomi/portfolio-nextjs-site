@@ -2,29 +2,28 @@
 /** @jsx jsx */
 import React, { Component } from 'react'
 import { css, jsx } from '@emotion/core'
-import { colors } from '../../styles'
+import { colors, mixin } from '../../styles'
 import PropTypes from 'prop-types'
 
-const Gallery = props => {
-  const { id } = props
+const Gallery = ({ id, children }) => {
   return (
     <section
-      css={css`
-        background-color: ${colors.darkGray};
-        width: 100%;
-        padding: 2rem;
-        @supports (display: grid) {
-          @media screen and (min-width: 700px) {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            grid-column-gap: 4rem;
-            grid-auto-flow: row;
-          }
-        }
-      `}
+      css={{
+        backgroundColor: colors.darkGray,
+        width: '100%',
+        padding: '2rem',
+        ...mixin.tabletMedia({
+          ...mixin.supportsGrid({
+            display: 'grid',
+            gridTemplateColumns: '1fr 1fr',
+            gridColumnGap: '4rem',
+            gridAutoFlow: 'row'
+          })
+        })
+      }}
       id={id}
     >
-      {props.children}
+      {children}
     </section>
   )
 }

@@ -1,41 +1,50 @@
 import { measure } from './measure'
 
+export const aspectRatioLetter = {
+  height: 0,
+  paddingBottom: 'calc(100% * (17 / 22))'
+}
+
+const tabletMediaQuery = `@media screen and (${measure.tabletMediaWidth})`
+const desktopMediaQuery = `@media screen and (${measure.desktopMediaWidth})`
+
 export const mixin = {
-  flex: direction => `display: flex; flex-direction: ${direction};`,
+  flex: direction => ({ display: 'flex', flexDirection: direction }),
 
-  size: (width = '100%', height = 'auto') =>
-    `width: ${width}; height: ${height};`,
+  size: (width = '100%', height = 'auto') => ({ width, height }),
 
-  supportsGrid: (hasSupport = '') => {
-    return `
-      @supports (display: grid) {
-        ${hasSupport}
-      }
-    `
-  },
+  supportsGrid: ({ display = 'grid', ...hasSupport }) => ({
+    '@supports (display: grid)': {
+      display: display,
+      ...hasSupport
+    }
+  }),
 
-  tabletMedia: (tabletStyles = '') => {
-    return `
-    @media screen and (${measure.desktopMediaWidth}) {
-      ${tabletStyles}
-    }`
-  },
-  desktopMedia: (desktopStyles = '') => {
-    return `
-    @media screen and (${measure.desktopMediaWidth}) {
-      ${desktopStyles}
-    }`
-  },
+  tabletMedia: (tabletStyles = {}) => ({
+    [tabletMediaQuery]: {
+      ...tabletStyles
+    }
+  }),
 
-  desktopMediaSupportsGrid: (hasSupport = '') => {
-    return `
-      @media screen and (${measure.desktopMediaWidth}) {
-        @supports (display: grid) {
-          ${hasSupport}
+  desktopMedia: (desktopStyles = {}) => ({
+    [desktopMediaQuery]: {
+      ...desktopStyles
+    }
+  }),
+
+  // tabletMediaGrid: ({ display = 'grid', ...hasSupport }) => {},
+
+  desktopMediaSupportsGrid: ({ display = 'grid', ...hasSupport } = {}) => {
+    return {
+      [desktopMediaQuery]: {
+        '@supports (display: grid)': {
+          display,
+          ...hasSupport
         }
-      }`
+      }
+    }
   },
-  aspectRatioLetter: () => `height: 0; padding-bottom: calc(100% * (17 / 22));`
+  aspectRatioLetter
 }
 
 export * from './colors'

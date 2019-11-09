@@ -94,9 +94,9 @@ const PageLayout = props => {
         {props.children}
       </main>
       <Footer
-        styles={css`
-          grid-area: footer;
-        `}
+        styles={{
+          gridArea: 'footer'
+        }}
       />
     </div>
   )

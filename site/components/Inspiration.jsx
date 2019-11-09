@@ -3,25 +3,31 @@
 import React, { Fragment } from 'react'
 import { css, jsx } from '@emotion/core'
 import PropTypes from 'prop-types'
-import { typography, colors, linkStylingBase } from '../styles'
+import { typography, colors, linkStyles } from '../styles'
 import { CMS_URL } from '../config'
 import Markdown from './markdown'
 import { imageProps, inspirationProps } from '../util/props'
-import { InlineLink } from './navigation/navigation'
+import { InlineLink } from './InlineLink'
 
-export const Inspiration = props => {
-  const { name, description, photo, website } = props
+export const Inspiration = ({
+  name,
+  description,
+  photo,
+  website,
+  ...props
+}) => {
+  // const { name, description, photo, website } = props
 
-  const designerInspirationStyles = css`
-    margin: 2rem 0;
-    color: ${colors.muteGray};
-    h3 {
-      font-family: ${typography.sans};
-      font-size: 1.5rem;
-      font-weight: bold;
-      text-transform: capitalize;
+  const designerInspirationStyles = {
+    margin: '2rem 0',
+    color: colors.muteGray,
+    h3: {
+      fontFamily: typography.sans,
+      fontSize: '1.5rem',
+      fontWeight: 'bold',
+      textTransform: 'capitalize'
     }
-  `
+  }
   return (
     <section className="designer" css={[designerInspirationStyles]}>
       {photo && (

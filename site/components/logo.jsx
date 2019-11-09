@@ -3,7 +3,7 @@ import React from 'react'
 import { css, jsx } from '@emotion/core'
 import PropTypes from 'prop-types'
 
-import { size, mixin } from '../styles'
+import { size, mixin, colors } from '../styles'
 
 export const Logo = props => {
   const { lockup, styles, color } = props
@@ -63,10 +63,13 @@ export const Logo = props => {
       css={[
         {
           display: 'block',
-          objectFit: 'contain'
+          objectFit: 'contain',
           // height: '100%'
+          svg: { fill: color },
+          ':hover': {
+            svg: { fill: colors.orange }
+          }
         },
-        { svg: { fill: color } },
         styles
       ]}
     >

@@ -1,7 +1,13 @@
 /** @jsx jsx */
 import React, { Fragment } from 'react'
 import { css, jsx } from '@emotion/core'
-import { colors, measure, mixin, typography } from '../../styles'
+import {
+  colors,
+  measure,
+  mixin,
+  typography,
+  aspectRatioLetter
+} from '../../styles'
 import Link from 'next/link'
 import PropTypes from 'prop-types'
 
@@ -12,37 +18,34 @@ import { ProjectPhoto } from './Photo'
 import { WithHoverState } from '../WithHoverState'
 import { projectProps } from '../../util/props'
 
-const CoverCaption = props => {
-  const { title, subtitle } = props
+const CoverCaption = ({ title, subtitle, ...props }) => {
   return (
     <figcaption
-      css={css`
-        h1,
-        h2 {
-          color: white;
+      css={{
+        'h1,h2': {
+          color: 'white'
         }
-      `}
+      }}
     >
       <h1
-        css={css`
-          font-family: ${typography.sans};
-          font-weight: bold;
-          font-size: 2rem;
-          @media screen and (min-width: 1200px) {
-            font-size: 3rem;
-          }
-        `}
+        css={{
+          fontFamily: typography.sans,
+          textTransform: 'capitalize',
+          fontWeight: 'bold',
+          fontSize: '2rem',
+          ...mixin.desktopMedia({ fontSize: '3rem' })
+        }}
       >
         {title}
       </h1>
       <h2
-        css={css`
-          font-family: ${typography.serif};
-          font-style: italic;
-          font-weight: 400;
-          font-size: 1.5rem;
-          line-height: 1.4;
-        `}
+        css={{
+          fontFamily: typography.serif,
+          fontStyle: 'italic',
+          fontWeight: '400',
+          fontSize: '1.5rem',
+          lineHeight: '1.4'
+        }}
       >
         {subtitle}
       </h2>
@@ -54,8 +57,8 @@ CoverCaption.propTypes = {
   subtitle: PropTypes.string.isRequired
 }
 
-export const Cover = props => {
-  const { project } = props
+export const Cover = ({ project = {}, ...props }) => {
+  // const { project } = props
   const { id, name, description, cover, slug, title } = project
 
   return (
@@ -63,31 +66,31 @@ export const Cover = props => {
       <WithHoverState
         render={(isHovered, handleMouseEnter, handleMouseLeave) => (
           <figure
-            css={css`
-              position: relative;
-              margin-bottom: 4rem;
-              width: 100%;
-              :hover {
-                cursor: pointer;
-              }
-              @media (hover: hover) {
-                &:hover {
-                  box-shadow: -0.5rem 0.5rem 0.5rem 0px hsla(0, 0%, 0%, 0.85);
+            css={{
+              ...aspectRatioLetter,
+              overflow: 'hidden', // clips aspect ratio overflow
+              position: 'relative',
+              marginBottom: '4rem',
+              width: '100%',
+              ':hover': {
+                cursor: 'pointer'
+              },
+              [`@media (hover: hover) `]: {
+                '&:hover': {
+                  boxShadow: '-0.5rem 0.5rem 0.5rem 0px hsla(0, 0%, 0%, 0.85)'
                 }
               }
-              ${mixin.aspectRatioLetter()}
-              overflow: hidden; // clips aspect ratio overflow
-            `}
+            }}
             onMouseEnter={handleMouseEnter || null}
             onMouseLeave={handleMouseLeave || null}
           >
             <Link href={`/projects/?slug=${slug}`} as={`/projects/${slug}`}>
               <a
                 // className="aspect link relative"
-                css={css`
-                  display: block;
-                  position: relative;
-                `}
+                css={{
+                  display: 'block',
+                  position: 'relative'
+                }}
               >
                 <ProjectPhoto
                   src={`${CMS_URL}${cover.url}`}

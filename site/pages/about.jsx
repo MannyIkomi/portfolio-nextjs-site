@@ -2,21 +2,23 @@
 import { css, jsx } from '@emotion/core'
 // Modules
 import React, { Fragment } from 'react'
+import PropTypes from 'prop-types'
 import { cms } from '../util/http'
 //
 // Components
 import PageLayout from '../components/pageLayout'
-import { InlineLink } from '../components/navigation/navigation'
+import { InlineLink } from '../components/InlineLink'
 //
 // Styles
-import { mixin, color, typography, colors, linkStylingBase } from '../styles'
+import { mixin, color, typography, colors, linkStyles } from '../styles'
 import { Inspiration } from '../components/Inspiration'
 import Axios from 'axios'
 import Markdown from '../components/markdown'
 import { inspirationProps } from '../util/props'
+import { regExpLiteral } from '@babel/types'
 //
-const About = props => {
-  const { inspirations, about } = props
+const About = ({ inspirations, about, ...props }) => {
+  // const { inspirations, about } = props
 
   return (
     <PageLayout
@@ -29,45 +31,38 @@ const About = props => {
     >
       <section
         // about heading + paragraph blurb
-        css={css`
-          display: flex;
-          ${mixin.flex('column')};
-          background-color: ${colors.darkGray};
-          min-height: 100vh;
-          header {
-            padding: 0;
-          }
-          p {
-            padding: 2rem;
-          }
-
-          ${mixin.tabletMedia(`
-            display: grid;
-            grid-template-areas: 'headshot h1 h1' 'negative body body';
-            grid-template-columns: 1fr 1fr 1fr;
-          `)}
-        `}
+        css={{
+          display: 'flex',
+          // ${mixin.flex('column')},
+          backgroundColor: colors.darkGray,
+          minJeight: '100vh',
+          header: {
+            padding: 0
+          },
+          ...mixin.tabletMedia({
+            display: 'grid',
+            gridTemplateAreas: `'headshot h1 h1' 'void body body'`,
+            gridTemplateColumns: '1fr 1fr 1fr'
+          })
+        }}
       >
         <div
           // headshot portrait
-          css={[
-            css`
-              align-self: flex-end;
-              margin: 0 0 auto auto;
-              position: relative;
-              width: 50%;
-              max-width: 320px;
+          css={{
+            alignSelf: 'flex-end',
+            margin: '0 0 auto auto',
+            position: 'relative',
+            width: '50%',
+            maxWidth: '320px',
 
-              ${mixin.tabletMedia(`
-                grid-area: headshot;
-                width: initial;
-                margin: 0;
-                align-self: flex-end;
-                justify-self: flex-end;
-                
-              `)}
-            `
-          ]}
+            ...mixin.tabletMedia({
+              gridArea: 'headshot',
+              width: 'initial',
+              margin: '0',
+              alignSelf: 'flex-end',
+              justifySelf: 'flex-end'
+            })
+          }}
         >
           <img
             src="static/headshot-touchup.png"
@@ -101,43 +96,15 @@ const About = props => {
         </h1>
 
         <Markdown
-          styles={css([
-            {
-              color: 'white'
-            }
-          ])}
+          func={markdown => markdown.replace('{{CARDS}}', about.cardsCollected)}
+          styles={{
+            padding: '2rem',
+            color: 'white',
+            gridArea: 'body'
+          }}
         >
           {about.bio}
         </Markdown>
-        {/* <p
-          className={`bio`}
-          css={css`
-            color: ${colors.muteGray};
-            font-size: 1.25rem;
-
-            ${mixin.tabletMedia(`
-            max-width: 50ch;
-            grid-area: body;
-          `)}
-          `}
-        >
-          My background in design comes from a combination of technical training
-          and formal education, including printing, prepress, problem solving
-          and concept development. With over 5 years of experience in the print
-          industry, I've gained the skills required to craft design ideas into a
-          high quality product.
-          <br />
-          In recent years I’ve been learning web development as a new creative
-          medium to build websites and user interfaces. 🤓
-          <br />
-          <strong
-            css={css`
-              font-weight: 800;
-            `}
-          >
-            In short, I like making great things for good people.
-          </strong>
-        </p> */}
       </section>
       <section
         className="quote viewport"
@@ -228,7 +195,10 @@ const About = props => {
   )
 }
 About.propTypes = {
-  inspirations: inspirationProps
+  inspirations: inspirationProps,
+  about: PropTypes.shape({
+    cardsCollected: PropTypes.number
+  })
 }
 
 About.getInitialProps = async () => {
