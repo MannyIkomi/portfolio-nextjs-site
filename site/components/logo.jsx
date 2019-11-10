@@ -64,7 +64,7 @@ export const Logo = props => {
         {
           display: 'block',
           objectFit: 'contain',
-          // height: '100%'
+
           svg: { fill: color },
           ':hover': {
             svg: { fill: colors.orange }

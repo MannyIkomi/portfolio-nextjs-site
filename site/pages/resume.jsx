@@ -1,12 +1,15 @@
 import React, { Component } from 'react'
+import PageLayout from '../components/pageLayout'
 
 class Resume extends Component {
   state = {}
   render() {
     return (
-      <article>
-        <h1>Resume</h1>
-      </article>
+      <PageLayout hasSideMenu={true}>
+        <article>
+          <h1>Resume</h1>
+        </article>
+      </PageLayout>
     )
   }
 }

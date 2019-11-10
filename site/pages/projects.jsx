@@ -27,8 +27,7 @@ const renderModules = modules => {
   })
 }
 
-const ProjectPage = props => {
-  const { project } = props
+const ProjectPage = ({ project }) => {
   const { title, description, modules, slug } = project
 
   const projectView = css`
@@ -61,7 +60,7 @@ const ProjectPage = props => {
     <PageLayout
       title={`${project.title} by Manny`}
       description={`${project.title}, ${project.description} by Manny Ikomi`}
-      isSideMenuDisabled={true}
+      hasSideMenu={false}
       persistDockedMenu={true}
     >
       <article css={projectView}>

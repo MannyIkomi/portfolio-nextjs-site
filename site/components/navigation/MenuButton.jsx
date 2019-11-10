@@ -4,9 +4,8 @@ import React, { Fragment } from 'react'
 import PropTypes from 'prop-types'
 import { mixin, colors } from '../../styles'
 
-export const MenuButton = props => {
-  const { handleToggle, isToggled } = props
-  const distance = '0.66rem' //'0.125rem'
+export const MenuButton = ({ handleToggle, isToggled }) => {
+  const distance = '0.66rem'
 
   const animateHamburger = {
     '.line:nth-of-type(1)': {
@@ -44,10 +43,9 @@ export const MenuButton = props => {
           }
         },
         isToggled && animateHamburger
-        // ${isToggled && animateHamburger}
       ]}
     >
-      <span className="line" /> hiuhjo
+      <span className="line" />
       <span className="line" />
       <span className="line" />
     </button>

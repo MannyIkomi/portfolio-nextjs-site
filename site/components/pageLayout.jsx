@@ -5,6 +5,7 @@ import PropTypes from 'prop-types'
 import { css, jsx } from '@emotion/core'
 
 import { WithToggleSwitch } from './navigation/WithToggleSwitch'
+import { useToggleSwitch } from '../hooks/useToggleSwitch'
 import DockedMenu from './navigation/dockedMenu'
 import SideMenu from './navigation/sideMenu'
 import HtmlHead from './head'
@@ -14,77 +15,70 @@ import Footer from './footer'
 import { mixin, GlobalStyles, typography, measure, colors } from '../styles'
 
 const shouldShowSideMenuGrid = (isSideMenuDisabled = false) => {
-  if (isSideMenuDisabled === true) {
-    // remove grid SideMenu
-    return `
-      display: grid;
-      grid-template-areas:
-      'header'
-      'main'
-      'footer';
-      grid-template-columns: 1fr;
-      `
-  } else {
-    // show SideMenu in Grid left column
-    return `
-      display: grid;
-      grid-template-areas:
-      'header main'
-      'footer footer';    
-      grid-template-columns: minmax(10rem, 15rem) 1fr;
-      grid-template-rows: min-content calc(100vh - ${measure.menubarHeight});
-      `
+  const hideSideMenu = {
+    display: 'grid',
+    gridTemplateAreas: `'header' 'main' 'footer'`,
+    gridTemplateColumns: '1fr'
   }
+
+  const showSideMenu = {
+    display: 'grid',
+    gridTemplateAreas: `'header main' 'footer footer'`,
+    gridTemplateColumns: `minmax(10rem, 15rem) 1fr`,
+    gridTemplateRows: `min-content calc(100vh - ${measure.menubarHeight})`
+  }
+
+  return isSideMenuDisabled ? hideSideMenu : showSideMenu
 }
 
-const PageLayout = props => {
-  const { title, description, isSideMenuDisabled, persistDockedMenu } = props
+const PageLayout = ({
+  title,
+  description,
+  hasSideMenu,
+  persistDockedMenu,
+  ...props
+}) => {
   // Page level template
+  const [menuToggled, setToggled] = useToggleSwitch(false)
+
   return (
     <div
-      css={css`
-         {
-          margin: 0 0 ${measure.menubarHeight} 0;
-          background-color: ${colors.muteGray};
+      css={{
+        margin: `0 0 ${measure.menubarHeight} 0`,
+        backgroundColor: colors.muteGray,
 
-          @media (${measure.tabletMediaWidth}) {
-            margin: ${measure.menubarHeight} 0 0 0;
-            ${persistDockedMenu && `margin: ${measure.menubarHeight} 0 0 0;`}
-          }
-        }
-
-        @media (${measure.desktopMediaWidth}) {
-          margin: 0;
-          ${persistDockedMenu && `margin: ${measure.menubarHeight} 0 0 0;`}
-        }
-
-        ${mixin.desktopMedia(`
-          ${mixin.supportsGrid(`
-            display: grid;
-            ${shouldShowSideMenuGrid(isSideMenuDisabled)}
-          `)}
-        `)}
-      `}
+        [`@media (${measure.tabletMediaWidth})`]: {
+          margin: `${measure.menubarHeight} 0 0 0`,
+          margin: persistDockedMenu && `${measure.menubarHeight} 0 0 0`
+        },
+        [`@media (${measure.desktopMediaWidth})`]: {
+          margin: '0',
+          margin: persistDockedMenu && `${measure.menubarHeight} 0 0 0`
+        },
+        ...mixin.desktopMediaSupportsGrid({
+          ...shouldShowSideMenuGrid(hasSideMenu)
+        })
+      }}
     >
       <HtmlHead pageTitle={title} description={description} />
       <GlobalStyles />
       <header
-        css={css`
-          grid-area: header;
-        `}
+        css={{
+          gridarea: 'header'
+        }}
       >
-        <WithToggleSwitch
+        {/* <WithToggleSwitch
           render={(menuToggled, handleMenuToggled) => {
-            return (
-              <DockedMenu
-                menuToggled={menuToggled}
-                handleMenuToggle={handleMenuToggled}
-                persistOnDesktop={persistDockedMenu}
-              />
-            )
-          }}
+            return ( */}
+        <DockedMenu
+          menuToggled={menuToggled}
+          handleMenuToggle={setToggled}
+          persistOnDesktop={persistDockedMenu}
         />
-        {isSideMenuDisabled ? null : <SideMenu />}
+        {/* )
+          }}
+        /> */}
+        {hasSideMenu && <SideMenu />}
       </header>
       <main
         css={css`

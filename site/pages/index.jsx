@@ -22,7 +22,7 @@ const HomePage = props => {
       <PageLayout
         // title={''}
         // description={''}
-        isSideMenuDisabled={false}
+        hasSideMenu={true}
         persistDockedMenu={false}
       >
         <Gallery id={0}>

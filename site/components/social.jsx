@@ -5,31 +5,31 @@ import { css, jsx } from '@emotion/core'
 import { typography } from '../styles'
 import { cms } from '../util/http'
 
-export const socialData = [
-  {
-    link: 'https://www.behance.net/ikomi',
-    icon: '/static/social/be.svg',
-    iconDark: '/static/social/be-dark.svg',
-    alt: 'Behance Logo'
-  },
-  {
-    link: 'https://www.instagram.com/designbymanny/',
-    icon: '/static/social/ig.svg',
-    iconDark: '/static/social/ig-dark.svg',
-    alt: 'Instagram Logo'
-  },
-  {
-    link: 'https://www.linkedin.com/in/ikomi',
-    icon: '/static/social/in.svg',
-    iconDark: '/static/social/in-dark.svg',
-    alt: 'LinkedIn Logo'
-  }
-]
+// export const socialData = [
+//   {
+//     link: 'https://www.behance.net/ikomi',
+//     icon: '/static/social/be.svg',
+//     iconDark: '/static/social/be-dark.svg',
+//     alt: 'Behance Logo'
+//   },
+//   {
+//     link: 'https://www.instagram.com/designbymanny/',
+//     icon: '/static/social/ig.svg',
+//     iconDark: '/static/social/ig-dark.svg',
+//     alt: 'Instagram Logo'
+//   },
+//   {
+//     link: 'https://www.linkedin.com/in/ikomi',
+//     icon: '/static/social/in.svg',
+//     iconDark: '/static/social/in-dark.svg',
+//     alt: 'LinkedIn Logo'
+//   }
+// ]
 
 export const getSocialData = () => cms('/socials')
 
-export const SocialIcon = props => {
-  const { href, alt, styles, platform, color } = props
+export const SocialIcon = ({ href, alt, styles, platform, color }) => {
+  // const { href, alt, styles, platform, color } = props
 
   const getIcon = platform => {
     switch (platform) {
@@ -93,7 +93,15 @@ export const SocialIcon = props => {
   }
 
   return (
-    <a href={href} css={[typography.typesetAnimation, styles]} title={alt}>
+    <a
+      href={href}
+      css={[
+        typography.typesetAnimation,
+        color && { svg: { fill: color } },
+        styles
+      ]}
+      title={alt}
+    >
       {getIcon(platform)}
     </a>
   )

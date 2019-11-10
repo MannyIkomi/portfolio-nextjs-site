@@ -5,40 +5,17 @@ import { css, jsx } from '@emotion/core'
 
 // Components
 import { LogoMaster } from './logo'
-import SocialIcon, { socialData } from './social'
+import SocialIcon from './social'
 import { InlineLink } from './InlineLink'
 
 //  Utility
+import { useSocialMedia } from '../hooks/useSocialMedia'
 import { getYear } from '../util/dates'
 import { cms } from '../util/http'
 import { mixin, colors, typography, measure } from '../styles'
 
 const Footer = ({ styles, ...props }) => {
-  const [socialPlatforms, setSocialPlatforms] = useState([])
-  useEffect(() => {
-    cms('/socials')
-      .then(response => {
-        const socialData = response.data
-        console.table(socialData)
-        setSocialPlatforms(socialData)
-      })
-      .catch(err => console.warn(err))
-  }, [])
-
-  const socialStyles = {
-    display: 'block',
-    ...mixin.size('100%', 'auto'),
-    padding: '0.25rem',
-    maxWidth: '2rem',
-    minHeight: '1rem',
-    minWidth: '1rem',
-
-    ':hover': {
-      svg: {
-        fill: colors.orange
-      }
-    }
-  }
+  const socialMedia = useSocialMedia()
 
   return (
     <footer // footer tag container
@@ -132,20 +109,18 @@ const Footer = ({ styles, ...props }) => {
         color={'white'}
         styles={{
           width: '25%',
-          // img: {
-          //   width: '100%'
-          // },
+
           margin: '2rem 0',
           '@media screen and (min-width: 500px)': {
             maxWidth: '10rem',
 
-            '@media screen and (min-width: 700px)': {
+            ...mixin.tabletMedia({
               '@supports (display: grid)': {
                 gridArea: 'logo',
                 width: '8rem',
                 margin: 'auto'
               }
-            }
+            })
           }
         }}
       />
@@ -158,16 +133,15 @@ const Footer = ({ styles, ...props }) => {
 
           '@media screen and (min-width: 500px)': {
             maxWidth: '320px'
-          }
-
-          // ${mixin.tabletMedia(`
-          //   ${mixin.supportsGrid(`
-          //       grid-area: social;
-          //       align-self: center;
-          //       margin: auto;
-          //       width: auto;
-          //   `)}
-          // `)}
+          },
+          ...mixin.tabletMedia({
+            ...mixin.supportsGrid({
+              gridArea: 'social',
+              alignSelf: 'center',
+              margin: 'auto',
+              width: 'auto'
+            })
+          })
         }}
       >
         <InlineLink
@@ -183,37 +157,50 @@ const Footer = ({ styles, ...props }) => {
 
         <br />
         <div
-          css={css`
-            ${mixin.flex('row')}
-            align-items: center;
-            justify-content: space-around;
-          `}
+          css={{
+            ...mixin.flex('row'),
+            alignItems: 'center',
+            justifyContent: 'space-around'
+          }}
         >
-          {socialPlatforms.map(social => (
+          {socialMedia.map(social => (
             <SocialIcon
               key={social.platform}
-              color={'black'}
-              styles={socialStyles}
+              color={'white '}
+              styles={{
+                display: 'block',
+                ...mixin.size('100%', 'auto'),
+                padding: '0.25rem',
+                maxWidth: '2rem',
+                minHeight: '1rem',
+                minWidth: '1rem',
+
+                ':hover': {
+                  svg: {
+                    fill: colors.orange
+                  }
+                }
+              }}
               {...social}
             />
           ))}
         </div>
       </section>
       <section // code section
-        css={css`
-          text-align: center;
-          ${mixin.tabletMedia(`
-            ${mixin.supportsGrid(`
-              grid-area: code;
-            `)}
-          `)}
-        `}
+        css={{
+          textAlign: 'center',
+          ...mixin.tabletMedia({
+            ...mixin.supportsGrid({
+              gridArea: 'code'
+            })
+          })
+        }}
       >
         <p>
           Member{` `}
           <InlineLink href={'https://www.aiga.org/'}>AIGA</InlineLink>
           <br />
-          <InlineLink href={'/static/ikomi-resume.pdf'}>Resume</InlineLink>
+          <InlineLink href={'/resume'}>Résumé</InlineLink>
           <br />
           <br />
           Oh, and{' '}
@@ -226,7 +213,7 @@ const Footer = ({ styles, ...props }) => {
           <InlineLink href={'https://reactjs.org/'}>React</InlineLink>,{` `}
           <InlineLink href={'https://strapi.io/'}>Strapi</InlineLink>
           {` `}and{` `}
-          <InlineLink href={'https://nodejs.org/en/'}>Node.js</InlineLink>
+          <InlineLink href={'https://nextjs.org/'}>Next.js</InlineLink>
           <br /> <br />
           Deployed with{` `}
           <InlineLink href={'https://www.heroku.com/'}>Heroku</InlineLink>

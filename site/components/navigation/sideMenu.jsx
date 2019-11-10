@@ -11,56 +11,48 @@ import { MenuButton } from '../navigation/MenuButton'
 import SocialIcon, { socialData, getSocialData } from '../social'
 
 // Utility
+import { useSocialMedia } from '../../hooks/useSocialMedia'
 import { cms } from '../../util/http'
 import { getPages } from '../../util/navigation'
 import { mixin, typography, measure, colors } from '../../styles'
 
 export const SideMenu = props => {
-  const [socialPlatforms, setSocialPlatforms] = useState([])
-
-  useEffect(() => {
-    cms('/socials')
-      .then(response => {
-        const socialData = response.data
-        console.table(socialData)
-        setSocialPlatforms(socialData)
-      })
-      .catch(err => console.warn(err))
-  }, [])
+  const socialMedia = useSocialMedia()
 
   return (
     <section
-      css={css`
-        display: none;
-        ${mixin.desktopMediaSupportsGrid(`
-          position: relative;        
-          // ${mixin.size('100%', '100vh')}
-          min-height: 100%;
-          ${mixin.flex('column')}
-          align-items: center;
-          // justify-content: center;
-          box-shadow: 0.25rem 0.25rem 0.25rem 0px rgba(38, 38, 38, 0.25);
-          background-color: ${colors.muteGray};
-      `)}
-      `}
+      css={{
+        display: 'none',
+        ...mixin.desktopMediaSupportsGrid({
+          display: 'grid',
+          position: 'relative',
+          // ...mixin.size('100%', '100vh'),
+          minHeight: '100%',
+          ...mixin.flex('column'),
+          alignItems: 'center',
+          // justifyContent: 'center',
+          boxShadow: '0.25rem 0.25rem 0.25rem 0px rgba(38, 38, 38, 0.25)',
+          backgroundColor: colors.muteGray
+        })
+      }}
     >
       <MenuBar
-        styles={css`
-          ${mixin.flex('column')};
-          height: 100vh;
-          position: fixed;
-          padding: 3rem 0;
-        `}
+        styles={{
+          ...mixin.flex('column'),
+          height: '100vh',
+          position: 'fixed',
+          padding: '3rem 0'
+        }}
       >
         <LogoMaster
-          styles={css`
-            max-width: 6rem;
-          `}
+          styles={{
+            maxWidth: '6rem'
+          }}
         />
         <NavContainer
-          styles={css`
-            margin: 4rem 0;
-          `}
+          styles={{
+            margin: '4rem 0'
+          }}
         >
           {getPages().map(page => (
             <InlineLink
@@ -78,28 +70,29 @@ export const SideMenu = props => {
           ))}
         </NavContainer>
         <div
-          css={css`
-            ${mixin.flex('row')}
-            align-items: center;
-          `}
+          css={{
+            ...mixin.flex('row'),
+            alignItems: 'center'
+          }}
         >
-          {socialPlatforms.map(social => (
+          {socialMedia.map(social => (
             <SocialIcon
               key={social.platform}
               color={'black'}
-              styles={css`
-                display: block;
-                ${mixin.size('100%', 'auto')};
-                padding: 0.25rem;
-                max-width: 2rem;
-                min-height: 1rem;
-                min-width: 1rem;
-                :hover {
-                  svg {
-                    fill: ${colors.orange};
+              styles={{
+                display: 'block',
+                ...mixin.size('100%', 'auto'),
+                padding: '0.25rem',
+                maxWidth: '2rem',
+                minHeight: '1rem',
+                minWidth: '1rem',
+
+                '&:hover': {
+                  svg: {
+                    fill: colors.orange
                   }
                 }
-              `}
+              }}
               {...social}
             />
           ))}

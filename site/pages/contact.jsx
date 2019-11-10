@@ -22,7 +22,7 @@ const Contact = props => {
       <PageLayout
         // title={''}
         // description={''}
-        isSideMenuDisabled={false}
+        hasSideMenu={true}
         persistDockedMenu={false}
       >
         Embed Instagram and Twitter feeds <br />

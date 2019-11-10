@@ -13,6 +13,12 @@ export const mixin = {
 
   size: (width = '100%', height = 'auto') => ({ width, height }),
 
+  canHover: (canHover = {}) => ({
+    '@media (hover: hover)': {
+      ...canHover
+    }
+  }),
+
   supportsGrid: ({ display = 'grid', ...hasSupport }) => ({
     '@supports (display: grid)': {
       display: display,

@@ -1,5 +1,5 @@
 import { css } from '@emotion/core'
-import { colors } from './index'
+import { colors, mixin } from '../styles/'
 
 export const serif = 'baskerville-urw, Georgia, serif'
 export const sans = 'futura-pt, "Helvetica Neue", Helvetica, sans-serif'
@@ -12,15 +12,23 @@ export const sizeTransition = {
 }
 
 export const linkStyles = {
+  // position: 'relative',
+  // '::before': {
+  //   content: '😀',
+  //   position: 'absolute'
+  // },
+
   display: 'inline-block',
   textDecoration: 'underline',
+  padding: '0.25rem 0',
+
   '&:hover': {
     color: colors.orange
   }
 }
 
 export const typesetAnimation = {
-  transition: 'transform 0.5s ease-in-out',
+  transition: 'transform 0.3s ease-in-out',
   ':hover': {
     transform: 'rotateX(180deg)'
   }
