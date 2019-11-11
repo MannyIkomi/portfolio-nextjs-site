@@ -6,8 +6,7 @@ import Markdown from '../markdown'
 import { colors, moduleContainer, typography } from '../../styles'
 import { moduleProps } from '../../util/props'
 
-export const TextModule = props => {
-  const { text } = props.module
+export const TextModule = ({ text }) => {
   return (
     <figure
       css={[
@@ -16,27 +15,20 @@ export const TextModule = props => {
           maxWidth: '60ch',
           color: colors.darkGray,
           backgroundColor: colors.muteGray,
-          padding: '2rem',
-          'h1, h2': {
-            color: colors.darkGray,
-            fontWeight: 300
-          },
-          'p, ul, a': {
-            fontWeight: 200
-          },
-          h1: { textAlign: 'right', marginBottom: '0.5rem' },
-          h2: { margin: '0.5rem 0 0.25rem' },
-          p: { lineHeight: 1.2 },
-          ul: {
-            listStylePosition: 'outside',
-            fontSize: '1rem',
-            paddingLeft: '1rem'
-          },
-          a: [typography.typesetAnimation, typography.linkStylingBase]
+          padding: '2rem'
         }
       ]}
     >
-      <Markdown>{text}</Markdown>
+      <Markdown
+        styles={{
+          'h1, h2': {
+            color: colors.darkGray,
+            fontWeight: 300
+          }
+        }}
+      >
+        {text}
+      </Markdown>
     </figure>
   )
 }

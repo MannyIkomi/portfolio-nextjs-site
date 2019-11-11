@@ -6,8 +6,7 @@ import { mixin, moduleContainer } from '../../styles'
 import { moduleProps } from '../../util/props'
 import { CMS_URL } from '../../config'
 
-export const ImageModule = props => {
-  const { image, imageAlt } = props.module
+export const ImageModule = ({ image, imageAlt }) => {
   return (
     <figure
       css={[

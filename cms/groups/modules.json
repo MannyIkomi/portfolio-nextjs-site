@@ -21,7 +21,9 @@
     "type": {
       "enum": [
         "text",
-        "image"
+        "image",
+        "caption",
+        "section"
       ],
       "type": "enumeration"
     }

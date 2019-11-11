@@ -129,6 +129,7 @@ export const DockedMenu = ({
       <NavContainer styles={showDockedNav}>
         {getPages().map(page => (
           <InlineLink
+            key={page.title}
             href={page.href}
             styles={{
               display: 'block',

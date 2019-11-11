@@ -6,62 +6,51 @@ import { css, jsx } from '@emotion/core'
 import PageLayout from '../components/pageLayout'
 import { ImageModule } from '../components/project/ImageModule'
 import { TextModule } from '../components/project/TextModule'
+import { CaptionModule } from '../components/project/CaptionModule'
 
 // Utility
 import { mixin, typography, colors } from '../styles'
 import { cms } from '../util/http'
 import { projectProps } from '../util/props'
+import Axios from 'axios'
 
-const renderModules = modules => {
-  return modules.map(module => {
-    switch (module.type) {
-      case 'image':
-        return <ImageModule module={module} key={module.id} />
-      case 'text':
-        return <TextModule module={module} key={module.id} />
-      default:
-        throw new Error(
-          `Could not find matching Component for Module:${module.type}`
-        )
+const ProjectPage = ({ project, otherProjects }) => {
+  const { title, description, modules, slug, tags, id } = project
+  // const { title, description, modules, slug, tags } = otherPro
+
+  const projectView = {
+    ...mixin.flex('column'),
+    alignItems: 'center',
+    background: colors.muteGray
+  }
+
+  const headingStyle = {
+    ...mixin.flex('column'),
+    alignItems: 'center',
+
+    minHeight: '50vh',
+    padding: '2rem',
+    textAlign: 'center',
+    h1: {
+      fontFamily: typography.sans,
+      fontWeight: '800',
+      textTransform: 'initial'
+    },
+    h2: {
+      fontFamily: typography.serif,
+      fontSize: '1.5rem',
+      fontWeight: '300',
+      fontStyle: 'italic',
+      textTransform: 'initial'
     }
-  })
-}
+  }
 
-const ProjectPage = ({ project }) => {
-  const { title, description, modules, slug } = project
-
-  const projectView = css`
-    ${mixin.flex('column')}
-    align-items: center;
-    background: ${colors.muteGray};
-  `
-
-  const headingStyle = css`
-    ${mixin.flex('column')}
-    align-items: center;
-
-    min-height: 50vh;
-    padding: 2rem;
-    text-align: center;
-    h1 {
-      font-family: ${typography.sans};
-      font-weight: 800;
-      text-transform: initial;
-    }
-    h2 {
-      font-family: ${typography.serif};
-      font-size: 1.5rem;
-      font-weight: 300;
-      font-style: italic;
-      text-transform: initial;
-    }
-  `
   return (
     <PageLayout
-      title={`${project.title} by Manny`}
-      description={`${project.title}, ${project.description} by Manny Ikomi`}
+      title={`${project.title}, ${project.description} by Manny`}
+      description={`${project.title}, ${project.description}: ${project.metaDescription}`}
       hasSideMenu={false}
-      persistDockedMenu={true}
+      persistDockedMenu={false}
     >
       <article css={projectView}>
         <header css={headingStyle}>
@@ -84,12 +73,48 @@ const ProjectPage = ({ project }) => {
               margin: auto;
             `}
           >
-            {renderModules(modules)}
+            {modules.map(module => {
+              switch (module.type) {
+                case 'image':
+                  return <ImageModule {...module} key={module.id} />
+                case 'text':
+                  return <TextModule {...module} key={module.id} />
+                case 'caption':
+                  return <CaptionModule {...module} key={module.id} />
+                // case 'section':
+                // use to split
+                //   return <div>CREATE SECTION MODULE</div> with glyph
+                default:
+                  throw new Error(
+                    `Could not find matching Component for Module: ${module.type}`
+                  )
+              }
+            })}
           </div>
         </main>
-        {/* <footer>
-          <h3>You might also like...</h3>
-        </footer> */}
+        <footer>
+          <h3>
+            You might also like...(related project in scrolling carousel,
+            grouped by tags)
+          </h3>
+          {project.tags.map(tag => tag.designTags).join(', ')}
+          <br /> <br />
+          {otherProjects.map(project => project.title).join(', ')}
+          <br /> <br />
+          {otherProjects
+            // filter current project from total projects list
+            .filter(otherProject => otherProject.id !== project.id)
+            // filter projects.tags where current.tags match
+
+            .map(otherProject => otherProject.title)
+            .join(', ')}
+          {
+            // find related project
+            /* function findRelatedProjects(current, projects){
+
+            } */
+          }
+        </footer>
       </article>
     </PageLayout>
   )
@@ -99,12 +124,28 @@ ProjectPage.propTypes = {
 }
 
 ProjectPage.getInitialProps = async context => {
-  const { query } = context
+  /* const getInspirations = () => cms('/inspirations')
+  const getAbout = () => cms('/abouts')
+
   try {
+    const [inspirations, about] = await Axios.all([
+      getInspirations(),
+      getAbout()
+    ])
+ */
+  const { query } = context
+  const getProject = () => cms(`/projects?slug=${query.slug}`)
+  const getAllProjects = () => cms('/projects')
+
+  try {
+    const [project, allProjects] = await Axios.all([
+      getProject(),
+      getAllProjects()
+    ])
     console.log(query.slug)
-    const response = await cms(`/projects?slug=${query.slug}`)
-    const projects = response.data
-    return { project: projects[0] }
+    // console.log('RESPONSE', response)
+
+    return { project: project.data[0], otherProjects: allProjects.data }
   } catch (err) {
     console.error(err)
     // const projects = mockGraphqlData.data.projects.filter(

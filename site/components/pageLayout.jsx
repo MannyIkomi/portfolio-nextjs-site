@@ -14,7 +14,7 @@ import Footer from './footer'
 // Styling
 import { mixin, GlobalStyles, typography, measure, colors } from '../styles'
 
-const shouldShowSideMenuGrid = (isSideMenuDisabled = false) => {
+const shouldShowSideMenuGrid = (shouldShow = true) => {
   const hideSideMenu = {
     display: 'grid',
     gridTemplateAreas: `'header' 'main' 'footer'`,
@@ -28,7 +28,7 @@ const shouldShowSideMenuGrid = (isSideMenuDisabled = false) => {
     gridTemplateRows: `min-content calc(100vh - ${measure.menubarHeight})`
   }
 
-  return isSideMenuDisabled ? hideSideMenu : showSideMenu
+  return shouldShow ? showSideMenu : hideSideMenu
 }
 
 const PageLayout = ({

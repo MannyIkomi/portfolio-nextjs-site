@@ -28,11 +28,12 @@ export const Markdown = ({ children, styles, preprocessor, ...props }) => {
         'h1,h2,h3,h4,h5,h6': {
           ...typography.serif
         },
-        p: {
-          fontFamily: typography.sans
+        'p, ul, a': {
+          fontFamily: typography.sans,
+          fontSize: '1.25rem'
         },
         ul: {
-          paddingLeft: '1rem',
+          paddingLeft: '1.5rem',
           lineHeight: 1.4
         },
         a: {

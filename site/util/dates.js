@@ -1,5 +1,5 @@
 // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date
-const convertEpochToDate = (epoch = 1) => new Date(epoch * 1000)
+export const convertEpochToDate = (epoch = 1) => new Date(epoch * 1000)
 
 export const naturalDate = (month = 0, day = 0, year = 0) => {
   const monthIndex = month - 1

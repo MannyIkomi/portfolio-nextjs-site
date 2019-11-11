@@ -44,6 +44,12 @@
       "required": true,
       "default": "For SEO purposes, will be used in the meta description.",
       "type": "text"
+    },
+    "tags": {
+      "group": "tags",
+      "repeatable": true,
+      "required": true,
+      "type": "group"
     }
   }
 }

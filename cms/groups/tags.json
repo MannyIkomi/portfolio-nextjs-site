@@ -1,0 +1,22 @@
+{
+  "info": {
+    "name": "Tags",
+    "description": "Tags used to find related projects"
+  },
+  "connection": "default",
+  "collectionName": "groups_tags",
+  "attributes": {
+    "designTags": {
+      "enum": [
+        "Identity",
+        "Logo",
+        "Branding",
+        "UI",
+        "Print",
+        "Publication",
+        "Web"
+      ],
+      "type": "enumeration"
+    }
+  }
+}
