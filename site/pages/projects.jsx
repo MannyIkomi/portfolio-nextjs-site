@@ -13,6 +13,8 @@ import { mixin, typography, colors } from '../styles'
 import { cms } from '../util/http'
 import { projectProps } from '../util/props'
 import Axios from 'axios'
+import { log } from 'util'
+import Cover from '../components/project/Cover'
 
 const ProjectPage = ({ project, otherProjects }) => {
   const { title, description, modules, slug, tags, id } = project
@@ -43,6 +45,24 @@ const ProjectPage = ({ project, otherProjects }) => {
       fontStyle: 'italic',
       textTransform: 'initial'
     }
+  }
+
+  const removeCurrentProject = (thisProject, otherProjects) =>
+    // filter current project from total projects list
+    otherProjects.filter(otherProject => otherProject.id !== thisProject.id)
+  // filter projects.tags where current.tags match
+
+  const arrIntersect = (arr1, arr2) => {
+    return arr1.filter(item => arr2.includes(item))
+  }
+
+  const findRelatedProjects = (thisProject = {}, otherProjects = []) => {
+    const currentTags = thisProject.tags.map(obj => obj.designTags)
+
+    return otherProjects.filter(otherProject => {
+      const otherTags = otherProject.tags.map(obj => obj.designTags)
+      return arrIntersect(currentTags, otherTags).length > 0
+    })
   }
 
   return (
@@ -93,32 +113,20 @@ const ProjectPage = ({ project, otherProjects }) => {
           </div>
         </main>
         <footer>
-          <h3>
-            You might also like...(related project in scrolling carousel,
-            grouped by tags)
-          </h3>
-          {project.tags.map(tag => tag.designTags).join(', ')}
+          <h3>You might also like...</h3>
           <br /> <br />
-          {otherProjects.map(project => project.title).join(', ')}
-          <br /> <br />
-          {otherProjects
-            // filter current project from total projects list
-            .filter(otherProject => otherProject.id !== project.id)
-            // filter projects.tags where current.tags match
-
-            .map(otherProject => otherProject.title)
-            .join(', ')}
-          {
-            // find related project
-            /* function findRelatedProjects(current, projects){
-
-            } */
-          }
+          {findRelatedProjects(
+            project,
+            removeCurrentProject(project, otherProjects)
+          ).map(related => (
+            <Cover project={related} key={related.id} />
+          ))}
         </footer>
       </article>
     </PageLayout>
   )
 }
+
 ProjectPage.propTypes = {
   project: projectProps
 }
