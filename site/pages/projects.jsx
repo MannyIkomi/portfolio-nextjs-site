@@ -132,15 +132,6 @@ ProjectPage.propTypes = {
 }
 
 ProjectPage.getInitialProps = async context => {
-  /* const getInspirations = () => cms('/inspirations')
-  const getAbout = () => cms('/abouts')
-
-  try {
-    const [inspirations, about] = await Axios.all([
-      getInspirations(),
-      getAbout()
-    ])
- */
   const { query } = context
   const getProject = () => cms(`/projects?slug=${query.slug}`)
   const getAllProjects = () => cms('/projects')

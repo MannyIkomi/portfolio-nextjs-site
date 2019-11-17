@@ -99,7 +99,8 @@ const PageLayout = ({
 PageLayout.propTypes = {
   title: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
-  isSideMenuDisabled: PropTypes.bool.isRequired
+  hasSideMenu: PropTypes.bool.isRequired,
+  persistDockedMenu: PropTypes.bool.isRequired
 }
 PageLayout.defaultProps = {
   title: 'Design Thinker, Lifetime Learner — Manny Ikomi',

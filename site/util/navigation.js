@@ -21,6 +21,10 @@ const getPages = (filterId = '') => {
     {
       title: 'Say Hi',
       href: '/contact'
+    },
+    {
+      title: 'Résumé',
+      href: '/resume'
     }
   ]
 
