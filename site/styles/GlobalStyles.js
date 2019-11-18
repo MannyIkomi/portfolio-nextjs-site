@@ -1,6 +1,7 @@
 import React from 'react'
 import { css, Global } from '@emotion/core'
 import { typography } from './typography'
+import { colors } from './colors'
 import { reset } from './reset'
 
 export const GlobalStyles = props => {
@@ -21,7 +22,7 @@ export const GlobalStyles = props => {
           color: inherit;
           text-decoration: inherit;
           &:hover {
-            color: $orange;
+            color: ${colors.orange};
           }
         }
         button {
@@ -48,8 +49,17 @@ export const GlobalStyles = props => {
           line-height: 1.4;
         }
 
+        ul {
+          li {
+            list-style: square;
+          }
+        }
+
         h1 {
           font-size: 2rem;
+        }
+        h2{
+          font-size: 1.5rem;
         }
 
         @media screen and (min-width: 700px) {

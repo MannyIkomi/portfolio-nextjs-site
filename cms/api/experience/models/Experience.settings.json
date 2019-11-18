@@ -21,7 +21,7 @@
       "required": true,
       "type": "string"
     },
-    "description": {
+    "details": {
       "type": "richtext"
     },
     "started": {
@@ -32,6 +32,14 @@
     },
     "roles": {
       "type": "string"
+    },
+    "isPaid": {
+      "type": "boolean",
+      "default": true,
+      "required": true
+    },
+    "summary": {
+      "type": "richtext"
     }
   }
 }

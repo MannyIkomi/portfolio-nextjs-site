@@ -37,7 +37,7 @@ export const mixin = {
       ...desktopStyles
     }
   }),
-
+  positionSticky: (top = 0) => ({ position: 'sticky', top }),
   // tabletMediaGrid: ({ display = 'grid', ...hasSupport }) => {},
 
   desktopMediaSupportsGrid: ({ display = 'grid', ...hasSupport } = {}) => {

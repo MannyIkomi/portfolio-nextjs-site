@@ -6,11 +6,11 @@
   "connection": "default",
   "collectionName": "groups_resumes",
   "attributes": {
-    "educations": {
-      "collection": "education"
-    },
     "experiences": {
       "collection": "experience"
+    },
+    "educations": {
+      "collection": "education"
     }
   }
 }

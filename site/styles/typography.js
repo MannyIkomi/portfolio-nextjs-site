@@ -11,6 +11,11 @@ export const sizeTransition = {
   transitionDelay: '0.5s'
 }
 
+export const ulStyles = {
+  listStyle: 'square',
+  paddingLeft: '1.25rem'
+}
+
 export const linkStyles = {
   // position: 'relative',
   // '::before': {
@@ -21,6 +26,9 @@ export const linkStyles = {
   display: 'inline-block',
   textDecoration: 'underline',
   padding: '0.25rem 0',
+  textDecorationColor: colors.orange,
+  // text underline new CSS features
+  // https://www.youtube.com/watch?v=sZS-7RX_c7g
 
   '&:hover': {
     color: colors.orange

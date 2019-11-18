@@ -8,9 +8,10 @@ export const naturalDate = (month = 0, day = 0, year = 0) => {
 
 export const formatDate = (formatOptions = {}, date = new Date()) => {
   // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/DateTimeFormat
+
   // converts date object to specified format
-  const customFormat = new Intl.DateTimeFormat('default', formatOptions).format(
-    date
+  const customFormat = new Intl.DateTimeFormat(undefined, formatOptions).format(
+    new Date(date)
   )
   return customFormat
 }
