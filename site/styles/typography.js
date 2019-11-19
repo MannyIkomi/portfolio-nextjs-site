@@ -42,11 +42,16 @@ export const typesetAnimation = {
   }
 }
 
+export const maxReadingWidth = {
+  maxWidth: '60ch'
+}
+
 export const typography = {
   serif,
   sans,
   sizeTransition,
   linkStyles,
-  typesetAnimation
+  typesetAnimation,
+  maxReadingWidth
 }
 export default typography

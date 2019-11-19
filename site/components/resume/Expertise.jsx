@@ -6,12 +6,16 @@ import { typography } from '../../styles'
 
 export const Expertise = ({ description, url }) => {
   return (
-    <li css={{ whiteSpace: 'pre-wrap' }}>
+    <li
+      css={{
+        whiteSpace: 'wrap'
+      }}
+    >
       {url ? (
         <a
           href={url}
           css={{
-            display: 'inline',
+            // display: 'inline',
             ...typography.linkStyles,
             ...typography.typesetAnimation
           }}

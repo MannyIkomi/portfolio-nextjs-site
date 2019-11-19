@@ -7,7 +7,7 @@ export const ResumeSection = ({ styles, children, ...props }) => {
   return (
     <article
       css={{
-        borderTop: 'solid',
+        // borderTop: 'solid',
         margin: '2rem 0',
         h1: {
           fontWeight: '100',

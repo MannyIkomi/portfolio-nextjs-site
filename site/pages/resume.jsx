@@ -26,14 +26,22 @@ const Resume = ({ education, experience, expertise }) => {
       title={`Résumé — Manny Ikomi`}
       description={`Manny Ikomi's work experience, education, volunteer work, skills and tools`}
     >
-      <nav>
+      <nav
+        css={{
+          margin: 'auto',
+          a: { padding: '0.5rem' },
+          ...typography.maxReadingWidth
+        }}
+      >
         <a href="#experience">Work Experience</a>
         <a href="#volunteering">Volunteering</a>
         <a href="#education">Education</a>
         <a href="#skills">Skills</a>
         <a href="#tools">Tools</a>
       </nav>
-      <article css={{ padding: '1rem' }}>
+      <article
+        css={{ padding: '1rem', ...typography.maxReadingWidth, margin: 'auto' }}
+      >
         <header>
           <h1>Resume</h1>
         </header>
@@ -59,6 +67,7 @@ const Resume = ({ education, experience, expertise }) => {
           <ResumeSection>
             <h1 id="skills">Skills</h1>
             <ul css={ulStyles}>
+              {/* sort alphabetically ? */}
               {skills.map(skill => (
                 <Expertise {...skill} />
               ))}

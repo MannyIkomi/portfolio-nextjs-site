@@ -36,9 +36,9 @@ export const Education = ({
           }}
         >
           {' '}
-          <br />
           {concentration}
-        </span>{' '}
+        </span>
+        <br />
         <TimeFrame start={started} end={ended} />
       </header>
       <main>
