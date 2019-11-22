@@ -44,17 +44,17 @@ const PageLayout = ({
   return (
     <div
       css={{
-        margin: `0 0 ${measure.menubarHeight} 0`,
+        margin: persistDockedMenu && `${measure.menubarHeight} 0 0 0`,
         backgroundColor: colors.muteGray,
 
-        [`@media (${measure.tabletMediaWidth})`]: {
-          margin: `${measure.menubarHeight} 0 0 0`,
-          margin: persistDockedMenu && `${measure.menubarHeight} 0 0 0`
-        },
-        [`@media (${measure.desktopMediaWidth})`]: {
-          margin: '0',
-          margin: persistDockedMenu && `${measure.menubarHeight} 0 0 0`
-        },
+        // [`@media (${measure.tabletMediaWidth})`]: {
+        //   margin: `${measure.menubarHeight} 0 0 0`,
+        //   margin: persistDockedMenu && `${measure.menubarHeight} 0 0 0`
+        // },
+        // [`@media (${measure.desktopMediaWidth})`]: {
+        //   margin: '0',
+        //   margin: persistDockedMenu && `${measure.menubarHeight} 0 0 0`
+        // },
         ...mixin.desktopMediaSupportsGrid({
           ...shouldShowSideMenuGrid(hasSideMenu)
         })
@@ -67,17 +67,11 @@ const PageLayout = ({
           gridarea: 'header'
         }}
       >
-        {/* <WithToggleSwitch
-          render={(menuToggled, handleMenuToggled) => {
-            return ( */}
         <DockedMenu
           menuToggled={menuToggled}
           handleMenuToggle={setToggled}
           persistOnDesktop={persistDockedMenu}
         />
-        {/* )
-          }}
-        /> */}
         {hasSideMenu && <SideMenu />}
       </header>
       <main

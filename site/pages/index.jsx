@@ -42,7 +42,7 @@ HomePage.getInitialProps = async () => {
     return { projects }
   } catch (err) {
     console.error(err)
-    throw new Error('Oops, looks like I cant load my projects at this time.')
+    throw new Error('Oops, looks like I cant load my projects right now 😔.')
     // const { projects } = mockGraphqlData.data
     // return { projects }
   }

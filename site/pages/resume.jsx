@@ -21,8 +21,8 @@ const Resume = ({ education, experience, expertise }) => {
 
   return (
     <PageLayout
-      hasSideMenu={false}
-      persistDockedMenu={true}
+      hasSideMenu={true}
+      persistDockedMenu={false}
       title={`Résumé — Manny Ikomi`}
       description={`Manny Ikomi's work experience, education, volunteer work, skills and tools`}
     >

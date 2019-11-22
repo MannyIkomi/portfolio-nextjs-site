@@ -70,7 +70,7 @@ const ProjectPage = ({ project, otherProjects }) => {
       title={`${project.title}, ${project.description} by Manny`}
       description={`${project.title}, ${project.description}: ${project.metaDescription}`}
       hasSideMenu={false}
-      persistDockedMenu={false}
+      persistDockedMenu={true}
     >
       <article css={projectView}>
         <header css={headingStyle}>

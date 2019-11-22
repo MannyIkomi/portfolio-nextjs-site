@@ -56,7 +56,7 @@ export const DockedMenu = ({
       backgroundPosition: 'bottom center',
       fontFamily: typography.serif,
 
-      [`@media (${measure.tabletMediaWidth}), @media (hover: hover) `]: {
+      [`@media (${measure.tabletMediaWidth})`]: {
         bottom: 'initial',
         top: '0',
         right: '0',
@@ -89,9 +89,10 @@ export const DockedMenu = ({
         {
           zIndex: '999',
           position: 'fixed',
-          bottom: '0',
+          top: '0',
+          // bottom: '0',
           left: '0',
-          [`@media (hover: hover) (${measure.tabletMediaWidth})`]: {
+          [`(${measure.tabletMediaWidth})`]: {
             [`@media (${measure.tabletMediaWidth})`]: {
               top: '0',
               bottom: 'initial'
@@ -107,23 +108,28 @@ export const DockedMenu = ({
       ]}
     >
       <MenuBar
-        styles={{
-          zIndex: '1000',
-          position: 'relative',
-          padding: '0.5rem',
+        styles={[
+          {
+            zIndex: '1000',
+            position: 'relative',
+            padding: '0.5rem',
 
-          ...mixin.flex('row'),
-          ...mixin.size('100vw', measure.menubarHeight),
-          justifyContent: 'space-between',
+            ...mixin.flex('row'),
+            ...mixin.size('100vw', measure.menubarHeight),
+            justifyContent: 'space-between',
 
-          backgroundColor: colors.muteGray,
-          boxShadow: '0rem -0.25rem 0.25rem 0px rgba(38, 38, 38, 0.25)',
-          [`@media (hover: hover), (${measure.tabletMediaWidth})`]: {
+            backgroundColor: colors.muteGray,
             boxShadow: '0rem 0.25rem 0.25rem 0px rgba(38, 38, 38, 0.25)'
+          },
+          {
+            [`@media (${measure.tabletMediaWidth})`]: {
+              display: persistOnDesktop ? 'block' : 'none'
+              // ${persistOnDesktop ? null: ''display',
+            }
           }
-        }}
+        ]}
       >
-        <LogoType />
+        <LogoType styles={{ heigh: measure.menubarHeight - 0.5 }} />
         <MenuButton handleToggle={handleMenuToggle} isToggled={menuToggled} />
       </MenuBar>
       <NavContainer styles={showDockedNav}>
