@@ -16,7 +16,7 @@ import { mixin, measure, colors, typography } from '../../styles'
 export const DockedMenu = ({
   menuToggled,
   handleMenuToggle,
-  persistOnDesktop,
+  // persistOnDesktop,
   ...props
 }) => {
   const animateToggle = {
@@ -98,13 +98,13 @@ export const DockedMenu = ({
               bottom: 'initial'
             }
           }
-        },
-        !persistOnDesktop && {
-          [`@media (${measure.desktopMediaWidth}) `]: {
-            display: 'none'
-            // ${persistOnDesktop ? null: ''display',
-          }
         }
+        // !persistOnDesktop && {
+        //   [`@media (${measure.desktopMediaWidth}) `]: {
+        //     display: 'none'
+        //     // ${persistOnDesktop ? null: ''display',
+        //   }
+        // }
       ]}
     >
       <MenuBar
@@ -120,13 +120,13 @@ export const DockedMenu = ({
 
             backgroundColor: colors.muteGray,
             boxShadow: '0rem 0.25rem 0.25rem 0px rgba(38, 38, 38, 0.25)'
-          },
-          {
-            [`@media (${measure.tabletMediaWidth})`]: {
-              display: persistOnDesktop ? 'flex' : 'none'
-              // ${persistOnDesktop ? null: ''display',
-            }
           }
+          // {
+          //   [`@media (${measure.tabletMediaWidth})`]: {
+          //     display: persistOnDesktop ? 'flex' : 'none'
+          //     // ${persistOnDesktop ? null: ''display',
+          //   }
+          // }
         ]}
       >
         <LogoType

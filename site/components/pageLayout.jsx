@@ -62,25 +62,7 @@ const PageLayout = ({
     >
       <HtmlHead pageTitle={title} description={description} />
       <GlobalStyles />
-      <header
-        css={{
-          gridarea: 'header'
-        }}
-      >
-        <DockedMenu
-          menuToggled={menuToggled}
-          handleMenuToggle={setToggled}
-          persistOnDesktop={persistDockedMenu}
-        />
-        {hasSideMenu && <SideMenu />}
-      </header>
-      <main
-        css={css`
-          grid-area: main;
-        `}
-      >
-        {props.children}
-      </main>
+      {props.children}
       <Footer
         styles={{
           gridArea: 'footer'
