@@ -5,9 +5,7 @@ import PropTypes from 'prop-types'
 
 import { size, mixin, colors } from '../styles'
 
-export const Logo = props => {
-  const { lockup, styles, color } = props
-
+export const Logo = ({ lockup, styles, color, ...props }) => {
   const getLockup = lockup => {
     switch (lockup) {
       case 'type':
@@ -64,6 +62,8 @@ export const Logo = props => {
         {
           display: 'block',
           objectFit: 'contain',
+          // width: '100%',
+          // height: 'auto',
 
           svg: { fill: color },
           ':hover': {

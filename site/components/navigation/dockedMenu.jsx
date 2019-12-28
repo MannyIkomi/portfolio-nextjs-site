@@ -123,13 +123,20 @@ export const DockedMenu = ({
           },
           {
             [`@media (${measure.tabletMediaWidth})`]: {
-              display: persistOnDesktop ? 'block' : 'none'
+              display: persistOnDesktop ? 'flex' : 'none'
               // ${persistOnDesktop ? null: ''display',
             }
           }
         ]}
       >
-        <LogoType styles={{ heigh: measure.menubarHeight - 0.5 }} />
+        <LogoType
+          styles={{
+            height: `calc(${measure.menubarHeight} - 0.5rem)`,
+            width: 'auto'
+
+            // `calc(${measure.menubarHeight} - 0.5rem)`
+          }}
+        />
         <MenuButton handleToggle={handleMenuToggle} isToggled={menuToggled} />
       </MenuBar>
       <NavContainer styles={showDockedNav}>
