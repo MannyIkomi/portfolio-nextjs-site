@@ -5,11 +5,11 @@ import Layout from "../components/layout"
 import HtmlHead from "../components/HtmlHead"
 import { Footer } from "../components/Footer"
 import { ProjectCover } from "../components/ProjectCover"
-import { Gallery } from "./Gallery"
+import { Gallery } from "../components/Gallery"
 
 const IndexPage = ({ data }) => {
-  const edges = data.allStrapiProjects.edges
-  const projects = edges.map(obj => obj.node)
+  const projects = data.allStrapiProjects.nodes
+  // const projects = edges.map(obj => obj.node)
 
   return (
     // Window.matchMatch(CSSMediaQuery via JS)
@@ -27,19 +27,18 @@ const IndexPage = ({ data }) => {
 
 export const pageQuery = graphql`
   query IndexQuery {
-    allStrapiProjects {
-      edges {
-        node {
-          id
-          coverAlt
-          title
-          updated_at
-          created_at
-          description
-          slug
-          cover {
-            publicURL
-          }
+    allStrapiProjects(sort: { fields: created_at }) {
+      nodes {
+        # add {completed} field to keep rendering in chronological order
+        id
+        coverAlt
+        title
+        updated_at
+        created_at
+        description
+        slug
+        cover {
+          publicURL
         }
       }
     }
