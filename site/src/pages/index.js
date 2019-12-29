@@ -43,10 +43,7 @@ const Cover = ({
   return (
     <figure onMouseEnter={handleHover} onMouseLeave={handleHover}>
       <Link>
-        <ProjectPhoto
-          src={"http://localhost:1337" + cover.publicURL}
-          alt={coverAlt}
-        />
+        <ProjectPhoto src={cover.publicURL} alt={coverAlt} />
         {isHovered && (
           <FillOverlay>
             <figcaption>
