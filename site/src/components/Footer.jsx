@@ -1,9 +1,10 @@
 import React from "react"
-import { LogoMaster } from "./logo"
+import { LogoMaster } from "./Logo"
 import { useSocialMedia } from "../hooks/useSocialMedia"
 import { getYear } from "../util/dates"
 import { SocialIcon } from "./SocialIcon"
 import { InlineLink } from "./InlineLink"
+
 export const Footer = props => {
   const socialMedia = useSocialMedia()
   return (

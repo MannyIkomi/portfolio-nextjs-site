@@ -3,24 +3,22 @@ import { graphql } from "gatsby"
 
 import Layout from "../components/layout"
 import HtmlHead from "../components/HtmlHead"
-import { Footer } from "../components/Footer"
 import { ProjectCover } from "../components/ProjectCover"
 import { Gallery } from "../components/Gallery"
 
 const IndexPage = ({ data }) => {
   const projects = data.allStrapiProjects.nodes
-  // const projects = edges.map(obj => obj.node)
 
+  // Window.matchMatch(CSSMediaQuery via JS)
   return (
-    // Window.matchMatch(CSSMediaQuery via JS)
     <Layout>
-      <HtmlHead title="Index" />
+      <HtmlHead title="Home" />
       <Gallery>
         {projects.map(project => (
           <ProjectCover {...project} key={project.id} />
         ))}
       </Gallery>
-      <Footer />
+      {/* <Footer /> */}
     </Layout>
   )
 }
