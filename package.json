@@ -9,7 +9,7 @@
   "scripts": {
     "test": "cd site && npm test",
     "dev-cms": "cd cms && npm run dev",
-    "dev-site": "cd site && npm run dev",
+    "dev-site": "cd site && gatsby develop",
     "build-cms": "cd cms && npm build",
     "build-site": "cd site && npm build",
     "start-cms": "cd cms && npm start",
