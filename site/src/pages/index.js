@@ -1,21 +1,100 @@
-import React from "react"
-import { Link } from "gatsby"
+import React, { useEffect, useState } from "react"
+import { Link, graphql } from "gatsby"
 
 import Layout from "../components/layout"
-import Image from "../components/image"
+// import Image from "../components/image"
 import SEO from "../components/seo"
 
-const IndexPage = () => (
-  <Layout>
-    <SEO title="Home" />
-    <h1>Hi people</h1>
-    <p>Welcome to your new Gatsby site.</p>
-    <p>Now go build something great.</p>
-    <div style={{ maxWidth: `300px`, marginBottom: `1.45rem` }}>
-      <Image />
+const projects = []
+
+const useHoverState = (init = false) => {
+  const [isHovered, setIsHovered] = useState(init)
+
+  const handleHover = e => {
+    setIsHovered(!isHovered)
+  }
+
+  return [isHovered, handleHover]
+}
+
+const FillOverlay = ({ children, ...props }) => (
+  <React.Fragment>
+    <div>
+      <div>fill motif</div>
+      {children}
     </div>
-    <Link to="/page-2/">Go to page 2</Link>
-  </Layout>
+  </React.Fragment>
 )
+
+const ProjectPhoto = ({ src, alt, ...props }) => <img src={src} alt={alt} />
+
+const Cover = ({
+  id,
+  name,
+  description,
+  cover,
+  slug,
+  title,
+  coverAlt,
+  ...props
+}) => {
+  const [isHovered, handleHover] = useHoverState()
+
+  return (
+    <figure onMouseEnter={handleHover} onMouseLeave={handleHover}>
+      <Link>
+        <ProjectPhoto
+          src={"http://localhost:1337" + cover.publicURL}
+          alt={coverAlt}
+        />
+        {isHovered && (
+          <FillOverlay>
+            <figcaption>
+              <h1>{title}</h1>
+              <h2>{description}</h2>
+            </figcaption>
+          </FillOverlay>
+        )}
+      </Link>
+    </figure>
+  )
+}
+
+const IndexPage = ({ data }) => {
+  const edges = data.allStrapiProjects.edges
+
+  const projects = edges.map(obj => obj.node)
+
+  return (
+    // Window.matchMatch(CSSMediaQuery via JS)
+    <Layout>
+      <SEO title="Home" />
+      {projects.map(project => (
+        <Cover {...project} key={project.id} />
+      ))}
+    </Layout>
+  )
+}
+
+export const pageQuery = graphql`
+  query IndexQuery {
+    allStrapiProjects {
+      edges {
+        node {
+          id
+          coverAlt
+          title
+          updated_at
+          created_at
+          description
+          slug
+          cover {
+            publicURL
+          }
+        }
+      }
+    }
+  }
+`
 
 export default IndexPage
