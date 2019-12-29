@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react"
 import { Link, graphql } from "gatsby"
+import { css } from "@emotion/core"
 
 import Layout from "../components/layout"
 // import Image from "../components/image"
@@ -66,9 +67,11 @@ const IndexPage = ({ data }) => {
     // Window.matchMatch(CSSMediaQuery via JS)
     <Layout>
       <SEO title="Home" />
-      {projects.map(project => (
-        <Cover {...project} key={project.id} />
-      ))}
+      <div css={{ background: "blue" }}>
+        {projects.map(project => (
+          <Cover {...project} key={project.id} />
+        ))}
+      </div>
     </Layout>
   )
 }
