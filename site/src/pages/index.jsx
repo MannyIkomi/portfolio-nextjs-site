@@ -1,22 +1,12 @@
-import React, { useEffect, useState } from "react"
+import React, { useEffect } from "react"
 import { Link, graphql } from "gatsby"
 import { css } from "@emotion/core"
+import { colors } from "../styles"
 
 import Layout from "../components/layout"
 // import Image from "../components/image"
-import SEO from "../components/seo"
-
-const projects = []
-
-const useHoverState = (init = false) => {
-  const [isHovered, setIsHovered] = useState(init)
-
-  const handleHover = e => {
-    setIsHovered(!isHovered)
-  }
-
-  return [isHovered, handleHover]
-}
+import HtmlHead from "../components/HtmlHead"
+import { useHoverState } from "../hooks/useHoverState"
 
 const FillOverlay = ({ children, ...props }) => (
   <React.Fragment>
@@ -58,20 +48,41 @@ const Cover = ({
   )
 }
 
+const Gallery = ({ children, ...props }) => {
+  return (
+    <section
+      css={{
+        backgroundColor: colors.darkGray,
+        width: "100%",
+        padding: "2rem",
+        // ...mixin.tabletMedia({
+        //   ...mixin.supportsGrid({
+        //     display: 'grid',
+        //     gridTemplateColumns: '1fr 1fr',
+        //     gridColumnGap: '4rem',
+        //     gridAutoFlow: 'row'
+        //   })
+        // })
+      }}
+    >
+      {children}
+    </section>
+  )
+}
+
 const IndexPage = ({ data }) => {
   const edges = data.allStrapiProjects.edges
-
   const projects = edges.map(obj => obj.node)
 
   return (
     // Window.matchMatch(CSSMediaQuery via JS)
     <Layout>
-      <SEO title="Home" />
-      <div css={{ background: "blue" }}>
+      <HtmlHead title="Index" />
+      <Gallery>
         {projects.map(project => (
           <Cover {...project} key={project.id} />
         ))}
-      </div>
+      </Gallery>
     </Layout>
   )
 }
