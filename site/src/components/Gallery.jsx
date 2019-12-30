@@ -1,5 +1,6 @@
 import React from "react"
-import { colors } from "../styles"
+import { colors, flex } from "../styles"
+
 export const Gallery = ({ children, ...props }) => {
   return (
     <section
@@ -7,6 +8,7 @@ export const Gallery = ({ children, ...props }) => {
         backgroundColor: colors.darkGray,
         width: "100%",
         padding: "2rem",
+        ...flex("column"),
       }}
     >
       {children}
