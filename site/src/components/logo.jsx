@@ -3,7 +3,7 @@ import React from "react"
 import { css, jsx } from "@emotion/core"
 import PropTypes from "prop-types"
 
-import { size, mixin, colors } from "../styles"
+import { colors } from "../styles"
 
 export const Logo = ({ lockup, styles, color, ...props }) => {
   const getLockup = lockup => {
