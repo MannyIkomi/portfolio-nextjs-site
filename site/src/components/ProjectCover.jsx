@@ -5,7 +5,7 @@ import { css } from "@emotion/core"
 import { useHoverState } from "../hooks/useHoverState"
 import { FillOverlay } from "./FillOverlay"
 import { ProjectPhoto } from "./ProjectPhoto"
-import { aspectRatioLetter } from "../styles"
+import { aspectRatioLetter, typography } from "../styles"
 
 export const ProjectCover = ({
   id,
@@ -22,6 +22,7 @@ export const ProjectCover = ({
     <figure
       css={{
         ...aspectRatioLetter,
+        position: "relative",
         overflow: "hidden", // clips aspect ratio overflow
         position: "relative",
         // marginBottom: "4rem",
@@ -30,12 +31,30 @@ export const ProjectCover = ({
       }}
       onMouseEnter={handleHover}
       onMouseLeave={handleHover}
+      // {...props}
     >
       <Link>
         <ProjectPhoto src={cover.publicURL} alt={coverAlt} />
         {isHovered && (
           <FillOverlay>
-            <figcaption>
+            <figcaption
+              css={{
+                color: "white",
+                h1: {
+                  fontFamily: typography.sans,
+                  fontSize: "2rem",
+                  fontWeight: "bold",
+                  textTransform: "initial",
+                },
+                h2: {
+                  fontSize: "1rem",
+                  textTransform: "initial",
+                  fontFamily: typography.serif,
+                  fontStyle: "italic",
+                  fontWeight: 100,
+                },
+              }}
+            >
               <h1>{title}</h1>
               <h2>{description}</h2>
             </figcaption>

@@ -30,7 +30,7 @@ const layoutChildren = css({
 
 const withMotif = css({
   "::before": {
-    content: 'url("/static/motif-gallery.svg")',
+    content: 'url("../motif-gallery.svg")',
     position: "absolute",
     top: "-1px",
     right: "-1px",
@@ -40,8 +40,8 @@ const withMotif = css({
 })
 
 export const FillOverlay = ({ children, ...props }) => (
-  <React.Fragment>
+  <>
     <div css={orangeFill} />
     <div css={[layoutChildren, withMotif]}>{children}</div>
-  </React.Fragment>
+  </>
 )

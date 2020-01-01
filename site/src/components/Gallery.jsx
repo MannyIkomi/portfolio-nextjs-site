@@ -8,10 +8,10 @@ export const Gallery = ({ children, ...props }) => {
     <section
       css={{
         backgroundColor: colors.darkGray,
-
         width: "100%",
         padding: "2rem",
         ...flex("column"),
+
         ...onTabletMedia({
           ...supportsGrid({
             gridTemplateColumns: "1fr 1fr",

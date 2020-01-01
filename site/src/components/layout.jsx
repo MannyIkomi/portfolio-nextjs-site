@@ -151,7 +151,9 @@ video`]: {
       <Global
         styles={{
           ...reset,
-
+          "*": {
+            boxSizing: "border-box",
+          },
           ":root": {
             fontSize: "100%",
             fontFamily: typography.sans,
