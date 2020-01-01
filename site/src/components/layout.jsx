@@ -147,7 +147,7 @@ video`]: {
   }
 
   return (
-    <React.Fragment>
+    <>
       <Global
         styles={{
           ...reset,
@@ -183,10 +183,9 @@ video`]: {
           },
         }}
       />
-      <Header siteTitle={data.site.siteMetadata.title} />
+
       {children}
-      <Footer />
-    </React.Fragment>
+    </>
   )
 }
 

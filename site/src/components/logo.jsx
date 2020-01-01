@@ -10,7 +10,12 @@ export const Logo = ({ lockup, styles, color, ...props }) => {
     switch (lockup) {
       case "type":
         return (
-          <svg viewBox="0 0 136.32 26.804" xmlns="http://www.w3.org/2000/svg">
+          <svg
+            // width="auto"
+            height="auto"
+            viewBox="0 0 136.32 26.804"
+            xmlns="http://www.w3.org/2000/svg"
+          >
             <title>logo-type-long</title>
             <g data-name="Layer 2">
               <g data-name="Layer 1">
@@ -31,7 +36,12 @@ export const Logo = ({ lockup, styles, color, ...props }) => {
       case "master":
       default:
         return (
-          <svg viewBox="0 0 81.409 79.558" xmlns="http://www.w3.org/2000/svg">
+          <svg
+            // width="100%"
+            height="auto"
+            viewBox="0 0 81.409 79.558"
+            xmlns="http://www.w3.org/2000/svg"
+          >
             <title>logo-master</title>
             <g data-name="Layer 2">
               <g data-name="Layer 1">
@@ -58,20 +68,19 @@ export const Logo = ({ lockup, styles, color, ...props }) => {
   return (
     <a
       href={`/`}
-      css={[
-        {
-          display: "block",
-          objectFit: "contain",
-          // width: '100%',
-          // height: 'auto',
+      css={{
+        display: "block",
+        // objectFit: "contain",
+        overflow: "hidden",
 
-          svg: { fill: color },
-          ":hover": {
-            svg: { fill: colors.orange },
-          },
+        // svg: {
+        //   fill: color,
+        // },
+        ":hover": {
+          svg: { fill: colors.orange },
         },
-        styles,
-      ]}
+      }}
+      {...props}
     >
       {getLockup(lockup)}
     </a>
