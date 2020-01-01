@@ -3,6 +3,13 @@
 export const serif = "baskerville-urw, Georgia, serif"
 export const sans = 'futura-pt, "Helvetica Neue", Helvetica, sans-serif'
 
+export const menubarHeight = "2.5rem"
+export const desktopMediaWidth = `min-width: 1200px`
+export const tabletMediaWidth = `min-width: 700px`
+
+export const tabletMediaQuery = `@media screen and (${tabletMediaWidth})`
+export const desktopMediaQuery = `@media screen and (${desktopMediaWidth})`
+
 export const sizeTransition = {
   transitionProperty: "font-size",
   transitionTimingFunction: "ease",
@@ -35,7 +42,6 @@ export const typography = {
 }
 
 export * from "./colors"
-// export * from './typography'
-// export * from './measure'
+export * from "./mixin"
 // export * from './moduleContainer'
 // export * from './GlobalStyles'

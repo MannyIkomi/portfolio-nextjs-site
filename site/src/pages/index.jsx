@@ -1,4 +1,6 @@
-import React, { useEffect } from "react"
+/** @jsx jsx */
+import { css, jsx } from "@emotion/core"
+import React from "react"
 import { graphql } from "gatsby"
 
 import Layout from "../components/layout"

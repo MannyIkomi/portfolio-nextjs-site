@@ -1,6 +1,7 @@
+/** @jsx jsx */
+import { css, jsx } from "@emotion/core"
 import React from "react"
 import { colors, flex } from "../styles"
-import { css } from "@emotion/core"
 
 const orangeFill = css({
   position: "absolute",

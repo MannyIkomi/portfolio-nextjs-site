@@ -4,7 +4,8 @@
  *
  * See: https://www.gatsbyjs.org/docs/use-static-query/
  */
-
+/** @jsx jsx */
+import { css, jsx } from "@emotion/core"
 import React from "react"
 import PropTypes from "prop-types"
 import { Global } from "@emotion/core"
