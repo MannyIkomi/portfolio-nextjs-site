@@ -37,8 +37,8 @@ export const Logo = ({ lockup, styles, color, ...props }) => {
       default:
         return (
           <svg
-            // width="100%"
-            height="auto"
+            width="100%"
+            // height="auto"
             viewBox="0 0 81.409 79.558"
             xmlns="http://www.w3.org/2000/svg"
           >

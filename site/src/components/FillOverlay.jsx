@@ -3,7 +3,7 @@ import { css, jsx } from "@emotion/core"
 import React from "react"
 import { colors, flex } from "../styles"
 
-const orangeFill = css({
+const orangeOverlay = css({
   position: "absolute",
   top: 0,
   left: 0,
@@ -41,7 +41,7 @@ const withMotif = css({
 
 export const FillOverlay = ({ children, ...props }) => (
   <>
-    <div css={orangeFill} />
+    <div css={orangeOverlay} />
     <div css={[layoutChildren, withMotif]}>{children}</div>
   </>
 )

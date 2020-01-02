@@ -20,7 +20,7 @@ export const ProjectCover = ({
   const [isHovered, handleHover] = useHoverState()
   return (
     <figure
-      className={"projectCover"}
+      className={"project-cover"}
       css={{
         ...aspectRatioLetter,
         position: "relative",

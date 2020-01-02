@@ -1,6 +1,12 @@
 /** @jsx jsx */
 import { css, jsx } from "@emotion/core"
 import React from "react"
-export const InlineLink = ({ to, children, ...props }) => {
-  return <a href={to}>{children}</a>
+import { typesetInteraction, textLink } from "../styles"
+
+export const InlineLink = ({ to, title, children, ...props }) => {
+  return (
+    <a href={to} title={title} css={[typesetInteraction, textLink]}>
+      {children}
+    </a>
+  )
 }

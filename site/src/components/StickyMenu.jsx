@@ -12,8 +12,10 @@ import { LogoType } from "./Logo"
 import useToggleSwitch from "../hooks/useToggleSwitch"
 import { MenuButton } from "./MenuButton"
 import { Menu } from "./Menu"
+
 export const StickyMenu = ({ children, ...props }) => {
   const [isToggled, handleToggle] = useToggleSwitch(false)
+
   const animateToggle = {
     transitionDuration: "300ms",
     transitionTimingFunction: "ease-in-out",

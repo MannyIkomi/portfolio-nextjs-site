@@ -1,4 +1,5 @@
 import React from "react"
+import { colors, typesetInteraction, touchTarget } from "../styles"
 export const SocialIcon = ({
   platform,
   href,
@@ -67,7 +68,28 @@ export const SocialIcon = ({
     }
   }
   return (
-    <a href={href} title={alt}>
+    <a
+      href={href}
+      title={alt}
+      css={{
+        display: "block",
+        width: "100%",
+        height: "auto",
+        // ...mixin.size("100%", "auto"),
+        padding: "0.25rem",
+        // maxWidth: "2rem",
+        minHeight: touchTarget,
+        minWidth: touchTarget,
+
+        svg: {
+          ...typesetInteraction,
+          "&:hover": {
+            fill: colors.orange,
+          },
+        },
+      }}
+      {...props}
+    >
       {matchIconWith(platform)}
     </a>
   )

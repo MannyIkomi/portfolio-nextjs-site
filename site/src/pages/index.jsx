@@ -9,7 +9,12 @@ import { ProjectCover } from "../components/ProjectCover"
 import { Gallery } from "../components/Gallery"
 import { Footer } from "../components/Footer"
 import { Header } from "../components/Header"
-import { supportsGrid, menubarHeight } from "../styles"
+import {
+  supportsGrid,
+  menubarHeight,
+  onMediaWidth,
+  onTabletMedia,
+} from "../styles"
 import { StickyScrollContainer } from "../components/StickyScrollContainer"
 import { InlineLink } from "../components/InlineLink"
 import { StickyMenu } from "../components/StickyMenu"
@@ -34,16 +39,21 @@ const IndexPage = ({ data }) => {
         <StickyMenu>
           <InlineLink to={"/"}>werk</InlineLink>
         </StickyMenu>
-        <Header siteTitle={"Manny Ikomi"}></Header>
+        {/* <Header siteTitle={"Manny Ikomi"}></Header> */}
         {/* <aside>
           <nav>side bar menu</nav>
         </aside> */}
         <main>
           <Gallery
             css={{
-              ".projectCover": {
-                margin: "1rem 0",
+              ".project-cover": {
+                marginBottom: "2rem",
               },
+              ...onTabletMedia({
+                ".project-cover": {
+                  marginBottom: "0",
+                },
+              }),
             }}
           >
             {projects.map(project => (
