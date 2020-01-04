@@ -27,9 +27,13 @@ export const Footer = props => {
         color: colors.muteGray,
         backgroundColor: colors.darkGray,
         fontFamily: typography.sans,
+        textAlign: "center",
 
         section: {
           margin: "2rem 0",
+        },
+        p: {
+          fontFamily: typography.sans,
         },
 
         ...onTabletMedia({
@@ -46,7 +50,9 @@ export const Footer = props => {
       <LogoMaster
         css={{
           width: "25%",
-
+          svg: {
+            fill: "white",
+          },
           margin: "2rem 0",
           "@media screen and (min-width: 500px)": {
             maxWidth: "10rem",
@@ -61,7 +67,7 @@ export const Footer = props => {
           },
         }}
       />
-      <section>
+      <section css={{ ...flex("column"), alignItems: "center" }}>
         <InlineLink to={`mailto:design@mannyikomi.com`}>
           design@
           <wbr />
@@ -75,7 +81,11 @@ export const Footer = props => {
           }}
         >
           {socialMedia.map(social => (
-            <SocialIcon key={social.platform} {...social} />
+            <SocialIcon
+              key={social.platform}
+              {...social}
+              css={{ svg: { fill: "white" }, margin: "1rem" }}
+            />
           ))}
         </div>
       </section>

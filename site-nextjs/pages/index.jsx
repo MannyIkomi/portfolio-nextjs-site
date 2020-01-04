@@ -18,7 +18,7 @@ const HomePage = props => {
   // console.log('URL from Next.js\n', url)
 
   return (
-    <Fragment>
+    <>
       <PageLayout
         // title={''}
         // description={''}
@@ -31,7 +31,7 @@ const HomePage = props => {
           ))}
         </Gallery>
       </PageLayout>
-    </Fragment>
+    </>
   )
 }
 

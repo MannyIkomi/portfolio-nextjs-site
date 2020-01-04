@@ -37,7 +37,10 @@ const IndexPage = ({ data }) => {
         }}
       >
         <StickyMenu>
-          <InlineLink to={"/"}>werk</InlineLink>
+          <InlineLink to={"/"}>Werk</InlineLink>
+          <InlineLink to={"/about"}>About</InlineLink>
+          <InlineLink to={"/resume"}>Resume</InlineLink>
+          <InlineLink to={"/contact"}>Say Hello</InlineLink>
         </StickyMenu>
         {/* <Header siteTitle={"Manny Ikomi"}></Header> */}
         {/* <aside>
