@@ -20,22 +20,20 @@ exports.createPages = async ({ graphql, actions }) => {
   const { data } = await graphql(`
     query {
       allStrapiProjects {
-        edges {
-          node {
-            slug
-          }
+        nodes {
+          slug
         }
       }
     }
   `)
 
-  data.allStrapiProjects.edges.forEach(edge => {
-    const slug = edge.node.slug
+  data.allStrapiProjects.nodes.forEach(node => {
+    const slug = node.slug
     createPage({
       path: `/${slug}`,
       component: path.resolve("src/templates/project.jsx"),
       context: { slug },
     })
-    console.log(JSON.stringify(edge, null, 4))
+    console.log(JSON.stringify(node, null, 4))
   })
 }

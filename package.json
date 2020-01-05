@@ -33,5 +33,7 @@
     "url": "https://github.com/MannyIkomi/portfolio-nextjs-site/issues"
   },
   "homepage": "https://github.com/MannyIkomi/portfolio-nextjs-site#readme",
-  "dependencies": {}
+  "dependencies": {
+    "showdown": "^1.9.1"
+  }
 }
