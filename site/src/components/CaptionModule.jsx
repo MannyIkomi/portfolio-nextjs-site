@@ -2,7 +2,7 @@
 import React, { Fragment } from "react"
 import { css, jsx } from "@emotion/core"
 
-import { mixin, moduleContainer, colors } from "../styles"
+import { flex, moduleContainer, colors, onTabletMedia } from "../styles"
 import { moduleProps } from "../util/props"
 
 import Markdown from "./markdown"
@@ -20,13 +20,15 @@ export const CaptionModule = ({ image, imageAlt, text }) => {
 
           img: {
             objectFit: "fill",
-            ...mixin.size("100%", "auto"),
+            width: "100%",
+            height: "100%",
           },
-          ...mixin.tabletMedia({
-            ...mixin.flex("row"),
+          ...onTabletMedia({
+            ...flex("row"),
             alignItems: "center",
             img: {
-              ...mixin.size("50%", "50%"),
+              width: "50%",
+              height: "50%",
             },
           }),
         },

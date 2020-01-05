@@ -7,7 +7,7 @@ import { menubarHeight } from "../styles"
 import Layout from "../components/layout"
 import HtmlHead from "../components/HtmlHead"
 import { StickyScrollContainer } from "../components/StickyScrollContainer"
-import { StickyMenu } from "../components/StickyMenu"
+import { StickyMenuBar } from "../components/StickyMenuBar"
 import { InlineLink } from "../components/InlineLink"
 import { Footer } from "../components/Footer"
 import { ImageModule } from "../components/ImageModule"
@@ -61,12 +61,12 @@ const ProjectTemplate = ({ data }) => {
           },
         }}
       >
-        <StickyMenu>
+        <StickyMenuBar>
           <InlineLink to={"/"}>Werk</InlineLink>
           <InlineLink to={"/about"}>About</InlineLink>
           <InlineLink to={"/resume"}>Resume</InlineLink>
           <InlineLink to={"/contact"}>Say Hello</InlineLink>
-        </StickyMenu>
+        </StickyMenuBar>
 
         {/* <aside>
           <nav>side bar menu</nav>

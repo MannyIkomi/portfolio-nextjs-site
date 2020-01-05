@@ -13,9 +13,8 @@ exports.onCreateNode = ({ node, actions }) => {
 
 exports.createPages = async ({ graphql, actions }) => {
   // **Note:** The graphql function call returns a Promise
-  // see: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise for more info
-  console.log(actions)
 
+  // get data for each project
   const { createPage } = actions
   const { data } = await graphql(`
     query {
@@ -27,6 +26,7 @@ exports.createPages = async ({ graphql, actions }) => {
     }
   `)
 
+  // generate pages for each project
   data.allStrapiProjects.nodes.forEach(node => {
     const slug = node.slug
     createPage({

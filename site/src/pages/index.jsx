@@ -17,7 +17,7 @@ import {
 } from "../styles"
 import { StickyScrollContainer } from "../components/StickyScrollContainer"
 import { InlineLink } from "../components/InlineLink"
-import { StickyMenu } from "../components/StickyMenu"
+import { StickyMenuBar } from "../components/StickyMenuBar"
 
 const IndexPage = ({ data }) => {
   const projects = data.allStrapiProjects.nodes
@@ -36,12 +36,12 @@ const IndexPage = ({ data }) => {
           },
         }}
       >
-        <StickyMenu>
+        <StickyMenuBar>
           <InlineLink to={"/"}>Werk</InlineLink>
           <InlineLink to={"/about"}>About</InlineLink>
           <InlineLink to={"/resume"}>Resume</InlineLink>
           <InlineLink to={"/contact"}>Say Hello</InlineLink>
-        </StickyMenu>
+        </StickyMenuBar>
         {/* <Header siteTitle={"Manny Ikomi"}></Header> */}
         {/* <aside>
           <nav>side bar menu</nav>

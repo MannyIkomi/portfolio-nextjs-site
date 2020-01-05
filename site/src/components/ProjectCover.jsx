@@ -65,3 +65,5 @@ export const ProjectCover = ({
     </figure>
   )
 }
+
+export default ProjectCover

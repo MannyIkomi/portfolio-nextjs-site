@@ -11,9 +11,9 @@ import {
 import { LogoType } from "./Logo"
 import useToggleSwitch from "../hooks/useToggleSwitch"
 import { MenuButton } from "./MenuButton"
-import { Menu } from "./Menu"
+import { MenuContent } from "./Menu"
 
-export const StickyMenu = ({ children, ...props }) => {
+export const StickyMenuBar = ({ children, ...props }) => {
   const [isToggled, handleToggle] = useToggleSwitch(false)
 
   const animateToggle = {
@@ -82,7 +82,7 @@ export const StickyMenu = ({ children, ...props }) => {
       />
       <MenuButton onClick={handleToggle} isToggled={isToggled} />
 
-      <Menu
+      <MenuContent
         css={[
           {
             position: "absolute",
@@ -93,7 +93,7 @@ export const StickyMenu = ({ children, ...props }) => {
         ]}
       >
         {children}
-      </Menu>
+      </MenuContent>
     </nav>
   )
 }

@@ -13,3 +13,5 @@ export const ProjectPhoto = ({ src, alt, ...props }) => (
     alt={alt}
   />
 )
+
+export default ProjectPhoto
