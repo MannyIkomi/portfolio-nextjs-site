@@ -3,7 +3,7 @@ import React from "react"
 import PropTypes from "prop-types"
 
 import { css, jsx } from "@emotion/core"
-import { typography, ulStyles } from "../styles"
+import { typography, ulStyles, typesetInteraction, textLink } from "../styles"
 
 const showdown = require("showdown")
 
@@ -25,40 +25,27 @@ export const Markdown = ({ children, styles, preprocessor, ...props }) => {
     <div
       css={{
         "h1,h2,h3,h4,h5,h6": {
-          whiteSpace: "pre-wrap",
+          // whiteSpace: "pre-wrap",
           ...typography.serif,
         },
         "p, ul, a": {
           whiteSpace: "pre-wrap",
           fontFamily: typography.sans,
-          fontSize: "1.25rem",
+          // fontSize: "1.25rem",
         },
         ul: {
           ...ulStyles,
-          li: {
-            whiteSpace: "pre-wrap",
-          },
-          // lineHeight: 1.4
-
           // li: {
-          //   display: 'block',
-          //   color: 'green',
-          //   '&:after': {
-          //     content: '🤓',
-          //     color: 'black'
-          //   },
-          //   '&:hover': {
-          //     content: 'bullet',
-          //     color: 'black'
-          //   }
-          // }
+          //   whiteSpace: "pre-wrap",
+          // },
+          // lineHeight: 1.4
         },
         a: {
-          ...typography.linkStyles,
-          ...typography.typesetAnimation,
+          ...typesetInteraction,
+          ...textLink,
         },
-        ...styles,
       }}
+      {...props}
       dangerouslySetInnerHTML={{
         __html: convertMarkdown(markdownString, preprocessor),
       }}

@@ -1,4 +1,9 @@
-import { tabletMediaQuery, colors, typography } from "./index"
+import {
+  tabletMediaQuery,
+  colors,
+  typography,
+  desktopMediaQuery,
+} from "./index"
 
 export const supportsGrid = ({ display = "grid", ...hasSupport }) => ({
   "@supports (display: grid)": {
@@ -10,6 +15,12 @@ export const supportsGrid = ({ display = "grid", ...hasSupport }) => ({
 export const onTabletMedia = (tabletStyles = {}) => ({
   [tabletMediaQuery]: {
     ...tabletStyles,
+  },
+})
+
+export const onDesktopMedia = (desktopStyles = {}) => ({
+  [desktopMediaQuery]: {
+    ...desktopStyles,
   },
 })
 

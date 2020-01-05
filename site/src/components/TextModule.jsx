@@ -20,8 +20,8 @@ export const TextModule = ({ text }) => {
       ]}
     >
       <Markdown
-        styles={{
-          "h1, h2": {
+        css={{
+          "h1, h2, h3, h4, h5": {
             color: colors.darkGray,
             fontWeight: 300,
           },

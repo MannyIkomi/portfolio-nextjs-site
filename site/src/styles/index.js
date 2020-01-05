@@ -1,22 +1,28 @@
 import { colors } from "./colors"
-import {} from "./mixin"
+import { onTabletMedia, onDesktopMedia } from "./mixin"
 
 export const serifType = "baskerville-urw, Georgia, serif"
 export const sansType = 'futura-pt, "Helvetica Neue", Helvetica, sans-serif'
 
 export const menubarHeight = "2.5rem"
-export const desktopMediaWidth = `min-width: 1200px`
-export const tabletMediaWidth = `min-width: 700px`
+export const desktopWidth = `1200px`
+export const tabletWidth = `700px`
 export const touchTarget = "3rem"
+// export const
 
-export const tabletMediaQuery = `@media screen and (${tabletMediaWidth})`
-export const desktopMediaQuery = `@media screen and (${desktopMediaWidth})`
+export const tabletMediaQuery = `@media screen and (min-width: ${tabletWidth})`
+export const desktopMediaQuery = `@media screen and (min-width: ${desktopWidth})`
 
 export const sizeTransition = {
   transitionProperty: "font-size",
-  transitionTimingFunction: "ease",
+  transitionTimingFunction: "ease-in-out",
   transitionDuration: "300ms",
   transitionDelay: "300ms",
+}
+
+export const maxLineMeasure = {
+  maxWidth: "40rem", // ch support fallback
+  maxWidth: "72ch",
 }
 
 export const ulStyles = {
@@ -61,7 +67,80 @@ export const typography = {
   // maxReadingWidth,
 }
 
+export const global = {
+  "*": {
+    boxSizing: "border-box",
+  },
+  ":root": {
+    fontSize: "100%",
+    fontFamily: typography.sans,
+  },
+  a: {
+    color: "inherit",
+    textDecoration: `underline`,
+    textDecoration: `underline solid ${colors.orange}`,
+    textDecorationColor: colors.orange,
+    textDecorationStyle: "solid",
+
+    "&:hover": {
+      color: colors.orange,
+    },
+  },
+  "h1, h2, h3, h4, h5": {
+    lineHeight: 1.2,
+    ...sizeTransition,
+    fontFamily: typography.serif,
+    textTransform: "lowercase",
+    fontWeight: "normal",
+  },
+  "p, span": {
+    fontFamily: typography.serif,
+    fontSize: "1rem",
+    lineHeight: 1.4,
+  },
+  ul: {
+    li: {
+      listStyle: "square",
+    },
+  },
+
+  h1: {
+    fontSize: "2rem",
+  },
+  h2: {
+    fontSize: "1.667rem",
+  },
+  h3: {
+    fontSize: "1.333rem",
+  },
+
+  ...onTabletMedia({
+    h1: {
+      fontSize: "2.5rem",
+    },
+    h2: {
+      fontSize: "2rem",
+    },
+    h3: {
+      fontSize: "1.5rem",
+    },
+  }),
+
+  ...onDesktopMedia({
+    h1: {
+      fontSize: "3rem",
+    },
+    h2: {
+      fontSize: "2.25rem",
+    },
+    h3: {
+      fontSize: "1.75rem",
+    },
+  }),
+}
+
 export * from "./colors"
 export * from "./mixin"
+export * from "./reset"
 // export * from './moduleContainer'
 // export * from './GlobalStyles'

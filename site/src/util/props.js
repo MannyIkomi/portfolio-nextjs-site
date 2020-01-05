@@ -24,7 +24,7 @@ export const projectProps = PropTypes.shape({
 
 export const inspirationProps = PropTypes.shape({
   name: PropTypes.string.isRequired,
-  description: PropTypes.string,
+  description: PropTypes.string.isRequired,
   photo: imageProps,
   website: PropTypes.string,
 })

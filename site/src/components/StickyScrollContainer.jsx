@@ -3,7 +3,7 @@ import { css, jsx } from "@emotion/core"
 import React from "react"
 export const StickyScrollContainer = ({ children, ...props }) => {
   return (
-    <div css={{ position: "relative" }} {...props}>
+    <div css={{ position: "relative", overflowX: "hidden" }} {...props}>
       {/* children are {position: sticky} and will scroll within this container */}
       {children}
     </div>
