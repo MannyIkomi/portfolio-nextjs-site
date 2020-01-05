@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import { css, jsx } from "@emotion/core"
 import React from "react"
-import { graphql } from "gatsby"
+import { graphql, useStaticQuery } from "gatsby"
 
 import { menubarHeight } from "../styles"
 import Layout from "../components/layout"
@@ -13,9 +13,33 @@ import { Footer } from "../components/Footer"
 import { ImageModule } from "../components/ImageModule"
 import { CaptionModule } from "../components/CaptionModule"
 import { TextModule } from "../components/TextModule"
+import { ProjectCover } from "../components/ProjectCover"
 
 const ProjectTemplate = ({ data }) => {
   const project = data.allStrapiProjects.nodes[0]
+
+  // How to query/render related projects?
+  // cant duplicate root queries with gatsby
+  const otherProjects = []
+
+  const removeCurrentProject = (thisProject, otherProjects) =>
+    // filter current project from total projects list
+    otherProjects.filter(otherProject => otherProject.id !== thisProject.id)
+  // filter projects.tags where current.tags match
+
+  const arrIntersect = (arr1, arr2) => {
+    return arr1.filter(item => arr2.includes(item))
+  }
+
+  const findRelatedProjects = (thisProject = {}, otherProjects = []) => {
+    const currentTags = thisProject.tags.map(obj => obj.designTags)
+
+    return otherProjects.filter(otherProject => {
+      const otherTags = otherProject.tags.map(obj => obj.designTags)
+      return arrIntersect(currentTags, otherTags).length > 0
+    })
+  }
+
   const {
     slug,
     title,
@@ -76,6 +100,16 @@ const ProjectTemplate = ({ data }) => {
                 }
               })}
             </main>
+            <footer>
+              <h1>You might also like…</h1>
+              <br />
+              {findRelatedProjects(
+                project,
+                removeCurrentProject(project, otherProjects)
+              ).map(related => (
+                <ProjectCover project={related} key={related.id} />
+              ))}
+            </footer>
           </article>
         </main>
       </StickyScrollContainer>
@@ -85,6 +119,8 @@ const ProjectTemplate = ({ data }) => {
 }
 
 export const query = graphql`
+  #project has slug
+
   query($slug: String!) {
     allStrapiProjects(filter: { slug: { eq: $slug } }) {
       nodes {
@@ -99,7 +135,7 @@ export const query = graphql`
           }
         }
         tags {
-          designTags
+          design
         }
         title
         coverAlt
@@ -109,5 +145,30 @@ export const query = graphql`
     }
   }
 `
+
+/* project !== slug
+  OtherProjects($slug: String!) {
+    allStrapiProjects(filter: { slug: { ne: $slug } }) {
+      nodes {
+        slug
+        modules {
+          id
+          imageAlt
+          text
+          type
+          image {
+            publicURL
+          }
+        }
+        tags {
+          design
+        }
+        title
+        coverAlt
+        description
+        metaDescription
+      }
+    }
+  } */
 
 export default ProjectTemplate

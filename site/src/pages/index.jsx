@@ -72,14 +72,12 @@ const IndexPage = ({ data }) => {
 
 export const pageQuery = graphql`
   query IndexQuery {
+    # add {completed} field to keep rendering in chronological order
     allStrapiProjects(sort: { fields: created_at }) {
       nodes {
-        # add {completed} field to keep rendering in chronological order
-        id
         coverAlt
         title
-        updated_at
-        created_at
+
         description
         slug
         cover {

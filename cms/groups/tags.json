@@ -6,7 +6,7 @@
   "connection": "default",
   "collectionName": "groups_tags",
   "attributes": {
-    "designTags": {
+    "design": {
       "enum": [
         "Identity",
         "Logo",
