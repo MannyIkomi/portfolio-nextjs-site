@@ -14,31 +14,35 @@ import { ImageModule } from "../components/ImageModule"
 import { CaptionModule } from "../components/CaptionModule"
 import { TextModule } from "../components/TextModule"
 import { ProjectCover } from "../components/ProjectCover"
+import Debug from "../components/Debug"
+
+export const filterProjectById = (thisProject, otherProjects) => {
+  // filter current project from total projects list
+  return otherProjects.filter(
+    otherProject => otherProject.id !== thisProject.id
+  )
+  // filter projects.tags where current.tags match
+}
+
+export const filterWhereArrayIncludes = (arr1, arr2) => {
+  return arr1.filter(item => arr2.includes(item))
+}
+
+export const filterProjectTags = (thisProject = {}, otherProjects = []) => {
+  const currentTags = thisProject.tags.map(tag => tag.design)
+  return otherProjects.filter(otherProject => {
+    const otherTags = otherProject.tags.map(tag => tag.design)
+    return filterWhereArrayIncludes(currentTags, otherTags).length > 0
+  })
+}
 
 const ProjectTemplate = ({ data }) => {
-  const project = data.allStrapiProjects.nodes[0]
+  const thisProject = data.strapiProjects
+  const otherProjects = data.allStrapiProjects.nodes
 
-  // How to query/render related projects?
-  // cant duplicate root queries with gatsby
-  const otherProjects = []
-
-  const removeCurrentProject = (thisProject, otherProjects) =>
-    // filter current project from total projects list
-    otherProjects.filter(otherProject => otherProject.id !== thisProject.id)
-  // filter projects.tags where current.tags match
-
-  const arrIntersect = (arr1, arr2) => {
-    return arr1.filter(item => arr2.includes(item))
-  }
-
-  const findRelatedProjects = (thisProject = {}, otherProjects = []) => {
-    const currentTags = thisProject.tags.map(obj => obj.designTags)
-
-    return otherProjects.filter(otherProject => {
-      const otherTags = otherProject.tags.map(obj => obj.designTags)
-      return arrIntersect(currentTags, otherTags).length > 0
-    })
-  }
+  // how to improve this algorithim to sort projects by the most tag matches
+  const findRelatedProjects = filterProjectTags
+  // const findRelatedProjects = filterProjectTags
 
   const {
     slug,
@@ -47,10 +51,10 @@ const ProjectTemplate = ({ data }) => {
     coverAlt,
     description,
     metaDescription,
-  } = project
+  } = thisProject
   return (
     <Layout>
-      <HtmlHead title={project.title} />
+      <HtmlHead title={thisProject.title} />
       <StickyScrollContainer
         css={{
           "::before": {
@@ -72,8 +76,6 @@ const ProjectTemplate = ({ data }) => {
           <nav>side bar menu</nav>
         </aside> */}
         <main>
-          Dynamic Project Page
-          <pre>{JSON.stringify(data, null, 2)}</pre>
           <article>
             <header>
               <h1>{title}</h1>
@@ -104,14 +106,16 @@ const ProjectTemplate = ({ data }) => {
               <h1>You might also like…</h1>
               <br />
               {findRelatedProjects(
-                project,
-                removeCurrentProject(project, otherProjects)
+                thisProject,
+                otherProjects
+                // removeCurrentProject(thisProject, otherProjects)
               ).map(related => (
-                <ProjectCover project={related} key={related.id} />
+                <ProjectCover {...related} key={related.id} />
               ))}
             </footer>
           </article>
         </main>
+        <Debug {...data} />
       </StickyScrollContainer>
       <Footer />
     </Layout>
@@ -122,53 +126,45 @@ export const query = graphql`
   #project has slug
 
   query($slug: String!) {
-    allStrapiProjects(filter: { slug: { eq: $slug } }) {
-      nodes {
-        slug
-        modules {
-          id
-          imageAlt
-          text
-          type
-          image {
-            publicURL
-          }
+    #gets the single requested project data for viewing
+    strapiProjects(slug: { eq: $slug }) {
+      id
+      slug
+      modules {
+        id
+        imageAlt
+        text
+        type
+        image {
+          publicURL
         }
+      }
+      tags {
+        design
+      }
+      title
+      coverAlt
+      description
+      metaDescription
+    }
+
+    # gets all projects !== to the selected projects for related recommendations
+    allStrapiProjects(filter: { slug: { ne: $slug } }) {
+      nodes {
+        id
+        title
+        slug
+        description
         tags {
           design
         }
-        title
+        cover {
+          publicURL
+        }
         coverAlt
-        description
-        metaDescription
       }
     }
   }
 `
-
-/* project !== slug
-  OtherProjects($slug: String!) {
-    allStrapiProjects(filter: { slug: { ne: $slug } }) {
-      nodes {
-        slug
-        modules {
-          id
-          imageAlt
-          text
-          type
-          image {
-            publicURL
-          }
-        }
-        tags {
-          design
-        }
-        title
-        coverAlt
-        description
-        metaDescription
-      }
-    }
-  } */
 
 export default ProjectTemplate
