@@ -26,7 +26,7 @@ export const SocialIcon = ({
       case "Twitter":
         return (
           <svg
-            enable-background="new 0 0 112.2 112.2"
+            enableBackground="new 0 0 112.2 112.2"
             version="1.1"
             viewBox="0 0 112.2 112.2"
             // xml:space="preserve"

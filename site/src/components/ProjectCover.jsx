@@ -34,7 +34,7 @@ export const ProjectCover = ({
       onMouseLeave={handleHover}
       // {...props}
     >
-      <Link>
+      <Link to={"/" + slug}>
         <ProjectPhoto src={cover.publicURL} alt={coverAlt} />
         {isHovered && (
           <FillOverlay>

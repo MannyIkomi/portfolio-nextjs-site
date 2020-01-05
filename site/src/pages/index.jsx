@@ -29,7 +29,7 @@ const IndexPage = ({ data }) => {
       <StickyScrollContainer
         css={{
           "::before": {
-            content: "",
+            content: "''",
             display: "block",
             width: "100%",
             maxHeight: menubarHeight,
@@ -54,7 +54,7 @@ const IndexPage = ({ data }) => {
               },
               ...onTabletMedia({
                 ".project-cover": {
-                  marginBottom: "0",
+                  marginBottom: 0,
                 },
               }),
             }}

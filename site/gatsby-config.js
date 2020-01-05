@@ -1,6 +1,6 @@
 module.exports = {
   siteMetadata: {
-    title: `Manny Ikomi — Design Thinker, Lifetime Learner, Tech Enthusiast`,
+    title: `Manny Ikomi: Design Thinker, Lifetime Learner, Tech Enthusiast`,
     description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
     author: `Manny Ikomi`,
   },
