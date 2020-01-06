@@ -5,6 +5,11 @@ import {
   desktopMediaQuery,
 } from "./index"
 
+export const onMedia = (query = "", styles = {}) => ({
+  [`@media (${query})`]: {
+    ...styles,
+  },
+})
 export const supportsGrid = ({ display = "grid", ...hasSupport }) => ({
   "@supports (display: grid)": {
     display: display,

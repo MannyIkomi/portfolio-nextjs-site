@@ -11,6 +11,7 @@ import {
   flex,
   maxLineMeasure,
   typography,
+  onMedia,
 } from "../styles"
 import Layout from "../components/layout"
 import HtmlHead from "../components/HtmlHead"
@@ -34,8 +35,10 @@ const QuoteBlock = props => {
 
         // quote body
         fontFamily: typography.sans,
+        fontSize: "1.5rem",
         fontStyle: "normal",
         fontWeight: "normal",
+        lineHeight: 1.5,
 
         cite: {
           // name
@@ -60,6 +63,7 @@ const SectionBlock = props => {
       css={{
         ...flex("column"),
         alignItems: "center",
+        justifyContent: "center",
         width: "100%",
         backgroundColor: colors.muteGray,
         // minHeight: "100vh",
@@ -74,7 +78,7 @@ const SectionBlock = props => {
 const ContentArea = props => {
   const { children, ...rest } = props
   return (
-    <div className={"content"} css={{ ...maxLineMeasure }}>
+    <div className={"content"} css={{ ...maxLineMeasure }} {...rest}>
       {/* contains content within a comfotable reading width */}
       {children}
     </div>
@@ -168,6 +172,13 @@ const AboutPage = ({ data }) => {
           <SectionBlock
             css={{
               backgroundColor: colors.muteGray,
+              minHeight: "100vh",
+              ...onTabletMedia({
+                minHeight: "66vh",
+              }),
+              // ...onMedia("orientation: landscape", {
+              //   minHeight: "100vh",
+              // }),
             }}
           >
             <ContentArea>
@@ -177,19 +188,14 @@ const AboutPage = ({ data }) => {
               </QuoteBlock>
             </ContentArea>
           </SectionBlock>
-          <SectionBlock css={{ backgroundColor: colors.darkGray }}>
+          <SectionBlock css={{ backgroundColor: colors.muteGray }}>
             <ContentArea>
-              <h1
-              // css={{ alignSelf: "flex-start" }}
-              >
-                Creatives who inspire me…
-              </h1>
+              <h1>Creatives who inspire me…</h1>
               {inspirations.map(person => (
                 <CreativeInspiration {...person}></CreativeInspiration>
               ))}
             </ContentArea>
           </SectionBlock>
-          <Debug {...data} />
         </main>
       </StickyScrollContainer>
       <Footer />

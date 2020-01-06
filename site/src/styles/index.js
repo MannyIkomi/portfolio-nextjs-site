@@ -39,7 +39,7 @@ export const textLink = {
   fontFamily: sansType,
   display: "inline-block",
   textDecoration: "underline",
-  padding: "0.25rem 0",
+  // padding: "0.25rem 0",
   textDecorationColor: colors.orange,
   // text underline new CSS features
   // https://www.youtube.com/watch?v=sZS-7RX_c7g
@@ -51,6 +51,7 @@ export const textLink = {
 
 export const typesetInteraction = {
   transition: "all 300ms ease-in-out",
+  transformOrigin: "center",
   ":hover": {
     transform: "rotateX(180deg)",
   },

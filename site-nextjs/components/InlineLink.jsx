@@ -21,6 +21,5 @@ export const InlineLink = ({ href, text, styles, children, ...props }) => {
 InlineLink.propTypes = {
   href: PropTypes.string.isRequired,
   children: PropTypes.any.isRequired,
-  text: PropTypes.string,
-  styles: PropTypes.any
+  text: PropTypes.string
 }

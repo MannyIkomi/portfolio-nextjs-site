@@ -12,7 +12,7 @@ export const CreativeInspiration = props => {
   const styles = css({
     margin: "2rem 0",
     padding: "0 1rem",
-    color: colors.muteGray,
+    color: colors.darkGray,
     "h1, h2, h3, h4, h5": {
       fontFamily: typography.sans,
       fontWeight: "bold",
