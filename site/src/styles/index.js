@@ -106,6 +106,7 @@ export const global = {
 
   h1: {
     fontSize: "2rem",
+    color: colors.orange,
   },
   h2: {
     fontSize: "1.667rem",

@@ -11,6 +11,7 @@ export const CreativeInspiration = props => {
 
   const styles = css({
     margin: "2rem 0",
+    padding: "0 1rem",
     color: colors.muteGray,
     "h1, h2, h3, h4, h5": {
       fontFamily: typography.sans,
@@ -21,7 +22,13 @@ export const CreativeInspiration = props => {
 
   return (
     <figure css={[styles]}>
-      {photo && <img src={photo.publicURL} alt={name} />}
+      {photo && (
+        <img
+          css={{ display: "block", width: "100%", height: "auto" }}
+          src={photo.publicURL}
+          alt={name}
+        />
+      )}
       {website ? (
         <InlineLink to={website}>
           <h2>{name}</h2>

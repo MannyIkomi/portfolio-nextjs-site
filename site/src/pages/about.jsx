@@ -10,6 +10,7 @@ import {
   colors,
   flex,
   maxLineMeasure,
+  typography,
 } from "../styles"
 import Layout from "../components/layout"
 import HtmlHead from "../components/HtmlHead"
@@ -20,6 +21,65 @@ import { Footer } from "../components/Footer"
 import Debug from "../components/Debug"
 import Markdown from "../components/markdown"
 import { CreativeInspiration } from "../components/CreativeInspiration"
+
+const QuoteBlock = props => {
+  const { cite, quote, children, ...rest } = props
+  return (
+    <blockquote
+      css={{
+        ...flex("column"),
+        alignItems: "center",
+        ...maxLineMeasure,
+        padding: "1rem",
+
+        // quote body
+        fontFamily: typography.sans,
+        fontStyle: "normal",
+        fontWeight: "normal",
+
+        cite: {
+          // name
+          alignSelf: "flex-end",
+          fontFamily: typography.serif,
+          fontStyle: "italic",
+          fontWeight: "normal",
+        },
+        // quotes: `"“" "”"`,
+      }}
+      {...rest}
+    >
+      “{children || quote}”<cite>— {cite} </cite>
+    </blockquote>
+  )
+}
+
+const SectionBlock = props => {
+  const { children, ...rest } = props
+  return (
+    <section
+      css={{
+        ...flex("column"),
+        alignItems: "center",
+        width: "100%",
+        backgroundColor: colors.muteGray,
+        // minHeight: "100vh",
+      }}
+      {...rest}
+    >
+      {children}
+    </section>
+  )
+}
+
+const ContentArea = props => {
+  const { children, ...rest } = props
+  return (
+    <div className={"content"} css={{ ...maxLineMeasure }}>
+      {/* contains content within a comfotable reading width */}
+      {children}
+    </div>
+  )
+}
 
 const AboutPage = ({ data }) => {
   const {
@@ -61,13 +121,11 @@ const AboutPage = ({ data }) => {
           <nav>side bar menu</nav>
         </aside> */}
         <main css={{ ...flex("column"), alignItems: "center" }}>
-          <section
+          <SectionBlock
             css={{
               ...flex("column"),
               backgroundColor: colors.darkGray,
-              width: "100%",
               minHeight: "100vh",
-              alignItems: "center",
               // header: {
               //   padding: 0,
               // },
@@ -80,7 +138,7 @@ const AboutPage = ({ data }) => {
               // }),
             }}
           >
-            <div className={"content"} css={{ ...maxLineMeasure }}>
+            <ContentArea>
               <div
                 css={{
                   alignSelf: "flex-end",
@@ -105,25 +163,32 @@ const AboutPage = ({ data }) => {
               >
                 {bio}
               </Markdown>
-            </div>
-          </section>
-          <section>
-            <blockquote>
-              <p>
-                “A designer is an emerging synthesis of artist, inventor,
-                mechanic, objective economist, and evolutionary strategist.”
-              </p>
-              <footer>
-                <cite>— R. Buckminster Fuller</cite>
-              </footer>
-            </blockquote>
-          </section>
-          <section>
-            <h1>Creatives who inspire me…</h1>
-            {inspirations.map(person => (
-              <CreativeInspiration {...person}></CreativeInspiration>
-            ))}
-          </section>
+            </ContentArea>
+          </SectionBlock>
+          <SectionBlock
+            css={{
+              backgroundColor: colors.muteGray,
+            }}
+          >
+            <ContentArea>
+              <QuoteBlock cite={"R. Buckminster Fuller"}>
+                A designer is an emerging synthesis of artist, inventor,
+                mechanic, objective economist, and evolutionary strategist.
+              </QuoteBlock>
+            </ContentArea>
+          </SectionBlock>
+          <SectionBlock css={{ backgroundColor: colors.darkGray }}>
+            <ContentArea>
+              <h1
+              // css={{ alignSelf: "flex-start" }}
+              >
+                Creatives who inspire me…
+              </h1>
+              {inspirations.map(person => (
+                <CreativeInspiration {...person}></CreativeInspiration>
+              ))}
+            </ContentArea>
+          </SectionBlock>
           <Debug {...data} />
         </main>
       </StickyScrollContainer>
