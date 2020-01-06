@@ -9,8 +9,6 @@ import {
   onTabletMedia,
   colors,
   flex,
-  maxLineMeasure,
-  typography,
   onMedia,
 } from "../styles"
 import Layout from "../components/layout"
@@ -22,68 +20,9 @@ import { Footer } from "../components/Footer"
 import Debug from "../components/Debug"
 import Markdown from "../components/markdown"
 import { CreativeInspiration } from "../components/CreativeInspiration"
-
-const QuoteBlock = props => {
-  const { cite, quote, children, ...rest } = props
-  return (
-    <blockquote
-      css={{
-        ...flex("column"),
-        alignItems: "center",
-        ...maxLineMeasure,
-        padding: "1rem",
-
-        // quote body
-        fontFamily: typography.sans,
-        fontSize: "1.5rem",
-        fontStyle: "normal",
-        fontWeight: "normal",
-        lineHeight: 1.5,
-
-        cite: {
-          // name
-          alignSelf: "flex-end",
-          fontFamily: typography.serif,
-          fontStyle: "italic",
-          fontWeight: "normal",
-        },
-        // quotes: `"“" "”"`,
-      }}
-      {...rest}
-    >
-      “{children || quote}”<cite>— {cite} </cite>
-    </blockquote>
-  )
-}
-
-const SectionBlock = props => {
-  const { children, ...rest } = props
-  return (
-    <section
-      css={{
-        ...flex("column"),
-        alignItems: "center",
-        justifyContent: "center",
-        width: "100%",
-        backgroundColor: colors.muteGray,
-        // minHeight: "100vh",
-      }}
-      {...rest}
-    >
-      {children}
-    </section>
-  )
-}
-
-const ContentArea = props => {
-  const { children, ...rest } = props
-  return (
-    <div className={"content"} css={{ ...maxLineMeasure }} {...rest}>
-      {/* contains content within a comfotable reading width */}
-      {children}
-    </div>
-  )
-}
+import { ContentArea } from "../components/ContentArea"
+import { SectionBlock } from "../components/SectionBlock"
+import { QuoteBlock } from "../components/QuoteBlock"
 
 const AboutPage = ({ data }) => {
   const {
@@ -190,7 +129,7 @@ const AboutPage = ({ data }) => {
           </SectionBlock>
           <SectionBlock css={{ backgroundColor: colors.muteGray }}>
             <ContentArea>
-              <h1>Creatives who inspire me…</h1>
+              <h1 css={{ padding: "1rem" }}>Creatives who inspire me…</h1>
               {inspirations.map(person => (
                 <CreativeInspiration {...person}></CreativeInspiration>
               ))}
