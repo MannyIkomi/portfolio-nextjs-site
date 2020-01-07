@@ -71,7 +71,7 @@ export const StickyMenuBar = ({ children, ...props }) => {
           ...flex("row"),
           justifyContent: "space-between",
         },
-        isToggled ? { overflow: "initial" } : { overflow: "hidden" },
+        // isToggled ? { overflow: "initial" } : { overflow: "hidden" },
       ]}
     >
       <LogoType

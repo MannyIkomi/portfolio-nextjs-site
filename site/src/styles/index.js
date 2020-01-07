@@ -56,6 +56,11 @@ export const typesetInteraction = {
     transform: "rotateX(180deg)",
   },
 }
+export const resumeContentHeading = {
+  textTransform: "initial",
+  fontFamily: sansType,
+  fontWeight: "bold",
+}
 
 export const typography = {
   typesetInteraction,
@@ -63,6 +68,7 @@ export const typography = {
   sans: sansType,
   sizeTransition,
   textLink,
+  resumeContentHeading,
   // linkStyles,
   // typesetAnimation,
   // maxReadingWidth,
@@ -98,6 +104,7 @@ export const global = {
     fontFamily: typography.sans,
     fontSize: "1rem",
     lineHeight: 1.4,
+    listStyle: "square",
   },
 
   h1: {

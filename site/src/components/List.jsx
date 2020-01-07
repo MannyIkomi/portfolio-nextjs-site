@@ -5,7 +5,7 @@ import { graphql } from "gatsby"
 
 export const List = props => {
   const { ordered, children, ...rest } = props
-  const ListTag = ordered ? "ul" : "ol"
+  const ListTag = ordered ? "ol" : "ul"
   return (
     <ListTag>
       {React.Children.map(children, child => (

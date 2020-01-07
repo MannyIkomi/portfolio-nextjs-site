@@ -2,6 +2,7 @@
 import React from "react"
 import { css, jsx } from "@emotion/core"
 
+import { colors, positionSticky, resumeContentHeading } from "../styles"
 import { Entity } from "./Entity"
 import { TimeFrame } from "./TimeFrame"
 import Markdown from "./markdown"
@@ -20,13 +21,17 @@ export const Education = props => {
   const [toggled, setToggled] = useToggleSwitch(false)
   return (
     <article>
-      <header>
+      <header
+        css={{
+          ...positionSticky(),
+          width: "100%",
+          background: colors.muteGray,
+          padding: "0.5rem 0",
+          borderBottom: `0.1rem solid ${colors.darkGray20}`,
+        }}
+      >
         <Entity>{school}</Entity>
-        {concentration && (
-          <>
-            <br /> {concentration}
-          </>
-        )}
+        {concentration}
         <br />
         <TimeFrame start={started} end={ended} />
       </header>

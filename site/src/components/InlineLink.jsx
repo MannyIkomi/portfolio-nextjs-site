@@ -3,7 +3,7 @@ import React from "react"
 import { css, jsx } from "@emotion/core"
 import { typesetInteraction, textLink, touchTarget } from "../styles"
 
-export const InlineLink = ({ to, title, children, ...props }) => {
+export const InlineLink = ({ to, title, children, ...rest }) => {
   const accessibleTouch = {
     // make inline links have a larger hit box area when on touch based devices
     // [`@media (pointer: coarse)`]: {}
@@ -30,6 +30,7 @@ export const InlineLink = ({ to, title, children, ...props }) => {
       href={to}
       title={title}
       css={[{ position: "relative" }, typesetInteraction, textLink]}
+      {...rest}
     >
       {children}
     </a>

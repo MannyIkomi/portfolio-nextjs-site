@@ -39,3 +39,5 @@ export const onMediaWidth = (width = "0px", styles = {}) => ({
     ...styles,
   },
 })
+
+export const positionSticky = (top = 0) => ({ position: "sticky", top })

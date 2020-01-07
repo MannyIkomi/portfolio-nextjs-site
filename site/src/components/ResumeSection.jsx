@@ -10,12 +10,14 @@ export const ResumeSection = props => {
       css={{
         // borderTop: 'solid',
         margin: "2rem 0",
+        padding: "0 1rem",
       }}
       {...rest}
     >
       <h1
         css={{
           fontWeight: "100",
+          margin: "1rem 0",
           textAlign: "right",
           color: colors.orange,
         }}

@@ -2,11 +2,12 @@
 import React from "react"
 import { css, jsx } from "@emotion/core"
 
-import { typography } from "../styles"
+import { typography, positionSticky, colors, flex } from "../styles"
 import { Markdown } from "./markdown"
 import useToggleSwitch from "../hooks/useToggleSwitch"
 import { TimeFrame } from "./TimeFrame"
 import { Entity } from "./Entity"
+import { ContentArea } from "./ContentArea"
 
 export const Experience = props => {
   const {
@@ -21,8 +22,19 @@ export const Experience = props => {
   } = props
   const [toggled, setToggle] = useToggleSwitch(false)
   return (
-    <article {...rest}>
-      <header>
+    <article
+      css={{ position: "relative", ...flex("column"), alignItems: "center" }}
+      {...rest}
+    >
+      <header
+        css={{
+          ...positionSticky(),
+          width: "100%",
+          background: colors.muteGray,
+          padding: "0.5rem 0",
+          borderBottom: `0.1rem solid ${colors.darkGray20}`,
+        }}
+      >
         <Entity url={url}>{organization}</Entity>
         <br />
         {roles}

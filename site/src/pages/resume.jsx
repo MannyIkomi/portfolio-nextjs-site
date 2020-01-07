@@ -3,7 +3,7 @@ import React from "react"
 import { css, jsx } from "@emotion/core"
 import { graphql } from "gatsby"
 
-import { menubarHeight } from "../styles"
+import { menubarHeight, flex, colors } from "../styles"
 import Layout from "../components/layout"
 import HtmlHead from "../components/HtmlHead"
 import { StickyScrollContainer } from "../components/StickyScrollContainer"
@@ -35,7 +35,10 @@ const ResumePage = ({ data }) => {
 
   return (
     <Layout>
-      <HtmlHead title={"Résumé"} />
+      <HtmlHead
+        title={"Résumé"}
+        description={`Work experience, education background, volunteer work, skills and go-to tools`}
+      />
 
       <StickyScrollContainer
         css={{
@@ -58,38 +61,72 @@ const ResumePage = ({ data }) => {
           <nav>side bar menu</nav>
         </aside> */}
         <main>
-          <article>
-            <header>header</header>
-            <ResumeSection id={`experience`} heading={"Experience"}>
-              {employment.map(employer => (
-                <Experience {...employer} key={employer.id} />
-              ))}
-            </ResumeSection>
-            <ResumeSection id={`volunteering`} heading={"Volunteering"}>
-              {volunteering.map(organization => (
-                <Experience {...organization} key={organization.id} />
-              ))}
-            </ResumeSection>
-            <ResumeSection id={`education`} heading={"Education"}>
-              {education.map(edu => (
-                <Education {...edu} key={edu.id} />
-              ))}
-            </ResumeSection>
-            <ResumeSection id={`skills`} heading={"Skills"}>
-              <List>
-                {skills.map(skill => (
-                  <Expertise {...skill} key={skill.id} />
+          <article
+            css={{
+              ...flex(),
+              justifyContent: "center",
+              alignItems: "center",
+              backgroundColor: colors.muteGray,
+            }}
+          >
+            <header>
+              <nav
+                css={{
+                  ...flex("row"),
+                  justifyContent: "space-around",
+                  flexWrap: "wrap",
+                  padding: "1rem",
+                }}
+              >
+                <InlineLink css={{ padding: "1rem" }} to={"#experience"}>
+                  Experience
+                </InlineLink>
+                <InlineLink css={{ padding: "1rem" }} to={"#education"}>
+                  Education
+                </InlineLink>
+                <InlineLink css={{ padding: "1rem" }} to={"#volunteering"}>
+                  Volunteering
+                </InlineLink>
+                <InlineLink css={{ padding: "1rem" }} to={"#skills"}>
+                  Skills
+                </InlineLink>
+                <InlineLink css={{ padding: "1rem" }} to={"#tools"}>
+                  Tools
+                </InlineLink>
+              </nav>
+            </header>
+            <ContentArea>
+              <ResumeSection id={`experience`} heading={"Experience"}>
+                {employment.map(employer => (
+                  <Experience {...employer} key={employer.id} />
                 ))}
-              </List>
-            </ResumeSection>
-            <ResumeSection id={`tools`} heading={"Tools"}>
-              <List>
-                {tools.map(tool => (
-                  <Expertise {...tool} key={tool.id} />
+              </ResumeSection>
+              <ResumeSection id={`volunteering`} heading={"Volunteering"}>
+                {volunteering.map(organization => (
+                  <Experience {...organization} key={organization.id} />
                 ))}
-              </List>
-            </ResumeSection>
-            <footer>footer</footer>
+              </ResumeSection>
+              <ResumeSection id={`education`} heading={"Education"}>
+                {education.map(edu => (
+                  <Education {...edu} key={edu.id} />
+                ))}
+              </ResumeSection>
+              <ResumeSection id={`skills`} heading={"Skills"}>
+                <List>
+                  {skills.map(skill => (
+                    <Expertise {...skill} key={skill.id} />
+                  ))}
+                </List>
+              </ResumeSection>
+              <ResumeSection id={`tools`} heading={"Tools"}>
+                <List>
+                  {tools.map(tool => (
+                    <Expertise {...tool} key={tool.id} />
+                  ))}
+                </List>
+              </ResumeSection>
+              <footer>footer</footer>
+            </ContentArea>
           </article>
         </main>
       </StickyScrollContainer>
