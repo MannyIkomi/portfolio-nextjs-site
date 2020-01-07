@@ -3,16 +3,57 @@ import { css, jsx } from "@emotion/core"
 import React from "react"
 import { graphql } from "gatsby"
 
-import { menubarHeight, colors } from "../styles"
+import { menubarHeight, colors, typography } from "../styles"
+import { formatDate } from "../util/dates"
 import Layout from "../components/layout"
 import HtmlHead from "../components/HtmlHead"
 import { StickyScrollContainer } from "../components/StickyScrollContainer"
 import { StickyMenuBar } from "../components/StickyMenuBar"
 import { InlineLink } from "../components/InlineLink"
 import { Footer } from "../components/Footer"
+import { Markdown } from "../components/markdown"
 import { SectionBlock } from "../components/SectionBlock"
 import { ContentArea } from "../components/ContentArea"
 import Debug from "../components/Debug"
+import useToggleSwitch from "../hooks/useToggleSwitch"
+
+export const TimeFrame = ({ start, end, styles, ...props }) => {
+  const getMonthYear = date =>
+    formatDate({ month: "long", year: "numeric" }, date)
+  return (
+    <span
+      css={{
+        fontFamily: typography.sans,
+        fontSize: "0.9rem",
+        fontStyle: "italic",
+        ...styles,
+      }}
+    >
+      {getMonthYear(start)} — {end ? getMonthYear(end) : "Present"}
+    </span>
+  )
+}
+
+export const Entity = props => {
+  const { url, title, styles, children, ...rest } = props
+
+  const headingStyle = {
+    // textTransform: "initial",
+    // fontFamily: typography.sans,
+    // fontSize: "1.5rem",
+  }
+  return (
+    <>
+      {url ? (
+        <InlineLink to={url}>
+          <h2 css={headingStyle}>{children || title}</h2>
+        </InlineLink>
+      ) : (
+        <h2 css={{ headingStyle, ...styles }}>{children || title}</h2>
+      )}
+    </>
+  )
+}
 
 const Experience = props => {
   const {
@@ -25,18 +66,36 @@ const Experience = props => {
     ended,
     ...rest
   } = props
+  const [toggled, setToggle] = useToggleSwitch(false)
 
   return (
     <article {...rest}>
       <header>
-        {organization} - {roles}
+        <Entity url={url}>{organization}</Entity>
         <br />
-        {started} - {ended}
+        {roles}
+        <br />
+        <TimeFrame
+          styles={{
+            fontFamily: typography.sans,
+            fontStyle: "italic",
+          }}
+          start={started}
+          end={ended}
+        />
       </header>
-      <p>{summary}</p>
-      <aside>
-        <p>{details}</p>
-      </aside>
+      {summary && <Markdown>{summary}</Markdown>}
+
+      {details && toggled && (
+        <>
+          <Markdown>{details}</Markdown>
+        </>
+      )}
+      {details && (
+        <button onClick={() => (toggled ? setToggle(false) : setToggle(true))}>
+          {toggled ? "Close" : `More on ${organization}…`}
+        </button>
+      )}
     </article>
   )
 }
