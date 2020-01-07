@@ -49,10 +49,10 @@ export const GlobalStyles = props => {
           line-height: 1.4;
         }
 
-        ul {
-          li {
+        ul, ol, li {
+
             list-style: square;
-          }
+
         }
 
         h1 {

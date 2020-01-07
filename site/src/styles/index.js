@@ -94,15 +94,10 @@ export const global = {
     textTransform: "lowercase",
     fontWeight: "normal",
   },
-  "p, span": {
-    fontFamily: typography.serif,
+  "p, span, ul, ol, li": {
+    fontFamily: typography.sans,
     fontSize: "1rem",
     lineHeight: 1.4,
-  },
-  ul: {
-    li: {
-      listStyle: "square",
-    },
   },
 
   h1: {
