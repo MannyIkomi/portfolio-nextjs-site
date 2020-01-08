@@ -8,6 +8,7 @@ import {
   typography,
   onTabletMedia,
   styleTransition,
+  typesetInteraction,
 } from "../styles"
 import { LogoType } from "./Logo"
 import useToggleSwitch from "../hooks/useToggleSwitch"
@@ -54,6 +55,8 @@ export const StickyMenuBar = ({ children, ...props }) => {
     >
       <LogoType
         css={{
+          ...styleTransition(),
+          ...typesetInteraction(),
           height: `calc(${menubarHeight} - 1rem)`,
           width: "auto",
         }}

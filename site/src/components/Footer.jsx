@@ -11,6 +11,7 @@ import {
   typography,
   onTabletMedia,
   supportsGrid,
+  styleTransition,
 } from "../styles"
 
 export const Footer = props => {
@@ -51,6 +52,7 @@ export const Footer = props => {
         css={{
           width: "25%",
           svg: {
+            ...styleTransition(),
             fill: "white",
           },
           margin: "2rem 0",

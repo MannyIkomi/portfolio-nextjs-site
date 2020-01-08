@@ -16,7 +16,7 @@ export const desktopMediaQuery = `@media screen and (min-width: ${desktopWidth})
 export const styleTransition = (override = {}) => ({
   transitionDuration: "300ms",
   transitionTimingFunction: "ease-in-out",
-  transitionProperty: "transform, opacity, color, background-color",
+  transitionProperty: "transform, opacity, color, background-color, fill",
   ...override,
 })
 
