@@ -82,6 +82,9 @@ export const global = {
     fontSize: "100%",
     fontFamily: typography.sans,
   },
+  // body: {
+  //   overflow: "hidden",
+  // },
   a: {
     color: "inherit",
     textDecoration: `underline`,
