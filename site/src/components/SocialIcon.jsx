@@ -1,5 +1,10 @@
 import React from "react"
-import { colors, typesetInteraction, touchTarget } from "../styles"
+import {
+  colors,
+  typesetInteraction,
+  touchTarget,
+  styleTransition,
+} from "../styles"
 export const SocialIcon = ({
   platform,
   href,
@@ -82,7 +87,8 @@ export const SocialIcon = ({
         minWidth: touchTarget,
 
         svg: {
-          ...typesetInteraction,
+          ...styleTransition(),
+          ...typesetInteraction(),
           "&:hover": {
             fill: colors.orange,
           },

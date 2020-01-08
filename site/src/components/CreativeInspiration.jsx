@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import { css, jsx } from "@emotion/core"
 import React from "react"
-import { InlineLink } from "./InlineLink"
+import { TypesetLink } from "./TypesetLink"
 import Markdown from "./markdown"
 import { colors, typography } from "../styles"
 import { inspirationProps } from "../util/props"
@@ -30,9 +30,9 @@ export const CreativeInspiration = props => {
         />
       )}
       {website ? (
-        <InlineLink to={website}>
+        <TypesetLink to={website}>
           <h2>{name}</h2>
-        </InlineLink>
+        </TypesetLink>
       ) : (
         <h2>{name}</h2>
       )}

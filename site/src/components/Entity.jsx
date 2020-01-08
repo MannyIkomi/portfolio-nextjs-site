@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import React from "react"
 import { css, jsx } from "@emotion/core"
-import { InlineLink } from "./InlineLink"
+import { TypesetLink } from "./TypesetLink"
 import { typography, resumeContentHeading } from "../styles"
 
 export const Entity = props => {
@@ -10,9 +10,9 @@ export const Entity = props => {
   return (
     <>
       {url ? (
-        <InlineLink to={url} {...rest}>
+        <TypesetLink to={url} {...rest}>
           <h2 css={resumeContentHeading}>{children || title}</h2>
-        </InlineLink>
+        </TypesetLink>
       ) : (
         <h2 css={resumeContentHeading} {...rest}>
           {children || title}

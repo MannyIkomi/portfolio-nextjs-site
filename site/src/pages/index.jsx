@@ -16,7 +16,7 @@ import {
   onTabletMedia,
 } from "../styles"
 import { StickyScrollContainer } from "../components/StickyScrollContainer"
-import { InlineLink } from "../components/InlineLink"
+import { TypesetLink } from "../components/TypesetLink"
 import { StickyMenuBar } from "../components/StickyMenuBar"
 
 const IndexPage = ({ data }) => {
@@ -37,10 +37,10 @@ const IndexPage = ({ data }) => {
         }}
       >
         <StickyMenuBar>
-          <InlineLink to={"/"}>Werk</InlineLink>
-          <InlineLink to={"/about"}>About</InlineLink>
-          <InlineLink to={"/resume"}>Resume</InlineLink>
-          <InlineLink to={"/contact"}>Say Hello</InlineLink>
+          <TypesetLink to={"/"}>Werk</TypesetLink>
+          <TypesetLink to={"/about"}>About</TypesetLink>
+          <TypesetLink to={"/resume"}>Resume</TypesetLink>
+          <TypesetLink to={"/contact"}>Say Hello</TypesetLink>
         </StickyMenuBar>
         {/* <Header siteTitle={"Manny Ikomi"}></Header> */}
         {/* <aside>

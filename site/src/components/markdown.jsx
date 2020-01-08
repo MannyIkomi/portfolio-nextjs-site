@@ -3,7 +3,13 @@ import React from "react"
 import PropTypes from "prop-types"
 
 import { css, jsx } from "@emotion/core"
-import { typography, ulStyles, typesetInteraction, textLink } from "../styles"
+import {
+  typography,
+  ulStyles,
+  typesetInteraction,
+  textLink,
+  styleTransition,
+} from "../styles"
 
 const showdown = require("showdown")
 
@@ -41,8 +47,10 @@ export const Markdown = ({ children, styles, preprocessor, ...props }) => {
           // lineHeight: 1.4
         },
         a: {
-          ...typesetInteraction,
+          // ...typesetInteraction(),
+          ...styleTransition(),
           ...textLink,
+          display: "inline",
         },
       }}
       {...props}

@@ -4,7 +4,7 @@ import React from "react"
 import { LogoMaster } from "./Logo"
 import { useSocialMedia } from "../hooks/useSocialMedia"
 import { SocialIcon } from "./SocialIcon"
-import { InlineLink } from "./InlineLink"
+import { TypesetLink } from "./TypesetLink"
 import {
   flex,
   colors,
@@ -68,11 +68,11 @@ export const Footer = props => {
         }}
       />
       <section css={{ ...flex("column"), alignItems: "center" }}>
-        <InlineLink to={`mailto:design@mannyikomi.com`}>
+        <TypesetLink to={`mailto:design@mannyikomi.com`}>
           design@
           <wbr />
           mannyikomi.com
-        </InlineLink>
+        </TypesetLink>
         <div
           css={{
             ...flex("row"),
@@ -92,29 +92,29 @@ export const Footer = props => {
       <section>
         <p>
           Oh, and{" "}
-          <InlineLink to={"https://github.com/MannyIkomi/portfolio-site"}>
+          <TypesetLink to={"https://github.com/MannyIkomi/portfolio-site"}>
             I code too!
-          </InlineLink>
+          </TypesetLink>
           {` `}🦄
           <br />
           <br />I built my portfolio site with
           {` `} <br />
-          <InlineLink to={"https://reactjs.org/"}>React</InlineLink>,{` `}
-          <InlineLink to={"https://strapi.io/"}>Strapi</InlineLink>
+          <TypesetLink to={"https://reactjs.org/"}>React</TypesetLink>,{` `}
+          <TypesetLink to={"https://strapi.io/"}>Strapi</TypesetLink>
           {` `}and{` `}
-          <InlineLink to={"https://www.gatsbyjs.org/"}>Gatsby</InlineLink>
+          <TypesetLink to={"https://www.gatsbyjs.org/"}>Gatsby</TypesetLink>
           <br />
           Served with{` `}
-          <InlineLink to={"https://www.netlify.com/"}>Netlify</InlineLink>
+          <TypesetLink to={"https://www.netlify.com/"}>Netlify</TypesetLink>
         </p>
       </section>
 
       <section>
         <p>
           Member{` `}
-          <InlineLink to={"https://www.aiga.org/"}>AIGA</InlineLink>
+          <TypesetLink to={"https://www.aiga.org/"}>AIGA</TypesetLink>
           <br />
-          <InlineLink to={"/resume"}>Résumé</InlineLink>
+          <TypesetLink to={"/resume"}>Résumé</TypesetLink>
         </p>
         <br />
         <footer>Copyright © {new Date().getFullYear()} Manny Ikomi</footer>

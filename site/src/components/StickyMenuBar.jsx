@@ -7,6 +7,7 @@ import {
   menubarHeight,
   typography,
   onTabletMedia,
+  styleTransition,
 } from "../styles"
 import { LogoType } from "./Logo"
 import useToggleSwitch from "../hooks/useToggleSwitch"
@@ -16,9 +17,7 @@ export const StickyMenuBar = ({ children, ...props }) => {
   const [isToggled, handleToggle] = useToggleSwitch(false)
 
   const transition = {
-    transitionDuration: "300ms",
-    transitionTimingFunction: "ease-in-out",
-    transitionProperty: "transform, opacity",
+    ...styleTransition(),
     transformOrigin: "right center",
     transform: "rotateY(90deg)", // hides menu from view but doesnt overflow parent container
   }

@@ -13,7 +13,14 @@ export const touchTarget = "3rem"
 export const tabletMediaQuery = `@media screen and (min-width: ${tabletWidth})`
 export const desktopMediaQuery = `@media screen and (min-width: ${desktopWidth})`
 
-export const sizeTransition = {
+export const styleTransition = (override = {}) => ({
+  transitionDuration: "300ms",
+  transitionTimingFunction: "ease-in-out",
+  transitionProperty: "transform, opacity, color, background-color",
+  ...override,
+})
+
+export const fontSizeTransition = {
   transitionProperty: "font-size",
   transitionTimingFunction: "ease-in-out",
   transitionDuration: "300ms",
@@ -49,13 +56,14 @@ export const textLink = {
   },
 }
 
-export const typesetInteraction = {
-  transition: "all 300ms ease-in-out",
+export const typesetInteraction = (override = {}) => ({
   transformOrigin: "center",
   ":hover": {
     transform: "rotateX(180deg)",
+    ...override,
   },
-}
+})
+
 export const resumeContentHeading = {
   textTransform: "initial",
   fontFamily: sansType,
@@ -66,7 +74,7 @@ export const typography = {
   typesetInteraction,
   serif: serifType,
   sans: sansType,
-  sizeTransition,
+  sizeTransition: fontSizeTransition,
   textLink,
   resumeContentHeading,
   // linkStyles,
@@ -96,9 +104,22 @@ export const global = {
       color: colors.orange,
     },
   },
+  button: {
+    display: "inline-block",
+    padding: 0,
+    margin: 0,
+    border: "none",
+    outline: "none",
+
+    cursor: "pointer",
+
+    textAlign: "center",
+    textDecoration: "none",
+  },
+
   "h1, h2, h3, h4, h5": {
     lineHeight: 1.2,
-    ...sizeTransition,
+    ...fontSizeTransition,
     fontFamily: typography.serif,
     textTransform: "lowercase",
     fontWeight: "normal",

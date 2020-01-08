@@ -8,7 +8,7 @@ import Layout from "../components/layout"
 import HtmlHead from "../components/HtmlHead"
 import { StickyScrollContainer } from "../components/StickyScrollContainer"
 import { StickyMenuBar } from "../components/StickyMenuBar"
-import { InlineLink } from "../components/InlineLink"
+import { TypesetLink } from "../components/TypesetLink"
 import { List } from "../components/List"
 import { Footer } from "../components/Footer"
 import { SectionBlock } from "../components/SectionBlock"
@@ -37,29 +37,17 @@ const ResumePage = ({ data }) => {
     <Layout>
       <HtmlHead
         title={"Résumé"}
-        description={`Work experience, education background, volunteer work, skills and go-to tools`}
+        description={`Work experience, education, volunteer work, skills and go-to tools`}
       />
 
-      <StickyScrollContainer
-        css={{
-          "::before": {
-            content: "",
-            display: "block",
-            width: "100%",
-            maxHeight: menubarHeight,
-          },
-        }}
-      >
+      <StickyScrollContainer>
         <StickyMenuBar>
-          <InlineLink to={"/"}>Werk</InlineLink>
-          <InlineLink to={"/about"}>About</InlineLink>
-          <InlineLink to={"/resume"}>Resume</InlineLink>
-          <InlineLink to={"/contact"}>Say Hello</InlineLink>
+          <TypesetLink to={"/"}>Werk</TypesetLink>
+          <TypesetLink to={"/about"}>About</TypesetLink>
+          <TypesetLink to={"/resume"}>Resume</TypesetLink>
+          <TypesetLink to={"/contact"}>Say Hello</TypesetLink>
         </StickyMenuBar>
-        {/* <Header siteTitle={"Manny Ikomi"}></Header> */}
-        {/* <aside>
-          <nav>side bar menu</nav>
-        </aside> */}
+
         <main>
           <article
             css={{
@@ -78,21 +66,21 @@ const ResumePage = ({ data }) => {
                   padding: "1rem",
                 }}
               >
-                <InlineLink css={{ padding: "1rem" }} to={"#experience"}>
+                <TypesetLink css={{ padding: "1rem" }} to={"#experience"}>
                   Experience
-                </InlineLink>
-                <InlineLink css={{ padding: "1rem" }} to={"#education"}>
+                </TypesetLink>
+                <TypesetLink css={{ padding: "1rem" }} to={"#education"}>
                   Education
-                </InlineLink>
-                <InlineLink css={{ padding: "1rem" }} to={"#volunteering"}>
+                </TypesetLink>
+                <TypesetLink css={{ padding: "1rem" }} to={"#volunteering"}>
                   Volunteering
-                </InlineLink>
-                <InlineLink css={{ padding: "1rem" }} to={"#skills"}>
+                </TypesetLink>
+                <TypesetLink css={{ padding: "1rem" }} to={"#skills"}>
                   Skills
-                </InlineLink>
-                <InlineLink css={{ padding: "1rem" }} to={"#tools"}>
+                </TypesetLink>
+                <TypesetLink css={{ padding: "1rem" }} to={"#tools"}>
                   Tools
-                </InlineLink>
+                </TypesetLink>
               </nav>
             </header>
             <ContentArea>

@@ -8,7 +8,7 @@ import Layout from "../components/layout"
 import HtmlHead from "../components/HtmlHead"
 import { StickyScrollContainer } from "../components/StickyScrollContainer"
 import { StickyMenuBar } from "../components/StickyMenuBar"
-import { InlineLink } from "../components/InlineLink"
+import { TypesetLink } from "../components/TypesetLink"
 import { Footer } from "../components/Footer"
 
 const ContactPage = ({ data }) => {
@@ -27,10 +27,10 @@ const ContactPage = ({ data }) => {
         }}
       >
         <StickyMenuBar>
-          <InlineLink to={"/"}>Werk</InlineLink>
-          <InlineLink to={"/about"}>About</InlineLink>
-          <InlineLink to={"/resume"}>Resume</InlineLink>
-          <InlineLink to={"/contact"}>Say Hello</InlineLink>
+          <TypesetLink to={"/"}>Werk</TypesetLink>
+          <TypesetLink to={"/about"}>About</TypesetLink>
+          <TypesetLink to={"/resume"}>Resume</TypesetLink>
+          <TypesetLink to={"/contact"}>Say Hello</TypesetLink>
         </StickyMenuBar>
 
         {/* <aside>
