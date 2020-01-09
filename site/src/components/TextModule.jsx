@@ -10,7 +10,7 @@ export const TextModule = ({ text }) => {
   return (
     <figure
       css={[
-        moduleContainer,
+        moduleContainer(),
         {
           maxWidth: "60ch",
           color: colors.darkGray,

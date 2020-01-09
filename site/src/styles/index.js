@@ -48,6 +48,12 @@ export const styleTransition = (override = {}) => ({
   ...override,
 })
 
+export const moduleContainer = (override = {}) => ({
+  margin: "4rem auto",
+  boxShadow: "-0.25rem 0.25rem 1rem 0px hsla(0, 0%, 0%, 0.85)",
+  ...override,
+})
+
 export const fontSizeTransition = {
   transitionProperty: "font-size",
   transitionTimingFunction: "ease-in-out",

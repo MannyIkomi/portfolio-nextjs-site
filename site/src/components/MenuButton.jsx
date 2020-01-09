@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import { css, jsx } from "@emotion/core"
 import React from "react"
-import { colors, flex } from "../styles"
+import { colors, flex, styleTransition } from "../styles"
 
 export const MenuButton = ({ isToggled, ...props }) => {
   const distance = "0.66rem"
@@ -21,19 +21,28 @@ export const MenuButton = ({ isToggled, ...props }) => {
       type={`button`}
       css={[
         {
-          backgroundColor: "initial",
-          padding: 0,
-          margin: 0,
-          cursor: "pointer",
           ...flex("column"),
           justifyContent: "space-between",
           alignItems: "center",
+
+          backgroundColor: "initial",
+          padding: 0,
+          margin: 0,
+
+          cursor: "pointer",
+
           ".line": {
             display: "block",
             width: "1.75rem",
             height: "0.1875rem",
             backgroundColor: colors.darkGray,
-            transition: "all 300ms ease-in-out",
+            // transition: "all 300ms ease-in-out",
+            ...styleTransition(),
+          },
+          ":hover": {
+            ".line": {
+              backgroundColor: colors.orange,
+            },
           },
         },
         isToggled && animateHamburger,

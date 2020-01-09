@@ -3,7 +3,15 @@ import { css, jsx } from "@emotion/core"
 import React from "react"
 import { graphql, useStaticQuery } from "gatsby"
 
-import { menubarHeight } from "../styles"
+import {
+  menubarHeight,
+  flex,
+  colors,
+  sansHeading,
+  serifType,
+  futuraBodySize,
+  maxLineMeasure,
+} from "../styles"
 import Layout from "../components/layout"
 import HtmlHead from "../components/HtmlHead"
 import { StickyScrollContainer } from "../components/StickyScrollContainer"
@@ -54,7 +62,10 @@ const ProjectTemplate = ({ data }) => {
   } = thisProject
   return (
     <Layout>
-      <HtmlHead title={thisProject.title} />
+      <HtmlHead
+        title={`${thisProject.title}, ${thisProject.description}`}
+        description={thisProject.metaDescription}
+      />
       <StickyScrollContainer
         css={{
           "::before": {
@@ -76,12 +87,52 @@ const ProjectTemplate = ({ data }) => {
           <nav>side bar menu</nav>
         </aside> */}
         <main>
-          <article>
-            <header>
-              <h1>{title}</h1>
-              <h1>{description}</h1>
+          <article
+            css={{
+              ...flex("column"),
+              alignItems: "center",
+              backgroundColor: colors.muteGray,
+            }}
+          >
+            <header
+              css={{
+                ...flex("column"),
+                alignItems: "center",
+                minHeight: "50vh",
+                padding: "2rem",
+
+                textAlign: "center",
+              }}
+            >
+              <h1
+                css={{
+                  ...sansHeading,
+                  color: colors.darkGray,
+                  textTransform: "initial",
+                }}
+              >
+                {title}
+              </h1>
+              <h2
+                css={{
+                  ...serifType,
+                  fontStyle: "italic",
+                  ...futuraBodySize,
+                  textTransform: "initial",
+                }}
+              >
+                {description}
+              </h2>
             </header>
-            <main>
+
+            <div
+              css={{
+                position: "relative",
+                ...maxLineMeasure,
+                margin: "auto",
+                top: "-25vh",
+              }}
+            >
               {modules.map(module => {
                 console.log(module)
 
@@ -101,7 +152,8 @@ const ProjectTemplate = ({ data }) => {
                     )
                 }
               })}
-            </main>
+            </div>
+
             <footer>
               <h1>You might also like…</h1>
               <br />

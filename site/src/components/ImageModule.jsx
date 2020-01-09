@@ -11,18 +11,21 @@ export const ImageModule = props => {
   return (
     <figure
       css={[
-        moduleContainer,
+        moduleContainer(),
         {
           width: "100%",
-          img: {
-            objectFit: "fill",
-            width: "100%",
-            height: "100%",
-          },
         },
       ]}
     >
-      <img src={image.publicURL} alt={imageAlt} />
+      <img
+        css={{
+          objectFit: "fill",
+          width: "100%",
+          height: "auto",
+        }}
+        src={image.publicURL}
+        alt={imageAlt}
+      />
     </figure>
   )
 }

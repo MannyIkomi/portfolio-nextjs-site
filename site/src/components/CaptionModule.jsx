@@ -11,7 +11,7 @@ export const CaptionModule = ({ image, imageAlt, text }) => {
   return (
     <figure
       css={[
-        moduleContainer,
+        moduleContainer(),
         {
           hangingPunctuation: "first last", // only supported in Safari :(
 
