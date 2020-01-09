@@ -13,6 +13,7 @@ import {
 import { LogoType } from "./Logo"
 import useToggleSwitch from "../hooks/useToggleSwitch"
 import { MenuButton } from "./MenuButton"
+import { TypesetLink } from "./TypesetLink"
 
 export const StickyMenuBar = ({ children, ...props }) => {
   const [isToggled, handleToggle] = useToggleSwitch(false)
@@ -85,6 +86,7 @@ export const StickyMenuBar = ({ children, ...props }) => {
             backgroundRepeat: "no-repeat",
             backgroundPosition: "top right",
 
+            // boxShadow: "-0.25rem 0.25rem 1rem 0px hsla(0, 0%, 0%, 0.85)",
             fontFamily: typography.sans,
           },
           [transition, toggleTransition],
@@ -95,6 +97,18 @@ export const StickyMenuBar = ({ children, ...props }) => {
           },
         ]}
       >
+        <TypesetLink css={{ padding: "1rem" }} to={"/"}>
+          Werk
+        </TypesetLink>
+        <TypesetLink css={{ padding: "1rem" }} to={"/about"}>
+          About
+        </TypesetLink>
+        <TypesetLink css={{ padding: "1rem" }} to={"/resume"}>
+          Resume
+        </TypesetLink>
+        <TypesetLink css={{ padding: "1rem" }} to={"/contact"}>
+          Say Hello
+        </TypesetLink>
         {children}
       </div>
     </nav>

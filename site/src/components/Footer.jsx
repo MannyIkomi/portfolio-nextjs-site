@@ -23,7 +23,7 @@ export const Footer = props => {
 
         ...flex(),
         alignItems: "center",
-        justifyContent: "space-between",
+        justifyContent: "space-around",
 
         color: colors.muteGray,
         backgroundColor: colors.darkGray,

@@ -41,12 +41,7 @@ const ResumePage = ({ data }) => {
       />
 
       <StickyScrollContainer>
-        <StickyMenuBar>
-          <TypesetLink to={"/"}>Werk</TypesetLink>
-          <TypesetLink to={"/about"}>About</TypesetLink>
-          <TypesetLink to={"/resume"}>Resume</TypesetLink>
-          <TypesetLink to={"/contact"}>Say Hello</TypesetLink>
-        </StickyMenuBar>
+        <StickyMenuBar />
 
         <main>
           <article

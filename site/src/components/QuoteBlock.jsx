@@ -20,6 +20,7 @@ export const QuoteBlock = props => {
         padding: "1rem",
         // quote body
         ...sansType,
+        hangingPunctuation: "first last",
         // ...futuraBodySize,
         fontSize: "2rem",
         fontStyle: "normal",

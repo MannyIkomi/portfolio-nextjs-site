@@ -53,12 +53,7 @@ const AboutPage = ({ data }) => {
           },
         }}
       >
-        <StickyMenuBar>
-          <TypesetLink to={"/"}>Werk</TypesetLink>
-          <TypesetLink to={"/about"}>About</TypesetLink>
-          <TypesetLink to={"/resume"}>Resume</TypesetLink>
-          <TypesetLink to={"/contact"}>Say Hello</TypesetLink>
-        </StickyMenuBar>
+        <StickyMenuBar />
         {/* <Header siteTitle={"Manny Ikomi"}></Header> */}
         {/* <aside>
           <nav>side bar menu</nav>
