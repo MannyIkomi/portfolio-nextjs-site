@@ -113,12 +113,12 @@ const ResumePage = ({ data }) => {
                   ))}
                 </List>
               </ResumeSection>
-              <footer>footer</footer>
+              <footer>resume footer</footer>
             </ContentArea>
           </article>
         </main>
       </StickyScrollContainer>
-      <Debug {...data} />
+      {/* <Debug {...data} /> */}
       <Footer />
     </Layout>
   )

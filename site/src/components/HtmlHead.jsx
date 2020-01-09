@@ -70,7 +70,8 @@ function HtmlHead({ description, lang, meta, title }) {
       //   },
       // ].concat(meta)}
     >
-      <link rel="stylesheet" href="https://use.typekit.net/esl0nbd.css" />
+      {/* <link rel="stylesheet" href="https://use.typekit.net/esl0nbd.css" /> */}
+      <link rel="stylesheet" href="https://use.typekit.net/ygb3hbx.css"></link>
       <title>{metaTitle}</title>
       <meta name="description" content={metaDescription} />
       <meta charSet="utf-8" />

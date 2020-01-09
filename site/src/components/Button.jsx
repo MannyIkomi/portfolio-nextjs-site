@@ -10,6 +10,7 @@ import {
   menubarHeight,
   styleTransition,
   typesetInteraction,
+  sansHeading,
 } from "../styles"
 
 export const Button = props => {
@@ -22,13 +23,14 @@ export const Button = props => {
           backgroundColor: colors.orange50,
         }),
 
-        fontFamily: typography.sans,
-        fontSize: "1rem",
-        fontWeight: "bold",
+        ...sansHeading,
+        // fontSize: "1.1rem",
+        // fontWeight: "bold",
 
         color: colors.darkGray,
         backgroundColor: colors.darkGray20,
         borderBottom: `0.25rem solid ${colors.orange}`,
+
         padding: "0.5rem",
       }}
       onClick={onClick}

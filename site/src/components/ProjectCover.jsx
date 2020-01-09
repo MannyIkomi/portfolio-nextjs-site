@@ -5,7 +5,12 @@ import { css } from "@emotion/core"
 import { useHoverState } from "../hooks/useHoverState"
 import { FillOverlay } from "./FillOverlay"
 import { ProjectPhoto } from "./ProjectPhoto"
-import { aspectRatioLetter, typography } from "../styles"
+import {
+  aspectRatioLetter,
+  typography,
+  sansHeading,
+  serifHeading,
+} from "../styles"
 
 export const ProjectCover = ({
   id,
@@ -42,15 +47,16 @@ export const ProjectCover = ({
               css={{
                 color: "white",
                 h1: {
-                  fontFamily: typography.sans,
-                  fontSize: "2rem",
+                  color: "white",
+                  ...sansHeading,
+                  // fontSize: "2rem",
                   fontWeight: "bold",
                   textTransform: "initial",
                 },
                 h2: {
                   fontSize: "1rem",
                   textTransform: "initial",
-                  fontFamily: typography.serif,
+                  ...serifHeading,
                   fontStyle: "italic",
                   fontWeight: 100,
                 },

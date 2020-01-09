@@ -9,6 +9,9 @@ import {
   typesetInteraction,
   textLink,
   styleTransition,
+  serifHeading,
+  sansType,
+  sansHeading,
 } from "../styles"
 
 const showdown = require("showdown")
@@ -30,26 +33,21 @@ export const Markdown = ({ children, styles, preprocessor, ...props }) => {
   return (
     <div
       css={{
-        "h1,h2,h3,h4,h5,h6": {
-          // whiteSpace: "pre-wrap",
-          ...typography.serif,
+        "h1,h2,h3,h4": {
+          ...sansHeading,
+
+          textTransform: "initial",
         },
-        "p, ul, a": {
-          whiteSpace: "pre-wrap",
-          fontFamily: typography.sans,
-          // fontSize: "1.25rem",
+        "p, ul, ol": {
+          ...sansType,
+          marginBottom: "1rem",
         },
         ul: {
           ...ulStyles,
-          // li: {
-          //   whiteSpace: "pre-wrap",
-          // },
-          // lineHeight: 1.4
         },
         a: {
-          // ...typesetInteraction(),
-          ...styleTransition(),
           ...textLink,
+          ...styleTransition(),
           display: "inline",
         },
       }}

@@ -1,8 +1,36 @@
 import { colors } from "./colors"
 import { onTabletMedia, onDesktopMedia } from "./mixin"
 
-export const serifType = "baskerville-urw, Georgia, serif"
-export const sansType = 'futura-pt, "Helvetica Neue", Helvetica, sans-serif'
+export const serifType = { fontFamily: "baskerville-urw, Georgia, serif" }
+export const sansType = {
+  fontFamily: 'futura-pt, "Helvetica Neue", Helvetica, sans-serif',
+}
+export const serifHeading = { fontFamily: "baskerville-urw, serif" }
+export const sansHeading = {
+  fontFamily:
+    'futura-pt-bold, futura-pt, "Helvetica Neue", Helvetica, sans-serif',
+}
+export const futuraBodySize = { fontSize: "1.2rem" }
+
+/* 
+font-family: futura-pt-bold, sans-serif;
+font-weight: 700;
+font-style: normal;
+*/
+
+/* 
+Baskerville Display PT Regular
+
+font-family: baskerville-display-pt, serif;
+font-weight: 400;
+font-style: normal;
+
+Baskerville Display PT Italic
+
+font-family: baskerville-display-pt, serif;
+font-weight: 400;
+font-style: italic;
+*/
 
 export const menubarHeight = "2.5rem"
 export const desktopWidth = `1200px`
@@ -43,7 +71,8 @@ export const aspectRatioLetter = {
 }
 
 export const textLink = {
-  fontFamily: sansType,
+  ...sansType,
+  ...futuraBodySize,
   display: "inline-block",
   textDecoration: "underline",
   // padding: "0.25rem 0",
@@ -65,16 +94,18 @@ export const typesetInteraction = (override = {}) => ({
 })
 
 export const resumeContentHeading = {
+  ...sansHeading,
   textTransform: "initial",
-  fontFamily: sansType,
-  fontWeight: "bold",
+  // fontWeight: "bold",
 }
 
 export const typography = {
+  serifType,
+  sansType,
+  sansHeading,
+  serifHeading,
   typesetInteraction,
-  serif: serifType,
-  sans: sansType,
-  sizeTransition: fontSizeTransition,
+  fontSizeTransition,
   textLink,
   resumeContentHeading,
   // linkStyles,
@@ -87,8 +118,8 @@ export const global = {
     boxSizing: "border-box",
   },
   ":root": {
-    fontSize: "100%",
-    fontFamily: typography.sans,
+    // fontSize: "100%",
+    ...sansType,
   },
   // body: {
   //   overflow: "hidden",
@@ -118,17 +149,18 @@ export const global = {
   },
 
   "h1, h2, h3, h4, h5": {
-    lineHeight: 1.2,
+    lineHeight: 1.3,
     ...fontSizeTransition,
-    fontFamily: typography.serif,
+    ...serifHeading,
     textTransform: "lowercase",
     fontWeight: "normal",
   },
-  "p, span, ul, ol, li": {
-    fontFamily: typography.sans,
-    fontSize: "1rem",
+  "p, span, ul, ol, li, button": {
+    ...sansType,
+    ...futuraBodySize,
     lineHeight: 1.4,
     listStyle: "square",
+    fontVariantNumeric: "proportional-nums",
   },
 
   h1: {

@@ -129,7 +129,16 @@ const AboutPage = ({ data }) => {
           </SectionBlock>
           <SectionBlock css={{ backgroundColor: colors.muteGray }}>
             <ContentArea>
-              <h1 css={{ padding: "1rem" }}>Creatives who inspire me…</h1>
+              <div css={{ padding: "1rem" }}>
+                <h1>Creatives who inspire me…</h1>
+                <p>
+                  I once heard somewhere that we are the sum of the people who
+                  are closest to us. While I may not know these people
+                  personally, I do know their work very well. So I like to
+                  think, my work is the sum of theirs, and what I've learned
+                  from them.
+                </p>
+              </div>
               {inspirations.map(person => (
                 <CreativeInspiration {...person}></CreativeInspiration>
               ))}

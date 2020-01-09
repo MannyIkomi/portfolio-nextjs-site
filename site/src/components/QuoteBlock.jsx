@@ -1,7 +1,14 @@
 /** @jsx jsx */
 import { css, jsx } from "@emotion/core"
 import React from "react"
-import { flex, maxLineMeasure, typography } from "../styles"
+import {
+  flex,
+  maxLineMeasure,
+  typography,
+  sansType,
+  serifType,
+  futuraBodySize,
+} from "../styles"
 export const QuoteBlock = props => {
   const { cite, quote, children, ...rest } = props
   return (
@@ -12,17 +19,20 @@ export const QuoteBlock = props => {
         ...maxLineMeasure,
         padding: "1rem",
         // quote body
-        fontFamily: typography.sans,
-        fontSize: "1.5rem",
+        ...sansType,
+        // ...futuraBodySize,
+        fontSize: "2rem",
         fontStyle: "normal",
         fontWeight: "normal",
+
         lineHeight: 1.5,
         cite: {
-          // name
-          alignSelf: "flex-end",
-          fontFamily: typography.serif,
+          ...futuraBodySize,
+          ...serifType,
           fontStyle: "italic",
           fontWeight: "normal",
+
+          alignSelf: "flex-end",
         },
       }}
       {...rest}
