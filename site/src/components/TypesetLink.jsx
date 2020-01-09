@@ -8,7 +8,8 @@ import {
   styleTransition,
 } from "../styles"
 
-export const TypesetLink = ({ to, title, children, ...rest }) => {
+export const TypesetLink = props => {
+  const { to, title, children, ...rest } = props
   return (
     <a
       href={to}

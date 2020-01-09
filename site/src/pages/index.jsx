@@ -14,6 +14,7 @@ import {
   menubarHeight,
   onMediaWidth,
   onTabletMedia,
+  touchTarget,
 } from "../styles"
 import { StickyScrollContainer } from "../components/StickyScrollContainer"
 import { TypesetLink } from "../components/TypesetLink"
@@ -37,7 +38,9 @@ const IndexPage = ({ data }) => {
         }}
       >
         <StickyMenuBar>
-          <TypesetLink to={"/"}>Werk</TypesetLink>
+          <TypesetLink css={{ minHeight: touchTarget }} to={"/"}>
+            Werk
+          </TypesetLink>
           <TypesetLink to={"/about"}>About</TypesetLink>
           <TypesetLink to={"/resume"}>Resume</TypesetLink>
           <TypesetLink to={"/contact"}>Say Hello</TypesetLink>

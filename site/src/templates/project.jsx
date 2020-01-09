@@ -16,6 +16,7 @@ import Layout from "../components/layout"
 import HtmlHead from "../components/HtmlHead"
 import { StickyScrollContainer } from "../components/StickyScrollContainer"
 import { StickyMenuBar } from "../components/StickyMenuBar"
+import { ContentArea } from "../components/ContentArea"
 import { TypesetLink } from "../components/TypesetLink"
 import { Footer } from "../components/Footer"
 import { ImageModule } from "../components/ImageModule"
@@ -23,6 +24,7 @@ import { CaptionModule } from "../components/CaptionModule"
 import { TextModule } from "../components/TextModule"
 import { ProjectCover } from "../components/ProjectCover"
 import Debug from "../components/Debug"
+import { SectionBlock } from "../components/SectionBlock"
 
 export const filterProjectById = (thisProject, otherProjects) => {
   // filter current project from total projects list
@@ -125,34 +127,37 @@ const ProjectTemplate = ({ data }) => {
               </h2>
             </header>
 
-            <div
-              css={{
-                position: "relative",
-                ...maxLineMeasure,
-                margin: "auto",
-                top: "-25vh",
-              }}
+            <SectionBlock
+              css={{ backgroundColor: colors.darkGray, width: "100%" }}
             >
-              {modules.map(module => {
-                console.log(module)
+              <ContentArea
+                css={{
+                  position: "relative",
+                  // backgroundColor: colors.darkGray,
+                  top: "-25vh",
+                }}
+              >
+                {modules.map(module => {
+                  console.log(module)
 
-                switch (module.type) {
-                  case "image":
-                    return <ImageModule {...module} key={module.id} />
-                  case "text":
-                    return <TextModule {...module} key={module.id} />
-                  case "caption":
-                    return <CaptionModule {...module} key={module.id} />
-                  // case 'section':
-                  // use to split
-                  //   return <div>CREATE SECTION MODULE</div> with glyph
-                  default:
-                    throw new Error(
-                      `Could not find matching Component for Module: ${module.type}`
-                    )
-                }
-              })}
-            </div>
+                  switch (module.type) {
+                    case "image":
+                      return <ImageModule {...module} key={module.id} />
+                    case "text":
+                      return <TextModule {...module} key={module.id} />
+                    case "caption":
+                      return <CaptionModule {...module} key={module.id} />
+                    // case 'section':
+                    // use to split
+                    //   return <div>CREATE SECTION MODULE</div> with glyph
+                    default:
+                      throw new Error(
+                        `Could not find matching Component for Module: ${module.type}`
+                      )
+                  }
+                })}
+              </ContentArea>
+            </SectionBlock>
 
             <footer>
               <h1>You might also like…</h1>
