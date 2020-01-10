@@ -6,7 +6,7 @@ const HtmlHead = props => {
   const { pageTitle, description } = props
   return (
     <Head>
-      <link rel="stylesheet" href="https://use.typekit.net/esl0nbd.css" />
+      <link rel="stylesheet" href="https://use.typekit.net/ygb3hbx.css"></link>
       <title>{pageTitle}</title>
       <meta name="description" content={description} />
       <meta charSet="utf-8" />
