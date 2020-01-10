@@ -60,13 +60,13 @@ const ProjectTemplate = ({ data }) => {
     modules,
     coverAlt,
     description,
-    metaDescription,
+    seoDescription,
   } = thisProject
   return (
     <Layout>
       <HtmlHead
         title={`${thisProject.title}, ${thisProject.description}`}
-        description={thisProject.metaDescription}
+        description={thisProject.seoDescription}
       />
       <StickyScrollContainer
         css={{
@@ -197,7 +197,7 @@ export const query = graphql`
       title
       coverAlt
       description
-      metaDescription
+      seoDescription
     }
 
     # gets all projects !== to the selected projects for related recommendations
