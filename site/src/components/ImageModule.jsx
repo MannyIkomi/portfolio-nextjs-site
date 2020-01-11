@@ -14,12 +14,16 @@ export const ImageModule = props => {
         moduleContainer(),
         {
           width: "100%",
+          height: "auto",
+
+          maxWidth: "80rem",
+          // maxHeight: "90vh",
         },
       ]}
     >
       <img
         css={{
-          objectFit: "fill",
+          objectFit: "contain",
           width: "100%",
           height: "auto",
         }}

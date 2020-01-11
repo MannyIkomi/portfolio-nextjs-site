@@ -3,7 +3,7 @@ import React, { Fragment } from "react"
 import { css, jsx } from "@emotion/core"
 
 import Markdown from "./markdown"
-import { colors, moduleContainer, typography } from "../styles"
+import { colors, moduleContainer, typography, maxLineMeasure } from "../styles"
 import { moduleProps } from "../util/props"
 
 export const TextModule = ({ text }) => {
@@ -12,7 +12,7 @@ export const TextModule = ({ text }) => {
       css={[
         moduleContainer(),
         {
-          maxWidth: "60ch",
+          ...maxLineMeasure,
           color: colors.darkGray,
           backgroundColor: colors.muteGray,
           padding: "2rem",

@@ -49,8 +49,16 @@ export const styleTransition = (override = {}) => ({
 })
 
 export const moduleContainer = (override = {}) => ({
-  margin: "4rem auto",
+  margin: "2rem 0",
+
   boxShadow: "-0.25rem 0.25rem 1rem 0px hsla(0, 0%, 0%, 0.85)",
+  ...onTabletMedia({
+    margin: "3rem 0",
+    // maxHeight: "80vh",
+  }),
+  ...onDesktopMedia({
+    margin: "4rem 0",
+  }),
   ...override,
 })
 

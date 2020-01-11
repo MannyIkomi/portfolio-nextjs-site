@@ -10,6 +10,8 @@ import {
   typography,
   sansHeading,
   serifHeading,
+  colors,
+  onTabletMedia,
 } from "../styles"
 
 export const ProjectCover = ({
@@ -45,9 +47,9 @@ export const ProjectCover = ({
           <FillOverlay>
             <figcaption
               css={{
-                color: "white",
+                color: colors.muteGray,
                 h1: {
-                  color: "white",
+                  color: colors.muteGray,
                   ...sansHeading,
                   // fontSize: "2rem",
                   fontWeight: "bold",
@@ -55,6 +57,9 @@ export const ProjectCover = ({
                 },
                 h2: {
                   fontSize: "1rem",
+                  ...onTabletMedia({
+                    fontSize: "1.33rem",
+                  }),
                   textTransform: "initial",
                   ...serifHeading,
                   fontStyle: "italic",

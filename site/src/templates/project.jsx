@@ -127,7 +127,13 @@ const ProjectTemplate = ({ data }) => {
             >
               <ContentArea
                 css={{
+                  ...flex("column"),
+                  alignItems: "center",
+
                   position: "relative",
+                  maxWidth: "80rem",
+                  padding: "0 1rem",
+
                   // backgroundColor: colors.darkGray,
                   top: "-25vh",
                 }}
