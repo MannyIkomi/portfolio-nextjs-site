@@ -40,6 +40,11 @@
     },
     "summary": {
       "type": "richtext"
+    },
+    "draft": {
+      "required": true,
+      "default": true,
+      "type": "boolean"
     }
   }
 }

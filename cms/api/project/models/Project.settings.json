@@ -53,6 +53,11 @@
     },
     "completed": {
       "type": "date"
+    },
+    "draft": {
+      "required": true,
+      "default": true,
+      "type": "boolean"
     }
   }
 }
