@@ -73,8 +73,9 @@ export const pageQuery = graphql`
       nodes {
         coverAlt
         title
-        description
+        subtitle
         slug
+        draft
         cover {
           publicURL
         }

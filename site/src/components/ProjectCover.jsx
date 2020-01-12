@@ -17,11 +17,12 @@ import {
 export const ProjectCover = ({
   id,
   name,
-  description,
+  subtitle,
   cover,
   slug,
   title,
   coverAlt,
+  draft,
   ...props
 }) => {
   const [isHovered, handleHover] = useHoverState()
@@ -68,7 +69,10 @@ export const ProjectCover = ({
               }}
             >
               <h1>{title}</h1>
-              <h2>{description}</h2>
+              <h2>{subtitle}</h2>
+              <span style={{ color: "blue", textTransform: "uppercase" }}>
+                {draft && "DRAFT"}
+              </span>
             </figcaption>
           </FillOverlay>
         )}

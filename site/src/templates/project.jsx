@@ -59,13 +59,15 @@ const ProjectTemplate = ({ data }) => {
     title,
     modules,
     coverAlt,
-    description,
+    draft,
+    subtitle,
     seoDescription,
   } = thisProject
+
   return (
     <Layout>
       <HtmlHead
-        title={`${thisProject.title}, ${thisProject.description}`}
+        title={`${thisProject.title}, ${thisProject.subtitle}`}
         description={thisProject.seoDescription}
       />
       <StickyScrollContainer
@@ -118,8 +120,11 @@ const ProjectTemplate = ({ data }) => {
                   textTransform: "initial",
                 }}
               >
-                {description}
+                {subtitle}
               </h2>
+              <span style={{ color: "blue", textTransform: "uppercase" }}>
+                {draft && "DRAFT"}
+              </span>
             </header>
 
             <SectionBlock
@@ -187,6 +192,7 @@ export const query = graphql`
     #gets the single requested project data for viewing
     strapiProjects(slug: { eq: $slug }) {
       id
+      draft
       slug
       modules {
         id
@@ -201,18 +207,18 @@ export const query = graphql`
         design
       }
       title
+      subtitle
       coverAlt
-      description
       seoDescription
     }
 
     # gets all projects !== to the selected projects for related recommendations
-    allStrapiProjects(filter: { slug: { ne: $slug } }) {
+    allStrapiProjects(filter: { slug: { ne: $slug }, draft: { eq: false } }) {
       nodes {
         id
         title
         slug
-        description
+        subtitle
         tags {
           design
         }
