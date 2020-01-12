@@ -15,10 +15,13 @@ import {
   onMediaWidth,
   onTabletMedia,
   touchTarget,
+  colors,
 } from "../styles"
 import { StickyScrollContainer } from "../components/StickyScrollContainer"
 import { TypesetLink } from "../components/TypesetLink"
 import { StickyMenuBar } from "../components/StickyMenuBar"
+import { ContentArea } from "../components/ContentArea"
+import { SectionBlock } from "../components/SectionBlock"
 
 const IndexPage = ({ data }) => {
   const projects = data.allStrapiProjects.nodes
@@ -43,24 +46,33 @@ const IndexPage = ({ data }) => {
           <nav>side bar menu</nav>
         </aside> */}
         <main>
-          <Gallery
+          <SectionBlock
             css={{
-              ".project-cover": {
-                marginBottom: "2rem",
-              },
-              ...onTabletMedia({
-                ".project-cover": {
-                  marginBottom: 0,
-                },
-              }),
+              backgroundColor: colors.darkGray,
             }}
           >
-            {projects.map(project => (
-              <ProjectCover {...project} key={project.id} />
-            ))}
-          </Gallery>
+            <ContentArea css={{ maxWidth: "80rem" }}>
+              <Gallery
+                css={{
+                  ".project-cover": {
+                    marginBottom: "2rem",
+                  },
+                  ...onTabletMedia({
+                    ".project-cover": {
+                      marginBottom: 0,
+                    },
+                  }),
+                }}
+              >
+                {projects.map(project => (
+                  <ProjectCover {...project} key={project.id} />
+                ))}
+              </Gallery>
+            </ContentArea>
+          </SectionBlock>
         </main>
       </StickyScrollContainer>
+
       <Footer />
     </Layout>
   )

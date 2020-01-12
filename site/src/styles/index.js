@@ -174,7 +174,7 @@ export const global = {
     ...futuraBodySize,
     lineHeight: 1.4,
     listStyle: "square",
-    fontVariantNumeric: "proportional-nums",
+    fontVariantNumeric: "proportional-nums ordinal",
   },
 
   h1: {

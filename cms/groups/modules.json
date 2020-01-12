@@ -26,6 +26,9 @@
         "section"
       ],
       "type": "enumeration"
+    },
+    "fill": {
+      "type": "boolean"
     }
   }
 }
