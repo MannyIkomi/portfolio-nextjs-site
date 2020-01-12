@@ -11,6 +11,7 @@ import {
   serifType,
   futuraBodySize,
   maxLineMeasure,
+  onTabletMedia,
 } from "../styles"
 import Layout from "../components/layout"
 import HtmlHead from "../components/HtmlHead"
@@ -136,11 +137,15 @@ const ProjectTemplate = ({ data }) => {
                   alignItems: "center",
 
                   position: "relative",
+                  top: "-25vh",
+
                   maxWidth: "80rem",
                   padding: "0 1rem",
 
+                  ...onTabletMedia({
+                    padding: "0 2rem",
+                  }),
                   // backgroundColor: colors.darkGray,
-                  top: "-25vh",
                 }}
               >
                 {modules.map(module => {
@@ -178,7 +183,6 @@ const ProjectTemplate = ({ data }) => {
             </footer>
           </article>
         </main>
-        <Debug {...data} />
       </StickyScrollContainer>
       <Footer />
     </Layout>
