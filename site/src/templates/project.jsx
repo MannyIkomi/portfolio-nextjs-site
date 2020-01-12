@@ -201,6 +201,7 @@ export const query = graphql`
       modules {
         id
         imageAlt
+        imageFill
         text
         type
         image {

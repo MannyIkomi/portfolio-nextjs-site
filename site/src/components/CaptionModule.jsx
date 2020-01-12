@@ -14,7 +14,7 @@ import { moduleProps } from "../util/props"
 import Markdown from "./markdown"
 import StickyScrollContainer from "./StickyScrollContainer"
 
-export const CaptionModule = ({ image, imageAlt, text }) => {
+export const CaptionModule = ({ image, imageAlt, imageFill, text }) => {
   return (
     <figure
       css={[
@@ -30,7 +30,7 @@ export const CaptionModule = ({ image, imageAlt, text }) => {
       <StickyScrollContainer
         css={{
           img: {
-            objectFit: "fill",
+            objectFit: imageFill ? "cover" : "contain",
             width: "100%",
             height: "100%",
           },

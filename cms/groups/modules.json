@@ -27,7 +27,7 @@
       ],
       "type": "enumeration"
     },
-    "fill": {
+    "imageFill": {
       "type": "boolean"
     }
   }

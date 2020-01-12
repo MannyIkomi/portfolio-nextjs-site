@@ -6,7 +6,7 @@ import { mixin, moduleContainer } from "../styles"
 import { moduleProps } from "../util/props"
 
 export const ImageModule = props => {
-  const { image, imageAlt, type, text, id } = props
+  const { image, imageAlt, imageFill, type, text, id } = props
 
   return (
     <figure
@@ -23,9 +23,9 @@ export const ImageModule = props => {
     >
       <img
         css={{
-          objectFit: "contain",
+          objectFit: imageFill ? "cover" : "contain",
           width: "100%",
-          height: "auto",
+          height: "100%",
         }}
         src={image.publicURL}
         alt={imageAlt}
