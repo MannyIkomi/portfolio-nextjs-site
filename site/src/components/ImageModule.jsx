@@ -26,6 +26,7 @@ export const ImageModule = props => {
           objectFit: imageFill ? "cover" : "contain",
           width: "100%",
           height: "100%",
+          backgroundColor: "white",
         }}
         src={image.publicURL}
         alt={imageAlt}

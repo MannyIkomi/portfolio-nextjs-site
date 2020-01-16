@@ -25,7 +25,8 @@
         "caption",
         "section"
       ],
-      "type": "enumeration"
+      "type": "enumeration",
+      "required": true
     },
     "imageFill": {
       "type": "boolean"

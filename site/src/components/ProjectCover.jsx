@@ -37,6 +37,7 @@ export const ProjectCover = ({
         // marginBottom: "4rem",
         width: "100%",
         cursor: "pointer",
+        backgroundColor: "white",
       }}
       onMouseEnter={handleHover}
       onMouseLeave={handleHover}
