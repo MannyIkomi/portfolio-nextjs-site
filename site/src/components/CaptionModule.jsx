@@ -21,7 +21,7 @@ export const CaptionModule = ({ image, imageAlt, imageFill, text }) => {
         moduleContainer(),
         {
           color: colors.darkGray,
-          background: colors.muteGray,
+          backgroundColor: colors.muteGray,
           width: "100%",
           hangingPunctuation: "first last", // only supported in Safari :(
         },
@@ -30,9 +30,19 @@ export const CaptionModule = ({ image, imageAlt, imageFill, text }) => {
       <StickyScrollContainer
         css={{
           img: {
+            position: "sticky",
+            top: menubarHeight,
+            zIndex: 2,
+
             objectFit: imageFill ? "cover" : "contain",
             width: "100%",
             height: "100%",
+            padding: imageFill ? "0" : "1rem",
+
+            backgroundColor: imageFill ? "inital" : "white",
+            boxShadow: imageFill
+              ? "initial"
+              : "-0.25rem 0.25rem 1rem 0px hsla(0, 0%, 0%, 0.85)",
           },
           ...onTabletMedia({
             ...flex("row"),
@@ -48,10 +58,13 @@ export const CaptionModule = ({ image, imageAlt, imageFill, text }) => {
         <img src={image.publicURL} alt={imageAlt} />
         <figcaption
           css={{
-            padding: "2rem",
             position: "sticky",
             top: menubarHeight,
+
+            padding: "2rem",
             alignSelf: "flex-start",
+
+            backgroundColor: colors.muteGray,
           }}
         >
           <Markdown
