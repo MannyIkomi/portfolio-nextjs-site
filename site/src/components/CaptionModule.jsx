@@ -30,10 +30,6 @@ export const CaptionModule = ({ image, imageAlt, imageFill, text }) => {
       <StickyScrollContainer
         css={{
           img: {
-            position: "sticky",
-            top: menubarHeight,
-            zIndex: 2,
-
             objectFit: imageFill ? "cover" : "contain",
             width: "100%",
             height: "100%",
@@ -50,7 +46,9 @@ export const CaptionModule = ({ image, imageAlt, imageFill, text }) => {
             alignItems: "flex-start",
             img: {
               width: "50%",
-              // height: "50%",
+              position: "sticky",
+              top: menubarHeight,
+              zIndex: 2,
             },
           }),
         }}
