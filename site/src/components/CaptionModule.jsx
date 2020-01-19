@@ -77,4 +77,5 @@ export const CaptionModule = ({ image, imageAlt, imageFill, text }) => {
     </figure>
   )
 }
+
 CaptionModule.propTypes = moduleProps

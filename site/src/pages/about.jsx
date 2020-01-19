@@ -67,23 +67,36 @@ const AboutPage = ({ data }) => {
               // header: {
               //   padding: 0,
               // },
-              // ...onTabletMedia({
-              //   ...supportsGrid({
-              //     display: "grid",
-              //     gridTemplateAreas: `'headshot h1 h1' 'void body body'`,
-              //     gridTemplateColumns: "1fr 1fr 1fr",
-              //   }),
-              // }),
             }}
           >
-            <ContentArea>
+            <ContentArea
+              css={{
+                ...onTabletMedia({
+                  ...supportsGrid({
+                    gridTemplateAreas: `'headshot h1' 'void body'`,
+                    gridTemplateColumns: "1fr 2fr",
+                    // gridTemplateColumns: "1fr minmax(2fr, 80rem)",
+                    maxWidth: "60rem",
+                  }),
+                }),
+              }}
+            >
               <div
                 css={{
                   alignSelf: "flex-end",
                   margin: "0 0 auto auto",
+
                   // position: "relative",
                   width: "50%",
                   maxWidth: "20rem",
+                  ...onTabletMedia({
+                    ...supportsGrid({
+                      width: "initial",
+                      gridArea: "headshot",
+                      alignSelf: "flex-end",
+                      justifySelf: "flex-end",
+                    }),
+                  }),
                 }}
               >
                 <img
@@ -92,12 +105,33 @@ const AboutPage = ({ data }) => {
                   alt="Manny smiling at you"
                 />
               </div>
-              <h1 css={{ padding: "1rem", color: colors.orange }}>{heading}</h1>
+              <h1
+                css={{
+                  padding: "1rem",
+                  color: colors.orange,
+                  ...onTabletMedia({
+                    ...supportsGrid({
+                      gridArea: "h1",
+                      alignSelf: "flex-end",
+                    }),
+                  }),
+                }}
+              >
+                {heading}
+              </h1>
               <Markdown
                 preprocessor={markdown =>
                   markdown.replace("{{CARDS}}", cardsCollected)
                 }
-                css={{ color: colors.muteGray, padding: "1rem" }}
+                css={{
+                  color: colors.muteGray,
+                  padding: "1rem",
+                  ...onTabletMedia({
+                    ...supportsGrid({
+                      gridArea: "body",
+                    }),
+                  }),
+                }}
               >
                 {bio}
               </Markdown>
@@ -134,6 +168,17 @@ const AboutPage = ({ data }) => {
                   from them.
                 </p>
               </div>
+            </ContentArea>
+            <ContentArea
+              css={{
+                maxWidth: "80rem",
+                ...supportsGrid({
+                  gridTemplateColumns:
+                    "repeat(auto-fit, minmax(min(40rem, 100%), 40rem))",
+                  justifyContent: "center",
+                }),
+              }}
+            >
               {inspirations.map(person => (
                 <CreativeInspiration {...person}></CreativeInspiration>
               ))}
