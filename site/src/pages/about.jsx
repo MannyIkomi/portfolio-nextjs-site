@@ -206,6 +206,7 @@ export const query = graphql`
     }
     allStrapiInspiration {
       nodes {
+        id
         website
         photo {
           publicURL
