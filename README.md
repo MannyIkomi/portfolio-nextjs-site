@@ -1,4 +1,4 @@
-# Portfolio Website
+# Portfolio Website v2
 
 ## Tools and Technologies
 
@@ -8,7 +8,7 @@
 - [x] [Strapi – An open source headless CMS](https://strapi.io/)
 - [x] [Heroku – App Hosting Server Platform ](https://www.heroku.com/)
 
-# Lessons learned from from Version 1.0.0
+# Lessons learned from from Version 1
 
 - Having an actual content management system will give me the control I need over how my data is organized and how I consume that data on the front-end. Using Behance's API as a pseudo-cms with GraphQL to stitch my project data together was a great way to get up and running quickly, but it didn't enable me to optimize how my content was structured.
   - **Resonsive typography improvements**: Each project can now have actual text embedded/styled into the page.
