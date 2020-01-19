@@ -107,6 +107,7 @@ const AboutPage = ({ data }) => {
               </div>
               <h1
                 css={{
+                  whiteSpace: "pre-wrap",
                   padding: "1rem",
                   color: colors.orange,
                   ...onTabletMedia({
@@ -117,7 +118,7 @@ const AboutPage = ({ data }) => {
                   }),
                 }}
               >
-                {heading}
+                {heading.replace(/,\s/gi, ",\n")}
               </h1>
               <Markdown
                 preprocessor={markdown =>

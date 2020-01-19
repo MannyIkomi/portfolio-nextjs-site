@@ -169,7 +169,7 @@ const ProjectTemplate = ({ data }) => {
                 })}
               </ContentArea>
             </SectionBlock>
-
+            {/* 
             <footer>
               <h1>You might also like…</h1>
               <br />
@@ -180,7 +180,7 @@ const ProjectTemplate = ({ data }) => {
               ).map(related => (
                 <ProjectCover {...related} key={related.id} />
               ))}
-            </footer>
+            </footer> */}
           </article>
         </main>
       </StickyScrollContainer>

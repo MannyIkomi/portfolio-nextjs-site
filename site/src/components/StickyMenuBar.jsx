@@ -106,9 +106,9 @@ export const StickyMenuBar = ({ children, ...props }) => {
         <TypesetLink css={{ padding: "1rem" }} to={"/resume"}>
           Resume
         </TypesetLink>
-        <TypesetLink css={{ padding: "1rem" }} to={"/contact"}>
+        {/* <TypesetLink css={{ padding: "1rem" }} to={"/contact"}>
           Say Hello
-        </TypesetLink>
+        </TypesetLink> */}
         {children}
       </div>
     </nav>
