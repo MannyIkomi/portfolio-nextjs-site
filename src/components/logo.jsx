@@ -12,7 +12,7 @@ export const Logo = ({ lockup, color, ...props }) => {
         return (
           <svg
             // width="auto"
-            height="auto"
+            // height="auto"
             viewBox="0 0 136.32 26.804"
             xmlns="http://www.w3.org/2000/svg"
           >
@@ -37,7 +37,7 @@ export const Logo = ({ lockup, color, ...props }) => {
       default:
         return (
           <svg
-            width="100%"
+            // width="100%"
             // height="auto"
             viewBox="0 0 81.409 79.558"
             xmlns="http://www.w3.org/2000/svg"
@@ -70,7 +70,9 @@ export const Logo = ({ lockup, color, ...props }) => {
       href={`/`}
       css={{
         display: "block",
-        overflow: "hidden",
+        // overflow: "hidden",
+        // width: "100%",
+        // height: "100%",
 
         ":hover": {
           svg: { fill: colors.orange },

@@ -45,12 +45,18 @@ export const StickyMenuBar = ({ children, ...props }) => {
           zIndex: 99,
           top: 0,
           left: 0,
+
           padding: "0.5rem",
-          backgroundColor: colors.muteGray,
+          maxHeight: menubarHeight,
+
           ...flex("row"),
           justifyContent: "space-between",
+          // alignItems: "center",
           // overflowX: "hidden",
           // overflowY: "visible",
+          backgroundColor: colors.muteGray,
+          boxShadow: "0 0.25rem 1rem 0px rgba(0,0,0,0.5)",
+          // boxShadow: "-0.25rem 0.25rem 1rem 0px hsla(0, 0%, 0%, 0.5)",
         },
       ]}
     >
@@ -58,8 +64,8 @@ export const StickyMenuBar = ({ children, ...props }) => {
         css={{
           ...styleTransition(),
           ...typesetInteraction(),
-          height: `calc(${menubarHeight} - 1rem)`,
-          width: "auto",
+          width: "8rem",
+          // maxHeight: `calc(${menubarHeight} - 1rem)`,
         }}
       />
       <MenuButton onClick={handleToggle} isToggled={isToggled} />
