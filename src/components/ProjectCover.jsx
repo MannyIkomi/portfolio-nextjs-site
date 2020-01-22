@@ -30,7 +30,7 @@ export const ProjectCover = ({
   console.log(cover)
 
   const [isHovered, handleHover] = useHoverState()
-  const { src, srcSet, sizes } = cover.childImageSharp.sizes
+  const responsiveImage = cover.childImageSharp.fluid
   return (
     <figure
       className={"project-cover"}
@@ -51,19 +51,7 @@ export const ProjectCover = ({
       // {...props}
     >
       <Link to={"/" + slug} css={{ display: "block" }}>
-        {/* <ProjectPhoto alt={coverAlt} {...cover} />
-         */}
-        {/* <Img
-          fluid={cover.childImageSharp.fluid}
-          alt={coverAlt}
-          style={{ width: "100%" }}
-        /> */}
-        <img
-          src={src}
-          alt={coverAlt}
-          srcSet={srcSet}
-          css={{ display: "block", width: "100%", height: "auto" }}
-        />
+        <ProjectPhoto alt={coverAlt} {...responsiveImage} />
 
         {isHovered && (
           <FillOverlay>

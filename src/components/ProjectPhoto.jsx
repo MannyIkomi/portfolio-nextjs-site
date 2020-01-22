@@ -2,36 +2,19 @@ import React from "react"
 import { css } from "@emotion/core"
 import Img from "gatsby-image"
 
-export const ProjectPhoto = ({ alt, childImageSharp }) => (
-  <Img
-    fluid={childImageSharp.fluid}
-    alt={alt}
-    style={{
+export const ProjectPhoto = ({ alt, sizes, srcSet, src, ...rest }) => (
+  <img
+    src={src}
+    srcSet={srcSet}
+    sizes={sizes}
+    alt={coverAlt}
+    css={{
       display: "block",
       width: "100%",
       height: "auto",
-      minWidth: " 100px",
-      // overflow: "initial",
-      picture: {
-        width: "100%",
-      },
+      objectFit: "cover",
     }}
-    // imgStyle={{
-    //   display: "block",
-    //   width: "100%",
-    //   height: "auto",
-    // }}
   />
-  // <img
-  //   css={{
-  //     display: "block",
-  //     width: "100%",
-  //     height: "auto",
-  //     objectFit: "cover",
-  //   }}
-  //   src={src}
-  //   alt={alt}
-  // />
 )
 
 export default ProjectPhoto

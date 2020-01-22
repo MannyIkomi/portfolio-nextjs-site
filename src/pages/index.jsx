@@ -90,13 +90,7 @@ export const pageQuery = graphql`
         draft
         cover {
           childImageSharp {
-            fluid {
-              ...GatsbyImageSharpFluid
-            }
-            fixed {
-              ...GatsbyImageSharpFixed
-            }
-            sizes {
+            fluid(toFormat: JPG) {
               src
               srcSet
               sizes
