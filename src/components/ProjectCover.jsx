@@ -25,6 +25,8 @@ export const ProjectCover = ({
   draft,
   ...props
 }) => {
+  console.log(cover)
+
   const [isHovered, handleHover] = useHoverState()
   return (
     <figure
@@ -44,7 +46,7 @@ export const ProjectCover = ({
       // {...props}
     >
       <Link to={"/" + slug}>
-        <ProjectPhoto src={cover.publicURL} alt={coverAlt} />
+        <ProjectPhoto src={cover.publicURL} alt={coverAlt} {...cover} />
         {isHovered && (
           <FillOverlay>
             <figcaption

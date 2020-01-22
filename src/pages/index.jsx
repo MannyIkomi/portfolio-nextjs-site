@@ -90,6 +90,11 @@ export const pageQuery = graphql`
         draft
         cover {
           publicURL
+          childImageSharp {
+            fixed {
+              ...GatsbyImageSharpFixed
+            }
+          }
         }
       }
     }

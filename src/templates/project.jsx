@@ -2,6 +2,7 @@
 import { css, jsx } from "@emotion/core"
 import React from "react"
 import { graphql, useStaticQuery } from "gatsby"
+import Img from "gatsby-image"
 
 import {
   menubarHeight,
@@ -220,7 +221,6 @@ export const query = graphql`
     # gets all projects !== to the selected projects for related recommendations
     allStrapiProjects(filter: { slug: { ne: $slug }, draft: { eq: false } }) {
       nodes {
-        id
         title
         slug
         subtitle
