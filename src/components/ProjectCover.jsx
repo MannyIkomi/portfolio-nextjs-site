@@ -1,6 +1,7 @@
 import React from "react"
 import { Link } from "gatsby"
 import { css } from "@emotion/core"
+import Img from "gatsby-image"
 
 import { useHoverState } from "../hooks/useHoverState"
 import { FillOverlay } from "./FillOverlay"
@@ -12,6 +13,7 @@ import {
   serifHeading,
   colors,
   onTabletMedia,
+  maxLineMeasure,
 } from "../styles"
 
 export const ProjectCover = ({
@@ -28,6 +30,7 @@ export const ProjectCover = ({
   console.log(cover)
 
   const [isHovered, handleHover] = useHoverState()
+  const { src, srcSet, sizes } = cover.childImageSharp.sizes
   return (
     <figure
       className={"project-cover"}
@@ -35,9 +38,11 @@ export const ProjectCover = ({
         ...aspectRatioLetter,
         position: "relative",
         overflow: "hidden", // clips aspect ratio overflow
-        position: "relative",
+
         // marginBottom: "4rem",
         width: "100%",
+        minWidth: "10rem",
+        ...maxLineMeasure,
         cursor: "pointer",
         backgroundColor: "white",
       }}
@@ -45,8 +50,21 @@ export const ProjectCover = ({
       onMouseLeave={handleHover}
       // {...props}
     >
-      <Link to={"/" + slug}>
-        <ProjectPhoto src={cover.publicURL} alt={coverAlt} {...cover} />
+      <Link to={"/" + slug} css={{ display: "block" }}>
+        {/* <ProjectPhoto alt={coverAlt} {...cover} />
+         */}
+        {/* <Img
+          fluid={cover.childImageSharp.fluid}
+          alt={coverAlt}
+          style={{ width: "100%" }}
+        /> */}
+        <img
+          src={src}
+          alt={coverAlt}
+          srcSet={srcSet}
+          css={{ display: "block", width: "100%", height: "auto" }}
+        />
+
         {isHovered && (
           <FillOverlay>
             <figcaption
@@ -73,9 +91,12 @@ export const ProjectCover = ({
             >
               <h1>{title}</h1>
               <h2>{subtitle}</h2>
-              <span style={{ color: "blue", textTransform: "uppercase" }}>
-                {draft && "DRAFT"}
-              </span>
+
+              {draft && (
+                <span style={{ color: "blue", textTransform: "uppercase" }}>
+                  DRAFT
+                </span>
+              )}
             </figcaption>
           </FillOverlay>
         )}

@@ -89,10 +89,18 @@ export const pageQuery = graphql`
         slug
         draft
         cover {
-          publicURL
           childImageSharp {
+            fluid {
+              ...GatsbyImageSharpFluid
+            }
             fixed {
               ...GatsbyImageSharpFixed
+            }
+            sizes {
+              src
+              srcSet
+              sizes
+              base64
             }
           }
         }
