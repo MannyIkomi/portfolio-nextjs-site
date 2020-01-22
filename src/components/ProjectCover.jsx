@@ -27,10 +27,8 @@ export const ProjectCover = ({
   draft,
   ...props
 }) => {
-  console.log(cover)
-
   const [isHovered, handleHover] = useHoverState()
-  const responsiveImage = cover.childImageSharp.fluid
+  const imageProps = cover.childImageSharp ? cover.childImageSharp.fluid : cover // for fallback GIF support
   return (
     <figure
       className={"project-cover"}
@@ -50,9 +48,15 @@ export const ProjectCover = ({
       onMouseLeave={handleHover}
       // {...props}
     >
-      <Link to={"/" + slug} css={{ display: "block" }}>
-        <ProjectPhoto alt={coverAlt} {...responsiveImage} />
+      <Link to={"/" + slug} /* css={{ display: "block" }} */>
+        <ProjectPhoto alt={coverAlt} {...imageProps} />
+        {/* convert figcaption to trigger on CSS :hover for accessibility
+        on :hover {
+          filter grayscale,
+        }
+  using React state removes heading from the DOM instead of visibility hiding
 
+*/}
         {isHovered && (
           <FillOverlay>
             <figcaption

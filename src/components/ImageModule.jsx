@@ -23,16 +23,6 @@ export const ImageModule = props => {
         },
       ]}
     >
-      {/* <img
-        css={{
-          objectFit: imageFill ? "cover" : "contain",
-          width: "100%",
-          height: "100%",
-          backgroundColor: "white",
-        }}
-        src={image.publicURL}
-        alt={imageAlt}
-      /> */}
       <ProjectPhoto
         alt={imageAlt}
         css={{

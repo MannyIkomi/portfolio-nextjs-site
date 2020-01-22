@@ -13,8 +13,11 @@ import { moduleProps } from "../util/props"
 
 import Markdown from "./markdown"
 import StickyScrollContainer from "./StickyScrollContainer"
+import { ProjectPhoto } from "./ProjectPhoto"
 
 export const CaptionModule = ({ image, imageAlt, imageFill, text }) => {
+  const imageProps = image.childImageSharp ? image.childImageSharp.fluid : image // for fallback GIF support
+
   return (
     <figure
       css={[
@@ -53,7 +56,16 @@ export const CaptionModule = ({ image, imageAlt, imageFill, text }) => {
           }),
         }}
       >
-        <img src={image.publicURL} alt={imageAlt} />
+        <ProjectPhoto
+          alt={imageAlt}
+          // css={{
+          //   objectFit: imageFill ? "cover" : "contain",
+          //   width: "100%",
+          //   height: "100%",
+          //   backgroundColor: "white",
+          // }}
+          {...imageProps}
+        />
         <figcaption
           css={{
             position: "sticky",

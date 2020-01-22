@@ -89,12 +89,9 @@ export const pageQuery = graphql`
         slug
         draft
         cover {
+          publicURL
           childImageSharp {
-            fluid(
-              toFormat: JPG
-              background: "rgba(255,255,255,1)"
-              quality: 90
-            ) {
+            fluid(quality: 90) {
               src
               srcSet
               sizes
