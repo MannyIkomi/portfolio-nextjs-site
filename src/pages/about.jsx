@@ -33,6 +33,7 @@ const AboutPage = ({ data }) => {
     website,
     photo,
   } = data.strapiAbout
+  const imageProps = photo.childImageSharp ? photo.childImageSharp.fluid : photo // for fallback GIF support
 
   const inspirations = data.allStrapiInspiration.nodes
 
@@ -101,8 +102,8 @@ const AboutPage = ({ data }) => {
               >
                 <img
                   css={{ display: "block", width: "100%", height: "auto" }}
-                  src={photo.publicURL}
                   alt="Manny smiling at you"
+                  {...imageProps}
                 />
               </div>
               <h1
@@ -202,6 +203,14 @@ export const query = graphql`
       website
       photo {
         publicURL
+        childImageSharp {
+          fluid(quality: 90) {
+            src
+            srcSet
+            sizes
+            base64
+          }
+        }
       }
     }
     allStrapiInspiration {
@@ -210,6 +219,14 @@ export const query = graphql`
         website
         photo {
           publicURL
+          childImageSharp {
+            fluid(quality: 90) {
+              src
+              srcSet
+              sizes
+              base64
+            }
+          }
         }
         name
         description
