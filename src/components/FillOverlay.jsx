@@ -29,7 +29,7 @@ const layoutChildren = css({
 })
 
 const withMotif = css({
-  "::before": {
+  "::after": {
     content: 'url("../motif-gallery.svg")',
     position: "absolute",
     top: "-1px",
@@ -39,9 +39,31 @@ const withMotif = css({
   },
 })
 
-export const FillOverlay = ({ children, ...props }) => (
-  <>
-    <div css={orangeOverlay} />
-    <div css={[layoutChildren, withMotif]}>{children}</div>
-  </>
+const fillOrange = override =>
+  css({
+    backgroundColor: colors.orange,
+    opacity: 1,
+
+    ...override,
+  })
+
+const positionOverlay = override =>
+  css({
+    position: "absolute",
+    top: 0,
+    left: 0,
+    width: "100%",
+    height: "100%",
+    ...override,
+  })
+
+export const Motif = () => <></>
+
+export const OrangeOverprint = ({ children, ...restProps }) => (
+  <div
+    css={[positionOverlay(), fillOrange({ mixBlendMode: "multiply" })]}
+    {...restProps}
+  >
+    {children}
+  </div>
 )
