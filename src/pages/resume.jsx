@@ -120,7 +120,7 @@ const ResumePage = ({ data }) => {
                   ))}
                 </List>
               </ResumeSection>
-              <footer>resume footer</footer>
+              {/* <footer>resume footer</footer> */}
             </ContentArea>
           </article>
         </main>
