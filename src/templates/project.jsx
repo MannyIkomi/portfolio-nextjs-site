@@ -240,7 +240,7 @@ export const query = graphql`
         cover {
           publicURL
           childImageSharp {
-            fluid(quality: 90) {
+            fluid(quality: 75) {
               src
               srcSet
               sizes

@@ -92,7 +92,7 @@ export const pageQuery = graphql`
         cover {
           publicURL
           childImageSharp {
-            fluid(quality: 90) {
+            fluid(quality: 75) {
               src
               srcSet
               sizes
