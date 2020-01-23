@@ -31,7 +31,12 @@ const ResumePage = ({ data }) => {
   const tools = data.allStrapiExpertise.nodes.filter(
     ({ type }) => type === "tool"
   )
-  const education = data.allStrapiEducation.nodes
+  const education = data.allStrapiEducation.nodes.filter(
+    ({ certification }) => certification === false
+  )
+  const certificates = data.allStrapiEducation.nodes.filter(
+    ({ certification }) => certification === true
+  )
 
   return (
     <Layout>
@@ -42,7 +47,6 @@ const ResumePage = ({ data }) => {
 
       <StickyScrollContainer>
         <StickyMenuBar />
-
         <main>
           <article
             css={{
@@ -66,6 +70,9 @@ const ResumePage = ({ data }) => {
                 </TypesetLink>
                 <TypesetLink css={{ padding: "1rem" }} to={"#education"}>
                   Education
+                </TypesetLink>
+                <TypesetLink css={{ padding: "1rem" }} to={"#certifications"}>
+                  Certifications
                 </TypesetLink>
                 <TypesetLink css={{ padding: "1rem" }} to={"#volunteering"}>
                   Volunteering
@@ -91,6 +98,11 @@ const ResumePage = ({ data }) => {
               </ResumeSection>
               <ResumeSection id={`education`} heading={"Education"}>
                 {education.map(edu => (
+                  <Education {...edu} key={edu.id} />
+                ))}
+              </ResumeSection>
+              <ResumeSection id={`certifications`} heading={"Certifications"}>
+                {certificates.map(edu => (
                   <Education {...edu} key={edu.id} />
                 ))}
               </ResumeSection>
@@ -143,6 +155,7 @@ export const query = graphql`
         description
         concentration
         id
+        certification
       }
     }
     allStrapiExpertise {

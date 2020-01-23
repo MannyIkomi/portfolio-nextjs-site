@@ -6,10 +6,11 @@ import {
   colors,
   positionSticky,
   typography,
+  touchTarget,
   resumeContentHeading,
   menubarHeight,
 } from "../styles"
-import { Entity } from "./Entity"
+import { TitleResume } from "./Entity"
 import { TimeFrame } from "./TimeFrame"
 import Markdown from "./markdown"
 import useToggleSwitch from "../hooks/useToggleSwitch"
@@ -22,11 +23,11 @@ export const Education = props => {
     description,
     concentration,
     details,
-    ...rest
+    ...restProps
   } = props
   const [toggled, setToggled] = useToggleSwitch(false)
   return (
-    <article>
+    <article css={{ margin: `${touchTarget} 0` }} {...restProps}>
       <header
         css={[
           toggled && positionSticky(menubarHeight),
@@ -38,8 +39,8 @@ export const Education = props => {
           },
         ]}
       >
-        <Entity>{school}</Entity>
-        {concentration}
+        <TitleResume>{concentration}</TitleResume>
+        {school}
         <br />
         <TimeFrame start={started} end={ended} />
       </header>

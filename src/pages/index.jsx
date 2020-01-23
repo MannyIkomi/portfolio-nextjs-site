@@ -83,6 +83,7 @@ export const pageQuery = graphql`
     # add {completed} field to keep rendering in chronological order
     allStrapiProjects(sort: { fields: completed, order: DESC }) {
       nodes {
+        id
         coverAlt
         title
         subtitle

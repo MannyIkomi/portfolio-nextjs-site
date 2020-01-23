@@ -4,7 +4,7 @@ import { css, jsx } from "@emotion/core"
 import { TypesetLink } from "./TypesetLink"
 import { typography, resumeContentHeading } from "../styles"
 
-export const Entity = props => {
+export const TitleResume = props => {
   const { url, title, children, ...rest } = props
 
   return (

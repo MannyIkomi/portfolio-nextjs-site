@@ -7,6 +7,7 @@ import {
   positionSticky,
   colors,
   flex,
+  touchTarget,
   menubarHeight,
   styleTransition,
   typesetInteraction,
@@ -14,7 +15,7 @@ import {
 import { Markdown } from "./markdown"
 import useToggleSwitch from "../hooks/useToggleSwitch"
 import { TimeFrame } from "./TimeFrame"
-import { Entity } from "./Entity"
+import { TitleResume } from "./Entity"
 import { ContentArea } from "./ContentArea"
 import StickyScrollContainer from "./StickyScrollContainer"
 import { Button } from "./Button"
@@ -33,7 +34,14 @@ export const Experience = props => {
   const [toggled, setToggle] = useToggleSwitch(false)
   return (
     <StickyScrollContainer>
-      <article css={{ ...flex("column"), alignItems: "center" }} {...rest}>
+      <article
+        css={{
+          ...flex("column"),
+          alignItems: "center",
+          margin: `${touchTarget} 0`,
+        }}
+        {...rest}
+      >
         <header
           css={[
             toggled && positionSticky(menubarHeight),
@@ -45,7 +53,7 @@ export const Experience = props => {
             },
           ]}
         >
-          <Entity url={url}>{organization}</Entity>
+          <TitleResume url={url}>{organization}</TitleResume>
           <br />
           {roles}
           <br />

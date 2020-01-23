@@ -111,6 +111,7 @@ export const typesetInteraction = (override = {}) => ({
 export const resumeContentHeading = {
   ...sansHeading,
   textTransform: "initial",
+  lineHeight: 1.2,
   // fontWeight: "bold",
 }
 
