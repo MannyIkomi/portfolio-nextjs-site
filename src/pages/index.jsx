@@ -95,7 +95,6 @@ export const pageQuery = graphql`
               src
               srcSet
               sizes
-              base64
             }
           }
         }

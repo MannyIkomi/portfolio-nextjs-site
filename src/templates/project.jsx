@@ -214,7 +214,6 @@ export const query = graphql`
               src
               srcSet
               sizes
-              base64
             }
           }
           publicURL
@@ -245,7 +244,6 @@ export const query = graphql`
               src
               srcSet
               sizes
-              base64
             }
           }
         }

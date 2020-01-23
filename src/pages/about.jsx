@@ -204,11 +204,10 @@ export const query = graphql`
       photo {
         publicURL
         childImageSharp {
-          fluid(quality: 90) {
+          fluid(quality: 50) {
             src
             srcSet
             sizes
-            base64
           }
         }
       }
@@ -220,11 +219,10 @@ export const query = graphql`
         photo {
           publicURL
           childImageSharp {
-            fluid(quality: 90) {
+            fluid(quality: 50) {
               src
               srcSet
               sizes
-              base64
             }
           }
         }

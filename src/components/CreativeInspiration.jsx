@@ -8,12 +8,14 @@ import { inspirationProps } from "../util/props"
 
 export const CreativeInspiration = props => {
   const { photo, name, description, website, children } = props
+  const imageProps =
+    photo && photo.childImageSharp ? photo.childImageSharp.fluid : photo // for fallback GIF support
 
-  const PortraitPhoto = () => (
+  const PortraitPhoto = props => (
     <img
       css={{ display: "block", width: "100%", height: "auto" }}
-      src={photo.publicURL}
       alt={name}
+      {...imageProps}
     />
   )
 
