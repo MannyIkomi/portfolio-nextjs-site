@@ -22,20 +22,20 @@ import { Education } from "../components/Education"
 
 const ResumePage = ({ data }) => {
   const employment = data.allStrapiExperience.nodes.filter(
-    exp => exp.isPaid === true
+    ({ isPaid, draft }) => isPaid && !draft
   )
   const volunteering = data.allStrapiExperience.nodes.filter(exp => !exp.isPaid)
   const skills = data.allStrapiExpertise.nodes.filter(
-    ({ type }) => type === "skill"
+    ({ type, draft }) => type === "skill" && !draft
   )
   const tools = data.allStrapiExpertise.nodes.filter(
-    ({ type }) => type === "tool"
+    ({ type, draft }) => type === "tool" && !draft
   )
   const education = data.allStrapiEducation.nodes.filter(
-    ({ certification }) => certification === false
+    ({ certification, draft }) => !certification && !draft
   )
   const certificates = data.allStrapiEducation.nodes.filter(
-    ({ certification }) => certification === true
+    ({ certification, draft }) => certification && !draft
   )
 
   return (
@@ -141,6 +141,7 @@ export const query = graphql`
         ended(fromNow: false)
         started(fromNow: false)
         isPaid
+        draft
         details
         url
         id
@@ -152,6 +153,7 @@ export const query = graphql`
         started(fromNow: false)
         school
         ended(fromNow: false)
+        draft
         description
         concentration
         id

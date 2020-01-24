@@ -24,7 +24,7 @@ import { ContentArea } from "../components/ContentArea"
 import { SectionBlock } from "../components/SectionBlock"
 
 const IndexPage = ({ data }) => {
-  const projects = data.allStrapiProjects.nodes
+  const projects = data.allStrapiProjects.nodes.filter(({ draft }) => !draft)
 
   // Window.matchMatch(CSSMediaQuery via JS)
   return (

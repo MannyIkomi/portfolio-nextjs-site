@@ -53,7 +53,7 @@ export const Footer = props => {
           width: "25%",
           svg: {
             ...styleTransition(),
-            fill: "white",
+            fill: colors.muteGray,
           },
           margin: "2rem 0",
           "@media screen and (min-width: 500px)": {

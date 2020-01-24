@@ -139,6 +139,7 @@ export const global = {
   },
   // body: {
   //   overflow: "hidden",
+  //   overflowX: "hidden",
   // },
   a: {
     color: "inherit",
