@@ -56,20 +56,13 @@ export const ProjectCover = ({
             },
             ".willHide": {
               opacity: 0,
-              // h2: {
-              //   fontSize: "1rem",
-              //   display: "block",
-              //   backgroundColor: colors.darkGray,
-              //   color: colors.muteGray,
-              //   backgroundBlendMode: "multiply",
-              // },
 
-              ...onMediaWidth("800px", {
-                opacity: 1,
-                // color: "black",
-                textShadow: "0px 0px 0.2rem rgba(0, 0, 0, 1)",
-                // mixBlendMode: "exclusion",
-              }),
+              // ...onMediaWidth("800px", {
+              //   // Render text ontop of covers?
+              //   // Need to resolve legibility issues
+              //   opacity: 1,
+              //   textShadow: "0px 0px 0.2rem rgba(0, 0, 0, 1)",
+              // }),
             },
           }),
 
@@ -79,6 +72,7 @@ export const ProjectCover = ({
             },
 
             ".willHide": {
+              // color: colors.orange,
               textShadow: "0px 0px 0.2rem rgba(0, 0, 0, 1)",
               opacity: 0,
             },
@@ -119,11 +113,12 @@ export const ProjectCover = ({
             left: 0,
 
             padding: "1rem",
+
             color: colors.muteGray,
 
             h1: {
-              color: colors.muteGray,
               ...sansHeading,
+              color: colors.muteGray,
               // fontSize: "2rem",
               fontWeight: "bold",
               textTransform: "initial",
