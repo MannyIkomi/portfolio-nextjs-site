@@ -1,12 +1,14 @@
+Developers usually put important documentation and usage information here, but since I'm a designer I guess I can tell you 
+
 # Portfolio Website v2
 
 ## Tools and Technologies
 
 - [x] [React – JavaScript library for building UI's](https://reactjs.org/)
-- [x] [NextJS – Server Side Rendering for React](https://nextjs.org/)
-- [x] [Emotion – CSS in JS styling](https://emotion.sh/docs/introduction)
-- [x] [Strapi – An open source headless CMS](https://strapi.io/)
-- [x] [Heroku – App Hosting Server Platform ](https://www.heroku.com/)
+- [x] [Gatsby – Static site generator framework](https://www.gatsbyjs.org/)
+- [x] [Emotion – CSS in JS styling](https://emotion.sh/)
+- [x] [Strapi – Headless CMS](https://strapi.io/)
+- [x] [Netlify – Serverless static site deployment ](https://www.netlify.com/)
 
 # Lessons learned from from Version 1
 
@@ -17,4 +19,4 @@
 
 ## Why did you chose Strapi and not Wordpress for my CMS?
 
-Wordpress was the first to come to mind, however the overall platform fell short for me as a designer/developer. Wordpress felt like to heavy of an abstraction, **even though it's the most popular solution does not mean it's the right one.** There were also whispers about security issues, bloated themes/plugins and overall poor developer experience. **I just wanted a simple way to define, administer, and consume my content via an API without having to dig into code to make changes.** That is how I stumbled across the concept of a _headless CMS_ – and eventually, [Strapi](https://strapi.io/).
+Wordpress was the first to come to mind, however the overall platform fell short for me as a designer/developer. Wordpress felt like to heavy of an abstraction, **even though it's the most popular solution does not mean it's the right one.** There were also whispers about security issues, bloated themes/plugins and overall poor developer experience. **I just wanted a simple way to define, manage, and consume my content via an API without the overhead of writing/deploying it as a service.** That's when I came across the concept of a _headless CMS_ – and eventually, [Strapi](https://strapi.io/).
