@@ -81,6 +81,7 @@ export const ProjectCover = ({
 
             "&:hover, &:focus": {
               // when one project is hovered should all others dim to gray? to further increase contrast.
+              zIndex: 2,
               transform: "scale(1.05)",
               transformOrigin: "center",
 
@@ -122,7 +123,7 @@ export const ProjectCover = ({
             h1: {
               ...sansHeading,
               color: colors.muteGray,
-              // fontSize: "2rem",
+              lineHeight: 1.2,
               fontWeight: "bold",
               textTransform: "initial",
             },
