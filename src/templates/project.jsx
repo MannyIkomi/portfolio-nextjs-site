@@ -14,6 +14,8 @@ import {
   maxLineMeasure,
   touchTarget,
   onTabletMedia,
+  onMedia,
+  onMediaWidth,
 } from "../styles"
 import Layout from "../components/layout"
 import HtmlHead from "../components/HtmlHead"
@@ -172,31 +174,48 @@ const ProjectTemplate = ({ data }) => {
               </ContentArea>
             </SectionBlock>
 
-            <footer css={{ backgroundColor: colors.muteGray }}>
+            <footer css={{ width: "100%", backgroundColor: colors.muteGray }}>
               <SectionBlock
-                css={{
-                  overflow: "hidden",
-                }}
+                css={[onMedia("pointer: coarse", { overflow: "hidden" })]}
               >
                 <ContentArea
-                  css={{
-                    padding: "1rem",
-                  }}
+                  css={[
+                    {
+                      // progressive enhance from single column vertical scroll
+                    },
+                    {
+                      padding: touchTarget,
+                    },
+                  ]}
                 >
                   <h1>You might also like…</h1>
                 </ContentArea>
                 <div
-                  css={{
-                    overflowX: "scroll",
+                  css={[
+                    {
+                      // progressive enhance from single column vertical scroll
+                      ...flex("row"),
+                      alignItems: "center",
+                      justifyContent: "center",
+                      flexWrap: "wrap",
 
-                    display: "flex",
-                    flexWrap: "nowrap",
-                    alignItems: "center",
+                      width: "100%",
+                      maxWidth: "80rem",
+                      padding: "2rem",
+                    },
+                    onMedia("pointer: coarse", {
+                      overflowX: "scroll",
 
-                    maxWidth: "100vw",
-                    minHeight: "66vh",
-                    padding: touchTarget,
-                  }}
+                      ...flex("row"),
+                      flexWrap: "nowrap",
+                      alignItems: "center",
+                      justifyContent: "initial",
+
+                      maxWidth: "100vw",
+                      minHeight: "66vh",
+                      padding: touchTarget,
+                    }),
+                  ]}
                 >
                   {findRelatedProjects(
                     thisProject,
@@ -204,11 +223,24 @@ const ProjectTemplate = ({ data }) => {
                     // removeCurrentProject(thisProject, otherProjects)
                   ).map(related => (
                     <div
-                      css={{
-                        flex: "0 0 auto",
-                        maxWidth: "66vw",
-                        marginRight: "2rem",
-                      }}
+                      css={[
+                        {
+                          // progressive enhance from single column vertical scroll
+                          minWidth: "10rem",
+                          maxWidth: "20rem",
+                          margin: touchTarget,
+
+                          ...onTabletMedia({
+                            maxWidth: "30rem",
+                            margin: "5%",
+                          }),
+                        },
+                        onMedia("pointer: coarse", {
+                          flex: "0 0 auto",
+                          maxWidth: "66vw",
+                          marginRight: touchTarget,
+                        }),
+                      ]}
                     >
                       <ProjectCover {...related} key={related.id} />
                     </div>
@@ -263,7 +295,10 @@ export const query = graphql`
     }
 
     # gets all projects !== to the selected projects for related recommendations
-    allStrapiProjects(filter: { slug: { ne: $slug }, draft: { eq: false } }) {
+    allStrapiProjects(
+      limit: 4 # max 4 related project recommendations
+      filter: { slug: { ne: $slug }, draft: { eq: false } }
+    ) {
       nodes {
         id
         title
