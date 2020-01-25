@@ -41,12 +41,13 @@ export const ProjectCover = ({
           position: "relative",
           overflow: "hidden", // clips aspect ratio overflow
 
-          // marginBottom: "4rem",
           width: "100%",
           minWidth: "10rem",
           ...maxLineMeasure,
           cursor: "pointer",
           backgroundColor: "white",
+
+          boxShadow: `0rem 1rem 1rem 0.5rem hsla(0, 0%, 0%, 0.66)`,
 
           ...onMedia("hover: none", {
             // user agent does not have :hover (touch devices)
@@ -67,6 +68,7 @@ export const ProjectCover = ({
           }),
 
           ...onMedia("hover: hover", {
+            ...styleTransition(),
             ".willHide, img": {
               ...styleTransition(),
             },
@@ -79,10 +81,11 @@ export const ProjectCover = ({
 
             "&:hover, &:focus": {
               // when one project is hovered should all others dim to gray? to further increase contrast.
+              transform: "scale(1.05)",
+              transformOrigin: "center",
+
               img: {
                 filter: "grayscale(50%) contrast(66%) blur(2px)", // matte finish
-                transform: "scale(1.1)",
-                transformOrigin: "center",
               },
               ".willHide": {
                 opacity: 1,
