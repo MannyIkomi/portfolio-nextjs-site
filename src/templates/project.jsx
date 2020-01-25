@@ -173,19 +173,28 @@ const ProjectTemplate = ({ data }) => {
             </SectionBlock>
 
             <footer css={{ backgroundColor: colors.muteGray }}>
-              <SectionBlock>
-                <ContentArea>
+              <SectionBlock
+                css={{
+                  overflow: "hidden",
+                }}
+              >
+                <ContentArea
+                  css={{
+                    padding: "1rem",
+                  }}
+                >
                   <h1>You might also like…</h1>
                 </ContentArea>
                 <div
                   css={{
+                    overflowX: "scroll",
+
                     display: "flex",
                     flexWrap: "nowrap",
-                    overflowX: "scroll",
                     alignItems: "center",
 
-                    minHeight: "66vh",
                     maxWidth: "100vw",
+                    minHeight: "66vh",
                     padding: touchTarget,
                   }}
                 >
