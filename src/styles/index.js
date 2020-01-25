@@ -82,7 +82,7 @@ export const ulStyles = {
 
 export const aspectRatioLetter = {
   height: 0,
-  paddingBottom: "calc(100% * (17 / 22))",
+  paddingBottom: "calc(100% * (17 / 22) - 1px )",
 }
 
 export const textLink = {

@@ -47,7 +47,7 @@ export const ProjectCover = ({
           cursor: "pointer",
           backgroundColor: "white",
 
-          boxShadow: `0rem 1rem 1rem 0.5rem hsla(0, 0%, 0%, 0.66)`,
+          boxShadow: `0rem 1rem 1rem 0.5rem hsla(0, 0%, 0%, 0.5)`,
 
           ...onMedia("hover: none", {
             // user agent does not have :hover (touch devices)
