@@ -52,6 +52,7 @@ export const StickyMenuBar = ({ children, ...props }) => {
     marginBottom: touchTarget,
     backgroundColor: colors.muteGray,
     boxShadow: "0 0.25rem 1rem 0px rgba(0,0,0,0.5)",
+    textTransform: "uppercase",
   }
 
   return (

@@ -3,9 +3,10 @@ import React from "react"
 import { css, jsx } from "@emotion/core"
 import {
   typesetInteraction,
-  textLink,
+  linkText,
   touchTarget,
   styleTransition,
+  onMedia,
 } from "../styles"
 
 export const TypesetLink = props => {
@@ -17,8 +18,10 @@ export const TypesetLink = props => {
       css={[
         { position: "relative" },
         styleTransition(),
-        typesetInteraction(),
-        textLink,
+        onMedia("hover: hover", {
+          ...typesetInteraction(),
+        }),
+        linkText,
       ]}
       {...rest}
     >

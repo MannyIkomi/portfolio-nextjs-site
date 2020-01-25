@@ -85,7 +85,7 @@ export const aspectRatioLetter = {
   paddingBottom: "calc(100% * (17 / 22) - 1px )",
 }
 
-export const textLink = {
+export const linkText = {
   ...sansType,
   ...futuraBodySize,
   display: "inline-block",
@@ -122,7 +122,7 @@ export const typography = {
   serifHeading,
   typesetInteraction,
   fontSizeTransition,
-  textLink,
+  textLink: linkText,
   resumeContentHeading,
   // linkStyles,
   // typesetAnimation,
