@@ -12,6 +12,7 @@ import {
   serifType,
   futuraBodySize,
   maxLineMeasure,
+  touchTarget,
   onTabletMedia,
 } from "../styles"
 import Layout from "../components/layout"
@@ -170,18 +171,42 @@ const ProjectTemplate = ({ data }) => {
                 })}
               </ContentArea>
             </SectionBlock>
-            {/* 
-            <footer>
-              <h1>You might also like…</h1>
-              <br />
-              {findRelatedProjects(
-                thisProject,
-                otherProjects
-                // removeCurrentProject(thisProject, otherProjects)
-              ).map(related => (
-                <ProjectCover {...related} key={related.id} />
-              ))}
-            </footer> */}
+
+            <footer css={{ backgroundColor: colors.muteGray }}>
+              <SectionBlock>
+                <ContentArea>
+                  <h1>You might also like…</h1>
+                </ContentArea>
+                <div
+                  css={{
+                    display: "flex",
+                    flexWrap: "nowrap",
+                    overflowX: "scroll",
+                    alignItems: "center",
+
+                    minHeight: "66vh",
+                    maxWidth: "100vw",
+                    padding: touchTarget,
+                  }}
+                >
+                  {findRelatedProjects(
+                    thisProject,
+                    otherProjects
+                    // removeCurrentProject(thisProject, otherProjects)
+                  ).map(related => (
+                    <div
+                      css={{
+                        flex: "0 0 auto",
+                        maxWidth: "66vw",
+                        marginRight: "2rem",
+                      }}
+                    >
+                      <ProjectCover {...related} key={related.id} />
+                    </div>
+                  ))}
+                </div>
+              </SectionBlock>
+            </footer>
           </article>
         </main>
       </StickyScrollContainer>
@@ -231,6 +256,7 @@ export const query = graphql`
     # gets all projects !== to the selected projects for related recommendations
     allStrapiProjects(filter: { slug: { ne: $slug }, draft: { eq: false } }) {
       nodes {
+        id
         title
         slug
         subtitle
