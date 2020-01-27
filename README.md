@@ -12,7 +12,7 @@ Developers usually put important documentation, usage info, and how-to here, but
 
 # Lessons learned from from Version 1
 
-Using Behance's API as a pseudo-cms with a small GraphQL layer was a great way to get up and running quickly, but it didn't enable me to optimize how my content was stored and structured and was quite complex for such a small personal project.
+Using Behance's API as a *pseudo-cms* with a small GraphQL layer was a great way to get up and running quickly, but it didn't enable me to optimize how my content was stored and structured and was quite complex for such a small personal project.
 
 ### Having an actual content management system will give me the control I need over how my data is stored/structured and a  built-in API to consume that data on the front-end. The benefits of which include:
   - **Search engine optimization will be greatly improved** with higher quality writing and keywords on each project page.
