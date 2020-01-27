@@ -1,47 +1,58 @@
 {
-  "name": "portfolio-nextjs-site",
-  "version": "1.0.0",
-  "description": "Manny Ikomi's personal portfolio website",
-  "main": "index.js",
+  "name": "portfolio-site",
+  "version": "2.0.0",
+  "description": "Portfolio site cms backend",
+  "author": "Manny Ikomi",
+  "license": "ISC",
   "engines": {
     "node": "10.8.0"
   },
-  "scripts": {
-    "test": "jest",
-    "dev": "NODE_ENV=development node server.js",
-    "build": "next build",
-    "start": "NODE_ENV=production node server.js"
-  },
-  "author": "Manny Ikomi",
-  "license": "ISC",
+  "private": true,
   "dependencies": {
-    "@babel/types": "^7.4.0",
-    "@emotion/core": "^10.0.10",
-    "axios": "^0.18.1",
-    "dotenv-webpack": "^1.7.0",
-    "express": "^4.16.4",
-    "next": "^8.0.4",
+    "@emotion/core": "^10.0.27",
+    "gatsby": "^2.18.12",
+    "gatsby-image": "^2.2.34",
+    "gatsby-plugin-emotion": "^4.1.18",
+    "gatsby-plugin-manifest": "^2.2.31",
+    "gatsby-plugin-offline": "^3.0.27",
+    "gatsby-plugin-react-helmet": "^3.1.16",
+    "gatsby-plugin-sharp": "^2.3.5",
+    "gatsby-source-filesystem": "^2.1.40",
+    "gatsby-source-strapi": "0.0.10",
+    "gatsby-transformer-sharp": "^2.3.7",
     "prop-types": "^15.7.2",
-    "react": "^16.8.6",
-    "react-dom": "^16.8.6"
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0",
+    "react-helmet": "^5.2.1",
+    "showdown": "^1.9.1"
   },
   "devDependencies": {
-    "babel-jest": "^24.5.0",
-    "eslint": "^5.16.0",
-    "eslint-config-standard": "^12.0.0",
-    "eslint-plugin-emotion": "^10.0.7",
-    "eslint-plugin-import": "^2.17.2",
-    "eslint-plugin-node": "^8.0.1",
-    "eslint-plugin-promise": "^4.1.1",
-    "eslint-plugin-react": "^7.13.0",
-    "eslint-plugin-standard": "^4.0.0",
-    "jest": "^24.5.0",
-    "mockdate": "^2.0.2",
-    "supersniff": "^2.1.0"
+    "prettier": "^1.19.1"
+  },
+  "keywords": [
+    "gatsby"
+  ],
+  "scripts": {
+    "build": "gatsby build",
+    "develop": "gatsby develop",
+    "format": "prettier --write \"**/*.{js,jsx,json,md}\"",
+    "start": "npm run develop",
+    "dev": "npm run develop",
+    "serve": "gatsby serve",
+    "clean": "gatsby clean",
+    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
   },
   "jest": {
     "transform": {
-      "^.+\\.jsx?$": "babel-jest"
+      "^.+\\.[t|j]sx?$": "babel-jest"
     }
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MannyIkomi/portfolio-nextjs-site.git"
+  },
+  "bugs": {
+    "url": "https://github.com/MannyIkomi/portfolio-nextjs-site/issues"
+  },
+  "homepage": "https://github.com/MannyIkomi/portfolio-nextjs-site#readme"
 }
