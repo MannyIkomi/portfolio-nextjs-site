@@ -7,7 +7,7 @@ import {
   typography,
   ulStyles,
   typesetInteraction,
-  textLink,
+  linkText,
   styleTransition,
   serifHeading,
   sansType,
@@ -46,7 +46,7 @@ export const Markdown = ({ children, preprocessor, ...props }) => {
           ...ulStyles,
         },
         a: {
-          ...textLink,
+          ...linkText,
           ...styleTransition(),
           display: "inline",
         },

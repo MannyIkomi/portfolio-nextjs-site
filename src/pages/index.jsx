@@ -29,7 +29,10 @@ const IndexPage = ({ data }) => {
   // Window.matchMatch(CSSMediaQuery via JS)
   return (
     <Layout>
-      <HtmlHead title="Home" />
+      <HtmlHead
+        title="Design Thinker, Lifetime Learner, Digital Craftsman"
+        description={"Design portfolio"}
+      />
       <StickyScrollContainer
         css={{
           "::before": {
@@ -81,7 +84,10 @@ const IndexPage = ({ data }) => {
 export const pageQuery = graphql`
   query IndexQuery {
     # add {completed} field to keep rendering in chronological order
-    allStrapiProjects(sort: { fields: completed, order: DESC }) {
+    allStrapiProjects(
+      sort: { fields: completed, order: DESC }
+      filter: { private: { eq: false } }
+    ) {
       nodes {
         id
         coverAlt

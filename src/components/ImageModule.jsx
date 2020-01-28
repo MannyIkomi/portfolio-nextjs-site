@@ -2,7 +2,7 @@
 import React, { Fragment } from "react"
 import { css, jsx } from "@emotion/core"
 
-import { mixin, moduleContainer } from "../styles"
+import { mixin, moduleContainer, flex } from "../styles"
 import { moduleProps } from "../util/props"
 import ProjectPhoto from "./ProjectPhoto"
 
@@ -15,10 +15,11 @@ export const ImageModule = props => {
       css={[
         moduleContainer(),
         {
+          ...flex("column"),
           width: "100%",
           height: "auto",
 
-          maxWidth: "80rem",
+          // maxWidth: "80rem",
           // maxHeight: "90vh",
         },
       ]}

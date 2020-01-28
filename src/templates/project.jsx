@@ -72,7 +72,7 @@ const ProjectTemplate = ({ data }) => {
   return (
     <Layout>
       <HtmlHead
-        title={`${thisProject.title}, ${thisProject.subtitle}`}
+        title={`${thisProject.title}: ${thisProject.subtitle}`}
         description={thisProject.seoDescription}
       />
       <StickyScrollContainer
@@ -143,6 +143,7 @@ const ProjectTemplate = ({ data }) => {
                   position: "relative",
                   top: "-25vh",
 
+                  width: "100%",
                   maxWidth: "80rem",
                   padding: "0 1rem",
 
@@ -276,7 +277,7 @@ export const query = graphql`
             original {
               src
             }
-            fluid(quality: 90) {
+            fluid(quality: 75, maxWidth: 1024) {
               src
               srcSet
               sizes
@@ -297,7 +298,12 @@ export const query = graphql`
     # gets all projects !== to the selected projects for related recommendations
     allStrapiProjects(
       limit: 4 # max 4 related project recommendations
-      filter: { slug: { ne: $slug }, draft: { eq: false } }
+      filter: {
+        slug: { ne: $slug }
+        draft: { eq: false }
+        private: { eq: false }
+      }
+      sort: { fields: completed, order: DESC }
     ) {
       nodes {
         id
@@ -310,7 +316,7 @@ export const query = graphql`
         cover {
           publicURL
           childImageSharp {
-            fluid(quality: 75) {
+            fluid(quality: 75, maxWidth: 1024) {
               src
               srcSet
               sizes
