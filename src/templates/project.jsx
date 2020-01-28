@@ -277,7 +277,11 @@ export const query = graphql`
             original {
               src
             }
-            fluid(quality: 75, maxWidth: 1024) {
+            fluid(
+              quality: 75
+              maxWidth: 1024
+              toFormat: JPG # background: "rgba(255,255,255,1)"
+            ) {
               src
               srcSet
               sizes
@@ -316,7 +320,7 @@ export const query = graphql`
         cover {
           publicURL
           childImageSharp {
-            fluid(quality: 75, maxWidth: 1024) {
+            fluid(quality: 75, maxWidth: 1024, toFormat: JPG) {
               src
               srcSet
               sizes
