@@ -30,8 +30,10 @@ const IndexPage = ({ data }) => {
   return (
     <Layout>
       <HtmlHead
-        title="Design Thinker, Lifetime Learner, Digital Craftsman"
-        description={"Design portfolio"}
+        title="Portfolio Projects"
+        description={
+          "A collection of Manny Ikomi's best design work, including identity design, typography, web design, branding, and logo design"
+        }
       />
       <StickyScrollContainer
         css={{
@@ -58,7 +60,7 @@ const IndexPage = ({ data }) => {
               <Gallery
                 css={{
                   ".project-cover": {
-                    marginBottom: "2rem",
+                    marginBottom: touchTarget,
                   },
                   ...onTabletMedia({
                     ".project-cover": {

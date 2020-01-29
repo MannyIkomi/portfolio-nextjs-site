@@ -40,14 +40,14 @@ const AboutPage = ({ data }) => {
   return (
     <Layout>
       <HtmlHead
-        title={"Hi There! 🤓"}
-        description={`With over 5 years of experience in the print industry, I've gained the skills required to craft design ideas into a high quality product.`}
+        title={"About Me"}
+        description={`With over 5 years of professional experience as a Graphic Designer and related roles, I have learned the tools and techniques required to craft ideas into real design solutions.`}
       />
 
       <StickyScrollContainer
         css={{
           "::before": {
-            content: "",
+            content: '""',
             display: "block",
             width: "100%",
             maxHeight: menubarHeight,
@@ -182,7 +182,10 @@ const AboutPage = ({ data }) => {
               }}
             >
               {inspirations.map(person => (
-                <CreativeInspiration {...person}></CreativeInspiration>
+                <CreativeInspiration
+                  {...person}
+                  key={person.name}
+                ></CreativeInspiration>
               ))}
             </ContentArea>
           </SectionBlock>

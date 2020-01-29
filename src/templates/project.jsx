@@ -78,7 +78,7 @@ const ProjectTemplate = ({ data }) => {
       <StickyScrollContainer
         css={{
           "::before": {
-            content: "",
+            content: '""',
             display: "block",
             width: "100%",
             maxHeight: menubarHeight,
@@ -154,8 +154,7 @@ const ProjectTemplate = ({ data }) => {
                 }}
               >
                 {modules.map(module => {
-                  console.log(module)
-
+                  // console.log(module)
                   switch (module.type) {
                     case "image":
                       return <ImageModule {...module} key={module.id} />
@@ -224,6 +223,7 @@ const ProjectTemplate = ({ data }) => {
                     // removeCurrentProject(thisProject, otherProjects)
                   ).map(related => (
                     <div
+                      key={related.id}
                       css={[
                         {
                           // progressive enhance from single column vertical scroll

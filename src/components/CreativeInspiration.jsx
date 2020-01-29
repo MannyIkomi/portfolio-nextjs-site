@@ -4,7 +4,6 @@ import React from "react"
 import { TypesetLink } from "./TypesetLink"
 import Markdown from "./markdown"
 import { colors, typography, sansHeading } from "../styles"
-import { inspirationProps } from "../util/props"
 
 export const CreativeInspiration = props => {
   const { photo, name, description, website, children } = props
@@ -54,7 +53,5 @@ export const CreativeInspiration = props => {
     </figure>
   )
 }
-
-CreativeInspiration.propTypes = inspirationProps
 
 export default CreativeInspiration
