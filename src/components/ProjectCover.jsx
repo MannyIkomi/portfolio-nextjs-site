@@ -99,13 +99,6 @@ export const ProjectCover = ({
         // {...props}
       >
         <ProjectPhoto alt={coverAlt} {...imageProps} />
-        {/* convert figcaption to trigger on CSS :hover for accessibility
-        on :hover {
-          filter grayscale,
-        }
-  using React state removes heading from the DOM instead of visibility hiding
-
-*/}
 
         <OrangeOverprint className={"willHide OrangeOverprint"} />
 

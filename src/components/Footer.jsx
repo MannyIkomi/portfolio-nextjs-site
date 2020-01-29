@@ -116,7 +116,7 @@ export const Footer = props => {
           {` `}and{` `}
           <TypesetLink to={"https://www.gatsbyjs.org/"}>Gatsby</TypesetLink>
           <br />
-          Served with{` `}
+          Deployed with{` `}
           <TypesetLink to={"https://www.netlify.com/"}>Netlify</TypesetLink>
         </p>
       </section>

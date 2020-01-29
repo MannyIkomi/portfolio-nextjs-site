@@ -17,7 +17,7 @@ export const QuoteBlock = props => {
         ...flex("column"),
         alignItems: "center",
         ...maxLineMeasure,
-        padding: "1rem",
+        padding: "2rem",
         // quote body
         ...sansType,
         hangingPunctuation: "first last",

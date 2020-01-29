@@ -1,7 +1,13 @@
 /** @jsx jsx */
 import { css, jsx } from "@emotion/core"
 import React from "react"
-import { colors, flex, supportsGrid, onTabletMedia } from "../styles"
+import {
+  colors,
+  flex,
+  supportsGrid,
+  onTabletMedia,
+  touchTarget,
+} from "../styles"
 
 export const Gallery = ({ children, css, ...props }) => {
   return (
@@ -15,8 +21,9 @@ export const Gallery = ({ children, css, ...props }) => {
 
         ...onTabletMedia({
           ...supportsGrid({
+            padding: touchTarget,
             gridTemplateColumns: "1fr 1fr",
-            gridGap: "2rem",
+            gridGap: touchTarget,
             gridAutoFlow: "row",
           }),
         }),
