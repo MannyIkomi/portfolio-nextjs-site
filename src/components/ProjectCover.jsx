@@ -4,7 +4,7 @@ import { css } from "@emotion/core"
 import Img from "gatsby-image"
 
 import { useHoverState } from "../hooks/useHoverState"
-import { OrangeOverprint } from "./FillOverlay"
+import { OrangeOverprint, Motif } from "./FillOverlay"
 import { ProjectPhoto } from "./ProjectPhoto"
 import {
   aspectRatioLetter,
@@ -141,6 +141,15 @@ export const ProjectCover = ({
             </span>
           )}
         </figcaption>
+        {/* <Motif
+          css={{
+            fill: colors.darkGray,
+            position: "absolute",
+            top: -1,
+            right: -1,
+            width: "50%",
+          }}
+        /> */}
       </figure>
     </Link>
   )
