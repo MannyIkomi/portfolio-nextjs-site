@@ -10,6 +10,8 @@ import {
   styleTransition,
   typesetInteraction,
   touchTarget,
+  sansHeading,
+  onMedia,
 } from "../styles"
 import { LogoType } from "./Logo"
 import useToggleSwitch from "../hooks/useToggleSwitch"
@@ -48,6 +50,7 @@ export const StickyMenuBar = ({ children, ...props }) => {
   ]
 
   const menuLink = {
+    ...sansHeading,
     padding: "0.5rem",
     marginBottom: touchTarget,
     backgroundColor: colors.muteGray,
@@ -79,7 +82,9 @@ export const StickyMenuBar = ({ children, ...props }) => {
       <LogoType
         css={{
           ...styleTransition(),
-          ...typesetInteraction(),
+          ...onMedia("hover: hover", {
+            ...typesetInteraction(),
+          }),
           width: "8rem",
           maxHeight: `calc(${menubarHeight} - 1rem)`,
         }}

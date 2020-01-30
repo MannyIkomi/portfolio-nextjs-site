@@ -4,6 +4,7 @@ import {
   typesetInteraction,
   touchTarget,
   styleTransition,
+  onMedia,
 } from "../styles"
 export const SocialIcon = ({
   platform,
@@ -88,7 +89,9 @@ export const SocialIcon = ({
 
         svg: {
           ...styleTransition(),
-          ...typesetInteraction(),
+          ...onMedia("hover: hover", {
+            ...typesetInteraction(),
+          }),
           "&:hover": {
             fill: colors.orange,
           },
