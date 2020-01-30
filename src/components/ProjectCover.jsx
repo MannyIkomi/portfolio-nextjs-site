@@ -42,7 +42,7 @@ export const ProjectCover = ({
           overflow: "hidden", // clips aspect ratio overflow
 
           width: "100%",
-          minWidth: "10rem",
+          minWidth: "15rem",
           ...maxLineMeasure,
           cursor: "pointer",
           backgroundColor: "white",
