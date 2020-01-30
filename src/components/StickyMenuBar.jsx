@@ -51,6 +51,7 @@ export const StickyMenuBar = ({ children, ...props }) => {
 
   const menuLink = {
     ...sansHeading,
+    color: colors.darkGray,
     padding: "0.5rem",
     marginBottom: touchTarget,
     backgroundColor: colors.muteGray,
