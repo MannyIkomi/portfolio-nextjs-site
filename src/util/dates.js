@@ -15,6 +15,10 @@ export const formatDate = (formatOptions = {}, date = new Date()) => {
   )
   return customFormat
 }
+
+export const getMonthYear = date =>
+  formatDate({ month: "long", year: "numeric" }, date)
+
 export const getWeekday = (option = "") => {
   // weekday
   // The representation of the weekday. Possible values are:
