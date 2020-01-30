@@ -10,6 +10,7 @@ import {
   resumeContentHeading,
   menubarHeight,
 } from "../styles"
+import { getMonthYear } from "../util/dates"
 import { TitleResume } from "./Entity"
 import { TimeFrame } from "./TimeFrame"
 import Markdown from "./markdown"
@@ -42,7 +43,19 @@ export const Education = props => {
         <TitleResume>{concentration}</TitleResume>
         {school}
         <br />
-        <TimeFrame start={started} end={ended} />
+        {ended ? (
+          <span
+            css={{
+              fontFamily: typography.sans,
+              fontSize: "0.9rem",
+              fontStyle: "italic",
+            }}
+          >
+            Awarded {getMonthYear(ended)}
+          </span>
+        ) : (
+          <TimeFrame start={started} end={ended} />
+        )}
       </header>
       {description && <Markdown>{description}</Markdown>}
 
