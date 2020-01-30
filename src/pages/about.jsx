@@ -164,10 +164,9 @@ const AboutPage = ({ data }) => {
                 <h1>Creatives who inspire me…</h1>
                 <p>
                   I once heard that we are the sum of the people who are closest
-                  to us. While I may not be close with these people personally,
-                  I'm very close with their work and what they teach. So I like
-                  to think of them as my design addends; my work is the sum of
-                  theirs and what I've learned from them.
+                  to us. So I like to think of these people as my design
+                  addends, my work is the sum of theirs and what I've learned
+                  from them.
                 </p>
               </div>
             </ContentArea>

@@ -11,6 +11,7 @@ import {
   styleTransition,
   typesetInteraction,
   sansHeading,
+  onMedia,
 } from "../styles"
 
 export const Button = props => {
@@ -19,9 +20,12 @@ export const Button = props => {
     <button
       css={{
         ...styleTransition(),
-        ...typesetInteraction({
-          backgroundColor: colors.orange50,
-        }),
+        ...onMedia(
+          "hover: hover",
+          typesetInteraction({
+            backgroundColor: colors.orange50,
+          })
+        ),
 
         ...sansHeading,
         // fontSize: "1.1rem",
