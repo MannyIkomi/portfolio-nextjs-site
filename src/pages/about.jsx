@@ -108,13 +108,12 @@ const AboutPage = ({ data }) => {
               </div>
               <h1
                 css={{
-                  fontsize: "5vmin !important",
                   whiteSpace: "pre-wrap", // preserves intentional linebreaks
                   padding: "1rem",
                   color: colors.orange,
 
                   ...onTabletMedia({
-                    fontsize: "5vmin !important",
+                    fontSize: "5vmin !important",
                     ...supportsGrid({
                       gridArea: "h1",
                       alignSelf: "flex-end",
