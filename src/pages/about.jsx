@@ -4,7 +4,7 @@ import React from "react"
 import { graphql } from "gatsby"
 
 import {
-  menubarHeight,
+  MENUBAR_HEIGHT,
   supportsGrid,
   onTabletMedia,
   colors,
@@ -50,7 +50,7 @@ const AboutPage = ({ data }) => {
             content: '""',
             display: "block",
             width: "100%",
-            maxHeight: menubarHeight,
+            maxHeight: MENUBAR_HEIGHT,
           },
         }}
       >
@@ -108,10 +108,13 @@ const AboutPage = ({ data }) => {
               </div>
               <h1
                 css={{
-                  whiteSpace: "pre-wrap",
+                  fontsize: "5vmin !important",
+                  whiteSpace: "pre-wrap", // preserves intentional linebreaks
                   padding: "1rem",
                   color: colors.orange,
+
                   ...onTabletMedia({
+                    fontsize: "5vmin !important",
                     ...supportsGrid({
                       gridArea: "h1",
                       alignSelf: "flex-end",

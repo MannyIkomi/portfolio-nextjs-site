@@ -12,7 +12,7 @@ import {
   onTabletMedia,
   supportsGrid,
   styleTransition,
-  touchTarget,
+  TOUCH_TARGET,
 } from "../styles"
 
 export const Footer = props => {
@@ -51,7 +51,7 @@ export const Footer = props => {
     >
       <LogoMaster
         css={{
-          minWidth: touchTarget,
+          minWidth: TOUCH_TARGET,
           maxWidth: "20rem",
 
           width: "33%",
@@ -95,7 +95,7 @@ export const Footer = props => {
               css={{
                 svg: { fill: "white" },
                 margin: "1rem",
-                maxWidth: touchTarget,
+                maxWidth: TOUCH_TARGET,
               }}
             />
           ))}

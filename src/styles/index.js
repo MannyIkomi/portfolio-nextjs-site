@@ -32,14 +32,14 @@ font-weight: 400;
 font-style: italic;
 */
 
-export const menubarHeight = "2.5rem"
-export const desktopWidth = `1200px`
-export const tabletWidth = `700px`
-export const touchTarget = "3rem"
+export const MENUBAR_HEIGHT = "2.5rem"
+export const DESKTOP_VIEWPORT = `1200px`
+export const TABLET_VIEWPORT = `700px`
+export const TOUCH_TARGET = "3rem"
 // export const
 
-export const tabletMediaQuery = `@media screen and (min-width: ${tabletWidth})`
-export const desktopMediaQuery = `@media screen and (min-width: ${desktopWidth})`
+export const tabletMediaQuery = `@media screen and (min-width: ${TABLET_VIEWPORT})`
+export const desktopMediaQuery = `@media screen and (min-width: ${DESKTOP_VIEWPORT})`
 
 export const styleTransition = (override = {}) => ({
   transitionDuration: "300ms",

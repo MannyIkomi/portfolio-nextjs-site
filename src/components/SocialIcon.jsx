@@ -2,7 +2,7 @@ import React from "react"
 import {
   colors,
   typesetInteraction,
-  touchTarget,
+  TOUCH_TARGET,
   styleTransition,
   onMedia,
 } from "../styles"
@@ -84,8 +84,8 @@ export const SocialIcon = ({
         // ...mixin.size("100%", "auto"),
         padding: "0.25rem",
         // maxWidth: "2rem",
-        minHeight: touchTarget,
-        minWidth: touchTarget,
+        minHeight: TOUCH_TARGET,
+        minWidth: TOUCH_TARGET,
 
         svg: {
           ...styleTransition(),

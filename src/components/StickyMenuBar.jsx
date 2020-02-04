@@ -4,12 +4,12 @@ import React from "react"
 import {
   colors,
   flex,
-  menubarHeight,
+  MENUBAR_HEIGHT,
   typography,
   onTabletMedia,
   styleTransition,
   typesetInteraction,
-  touchTarget,
+  TOUCH_TARGET,
   sansHeading,
   onMedia,
 } from "../styles"
@@ -53,7 +53,7 @@ export const StickyMenuBar = ({ children, ...props }) => {
     ...sansHeading,
     color: colors.darkGray,
     padding: "0.5rem",
-    marginBottom: touchTarget,
+    marginBottom: TOUCH_TARGET,
     backgroundColor: colors.muteGray,
     boxShadow: "0 0.25rem 1rem 0px rgba(0,0,0,0.5)",
     textTransform: "uppercase",
@@ -69,7 +69,7 @@ export const StickyMenuBar = ({ children, ...props }) => {
           left: 0,
 
           padding: "0.5rem",
-          maxHeight: menubarHeight,
+          maxHeight: MENUBAR_HEIGHT,
 
           ...flex("row"),
           justifyContent: "space-between",
@@ -87,7 +87,7 @@ export const StickyMenuBar = ({ children, ...props }) => {
             ...typesetInteraction(),
           }),
           width: "8rem",
-          maxHeight: `calc(${menubarHeight} - 1rem)`,
+          maxHeight: `calc(${MENUBAR_HEIGHT} - 1rem)`,
         }}
       />
       <MenuButton onClick={handleToggle} isToggled={isToggled} />
@@ -97,10 +97,10 @@ export const StickyMenuBar = ({ children, ...props }) => {
           {
             position: "absolute",
             zIndex: 999,
-            top: `calc(${menubarHeight} - 1px)`,
+            top: `calc(${MENUBAR_HEIGHT} - 1px)`,
             right: "0",
 
-            padding: `${touchTarget} 0 ${touchTarget} ${touchTarget}`,
+            padding: `${TOUCH_TARGET} 0 ${TOUCH_TARGET} ${TOUCH_TARGET}`,
 
             ...flex("column"),
             alignItems: "flex-end",
