@@ -185,7 +185,7 @@ export const global = {
     color: colors.orange,
   },
   h2: {
-    fontSize: "1.667rem",
+    fontSize: "1.5rem",
   },
   h3: {
     fontSize: "1.333rem",
