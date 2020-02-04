@@ -216,7 +216,7 @@ export const query = graphql`
         }
       }
     }
-    allStrapiInspiration {
+    allStrapiInspiration(sort: { fields: sequence }) {
       nodes {
         id
         website
