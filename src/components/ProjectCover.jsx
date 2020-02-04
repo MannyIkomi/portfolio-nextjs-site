@@ -86,7 +86,8 @@ export const ProjectCover = ({
               transformOrigin: "center",
 
               img: {
-                filter: "grayscale(50%) contrast(66%) blur(2px)", // matte finish
+                filter: "blur(3px)", // matte finish
+                // grayscale(50%) contrast(66%) using additional filters hurts firefox performance?
               },
               ".willHide": {
                 opacity: 1,
