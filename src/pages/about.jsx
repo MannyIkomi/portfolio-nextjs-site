@@ -163,7 +163,7 @@ const AboutPage = ({ data }) => {
           <SectionBlock css={{ backgroundColor: colors.muteGray }}>
             <ContentArea>
               <div css={{ padding: "1rem" }}>
-                <h1>Creatives who inspire me…</h1>
+                <h1>Creatives who inspire&nbsp;me…</h1>
                 <p>
                   I once heard that we are the sum of the people who are closest
                   to us. So I like to think of these people as my design
@@ -174,11 +174,15 @@ const AboutPage = ({ data }) => {
             </ContentArea>
             <ContentArea
               css={{
+                width: "100%",
                 maxWidth: "80rem",
+
                 ...supportsGrid({
                   gridTemplateColumns:
-                    "repeat(auto-fit, minmax(min(40rem, 100%), 40rem))",
+                    "repeat(auto-fit, minmax(min(40rem, 100%), 40rem))", // only partial support in firefox https://bugzilla.mozilla.org/show_bug.cgi?id=1341507
+
                   justifyContent: "center",
+                  // gridAutoColumns: "minmax(100%, 40rem)",
                 }),
               }}
             >

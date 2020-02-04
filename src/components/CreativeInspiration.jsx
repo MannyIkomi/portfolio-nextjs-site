@@ -3,7 +3,7 @@ import { css, jsx } from "@emotion/core"
 import React from "react"
 import { TypesetLink } from "./TypesetLink"
 import Markdown from "./markdown"
-import { colors, typography, SANS_HEADING } from "../styles"
+import { colors, typography, SANS_HEADING, maxLineMeasure } from "../styles"
 
 export const CreativeInspiration = props => {
   const { photo, name, description, website, children } = props
@@ -12,7 +12,7 @@ export const CreativeInspiration = props => {
 
   const PortraitPhoto = props => (
     <img
-      css={{ display: "block", width: "100%", height: "auto" }}
+      css={{ display: "block", width: "66%", height: "auto" }}
       alt={name}
       {...imageProps}
     />
@@ -21,6 +21,7 @@ export const CreativeInspiration = props => {
   return (
     <figure
       css={{
+        ...maxLineMeasure,
         margin: "2rem 0",
         padding: "0 1rem",
         color: colors.darkGray,
