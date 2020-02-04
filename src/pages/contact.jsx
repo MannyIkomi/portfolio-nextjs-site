@@ -3,7 +3,7 @@ import { css, jsx } from "@emotion/core"
 import React from "react"
 import { graphql } from "gatsby"
 
-import { menubarHeight } from "../styles"
+import { MENUBAR_HEIGHT } from "../styles"
 import Layout from "../components/layout"
 import HtmlHead from "../components/HtmlHead"
 import { StickyScrollContainer } from "../components/StickyScrollContainer"
@@ -22,7 +22,7 @@ const ContactPage = ({ data }) => {
             content: "",
             display: "block",
             width: "100%",
-            maxHeight: menubarHeight,
+            maxHeight: MENUBAR_HEIGHT,
           },
         }}
       >

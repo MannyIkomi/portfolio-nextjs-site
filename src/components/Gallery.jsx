@@ -6,7 +6,7 @@ import {
   flex,
   supportsGrid,
   onTabletMedia,
-  touchTarget,
+  TOUCH_TARGET,
 } from "../styles"
 
 export const Gallery = ({ children, css, ...props }) => {
@@ -21,9 +21,9 @@ export const Gallery = ({ children, css, ...props }) => {
 
         ...onTabletMedia({
           ...supportsGrid({
-            padding: touchTarget,
+            padding: TOUCH_TARGET,
             gridTemplateColumns: "1fr 1fr",
-            gridGap: touchTarget,
+            gridGap: TOUCH_TARGET,
             gridAutoFlow: "row",
           }),
         }),

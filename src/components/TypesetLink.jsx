@@ -4,7 +4,6 @@ import { css, jsx } from "@emotion/core"
 import {
   typesetInteraction,
   linkText,
-  TOUCH_TARGET,
   styleTransition,
   onMedia,
 } from "../styles"

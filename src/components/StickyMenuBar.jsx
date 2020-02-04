@@ -10,7 +10,7 @@ import {
   styleTransition,
   typesetInteraction,
   TOUCH_TARGET,
-  sansHeading,
+  SANS_HEADING,
   onMedia,
 } from "../styles"
 import { LogoType } from "./Logo"
@@ -50,7 +50,7 @@ export const StickyMenuBar = ({ children, ...props }) => {
   ]
 
   const menuLink = {
-    ...sansHeading,
+    ...SANS_HEADING,
     color: colors.darkGray,
     padding: "0.5rem",
     marginBottom: TOUCH_TARGET,

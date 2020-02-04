@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import { css, jsx } from "@emotion/core"
+import { jsx } from "@emotion/core"
 import React from "react"
 import { graphql } from "gatsby"
 
@@ -11,10 +11,10 @@ import { Footer } from "../components/Footer"
 import { Header } from "../components/Header"
 import {
   supportsGrid,
-  menubarHeight,
+  MENUBAR_HEIGHT,
   onMediaWidth,
   onTabletMedia,
-  touchTarget,
+  TOUCH_TARGET,
   colors,
 } from "../styles"
 import { StickyScrollContainer } from "../components/StickyScrollContainer"
@@ -41,7 +41,7 @@ const IndexPage = ({ data }) => {
             content: '""',
             display: "block",
             width: "100%",
-            maxHeight: menubarHeight,
+            maxHeight: MENUBAR_HEIGHT,
           },
         }}
       >
@@ -60,7 +60,7 @@ const IndexPage = ({ data }) => {
               <Gallery
                 css={{
                   ".project-cover": {
-                    marginBottom: touchTarget,
+                    marginBottom: TOUCH_TARGET,
                   },
                   ...onTabletMedia({
                     ".project-cover": {

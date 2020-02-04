@@ -7,7 +7,7 @@ import {
   moduleContainer,
   colors,
   onTabletMedia,
-  menubarHeight,
+  MENUBAR_HEIGHT,
 } from "../styles"
 import { moduleProps } from "../util/props"
 
@@ -50,7 +50,7 @@ export const CaptionModule = ({ image, imageAlt, imageFill, text }) => {
             img: {
               width: "50%",
               position: "sticky",
-              top: menubarHeight,
+              top: MENUBAR_HEIGHT,
               zIndex: 2,
             },
           }),
@@ -69,7 +69,7 @@ export const CaptionModule = ({ image, imageAlt, imageFill, text }) => {
         <figcaption
           css={{
             position: "sticky",
-            top: menubarHeight,
+            top: MENUBAR_HEIGHT,
 
             padding: "2rem",
             alignSelf: "flex-start",

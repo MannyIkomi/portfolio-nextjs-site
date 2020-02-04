@@ -6,9 +6,8 @@ import {
   colors,
   positionSticky,
   typography,
-  touchTarget,
-  resumeContentHeading,
-  menubarHeight,
+  TOUCH_TARGET,
+  MENUBAR_HEIGHT,
 } from "../styles"
 import { getMonthYear } from "../util/dates"
 import { TitleResume } from "./Entity"
@@ -28,10 +27,10 @@ export const Education = props => {
   } = props
   const [toggled, setToggled] = useToggleSwitch(false)
   return (
-    <article css={{ margin: `${touchTarget} 0` }} {...restProps}>
+    <article css={{ margin: `${TOUCH_TARGET} 0` }} {...restProps}>
       <header
         css={[
-          toggled && positionSticky(menubarHeight),
+          toggled && positionSticky(MENUBAR_HEIGHT),
           {
             width: "100%",
             background: colors.muteGray,

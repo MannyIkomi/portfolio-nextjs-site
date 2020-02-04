@@ -1,16 +1,16 @@
 import { colors } from "./colors"
 import { onTabletMedia, onDesktopMedia } from "./mixin"
 
-export const serifType = { fontFamily: "baskerville-urw, Georgia, serif" }
-export const sansType = {
+export const SERIF_TYPE = { fontFamily: "baskerville-urw, Georgia, serif" }
+export const SANS_TYPE = {
   fontFamily: 'futura-pt, "Helvetica Neue", Helvetica, sans-serif',
 }
-export const serifHeading = { fontFamily: "baskerville-urw, serif" }
-export const sansHeading = {
+export const SERIF_HEADING = { fontFamily: "baskerville-urw, serif" }
+export const SANS_HEADING = {
   fontFamily:
     'futura-pt-bold, futura-pt, "Helvetica Neue", Helvetica, sans-serif',
 }
-export const futuraBodySize = { fontSize: "1.2rem" }
+export const FUTURA_BODY_SIZE = { fontSize: "1.2rem" }
 
 /* 
 font-family: futura-pt-bold, sans-serif;
@@ -86,8 +86,8 @@ export const aspectRatioLetter = {
 }
 
 export const linkText = {
-  ...sansType,
-  ...futuraBodySize,
+  ...SANS_TYPE,
+  ...FUTURA_BODY_SIZE,
   display: "inline-block",
   textDecoration: "underline",
   // padding: "0.25rem 0",
@@ -109,20 +109,20 @@ export const typesetInteraction = (override = {}) => ({
 })
 
 export const resumeContentHeading = {
-  ...sansHeading,
+  ...SANS_HEADING,
   textTransform: "initial",
   lineHeight: 1.2,
   // fontWeight: "bold",
 }
 
 export const typography = {
-  serifType,
-  sansType,
-  sansHeading,
-  serifHeading,
+  serifType: SERIF_TYPE,
+  sansType: SANS_TYPE,
+  sansHeading: SANS_HEADING,
+  serifHeading: SERIF_HEADING,
   typesetInteraction,
   fontSizeTransition,
-  textLink: linkText,
+  linkText,
   resumeContentHeading,
   // linkStyles,
   // typesetAnimation,
@@ -135,7 +135,7 @@ export const global = {
   },
   ":root": {
     // fontSize: "100%",
-    ...sansType,
+    ...SANS_TYPE,
   },
   // body: {
   //   overflow: "hidden",
@@ -168,13 +168,13 @@ export const global = {
   "h1, h2, h3, h4, h5": {
     lineHeight: 1.3,
     ...fontSizeTransition,
-    ...serifHeading,
+    ...SERIF_HEADING,
     textTransform: "lowercase",
     fontWeight: "normal",
   },
   "p, span, ul, ol, li, button": {
-    ...sansType,
-    ...futuraBodySize,
+    ...SANS_TYPE,
+    ...FUTURA_BODY_SIZE,
     lineHeight: 1.4,
     listStyle: "square",
     fontVariantNumeric: "proportional-nums ordinal",

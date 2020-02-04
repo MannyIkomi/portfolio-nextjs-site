@@ -5,14 +5,14 @@ import { graphql, useStaticQuery } from "gatsby"
 import Img from "gatsby-image"
 
 import {
-  menubarHeight,
+  MENUBAR_HEIGHT,
   flex,
   colors,
-  sansHeading,
-  serifType,
-  futuraBodySize,
+  SANS_HEADING,
+  SERIF_TYPE,
+  FUTURA_BODY_SIZE,
   maxLineMeasure,
-  touchTarget,
+  TOUCH_TARGET,
   onTabletMedia,
   onMedia,
   onMediaWidth,
@@ -81,7 +81,7 @@ const ProjectTemplate = ({ data }) => {
             content: '""',
             display: "block",
             width: "100%",
-            maxHeight: menubarHeight,
+            maxHeight: MENUBAR_HEIGHT,
           },
         }}
       >
@@ -110,7 +110,7 @@ const ProjectTemplate = ({ data }) => {
             >
               <h1
                 css={{
-                  ...sansHeading,
+                  ...SANS_HEADING,
                   color: colors.darkGray,
                   textTransform: "initial",
                 }}
@@ -119,9 +119,9 @@ const ProjectTemplate = ({ data }) => {
               </h1>
               <h2
                 css={{
-                  ...serifType,
+                  ...SERIF_TYPE,
                   fontStyle: "italic",
-                  ...futuraBodySize,
+                  ...FUTURA_BODY_SIZE,
                   textTransform: "initial",
                 }}
               >
@@ -184,7 +184,7 @@ const ProjectTemplate = ({ data }) => {
                       // progressive enhance from single column vertical scroll
                     },
                     {
-                      padding: touchTarget,
+                      TOUCH_TARGET,
                     },
                   ]}
                 >
@@ -213,7 +213,7 @@ const ProjectTemplate = ({ data }) => {
 
                       maxWidth: "100vw",
                       minHeight: "66vh",
-                      padding: touchTarget,
+                      TOUCH_TARGET,
                     }),
                   ]}
                 >
@@ -229,7 +229,7 @@ const ProjectTemplate = ({ data }) => {
                           // progressive enhance from single column vertical scroll
                           minWidth: "10rem",
                           maxWidth: "20rem",
-                          margin: touchTarget,
+                          TOUCH_TARGET,
 
                           ...onTabletMedia({
                             maxWidth: "30rem",
@@ -239,7 +239,7 @@ const ProjectTemplate = ({ data }) => {
                         onMedia("pointer: coarse", {
                           flex: "0 0 auto",
                           maxWidth: "66vw",
-                          marginRight: touchTarget,
+                          TOUCH_TARGET,
                         }),
                       ]}
                     >

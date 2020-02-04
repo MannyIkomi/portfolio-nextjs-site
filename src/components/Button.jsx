@@ -1,16 +1,12 @@
 /** @jsx jsx */
 import React from "react"
-import { css, jsx } from "@emotion/core"
+import { jsx } from "@emotion/core"
 
 import {
-  typography,
-  positionSticky,
   colors,
-  flex,
-  menubarHeight,
   styleTransition,
   typesetInteraction,
-  sansHeading,
+  SANS_HEADING,
   onMedia,
 } from "../styles"
 
@@ -27,7 +23,7 @@ export const Button = props => {
           })
         ),
 
-        ...sansHeading,
+        ...SANS_HEADING,
         // fontSize: "1.1rem",
         // fontWeight: "bold",
 

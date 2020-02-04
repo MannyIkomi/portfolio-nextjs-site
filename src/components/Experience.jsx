@@ -7,8 +7,8 @@ import {
   positionSticky,
   colors,
   flex,
-  touchTarget,
-  menubarHeight,
+  TOUCH_TARGET,
+  MENUBAR_HEIGHT,
   styleTransition,
   typesetInteraction,
 } from "../styles"
@@ -38,13 +38,13 @@ export const Experience = props => {
         css={{
           ...flex("column"),
           alignItems: "center",
-          margin: `${touchTarget} 0`,
+          margin: `${TOUCH_TARGET} 0`,
         }}
         {...rest}
       >
         <header
           css={[
-            toggled && positionSticky(menubarHeight),
+            toggled && positionSticky(MENUBAR_HEIGHT),
             {
               width: "100%",
               background: colors.muteGray,

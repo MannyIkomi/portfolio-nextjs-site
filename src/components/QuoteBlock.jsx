@@ -5,9 +5,9 @@ import {
   flex,
   maxLineMeasure,
   typography,
-  sansType,
-  serifType,
-  futuraBodySize,
+  SANS_TYPE,
+  SERIF_TYPE,
+  FUTURA_BODY_SIZE,
 } from "../styles"
 export const QuoteBlock = props => {
   const { cite, quote, children, ...rest } = props
@@ -19,7 +19,7 @@ export const QuoteBlock = props => {
         ...maxLineMeasure,
         padding: "2rem",
         // quote body
-        ...sansType,
+        ...SANS_TYPE,
         hangingPunctuation: "first last",
         // ...futuraBodySize,
         fontSize: "2rem",
@@ -28,8 +28,8 @@ export const QuoteBlock = props => {
 
         lineHeight: 1.5,
         cite: {
-          ...futuraBodySize,
-          ...serifType,
+          ...FUTURA_BODY_SIZE,
+          ...SERIF_TYPE,
           fontStyle: "italic",
           fontWeight: "normal",
 

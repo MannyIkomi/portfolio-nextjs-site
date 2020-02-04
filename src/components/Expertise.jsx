@@ -2,14 +2,14 @@
 import React from "react"
 import { css, jsx } from "@emotion/core"
 
-import { styleTransition, textLink } from "../styles"
+import { styleTransition, linkText } from "../styles"
 
 export const Expertise = props => {
   const { url, description } = props
   return (
     <span>
       {url ? (
-        <a css={{ ...styleTransition(), ...textLink }} href={url}>
+        <a css={{ ...styleTransition(), ...linkText }} href={url}>
           {description}
         </a>
       ) : (

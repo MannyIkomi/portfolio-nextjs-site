@@ -9,9 +9,9 @@ import {
   typesetInteraction,
   linkText,
   styleTransition,
-  serifHeading,
-  sansType,
-  sansHeading,
+  SERIF_HEADING,
+  SANS_TYPE,
+  SANS_HEADING,
 } from "../styles"
 
 const showdown = require("showdown")
@@ -34,11 +34,11 @@ export const Markdown = ({ children, preprocessor, ...props }) => {
     <div
       css={{
         "h1,h2,h3,h4": {
-          ...sansHeading,
+          ...SANS_HEADING,
           textTransform: "initial",
         },
         "p, ul, ol": {
-          ...sansType,
+          ...SANS_TYPE,
           marginBottom: "1rem",
           hangingPunctuation: "first last",
         },

@@ -3,7 +3,7 @@ import { css, jsx } from "@emotion/core"
 import React from "react"
 import { TypesetLink } from "./TypesetLink"
 import Markdown from "./markdown"
-import { colors, typography, sansHeading } from "../styles"
+import { colors, typography, SANS_HEADING } from "../styles"
 
 export const CreativeInspiration = props => {
   const { photo, name, description, website, children } = props
@@ -25,7 +25,7 @@ export const CreativeInspiration = props => {
         padding: "0 1rem",
         color: colors.darkGray,
         "h1, h2, h3, h4, h5": {
-          ...sansHeading,
+          ...SANS_HEADING,
           textTransform: "initial",
         },
       }}

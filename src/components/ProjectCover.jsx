@@ -9,8 +9,8 @@ import { ProjectPhoto } from "./ProjectPhoto"
 import {
   aspectRatioLetter,
   typography,
-  sansHeading,
-  serifHeading,
+  SANS_HEADING,
+  SERIF_HEADING,
   colors,
   onTabletMedia,
   maxLineMeasure,
@@ -114,7 +114,7 @@ export const ProjectCover = ({
             color: colors.muteGray,
 
             h1: {
-              ...sansHeading,
+              ...SANS_HEADING,
               color: colors.muteGray,
               lineHeight: 1.2,
               fontWeight: "bold",
@@ -126,7 +126,7 @@ export const ProjectCover = ({
                 fontSize: "1.33rem",
               }),
               textTransform: "initial",
-              ...serifHeading,
+              ...SERIF_HEADING,
               fontStyle: "italic",
               fontWeight: 100,
             },
