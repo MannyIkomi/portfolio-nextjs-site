@@ -32,7 +32,7 @@ const IndexPage = ({ data }) => {
       <HtmlHead
         title="Portfolio Projects"
         description={
-          "A collection of Manny Ikomi's best design work, including identity design, typography, web design, branding, and logo design"
+          "A collection of Manny Ikomi's design portfolio work, including identity design, typography, web design, branding, and logo design"
         }
       />
       <StickyScrollContainer
