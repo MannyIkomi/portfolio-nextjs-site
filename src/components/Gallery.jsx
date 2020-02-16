@@ -14,7 +14,7 @@ export const Gallery = ({ children, css, ...props }) => {
     <section
       className={"gallery"}
       css={{
-        backgroundColor: colors.darkGray,
+        // backgroundColor: colors.darkGray,
         width: "100%",
         padding: "2rem",
         ...flex("column"),
