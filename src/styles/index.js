@@ -172,7 +172,7 @@ export const global = {
     textTransform: "lowercase",
     fontWeight: "normal",
   },
-  "p, span, ul, ol, li, button": {
+  "p, span, ul, ol, button": {
     ...SANS_TYPE,
     ...FUTURA_BODY_SIZE,
     lineHeight: 1.4,

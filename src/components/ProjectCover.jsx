@@ -28,6 +28,7 @@ export const ProjectCover = ({
   title,
   coverAlt,
   draft,
+  tags,
   ...props
 }) => {
   const [isHovered, handleHover] = useHoverState()
@@ -139,6 +140,17 @@ export const ProjectCover = ({
         >
           <h1>{title}</h1>
           <h2>{subtitle}</h2>
+          <ul
+            css={{
+              listStyle: "none",
+            }}
+          >
+            {tags.map(({ design }) => (
+              <li css={{ display: "inline-block", marginRight: "1rem" }}>
+                #{design}
+              </li>
+            ))}
+          </ul>
 
           {draft && (
             <span style={{ color: "blue", textTransform: "uppercase" }}>
