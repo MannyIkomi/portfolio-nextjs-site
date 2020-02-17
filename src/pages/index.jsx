@@ -176,24 +176,25 @@ const IndexPage = ({ data }) => {
           </SectionBlock>
 
           {/* <hr css={{ borderColor: colors.darkGray50, margin: TOUCH_TARGET }} /> */}
+          {identityProjects.length > 0 && (
+            <SectionBlock
+              css={{
+                backgroundColor: colors.darkGray,
+              }}
+            >
+              <ContentArea css={{ maxWidth: "80rem", padding: "1rem" }}>
+                <h1 css={{ textAlign: "right", marginBottom: "1rem" }}>
+                  Identity Design
+                </h1>
 
-          <SectionBlock
-            css={{
-              backgroundColor: colors.darkGray,
-            }}
-          >
-            <ContentArea css={{ maxWidth: "80rem", padding: "1rem" }}>
-              <h1 css={{ textAlign: "right", marginBottom: "1rem" }}>
-                Identity Design
-              </h1>
-
-              <Gallery>
-                {identityProjects.map(project => (
-                  <ProjectCover {...project} key={project.id} />
-                ))}
-              </Gallery>
-            </ContentArea>
-          </SectionBlock>
+                <Gallery>
+                  {identityProjects.map(project => (
+                    <ProjectCover {...project} key={project.id} />
+                  ))}
+                </Gallery>
+              </ContentArea>
+            </SectionBlock>
+          )}
           <SectionBlock
             css={{
               backgroundColor: colors.darkGray,
@@ -222,6 +223,7 @@ const IndexPage = ({ data }) => {
               </Gallery>
             </ContentArea>
           </SectionBlock>
+
           {/* 
           <SectionBlock
             css={{
