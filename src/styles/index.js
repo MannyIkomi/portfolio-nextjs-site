@@ -142,11 +142,14 @@ export const global = {
   //   overflowX: "hidden",
   // },
   a: {
+    // https://stackoverflow.com/questions/1823341/how-do-i-get-this-css-text-decoration-override-to-work
+    // setting text decoration as an inherited property cannot be overrided due to user agent implementations
+    // best to clear styling an re-apply using composition
     color: "inherit",
-    textDecoration: `underline`,
-    textDecoration: `underline solid ${colors.orange}`,
-    textDecorationColor: colors.orange,
-    textDecorationStyle: "solid",
+    textDecoration: `none`,
+    // textDecoration: `underline solid ${colors.orange}`,
+    // textDecorationColor: colors.orange,
+    // textDecorationStyle: "solid",
 
     "&:hover": {
       color: colors.orange,
@@ -166,7 +169,7 @@ export const global = {
   },
 
   "h1, h2, h3, h4, h5": {
-    lineHeight: 1.3,
+    lineHeight: 1.2,
     ...fontSizeTransition,
     ...SERIF_HEADING,
     textTransform: "lowercase",
