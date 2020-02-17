@@ -19,6 +19,7 @@ import {
   FUTURA_BODY_SIZE,
   typography,
   SANS_HEADING,
+  flex,
 } from "../styles"
 import { StickyScrollContainer } from "../components/StickyScrollContainer"
 import { TypesetLink } from "../components/TypesetLink"
@@ -60,78 +61,99 @@ const IndexPage = ({ data }) => {
         {/* <aside>
           <nav>side bar menu</nav>
         </aside> */}
-        <main>
+        <main
+          css={{
+            backgroundColor: colors.darkGray,
+          }}
+        >
+          {/* <SectionBlock>
+            I'm looking for:{" "}
+            <select>
+              <option value="web">web</option>
+            </select>
+          </SectionBlock> */}
           <SectionBlock
             css={{
               backgroundColor: colors.darkGray,
+              minHeight: "100vh",
             }}
           >
             <ContentArea css={{ maxWidth: "80rem" }}>
-              <Gallery
-                css={{
-                  ".project-cover": {
+              {/* <Gallery> */}
+              {feature.map(project => (
+                <Link
+                  to={"/" + project.slug} /* css={{ display: "block" }} */
+                  className={"project-cover"}
+                  css={{
+                    display: "block",
+                    ...flex("column"),
+                    justifyContent: "center",
+                    margin: "2rem",
                     marginBottom: TOUCH_TARGET,
-                  },
-                  ...onTabletMedia({
-                    ".project-cover": {
-                      marginBottom: 0,
-                    },
-                  }),
-                }}
-              >
-                {feature.map(project => (
-                  <Link
-                    to={"/" + project.slug} /* css={{ display: "block" }} */
-                    className={"project-cover"}
+                  }}
+                >
+                  <figure
+                    css={{
+                      ...onMediaWidth(
+                        "800px",
+                        supportsGrid({
+                          margin: 0,
+                          gridTemplateColumns: "1fr 1fr",
+
+                          gridGap: "1rem",
+                        })
+                      ),
+                    }}
                   >
-                    <figure>
-                      {/* <ProjectCover {...project} key={project.id} /> */}
-                      <ProjectPhoto {...project.cover} key={project.id} />
-                      <figcaption
+                    {/* <ProjectCover {...project} key={project.id} /> */}
+                    <ProjectPhoto {...project.cover} key={project.id} />
+                    <figcaption
+                      css={{
+                        ...flex("column"),
+                        justifyContent: "flex-end",
+                        color: colors.muteGray,
+                        padding: "1rem",
+                      }}
+                    >
+                      <h1
                         css={{
+                          ...SANS_HEADING,
                           color: colors.muteGray,
-                          padding: "1rem",
+                          fontSize: "1.33rem",
+                          textTransform: "initial",
                         }}
                       >
-                        <h1
-                          css={{
-                            ...SANS_HEADING,
-                            color: colors.muteGray,
-                            fontSize: "1.33rem",
-                            textTransform: "initial",
-                          }}
-                        >
-                          {project.title}
-                        </h1>
-                        <h2
-                          css={{
-                            color: colors.orange,
-                            fontSize: "2rem",
-                            fontStyle: "italic",
+                        {project.title}
+                      </h1>
+                      <h2
+                        css={{
+                          color: colors.orange,
+                          fontSize: "2rem",
+                          fontStyle: "italic",
 
-                            textTransform: "initial",
-                          }}
-                        >
-                          {project.subtitle}
-                        </h2>
-                        <p css={{ textDecoration: "none" }}>
-                          {project.seoDescription}
-                        </p>
+                          textTransform: "initial",
+                        }}
+                      >
+                        {project.subtitle}
+                      </h2>
+                      <p css={{ textDecoration: "none" }}>
+                        {project.seoDescription}
+                      </p>
 
-                        <TokenList>
-                          {project.tags.map(({ design }) => `#${design}`)}
-                        </TokenList>
-                      </figcaption>
-                    </figure>
-                  </Link>
-                ))}
-              </Gallery>
+                      <TokenList>
+                        {project.tags.map(({ design }) => `#${design}`)}
+                      </TokenList>
+                    </figcaption>
+                  </figure>
+                </Link>
+              ))}
+              {/* </Gallery> */}
             </ContentArea>
           </SectionBlock>
-          <hr />
+          <hr css={{ borderColor: colors.darkGray50, margin: "1rem" }} />
           <SectionBlock
             css={{
-              backgroundColor: colors.muteGray,
+              backgroundColor: colors.darkGray,
             }}
           >
             <ContentArea css={{ maxWidth: "80rem" }}>
@@ -157,8 +179,8 @@ const IndexPage = ({ data }) => {
           <hr />
           <SectionBlock
             css={{
-              backgroundColor: colors.darkGray,
-              color: colors.muteGray,
+              backgroundColor: colors.muteGray,
+              color: colors.darkGray,
             }}
           >
             experimental section
