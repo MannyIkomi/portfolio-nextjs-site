@@ -35,7 +35,6 @@ const IndexPage = ({ data }) => {
   const feature = data.allStrapiProjects.nodes.filter(
     ({ draft, feature }) => !draft && feature
   )
-  console.table(projects)
 
   // Window.matchMatch(CSSMediaQuery via JS)
   return (
@@ -85,19 +84,20 @@ const IndexPage = ({ data }) => {
                     to={"/" + project.slug} /* css={{ display: "block" }} */
                     className={"project-cover"}
                   >
-                    <figure
-                      css={{
-                        color: colors.muteGray,
-                        textDecoration: "initial",
-                      }}
-                    >
+                    <figure>
                       {/* <ProjectCover {...project} key={project.id} /> */}
                       <ProjectPhoto {...project.cover} key={project.id} />
-                      <figcaption>
+                      <figcaption
+                        css={{
+                          color: colors.muteGray,
+                          padding: "1rem",
+                        }}
+                      >
                         <h1
                           css={{
                             ...SANS_HEADING,
-                            fontSize: "1rem",
+                            color: colors.muteGray,
+                            fontSize: "1.33rem",
                             textTransform: "initial",
                           }}
                         >
@@ -105,16 +105,19 @@ const IndexPage = ({ data }) => {
                         </h1>
                         <h2
                           css={{
+                            color: colors.orange,
                             fontSize: "2rem",
                             fontStyle: "italic",
+
                             textTransform: "initial",
                           }}
                         >
                           {project.subtitle}
                         </h2>
-                        <p css={{ textDecoration: "initial" }}>
+                        <p css={{ textDecoration: "none" }}>
                           {project.seoDescription}
                         </p>
+
                         <TokenList>
                           {project.tags.map(({ design }) => `#${design}`)}
                         </TokenList>
