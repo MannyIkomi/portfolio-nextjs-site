@@ -37,6 +37,7 @@ export const DESKTOP_VIEWPORT = `1200px`
 export const TABLET_VIEWPORT = `700px`
 export const TOUCH_TARGET = "3rem"
 // export const
+export const PROJECT_SHADOW = `0rem 1rem 1rem 0.5rem hsla(0, 0%, 0%, 0.5)`
 
 export const tabletMediaQuery = `@media screen and (min-width: ${TABLET_VIEWPORT})`
 export const desktopMediaQuery = `@media screen and (min-width: ${DESKTOP_VIEWPORT})`

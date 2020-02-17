@@ -20,6 +20,9 @@ import {
   typography,
   SANS_HEADING,
   flex,
+  onMedia,
+  PROJECT_SHADOW,
+  styleTransition,
 } from "../styles"
 import { StickyScrollContainer } from "../components/StickyScrollContainer"
 import { TypesetLink } from "../components/TypesetLink"
@@ -35,6 +38,12 @@ const IndexPage = ({ data }) => {
   )
   const feature = data.allStrapiProjects.nodes.filter(
     ({ draft, feature }) => !draft && feature
+  )
+  const identityProjects = projects.filter(project =>
+    project.tags.some(({ design }) => design === "Identity")
+  )
+  const otherProjects = projects.filter(project =>
+    project.tags.every(({ design }) => design !== "Identity")
   )
 
   // Window.matchMatch(CSSMediaQuery via JS)
@@ -57,29 +66,23 @@ const IndexPage = ({ data }) => {
         }}
       >
         <StickyMenuBar />
-        {/* <Header siteTitle={"Manny Ikomi"}></Header> */}
-        {/* <aside>
-          <nav>side bar menu</nav>
-        </aside> */}
+
         <main
           css={{
             backgroundColor: colors.darkGray,
           }}
         >
-          {/* <SectionBlock>
-            I'm looking for:{" "}
-            <select>
-              <option value="web">web</option>
-            </select>
-          </SectionBlock> */}
           <SectionBlock
             css={{
               backgroundColor: colors.darkGray,
               minHeight: "100vh",
             }}
           >
-            <ContentArea css={{ maxWidth: "80rem" }}>
-              {/* <Gallery> */}
+            <ContentArea css={{ maxWidth: "80rem", padding: "1rem" }}>
+              <h1 css={{ textAlign: "right", marginBottom: "1rem" }}>
+                Featured Work
+              </h1>
+
               {feature.map(project => (
                 <Link
                   to={"/" + project.slug} /* css={{ display: "block" }} */
@@ -88,31 +91,53 @@ const IndexPage = ({ data }) => {
                     display: "block",
                     ...flex("column"),
                     justifyContent: "center",
-                    margin: "2rem",
                     marginBottom: TOUCH_TARGET,
+                    ...onTabletMedia({
+                      margin: "1rem",
+                      marginBottom: TOUCH_TARGET,
+                    }),
                   }}
+                  key={project.id}
                 >
                   <figure
                     css={{
+                      img: {},
+                      ...styleTransition(),
                       ...onMediaWidth(
                         "800px",
                         supportsGrid({
                           margin: 0,
                           gridTemplateColumns: "1fr 1fr",
-
-                          gridGap: "1rem",
+                          gridGap: `calc(${TOUCH_TARGET} / 2)`,
                         })
                       ),
+                      ...onMedia("hover: hover", {
+                        "&:hover": {
+                          // boxShadow:
+                          // img: {
+                          ...styleTransition(),
+                          transform: "scale(1.025)",
+                          transformOrigin: "center",
+                          // },
+                        },
+                      }),
                     }}
                   >
-                    {/* <ProjectCover {...project} key={project.id} /> */}
-                    <ProjectPhoto {...project.cover} key={project.id} />
+                    <ProjectPhoto
+                      css={{ boxShadow: PROJECT_SHADOW }}
+                      {...project.cover.childImageSharp.fluid}
+                    />
                     <figcaption
                       css={{
                         ...flex("column"),
                         justifyContent: "flex-end",
                         color: colors.muteGray,
-                        padding: "1rem",
+                        marginTop: "1rem",
+                        // ...onMediaWidth(
+                        //   "800px",
+
+                        //   { padding: "1rem" }
+                        // ),
                       }}
                     >
                       <h1
@@ -147,63 +172,66 @@ const IndexPage = ({ data }) => {
                   </figure>
                 </Link>
               ))}
-              {/* </Gallery> */}
             </ContentArea>
           </SectionBlock>
-          <hr css={{ borderColor: colors.darkGray50, margin: "1rem" }} />
+
+          {/* <hr css={{ borderColor: colors.darkGray50, margin: TOUCH_TARGET }} /> */}
+
           <SectionBlock
             css={{
               backgroundColor: colors.darkGray,
             }}
           >
-            <ContentArea css={{ maxWidth: "80rem" }}>
-              <Gallery
-                css={{
-                  ".project-cover": {
-                    marginBottom: TOUCH_TARGET,
-                  },
-                  ...onTabletMedia({
-                    ".project-cover": {
-                      marginBottom: 0,
-                    },
-                  }),
-                }}
-              >
-                {projects.map(project => (
+            <ContentArea css={{ maxWidth: "80rem", padding: "1rem" }}>
+              <h1 css={{ textAlign: "right", marginBottom: "1rem" }}>
+                Identity Design
+              </h1>
+
+              <Gallery>
+                {identityProjects.map(project => (
                   <ProjectCover {...project} key={project.id} />
                 ))}
               </Gallery>
             </ContentArea>
           </SectionBlock>
+          <SectionBlock
+            css={{
+              backgroundColor: colors.darkGray,
+            }}
+          >
+            <ContentArea css={{ maxWidth: "80rem", padding: "1rem" }}>
+              <h1 css={{ textAlign: "right", marginBottom: "1rem" }}>
+                other work
+              </h1>
 
-          <hr />
+              <Gallery
+              // css={{
+              //   ".project-cover": {
+              //     marginBottom: TOUCH_TARGET,
+              //   },
+              //   ...onTabletMedia({
+              //     ".project-cover": {
+              //       marginBottom: 0,
+              //     },
+              //   }),
+              // }}
+              >
+                {otherProjects.map(project => (
+                  <ProjectCover {...project} key={project.id} />
+                ))}
+              </Gallery>
+            </ContentArea>
+          </SectionBlock>
+          {/* 
           <SectionBlock
             css={{
               backgroundColor: colors.muteGray,
               color: colors.darkGray,
             }}
           >
+            <h1 css={{ textAlign: "right" }}>Fun with code</h1>
             experimental section
-            {/* <ContentArea css={{ maxWidth: "80rem" }}>
-              <Gallery
-                css={{
-                  ".project-cover": {
-                    marginBottom: TOUCH_TARGET,
-                  },
-                  ...onTabletMedia({
-                    ".project-cover": {
-                      marginBottom: 0,
-                    },
-                  }),
-                }}
-              >
-                {projects.map(project => (
-                  <ProjectCover {...project} key={project.id} />
-                ))}
-              </Gallery>
-            </ContentArea> */}
-          </SectionBlock>
-          <hr />
+          </SectionBlock> */}
         </main>
       </StickyScrollContainer>
 

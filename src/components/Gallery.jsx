@@ -16,12 +16,12 @@ export const Gallery = ({ children, css, ...props }) => {
       css={{
         // backgroundColor: colors.darkGray,
         width: "100%",
-        padding: "2rem",
         ...flex("column"),
+        alignItems: "center",
 
         ...onTabletMedia({
           ...supportsGrid({
-            padding: TOUCH_TARGET,
+            // padding: TOUCH_TARGET,
             gridTemplateColumns: "1fr 1fr",
             gridGap: TOUCH_TARGET,
             gridAutoFlow: "row",

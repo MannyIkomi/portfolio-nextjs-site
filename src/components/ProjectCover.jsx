@@ -18,6 +18,8 @@ import {
   onMedia,
   styleTransition,
   onMediaWidth,
+  TOUCH_TARGET,
+  PROJECT_SHADOW,
 } from "../styles"
 
 export const ProjectCover = ({
@@ -32,10 +34,19 @@ export const ProjectCover = ({
   tags,
   ...props
 }) => {
-  const [isHovered, handleHover] = useHoverState()
+  // const [isHovered, handleHover] = useHoverState()
   const imageProps = cover.childImageSharp ? cover.childImageSharp.fluid : cover // for fallback GIF support
   return (
-    <Link to={"/" + slug} /* css={{ display: "block" }} */>
+    <Link
+      to={"/" + slug}
+      css={{
+        display: "block",
+        marginBottom: TOUCH_TARGET,
+        ...onTabletMedia({
+          margin: "1rem",
+        }),
+      }}
+    >
       <figure
         className={"project-cover"}
         css={{
@@ -49,23 +60,15 @@ export const ProjectCover = ({
           cursor: "pointer",
           backgroundColor: "white",
 
-          boxShadow: `0rem 1rem 1rem 0.5rem hsla(0, 0%, 0%, 0.5)`,
+          boxShadow: PROJECT_SHADOW,
 
           ...onMedia("hover: none", {
             // user agent does not have :hover (touch devices)
-
             ".willHide.OrangeOverprint": {
               opacity: 0,
             },
             ".willHide": {
               opacity: 0,
-
-              // ...onMediaWidth("800px", {
-              //   // Render text ontop of covers?
-              //   // Need to resolve legibility issues
-              //   opacity: 1,
-              //   textShadow: "0px 0px 0.2rem rgba(0, 0, 0, 1)",
-              // }),
             },
           }),
 
@@ -97,9 +100,8 @@ export const ProjectCover = ({
             },
           }),
         }}
-        onMouseEnter={handleHover}
-        onMouseLeave={handleHover}
-        // {...props}
+        // onMouseEnter={handleHover}
+        // onMouseLeave={handleHover}
       >
         <ProjectPhoto alt={coverAlt} {...imageProps} />
 
