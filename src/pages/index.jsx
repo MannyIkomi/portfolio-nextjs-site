@@ -146,30 +146,7 @@ const IndexPage = ({ data }) => {
               </Gallery>
             </ContentArea>
           </SectionBlock>
-          <SectionBlock
-            css={{
-              backgroundColor: colors.muteGray,
-            }}
-          >
-            <ContentArea css={{ maxWidth: "80rem" }}>
-              <Gallery
-                css={{
-                  ".project-cover": {
-                    marginBottom: TOUCH_TARGET,
-                  },
-                  ...onTabletMedia({
-                    ".project-cover": {
-                      marginBottom: 0,
-                    },
-                  }),
-                }}
-              >
-                {projects.map(project => (
-                  <ProjectCover {...project} key={project.id} />
-                ))}
-              </Gallery>
-            </ContentArea>
-          </SectionBlock>
+
           <hr />
           <SectionBlock
             css={{
@@ -222,6 +199,9 @@ export const pageQuery = graphql`
         draft
         feature
         seoDescription
+        tags {
+          design
+        }
         # private filtered out of query entirely
         cover {
           publicURL
