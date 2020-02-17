@@ -26,6 +26,7 @@ import { StickyMenuBar } from "../components/StickyMenuBar"
 import { ContentArea } from "../components/ContentArea"
 import { SectionBlock } from "../components/SectionBlock"
 import ProjectPhoto from "../components/ProjectPhoto"
+import { TokenList } from "../components/TokenList"
 
 const IndexPage = ({ data }) => {
   const projects = data.allStrapiProjects.nodes.filter(
@@ -114,6 +115,9 @@ const IndexPage = ({ data }) => {
                         <p css={{ textDecoration: "initial" }}>
                           {project.seoDescription}
                         </p>
+                        <TokenList>
+                          {project.tags.map(({ design }) => `#${design}`)}
+                        </TokenList>
                       </figcaption>
                     </figure>
                   </Link>

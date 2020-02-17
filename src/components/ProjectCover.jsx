@@ -6,6 +6,7 @@ import Img from "gatsby-image"
 import { useHoverState } from "../hooks/useHoverState"
 import { OrangeOverprint, Motif } from "./FillOverlay"
 import { ProjectPhoto } from "./ProjectPhoto"
+import { TokenList } from "./TokenList"
 import {
   aspectRatioLetter,
   typography,
@@ -140,17 +141,9 @@ export const ProjectCover = ({
         >
           <h1>{title}</h1>
           <h2>{subtitle}</h2>
-          <ul
-            css={{
-              listStyle: "none",
-            }}
-          >
-            {tags.map(({ design }) => (
-              <li css={{ display: "inline-block", marginRight: "1rem" }}>
-                #{design}
-              </li>
-            ))}
-          </ul>
+          {tags && (
+            <TokenList>{tags.map(({ design }) => `#${design}`)}</TokenList>
+          )}
 
           {draft && (
             <span style={{ color: "blue", textTransform: "uppercase" }}>
