@@ -23,6 +23,7 @@ import {
   PROJECT_SHADOW,
   styleTransition,
   DESKTOP_VIEWPORT,
+  onDesktopMedia,
 } from "../styles"
 import { StickyScrollContainer } from "../components/StickyScrollContainer"
 import { LogoMaster } from "../components/logo"
@@ -50,22 +51,6 @@ const IndexPage = ({ data }) => {
     project.tags.every(({ design }) => design !== "Identity")
   )
 
-  const [isDesktopWidth, setDesktopWidth] = useState(
-    typeof window !== "undefined" &&
-      window.matchMedia(`(min-width: ${DESKTOP_VIEWPORT})`)
-  )
-
-  useEffect(() => {
-    const handleMediaChange = mql => setDesktopWidth(mql.matches)
-    typeof window !== "undefined" &&
-      window
-        .matchMedia(`(min-width: ${DESKTOP_VIEWPORT})`)
-        .addListener(handleMediaChange)
-  }, [])
-
-  console.log(isDesktopWidth)
-
-  // Window.matchMatch(CSSMediaQuery via JS)
   return (
     <Layout>
       <HtmlHead
@@ -76,99 +61,97 @@ const IndexPage = ({ data }) => {
       />
       <StickyScrollContainer
         css={[
-          !isDesktopWidth && {
-            "::before": {
-              content: '""',
-              display: "block",
-              width: "100%",
-              maxHeight: MENUBAR_HEIGHT,
-            },
+          {
+            "#mobile": flex("row"),
+            "#desktop": { display: "none" },
           },
-          isDesktopWidth && {
-            ...flex("row"),
-          },
+          onDesktopMedia({
+            ...flex("row"), // puts desktop <nav> on the left of <main>
+            "#mobile": { display: "none" },
+            "#desktop": flex("column"),
+          }),
+          ,
         ]}
       >
-        {isDesktopWidth ? (
-          <nav
-            css={{
-              boxShadow: "0.25rem 0.25rem 1rem 0px rgba(0,0,0,0.5)",
-              width: "10rem",
-              height: "100vh",
-              position: "sticky",
-              top: 0,
-              left: 0,
-              padding: "1rem",
+        <nav
+          id={"desktop"}
+          css={{
+            boxShadow: "0.25rem 0.25rem 1rem 0px rgba(0,0,0,0.5)",
+            width: "10rem",
+            height: "100vh",
+            position: "sticky",
+            top: 0,
+            left: 0,
+            padding: "1rem",
 
-              ...flex("column"),
+            ...flex("column"),
+            alignItems: "center",
+          }}
+        >
+          <LogoMaster
+            css={{
+              minWidth: TOUCH_TARGET,
+              textAlign: "center",
+              width: "50%",
+              margin: "25%",
+              svg: {
+                ...styleTransition(),
+                fill: colors.darkGray,
+              },
+
+              // margin: "2rem 0",
+            }}
+          />
+          {[
+            ["Work", "/"],
+            ["About", "/about"],
+            ["Resume", "/resume"],
+          ].map(([label, path]) => (
+            <TypesetLink
+              css={[
+                menuLink,
+                {
+                  display: "block",
+                  // alignSelf: "flex-end",
+                  margin: `1rem 0`,
+                  padding: `0.25rem`,
+
+                  ...SANS_HEADING,
+                  textTransform: "uppercase",
+                },
+              ]}
+              to={path}
+            >
+              {label}
+            </TypesetLink>
+          ))}
+
+          <div
+            css={{
+              ...flex("row"),
               alignItems: "center",
+              justifyContent: "space-between",
+              width: "100%",
+              margin: "25% 0",
             }}
           >
-            <LogoMaster
-              css={{
-                minWidth: TOUCH_TARGET,
-                textAlign: "center",
-                width: "50%",
-                margin: "25%",
-                svg: {
-                  ...styleTransition(),
-                  fill: colors.darkGray,
-                },
+            {socialMedia.map(social => (
+              <SocialIcon
+                key={social.platform}
+                {...social}
+                css={{
+                  svg: { fill: colors.darkGray },
 
-                // margin: "2rem 0",
-              }}
-            />
-            {[
-              ["Werk", "/"],
-              ["About", "/about"],
-              ["Resume", "/resume"],
-            ].map(([label, path]) => (
-              <TypesetLink
-                css={[
-                  menuLink,
-                  {
-                    display: "block",
-                    // alignSelf: "flex-end",
-                    margin: `1rem 0`,
-                    padding: `0.25rem`,
-
-                    ...SANS_HEADING,
-                    textTransform: "uppercase",
-                  },
-                ]}
-                to={path}
-              >
-                {label}
-              </TypesetLink>
+                  minWidth: "initial",
+                  width: "25%",
+                  // maxWidth: TOUCH_TARGET,
+                }}
+              />
             ))}
+          </div>
+        </nav>
 
-            <div
-              css={{
-                ...flex("row"),
-                alignItems: "center",
-                justifyContent: "space-between",
-                width: "100%",
-                margin: "25% 0",
-              }}
-            >
-              {socialMedia.map(social => (
-                <SocialIcon
-                  key={social.platform}
-                  {...social}
-                  css={{
-                    svg: { fill: colors.darkGray },
-
-                    minWidth: "initial",
-                    width: "25%",
-                    // maxWidth: TOUCH_TARGET,
-                  }}
-                />
-              ))}
-            </div>
-          </nav>
-        ) : (
-          <StickyMenuBar />
-        )}
+        <StickyMenuBar />
 
         <main
           css={{

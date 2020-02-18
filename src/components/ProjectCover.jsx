@@ -39,6 +39,7 @@ export const ProjectCover = ({
   return (
     <Link
       to={"/" + slug}
+      title={title}
       css={{
         display: "block",
         marginBottom: TOUCH_TARGET,

@@ -24,7 +24,6 @@ import { ImageModule } from "../components/ImageModule"
 import { CaptionModule } from "../components/CaptionModule"
 import { TextModule } from "../components/TextModule"
 import { ProjectCover } from "../components/ProjectCover"
-
 import { SectionBlock } from "../components/SectionBlock"
 
 export const filterProjectById = (thisProject, otherProjects) => {
@@ -50,7 +49,6 @@ export const filterProjectTags = (thisProject = {}, otherProjects = []) => {
 const ProjectTemplate = ({ data }) => {
   const thisProject = data.strapiProjects
   const otherProjects = data.allStrapiProjects.nodes
-
   // how to improve this algorithim to sort projects by the most tag matches
   const findRelatedProjects = filterProjectTags
   // const findRelatedProjects = filterProjectTags
@@ -199,7 +197,6 @@ const ProjectTemplate = ({ data }) => {
 
                       maxWidth: "100vw",
                       minHeight: "66vh",
-                      TOUCH_TARGET,
                     }),
                   ]}
                 >
@@ -213,19 +210,20 @@ const ProjectTemplate = ({ data }) => {
                       css={[
                         {
                           // progressive enhance from single column vertical scroll
-                          minWidth: "10rem",
+                          minWidth: "15rem",
                           maxWidth: "20rem",
-                          TOUCH_TARGET,
+                          margin: "0 2rem",
 
                           ...onTabletMedia({
-                            maxWidth: "30rem",
+                            // marginRight: `${TOUCH_TARGET}`,
                             margin: "5%",
+                            maxWidth: "30rem",
                           }),
                         },
                         onMedia("pointer: coarse", {
                           flex: "0 0 auto",
                           maxWidth: "66vw",
-                          TOUCH_TARGET,
+                          // TOUCH_TARGET,
                         }),
                       ]}
                     >

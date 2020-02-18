@@ -61,6 +61,7 @@ export const StickyMenuBar = ({ children, ...props }) => {
 
   return (
     <nav
+      id={"mobile"}
       css={[
         {
           position: "sticky",
