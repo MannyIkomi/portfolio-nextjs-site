@@ -11,33 +11,26 @@ import { Footer } from "../components/Footer"
 
 import {
   supportsGrid,
-  MENUBAR_HEIGHT,
   onMediaWidth,
   onTabletMedia,
   TOUCH_TARGET,
   colors,
   SANS_HEADING,
   flex,
-  menuLink,
   onMedia,
   PROJECT_SHADOW,
   styleTransition,
-  DESKTOP_VIEWPORT,
   onDesktopMedia,
 } from "../styles"
 import { StickyScrollContainer } from "../components/StickyScrollContainer"
-import { LogoMaster } from "../components/logo"
-import { TypesetLink } from "../components/TypesetLink"
 import { StickyMenuBar } from "../components/StickyMenuBar"
 import { ContentArea } from "../components/ContentArea"
 import { SectionBlock } from "../components/SectionBlock"
 import ProjectPhoto from "../components/ProjectPhoto"
 import { TokenList } from "../components/TokenList"
-import { SocialIcon } from "../components/SocialIcon"
-import { useSocialMedia } from "../hooks/useSocialMedia"
+import { DesktopMenu } from "./DesktopMenu"
 
 const IndexPage = ({ data }) => {
-  const socialMedia = useSocialMedia()
   const projects = data.allStrapiProjects.nodes.filter(
     ({ draft, feature }) => !draft && !feature
   )
@@ -73,86 +66,8 @@ const IndexPage = ({ data }) => {
           ,
         ]}
       >
-        <nav
-          id={"desktop"}
-          css={{
-            boxShadow: "0.25rem 0.25rem 1rem 0px rgba(0,0,0,0.5)",
-            width: "10rem",
-            height: "100vh",
-            position: "sticky",
-            top: 0,
-            left: 0,
-            padding: "1rem",
-
-            ...flex("column"),
-            alignItems: "center",
-          }}
-        >
-          <LogoMaster
-            css={{
-              minWidth: TOUCH_TARGET,
-              textAlign: "center",
-              width: "50%",
-              margin: "25%",
-              svg: {
-                ...styleTransition(),
-                fill: colors.darkGray,
-              },
-
-              // margin: "2rem 0",
-            }}
-          />
-          {[
-            ["Work", "/"],
-            ["About", "/about"],
-            ["Resume", "/resume"],
-          ].map(([label, path]) => (
-            <TypesetLink
-              css={[
-                menuLink,
-                {
-                  display: "block",
-                  // alignSelf: "flex-end",
-                  margin: `1rem 0`,
-                  padding: `0.25rem`,
-
-                  ...SANS_HEADING,
-                  textTransform: "uppercase",
-                },
-              ]}
-              to={path}
-            >
-              {label}
-            </TypesetLink>
-          ))}
-
-          <div
-            css={{
-              ...flex("row"),
-              alignItems: "center",
-              justifyContent: "space-between",
-              width: "100%",
-              margin: "25% 0",
-            }}
-          >
-            {socialMedia.map(social => (
-              <SocialIcon
-                key={social.platform}
-                {...social}
-                css={{
-                  svg: { fill: colors.darkGray },
-
-                  minWidth: "initial",
-                  width: "25%",
-                  // maxWidth: TOUCH_TARGET,
-                }}
-              />
-            ))}
-          </div>
-        </nav>
-
+        <DesktopMenu />
         <StickyMenuBar />
-
         <main
           css={{
             width: "100%",
