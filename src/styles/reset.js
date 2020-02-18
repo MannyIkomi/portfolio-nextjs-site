@@ -1,4 +1,4 @@
-export const reset = {
+export const RESET = {
   [`
         html,
 body,
@@ -118,4 +118,4 @@ video`]: {
     background: "transparent",
   },
 }
-export default reset
+export default RESET

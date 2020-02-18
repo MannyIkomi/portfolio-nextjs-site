@@ -130,7 +130,7 @@ export const typography = {
   // maxReadingWidth,
 }
 
-export const global = {
+export const GLOBAL = {
   "*": {
     boxSizing: "border-box",
   },

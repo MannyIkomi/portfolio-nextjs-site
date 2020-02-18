@@ -9,7 +9,7 @@ import { css, jsx } from "@emotion/core"
 import React from "react"
 import PropTypes from "prop-types"
 import { Global } from "@emotion/core"
-import { typography, colors, reset, global } from "../styles"
+import { typography, colors, RESET, GLOBAL } from "../styles"
 import { useStaticQuery, graphql } from "gatsby"
 import { Footer } from "./Footer"
 import Header from "./header"
@@ -29,8 +29,8 @@ const Layout = ({ children }) => {
     <>
       <Global
         styles={{
-          ...reset,
-          ...global,
+          ...RESET,
+          ...GLOBAL,
         }}
       />
 
