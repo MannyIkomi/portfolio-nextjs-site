@@ -55,15 +55,7 @@ const ProjectTemplate = ({ data }) => {
   const findRelatedProjects = filterProjectTags
   // const findRelatedProjects = filterProjectTags
 
-  const {
-    slug,
-    title,
-    modules,
-    coverAlt,
-    draft,
-    subtitle,
-    seoDescription,
-  } = thisProject
+  const { title, modules, draft, subtitle } = thisProject
 
   return (
     <Layout>
