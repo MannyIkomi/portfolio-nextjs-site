@@ -168,7 +168,7 @@ const IndexPage = ({ data }) => {
                       </p>
 
                       <TokenList>
-                        {project.tags.map(({ design }) => `#${design}`)}
+                        {project.tags.map(({ design }) => `${design}`)}
                       </TokenList>
                     </figcaption>
                   </figure>
