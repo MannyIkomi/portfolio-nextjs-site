@@ -28,7 +28,7 @@ import { ContentArea } from "../components/ContentArea"
 import { SectionBlock } from "../components/SectionBlock"
 import ProjectPhoto from "../components/ProjectPhoto"
 import { TokenList } from "../components/TokenList"
-import { DesktopMenu } from "./DesktopMenu"
+import { DesktopMenu } from "../components/DesktopMenu"
 
 const IndexPage = ({ data }) => {
   const projects = data.allStrapiProjects.nodes.filter(

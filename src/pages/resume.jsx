@@ -3,7 +3,8 @@ import React from "react"
 import { css, jsx } from "@emotion/core"
 import { graphql } from "gatsby"
 
-import { menubarHeight, flex, colors } from "../styles"
+import { menubarHeight, flex, colors, onDesktopMedia } from "../styles"
+
 import Layout from "../components/layout"
 import HtmlHead from "../components/HtmlHead"
 import { StickyScrollContainer } from "../components/StickyScrollContainer"
@@ -13,11 +14,12 @@ import { List } from "../components/List"
 import { Footer } from "../components/Footer"
 import { SectionBlock } from "../components/SectionBlock"
 import { ContentArea } from "../components/ContentArea"
-import Debug from "../components/Debug"
+import { DesktopMenu } from "../components/DesktopMenu"
+
 import { Expertise } from "../components/Expertise"
 import { Experience } from "../components/Experience"
 import { ResumeSection } from "../components/ResumeSection"
-import { convertEpochToDate } from "../util/dates"
+
 import { Education } from "../components/Education"
 
 const ResumePage = ({ data }) => {
@@ -45,7 +47,21 @@ const ResumePage = ({ data }) => {
         description={`Manny Ikomi's work experience, education, volunteer work, skills and tools.`}
       />
 
-      <StickyScrollContainer>
+      <StickyScrollContainer
+        css={[
+          {
+            "#mobile": flex("row"),
+            "#desktop": { display: "none" },
+          },
+          onDesktopMedia({
+            ...flex("row"), // puts desktop <nav> on the left of <main>
+            "#mobile": { display: "none" },
+            "#desktop": flex("column"),
+          }),
+          ,
+        ]}
+      >
+        <DesktopMenu />
         <StickyMenuBar />
         <main>
           <article

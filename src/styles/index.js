@@ -138,6 +138,9 @@ export const GLOBAL = {
     // fontSize: "100%",
     ...SANS_TYPE,
   },
+  main: {
+    width: "100%",
+  },
   // body: {
   //   overflow: "hidden",
   //   overflowX: "hidden",

@@ -4,12 +4,11 @@ import React from "react"
 import { graphql } from "gatsby"
 
 import {
-  MENUBAR_HEIGHT,
   supportsGrid,
   onTabletMedia,
   colors,
   flex,
-  onMedia,
+  onDesktopMedia,
 } from "../styles"
 import Layout from "../components/layout"
 import HtmlHead from "../components/HtmlHead"
@@ -22,6 +21,7 @@ import Markdown from "../components/markdown"
 import { CreativeInspiration } from "../components/CreativeInspiration"
 import { ContentArea } from "../components/ContentArea"
 import { SectionBlock } from "../components/SectionBlock"
+import { DesktopMenu } from "../components/DesktopMenu"
 import { QuoteBlock } from "../components/QuoteBlock"
 
 const AboutPage = ({ data }) => {
@@ -43,17 +43,21 @@ const AboutPage = ({ data }) => {
         title={"About Me"}
         description={`With over 5 years of professional experience as a Graphic Designer and related roles, I have learned the tools and techniques required to craft ideas into real design solutions.`}
       />
-
       <StickyScrollContainer
-        css={{
-          "::before": {
-            content: '""',
-            display: "block",
-            width: "100%",
-            maxHeight: MENUBAR_HEIGHT,
+        css={[
+          {
+            "#mobile": flex("row"),
+            "#desktop": { display: "none" },
           },
-        }}
+          onDesktopMedia({
+            ...flex("row"), // puts desktop <nav> on the left of <main>
+            "#mobile": { display: "none" },
+            "#desktop": flex("column"),
+          }),
+          ,
+        ]}
       >
+        <DesktopMenu />
         <StickyMenuBar />
         {/* <Header siteTitle={"Manny Ikomi"}></Header> */}
         {/* <aside>

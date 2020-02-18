@@ -9,9 +9,9 @@ import {
   menuLink,
   styleTransition,
 } from "../styles"
-import { LogoMaster } from "../components/logo"
-import { TypesetLink } from "../components/TypesetLink"
-import { SocialIcon } from "../components/SocialIcon"
+import { LogoMaster } from "./logo"
+import { TypesetLink } from "./TypesetLink"
+import { SocialIcon } from "./SocialIcon"
 import { useSocialMedia } from "../hooks/useSocialMedia"
 
 export const DesktopMenu = ({ ...restProps }) => {
@@ -20,15 +20,19 @@ export const DesktopMenu = ({ ...restProps }) => {
     <nav
       id={"desktop"}
       css={{
-        boxShadow: "0.25rem 0.25rem 1rem 0px rgba(0,0,0,0.5)",
+        ...flex("column"),
+        alignItems: "center",
+
         width: "10rem",
         height: "100vh",
+        padding: "1rem",
+
         position: "sticky",
         top: 0,
         left: 0,
-        padding: "1rem",
-        ...flex("column"),
-        alignItems: "center",
+
+        boxShadow: "0.25rem 0.25rem 1rem 0px rgba(0,0,0,0.5)",
+        backgroundColor: colors.muteGray,
       }}
     >
       <LogoMaster
