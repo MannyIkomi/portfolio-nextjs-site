@@ -53,7 +53,7 @@ export const Experience = props => {
               borderBottom: `0.1rem solid ${colors.darkGray20}`,
             },
             onDesktopMedia({
-              ...positionSticky(0),
+              ...positionSticky(-1),
             }),
           ]}
         >

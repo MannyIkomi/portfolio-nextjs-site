@@ -81,24 +81,18 @@ const ResumePage = ({ data }) => {
                   padding: "1rem",
                 }}
               >
-                <TypesetLink css={{ padding: "1rem" }} to={"#experience"}>
-                  Experience
-                </TypesetLink>
-                <TypesetLink css={{ padding: "1rem" }} to={"#education"}>
-                  Education
-                </TypesetLink>
-                <TypesetLink css={{ padding: "1rem" }} to={"#certifications"}>
-                  Certifications
-                </TypesetLink>
-                <TypesetLink css={{ padding: "1rem" }} to={"#volunteering"}>
-                  Volunteering
-                </TypesetLink>
-                <TypesetLink css={{ padding: "1rem" }} to={"#skills"}>
-                  Skills
-                </TypesetLink>
-                <TypesetLink css={{ padding: "1rem" }} to={"#tools"}>
-                  Tools
-                </TypesetLink>
+                {[
+                  ["Experience", "#experience"],
+                  ["Education", "#education"],
+                  ["Certifications", "#certifications"],
+                  ["Volunteering", "#volunteering"],
+                  ["Skills", "#skills"],
+                  ["Tools", "#tools"],
+                ].map(([label, path]) => (
+                  <TypesetLink to={path} css={{ padding: "1rem" }}>
+                    {label}
+                  </TypesetLink>
+                ))}
               </nav>
             </header>
             <ContentArea>
