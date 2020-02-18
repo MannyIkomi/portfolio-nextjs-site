@@ -111,18 +111,16 @@ export const StickyMenuBar = ({ children, ...props }) => {
           togglePointerEvents,
         ]}
       >
-        <TypesetLink css={[menuLink, transition, slideInOut]} to={"/"}>
-          Werk
-        </TypesetLink>
-        <TypesetLink css={[menuLink, transition, slideInOut]} to={"/about"}>
-          About
-        </TypesetLink>
-        <TypesetLink css={[menuLink, transition, slideInOut]} to={"/resume"}>
-          Resume
-        </TypesetLink>
-        {/* <TypesetLink css={menuLink} to={"/contact"}>
-          Say Hello
-        </TypesetLink> */}
+        {[
+          ["Work", "/"],
+          ["About", "/about"],
+          ["Resume", "/resume"],
+        ].map(([label, path]) => (
+          <TypesetLink css={[menuLink, transition, slideInOut]} to={path}>
+            {label}
+          </TypesetLink>
+        ))}
+
         {children}
       </div>
     </nav>
