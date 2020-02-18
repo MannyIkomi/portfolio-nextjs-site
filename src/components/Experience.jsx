@@ -11,6 +11,7 @@ import {
   MENUBAR_HEIGHT,
   styleTransition,
   typesetInteraction,
+  onDesktopMedia,
 } from "../styles"
 import { Markdown } from "./markdown"
 import useToggleSwitch from "../hooks/useToggleSwitch"
@@ -51,6 +52,9 @@ export const Experience = props => {
               padding: "0.5rem 0",
               borderBottom: `0.1rem solid ${colors.darkGray20}`,
             },
+            onDesktopMedia({
+              ...positionSticky(0),
+            }),
           ]}
         >
           <TitleResume url={url}>{organization}</TitleResume>
