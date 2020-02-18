@@ -8,7 +8,7 @@ import HtmlHead from "../components/HtmlHead"
 import { ProjectCover } from "../components/ProjectCover"
 import { Gallery } from "../components/Gallery"
 import { Footer } from "../components/Footer"
-import { Header } from "../components/Header"
+
 import {
   supportsGrid,
   MENUBAR_HEIGHT,
@@ -16,8 +16,6 @@ import {
   onTabletMedia,
   TOUCH_TARGET,
   colors,
-  FUTURA_BODY_SIZE,
-  typography,
   SANS_HEADING,
   flex,
   menuLink,
@@ -37,13 +35,6 @@ import { TokenList } from "../components/TokenList"
 import { SocialIcon } from "../components/SocialIcon"
 import { useSocialMedia } from "../hooks/useSocialMedia"
 
-// const matchesMediaQuery = queryString => {
-//   mediaListener = window
-//     .matchMedia(queryString)
-//     .addEventListener("change", handleMediaChange)
-//   return mediaListener
-// }
-
 const IndexPage = ({ data }) => {
   const socialMedia = useSocialMedia()
   const projects = data.allStrapiProjects.nodes.filter(
@@ -60,18 +51,18 @@ const IndexPage = ({ data }) => {
   )
 
   const [isDesktopWidth, setDesktopWidth] = useState(
-    window.matchMedia(`(min-width: ${DESKTOP_VIEWPORT})`)
+    typeof window !== "undefined" &&
+      window.matchMedia(`(min-width: ${DESKTOP_VIEWPORT})`)
   )
 
   useEffect(() => {
     const handleMediaChange = mql => setDesktopWidth(mql.matches)
-    const desktopWidth = window
-      .matchMedia(`(min-width: ${DESKTOP_VIEWPORT})`)
-      .addListener(handleMediaChange)
-
-    // return () => desktopWidth.removeListener(handleMediaChange)
+    typeof window !== "undefined" &&
+      window
+        .matchMedia(`(min-width: ${DESKTOP_VIEWPORT})`)
+        .addListener(handleMediaChange)
   }, [])
-  // console.log(matchesMediaQuery("(min-width: 600px)"))
+
   console.log(isDesktopWidth)
 
   // Window.matchMatch(CSSMediaQuery via JS)

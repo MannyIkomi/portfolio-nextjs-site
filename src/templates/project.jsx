@@ -1,8 +1,7 @@
 /** @jsx jsx */
-import { css, jsx } from "@emotion/core"
+import { jsx } from "@emotion/core"
 import React from "react"
-import { graphql, useStaticQuery } from "gatsby"
-import Img from "gatsby-image"
+import { graphql } from "gatsby"
 
 import {
   MENUBAR_HEIGHT,
@@ -11,24 +10,21 @@ import {
   SANS_HEADING,
   SERIF_TYPE,
   FUTURA_BODY_SIZE,
-  maxLineMeasure,
   TOUCH_TARGET,
   onTabletMedia,
   onMedia,
-  onMediaWidth,
 } from "../styles"
 import Layout from "../components/layout"
 import HtmlHead from "../components/HtmlHead"
 import { StickyScrollContainer } from "../components/StickyScrollContainer"
 import { StickyMenuBar } from "../components/StickyMenuBar"
 import { ContentArea } from "../components/ContentArea"
-import { TypesetLink } from "../components/TypesetLink"
 import { Footer } from "../components/Footer"
 import { ImageModule } from "../components/ImageModule"
 import { CaptionModule } from "../components/CaptionModule"
 import { TextModule } from "../components/TextModule"
 import { ProjectCover } from "../components/ProjectCover"
-import Debug from "../components/Debug"
+
 import { SectionBlock } from "../components/SectionBlock"
 
 export const filterProjectById = (thisProject, otherProjects) => {
@@ -180,11 +176,9 @@ const ProjectTemplate = ({ data }) => {
               >
                 <ContentArea
                   css={[
+                    // progressive enhance from single column vertical scroll
                     {
-                      // progressive enhance from single column vertical scroll
-                    },
-                    {
-                      TOUCH_TARGET,
+                      margin: TOUCH_TARGET,
                     },
                   ]}
                 >

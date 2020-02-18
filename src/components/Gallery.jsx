@@ -12,7 +12,7 @@ import {
 export const Gallery = ({ children, css, ...props }) => {
   return (
     <section
-      className={"gallery"}
+      // className={"gallery"}
       css={{
         // backgroundColor: colors.darkGray,
         width: "100%",
@@ -23,7 +23,7 @@ export const Gallery = ({ children, css, ...props }) => {
           ...supportsGrid({
             // padding: TOUCH_TARGET,
             gridTemplateColumns: "1fr 1fr",
-            gridGap: TOUCH_TARGET,
+            gridGap: `calc(${TOUCH_TARGET} / 2)`,
             gridAutoFlow: "row",
           }),
         }),
