@@ -53,7 +53,15 @@ export const Education = props => {
             Awarded {getMonthYear(ended)}
           </span>
         ) : (
-          <TimeFrame start={started} end={ended} />
+          <span
+            css={{
+              fontFamily: typography.sans,
+              fontSize: "0.9rem",
+              fontStyle: "italic",
+            }}
+          >
+            In Progress…
+          </span>
         )}
       </header>
       {description && <Markdown>{description}</Markdown>}
