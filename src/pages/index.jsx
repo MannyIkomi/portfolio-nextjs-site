@@ -177,7 +177,8 @@ const IndexPage = ({ data }) => {
             </ContentArea>
           </SectionBlock>
 
-          {/* <hr css={{ borderColor: colors.darkGray50, margin: TOUCH_TARGET }} /> */}
+          {/* INTERACTIVE DESIGN SECTION */}
+
           {identityProjects.length > 0 && (
             <SectionBlock
               css={{
@@ -207,18 +208,7 @@ const IndexPage = ({ data }) => {
                 other work
               </h1>
 
-              <Gallery
-              // css={{
-              //   ".project-cover": {
-              //     marginBottom: TOUCH_TARGET,
-              //   },
-              //   ...onTabletMedia({
-              //     ".project-cover": {
-              //       marginBottom: 0,
-              //     },
-              //   }),
-              // }}
-              >
+              <Gallery>
                 {otherProjects.map(project => (
                   <ProjectCover {...project} key={project.id} />
                 ))}
