@@ -47,6 +47,9 @@ export const CaptionModule = ({ image, imageAlt, imageFill, text }) => {
             ...flex("row"),
             alignItems: "center",
             alignItems: "flex-start",
+            figcaption: {
+              width: "50%",
+            },
             img: {
               width: "50%",
               position: "sticky",
