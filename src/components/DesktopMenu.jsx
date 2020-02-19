@@ -50,7 +50,7 @@ export const DesktopMenu = ({ ...restProps }) => {
       {[
         ["Work", "/"],
         ["About", "/about"],
-        ["Resume", "/resume"],
+        ["Résumé", "/resume"],
       ].map(([label, path]) => (
         <TypesetLink
           css={[
