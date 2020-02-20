@@ -23,6 +23,7 @@ import { Footer } from "../components/Footer"
 import { ImageModule } from "../components/ImageModule"
 import { CaptionModule } from "../components/CaptionModule"
 import { InteractiveModule } from "../components/InteractiveModule"
+import { LinkModule } from "../components/LinkModule"
 import { TextModule } from "../components/TextModule"
 import { ProjectCover } from "../components/ProjectCover"
 import { SectionBlock } from "../components/SectionBlock"
@@ -151,6 +152,8 @@ const ProjectTemplate = ({ data }) => {
                       return <CaptionModule {...module} key={module.id} />
                     case "interactive":
                       return <InteractiveModule {...module} key={module.id} />
+                    case "link":
+                      return <LinkModule {...module} key={module.id} />
                     // case 'section':
                     // use to split
                     //   return <div>CREATE SECTION MODULE</div> with glyph
