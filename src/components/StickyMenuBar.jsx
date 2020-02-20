@@ -117,7 +117,11 @@ export const StickyMenuBar = ({ children, ...props }) => {
           ["About", "/about"],
           ["Résumé", "/resume"],
         ].map(([label, path]) => (
-          <TypesetLink css={[menuLink, transition, slideInOut]} to={path}>
+          <TypesetLink
+            css={[menuLink, transition, slideInOut]}
+            to={path}
+            key={label}
+          >
             {label}
           </TypesetLink>
         ))}

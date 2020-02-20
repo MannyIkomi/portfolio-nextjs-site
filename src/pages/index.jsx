@@ -32,7 +32,7 @@ import { DesktopMenu } from "../components/DesktopMenu"
 
 const IndexPage = ({ data }) => {
   const projects = data.allStrapiProjects.nodes.filter(
-    ({ draft, feature }) => !draft && !feature
+    ({ draft, feature }) => /* !draft && */ !feature
   )
   const feature = data.allStrapiProjects.nodes.filter(
     ({ draft, feature }) => !draft && feature
@@ -40,8 +40,13 @@ const IndexPage = ({ data }) => {
   const identityProjects = projects.filter(project =>
     project.tags.some(({ design }) => design === "Identity")
   )
+  const interactiveProjects = projects.filter(project =>
+    project.tags.some(({ design }) => design === "Interactive")
+  )
   const otherProjects = projects.filter(project =>
-    project.tags.every(({ design }) => design !== "Identity")
+    project.tags.every(
+      ({ design }) => design !== "Identity" && design !== "Interactive"
+    )
   )
 
   return (
@@ -178,6 +183,25 @@ const IndexPage = ({ data }) => {
           </SectionBlock>
 
           {/* INTERACTIVE DESIGN SECTION */}
+          {interactiveProjects.length > 0 && (
+            <SectionBlock
+              css={{
+                backgroundColor: colors.darkGray,
+              }}
+            >
+              <ContentArea css={{ maxWidth: "80rem", padding: "1rem" }}>
+                <h1 css={{ textAlign: "right", marginBottom: "1rem" }}>
+                  Interactive Design
+                </h1>
+
+                <Gallery>
+                  {interactiveProjects.map(project => (
+                    <ProjectCover {...project} key={project.id} />
+                  ))}
+                </Gallery>
+              </ContentArea>
+            </SectionBlock>
+          )}
 
           {identityProjects.length > 0 && (
             <SectionBlock

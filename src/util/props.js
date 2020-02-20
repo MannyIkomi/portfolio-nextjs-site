@@ -8,6 +8,7 @@ export const moduleProps = PropTypes.shape({
   id: PropTypes.number.isRequired,
   imageAlt: PropTypes.string,
   text: PropTypes.string,
+  url: PropTypes.string, //url for interactive iframe
   type: PropTypes.oneOf(["image", "text", "caption", "section"]).isRequired,
   image: imageProps,
 })

@@ -22,6 +22,7 @@ import { ContentArea } from "../components/ContentArea"
 import { Footer } from "../components/Footer"
 import { ImageModule } from "../components/ImageModule"
 import { CaptionModule } from "../components/CaptionModule"
+import { InteractiveModule } from "../components/InteractiveModule"
 import { TextModule } from "../components/TextModule"
 import { ProjectCover } from "../components/ProjectCover"
 import { SectionBlock } from "../components/SectionBlock"
@@ -148,6 +149,8 @@ const ProjectTemplate = ({ data }) => {
                       return <TextModule {...module} key={module.id} />
                     case "caption":
                       return <CaptionModule {...module} key={module.id} />
+                    case "interactive":
+                      return <InteractiveModule {...module} key={module.id} />
                     // case 'section':
                     // use to split
                     //   return <div>CREATE SECTION MODULE</div> with glyph
@@ -256,6 +259,7 @@ export const query = graphql`
         imageFill
         text
         type
+        url
         image {
           childImageSharp {
             original {

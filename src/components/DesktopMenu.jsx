@@ -65,6 +65,7 @@ export const DesktopMenu = ({ ...restProps }) => {
             },
           ]}
           to={path}
+          key={label}
         >
           {label}
         </TypesetLink>
