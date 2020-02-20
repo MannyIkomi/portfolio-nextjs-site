@@ -14,6 +14,8 @@ export const TokenList = ({ children, ...restProps }) => {
         return (
           <li
             css={{
+              fontSize: "1rem",
+
               display: "inline-block",
               margin: "0.33rem 0",
               marginRight: "1rem",
