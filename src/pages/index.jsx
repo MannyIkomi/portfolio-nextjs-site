@@ -32,7 +32,7 @@ import { DesktopMenu } from "../components/DesktopMenu"
 
 const IndexPage = ({ data }) => {
   const projects = data.allStrapiProjects.nodes.filter(
-    ({ draft, feature }) => /* !draft && */ !feature
+    ({ draft, feature }) => /* !draft && */ true // !feature
   )
   const feature = data.allStrapiProjects.nodes.filter(
     ({ draft, feature }) => !draft && feature
