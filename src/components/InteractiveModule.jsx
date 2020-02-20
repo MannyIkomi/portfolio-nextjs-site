@@ -14,12 +14,12 @@ export const InteractiveModule = props => {
       css={[
         moduleContainer(),
         {
-          ...flex("column"),
+          // how to make container resizeable?
+          display: "block",
           width: "100%",
-          maxHeight: "80vh",
-          height: "80vh",
-          // maxWidth: "80rem",
-          // maxHeight: "90vh",
+          maxHeight: "90vh",
+          height: "90vh",
+          overflow: "auto",
         },
       ]}
       dangerouslySetInnerHTML={{ __html: text }}
