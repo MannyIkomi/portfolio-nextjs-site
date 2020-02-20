@@ -13,7 +13,6 @@ import {
 
 export const LinkModule = props => {
   const { image, imageAlt, imageFill, url, type, text, id } = props
-  console.table(props)
 
   const isExternalLink = true
   // https://www.gatsbyjs.org/docs/gatsby-link/#reminder-use-link-only-for-internal-links

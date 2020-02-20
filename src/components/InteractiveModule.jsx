@@ -8,7 +8,6 @@ import ProjectPhoto from "./ProjectPhoto"
 
 export const InteractiveModule = props => {
   const { image, imageAlt, imageFill, url, type, text, id } = props
-  console.table(props)
   return (
     <figure
       css={[
