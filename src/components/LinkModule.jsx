@@ -9,6 +9,8 @@ import {
   typesetInteraction,
   colors,
   moduleContainer,
+  onMediaWidth,
+  onMedia,
 } from "../styles"
 
 export const LinkModule = props => {
@@ -26,17 +28,23 @@ export const LinkModule = props => {
       css={{
         ...moduleContainer(),
         ...styleTransition(),
-        ...typesetInteraction({
-          ":hover": {
-            color: colors.orange,
-            backgroundColor: colors.muteGray,
-            borderBottom: `0.25rem solid ${colors.orange}`,
-          },
+
+        ...onMedia("hover: hover", {
+          ...typesetInteraction({
+            ":hover": {
+              color: colors.orange,
+              backgroundColor: colors.muteGray,
+              borderBottom: `0.25rem solid ${colors.orange}`,
+            },
+          }),
         }),
+
         padding: "1rem",
+
         ...SANS_HEADING,
         fontWeight: "bold",
         fontSize: "2rem",
+        textAlign: "center",
 
         color: colors.muteGray,
         backgroundColor: colors.orange,
