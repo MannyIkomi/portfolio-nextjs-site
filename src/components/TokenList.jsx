@@ -18,7 +18,7 @@ export const TokenList = ({ children, ...restProps }) => {
 
               display: "inline-block",
               margin: "0.33rem 0",
-              marginRight: "1rem",
+              marginRight: "0.66rem",
               padding: "0.1rem 0.33rem",
               backgroundColor: colors.darkGray80,
             }}
