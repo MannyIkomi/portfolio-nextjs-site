@@ -130,16 +130,6 @@ const IndexPage = ({ data }) => {
             <ContentArea css={{ fontSize: "5vmin" }}>
               <h1>
                 I create{" "}
-                {/* <span
-                css={[
-                  {
-                    font: "inherit",
-                  },
-                  heroTypesetAnimation({ animationDelay: "1s" }),
-                ]}
-              >
-                intentional–
-              </span> */}
                 <span
                   css={[
                     { font: "inherit" },
@@ -167,10 +157,10 @@ const IndexPage = ({ data }) => {
                   { label: "Web & UI Design", value: "interactive" },
                   { label: "Logo & Identity Design", value: "identity" },
                   { label: "Print & Graphic Design", value: "graphic" },
-                  { label: "Impress Me!", value: "" },
+                  // { label: "Impress Me!", value: "" },
+                  // { label: "My favorite piece", value: "favorite" },
                 ]}
                 onChange={({ value }) => {
-                  console.log(value)
                   if (!value) {
                     return setSelectedProjects(cmsProjects)
                   }
