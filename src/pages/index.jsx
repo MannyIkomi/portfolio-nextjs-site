@@ -44,22 +44,23 @@ export const ProjectTagHeading = ({ children, ...restProps }) => {
 export const SectionBreak = props => <hr css={{ margin: "5vh", border: 0 }} />
 
 const IndexPage = ({ data }) => {
-  const allProjects = data.allStrapiProjects.nodes.filter(
+  const cmsProjects = data.allStrapiProjects.nodes.filter(
     ({ draft, feature }) => !draft && true // !feature
   )
 
-  const [selectedProjects, setSelectedProjects] = useState(allProjects)
+  const [selectedProjects, setSelectedProjects] = useState(cmsProjects)
 
+  // group project sections by category
   const feature = selectedProjects.filter(
     ({ draft, feature }) => !draft && feature
   )
-  const identityProjects = allProjects.filter(project =>
-    project.tags.some(({ design }) => design === "Identity")
-  )
-  const interactiveProjects = allProjects.filter(project =>
+  const interactiveProjects = selectedProjects.filter(project =>
     project.tags.some(({ design }) => design === "Interactive")
   )
-  const graphicProjects = allProjects.filter(project =>
+  const identityProjects = selectedProjects.filter(project =>
+    project.tags.some(({ design }) => design === "Identity")
+  )
+  const graphicProjects = selectedProjects.filter(project =>
     project.tags.every(
       ({ design }) => design !== "Identity" && design !== "Interactive"
     )
@@ -166,12 +167,27 @@ const IndexPage = ({ data }) => {
                   { label: "Web & UI Design", value: "interactive" },
                   { label: "Logo & Identity Design", value: "identity" },
                   { label: "Print & Graphic Design", value: "graphic" },
-                  { label: "Impress Me!", value: null },
+                  { label: "Impress Me!", value: "" },
                 ]}
                 onChange={({ value }) => {
                   console.log(value)
+                  if (!value) {
+                    return setSelectedProjects(cmsProjects)
+                  }
+
+                  if (value === "graphic") {
+                    return setSelectedProjects(
+                      cmsProjects.filter(project =>
+                        project.tags.every(
+                          ({ design }) =>
+                            design.toUpperCase() !== "interactive".toUpperCase()
+                        )
+                      )
+                    )
+                  }
+
                   setSelectedProjects(
-                    allProjects.filter(project =>
+                    cmsProjects.filter(project =>
                       project.tags.some(
                         ({ design }) =>
                           design.toUpperCase() === value.toUpperCase()
@@ -227,127 +243,132 @@ const IndexPage = ({ data }) => {
                 <option value="all">Just Impress Me!</option>
               </select> */}
           </SectionBlock>
+          {feature.length > 0 && (
+            <>
+              <SectionBlock
+                css={{
+                  backgroundColor: colors.darkGray,
+                  minHeight: "50vh",
+                }}
+              >
+                <ContentArea css={{ maxWidth: "80rem", padding: "1rem" }}>
+                  <ProjectTagHeading>Featured Work</ProjectTagHeading>
 
-          <SectionBlock
-            css={{
-              backgroundColor: colors.darkGray,
-              minHeight: "50vh",
-            }}
-          >
-            <ContentArea css={{ maxWidth: "80rem", padding: "1rem" }}>
-              <ProjectTagHeading>Featured Work</ProjectTagHeading>
-
-              {feature.map(project => (
-                <Link
-                  to={"/" + project.slug} /* css={{ display: "block" }} */
-                  className={"project-cover"}
-                  css={{
-                    display: "block",
-                    ...flex("column"),
-                    justifyContent: "center",
-                    marginBottom: TOUCH_TARGET,
-                    ...onTabletMedia({
-                      margin: "1rem",
-                      marginBottom: TOUCH_TARGET,
-                    }),
-                  }}
-                  key={project.id}
-                >
-                  <figure
-                    css={{
-                      img: {},
-                      ...styleTransition(),
-                      ...onMediaWidth(
-                        "800px",
-                        supportsGrid({
-                          margin: 0,
-                          gridTemplateColumns: "1fr 1fr",
-                          gridGap: `calc(${TOUCH_TARGET} / 2)`,
-                        })
-                      ),
-                      ...onMedia("hover: hover", {
-                        "&:hover": {
-                          // boxShadow:
-                          // img: {
-                          ...styleTransition(),
-                          transform: "scale(1.025)",
-                          transformOrigin: "center",
-                          // },
-                        },
-                      }),
-                    }}
-                  >
-                    <ProjectPhoto
-                      css={{ boxShadow: PROJECT_SHADOW }}
-                      {...project.cover.childImageSharp.fluid}
-                    />
-                    <figcaption
+                  {feature.map(project => (
+                    <Link
+                      to={"/" + project.slug} /* css={{ display: "block" }} */
+                      className={"project-cover"}
                       css={{
+                        display: "block",
                         ...flex("column"),
-                        justifyContent: "flex-end",
-                        color: colors.muteGray,
-                        marginTop: "1rem",
-                        // ...onMediaWidth(
-                        //   "800px",
-
-                        //   { padding: "1rem" }
-                        // ),
+                        justifyContent: "center",
+                        marginBottom: TOUCH_TARGET,
+                        ...onTabletMedia({
+                          margin: "1rem",
+                          marginBottom: TOUCH_TARGET,
+                        }),
                       }}
+                      key={project.id}
                     >
-                      <h1
+                      <figure
                         css={{
-                          ...SANS_HEADING,
-                          color: colors.muteGray,
-                          ...FUTURA_BODY_SIZE,
-                          textTransform: "initial",
+                          img: {},
+                          ...styleTransition(),
+                          ...onMediaWidth(
+                            "800px",
+                            supportsGrid({
+                              margin: 0,
+                              gridTemplateColumns: "1fr 1fr",
+                              gridGap: `calc(${TOUCH_TARGET} / 2)`,
+                            })
+                          ),
+                          ...onMedia("hover: hover", {
+                            "&:hover": {
+                              // boxShadow:
+                              // img: {
+                              ...styleTransition(),
+                              transform: "scale(1.025)",
+                              transformOrigin: "center",
+                              // },
+                            },
+                          }),
                         }}
                       >
-                        {project.title}
-                      </h1>
-                      <h2
-                        css={{
-                          color: colors.orange,
-                          fontSize: "2rem",
-                          fontStyle: "italic",
+                        <ProjectPhoto
+                          css={{ boxShadow: PROJECT_SHADOW }}
+                          {...project.cover.childImageSharp.fluid}
+                        />
+                        <figcaption
+                          css={{
+                            ...flex("column"),
+                            justifyContent: "flex-end",
+                            color: colors.muteGray,
+                            marginTop: "1rem",
+                            // ...onMediaWidth(
+                            //   "800px",
 
-                          textTransform: "initial",
-                        }}
-                      >
-                        {project.subtitle}
-                      </h2>
-                      <p css={{ textDecoration: "none" }}>
-                        {project.seoDescription}
-                      </p>
+                            //   { padding: "1rem" }
+                            // ),
+                          }}
+                        >
+                          <h1
+                            css={{
+                              ...SANS_HEADING,
+                              color: colors.muteGray,
+                              ...FUTURA_BODY_SIZE,
+                              textTransform: "initial",
+                            }}
+                          >
+                            {project.title}
+                          </h1>
+                          <h2
+                            css={{
+                              color: colors.orange,
+                              fontSize: "2rem",
+                              fontStyle: "italic",
 
-                      <TokenList>
-                        {project.tags.map(({ design }) => `${design}`)}
-                      </TokenList>
-                    </figcaption>
-                  </figure>
-                </Link>
-              ))}
-            </ContentArea>
-          </SectionBlock>
-          <SectionBreak />
-          {/* INTERACTIVE DESIGN SECTION */}
-          {interactiveProjects.length > 0 && (
-            <SectionBlock
-              css={{
-                backgroundColor: colors.darkGray,
-              }}
-            >
-              <ContentArea css={{ maxWidth: "80rem", padding: "1rem" }}>
-                <ProjectTagHeading>Interactive Design</ProjectTagHeading>
+                              textTransform: "initial",
+                            }}
+                          >
+                            {project.subtitle}
+                          </h2>
+                          <p css={{ textDecoration: "none" }}>
+                            {project.seoDescription}
+                          </p>
 
-                <Gallery>
-                  {interactiveProjects.map(project => (
-                    <ProjectCover {...project} key={project.id} />
+                          <TokenList>
+                            {project.tags.map(({ design }) => design)}
+                          </TokenList>
+                        </figcaption>
+                      </figure>
+                    </Link>
                   ))}
-                </Gallery>
-              </ContentArea>
-            </SectionBlock>
+                </ContentArea>
+              </SectionBlock>
+            </>
           )}
+          {/* INTERACTIVE DESIGN  */}
+          {interactiveProjects.length > 0 && (
+            <>
+              <SectionBreak />
+              <SectionBlock
+                css={{
+                  backgroundColor: colors.darkGray,
+                }}
+              >
+                <ContentArea css={{ maxWidth: "80rem", padding: "1rem" }}>
+                  <ProjectTagHeading>Interactive Design</ProjectTagHeading>
 
+                  <Gallery>
+                    {interactiveProjects.map(project => (
+                      <ProjectCover {...project} key={project.id} />
+                    ))}
+                  </Gallery>
+                </ContentArea>
+              </SectionBlock>
+            </>
+          )}
+          {/* IDENTITY DESIGN */}
           {identityProjects.length > 0 && (
             <>
               <SectionBreak />
@@ -368,7 +389,7 @@ const IndexPage = ({ data }) => {
               </SectionBlock>
             </>
           )}
-          <SectionBreak />
+          {/* GRAPHIC DESIGN */}
           {graphicProjects.length > 0 && (
             <>
               <SectionBreak />
@@ -391,19 +412,10 @@ const IndexPage = ({ data }) => {
               </SectionBlock>
             </>
           )}
-          {/* 
-          <SectionBlock
-            css={{
-              backgroundColor: colors.muteGray,
-              color: colors.darkGray,
-            }}
-          >
-            <h1 css={{ textAlign: "right" }}>Fun with code</h1>
-            experimental section
-          </SectionBlock> */}
+
+          <SectionBreak />
         </main>
       </StickyScrollContainer>
-
       <Footer />
     </Layout>
   )
