@@ -19,6 +19,7 @@ import {
   flex,
   onMedia,
   PROJECT_SHADOW,
+  FUTURA_BODY_SIZE,
   styleTransition,
   onDesktopMedia,
 } from "../styles"
@@ -151,7 +152,7 @@ const IndexPage = ({ data }) => {
                         css={{
                           ...SANS_HEADING,
                           color: colors.muteGray,
-                          fontSize: "1.33rem",
+                          ...FUTURA_BODY_SIZE,
                           textTransform: "initial",
                         }}
                       >

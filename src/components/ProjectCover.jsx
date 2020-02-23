@@ -20,6 +20,7 @@ import {
   onMediaWidth,
   TOUCH_TARGET,
   PROJECT_SHADOW,
+  FUTURA_BODY_SIZE,
 } from "../styles"
 
 export const ProjectCover = ({
@@ -122,7 +123,7 @@ export const ProjectCover = ({
             h1: {
               ...SANS_HEADING,
               color: colors.muteGray,
-              fontSize: "1.33rem",
+              ...FUTURA_BODY_SIZE,
               lineHeight: 1.2,
               textTransform: "initial",
               // fontWeight: "bold",
