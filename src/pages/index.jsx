@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import { jsx } from "@emotion/core"
+import { jsx, keyframes } from "@emotion/core"
 import React, { useEffect, useState } from "react"
 import { graphql, Link } from "gatsby"
 
@@ -31,6 +31,16 @@ import ProjectPhoto from "../components/ProjectPhoto"
 import { TokenList } from "../components/TokenList"
 import { DesktopMenu } from "../components/DesktopMenu"
 
+export const ProjectTagHeading = ({ children, ...restProps }) => {
+  return (
+    <h1 css={{ textAlign: "right", marginBottom: "1rem" }} {...restProps}>
+      {children}
+    </h1>
+  )
+}
+
+export const SectionBreak = props => <hr css={{ margin: "5vh", border: 0 }} />
+
 const IndexPage = ({ data }) => {
   const projects = data.allStrapiProjects.nodes.filter(
     ({ draft, feature }) => /* !draft && */ true // !feature
@@ -49,6 +59,36 @@ const IndexPage = ({ data }) => {
       ({ design }) => design !== "Identity" && design !== "Interactive"
     )
   )
+
+  const heroTypesetAnimation = (overrides = {}) => {
+    const typeset = keyframes({
+      from: {
+        // transform: "rotateX(180deg)",
+        transform: "rotateX(180deg) translateY(-0.66rem)",
+      },
+      to: {
+        // transform: "rotateX(0)",
+
+        transform: "rotateX(0) translateY(0)",
+        color: colors.orange,
+      },
+    })
+
+    return {
+      display: "inline-block",
+      transformOrigin: "center center",
+
+      transform: "rotateX(180deg) translateY(-0.66rem)",
+      color: colors.orange50,
+
+      animationName: typeset,
+      animationDuration: "300ms",
+      animationFillMode: "forwards",
+      animationIterationCount: 1,
+
+      ...overrides,
+    }
+  }
 
   return (
     <Layout>
@@ -80,16 +120,56 @@ const IndexPage = ({ data }) => {
             backgroundColor: colors.darkGray,
           }}
         >
+          <SectionBlock css={{ minHeight: "25vh", padding: "1rem" }}>
+            <h1>
+              I create{" "}
+              {/* <span
+                css={[
+                  {
+                    font: "inherit",
+                  },
+                  heroTypesetAnimation({ animationDelay: "1s" }),
+                ]}
+              >
+                intentional–
+              </span> */}
+              <span
+                css={[
+                  { font: "inherit" },
+                  heroTypesetAnimation({ animationDelay: "1s" }),
+                ]}
+              >
+                thoughtful
+              </span>
+              —
+              <span
+                css={[
+                  { font: "inherit" },
+                  heroTypesetAnimation({ animationDelay: "2s" }),
+                ]}
+              >
+                clear&nbsp;
+              </span>
+              visual language that drives delightful experiences.
+            </h1>
+            {/* <br />
+              <p>Are you looking for?</p>
+              <select name="projects" id="projects">
+                <option value="interactive">Web & UI Design</option>
+                <option value="identity">Identity & Logo Design</option>
+                <option value="print">Print & Editorial Design</option>
+                <option value="all">Just Impress Me!</option>
+              </select> */}
+          </SectionBlock>
+
           <SectionBlock
             css={{
               backgroundColor: colors.darkGray,
-              minHeight: "100vh",
+              minHeight: "50vh",
             }}
           >
             <ContentArea css={{ maxWidth: "80rem", padding: "1rem" }}>
-              <h1 css={{ textAlign: "right", marginBottom: "1rem" }}>
-                Featured Work
-              </h1>
+              <ProjectTagHeading>Featured Work</ProjectTagHeading>
 
               {feature.map(project => (
                 <Link
@@ -182,7 +262,7 @@ const IndexPage = ({ data }) => {
               ))}
             </ContentArea>
           </SectionBlock>
-
+          <SectionBreak />
           {/* INTERACTIVE DESIGN SECTION */}
           {interactiveProjects.length > 0 && (
             <SectionBlock
@@ -191,9 +271,7 @@ const IndexPage = ({ data }) => {
               }}
             >
               <ContentArea css={{ maxWidth: "80rem", padding: "1rem" }}>
-                <h1 css={{ textAlign: "right", marginBottom: "1rem" }}>
-                  Interactive Design
-                </h1>
+                <ProjectTagHeading>Interactive Design</ProjectTagHeading>
 
                 <Gallery>
                   {interactiveProjects.map(project => (
@@ -205,42 +283,48 @@ const IndexPage = ({ data }) => {
           )}
 
           {identityProjects.length > 0 && (
-            <SectionBlock
-              css={{
-                backgroundColor: colors.darkGray,
-              }}
-            >
-              <ContentArea css={{ maxWidth: "80rem", padding: "1rem" }}>
-                <h1 css={{ textAlign: "right", marginBottom: "1rem" }}>
-                  Identity Design
-                </h1>
+            <>
+              <SectionBreak />
+              <SectionBlock
+                css={{
+                  backgroundColor: colors.darkGray,
+                }}
+              >
+                <ContentArea css={{ maxWidth: "80rem", padding: "1rem" }}>
+                  <ProjectTagHeading>Identity Design</ProjectTagHeading>
 
-                <Gallery>
-                  {identityProjects.map(project => (
-                    <ProjectCover {...project} key={project.id} />
-                  ))}
-                </Gallery>
-              </ContentArea>
-            </SectionBlock>
+                  <Gallery>
+                    {identityProjects.map(project => (
+                      <ProjectCover {...project} key={project.id} />
+                    ))}
+                  </Gallery>
+                </ContentArea>
+              </SectionBlock>
+            </>
           )}
-          <SectionBlock
-            css={{
-              backgroundColor: colors.darkGray,
-            }}
-          >
-            <ContentArea css={{ maxWidth: "80rem", padding: "1rem" }}>
-              <h1 css={{ textAlign: "right", marginBottom: "1rem" }}>
-                other work
-              </h1>
+          <SectionBreak />
+          {otherProjects.length > 0 && (
+            <>
+              <SectionBreak />
+              <SectionBlock
+                css={{
+                  backgroundColor: colors.darkGray,
+                }}
+              >
+                <ContentArea css={{ maxWidth: "80rem", padding: "1rem" }}>
+                  <h1 css={{ textAlign: "right", marginBottom: "1rem" }}>
+                    other work
+                  </h1>
 
-              <Gallery>
-                {otherProjects.map(project => (
-                  <ProjectCover {...project} key={project.id} />
-                ))}
-              </Gallery>
-            </ContentArea>
-          </SectionBlock>
-
+                  <Gallery>
+                    {otherProjects.map(project => (
+                      <ProjectCover {...project} key={project.id} />
+                    ))}
+                  </Gallery>
+                </ContentArea>
+              </SectionBlock>
+            </>
+          )}
           {/* 
           <SectionBlock
             css={{
