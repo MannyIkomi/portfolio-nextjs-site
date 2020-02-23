@@ -144,7 +144,8 @@ const IndexPage = ({ data }) => {
                 >
                   clear&nbsp;
                 </span>
-                visual language that drives delightful experiences.
+                visual language that drives delightful {/* brand? */}
+                experiences.
               </h1>
             </ContentArea>
             <ContentArea>
