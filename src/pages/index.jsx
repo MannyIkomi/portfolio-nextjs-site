@@ -8,6 +8,7 @@ import HtmlHead from "../components/HtmlHead"
 import { ProjectCover } from "../components/ProjectCover"
 import { Gallery } from "../components/Gallery"
 import { Footer } from "../components/Footer"
+import Select from "react-select"
 
 import {
   supportsGrid,
@@ -22,6 +23,7 @@ import {
   FUTURA_BODY_SIZE,
   styleTransition,
   onDesktopMedia,
+  maxLineMeasure,
 } from "../styles"
 import { StickyScrollContainer } from "../components/StickyScrollContainer"
 import { StickyMenuBar } from "../components/StickyMenuBar"
@@ -42,19 +44,22 @@ export const ProjectTagHeading = ({ children, ...restProps }) => {
 export const SectionBreak = props => <hr css={{ margin: "5vh", border: 0 }} />
 
 const IndexPage = ({ data }) => {
-  const projects = data.allStrapiProjects.nodes.filter(
-    ({ draft, feature }) => /* !draft && */ true // !feature
+  const allProjects = data.allStrapiProjects.nodes.filter(
+    ({ draft, feature }) => !draft && true // !feature
   )
-  const feature = data.allStrapiProjects.nodes.filter(
+
+  const [selectedProjects, setSelectedProjects] = useState(allProjects)
+
+  const feature = selectedProjects.filter(
     ({ draft, feature }) => !draft && feature
   )
-  const identityProjects = projects.filter(project =>
+  const identityProjects = allProjects.filter(project =>
     project.tags.some(({ design }) => design === "Identity")
   )
-  const interactiveProjects = projects.filter(project =>
+  const interactiveProjects = allProjects.filter(project =>
     project.tags.some(({ design }) => design === "Interactive")
   )
-  const otherProjects = projects.filter(project =>
+  const graphicProjects = allProjects.filter(project =>
     project.tags.every(
       ({ design }) => design !== "Identity" && design !== "Interactive"
     )
@@ -121,9 +126,10 @@ const IndexPage = ({ data }) => {
           }}
         >
           <SectionBlock css={{ minHeight: "25vh", padding: "1rem" }}>
-            <h1>
-              I create{" "}
-              {/* <span
+            <ContentArea css={{ fontSize: "5vmin" }}>
+              <h1>
+                I create{" "}
+                {/* <span
                 css={[
                   {
                     font: "inherit",
@@ -133,25 +139,85 @@ const IndexPage = ({ data }) => {
               >
                 intentional–
               </span> */}
-              <span
-                css={[
-                  { font: "inherit" },
-                  heroTypesetAnimation({ animationDelay: "1s" }),
+                <span
+                  css={[
+                    { font: "inherit" },
+                    heroTypesetAnimation({ animationDelay: "1s" }),
+                  ]}
+                >
+                  thoughtful
+                </span>
+                —
+                <span
+                  css={[
+                    { font: "inherit" },
+                    heroTypesetAnimation({ animationDelay: "2s" }),
+                  ]}
+                >
+                  clear&nbsp;
+                </span>
+                visual language that drives delightful experiences.
+              </h1>
+            </ContentArea>
+            <ContentArea>
+              <p css={{ display: "inline-block" }}>Are you looking for…</p>
+              <Select
+                options={[
+                  { label: "Web & UI Design", value: "interactive" },
+                  { label: "Logo & Identity Design", value: "identity" },
+                  { label: "Print & Graphic Design", value: "graphic" },
+                  { label: "Impress Me!", value: null },
                 ]}
-              >
-                thoughtful
-              </span>
-              —
-              <span
-                css={[
-                  { font: "inherit" },
-                  heroTypesetAnimation({ animationDelay: "2s" }),
-                ]}
-              >
-                clear&nbsp;
-              </span>
-              visual language that drives delightful experiences.
-            </h1>
+                onChange={({ value }) => {
+                  console.log(value)
+                  setSelectedProjects(
+                    allProjects.filter(project =>
+                      project.tags.some(
+                        ({ design }) =>
+                          design.toUpperCase() === value.toUpperCase()
+                      )
+                    )
+                  )
+                }}
+                isMulti={false}
+                placeholder={"design?"}
+                autoFocus={true}
+                styles={{
+                  container: (provided, state) => {
+                    return {
+                      ...provided,
+                      display: "inline-block",
+                      ...FUTURA_BODY_SIZE,
+                      minWidth: "5rem",
+                      width: "100%",
+                      ...maxLineMeasure,
+
+                      ...onMedia("hover: hover", {
+                        "&:hover": {
+                          borderColor: colors.orange,
+                        },
+                      }),
+                    }
+                  },
+                  control: (provided, state) => ({
+                    ...provided,
+                    border: 0,
+                    borderRadius: 0,
+                    borderBottom: state.isFocused
+                      ? `solid 0.05rem ${colors.orange}`
+                      : `solid 0.05rem ${colors.orange50}`,
+
+                    ...onMedia("hover: hover", {
+                      "&:hover": {
+                        borderColor: colors.orange,
+                      },
+                    }),
+                    cursor: "pointer",
+                    backgroundColor: "transparent",
+                  }),
+                }}
+              />
+            </ContentArea>
             {/* <br />
               <p>Are you looking for?</p>
               <select name="projects" id="projects">
@@ -303,7 +369,7 @@ const IndexPage = ({ data }) => {
             </>
           )}
           <SectionBreak />
-          {otherProjects.length > 0 && (
+          {graphicProjects.length > 0 && (
             <>
               <SectionBreak />
               <SectionBlock
@@ -313,11 +379,11 @@ const IndexPage = ({ data }) => {
               >
                 <ContentArea css={{ maxWidth: "80rem", padding: "1rem" }}>
                   <h1 css={{ textAlign: "right", marginBottom: "1rem" }}>
-                    other work
+                    graphic design
                   </h1>
 
                   <Gallery>
-                    {otherProjects.map(project => (
+                    {graphicProjects.map(project => (
                       <ProjectCover {...project} key={project.id} />
                     ))}
                   </Gallery>

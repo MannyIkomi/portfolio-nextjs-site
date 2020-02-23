@@ -182,6 +182,7 @@ export const GLOBAL = {
   "p, span, ul, ol, button": {
     ...SANS_TYPE,
     ...FUTURA_BODY_SIZE,
+    // color: "inherit",
     lineHeight: 1.4,
     listStyle: "square",
     fontVariantNumeric: "proportional-nums ordinal",
