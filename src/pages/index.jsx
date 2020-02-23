@@ -69,8 +69,7 @@ const IndexPage = ({ data }) => {
   const heroTypesetAnimation = (overrides = {}) => {
     const typeset = keyframes({
       from: {
-        // transform: "rotateX(180deg)",
-        transform: "rotateX(180deg) translateY(-0.66rem)",
+        transform: "rotateX(180deg) translateY(-28%)", //translate adjusts optical baseline to the x-height when flipped
       },
       to: {
         // transform: "rotateX(0)",
@@ -84,7 +83,7 @@ const IndexPage = ({ data }) => {
       display: "inline-block",
       transformOrigin: "center center",
 
-      transform: "rotateX(180deg) translateY(-0.66rem)",
+      transform: "rotateX(180deg) translateY(-28%)",
       color: colors.orange50,
 
       animationName: typeset,
@@ -100,9 +99,7 @@ const IndexPage = ({ data }) => {
     <Layout>
       <HtmlHead
         title="Portfolio Projects"
-        description={
-          "A collection of Manny Ikomi's design portfolio work, including identity design, typography, web design, branding, and logo design"
-        }
+        description={`I create thoughtful—clear visual language that drives delightful experiences. View my online portfolio featuring identity design, typography, web design, branding, and logo design`}
       />
       <StickyScrollContainer
         css={[
@@ -224,14 +221,6 @@ const IndexPage = ({ data }) => {
                 }}
               />
             </ContentArea>
-            {/* <br />
-              <p>Are you looking for?</p>
-              <select name="projects" id="projects">
-                <option value="interactive">Web & UI Design</option>
-                <option value="identity">Identity & Logo Design</option>
-                <option value="print">Print & Editorial Design</option>
-                <option value="all">Just Impress Me!</option>
-              </select> */}
           </SectionBlock>
           {feature.length > 0 && (
             <>

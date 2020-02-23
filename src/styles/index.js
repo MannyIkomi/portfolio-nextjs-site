@@ -102,9 +102,9 @@ export const linkText = {
 }
 
 export const typesetInteraction = (override = {}) => ({
-  transformOrigin: "center",
+  transformOrigin: "center center",
   ":hover": {
-    transform: "rotateX(180deg)",
+    transform: "rotateX(180deg) translateY(-12%)", //translate adjusts optical baseline to the x-height  when flipped
     ...override,
   },
 })
