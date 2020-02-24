@@ -147,7 +147,7 @@ export const ProjectCover = ({
           <h2>{subtitle}</h2>
           {tags && (
             <TokenList css={{ li: { backgroundColor: colors.orange80 } }}>
-              {tags.map(({ design }) => `${design}`)}
+              {tags.map(({ design, detail }) => detail || design)}
             </TokenList>
           )}
 

@@ -13,6 +13,8 @@ import {
   TOUCH_TARGET,
   onTabletMedia,
   onMedia,
+  onSupport,
+  onDesktopMedia,
 } from "../styles"
 import Layout from "../components/layout"
 import HtmlHead from "../components/HtmlHead"
@@ -27,6 +29,9 @@ import { LinkModule } from "../components/LinkModule"
 import { TextModule } from "../components/TextModule"
 import { ProjectCover } from "../components/ProjectCover"
 import { SectionBlock } from "../components/SectionBlock"
+import { OrangeOverprint, ColorOverprint } from "../components/FillOverlay"
+import { TokenList } from "../components/TokenList"
+import Markdown from "../components/markdown"
 
 export const filterProjectById = (thisProject, otherProjects) => {
   // filter current project from total projects list
@@ -55,7 +60,7 @@ const ProjectTemplate = ({ data }) => {
   const findRelatedProjects = filterProjectTags
   // const findRelatedProjects = filterProjectTags
 
-  const { title, modules, draft, subtitle } = thisProject
+  const { title, modules, draft, subtitle, seoDescription, tags } = thisProject
 
   return (
     <Layout>
@@ -75,9 +80,6 @@ const ProjectTemplate = ({ data }) => {
       >
         <StickyMenuBar />
 
-        {/* <aside>
-          <nav>side bar menu</nav>
-        </aside> */}
         <main>
           <article
             css={{
@@ -87,37 +89,113 @@ const ProjectTemplate = ({ data }) => {
             }}
           >
             <header
-              css={{
-                ...flex("column"),
-                alignItems: "center",
-                minHeight: "50vh",
-                padding: "2rem",
+              css={[
+                {
+                  position: "relative",
 
-                textAlign: "center",
-              }}
+                  ...flex("column"),
+                  alignItems: "center",
+                  justifyContent: "center",
+                  minHeight: "66vh",
+                  width: "100%",
+                  padding: "2rem",
+
+                  textAlign: "center",
+
+                  background: colors.muteGray,
+                  // https://aclaes.com/responsive-background-images-with-srcset-and-sizes/
+                  background: `url(${thisProject.cover.childImageSharp.fluid.src})`,
+                  backgroundSize: "cover",
+                  backgroundPosition: "center center",
+                  backgroundRepeat: "no-repeat",
+                },
+                onDesktopMedia({
+                  minHeight: "100vh",
+                }),
+              ]}
             >
-              <h1
+              <ColorOverprint
+                css={[
+                  {
+                    backgroundColor: colors.darkGray,
+                  },
+                  onSupport("backdrop-filter: blur(1px)", {
+                    backgroundColor: colors.mediumGray,
+                    backdropFilter:
+                      "blur(0.5rem) grayscale(100%) brightness(50%)",
+                  }),
+                ]}
+              />
+              <ContentArea
                 css={{
-                  ...SANS_HEADING,
-                  color: colors.darkGray,
-                  textTransform: "initial",
+                  ...flex("column"),
+                  justifyContent: "space-around",
+
+                  zIndex: 1,
+                  color: colors.muteGray,
+                  minHeight: "50%",
+                  height: "100%",
                 }}
               >
-                {title}
-              </h1>
-              <h2
-                css={{
-                  ...SERIF_TYPE,
-                  fontStyle: "italic",
-                  ...FUTURA_BODY_SIZE,
-                  textTransform: "initial",
-                }}
-              >
-                {subtitle}
-              </h2>
-              <span style={{ color: "blue", textTransform: "uppercase" }}>
-                {draft && "DRAFT"}
-              </span>
+                <h1
+                  css={{
+                    ...SANS_HEADING,
+                    // color: colors.darkGray,
+                    textAlign: "right",
+                    textTransform: "initial",
+
+                    marginBottom: "0.5rem",
+                  }}
+                >
+                  {title}
+                </h1>
+                <h2
+                  css={{
+                    ...SERIF_TYPE,
+                    textAlign: "right",
+                    fontStyle: "italic",
+                    ...FUTURA_BODY_SIZE,
+                    textTransform: "initial",
+
+                    marginBottom: "0.5rem",
+                  }}
+                >
+                  {subtitle}
+                </h2>
+                <TokenList
+                  css={{
+                    textAlign: "right",
+                    marginBottom: "0.5rem",
+                    li: { marginRight: 0, marginLeft: "0.66rem" },
+                  }}
+                >
+                  {tags.map(({ design, detail }) => detail || design)}
+                </TokenList>
+                {draft && (
+                  <span style={{ color: "blue", textTransform: "uppercase" }}>
+                    DRAFT
+                  </span>
+                )}
+
+                {modules.some(module => {
+                  return module.type === "intro"
+                }) ? (
+                  <>
+                    <Markdown css={{ textAlign: "left" }}>
+                      {
+                        modules.filter(module => module.type === "intro")[0]
+                          .text
+                      }
+                    </Markdown>
+                    <br />
+                  </>
+                ) : (
+                  <>
+                    <p css={{ textAlign: "left" }}>{seoDescription}</p>
+                    <br />
+                  </>
+                )}
+              </ContentArea>
             </header>
 
             <SectionBlock
@@ -128,8 +206,8 @@ const ProjectTemplate = ({ data }) => {
                   ...flex("column"),
                   alignItems: "center",
 
-                  position: "relative",
-                  top: "-25vh",
+                  // position: "relative",
+                  // top: "-25vh",
 
                   width: "100%",
                   maxWidth: "80rem",
@@ -144,16 +222,19 @@ const ProjectTemplate = ({ data }) => {
                 {modules.map(module => {
                   // console.log(module)
                   switch (module.type) {
-                    case "image":
-                      return <ImageModule {...module} key={module.id} />
+                    case "intro":
+                      break
                     case "text":
                       return <TextModule {...module} key={module.id} />
+                    case "image":
+                      return <ImageModule {...module} key={module.id} />
                     case "caption":
                       return <CaptionModule {...module} key={module.id} />
                     case "interactive":
                       return <InteractiveModule {...module} key={module.id} />
                     case "link":
                       return <LinkModule {...module} key={module.id} />
+
                     // case 'section':
                     // use to split
                     //   return <div>CREATE SECTION MODULE</div> with glyph
@@ -256,6 +337,17 @@ export const query = graphql`
       id
       draft
       slug
+
+      cover {
+        publicURL
+        childImageSharp {
+          fluid(quality: 75, maxWidth: 2000, toFormat: JPG) {
+            src
+            srcSet
+            sizes
+          }
+        }
+      }
       modules {
         id
         imageAlt
@@ -263,6 +355,7 @@ export const query = graphql`
         text
         type
         url
+
         image {
           childImageSharp {
             original {
@@ -283,6 +376,7 @@ export const query = graphql`
       }
       tags {
         design
+        detail
       }
       title
       subtitle
@@ -307,6 +401,7 @@ export const query = graphql`
         subtitle
         tags {
           design
+          detail
         }
         cover {
           publicURL

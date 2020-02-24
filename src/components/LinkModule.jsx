@@ -14,7 +14,7 @@ import {
 } from "../styles"
 
 export const LinkModule = props => {
-  const { image, imageAlt, imageFill, url, type, text, id } = props
+  const { url, text } = props
 
   const isExternalLink = true
   // https://www.gatsbyjs.org/docs/gatsby-link/#reminder-use-link-only-for-internal-links
