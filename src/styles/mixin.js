@@ -10,9 +10,16 @@ export const onMedia = (query = "", styles = {}) => ({
     ...styles,
   },
 })
+
+export const onSupport = (query = "", styles = {}) => ({
+  [`@supports (${query})`]: {
+    ...styles,
+  },
+})
+
 export const supportsGrid = ({ display = "grid", ...hasSupport }) => ({
   "@supports (display: grid)": {
-    display: display,
+    display,
     ...hasSupport,
   },
 })
