@@ -66,6 +66,15 @@ const IndexPage = ({ data }) => {
     )
   )
 
+  // const [windowHash, setWindowHash] = useState("")
+
+  // useEffect(() => {
+  //   if (typeof Document !== "undefined") {
+  //     console.log(Document.location)
+  //     Document.location.hash === `${windowHash}`
+  //   }
+  // })
+
   const heroTypesetAnimation = (overrides = {}) => {
     const typeset = keyframes({
       from: {
@@ -99,20 +108,19 @@ const IndexPage = ({ data }) => {
     <Layout>
       <HtmlHead
         title="Portfolio Projects"
-        description={`I create thoughtful—clear visual language that drives delightful experiences. View my online portfolio featuring identity design, typography, web design, branding, and logo design`}
+        description={`I design thoughtful—clear visual language that creates delightful experiences. View my online portfolio featuring identity design, typography, web design, branding, and logo design`}
       />
       <StickyScrollContainer
         css={[
           {
-            "#mobile": flex("row"),
+            "#mobile": flex("row"), // show StickyMenuBar
             "#desktop": { display: "none" },
           },
           onDesktopMedia({
             ...flex("row"), // puts desktop <nav> on the left of <main>
             "#mobile": { display: "none" },
-            "#desktop": flex("column"),
+            "#desktop": flex("column"), // show DesktopMenu
           }),
-          ,
         ]}
       >
         <DesktopMenu />
@@ -124,9 +132,9 @@ const IndexPage = ({ data }) => {
           }}
         >
           <SectionBlock css={{ minHeight: "25vh", padding: "1rem" }}>
-            <ContentArea css={{ fontSize: "5vmin" }}>
+            <ContentArea css={{ fontSize: "3rem" }}>
               <h1>
-                I create{" "}
+                I design{" "}
                 <span
                   css={[
                     { font: "inherit" },
@@ -144,17 +152,19 @@ const IndexPage = ({ data }) => {
                 >
                   clear&nbsp;
                 </span>
-                visual language that drives delightful {/* brand? */}
-                experiences.
+                visual language that creates delightful {/* brand? */}
+                experiences
               </h1>
             </ContentArea>
-            <ContentArea>
+            <ContentArea css={{ textAlign: "center" }}>
               <p css={{ display: "inline-block" }}>Are you looking for…</p>
               <Select
                 options={[
                   { label: "Web & UI Design", value: "interactive" },
                   { label: "Logo & Identity Design", value: "identity" },
                   { label: "Print & Graphic Design", value: "graphic" },
+                  // { label: "Typography", value: "typography" },
+                  // { label: "Art Direction", value: "art direction" },
                   // { label: "Impress Me!", value: "" },
                   // { label: "My favorite piece", value: "favorite" },
                 ]}
@@ -182,19 +192,20 @@ const IndexPage = ({ data }) => {
                       )
                     )
                   )
+                  // setWindowHash(value)
                 }}
                 isMulti={false}
                 placeholder={"design?"}
-                autoFocus={true}
                 styles={{
-                  container: (provided, state) => {
+                  container: provided => {
                     return {
                       ...provided,
                       display: "inline-block",
                       ...FUTURA_BODY_SIZE,
-                      minWidth: "5rem",
+                      minWidth: "6rem",
                       width: "100%",
                       ...maxLineMeasure,
+                      maxWidth: "max-content",
 
                       ...onMedia("hover: hover", {
                         "&:hover": {
@@ -218,6 +229,22 @@ const IndexPage = ({ data }) => {
                     }),
                     cursor: "pointer",
                     backgroundColor: "transparent",
+                    div: {
+                      padding: 0,
+                    },
+                  }),
+                  input: provided => ({
+                    ...provided,
+                    ...FUTURA_BODY_SIZE,
+                    caretColor: colors.orange,
+                  }),
+                  indicatorsContainer: provided => ({
+                    ...provided,
+                    display: "none",
+                  }),
+                  menu: provided => ({
+                    ...provided,
+                    backgroundColor: colors.muteGray,
                   }),
                 }}
               />
@@ -226,14 +253,14 @@ const IndexPage = ({ data }) => {
           {feature.length > 0 && (
             <>
               <SectionBlock
+                id={"feature"}
                 css={{
                   backgroundColor: colors.darkGray,
                   minHeight: "50vh",
                 }}
               >
                 <ContentArea css={{ maxWidth: "80rem", padding: "1rem" }}>
-                  <ProjectTagHeading>Featured Work</ProjectTagHeading>
-
+                  <ProjectTagHeading>Featured Work</ProjectTagHeading>z
                   {feature.map(project => (
                     <Link
                       to={"/" + project.slug} /* css={{ display: "block" }} */
@@ -252,7 +279,7 @@ const IndexPage = ({ data }) => {
                     >
                       <figure
                         css={{
-                          img: {},
+                          // img: {},
                           ...styleTransition(),
                           ...onMediaWidth(
                             "800px",
@@ -284,11 +311,6 @@ const IndexPage = ({ data }) => {
                             justifyContent: "flex-end",
                             color: colors.muteGray,
                             marginTop: "1rem",
-                            // ...onMediaWidth(
-                            //   "800px",
-
-                            //   { padding: "1rem" }
-                            // ),
                           }}
                         >
                           <h1
@@ -317,7 +339,9 @@ const IndexPage = ({ data }) => {
                           </p>
 
                           <TokenList>
-                            {project.tags.map(({ design }) => design)}
+                            {project.tags.map(
+                              ({ design, detail }) => detail || design
+                            )}
                           </TokenList>
                         </figcaption>
                       </figure>
@@ -332,6 +356,7 @@ const IndexPage = ({ data }) => {
             <>
               <SectionBreak />
               <SectionBlock
+                id={"interactive"}
                 css={{
                   backgroundColor: colors.darkGray,
                 }}
@@ -353,6 +378,7 @@ const IndexPage = ({ data }) => {
             <>
               <SectionBreak />
               <SectionBlock
+                id={"identity"}
                 css={{
                   backgroundColor: colors.darkGray,
                 }}
@@ -419,6 +445,7 @@ export const pageQuery = graphql`
         seoDescription
         tags {
           design
+          detail
         }
         # private filtered out of query entirely
         cover {
