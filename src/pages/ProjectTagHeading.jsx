@@ -1,12 +1,15 @@
 /** @jsx jsx */
 import React from "react"
 import { jsx } from "@emotion/core"
-import { colors } from "../styles"
+import { colors, onTabletMedia, onMediaWidth } from "../styles"
 
 export const ProjectTagHeading = ({ children, ...restProps }) => {
   return (
     <h1
-      css={{ textAlign: "center", marginBottom: "1rem", color: colors.orange }}
+      css={[
+        { textAlign: "right", marginBottom: "1rem", color: colors.orange },
+        onMediaWidth("500px", { textAlign: "center" }),
+      ]}
       {...restProps}
     >
       {children}
