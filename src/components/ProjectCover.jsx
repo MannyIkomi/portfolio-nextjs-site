@@ -4,7 +4,8 @@ import { css } from "@emotion/core"
 import Img from "gatsby-image"
 
 import { useHoverState } from "../hooks/useHoverState"
-import { OrangeOverprint, Motif } from "./FillOverlay"
+import { OrangeOverprint } from "./FillOverlay"
+import { MotifRight } from "./Motif"
 import { ProjectPhoto } from "./ProjectPhoto"
 import { TokenList } from "./TokenList"
 import {
