@@ -1,6 +1,6 @@
 /** @jsx jsx */
 import React, { Fragment } from "react"
-import { css, jsx } from "@emotion/core"
+import { jsx } from "@emotion/core"
 
 import { mixin, moduleContainer, flex } from "../styles"
 import { moduleProps } from "../util/props"
