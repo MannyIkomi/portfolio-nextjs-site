@@ -32,14 +32,8 @@ import { SectionBlock } from "../components/SectionBlock"
 import ProjectPhoto from "../components/ProjectPhoto"
 import { TokenList } from "../components/TokenList"
 import { DesktopMenu } from "../components/DesktopMenu"
-
-export const ProjectTagHeading = ({ children, ...restProps }) => {
-  return (
-    <h1 css={{ textAlign: "right", marginBottom: "1rem" }} {...restProps}>
-      {children}
-    </h1>
-  )
-}
+import { MotifLeft, MotifRight } from "../components/Motif"
+import { ProjectTagHeading } from "./ProjectTagHeading"
 
 export const SectionBreak = props => <hr css={{ margin: "5vh", border: 0 }} />
 
@@ -131,7 +125,9 @@ const IndexPage = ({ data }) => {
             backgroundColor: colors.darkGray,
           }}
         >
-          <SectionBlock css={{ minHeight: "25vh", padding: "1rem" }}>
+          <SectionBlock
+            css={{ minHeight: "25vh", padding: "1rem", position: "relative" }}
+          >
             <ContentArea css={{ fontSize: "3rem" }}>
               <h1>
                 I design{" "}
@@ -153,7 +149,7 @@ const IndexPage = ({ data }) => {
                   clear&nbsp;
                 </span>
                 visual language that creates delightful {/* brand? */}
-                experiences
+                experiences.
               </h1>
             </ContentArea>
             <ContentArea css={{ textAlign: "center" }}>
@@ -165,7 +161,7 @@ const IndexPage = ({ data }) => {
                   { label: "Print & Graphic Design", value: "graphic" },
                   // { label: "Typography", value: "typography" },
                   // { label: "Art Direction", value: "art direction" },
-                  // { label: "Impress Me!", value: "" },
+                  { label: "Impress Me!", value: "" },
                   // { label: "My favorite piece", value: "favorite" },
                 ]}
                 onChange={({ value }) => {
@@ -249,6 +245,26 @@ const IndexPage = ({ data }) => {
                 }}
               />
             </ContentArea>
+            <MotifLeft
+              css={{
+                width: "12.5%",
+                height: "auto",
+                position: "absolute",
+                left: 0,
+                bottom: "-1px",
+              }}
+            />
+            <MotifRight
+              css={{
+                fill: colors.muteGray,
+                width: "12.5%",
+                height: "auto",
+                position: "absolute",
+                right: 0,
+                top: "100%",
+                top: "calc(100% - 1px)",
+              }}
+            />
           </SectionBlock>
           {feature.length > 0 && (
             <>
@@ -405,9 +421,7 @@ const IndexPage = ({ data }) => {
                 }}
               >
                 <ContentArea css={{ maxWidth: "80rem", padding: "1rem" }}>
-                  <h1 css={{ textAlign: "right", marginBottom: "1rem" }}>
-                    graphic design
-                  </h1>
+                  <ProjectTagHeading>graphic design</ProjectTagHeading>
 
                   <Gallery>
                     {graphicProjects.map(project => (
