@@ -14,9 +14,9 @@ import Layout from "../components/layout"
 import HtmlHead from "../components/HtmlHead"
 import { StickyScrollContainer } from "../components/StickyScrollContainer"
 import { StickyMenuBar } from "../components/StickyMenuBar"
-import { TypesetLink } from "../components/TypesetLink"
+import { MotifRight, MotifLeft } from "../components/Motif"
 import { Footer } from "../components/Footer"
-import Debug from "../components/Debug"
+
 import Markdown from "../components/markdown"
 import { CreativeInspiration } from "../components/CreativeInspiration"
 import { ContentArea } from "../components/ContentArea"
@@ -69,6 +69,8 @@ const AboutPage = ({ data }) => {
               ...flex("column"),
               backgroundColor: colors.darkGray,
               minHeight: "100vh",
+
+              position: "relative",
               // header: {
               //   padding: 0,
               // },
@@ -144,6 +146,34 @@ const AboutPage = ({ data }) => {
                 {bio}
               </Markdown>
             </ContentArea>
+            <MotifLeft
+              css={{
+                width: "20%",
+                height: "auto",
+                position: "absolute",
+                left: 0,
+                bottom: "1px",
+
+                transform: "rotateX(180deg)",
+                transformOrigin: "bottom center",
+              }}
+            />
+            <MotifRight
+              css={[
+                {
+                  fill: colors.muteGray,
+
+                  width: "20%",
+                  height: "auto",
+
+                  position: "absolute",
+                  right: 0,
+                  bottom: "-1px",
+                  transform: "rotateX(180deg)",
+                  transformOrigin: "center center",
+                },
+              ]}
+            />
           </SectionBlock>
           <SectionBlock
             css={{
