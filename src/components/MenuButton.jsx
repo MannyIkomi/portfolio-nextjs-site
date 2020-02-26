@@ -76,7 +76,7 @@ export const MenuButton = ({ isToggled, ...props }) => {
       {...props}
     >
       <svg
-        css={{ width: "100%" }}
+        css={{ width: "28.67px" }}
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 80.90195 72.49195"
       >
