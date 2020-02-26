@@ -24,6 +24,7 @@ import {
   styleTransition,
   onDesktopMedia,
   maxLineMeasure,
+  SANS_TYPE,
 } from "../styles"
 import { StickyScrollContainer } from "../components/StickyScrollContainer"
 import { StickyMenuBar } from "../components/StickyMenuBar"
@@ -127,8 +128,23 @@ const IndexPage = ({ data }) => {
           <SectionBlock
             css={{ minHeight: "25vh", padding: "1rem", position: "relative" }}
           >
-            <ContentArea css={{ fontSize: "3rem" }}>
-              <h1>
+            <ContentArea css={{ fontSize: "3rem", ...flex("column") }}>
+              <h1
+                css={[
+                  // { fontSize: "3vmin" },
+
+                  onTabletMedia({
+                    fontSize: "5vmin",
+                  }),
+
+                  onDesktopMedia({
+                    fontSize: "5vmin",
+                  }),
+                  onMediaWidth("1500px", {
+                    fontSize: "5rem",
+                  }),
+                ]}
+              >
                 I design{" "}
                 <span
                   css={[
@@ -147,12 +163,8 @@ const IndexPage = ({ data }) => {
                 >
                   clear&nbsp;
                 </span>
-                visual language that creates delightful {/* brand? */}
-                experiences.
+                visual language that creates delightful brand experiences.
               </h1>
-            </ContentArea>
-            <ContentArea css={{ textAlign: "center" }}>
-              <p css={{ display: "inline-block" }}>Are you looking for…</p>
               <Select
                 options={[
                   { label: "Web & UI Design", value: "interactive" },
@@ -172,7 +184,9 @@ const IndexPage = ({ data }) => {
                     return setSelectedProjects(
                       cmsProjects.filter(project =>
                         project.tags.every(
-                          ({ design }) =>
+                          ({ design, detail }) =>
+                            (detail && // null check
+                              detail.toUpperCase() === value.toUpperCase()) || // case insensitive string match
                             design.toUpperCase() !== "interactive".toUpperCase()
                         )
                       )
@@ -182,7 +196,9 @@ const IndexPage = ({ data }) => {
                   setSelectedProjects(
                     cmsProjects.filter(project =>
                       project.tags.some(
-                        ({ design }) =>
+                        ({ design, detail }) =>
+                          (detail && // null check
+                            detail.toUpperCase() === value.toUpperCase()) ||
                           design.toUpperCase() === value.toUpperCase()
                       )
                     )
@@ -191,16 +207,34 @@ const IndexPage = ({ data }) => {
                 }}
                 isMulti={false}
                 placeholder={"design?"}
+                isSearchable={false}
+                theme={theme => ({
+                  ...theme,
+                  ...SANS_TYPE,
+                  ...FUTURA_BODY_SIZE,
+
+                  borderRadius: 0,
+                  textAlign: "center",
+
+                  primary: colors.orange,
+                  primary25: colors.orange20,
+                  primary50: colors.orange50,
+                  primary80: colors.orange80,
+                  danger: "red",
+                })}
                 styles={{
                   container: provided => {
                     return {
                       ...provided,
-                      display: "inline-block",
                       ...FUTURA_BODY_SIZE,
-                      minWidth: "6rem",
-                      width: "100%",
+                      display: "inline-block",
+                      minWidth: "12rem",
+                      alignSelf: "center",
+                      // width: "100%",
                       ...maxLineMeasure,
-                      maxWidth: "max-content",
+                      maxWidth: "80vw",
+                      // margin: "5%",
+                      // textAlign: "center",
 
                       ...onMedia("hover: hover", {
                         "&:hover": {
@@ -212,7 +246,9 @@ const IndexPage = ({ data }) => {
                   control: (provided, state) => ({
                     ...provided,
                     border: 0,
-                    borderRadius: 0,
+                    borderColor: "initial",
+                    boxShadow: "none",
+
                     borderBottom: state.isFocused
                       ? `solid 0.05rem ${colors.orange}`
                       : `solid 0.05rem ${colors.orange50}`,
@@ -225,25 +261,45 @@ const IndexPage = ({ data }) => {
                     cursor: "pointer",
                     backgroundColor: "transparent",
                     div: {
+                      // contains value and input
                       padding: 0,
+                      justifyContent: "center",
+                      overflow: "visible",
                     },
+                    textAlign: "center",
+                  }),
+                  singleValue: provided => ({
+                    ...provided,
+
+                    overflow: "visible",
                   }),
                   input: provided => ({
                     ...provided,
-                    ...FUTURA_BODY_SIZE,
+
                     caretColor: colors.orange,
                   }),
                   indicatorsContainer: provided => ({
                     ...provided,
                     display: "none",
                   }),
-                  menu: provided => ({
+                  menu: (provided, state) => ({
                     ...provided,
-                    backgroundColor: colors.muteGray,
+                    backgroundColor: state.isSelected
+                      ? colors.orange
+                      : colors.muteGray,
+
+                    textAlign: "center",
+                  }),
+                  option: (provided, state) => ({
+                    ...provided,
+                    backgroundColor: state.isSelected
+                      ? colors.orange
+                      : "inherit",
                   }),
                 }}
               />
             </ContentArea>
+
             <MotifLeft
               css={{
                 width: "12.5%",
@@ -267,6 +323,7 @@ const IndexPage = ({ data }) => {
           </SectionBlock>
           {feature.length > 0 && (
             <>
+              <SectionBreak />
               <SectionBlock
                 id={"feature"}
                 css={{
@@ -275,7 +332,7 @@ const IndexPage = ({ data }) => {
                 }}
               >
                 <ContentArea css={{ maxWidth: "80rem", padding: "1rem" }}>
-                  <ProjectTagHeading>Featured Work</ProjectTagHeading>z
+                  <ProjectTagHeading>Featured Work</ProjectTagHeading>
                   {feature.map(project => (
                     <Link
                       to={"/" + project.slug} /* css={{ display: "block" }} */
