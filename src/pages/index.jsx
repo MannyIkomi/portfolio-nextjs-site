@@ -34,8 +34,7 @@ import { TokenList } from "../components/TokenList"
 import { DesktopMenu } from "../components/DesktopMenu"
 import { MotifLeft, MotifRight } from "../components/Motif"
 import { ProjectTagHeading } from "./ProjectTagHeading"
-
-export const SectionBreak = props => <hr css={{ margin: "5vh", border: 0 }} />
+import { SectionBreak } from "./SectionBreak"
 
 const IndexPage = ({ data }) => {
   const cmsProjects = data.allStrapiProjects.nodes.filter(
