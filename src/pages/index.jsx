@@ -37,12 +37,12 @@ import ProjectPhoto from "../components/ProjectPhoto"
 import { TokenList } from "../components/TokenList"
 import { DesktopMenu } from "../components/DesktopMenu"
 import { MotifLeft, MotifRight } from "../components/Motif"
-import { ProjectTagHeading } from "./ProjectTagHeading"
-import { SectionBreak } from "./SectionBreak"
+import { ProjectTagHeading } from "../components/ProjectTagHeading"
+import { SectionBreak } from "../components/SectionBreak"
 
 const IndexPage = ({ data }) => {
   // https://github.com/iamdustan/smoothscroll
-  smoothscroll.polyfill()
+
   const cmsProjects = data.allStrapiProjects.nodes.filter(
     ({ draft, feature }) => !draft && true // !feature
   )
@@ -53,7 +53,7 @@ const IndexPage = ({ data }) => {
   const useScrollToId = elementId => {
     useEffect(() => {
       if (typeof window !== "undefined" && elementId) {
-        console.log(elementId)
+        smoothscroll.polyfill()
 
         const elementArea = document.getElementById(elementId).getClientRects()
         window.scroll({

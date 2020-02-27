@@ -3,7 +3,13 @@ import { css, jsx } from "@emotion/core"
 import React from "react"
 import { TypesetLink } from "./TypesetLink"
 import Markdown from "./markdown"
-import { colors, typography, SANS_HEADING, maxLineMeasure } from "../styles"
+import {
+  colors,
+  typography,
+  SANS_HEADING,
+  maxLineMeasure,
+  flex,
+} from "../styles"
 import { MotifNegative } from "./Motif"
 
 export const CreativeInspiration = props => {
@@ -13,7 +19,7 @@ export const CreativeInspiration = props => {
 
   const PortraitPhoto = props => (
     <img
-      css={{ display: "block", width: "66%", height: "auto" }}
+      css={{ display: "inline-block", width: "50%", height: "auto" }}
       alt={name}
       {...imageProps}
     />
@@ -32,25 +38,42 @@ export const CreativeInspiration = props => {
         },
       }}
     >
-      {photo ? (
-        website ? (
-          <a href={website}>
+      <div
+      // css={{
+      //   ...flex("row"),
+      //   alignItems: "flex-end",
+      //   justifyContent: "center",
+      // }}
+      >
+        {photo ? (
+          website ? (
+            <a href={website} css={{ display: "block" }}>
+              <PortraitPhoto />
+            </a>
+          ) : (
             <PortraitPhoto />
-          </a>
+          )
         ) : (
-          <PortraitPhoto />
-        )
-      ) : (
-        <MotifNegative css={{ fill: colors.mediumGray }} />
-      )}
-
-      {website ? (
-        <TypesetLink to={website}>
+          <div css={{ height: "50%" }}>
+            <MotifNegative
+              css={{
+                display: "block",
+                width: "50%",
+                height: "50%",
+                fill: colors.mediumGray,
+                // transform: "rotate(-90deg) scale(0.9)",
+              }}
+            />
+          </div>
+        )}
+        {website ? (
+          <TypesetLink to={website}>
+            <h2>{name}</h2>
+          </TypesetLink>
+        ) : (
           <h2>{name}</h2>
-        </TypesetLink>
-      ) : (
-        <h2>{name}</h2>
-      )}
+        )}
+      </div>
       <figcaption>
         <Markdown>{description}</Markdown>
         {children}
