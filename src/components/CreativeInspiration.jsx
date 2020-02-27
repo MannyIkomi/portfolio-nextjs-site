@@ -4,6 +4,7 @@ import React from "react"
 import { TypesetLink } from "./TypesetLink"
 import Markdown from "./markdown"
 import { colors, typography, SANS_HEADING, maxLineMeasure } from "../styles"
+import { MotifNegative } from "./Motif"
 
 export const CreativeInspiration = props => {
   const { photo, name, description, website, children } = props
@@ -31,14 +32,17 @@ export const CreativeInspiration = props => {
         },
       }}
     >
-      {photo &&
-        (website ? (
+      {photo ? (
+        website ? (
           <a href={website}>
             <PortraitPhoto />
           </a>
         ) : (
           <PortraitPhoto />
-        ))}
+        )
+      ) : (
+        <MotifNegative css={{ fill: colors.mediumGray }} />
+      )}
 
       {website ? (
         <TypesetLink to={website}>

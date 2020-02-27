@@ -136,6 +136,7 @@ export const GLOBAL = {
   },
   ":root": {
     // fontSize: "100%",
+    scrollBehavior: "smooth",
     ...SANS_TYPE,
   },
   main: {
