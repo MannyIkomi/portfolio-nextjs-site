@@ -43,6 +43,20 @@ const IndexPage = ({ data }) => {
   )
 
   const [selectedProjects, setSelectedProjects] = useState(cmsProjects)
+  const [scrollId, setScrollId] = useState("")
+
+  const useScrollToId = elementId => {
+    useEffect(() => {
+      if (typeof Document !== "undefined" && elementId) {
+        console.log(elementId)
+        document
+          .getElementById(elementId)
+          .scrollIntoView({ behavior: "smooth" })
+      }
+    })
+  }
+
+  useScrollToId(scrollId)
 
   // group project sections by category
   const feature = selectedProjects.filter(
@@ -59,15 +73,6 @@ const IndexPage = ({ data }) => {
       ({ design }) => design !== "Identity" && design !== "Interactive"
     )
   )
-
-  // const [windowHash, setWindowHash] = useState("")
-
-  // useEffect(() => {
-  //   if (typeof Document !== "undefined") {
-  //     console.log(Document.location)
-  //     Document.location.hash === `${windowHash}`
-  //   }
-  // })
 
   const heroTypesetAnimation = (overrides = {}) => {
     const typeset = keyframes({
@@ -172,11 +177,12 @@ const IndexPage = ({ data }) => {
                   { label: "Print & Graphic Design", value: "graphic" },
                   // { label: "Typography", value: "typography" },
                   // { label: "Art Direction", value: "art direction" },
-                  { label: "Impress Me!", value: "" },
+                  { label: "Impress Me!", value: "feature" },
                   // { label: "My favorite piece", value: "favorite" },
                 ]}
                 onChange={({ value }) => {
-                  if (!value) {
+                  setScrollId(value) //scrolls to selected section
+                  if (!value || "feature") {
                     return setSelectedProjects(cmsProjects)
                   }
 
@@ -203,7 +209,6 @@ const IndexPage = ({ data }) => {
                       )
                     )
                   )
-                  // setWindowHash(value)
                 }}
                 isMulti={false}
                 placeholder={"design?"}
@@ -292,9 +297,18 @@ const IndexPage = ({ data }) => {
                   }),
                   option: (provided, state) => ({
                     ...provided,
+                    minHeight: TOUCH_TARGET,
+
                     backgroundColor: state.isSelected
                       ? colors.orange
                       : "inherit",
+                    ...onMedia("hover: hover", {
+                      "&:hover": {
+                        backgroundColor: state.isSelected
+                          ? colors.orange
+                          : colors.orange50,
+                      },
+                    }),
                   }),
                 }}
               />
@@ -316,7 +330,7 @@ const IndexPage = ({ data }) => {
                 height: "auto",
                 position: "absolute",
                 right: 0,
-                top: "100%",
+
                 top: "calc(100% - 1px)",
               }}
             />
@@ -472,6 +486,7 @@ const IndexPage = ({ data }) => {
             <>
               <SectionBreak />
               <SectionBlock
+                id={"graphic"}
                 css={{
                   backgroundColor: colors.darkGray,
                 }}
