@@ -8,6 +8,8 @@ import HtmlHead from "../components/HtmlHead"
 import { ProjectCover } from "../components/ProjectCover"
 import { Gallery } from "../components/Gallery"
 import { Footer } from "../components/Footer"
+import smoothscroll from "smoothscroll-polyfill"
+
 import Select from "react-select"
 
 import {
@@ -25,6 +27,7 @@ import {
   onDesktopMedia,
   maxLineMeasure,
   SANS_TYPE,
+  MENUBAR_HEIGHT,
 } from "../styles"
 import { StickyScrollContainer } from "../components/StickyScrollContainer"
 import { StickyMenuBar } from "../components/StickyMenuBar"
@@ -38,6 +41,8 @@ import { ProjectTagHeading } from "./ProjectTagHeading"
 import { SectionBreak } from "./SectionBreak"
 
 const IndexPage = ({ data }) => {
+  // https://github.com/iamdustan/smoothscroll
+  smoothscroll.polyfill()
   const cmsProjects = data.allStrapiProjects.nodes.filter(
     ({ draft, feature }) => !draft && true // !feature
   )
@@ -47,11 +52,17 @@ const IndexPage = ({ data }) => {
 
   const useScrollToId = elementId => {
     useEffect(() => {
-      if (typeof Document !== "undefined" && elementId) {
+      if (typeof window !== "undefined" && elementId) {
         console.log(elementId)
-        document
-          .getElementById(elementId)
-          .scrollIntoView({ behavior: "smooth" })
+
+        const elementArea = document.getElementById(elementId).getClientRects()
+        window.scroll({
+          top: elementArea[0].top,
+          behavior: "smooth",
+        })
+        // document
+        //   .getElementById(elementId)
+        //   .scrollIntoView({ behavior: "smooth" })
       }
     })
   }
@@ -133,7 +144,13 @@ const IndexPage = ({ data }) => {
           <SectionBlock
             css={{ minHeight: "25vh", padding: "1rem", position: "relative" }}
           >
-            <ContentArea css={{ fontSize: "3rem", ...flex("column") }}>
+            <ContentArea
+              css={{
+                fontSize: "3rem",
+                ...flex("column"),
+                justifyContent: "space-around",
+              }}
+            >
               <h1
                 css={[
                   // { fontSize: "3vmin" },
@@ -157,28 +174,28 @@ const IndexPage = ({ data }) => {
                     heroTypesetAnimation({ animationDelay: "1s" }),
                   ]}
                 >
-                  thoughtful
-                </span>
-                —
+                  clear,
+                </span>{" "}
                 <span
                   css={[
                     { font: "inherit" },
                     heroTypesetAnimation({ animationDelay: "2s" }),
                   ]}
                 >
-                  clear&nbsp;
+                  thoughtful&nbsp;
                 </span>
-                visual language that creates delightful brand experiences.
+                visual language that drives delightful brand experiences.
               </h1>
+              {/* <SectionBreak /> */}
               <Select
                 options={[
                   { label: "Web & UI Design", value: "interactive" },
                   { label: "Logo & Identity Design", value: "identity" },
                   { label: "Print & Graphic Design", value: "graphic" },
+                  { label: "Impress Me!", value: "feature" },
                   // { label: "Typography", value: "typography" },
                   // { label: "Art Direction", value: "art direction" },
-                  { label: "Impress Me!", value: "feature" },
-                  // { label: "My favorite piece", value: "favorite" },
+                  // { label: "My Favorite Project", value: "favorite" },
                 ]}
                 onChange={({ value }) => {
                   setScrollId(value) //scrolls to selected section
@@ -211,7 +228,7 @@ const IndexPage = ({ data }) => {
                   )
                 }}
                 isMulti={false}
-                placeholder={"design?"}
+                placeholder={"What are you looking for?"}
                 isSearchable={false}
                 theme={theme => ({
                   ...theme,
@@ -232,14 +249,20 @@ const IndexPage = ({ data }) => {
                     return {
                       ...provided,
                       ...FUTURA_BODY_SIZE,
-                      display: "inline-block",
-                      minWidth: "12rem",
                       alignSelf: "center",
-                      // width: "100%",
+
+                      display: "inline-block",
+                      minWidth: "10rem",
+                      width: "100%",
                       ...maxLineMeasure,
-                      maxWidth: "80vw",
-                      // margin: "5%",
-                      // textAlign: "center",
+                      maxWidth: "25rem",
+
+                      margin: "5%",
+
+                      ...onTabletMedia({
+                        fontSize: "2rem",
+                        margin: TOUCH_TARGET,
+                      }),
 
                       ...onMedia("hover: hover", {
                         "&:hover": {
@@ -298,6 +321,7 @@ const IndexPage = ({ data }) => {
                   option: (provided, state) => ({
                     ...provided,
                     minHeight: TOUCH_TARGET,
+                    padding: "1rem",
 
                     backgroundColor: state.isSelected
                       ? colors.orange
@@ -337,9 +361,8 @@ const IndexPage = ({ data }) => {
           </SectionBlock>
           {feature.length > 0 && (
             <>
-              <SectionBreak />
+              <SectionBreak id={"feature"} />
               <SectionBlock
-                id={"feature"}
                 css={{
                   backgroundColor: colors.darkGray,
                   minHeight: "50vh",
@@ -440,9 +463,8 @@ const IndexPage = ({ data }) => {
           {/* INTERACTIVE DESIGN  */}
           {interactiveProjects.length > 0 && (
             <>
-              <SectionBreak />
+              <SectionBreak id={"interactive"} />
               <SectionBlock
-                id={"interactive"}
                 css={{
                   backgroundColor: colors.darkGray,
                 }}
@@ -462,9 +484,8 @@ const IndexPage = ({ data }) => {
           {/* IDENTITY DESIGN */}
           {identityProjects.length > 0 && (
             <>
-              <SectionBreak />
+              <SectionBreak id={"identity"} />
               <SectionBlock
-                id={"identity"}
                 css={{
                   backgroundColor: colors.darkGray,
                 }}
@@ -484,9 +505,8 @@ const IndexPage = ({ data }) => {
           {/* GRAPHIC DESIGN */}
           {graphicProjects.length > 0 && (
             <>
-              <SectionBreak />
+              <SectionBreak id={"graphic"} />
               <SectionBlock
-                id={"graphic"}
                 css={{
                   backgroundColor: colors.darkGray,
                 }}
