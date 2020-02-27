@@ -119,7 +119,7 @@ const ProjectTemplate = ({ data }) => {
                   {
                     backgroundColor: colors.darkGray,
                   },
-                  onSupport("backdrop-filter: blur(1px)", {
+                  onSupport("backdrop-filter: grayscale(0.5rem)", {
                     backgroundColor: colors.mediumGray,
                     backdropFilter:
                       "blur(0.5rem) grayscale(100%) brightness(50%)",
