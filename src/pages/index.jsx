@@ -146,9 +146,12 @@ const IndexPage = ({ data }) => {
           >
             <ContentArea
               css={{
-                fontSize: "3rem",
+                // fontSize: "3rem",
+
                 ...flex("column"),
                 justifyContent: "space-around",
+
+                ...onTabletMedia({ maxWidth: "75%" }),
               }}
             >
               <h1
@@ -157,14 +160,15 @@ const IndexPage = ({ data }) => {
 
                   onTabletMedia({
                     fontSize: "5vmin",
+                    margin: `${TOUCH_TARGET} 0`,
                   }),
 
                   onDesktopMedia({
                     fontSize: "5vmin",
                   }),
-                  onMediaWidth("1500px", {
-                    fontSize: "5rem",
-                  }),
+                  // onMediaWidth("1500px", {
+                  //   fontSize: "5rem",
+                  // }),
                 ]}
               >
                 I design{" "}
@@ -278,8 +282,8 @@ const IndexPage = ({ data }) => {
                     boxShadow: "none",
 
                     borderBottom: state.isFocused
-                      ? `solid 0.05rem ${colors.orange}`
-                      : `solid 0.05rem ${colors.orange50}`,
+                      ? `solid 0.1rem ${colors.orange}`
+                      : `solid 0.1rem ${colors.orange50}`,
 
                     ...onMedia("hover: hover", {
                       "&:hover": {
@@ -326,6 +330,10 @@ const IndexPage = ({ data }) => {
                     backgroundColor: state.isSelected
                       ? colors.orange
                       : "inherit",
+                    // backgroundColor: state.isFocused
+                    //   ? colors.orange50
+                    //   : "inherit",
+
                     ...onMedia("hover: hover", {
                       "&:hover": {
                         backgroundColor: state.isSelected
