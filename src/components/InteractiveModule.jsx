@@ -16,8 +16,7 @@ export const InteractiveModule = props => {
           // how to make container resizeable?
           display: "block",
           width: "100%",
-          maxHeight: "90vh",
-          height: "90vh",
+          height: "80vh",
           overflow: "auto",
         },
       ]}
