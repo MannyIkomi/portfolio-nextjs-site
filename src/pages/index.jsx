@@ -27,7 +27,6 @@ import {
   onDesktopMedia,
   maxLineMeasure,
   SANS_TYPE,
-  MENUBAR_HEIGHT,
 } from "../styles"
 import { StickyScrollContainer } from "../components/StickyScrollContainer"
 import { StickyMenuBar } from "../components/StickyMenuBar"
@@ -183,7 +182,7 @@ const IndexPage = ({ data }) => {
                 <span
                   css={[
                     { font: "inherit" },
-                    heroTypesetAnimation({ animationDelay: "2s" }),
+                    heroTypesetAnimation({ animationDelay: "1s" }),
                   ]}
                 >
                   thoughtful&nbsp;

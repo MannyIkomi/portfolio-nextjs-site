@@ -32,6 +32,8 @@ import { SectionBlock } from "../components/SectionBlock"
 import { OrangeOverprint, ColorOverprint } from "../components/FillOverlay"
 import { TokenList } from "../components/TokenList"
 import Markdown from "../components/markdown"
+import { useEffect } from "react"
+import { useState } from "react"
 
 export const filterProjectById = (thisProject, otherProjects) => {
   // filter current project from total projects list
@@ -62,8 +64,20 @@ const ProjectTemplate = ({ data }) => {
   // how to improve this algorithim to sort projects by the most tag matches
   const findRelatedProjects = filterProjectTags
   // const findRelatedProjects = filterProjectTags
-
   const { title, modules, draft, subtitle, seoDescription, tags } = thisProject
+  const [responsiveImgSrc, setResponsiveImgSrc] = useState(
+    thisProject.cover.childImageSharp.fluid.src
+  )
+
+  useEffect(() => {
+    if (typeof document !== "undefined") {
+      const coverImg = document.getElementById("cover")
+      coverImg.addEventListener("load", () => {
+        console.log(coverImg.currentSrc)
+        setResponsiveImgSrc(coverImg.currentSrc /*  || coverImg.src */)
+      })
+    }
+  })
 
   return (
     <Layout>
@@ -84,6 +98,11 @@ const ProjectTemplate = ({ data }) => {
         <StickyMenuBar />
 
         <main>
+          <img
+            css={{ display: "none" }}
+            id={"cover"}
+            {...thisProject.cover.childImageSharp.fluid}
+          />
           <article
             css={{
               ...flex("column"),
@@ -107,7 +126,7 @@ const ProjectTemplate = ({ data }) => {
 
                   background: colors.muteGray,
                   // https://aclaes.com/responsive-background-images-with-srcset-and-sizes/
-                  background: `url(${thisProject.cover.childImageSharp.fluid.src})`,
+                  background: `url(${responsiveImgSrc})`,
                   backgroundSize: "cover",
                   backgroundPosition: "center center",
                   backgroundRepeat: "no-repeat",
