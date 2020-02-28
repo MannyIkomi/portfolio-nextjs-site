@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import { css, jsx } from "@emotion/core"
 import React from "react"
-import { colors, flex } from "../styles"
+import { colors } from "../styles"
 
 const fillOrange = override =>
   css({

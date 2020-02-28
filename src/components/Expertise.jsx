@@ -1,6 +1,6 @@
 /** @jsx jsx */
 import React from "react"
-import { css, jsx } from "@emotion/core"
+import { jsx } from "@emotion/core"
 
 import { styleTransition, linkText } from "../styles"
 

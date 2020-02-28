@@ -1,6 +1,6 @@
 /** @jsx jsx */
 import React from "react"
-import { css, jsx } from "@emotion/core"
+import { jsx } from "@emotion/core"
 
 import {
   typography,
@@ -9,15 +9,13 @@ import {
   flex,
   TOUCH_TARGET,
   MENUBAR_HEIGHT,
-  styleTransition,
-  typesetInteraction,
   onDesktopMedia,
 } from "../styles"
 import { Markdown } from "./markdown"
 import useToggleSwitch from "../hooks/useToggleSwitch"
 import { TimeFrame } from "./TimeFrame"
 import { TitleResume } from "./Entity"
-import { ContentArea } from "./ContentArea"
+
 import StickyScrollContainer from "./StickyScrollContainer"
 import { Button } from "./Button"
 

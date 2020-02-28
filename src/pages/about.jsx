@@ -1,6 +1,6 @@
 /** @jsx jsx */
-import { css, jsx } from "@emotion/core"
 import React from "react"
+import { jsx } from "@emotion/core"
 import { graphql } from "gatsby"
 
 import {
@@ -16,7 +16,6 @@ import { StickyScrollContainer } from "../components/StickyScrollContainer"
 import { StickyMenuBar } from "../components/StickyMenuBar"
 import { MotifRight, MotifLeft } from "../components/Motif"
 import { Footer } from "../components/Footer"
-
 import Markdown from "../components/markdown"
 import { CreativeInspiration } from "../components/CreativeInspiration"
 import { ContentArea } from "../components/ContentArea"
@@ -29,8 +28,7 @@ const AboutPage = ({ data }) => {
     bio,
     cardsCollected,
     heading,
-    email,
-    website,
+
     photo,
   } = data.strapiAbout
   const imageProps = photo.childImageSharp ? photo.childImageSharp.fluid : photo // for fallback GIF support

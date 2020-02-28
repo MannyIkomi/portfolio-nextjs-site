@@ -1,6 +1,6 @@
 /** @jsx jsx */
-import { css, jsx } from "@emotion/core"
 import React from "react"
+import { jsx } from "@emotion/core"
 import { LogoMaster } from "./Logo"
 import { useSocialMedia } from "../hooks/useSocialMedia"
 import { SocialIcon } from "./SocialIcon"
@@ -22,8 +22,6 @@ export const Footer = props => {
     <footer
       css={{
         position: "relative",
-        // overflow: "visible hidden",
-
         minHeight: "100vh",
 
         ...flex(),
