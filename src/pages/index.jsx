@@ -52,7 +52,7 @@ const IndexPage = ({ data }) => {
 
   const useScrollToId = elementId => {
     useEffect(() => {
-      if (typeof window !== "undefined" && elementId) {
+      if (typeof document !== "undefined" && elementId) {
         smoothscroll.polyfill()
 
         const elementArea = document.getElementById(elementId).getClientRects()
@@ -523,8 +523,6 @@ const IndexPage = ({ data }) => {
               </SectionBlock>
             </>
           )}
-
-          <SectionBreak />
         </main>
       </StickyScrollContainer>
       <Footer />

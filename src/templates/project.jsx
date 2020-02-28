@@ -110,7 +110,7 @@ const ProjectTemplate = ({ data }) => {
                   backgroundRepeat: "no-repeat",
                 },
                 onDesktopMedia({
-                  minHeight: "100vh",
+                  minHeight: "75vh",
                 }),
               ]}
             >
