@@ -47,8 +47,11 @@ export const filterWhereArrayIncludes = (arr1, arr2) => {
 
 export const filterProjectTags = (thisProject = {}, otherProjects = []) => {
   const currentTags = thisProject.tags.map(tag => tag.design)
+
   return otherProjects.filter(otherProject => {
-    const otherTags = otherProject.tags.map(tag => tag.design)
+    const otherTags = otherProject.tags.map(({ design, label }) =>
+      label ? label : design
+    )
     return filterWhereArrayIncludes(currentTags, otherTags).length > 0
   })
 }
@@ -291,32 +294,34 @@ const ProjectTemplate = ({ data }) => {
                     thisProject,
                     otherProjects
                     // removeCurrentProject(thisProject, otherProjects)
-                  ).map(related => (
-                    <div
-                      key={related.id}
-                      css={[
-                        {
-                          // progressive enhance from single column vertical scroll
-                          minWidth: "15rem",
-                          maxWidth: "20rem",
-                          margin: "0 2rem",
+                  )
+                    .slice(0, 3)
+                    .map(related => (
+                      <div
+                        key={related.id}
+                        css={[
+                          {
+                            // progressive enhance from single column vertical scroll
+                            minWidth: "15rem",
+                            maxWidth: "20rem",
+                            margin: "0 2rem",
 
-                          ...onTabletMedia({
-                            // marginRight: `${TOUCH_TARGET}`,
-                            margin: "5%",
-                            maxWidth: "30rem",
+                            ...onTabletMedia({
+                              // marginRight: `${TOUCH_TARGET}`,
+                              margin: "5%",
+                              maxWidth: "30rem",
+                            }),
+                          },
+                          onMedia("pointer: coarse", {
+                            flex: "0 0 auto",
+                            maxWidth: "66vw",
+                            // TOUCH_TARGET,
                           }),
-                        },
-                        onMedia("pointer: coarse", {
-                          flex: "0 0 auto",
-                          maxWidth: "66vw",
-                          // TOUCH_TARGET,
-                        }),
-                      ]}
-                    >
-                      <ProjectCover {...related} key={related.id} />
-                    </div>
-                  ))}
+                        ]}
+                      >
+                        <ProjectCover {...related} key={related.id} />
+                      </div>
+                    ))}
                 </div>
               </SectionBlock>
             </footer>
@@ -386,7 +391,7 @@ export const query = graphql`
 
     # gets all projects !== to the selected projects for related recommendations
     allStrapiProjects(
-      limit: 4 # max 4 related project recommendations
+      # limit: 5 # max 3 related project recommendations
       filter: {
         slug: { ne: $slug }
         draft: { eq: false }
