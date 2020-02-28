@@ -28,6 +28,7 @@ export const DesktopMenu = ({ ...restProps }) => {
         padding: "1rem",
 
         position: "sticky",
+        zIndex: 999,
         top: 0,
         left: 0,
 
