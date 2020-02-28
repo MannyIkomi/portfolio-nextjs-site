@@ -118,7 +118,7 @@ const IndexPage = ({ data }) => {
     <Layout>
       <HtmlHead
         title="Portfolio Projects"
-        description={`I design thoughtful—clear visual language that creates delightful experiences. View my online portfolio featuring identity design, typography, web design, branding, and logo design`}
+        description={`I create thoughtful visual language that drives delightful brand experiences.. View my online portfolio featuring identity design, branding, web design, typography, and logo design.`}
       />
       <StickyScrollContainer
         css={[
@@ -171,15 +171,15 @@ const IndexPage = ({ data }) => {
                   // }),
                 ]}
               >
-                I design{" "}
-                <span
+                I create{" "}
+                {/* <span
                   css={[
                     { font: "inherit" },
                     heroTypesetAnimation({ animationDelay: "1s" }),
                   ]}
                 >
                   clear,
-                </span>{" "}
+                </span>{" "} */}
                 <span
                   css={[
                     { font: "inherit" },
