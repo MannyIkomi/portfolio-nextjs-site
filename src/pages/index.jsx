@@ -187,7 +187,16 @@ const IndexPage = ({ data }) => {
                 >
                   thoughtful&nbsp;
                 </span>
-                visual language that drives delightful brand experiences.
+                visual language that drives{" "}
+                <span
+                  css={[
+                    { font: "inherit" },
+                    heroTypesetAnimation({ animationDelay: "2s" }),
+                  ]}
+                >
+                  delightful&nbsp;
+                </span>
+                brand experiences.
               </h1>
               {/* <SectionBreak /> */}
               <Select
