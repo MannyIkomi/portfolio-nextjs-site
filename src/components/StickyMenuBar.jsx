@@ -8,7 +8,7 @@ import {
   typography,
   onTabletMedia,
   styleTransition,
-  typesetInteraction,
+  typesetHover,
   TOUCH_TARGET,
   SANS_HEADING,
   onMedia,
@@ -85,7 +85,7 @@ export const StickyMenuBar = ({ children, ...props }) => {
         css={{
           ...styleTransition(),
           ...onMedia("hover: hover", {
-            ...typesetInteraction(),
+            ...typesetHover(),
           }),
           width: "8rem",
           maxHeight: `calc(${MENUBAR_HEIGHT} - 1rem)`,

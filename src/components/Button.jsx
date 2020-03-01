@@ -5,9 +5,9 @@ import { jsx } from "@emotion/core"
 import {
   colors,
   styleTransition,
-  typesetInteraction,
   SANS_HEADING,
   onMedia,
+  typesetHover,
 } from "../styles"
 
 export const Button = props => {
@@ -18,14 +18,12 @@ export const Button = props => {
         ...styleTransition(),
         ...onMedia(
           "hover: hover",
-          typesetInteraction({
-            backgroundColor: colors.orange50,
+          typesetHover({
+            backgroundColor: colors.orange20,
           })
         ),
 
         ...SANS_HEADING,
-        // fontSize: "1.1rem",
-        // fontWeight: "bold",
 
         color: colors.darkGray,
         backgroundColor: colors.darkGray20,

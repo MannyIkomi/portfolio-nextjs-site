@@ -1,7 +1,7 @@
 import React from "react"
 import {
   colors,
-  typesetInteraction,
+  typesetHover,
   TOUCH_TARGET,
   styleTransition,
   onMedia,
@@ -90,7 +90,7 @@ export const SocialIcon = ({
         svg: {
           ...styleTransition(),
           ...onMedia("hover: hover", {
-            ...typesetInteraction(),
+            ...typesetHover(),
           }),
           "&:hover": {
             fill: colors.orange,

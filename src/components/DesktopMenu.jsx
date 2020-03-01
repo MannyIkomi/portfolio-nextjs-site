@@ -1,6 +1,7 @@
 /** @jsx jsx */
 import { jsx } from "@emotion/core"
-import React, { useEffect, useState } from "react"
+import React from "react"
+
 import {
   TOUCH_TARGET,
   colors,

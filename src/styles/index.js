@@ -96,15 +96,27 @@ export const linkText = {
   // text underline new CSS features
   // https://www.youtube.com/watch?v=sZS-7RX_c7g
 
-  "&:hover": {
-    color: colors.orange,
-  },
+  // "&:hover": {
+  //   color: colors.orange,
+  // },
 }
 
-export const typesetInteraction = (override = {}) => ({
+export const typeset = (override = {}) => ({
+  transformOrigin: "center center",
+  transform: "rotateX(180deg) translateY(-12%)", //translate adjusts optical baseline to the x-height  when flipped
+  ...override,
+})
+
+export const linkActive = (override = {}) => ({
+  color: colors.mediumGray,
+  ...override,
+})
+
+export const typesetHover = (override = {}) => ({
   transformOrigin: "center center",
   ":hover": {
-    transform: "rotateX(180deg) translateY(-12%)", //translate adjusts optical baseline to the x-height  when flipped
+    color: colors.orange,
+    ...typeset(),
     ...override,
   },
 })
@@ -121,7 +133,7 @@ export const typography = {
   sansType: SANS_TYPE,
   sansHeading: SANS_HEADING,
   serifHeading: SERIF_HEADING,
-  typesetInteraction,
+  typesetInteraction: typesetHover,
   fontSizeTransition,
   linkText,
   resumeContentHeading,

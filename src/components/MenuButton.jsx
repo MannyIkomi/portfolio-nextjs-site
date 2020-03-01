@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import { jsx } from "@emotion/core"
 import React from "react"
-import { colors, flex, styleTransition, TOUCH_TARGET } from "../styles"
+import { colors, flex, styleTransition, TOUCH_TARGET, onMedia } from "../styles"
 import { MotifNegative, MotifRight } from "./Motif"
 
 export const MenuButton = ({ isToggled, ...props }) => {
@@ -51,6 +51,9 @@ export const MenuButton = ({ isToggled, ...props }) => {
           "#motif-negative": {
             ...styleTransition(),
             fill: colors.darkGray,
+            // ...onMedia("hover: hover", {
+            //   "&:hover": { fill: colors.orange },
+            // }),
           },
           "#motif-right, #motif-left": {
             ...styleTransition(),

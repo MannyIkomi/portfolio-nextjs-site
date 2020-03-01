@@ -6,7 +6,7 @@ import { css, jsx } from "@emotion/core"
 import {
   typography,
   ulStyles,
-  typesetInteraction,
+  typesetHover,
   linkText,
   styleTransition,
   SERIF_HEADING,

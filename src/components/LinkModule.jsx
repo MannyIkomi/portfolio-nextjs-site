@@ -6,7 +6,7 @@ import { moduleProps } from "../util/props"
 import {
   SANS_HEADING,
   styleTransition,
-  typesetInteraction,
+  typesetHover,
   colors,
   moduleContainer,
   onMediaWidth,
@@ -30,7 +30,7 @@ export const LinkModule = props => {
         ...styleTransition(),
 
         ...onMedia("hover: hover", {
-          ...typesetInteraction({
+          ...typesetHover({
             ":hover": {
               color: colors.orange,
               backgroundColor: colors.muteGray,

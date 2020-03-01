@@ -1,8 +1,11 @@
 /** @jsx jsx */
 import React from "react"
+import { Link as GatsbyLink } from "gatsby"
 import { css, jsx } from "@emotion/core"
+
 import {
-  typesetInteraction,
+  typesetHover,
+  linkActive,
   linkText,
   styleTransition,
   onMedia,
@@ -10,20 +13,30 @@ import {
 
 export const TypesetLink = props => {
   const { to, title, children, ...rest } = props
-  return (
-    <a
-      href={to}
+
+  const internal = /^\/(?!\/)/.test(to) // https://www.gatsbyjs.org/docs/gatsby-link/#reminder-use-link-only-for-internal-links
+
+  const linkStyles = [
+    linkText,
+    { position: "relative" },
+    styleTransition(),
+    onMedia("hover: hover", {
+      ...typesetHover(),
+    }),
+  ]
+
+  return internal ? (
+    <GatsbyLink
+      to={to}
       title={title}
-      css={[
-        { position: "relative" },
-        styleTransition(),
-        onMedia("hover: hover", {
-          ...typesetInteraction(),
-        }),
-        linkText,
-      ]}
+      activeStyle={linkActive()}
+      css={linkStyles}
       {...rest}
     >
+      {children}
+    </GatsbyLink>
+  ) : (
+    <a href={to} title={title} css={linkStyles} {...rest}>
       {children}
     </a>
   )
