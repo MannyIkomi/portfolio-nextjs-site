@@ -359,7 +359,7 @@ const IndexPage = ({ data }) => {
                 width: "12.5%",
                 height: "auto",
                 position: "absolute",
-                left: 0,
+                left: "-1px",
                 bottom: "-1px",
               }}
             />
