@@ -438,7 +438,7 @@ const IndexPage = ({ data }) => {
                             marginTop: "1rem",
                           }}
                         >
-                          <h1
+                          <h3
                             css={{
                               ...SANS_HEADING,
                               color: colors.muteGray,
@@ -447,8 +447,8 @@ const IndexPage = ({ data }) => {
                             }}
                           >
                             {project.title}
-                          </h1>
-                          <h2
+                          </h3>
+                          <h4
                             css={{
                               color: colors.orange,
                               fontSize: "2rem",
@@ -458,7 +458,7 @@ const IndexPage = ({ data }) => {
                             }}
                           >
                             {project.subtitle}
-                          </h2>
+                          </h4>
                           <p css={{ textDecoration: "none" }}>
                             {project.seoDescription}
                           </p>

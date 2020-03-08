@@ -121,7 +121,7 @@ export const ProjectCover = ({
 
             color: colors.muteGray,
 
-            h1: {
+            h3: {
               ...SANS_HEADING,
               color: colors.muteGray,
               ...FUTURA_BODY_SIZE,
@@ -129,7 +129,7 @@ export const ProjectCover = ({
               textTransform: "initial",
               // fontWeight: "bold",
             },
-            h2: {
+            h4: {
               ...SERIF_HEADING,
               color: colors.muteGray,
               fontSize: "1.66rem",
@@ -144,8 +144,8 @@ export const ProjectCover = ({
             },
           }}
         >
-          <h1>{title}</h1>
-          <h2>{subtitle}</h2>
+          <h3>{title}</h3>
+          <h4>{subtitle}</h4>
           {tags && (
             <TokenList css={{ li: { backgroundColor: colors.orange80 } }}>
               {tags.map(({ design, detail }) => detail || design)}

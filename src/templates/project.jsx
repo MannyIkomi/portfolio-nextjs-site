@@ -15,6 +15,7 @@ import {
   onMedia,
   onSupport,
   onDesktopMedia,
+  tokenize,
 } from "../styles"
 import Layout from "../components/layout"
 import HtmlHead from "../components/HtmlHead"
@@ -161,12 +162,18 @@ const ProjectTemplate = ({ data }) => {
               >
                 <h1
                   css={{
+                    // ...tokenize({
+                    //   color: colors.muteGray,
+                    //   backgroundColor: colors.orange,
+                    // }),
+
                     ...SANS_HEADING,
-                    // color: colors.darkGray,
+
                     textAlign: "right",
                     textTransform: "initial",
 
                     marginBottom: "0.5rem",
+                    alignSelf: "flex-end",
                   }}
                 >
                   {title}

@@ -42,6 +42,13 @@ export const PROJECT_SHADOW = `0rem 1rem 1rem 0.5rem hsla(0, 0%, 0%, 0.5)`
 export const tabletMediaQuery = `@media screen and (min-width: ${TABLET_VIEWPORT})`
 export const desktopMediaQuery = `@media screen and (min-width: ${DESKTOP_VIEWPORT})`
 
+export const tokenize = override => ({
+  display: "inline-block",
+  padding: "0.1rem 0.33rem",
+  backgroundColor: colors.darkGray80,
+  ...override,
+})
+
 export const styleTransition = (override = {}) => ({
   transitionDuration: "300ms",
   transitionTimingFunction: "ease-in-out",
@@ -211,6 +218,9 @@ export const GLOBAL = {
   h3: {
     fontSize: "1.333rem",
   },
+  h4: {
+    fontSize: "1.25rem",
+  },
 
   ...onTabletMedia({
     h1: {
@@ -221,6 +231,9 @@ export const GLOBAL = {
     },
     h3: {
       fontSize: "1.5rem",
+    },
+    h4: {
+      fontSize: "1.3333rem",
     },
   }),
 
@@ -233,6 +246,9 @@ export const GLOBAL = {
     },
     h3: {
       fontSize: "1.75rem",
+    },
+    h4: {
+      fontSize: "1.5rem",
     },
   }),
 }
