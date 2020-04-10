@@ -38,13 +38,7 @@ export const CreativeInspiration = props => {
         },
       }}
     >
-      <div
-      // css={{
-      //   ...flex("row"),
-      //   alignItems: "flex-end",
-      //   justifyContent: "center",
-      // }}
-      >
+      <div>
         {photo ? (
           website ? (
             <a href={website} css={{ display: "block" }}>
@@ -68,10 +62,10 @@ export const CreativeInspiration = props => {
         )}
         {website ? (
           <TypesetLink to={website}>
-            <h2>{name}</h2>
+            <h3>{name}</h3>
           </TypesetLink>
         ) : (
-          <h2>{name}</h2>
+          <h3>{name}</h3>
         )}
       </div>
       <figcaption>

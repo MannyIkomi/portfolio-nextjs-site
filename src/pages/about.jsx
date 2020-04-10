@@ -9,6 +9,7 @@ import {
   colors,
   flex,
   onDesktopMedia,
+  h1Text,
 } from "../styles"
 import Layout from "../components/layout"
 import HtmlHead from "../components/HtmlHead"
@@ -52,15 +53,11 @@ const AboutPage = ({ data }) => {
             "#mobile": { display: "none" },
             "#desktop": flex("column"),
           }),
-          ,
         ]}
       >
         <DesktopMenu />
         <StickyMenuBar />
-        {/* <Header siteTitle={"Manny Ikomi"}></Header> */}
-        {/* <aside>
-          <nav>side bar menu</nav>
-        </aside> */}
+
         <main css={{ ...flex("column"), alignItems: "center" }}>
           <SectionBlock
             css={{
@@ -69,9 +66,6 @@ const AboutPage = ({ data }) => {
               minHeight: "100vh",
 
               position: "relative",
-              // header: {
-              //   padding: 0,
-              // },
             }}
           >
             <ContentArea
@@ -80,7 +74,7 @@ const AboutPage = ({ data }) => {
                   ...supportsGrid({
                     gridTemplateAreas: `'headshot h1' 'void body'`,
                     gridTemplateColumns: "1fr 2fr",
-                    // gridTemplateColumns: "1fr minmax(2fr, 80rem)",
+
                     maxWidth: "60rem",
                   }),
                 }),
@@ -195,7 +189,7 @@ const AboutPage = ({ data }) => {
           <SectionBlock css={{ backgroundColor: colors.muteGray }}>
             <ContentArea>
               <div css={{ padding: "1rem" }}>
-                <h1>Creatives who inspire&nbsp;me…</h1>
+                <h2 css={[h1Text()]}>Creatives who inspire&nbsp;me…</h2>
                 <p>
                   I once heard that we are the sum of the people who are closest
                   to us. So I like to think of these people as my design

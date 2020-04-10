@@ -108,6 +108,17 @@ export const linkText = {
   // },
 }
 
+export const h1Text = override => ({
+  fontSize: "2rem",
+  color: colors.orange,
+  ...onTabletMedia({
+    fontSize: "2.5rem",
+  }),
+  ...onDesktopMedia({
+    fontSize: "3rem",
+  }),
+})
+
 export const typeset = (override = {}) => ({
   transformOrigin: "center center",
   transform: "rotateX(180deg) translateY(-12%)", //translate adjusts optical baseline to the x-height  when flipped

@@ -161,7 +161,7 @@ export const query = graphql`
         id
       }
     }
-    allStrapiEducation {
+    allStrapiEducation(sort: { order: DESC, fields: ended }) {
       nodes {
         url
         started(fromNow: false)
