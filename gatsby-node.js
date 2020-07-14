@@ -8,7 +8,7 @@ const path = require("path")
 // You can delete this file if you're not using it
 
 exports.onCreateNode = ({ node, actions }) => {
-  console.log(node.internal.type)
+  // console.log(node.internal.type)
 }
 
 exports.createPages = async ({ graphql, actions }) => {
@@ -34,6 +34,6 @@ exports.createPages = async ({ graphql, actions }) => {
       component: path.resolve("src/templates/project.jsx"),
       context: { slug },
     })
-    console.log(JSON.stringify(node, null, 4))
+    // console.log(JSON.stringify(node, null, 4))
   })
 }
