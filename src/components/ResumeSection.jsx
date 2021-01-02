@@ -6,7 +6,7 @@ import { colors } from "../styles"
 export const ResumeSection = props => {
   const { children, heading, ...rest } = props
   return (
-    <article
+    <section
       css={{
         // borderTop: 'solid',
         margin: "2rem 0",
@@ -25,6 +25,6 @@ export const ResumeSection = props => {
         {heading}
       </h1>
       {children}
-    </article>
+    </section>
   )
 }

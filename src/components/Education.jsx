@@ -27,8 +27,8 @@ export const Education = props => {
   } = props
   const [toggled, setToggled] = useToggleSwitch(false)
   return (
-    <article css={{ margin: `${TOUCH_TARGET} 0` }} {...restProps}>
-      <header
+    <section css={{ margin: `${TOUCH_TARGET} 0` }} {...restProps}>
+      <div
         css={[
           toggled && positionSticky(MENUBAR_HEIGHT),
           {
@@ -63,7 +63,7 @@ export const Education = props => {
             In Progress…
           </span>
         )}
-      </header>
+      </div>
       {description && <Markdown>{description}</Markdown>}
 
       {details && (
@@ -83,6 +83,6 @@ export const Education = props => {
           {toggled ? `Close ${school}` : <>{`More on ${school}…`}</>}
         </button>
       )}
-    </article>
+    </section>
   )
 }

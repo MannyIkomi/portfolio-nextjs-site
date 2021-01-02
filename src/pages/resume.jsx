@@ -22,9 +22,10 @@ import { ResumeSection } from "../components/ResumeSection"
 
 import { Education } from "../components/Education"
 import { TokenList } from "../components/TokenList"
+import { TitleResume } from "../components/Entity"
 
 const ResumePage = ({ data }) => {
-  const employment = data.allStrapiExperience.nodes.filter(
+  const experiences = data.allStrapiExperience.nodes.filter(
     ({ isPaid, draft }) => isPaid && !draft
   )
   const volunteering = data.allStrapiExperience.nodes.filter(exp => !exp.isPaid)
@@ -33,6 +34,9 @@ const ResumePage = ({ data }) => {
   )
   const developmentSkills = data.allStrapiExpertise.nodes.filter(
     ({ type, draft }) => type === "development" && !draft
+  )
+  const toolExperiences = data.allStrapiExpertise.nodes.filter(
+    ({ type, draft }) => type === "experiences" && !draft
   )
   const education = data.allStrapiEducation.nodes.filter(
     ({ certification, draft }) => !certification && !draft
@@ -85,10 +89,9 @@ const ResumePage = ({ data }) => {
                 {[
                   ["Experience", "#experience"],
                   ["Education", "#education"],
-                  ["Certifications", "#certifications"],
                   ["Volunteering", "#volunteering"],
-                  ["Visual Design", "#design"],
-                  ["Front-End Development", "#development"],
+                  ["Certifications", "#certifications"],
+                  ["Capabilities", "#capabilities"],
                 ].map(([label, path]) => (
                   <TypesetLink to={path} css={{ padding: "1rem" }}>
                     {label}
@@ -98,42 +101,50 @@ const ResumePage = ({ data }) => {
             </header>
             <ContentArea>
               <ResumeSection id={`experience`} heading={"Experience"}>
-                {employment.map(employer => (
+                {experiences.map(employer => (
                   <Experience {...employer} key={employer.id} />
                 ))}
               </ResumeSection>
-              <ResumeSection id={`volunteering`} heading={"Volunteering"}>
-                {volunteering.map(organization => (
-                  <Experience {...organization} key={organization.id} />
-                ))}
-              </ResumeSection>
+
               <ResumeSection id={`education`} heading={"Education"}>
                 {education.map(edu => (
                   <Education {...edu} key={edu.id} />
                 ))}
               </ResumeSection>
+
+              <ResumeSection id={`volunteering`} heading={"Volunteering"}>
+                {volunteering.map(organization => (
+                  <Experience {...organization} key={organization.id} />
+                ))}
+              </ResumeSection>
+
               <ResumeSection id={`certifications`} heading={"Certifications"}>
                 {certificates.map(edu => (
                   <Education {...edu} key={edu.id} />
                 ))}
               </ResumeSection>
-              <ResumeSection id={`design`} heading={"Visual Design Skills"}>
+
+              <ResumeSection id={`capabilities`} heading={"Capabilities"}>
+                <TitleResume>Design</TitleResume>
                 <TokenList css={{ li: { backgroundColor: colors.darkGray20 } }}>
-                  {designSkills.map(skill => (
-                    <Expertise {...skill} key={skill.id} />
+                  {designSkills.map(capability => (
+                    <Expertise {...capability} key={capability.id} />
+                  ))}
+                </TokenList>
+                <TitleResume>Web Development</TitleResume>
+                <TokenList css={{ li: { backgroundColor: colors.darkGray20 } }}>
+                  {developmentSkills.map(capability => (
+                    <Expertise {...capability} key={capability.id} />
+                  ))}
+                </TokenList>
+                <TitleResume>Experiences With</TitleResume>
+                <TokenList css={{ li: { backgroundColor: colors.darkGray20 } }}>
+                  {toolExperiences.map(capability => (
+                    <Expertise {...capability} key={capability.id} />
                   ))}
                 </TokenList>
               </ResumeSection>
-              <ResumeSection
-                id={`development`}
-                heading={"Front-End Development Skills"}
-              >
-                <TokenList css={{ li: { backgroundColor: colors.darkGray20 } }}>
-                  {developmentSkills.map(skill => (
-                    <Expertise {...skill} key={skill.id} />
-                  ))}
-                </TokenList>
-              </ResumeSection>
+
               {/* <footer>resume footer</footer> */}
             </ContentArea>
           </article>

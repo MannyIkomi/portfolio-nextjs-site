@@ -33,7 +33,7 @@ export const Experience = props => {
   const [toggled, setToggle] = useToggleSwitch(false)
   return (
     <StickyScrollContainer>
-      <article
+      <section
         css={{
           ...flex("column"),
           alignItems: "center",
@@ -41,7 +41,7 @@ export const Experience = props => {
         }}
         {...rest}
       >
-        <header
+        <div
           css={[
             toggled && positionSticky(MENUBAR_HEIGHT),
             {
@@ -67,7 +67,7 @@ export const Experience = props => {
             start={started}
             end={ended}
           />
-        </header>
+        </div>
         {summary && (
           <>
             <Markdown>{summary}</Markdown>
@@ -86,7 +86,7 @@ export const Experience = props => {
             {toggled ? `Close ${organization}` : `More on ${organization}…`}
           </Button>
         )}
-      </article>
+      </section>
     </StickyScrollContainer>
   )
 }
