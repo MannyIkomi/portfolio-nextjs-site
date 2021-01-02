@@ -62,6 +62,7 @@ export const filterProjectTags = (thisProject = {}, otherProjects = []) => {
 const ProjectTemplate = ({ data }) => {
   const thisProject = data.strapiProjects
   const otherProjects = data.allStrapiProjects.nodes
+  console.log(thisProject)
   // how to improve this algorithim to sort projects by the most tag matches
   const findRelatedProjects = filterProjectTags
   // const findRelatedProjects = filterProjectTags
@@ -74,7 +75,7 @@ const ProjectTemplate = ({ data }) => {
     if (typeof document !== "undefined") {
       const coverImg = document.getElementById("cover")
       coverImg.addEventListener("load", () => {
-        console.log(coverImg.currentSrc)
+        // console.log(coverImg.currentSrc)
         setResponsiveImgSrc(coverImg.currentSrc /*  || coverImg.src */)
       })
     }
@@ -102,6 +103,7 @@ const ProjectTemplate = ({ data }) => {
           <img
             css={{ display: "none" }}
             id={"cover"}
+            alt={thisProject.coverAlt}
             {...thisProject.cover.childImageSharp.fluid}
           />
           <article
