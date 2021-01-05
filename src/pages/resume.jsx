@@ -28,6 +28,7 @@ const ResumePage = ({ data }) => {
   const experiences = data.allStrapiExperience.nodes.filter(
     ({ isPaid, draft }) => isPaid && !draft
   )
+
   const volunteering = data.allStrapiExperience.nodes.filter(exp => !exp.isPaid)
   const designSkills = data.allStrapiExpertise.nodes.filter(
     ({ type, draft }) => type === "design" && !draft
