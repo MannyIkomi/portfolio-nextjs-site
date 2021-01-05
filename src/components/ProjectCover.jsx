@@ -53,7 +53,7 @@ export const ProjectCover = ({
       <figure
         className={"project-cover"}
         css={{
-          ...aspectRatioLetter,
+          // ...aspectRatioLetter,
           position: "relative",
           overflow: "hidden", // clips aspect ratio overflow
 
