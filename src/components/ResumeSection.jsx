@@ -9,7 +9,7 @@ export const ResumeSection = props => {
     <section
       css={{
         // borderTop: 'solid',
-        margin: "2rem 0",
+        margin: "4vh 0",
         padding: "0 1rem",
       }}
       {...rest}

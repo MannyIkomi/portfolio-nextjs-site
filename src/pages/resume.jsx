@@ -126,24 +126,36 @@ const ResumePage = ({ data }) => {
               </ResumeSection>
 
               <ResumeSection id={`capabilities`} heading={"Capabilities"}>
-                <TitleResume>Design</TitleResume>
-                <TokenList css={{ li: { backgroundColor: colors.darkGray20 } }}>
-                  {designSkills.map(capability => (
-                    <Expertise {...capability} key={capability.id} />
-                  ))}
-                </TokenList>
-                <TitleResume>Web Development</TitleResume>
-                <TokenList css={{ li: { backgroundColor: colors.darkGray20 } }}>
-                  {developmentSkills.map(capability => (
-                    <Expertise {...capability} key={capability.id} />
-                  ))}
-                </TokenList>
-                <TitleResume>Experiences With</TitleResume>
-                <TokenList css={{ li: { backgroundColor: colors.darkGray20 } }}>
-                  {toolExperiences.map(capability => (
-                    <Expertise {...capability} key={capability.id} />
-                  ))}
-                </TokenList>
+                <div css={{ margin: `3vh 0` }}>
+                  <TitleResume>Design</TitleResume>
+                  <TokenList
+                    css={{ li: { backgroundColor: colors.darkGray20 } }}
+                  >
+                    {designSkills.map(capability => (
+                      <Expertise {...capability} key={capability.id} />
+                    ))}
+                  </TokenList>
+                </div>
+                <div css={{ margin: `3vh 0` }}>
+                  <TitleResume>Web Development</TitleResume>
+                  <TokenList
+                    css={{ li: { backgroundColor: colors.darkGray20 } }}
+                  >
+                    {developmentSkills.map(capability => (
+                      <Expertise {...capability} key={capability.id} />
+                    ))}
+                  </TokenList>
+                </div>
+                <div css={{ margin: `3vh 0` }}>
+                  <TitleResume>Experiences With</TitleResume>
+                  <TokenList
+                    css={{ li: { backgroundColor: colors.darkGray20 } }}
+                  >
+                    {toolExperiences.map(capability => (
+                      <Expertise {...capability} key={capability.id} />
+                    ))}
+                  </TokenList>
+                </div>
               </ResumeSection>
 
               {/* <footer>resume footer</footer> */}
