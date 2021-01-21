@@ -15,7 +15,7 @@ import Markdown from "./markdown"
 import StickyScrollContainer from "./StickyScrollContainer"
 import { ProjectPhoto } from "./ProjectPhoto"
 
-export const CaptionModule = ({ image, imageAlt, imageFill, text }) => {
+export const CaptionModule = ({ image, imageAlt, imageFill, text, type }) => {
   const imageProps = image.childImageSharp ? image.childImageSharp.fluid : image // for fallback GIF support
 
   return (

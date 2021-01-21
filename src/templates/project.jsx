@@ -35,6 +35,14 @@ import { TokenList } from "../components/TokenList"
 import Markdown from "../components/markdown"
 import { useEffect } from "react"
 import { useState } from "react"
+import {
+  CAPTION,
+  IMAGE,
+  INTERACTIVE,
+  INTRO,
+  LINK,
+  TEXT,
+} from "../util/moduleTypes"
 
 export const filterProjectById = (thisProject, otherProjects) => {
   // filter current project from total projects list
@@ -62,7 +70,7 @@ export const filterProjectTags = (thisProject = {}, otherProjects = []) => {
 const ProjectTemplate = ({ data }) => {
   const thisProject = data.strapiProjects
   const otherProjects = data.allStrapiProjects.nodes
-  console.log(thisProject)
+
   // how to improve this algorithim to sort projects by the most tag matches
   const findRelatedProjects = filterProjectTags
   // const findRelatedProjects = filterProjectTags
@@ -253,20 +261,19 @@ const ProjectTemplate = ({ data }) => {
                 {modules.map(module => {
                   // console.log(module)
                   switch (module.type) {
-                    case "intro":
+                    case INTRO:
                       break
-                    case "text":
+                    case TEXT:
                       return <TextModule {...module} key={module.id} />
-                    case "image":
+                    case IMAGE:
                       return <ImageModule {...module} key={module.id} />
-                    case "caption":
+                    case CAPTION:
                       return <CaptionModule {...module} key={module.id} />
-                    case "interactive":
+                    case INTERACTIVE:
                       return <InteractiveModule {...module} key={module.id} />
-                    case "link":
+                    case LINK:
                       return <LinkModule {...module} key={module.id} />
-
-                    // case 'section':
+                    // case SECTION:
                     // use to split
                     //   return <div>CREATE SECTION MODULE</div> with glyph
                     default:
