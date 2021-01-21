@@ -117,7 +117,7 @@ export const Footer = props => {
       </section>
       <section>
         <p>
-          Oh, and I code too! 🦄
+          Oh, and I code too! 🛠
           <br />
           <br />I built my portfolio site with
           {` `} <br />
