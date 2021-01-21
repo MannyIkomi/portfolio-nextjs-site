@@ -40,8 +40,6 @@ import { ProjectTagHeading } from "../components/ProjectTagHeading"
 import { SectionBreak } from "../components/SectionBreak"
 
 const IndexPage = ({ data }) => {
-  // https://github.com/iamdustan/smoothscroll
-
   const cmsProjects = data.allStrapiProjects.nodes.filter(
     ({ draft, feature }) => !draft && true // !feature
   )
@@ -52,6 +50,7 @@ const IndexPage = ({ data }) => {
   const useScrollToId = elementId => {
     useEffect(() => {
       if (typeof document !== "undefined" && elementId) {
+        // https://github.com/iamdustan/smoothscroll
         smoothscroll.polyfill()
 
         const elementArea = document.getElementById(elementId).getClientRects()
@@ -59,9 +58,6 @@ const IndexPage = ({ data }) => {
           top: elementArea[0].top,
           behavior: "smooth",
         })
-        // document
-        //   .getElementById(elementId)
-        //   .scrollIntoView({ behavior: "smooth" })
       }
     })
   }
@@ -72,7 +68,7 @@ const IndexPage = ({ data }) => {
   const feature = selectedProjects.filter(
     ({ draft, feature }) => !draft && feature
   )
-  const interactiveProjects = selectedProjects.filter(project =>
+  const webProjects = selectedProjects.filter(project =>
     project.tags.some(({ design }) => design === "Interactive")
   )
   const identityProjects = selectedProjects.filter(project =>
@@ -112,12 +108,14 @@ const IndexPage = ({ data }) => {
       ...overrides,
     }
   }
+  const WEB_SECTION = "interactive"
+  const IDENTITY_SECTION = "identity"
 
   return (
     <Layout>
       <HtmlHead
-        title="Portfolio Projects"
-        description={`I create thoughtful visual language that drives delightful brand experiences.. View my online portfolio featuring identity design, branding, web design, typography, and logo design.`}
+        title="Portfolio"
+        description={`I create thoughtful visual language that drives delightful brand experiences`}
       />
       <StickyScrollContainer
         css={[
@@ -165,20 +163,9 @@ const IndexPage = ({ data }) => {
                   onDesktopMedia({
                     fontSize: "5vmin",
                   }),
-                  // onMediaWidth("1500px", {
-                  //   fontSize: "5rem",
-                  // }),
                 ]}
               >
                 I create{" "}
-                {/* <span
-                  css={[
-                    { font: "inherit" },
-                    heroTypesetAnimation({ animationDelay: "1s" }),
-                  ]}
-                >
-                  clear,
-                </span>{" "} */}
                 <span
                   css={[
                     { font: "inherit" },
@@ -201,12 +188,13 @@ const IndexPage = ({ data }) => {
               {/* <SectionBreak /> */}
               <Select
                 options={[
-                  { label: "Web & UI Design", value: "interactive" },
-                  { label: "Logo & Identity Design", value: "identity" },
-                  { label: "Print & Graphic Design", value: "graphic" },
+                  { label: "Web Design", value: WEB_SECTION },
+                  {
+                    label: "Branding & Identity Design",
+                    value: IDENTITY_SECTION,
+                  },
+                  // { label: "Print & Graphic Design", value: "graphic" },
                   { label: "Impress Me!", value: "feature" },
-                  // { label: "Typography", value: "typography" },
-                  // { label: "Art Direction", value: "art direction" },
                   // { label: "My Favorite Project", value: "favorite" },
                 ]}
                 onChange={({ value }) => {
@@ -222,7 +210,7 @@ const IndexPage = ({ data }) => {
                           ({ design, detail }) =>
                             (detail && // null check
                               detail.toUpperCase() === value.toUpperCase()) || // case insensitive string match
-                            design.toUpperCase() !== "interactive".toUpperCase()
+                            design.toUpperCase() !== WEB_SECTION.toUpperCase()
                         )
                       )
                     )
@@ -240,7 +228,7 @@ const IndexPage = ({ data }) => {
                   )
                 }}
                 isMulti={false}
-                placeholder={"What are you looking for?"}
+                placeholder={"How can I help you?"}
                 isSearchable={false}
                 theme={theme => ({
                   ...theme,
@@ -476,20 +464,20 @@ const IndexPage = ({ data }) => {
               </SectionBlock>
             </>
           )}
-          {/* INTERACTIVE DESIGN  */}
-          {interactiveProjects.length > 0 && (
+          {/* WEB DESIGN  */}
+          {webProjects.length > 0 && (
             <>
-              <SectionBreak id={"interactive"} />
+              <SectionBreak id={WEB_SECTION} />
               <SectionBlock
                 css={{
                   backgroundColor: colors.darkGray,
                 }}
               >
                 <ContentArea css={{ maxWidth: "80rem", padding: "1rem" }}>
-                  <ProjectTagHeading>Interactive Design</ProjectTagHeading>
+                  <ProjectTagHeading>Web Design</ProjectTagHeading>
 
                   <Gallery>
-                    {interactiveProjects.map(project => (
+                    {webProjects.map(project => (
                       <ProjectCover {...project} key={project.id} />
                     ))}
                   </Gallery>
@@ -500,7 +488,7 @@ const IndexPage = ({ data }) => {
           {/* IDENTITY DESIGN */}
           {identityProjects.length > 0 && (
             <>
-              <SectionBreak id={"identity"} />
+              <SectionBreak id={IDENTITY_SECTION} />
               <SectionBlock
                 css={{
                   backgroundColor: colors.darkGray,
