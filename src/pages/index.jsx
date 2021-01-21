@@ -39,6 +39,8 @@ import { MotifLeft, MotifRight } from "../components/Motif"
 import { ProjectTagHeading } from "../components/ProjectTagHeading"
 import { SectionBreak } from "../components/SectionBreak"
 
+console.clear()
+
 const IndexPage = ({ data }) => {
   const cmsProjects = data.allStrapiProjects.nodes.filter(
     ({ draft, feature }) => !draft && true // !feature
