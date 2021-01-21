@@ -186,6 +186,7 @@ const AboutPage = ({ data }) => {
               </QuoteBlock>
             </ContentArea>
           </SectionBlock>
+          {/* 
           <SectionBlock css={{ backgroundColor: colors.muteGray }}>
             <ContentArea>
               <div css={{ padding: "1rem" }}>
@@ -219,7 +220,7 @@ const AboutPage = ({ data }) => {
                 ></CreativeInspiration>
               ))}
             </ContentArea>
-          </SectionBlock>
+          </SectionBlock> */}
         </main>
       </StickyScrollContainer>
       <Footer />
