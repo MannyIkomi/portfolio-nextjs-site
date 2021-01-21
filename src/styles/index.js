@@ -10,7 +10,7 @@ export const SANS_HEADING = {
   fontFamily:
     'futura-pt-bold, futura-pt, "Helvetica Neue", Helvetica, sans-serif',
 }
-export const FUTURA_BODY_SIZE = { fontSize: "1.2rem" }
+export const FUTURA_BODY_SIZE = { fontSize: "1.3rem" }
 
 /* 
 font-family: futura-pt-bold, sans-serif;
@@ -213,10 +213,10 @@ export const GLOBAL = {
   "p, span, ul, ol, button": {
     ...SANS_TYPE,
     ...FUTURA_BODY_SIZE,
-    // color: "inherit",
+    
     lineHeight: 1.4,
     listStyle: "square",
-    fontVariantNumeric: "proportional-nums ordinal",
+    fontVariantNumeric: "proportional-nums",
   },
 
   h1: {
