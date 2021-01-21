@@ -117,11 +117,7 @@ export const Footer = props => {
       </section>
       <section>
         <p>
-          Oh, and{" "}
-          <TypesetLink to={"https://github.com/MannyIkomi/portfolio-site"}>
-            I code too!
-          </TypesetLink>
-          {` `}🦄
+          Oh, and I code too! 🦄
           <br />
           <br />I built my portfolio site with
           {` `} <br />
@@ -137,13 +133,11 @@ export const Footer = props => {
 
       <section>
         <p>
-          Member{` `}
-          <TypesetLink to={"https://www.aiga.org/"}>AIGA</TypesetLink>
-          <br />
           <TypesetLink to={"/resume"}>Résumé</TypesetLink>
+          <br />
+          <br />
+          Copyright © {new Date().getFullYear()} Manny Ikomi
         </p>
-        <br />
-        <footer>Copyright © {new Date().getFullYear()} Manny Ikomi</footer>
       </section>
     </footer>
   )
