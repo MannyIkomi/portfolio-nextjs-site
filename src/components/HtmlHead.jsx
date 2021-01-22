@@ -10,7 +10,27 @@ import PropTypes from "prop-types"
 import Helmet from "react-helmet"
 import { useStaticQuery, graphql } from "gatsby"
 
-function HtmlHead({ description, lang, meta, title }) {
+function HtmlHead({
+  openGraphType,
+  coverImageSrc,
+  coverImageAlt,
+  socialMention,
+  description,
+  author,
+  lang,
+  meta,
+  title,
+  url,
+  data,
+}) {
+  const cmsProjects = data.allStrapiProjects.nodes.filter(
+    ({ draft, feature }) => !draft && true // !feature
+  )
+  const featureProject = cmsProjects.filter(
+    project => project.feature === true
+  )[0]
+  console.log(featureProject)
+
   const { site } = useStaticQuery(
     graphql`
       query {
@@ -19,14 +39,23 @@ function HtmlHead({ description, lang, meta, title }) {
             title
             description
             author
+            socialMention
+            url
           }
         }
       }
     `
   )
 
-  const metaDescription = description || site.siteMetadata.description
   const metaTitle = title || site.siteMetadata.title
+  const metaDescription = description || site.siteMetadata.description
+  const metaUrl = url || site.siteMetadata.url
+  const metaSocialMention = socialMention || site.siteMetadata.socialMention
+  const metaAuthor = author || site.siteMetadata.author
+  const metaSocialImage =
+    coverImageSrc || featureProject.cover.childImageSharp.fluid.src
+  const metaSocialImageAlt = coverImageAlt || featureProject.cover.coverAlt
+  const metaOpenGraphType = openGraphType || site.siteMetadata.openGraphType
 
   return (
     <Helmet
@@ -35,10 +64,17 @@ function HtmlHead({ description, lang, meta, title }) {
       }}
       title={metaTitle}
       titleTemplate={`%s — ${site.siteMetadata.title}`}
+      // The following required properties are missing:
+      // og:url, og:type, og:title, og:image, og:description, fb:app_id
       meta={[
         {
           name: `description`,
           content: metaDescription,
+        },
+        // OPEN GRAPH
+        {
+          property: `og:url`,
+          content: metaUrl,
         },
         {
           property: `og:title`,
@@ -49,16 +85,31 @@ function HtmlHead({ description, lang, meta, title }) {
           content: metaDescription,
         },
         {
-          property: `og:type`,
-          content: `website`,
+          property: `og:image`,
+          content: metaSocialImage,
         },
         {
-          name: `twitter:card`,
-          content: `summary`,
+          property: `og:image:alt`,
+          content: metaSocialImageAlt,
         },
+        {
+          property: `og:type`,
+          content: metaOpenGraphType,
+        },
+        // TWITTER
+
         {
           name: `twitter:creator`,
-          content: site.siteMetadata.author,
+          content: metaSocialMention,
+        },
+
+        {
+          name: `twitter:card`,
+          content: `summary_large_image`, // https://developer.twitter.com/en/docs/twitter-for-websites/cards/overview/summary-card-with-large-image
+        },
+        {
+          name: `twitter:site`,
+          content: metaSocialMention,
         },
         {
           name: `twitter:title`,
@@ -67,6 +118,18 @@ function HtmlHead({ description, lang, meta, title }) {
         {
           name: `twitter:description`,
           content: metaDescription,
+        },
+        {
+          name: `twitter:creator`,
+          content: metaAuthor,
+        },
+        {
+          name: `twitter:image`,
+          content: metaSocialImage,
+        },
+        {
+          name: `twitter:image:alt`,
+          content: metaSocialImageAlt,
         },
       ].concat(meta)}
     >

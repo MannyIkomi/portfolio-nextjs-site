@@ -39,7 +39,7 @@ import { MotifLeft, MotifRight } from "../components/Motif"
 import { ProjectTagHeading } from "../components/ProjectTagHeading"
 import { SectionBreak } from "../components/SectionBreak"
 
-console.clear()
+// console.clear()
 
 const IndexPage = ({ data }) => {
   const cmsProjects = data.allStrapiProjects.nodes.filter(
@@ -118,6 +118,7 @@ const IndexPage = ({ data }) => {
       <HtmlHead
         title="Portfolio"
         description={`I create thoughtful visual language that drives delightful brand experiences`}
+        data={data}
       />
       <StickyScrollContainer
         css={[

@@ -1,8 +1,11 @@
 module.exports = {
   siteMetadata: {
     title: `Manny Ikomi`,
-    description: `: Design Thinker, Lifetime Learner, Digital Craftsman`,
-    author: `Manny Ikomi`,
+    description: `Design Thinker, Lifetime Learner, Digital Craftsman`,
+    author: `@MannyIkomi`,
+    socialMention: '@MannyIkomi',
+    url: 'https://mannyikomi.com',
+    openGraphType: 'website'
   },
   plugins: [
     {
