@@ -25,13 +25,8 @@ import { DesktopMenu } from "../components/DesktopMenu"
 import { QuoteBlock } from "../components/QuoteBlock"
 
 const AboutPage = ({ data }) => {
-  const {
-    bio,
-    cardsCollected,
-    heading,
+  const { bio, cardsCollected, heading, photo } = data.strapiAbout
 
-    photo,
-  } = data.strapiAbout
   const imageProps = photo.childImageSharp ? photo.childImageSharp.fluid : photo // for fallback GIF support
 
   const inspirations = data.allStrapiInspiration.nodes
@@ -40,7 +35,8 @@ const AboutPage = ({ data }) => {
     <Layout>
       <HtmlHead
         title={"About Me"}
-        description={`With over 5 years of professional experience as a Graphic Designer and related roles, I have learned the tools and techniques required to craft ideas into real design solutions.`}
+        description={`Currently I'm pursuing my BFA in Interactive Design at Lesley University, looking for opportunities in web design and UI/UX roles at creative agencies and tech companies.
+        `}
       />
       <StickyScrollContainer
         css={[
