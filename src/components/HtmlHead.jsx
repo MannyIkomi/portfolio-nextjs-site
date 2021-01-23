@@ -18,18 +18,20 @@ function HtmlHead({
   description,
   author,
   lang,
-  meta,
+
   title,
   url,
-  data,
+  path,
+  project,
 }) {
-  const cmsProjects = data.allStrapiProjects.nodes.filter(
-    ({ draft, feature }) => !draft && true // !feature
-  )
-  const featureProject = cmsProjects.filter(
-    project => project.feature === true
-  )[0]
-  console.log(featureProject)
+  // const cmsProjects =
+  //   data &&
+  //   data.allStrapiProjects.nodes.filter(
+  //     ({ draft, feature }) => !draft && true // !feature
+  //   )
+  // const featureProject = cmsProjects.filter(
+  //   project => project.feature === true
+  // )[0]
 
   const { site } = useStaticQuery(
     graphql`
@@ -46,16 +48,19 @@ function HtmlHead({
       }
     `
   )
-
+  // console.log(project)
   const metaTitle = title || site.siteMetadata.title
   const metaDescription = description || site.siteMetadata.description
   const metaUrl = url || site.siteMetadata.url
   const metaSocialMention = socialMention || site.siteMetadata.socialMention
   const metaAuthor = author || site.siteMetadata.author
+
   const metaSocialImage =
-    coverImageSrc || featureProject.cover.childImageSharp.fluid.src
-  const metaSocialImageAlt = coverImageAlt || featureProject.cover.coverAlt
-  const metaOpenGraphType = openGraphType || site.siteMetadata.openGraphType
+    coverImageSrc || (project && project.cover.childImageSharp.fluid.src) || ""
+  const metaSocialImageAlt =
+    coverImageAlt || (project && project.cover.coverAlt) || ""
+  const metaOpenGraphType =
+    openGraphType || site.siteMetadata.openGraphType || "website"
 
   return (
     <Helmet
