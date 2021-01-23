@@ -50,7 +50,7 @@ const ResumePage = ({ data }) => {
     <Layout>
       <HtmlHead
         title={"Résumé"}
-        description={`Manny Ikomi's work experience, education, volunteer work, skills and tools.`}
+        description={`Design thinker, lifetime learner, digital craftsman.`}
       />
 
       <StickyScrollContainer
