@@ -117,8 +117,8 @@ const IndexPage = ({ data }) => {
     <Layout>
       <HtmlHead
         title="Portfolio"
-        description={`I create thoughtful visual language that drives delightful brand experiences`}
-        data={data}
+        description={`I create thoughtful visual language that drives delightful brand experiences.`}
+        project={feature[0]}
       />
       <StickyScrollContainer
         css={[
@@ -510,6 +510,7 @@ const IndexPage = ({ data }) => {
             </>
           )}
           {/* GRAPHIC DESIGN */}
+          {/*           
           {graphicProjects.length > 0 && (
             <>
               <SectionBreak id={"graphic"} />
@@ -529,7 +530,7 @@ const IndexPage = ({ data }) => {
                 </ContentArea>
               </SectionBlock>
             </>
-          )}
+          )} */}
         </main>
       </StickyScrollContainer>
       <Footer />
