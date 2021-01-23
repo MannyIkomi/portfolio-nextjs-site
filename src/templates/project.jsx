@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import { jsx } from "@emotion/core"
 import React from "react"
-import { graphql } from "gatsby"
+import { graphql, useStaticQuery } from "gatsby"
 
 import {
   MENUBAR_HEIGHT,
@@ -17,6 +17,7 @@ import {
   onDesktopMedia,
   tokenize,
 } from "../styles"
+
 import Layout from "../components/layout"
 import HtmlHead from "../components/HtmlHead"
 import { StickyScrollContainer } from "../components/StickyScrollContainer"
@@ -30,7 +31,7 @@ import { LinkModule } from "../components/LinkModule"
 import { TextModule } from "../components/TextModule"
 import { ProjectCover } from "../components/ProjectCover"
 import { SectionBlock } from "../components/SectionBlock"
-import { OrangeOverprint, ColorOverprint } from "../components/FillOverlay"
+import { ColorOverprint } from "../components/FillOverlay"
 import { TokenList } from "../components/TokenList"
 import Markdown from "../components/markdown"
 import { useEffect } from "react"
@@ -67,14 +68,24 @@ export const filterProjectTags = (thisProject = {}, otherProjects = []) => {
   })
 }
 
-const ProjectTemplate = ({ data }) => {
+const ProjectTemplate = ({ data, site }) => {
   const thisProject = data.strapiProjects
   const otherProjects = data.allStrapiProjects.nodes
 
   // how to improve this algorithim to sort projects by the most tag matches
   const findRelatedProjects = filterProjectTags
   // const findRelatedProjects = filterProjectTags
-  const { title, modules, draft, subtitle, seoDescription, tags } = thisProject
+  const {
+    title,
+    modules,
+    draft,
+    subtitle,
+    seoDescription,
+    tags,
+    cover,
+    slug,
+  } = thisProject
+
   const [responsiveImgSrc, setResponsiveImgSrc] = useState(
     thisProject.cover.childImageSharp.fluid.src
   )
@@ -94,6 +105,8 @@ const ProjectTemplate = ({ data }) => {
       <HtmlHead
         title={`${thisProject.title}: ${thisProject.subtitle}`}
         description={thisProject.seoDescription}
+        project={thisProject}
+        path={`/${slug}`}
       />
       <StickyScrollContainer
         css={{
