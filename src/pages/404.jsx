@@ -6,9 +6,13 @@ import { TypesetLink } from "../components/TypesetLink"
 import { colors, flex, SANS_TYPE } from "../styles"
 import { fon } from "../styles/index"
 
-const NotFoundPage = () => (
+const NotFoundPage = ({ data }) => (
   <Layout>
-    <HtmlHead title="404: Not found" />
+    <HtmlHead
+      title="404: Not found"
+      description={`Sorry, that page doesn't exist!`}
+      // data={data}
+    />
     <section
       css={{
         textAlign: "center",
