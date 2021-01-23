@@ -66,81 +66,30 @@ function HtmlHead({
       titleTemplate={`%s — ${site.siteMetadata.title}`}
       // The following required properties are missing:
       // og:url, og:type, og:title, og:image, og:description, fb:app_id
-      meta={[
-        {
-          name: `description`,
-          content: metaDescription,
-        },
-        // OPEN GRAPH
-        {
-          property: `og:url`,
-          content: metaUrl,
-        },
-        {
-          property: `og:title`,
-          content: metaTitle,
-        },
-        {
-          property: `og:description`,
-          content: metaDescription,
-        },
-        {
-          property: `og:image`,
-          content: metaSocialImage,
-        },
-        {
-          property: `og:image:alt`,
-          content: metaSocialImageAlt,
-        },
-        {
-          property: `og:type`,
-          content: metaOpenGraphType,
-        },
-        // TWITTER
-
-        {
-          name: `twitter:creator`,
-          content: metaSocialMention,
-        },
-
-        {
-          name: `twitter:card`,
-          content: `summary_large_image`, // https://developer.twitter.com/en/docs/twitter-for-websites/cards/overview/summary-card-with-large-image
-        },
-        {
-          name: `twitter:site`,
-          content: metaSocialMention,
-        },
-        {
-          name: `twitter:title`,
-          content: metaTitle,
-        },
-        {
-          name: `twitter:description`,
-          content: metaDescription,
-        },
-        {
-          name: `twitter:creator`,
-          content: metaAuthor,
-        },
-        {
-          name: `twitter:image`,
-          content: metaSocialImage,
-        },
-        {
-          name: `twitter:image:alt`,
-          content: metaSocialImageAlt,
-        },
-      ].concat(meta)}
     >
-      <link rel="stylesheet" href="https://use.typekit.net/ygb3hbx.css"></link>
-      <title>{metaTitle}</title>
-      <meta name="description" content={metaDescription} />
       <meta charSet="utf-8" />
+      <link rel="stylesheet" href="https://use.typekit.net/ygb3hbx.css"></link>
       <meta
         name="viewport"
         content="width=device-width, initial-scale=1, shrink-to-fit=no"
       />
+
+      <meta name="description" content={metaDescription} />
+      {/* OPEN GRAPH */}
+      <meta property="og:url" content={metaUrl + path} />
+      <meta property="og:title" content={metaTitle} />
+      <meta property="og:description" content={metaDescription} />
+      <meta property="og:image" content={metaUrl + metaSocialImage} />
+      <meta property="og:type" content={metaOpenGraphType} />
+
+      {/* TWITTER */}
+      <meta name="twitter:title" content={metaTitle} />
+      <meta name="twitter:description" content={metaDescription} />
+      <meta name="twitter:creator" content={metaAuthor} />
+      <meta name="twitter:site" content={metaAuthor} />
+      <meta name="twitter:image" content={metaUrl + metaSocialImage} />
+      <meta name="twitter:image:alt" content={metaSocialImageAlt} />
+      <meta name="twitter:card" content="summary_large_image" />
     </Helmet>
   )
 }
