@@ -76,11 +76,11 @@ const IndexPage = ({ data }) => {
   const identityProjects = selectedProjects.filter(project =>
     project.tags.some(({ design }) => design === "Identity")
   )
-  const graphicProjects = selectedProjects.filter(project =>
-    project.tags.every(
-      ({ design }) => design !== "Identity" && design !== "Interactive"
-    )
-  )
+  // const graphicProjects = selectedProjects.filter(project =>
+  //   project.tags.every(
+  //     ({ design }) => design !== "Identity" && design !== "Interactive"
+  //   )
+  // )
 
   const heroTypesetAnimation = (overrides = {}) => {
     const typeset = keyframes({
