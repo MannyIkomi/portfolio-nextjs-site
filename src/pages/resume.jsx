@@ -129,7 +129,7 @@ const ResumePage = ({ data }) => {
                 <div css={{ margin: `3vh 0` }}>
                   <TitleResume>Design</TitleResume>
                   <TokenList
-                    css={{ li: { backgroundColor: colors.darkGray20 } }}
+                    css={{ li: { backgroundColor: colors.TURQUOISE } }}
                   >
                     {designSkills.map(capability => (
                       <Expertise {...capability} key={capability.id} />
@@ -139,7 +139,7 @@ const ResumePage = ({ data }) => {
                 <div css={{ margin: `3vh 0` }}>
                   <TitleResume>Web Development</TitleResume>
                   <TokenList
-                    css={{ li: { backgroundColor: colors.darkGray20 } }}
+                    css={{ li: { backgroundColor: colors.TURQUOISE } }}
                   >
                     {developmentSkills.map(capability => (
                       <Expertise {...capability} key={capability.id} />
@@ -149,7 +149,7 @@ const ResumePage = ({ data }) => {
                 <div css={{ margin: `3vh 0` }}>
                   <TitleResume>Experiences With</TitleResume>
                   <TokenList
-                    css={{ li: { backgroundColor: colors.darkGray20 } }}
+                    css={{ li: { backgroundColor: colors.TURQUOISE } }}
                   >
                     {toolExperiences.map(capability => (
                       <Expertise {...capability} key={capability.id} />

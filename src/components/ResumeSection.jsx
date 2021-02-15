@@ -19,7 +19,7 @@ export const ResumeSection = props => {
           fontWeight: "100",
           margin: "1rem 0",
           textAlign: "right",
-          color: colors.orange,
+          color: colors.NAVY_BLUE,
         }}
       >
         {heading}
