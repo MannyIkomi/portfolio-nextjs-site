@@ -38,15 +38,11 @@ export const DesktopMenu = ({ ...restProps }) => {
       }}
     >
       <LogoMaster
+        stroke={colors.TURQUOISE}
         css={{
           minWidth: TOUCH_TARGET,
-          textAlign: "center",
-          width: "50%",
+          width: "66%",
           margin: "25%",
-          svg: {
-            ...styleTransition(),
-            fill: colors.darkGray,
-          },
         }}
       />
       {[
