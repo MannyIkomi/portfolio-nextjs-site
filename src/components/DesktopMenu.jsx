@@ -9,6 +9,7 @@ import {
   flex,
   menuLink,
   styleTransition,
+  CODE_TYPE,
 } from "../styles"
 import { LogoMaster } from "./logo"
 import { TypesetLink } from "./TypesetLink"
@@ -45,30 +46,32 @@ export const DesktopMenu = ({ ...restProps }) => {
           margin: "25%",
         }}
       />
-      {[
-        ["Work", "/"],
-        ["About", "/about"],
-        ["Résumé", "/resume"],
-      ].map(([label, path]) => (
-        <TypesetLink
-          css={[
-            menuLink,
-            {
-              display: "block",
-              // alignSelf: "flex-end",
-              margin: `1rem 0`,
-              padding: `0.25rem`,
-              ...SANS_HEADING,
-              textTransform: "uppercase",
-            },
-          ]}
-          to={path}
-          key={label}
-        >
-          {label}
-        </TypesetLink>
-      ))}
-
+      <div css={{ ...flex("column"), alignItems: "flex-start" }}>
+        {[
+          ["Work=>", "/"],
+          ["About=>", "/about"],
+          ["Resume=>", "/resume"],
+          // ["Contact=>", "/Contact"],
+        ].map(([label, path]) => (
+          <TypesetLink
+            css={[
+              menuLink,
+              {
+                display: "block",
+                // alignSelf: "flex-end",
+                ...CODE_TYPE,
+                margin: `1rem 0`,
+                padding: `0.25rem`,
+                textTransform: "uppercase",
+              },
+            ]}
+            to={path}
+            key={label}
+          >
+            {label}
+          </TypesetLink>
+        ))}
+      </div>
       <div
         css={{
           ...flex("row"),
