@@ -189,27 +189,6 @@ const IndexPage = ({ data }) => {
                 brand experiences.
               </h1>
             </ContentArea>
-
-            <MotifLeft
-              css={{
-                width: "12.5%",
-                height: "auto",
-                position: "absolute",
-                left: "-1px",
-                bottom: "-1px",
-              }}
-            />
-            <MotifRight
-              css={{
-                fill: colors.muteGray,
-                width: "12.5%",
-                height: "auto",
-                position: "absolute",
-                right: 0,
-
-                top: "calc(100% - 1px)",
-              }}
-            />
           </SectionBlock>
           {feature.length > 0 && (
             <>
