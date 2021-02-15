@@ -11,6 +11,8 @@ export const onMedia = (query = "", styles = {}) => ({
   },
 })
 
+export const onHover = (styles = {}) => onMedia('hover: hover', {'&:hover':{...styles}})
+
 export const onSupport = (query = "", styles = {}) => ({
   [`@supports (${query})`]: {
     ...styles,
