@@ -14,7 +14,6 @@ import {
   styleTransition,
   TOUCH_TARGET,
 } from "../styles"
-import { MotifRight } from "./Motif"
 
 export const Footer = props => {
   const socialMedia = useSocialMedia()
@@ -51,19 +50,9 @@ export const Footer = props => {
         }),
       }}
     >
-      <MotifRight
-        css={{
-          position: "absolute",
-          bottom: "calc(100% - 1px)",
-          right: "0",
-
-          transform: "rotateX(180deg)",
-          width: "12.5%",
-
-          fill: colors.darkGray,
-        }}
-      />
       <LogoMaster
+        fill={colors.LIGHT_GRAY}
+        stroke={colors.YELLOW}
         css={{
           minWidth: TOUCH_TARGET,
           maxWidth: "20rem",
