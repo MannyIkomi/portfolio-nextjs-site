@@ -9,6 +9,7 @@ import {
   linkText,
   styleTransition,
   onMedia,
+  onHover,
 } from "../styles"
 
 export const TypesetLink = props => {
@@ -20,7 +21,7 @@ export const TypesetLink = props => {
     linkText,
     { position: "relative" },
     styleTransition(),
-    onMedia("hover: hover", {
+    onHover({
       ...typesetHover(),
     }),
   ]
