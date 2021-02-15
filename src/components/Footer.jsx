@@ -28,16 +28,16 @@ export const Footer = props => {
         alignItems: "center",
         justifyContent: "space-around",
 
-        color: colors.muteGray,
-        backgroundColor: colors.darkGray,
-        fontFamily: typography.sans,
+        color: colors.LIGHT_GRAY,
+        backgroundColor: colors.NAVY_BLUE,
+        fontFamily: typography.SANS_TYPE,
         textAlign: "center",
 
         section: {
           margin: "2rem 0",
         },
         p: {
-          fontFamily: typography.sans,
+          fontFamily: typography.SANS_TYPE,
         },
 
         ...onTabletMedia({
@@ -69,11 +69,6 @@ export const Footer = props => {
           maxWidth: "20rem",
 
           width: "33%",
-
-          svg: {
-            ...styleTransition(),
-            fill: colors.muteGray,
-          },
 
           margin: "2rem 0",
           "@media screen and (min-width: 500px)": {
@@ -107,7 +102,7 @@ export const Footer = props => {
               key={social.platform}
               {...social}
               css={{
-                svg: { fill: "white" },
+                svg: { fill: colors.YELLOW },
                 margin: "1rem",
                 maxWidth: TOUCH_TARGET,
               }}
@@ -133,7 +128,7 @@ export const Footer = props => {
 
       <section>
         <p>
-          <TypesetLink to={"/resume"}>Résumé</TypesetLink>
+          <TypesetLink to={"/resume"}>Resume</TypesetLink>
           <br />
           <br />
           Copyright © {new Date().getFullYear()} Manny Ikomi
