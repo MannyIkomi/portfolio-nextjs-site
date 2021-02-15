@@ -1,36 +1,8 @@
 import { colors } from "./colors"
 import { onTabletMedia, onDesktopMedia } from "./mixin"
 
-export const SERIF_TYPE = { fontFamily: "baskerville-urw, Georgia, serif" }
-export const SANS_TYPE = {
-  fontFamily: 'futura-pt, "Helvetica Neue", Helvetica, sans-serif',
-}
-export const SERIF_HEADING = { fontFamily: "baskerville-urw, serif" }
-export const SANS_HEADING = {
-  fontFamily:
-    'futura-pt-bold, futura-pt, "Helvetica Neue", Helvetica, sans-serif',
-}
-export const FUTURA_BODY_SIZE = { fontSize: "1.3rem" }
+import { SANS_TYPE,  SERIF_TYPE, typography, fontSizeTransition, CODE_TYPE} from './typography'
 
-/* 
-font-family: futura-pt-bold, sans-serif;
-font-weight: 700;
-font-style: normal;
-*/
-
-/* 
-Baskerville Display PT Regular
-
-font-family: baskerville-display-pt, serif;
-font-weight: 400;
-font-style: normal;
-
-Baskerville Display PT Italic
-
-font-family: baskerville-display-pt, serif;
-font-weight: 400;
-font-style: italic;
-*/
 
 export const MENUBAR_HEIGHT = "2.5rem"
 export const DESKTOP_VIEWPORT = `1200px`
@@ -71,15 +43,8 @@ export const moduleContainer = (override = {}) => ({
   ...override,
 })
 
-export const fontSizeTransition = {
-  transitionProperty: "font-size",
-  transitionTimingFunction: "ease-in-out",
-  transitionDuration: "300ms",
-  transitionDelay: "300ms",
-}
 
 export const maxLineMeasure = {
-  maxWidth: "40rem", // ch support fallback
   maxWidth: "72ch",
 }
 
@@ -93,20 +58,6 @@ export const aspectRatioLetter = {
   paddingBottom: "calc(100% * (17 / 22) - 1px )",
 }
 
-export const linkText = {
-  ...SANS_TYPE,
-  ...FUTURA_BODY_SIZE,
-  display: "inline-block",
-  textDecoration: "underline",
-  // padding: "0.25rem 0",
-  textDecorationColor: colors.orange,
-  // text underline new CSS features
-  // https://www.youtube.com/watch?v=sZS-7RX_c7g
-
-  // "&:hover": {
-  //   color: colors.orange,
-  // },
-}
 
 export const h1Text = override => ({
   fontSize: "2rem",
@@ -119,46 +70,11 @@ export const h1Text = override => ({
   }),
 })
 
-export const typeset = (override = {}) => ({
-  transformOrigin: "center center",
-  transform: "rotateX(180deg) translateY(-12%)", //translate adjusts optical baseline to the x-height  when flipped
-  ...override,
-})
 
 export const linkActive = (override = {}) => ({
   color: colors.mediumGray,
   ...override,
 })
-
-export const typesetHover = (override = {}) => ({
-  transformOrigin: "center center",
-  ":hover": {
-    color: colors.orange,
-    ...typeset(),
-    ...override,
-  },
-})
-
-export const resumeContentHeading = {
-  ...SANS_HEADING,
-  textTransform: "initial",
-  lineHeight: 1.2,
-  // fontWeight: "bold",
-}
-
-export const typography = {
-  serifType: SERIF_TYPE,
-  sansType: SANS_TYPE,
-  sansHeading: SANS_HEADING,
-  serifHeading: SERIF_HEADING,
-  typesetInteraction: typesetHover,
-  fontSizeTransition,
-  linkText,
-  resumeContentHeading,
-  // linkStyles,
-  // typesetAnimation,
-  // maxReadingWidth,
-}
 
 export const GLOBAL = {
   "*": {
@@ -206,7 +122,8 @@ export const GLOBAL = {
   "h1, h2, h3, h4, h5": {
     lineHeight: 1.2,
     ...fontSizeTransition,
-    ...SERIF_HEADING,
+    
+    ...CODE_TYPE,
     textTransform: "lowercase",
     fontWeight: "normal",
   },
@@ -267,5 +184,6 @@ export const GLOBAL = {
 export * from "./colors"
 export * from "./mixin"
 export * from "./reset"
+export * from './typography'
 // export * from './moduleContainer'
 // export * from './GlobalStyles'
