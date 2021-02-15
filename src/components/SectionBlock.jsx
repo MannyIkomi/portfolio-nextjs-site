@@ -11,7 +11,6 @@ export const SectionBlock = props => {
         alignItems: "center",
         justifyContent: "center",
         width: "100%",
-        backgroundColor: colors.muteGray,
       }}
       {...rest}
     >
