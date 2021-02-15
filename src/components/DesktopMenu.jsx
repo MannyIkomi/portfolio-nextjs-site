@@ -34,7 +34,7 @@ export const DesktopMenu = ({ ...restProps }) => {
         left: 0,
 
         boxShadow: "0.25rem 0.25rem 1rem 0px rgba(0,0,0,0.5)",
-        backgroundColor: colors.muteGray,
+        backgroundColor: colors.LIGHT_GRAY_FOREGROUND,
       }}
     >
       <LogoMaster
@@ -87,9 +87,9 @@ export const DesktopMenu = ({ ...restProps }) => {
             key={social.platform}
             {...social}
             css={{
-              svg: { fill: colors.darkGray },
-              minWidth: "initial",
-              width: "25%",
+              fill: colors.NAVY_BLUE,
+              // minWidth: "initial",
+              // width: "25%",
             }}
           />
         ))}
