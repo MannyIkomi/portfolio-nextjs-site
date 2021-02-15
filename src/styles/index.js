@@ -17,7 +17,7 @@ export const desktopMediaQuery = `@media screen and (min-width: ${DESKTOP_VIEWPO
 export const tokenize = override => ({
   display: "inline-block",
   padding: "0.1rem 0.33rem",
-  backgroundColor: colors.darkGray80,
+  backgroundColor: colors.TURQUOISE,
   ...override,
 })
 
@@ -61,7 +61,7 @@ export const aspectRatioLetter = {
 
 export const h1Text = override => ({
   fontSize: "2rem",
-  color: colors.orange,
+  color: colors.TURQUOISE,
   ...onTabletMedia({
     fontSize: "2.5rem",
   }),
@@ -72,7 +72,7 @@ export const h1Text = override => ({
 
 
 export const linkActive = (override = {}) => ({
-  color: colors.mediumGray,
+  color: colors.TURQUOISE,
   ...override,
 })
 
@@ -103,7 +103,7 @@ export const GLOBAL = {
     // textDecorationStyle: "solid",
 
     "&:hover": {
-      color: colors.orange,
+      color: colors.YELLOW,
     },
   },
   button: {
@@ -138,7 +138,7 @@ export const GLOBAL = {
 
   h1: {
     fontSize: "2rem",
-    color: colors.orange,
+    color: colors.TURQUOISE,
   },
   h2: {
     fontSize: "1.5rem",
