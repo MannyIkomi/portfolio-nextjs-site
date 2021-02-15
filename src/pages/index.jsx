@@ -91,7 +91,7 @@ const IndexPage = ({ data }) => {
         // transform: "rotateX(0)",
 
         transform: "rotateX(0) translateY(0)",
-        color: colors.orange,
+        color: colors.YELLOW,
       },
     })
 
@@ -142,22 +142,22 @@ const IndexPage = ({ data }) => {
           }}
         >
           <SectionBlock
-            css={{ minHeight: "25vh", padding: "1rem", position: "relative" }}
+            css={{
+              minHeight: "25vh",
+              padding: "1rem",
+              position: "relative",
+              backgroundColor: colors.NAVY_BLUE,
+            }}
           >
             <ContentArea
               css={{
-                // fontSize: "3rem",
-
                 ...flex("column"),
                 justifyContent: "space-around",
-
                 ...onTabletMedia({ maxWidth: "75%" }),
               }}
             >
               <h1
                 css={[
-                  // { fontSize: "3vmin" },
-
                   onTabletMedia({
                     fontSize: "5vmin",
                     margin: `${TOUCH_TARGET} 0`,
