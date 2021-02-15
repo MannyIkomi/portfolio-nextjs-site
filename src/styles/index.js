@@ -129,9 +129,9 @@ export const GLOBAL = {
   },
   "p, span, ul, ol, button": {
     ...SANS_TYPE,
-    ...FUTURA_BODY_SIZE,
+    fontWeight: 300,
     
-    lineHeight: 1.4,
+    lineHeight: 1.5,
     listStyle: "square",
     fontVariantNumeric: "proportional-nums",
   },
