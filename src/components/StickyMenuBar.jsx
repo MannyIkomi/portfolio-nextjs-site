@@ -12,6 +12,7 @@ import {
   TOUCH_TARGET,
   SANS_HEADING,
   onMedia,
+  CODE_TYPE,
 } from "../styles"
 import { LogoType } from "./Logo"
 import useToggleSwitch from "../hooks/useToggleSwitch"
@@ -50,7 +51,7 @@ export const StickyMenuBar = ({ children, ...props }) => {
   ]
 
   const menuLink = {
-    ...SANS_HEADING,
+    ...CODE_TYPE,
     color: colors.darkGray,
     padding: "0.5rem",
     marginBottom: TOUCH_TARGET,
@@ -75,7 +76,7 @@ export const StickyMenuBar = ({ children, ...props }) => {
           ...flex("row"),
           justifyContent: "space-between",
 
-          backgroundColor: colors.muteGray,
+          backgroundColor: colors.LIGHT_GRAY_FOREGROUND,
           boxShadow: "0 0.25rem 1rem 0px rgba(0,0,0,0.5)",
           // boxShadow: "-0.25rem 0.25rem 1rem 0px hsla(0, 0%, 0%, 0.5)",
         },
