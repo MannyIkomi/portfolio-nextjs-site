@@ -3,42 +3,44 @@ import { css, jsx } from "@emotion/core"
 import React from "react"
 import {
   flex,
-  maxLineMeasure,
+  maxReadingWidth,
   typography,
   SANS_TYPE,
   SERIF_TYPE,
   FUTURA_BODY_SIZE,
+  onSupport,
+  TOUCH_TARGET,
+  supportsGrid,
 } from "../styles"
 export const QuoteBlock = props => {
   const { cite, quote, children, ...rest } = props
   return (
     <blockquote
-      css={{
-        ...flex("column"),
-        alignItems: "center",
-        ...maxLineMeasure,
-        padding: "2rem",
-        // quote body
-        ...SANS_TYPE,
-        hangingPunctuation: "first last",
-        // ...futuraBodySize,
-        fontSize: "2rem",
-        fontStyle: "normal",
-        fontWeight: "normal",
+      css={[
+        {
+          ...flex("column"),
+          alignItems: "center",
 
-        lineHeight: 1.5,
-        cite: {
-          ...FUTURA_BODY_SIZE,
-          ...SERIF_TYPE,
-          fontStyle: "italic",
-          fontWeight: "normal",
+          // quote body
+          ...SANS_TYPE,
+          hangingPunctuation: "first", //only supported in safari
+          fontSize: "2rem",
+          fontStyle: "normal",
+          fontWeight: 200,
 
-          alignSelf: "flex-end",
+          lineHeight: 1.5,
+          cite: {
+            ...SANS_TYPE,
+            fontStyle: "italic",
+            fontWeight: 200,
+
+            alignSelf: "flex-end",
+          },
         },
-      }}
+      ]}
       {...rest}
     >
-      “{children || quote}”<cite>— {cite} </cite>
+      “{children || quote}” {cite && <cite>— {cite} </cite>}
     </blockquote>
   )
 }
