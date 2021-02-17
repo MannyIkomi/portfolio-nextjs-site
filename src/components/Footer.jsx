@@ -13,7 +13,10 @@ import {
   supportsGrid,
   styleTransition,
   TOUCH_TARGET,
+  CODE_TYPE,
 } from "../styles"
+import { MENU_LINKS } from "../util/navigationLinks"
+import { ContentArea } from "./ContentArea"
 
 export const Footer = props => {
   const socialMedia = useSocialMedia()
@@ -22,15 +25,16 @@ export const Footer = props => {
       css={{
         position: "relative",
         minHeight: "100vh",
+        padding: "1rem",
 
         ...flex(),
-        alignItems: "center",
+        alignItems: "flex-start",
         justifyContent: "space-around",
 
         color: colors.LIGHT_GRAY,
         backgroundColor: colors.NAVY_BLUE,
         fontFamily: typography.SANS_TYPE,
-        textAlign: "center",
+        textAlign: "left",
 
         section: {
           margin: "2rem 0",
@@ -39,14 +43,15 @@ export const Footer = props => {
           fontFamily: typography.SANS_TYPE,
         },
 
+        ...supportsGrid({
+          gridTemplateColumns: "repeat(12, 1fr)",
+          gridGap: "1rem",
+          alignItems: "center",
+        }),
+
         ...onTabletMedia({
-          ...supportsGrid({
-            gridTemplateAreas: `'logo social' 'code quote'`,
-            gridTemplateColumns: "1fr 1fr",
-            gridGap: "2rem",
-            padding: "4rem",
-            justifyContent: "stretch",
-          }),
+          minHeight: "50vh",
+          alignItems: "end",
         }),
       }}
     >
@@ -55,74 +60,102 @@ export const Footer = props => {
         stroke={colors.YELLOW}
         css={{
           minWidth: TOUCH_TARGET,
-          maxWidth: "20rem",
+          width: "50%",
+          maxWidth: "10rem",
+          margin: "1rem 0",
 
-          width: "33%",
+          gridColumn: "2 / -1",
 
-          margin: "2rem 0",
-          "@media screen and (min-width: 500px)": {
-            maxWidth: "10rem",
-
-            ...onTabletMedia({
-              ...supportsGrid({
-                gridArea: "logo",
-                width: "8rem",
-                margin: "auto",
-              }),
-            }),
-          },
+          ...onTabletMedia({
+            width: "100%",
+            gridColumn: "2 / 4",
+            margin: 0,
+            // maxWidth: "initial",
+          }),
         }}
       />
-      <section css={{ ...flex("column"), alignItems: "center" }}>
-        <TypesetLink to={`mailto:design@mannyikomi.com`}>
-          design@
-          <wbr />
-          mannyikomi.com
-        </TypesetLink>
-        <div
-          css={{
+
+      <div
+        css={[
+          {
             ...flex("row"),
             alignItems: "center",
-            justifyContent: "space-around",
+            justifyContent: "flex-start",
+
+            gridColumn: "2 / 6",
+          },
+          onTabletMedia({
+            gridRow: 1,
+            gridColumn: "-1 / 10 ",
+          }),
+        ]}
+      >
+        {socialMedia.map(social => (
+          <SocialIcon
+            key={social.platform}
+            {...social}
+            css={{
+              svg: { fill: colors.YELLOW },
+              marginRight: "1rem",
+              maxWidth: "2rem",
+            }}
+          />
+        ))}
+      </div>
+      <ul
+        css={[
+          flex("column"),
+          { alignItems: "flex-start", gridColumn: "2 / 6" },
+
+          onTabletMedia({
+            gridRow: 1,
+            gridColumn: "5 / 9",
+            ...flex("row"),
+            justifyContent: "space-between",
+          }),
+        ]}
+      >
+        {MENU_LINKS.map(([label, to]) => (
+          <TypesetLink
+            href={to}
+            css={[
+              {
+                padding: "1rem 0",
+                textTransform: "uppercase",
+                fontWeight: 600,
+              },
+              onTabletMedia({
+                padding: 0,
+                marginRight: "1rem",
+              }),
+            ]}
+          >
+            {label}
+          </TypesetLink>
+        ))}
+      </ul>
+
+      <ContentArea
+        css={{
+          alignSelf: "flex-end",
+
+          gridColumn: "-1 / 7",
+        }}
+      >
+        <p
+          css={{
+            ...CODE_TYPE,
+            textAlign: "right",
+            fontSize: "0.75rem",
+            textTransform: "uppercase",
+
+            opacity: 0.5,
           }}
         >
-          {socialMedia.map(social => (
-            <SocialIcon
-              key={social.platform}
-              {...social}
-              css={{
-                svg: { fill: colors.YELLOW },
-                margin: "1rem",
-                maxWidth: TOUCH_TARGET,
-              }}
-            />
-          ))}
-        </div>
-      </section>
-      <section>
-        <p>
-          Oh, and I code too! 🛠
-          <br />
-          <br />I built my portfolio site with
-          {` `} <br />
-          <TypesetLink to={"https://reactjs.org/"}>React</TypesetLink>,{` `}
-          <TypesetLink to={"https://strapi.io/"}>Strapi</TypesetLink>
-          {` `}and{` `}
-          <TypesetLink to={"https://www.gatsbyjs.org/"}>Gatsby</TypesetLink>
-          <br />
-          Deployed with{` `}
-          <TypesetLink to={"https://www.netlify.com/"}>Netlify</TypesetLink>
+          Copyright © {new Date().getFullYear()}
+          <br /> Manny Ikomi
         </p>
-      </section>
-
-      <section>
-        <p>
-          <TypesetLink to={"/resume"}>Resume</TypesetLink>
-          <br />
-          <br />
-          Copyright © {new Date().getFullYear()} Manny Ikomi
-        </p>
-      </section>
+      </ContentArea>
     </footer>
   )
 }
