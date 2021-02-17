@@ -104,7 +104,7 @@ const AboutPage = ({ data }) => {
                 css={{
                   whiteSpace: "pre-wrap", // preserves intentional linebreaks
                   padding: "1rem",
-                  color: colors.orange,
+                  color: colors.TURQUOISE,
 
                   ...onTabletMedia({
                     fontSize: "5vmin !important",
@@ -137,7 +137,7 @@ const AboutPage = ({ data }) => {
           </SectionBlock>
           <SectionBlock
             css={{
-              backgroundColor: colors.muteGray,
+              backgroundColor: colors.LIGHT_GRAY_FOREGROUND,
               minHeight: "100vh",
               ...onTabletMedia({
                 minHeight: "66vh",
