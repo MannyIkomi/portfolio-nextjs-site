@@ -19,12 +19,8 @@ export const onSupport = (query = "", styles = {}) => ({
   },
 })
 
-export const supportsGrid = ({ display = "grid", ...hasSupport }) => ({
-  "@supports (display: grid)": {
-    display,
-    ...hasSupport,
-  },
-})
+export const supportsGrid = (hasSupport = {}) => (onSupport(`display: grid`, {display: 'grid', ...hasSupport}))
+
 
 export const onTabletMedia = (tabletStyles = {}) => ({
   [tabletMediaQuery]: {
