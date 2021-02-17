@@ -333,30 +333,103 @@ const IndexPage = ({ data }) => {
               </SectionBlock>
             </>
           )}
-          {/* GRAPHIC DESIGN */}
-          {/*           
-          {graphicProjects.length > 0 && (
-            <>
-              <SectionBreak id={"graphic"} />
-              <SectionBlock
+          <SectionBlock css={{ minHeight: "100vh" }}>
+            {/* CONTACT SECTION */}
+            <ContentArea
+              css={{
+                ...flex("column"),
+                justifyContent: "space-around",
+                textAlign: "center",
+              }}
+            >
+              <h2>Get In Touch</h2>
+              <ul
                 css={{
-                  backgroundColor: colors.darkGray,
+                  listStyle: "none",
+                  ...flex("column"),
+                  alignItems: "center",
                 }}
               >
-                <ContentArea css={{ maxWidth: "80rem", padding: "1rem" }}>
-                  <ProjectTagHeading>graphic design</ProjectTagHeading>
+                {socials
+                  .filter(
+                    ({ platform }) =>
+                      platform === "Twitter" || platform === "LinkedIn"
+                  )
+                  .map(({ platform, href }) => (
+                    <li key={platform}>
+                      <TypesetLink
+                        css={{
+                          padding: "0.75rem",
+                          border: `0.25rem solid ${colors.TURQUOISE}`,
+                          whiteSpace: "nowrap",
 
-                  <Gallery>
-                    {graphicProjects.map(project => (
-                      <ProjectCover {...project} key={project.id} />
-                    ))}
-                  </Gallery>
-                </ContentArea>
-              </SectionBlock>
-            </>
-          )} */}
+                          fontWeight: 500,
+                          lineHeight: 1,
+                          textTransform: "uppercase",
+                          textDecoration: "none",
+                          color: colors.TURQUOISE,
+
+                          ...onHover({
+                            backgroundColor: colors.TURQUOISE,
+                            color: colors.LIGHT_GRAY_FOREGROUND,
+                          }),
+                        }}
+                        to={href}
+                      >
+                        {platform === "Twitter" && "DM on "}
+                        {platform === "LinkedIn" && "Connect on "}
+                        {platform} ->
+                      </TypesetLink>
+                    </li>
+                  ))}
+              </ul>
+              <button
+                onClick={e => console.log(e)}
+                css={{
+                  ...styleTransition(),
+                  ...hoverTypesetTransform({ color: colors.NAVY_BLUE }),
+                  padding: "1.5rem",
+                  backgroundColor: colors.YELLOW,
+
+                  ...CODE_TYPE,
+                  color: colors.NAVY_BLUE,
+                  lineHeight: 1,
+                  fontWeight: 800,
+                  fontSize: "1.25rem",
+                  textTransform: "uppercase",
+                }}
+              >
+                Email Me =>
+              </button>
+            </ContentArea>
+          </SectionBlock>
+
+          <SectionBlock
+            css={[
+              {
+                backgroundColor: colors.TURQUOISE,
+                minHeight: "100vh",
+                color: colors.LIGHT_GRAY,
+              },
+              onTabletMedia({
+                minHeight: "50vh",
+                ...supportsGrid({
+                  gridGap: "1rem",
+                  gridTemplateColumns: "repeat(12, 1fr)",
+                }),
+              }),
+            ]}
+          >
+            <QuoteBlock
+              cite={"Massimo Vignelli"}
+              css={{ textAlign: "left", gridColumn: "2 / 12" }}
+            >
+              Styles come and go. Good design is a language, not a style.
+            </QuoteBlock>
+          </SectionBlock>
         </main>
       </StickyScrollContainer>
+
       <Footer />
     </Layout>
   )
