@@ -7,7 +7,7 @@ import {
   styleTransition,
   SANS_HEADING,
   onMedia,
-  typesetHover,
+  typesetTransform,
 } from "../styles"
 
 export const Button = props => {
@@ -18,7 +18,7 @@ export const Button = props => {
         ...styleTransition(),
         ...onMedia(
           "hover: hover",
-          typesetHover({
+          typesetTransform({
             backgroundColor: colors.orange20,
           })
         ),

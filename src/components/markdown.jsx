@@ -6,12 +6,10 @@ import { css, jsx } from "@emotion/core"
 import {
   typography,
   ulStyles,
-  typesetHover,
+  typesetTransform,
   linkText,
   styleTransition,
-  SERIF_HEADING,
   SANS_TYPE,
-  SANS_HEADING,
 } from "../styles"
 
 const showdown = require("showdown")
@@ -34,7 +32,7 @@ export const Markdown = ({ children, preprocessor, ...props }) => {
     <div
       css={{
         "h1,h2,h3,h4": {
-          ...SANS_HEADING,
+          ...SANS_TYPE,
           textTransform: "initial",
         },
         "p, ul, ol": {

@@ -7,14 +7,11 @@ export const SANS_TYPE = {
 }
 
 export const SERIF_HEADING = { fontFamily: "baskerville-urw, serif" }
-export const SANS_HEADING = {
-  ...SANS_TYPE
-}
-export const FUTURA_BODY_SIZE = { fontSize: "1.3rem" }
+
 
 export const CODE_TYPE = {
   fontFamily: 'Fira Code, monospace',
-  fontFeatureSettings: `calt`, /* Enable ligatures for IE 10+, Edge */
+  fontFeatureSettings: `calt 1`, /* Enable ligatures for IE 10+, Edge */
   textRendering: 'optimizeLegibility', /* Force ligatures for Webkit, Blink, Gecko */
   fontVariantLigatures: 'contextual',
 }
@@ -28,49 +25,52 @@ export const fontSizeTransition = {
 
 export const linkText = {
   ...CODE_TYPE,
-  fontSize: 'inherit',
   display: "inline-block",
+  color: 'inherit',
+  fontSize: 'inherit',
+
   textDecoration: "underline",
-  // padding: "0.25rem 0",
   textDecorationColor: colors.YELLOW,
   // text underline new CSS features
   // https://www.youtube.com/watch?v=sZS-7RX_c7g
 
-  // "&:hover": {
-  //   color: colors.YELLOW,
-  // },
 }
 
 export const typeset = (override = {}) => ({
   transformOrigin: "center center",
-  transform: "rotateX(180deg) perspective(2rem)", 
-
+  transform: "perspective(10vw) rotateX(180deg)", 
   ...override,
 })
 
-export const typesetHover = (override = {}) => ({
+export const typesetTransform = (override = {}) => ({
   transformOrigin: "center center",
-  ...onHover({
     color: colors.TURQUOISE,
     ...typeset(),
     ...override,
+})
+
+export const hoverTypesetTransform = (override ={}) => ({
+  ...onHover({
+
+    ...typesetTransform(),
+    ...override
   })
-  
 })
 
 export const resumeContentHeading = {
-  ...SANS_HEADING,
+  ...SANS_TYPE,
   textTransform: "initial",
   lineHeight: 1.2,
-  
 }
 
 export const typography = {
-   SERIF_TYPE,
+  CODE_TYPE,
+   
    SANS_TYPE,
-   SANS_HEADING,
-   SERIF_HEADING,
-   typesetHover,
+   
+   
+   typesetTransform,
+   hoverTypesetTransform,
   fontSizeTransition,
   linkText,
   resumeContentHeading,

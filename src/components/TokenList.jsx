@@ -1,6 +1,6 @@
 import React from "react"
 import { css } from "@emotion/core"
-import { colors, tokenize } from "../styles"
+import { CODE_TYPE, colors, tokenize } from "../styles"
 
 export const TokenList = ({ children, ...restProps }) => {
   return (
@@ -15,12 +15,15 @@ export const TokenList = ({ children, ...restProps }) => {
           <li
             css={{
               ...tokenize(),
-              fontSize: "1rem",
+              ...CODE_TYPE,
+              textTransform: "uppercase",
+              fontSize: "0.75rem",
+              fontWeight: 500,
 
               margin: "0.33rem 0",
               marginRight: "0.66rem",
 
-              backgroundColor: colors.darkGray80,
+              // backgroundColor: colors.TURQUOISE,
             }}
           >
             {child}

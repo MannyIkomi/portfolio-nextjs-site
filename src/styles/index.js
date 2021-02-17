@@ -17,6 +17,7 @@ export const desktopMediaQuery = `@media screen and (min-width: ${DESKTOP_VIEWPO
 export const tokenize = override => ({
   display: "inline-block",
   padding: "0.1rem 0.33rem",
+  color: colors.LIGHT_GRAY,
   backgroundColor: colors.TURQUOISE,
   ...override,
 })
@@ -44,7 +45,7 @@ export const moduleContainer = (override = {}) => ({
 })
 
 
-export const maxLineMeasure = {
+export const maxReadingWidth = {
   maxWidth: "72ch",
 }
 

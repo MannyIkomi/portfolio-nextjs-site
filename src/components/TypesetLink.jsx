@@ -4,29 +4,28 @@ import { Link as GatsbyLink } from "gatsby"
 import { css, jsx } from "@emotion/core"
 
 import {
-  typesetHover,
+  typesetTransform,
   linkActive,
   linkText,
   styleTransition,
   onMedia,
   onHover,
+  hoverTypesetTransform,
 } from "../styles"
 
 export const TypesetLink = props => {
   const { to, title, children, ...rest } = props
 
-  const internal = /^\/(?!\/)/.test(to) // https://www.gatsbyjs.org/docs/gatsby-link/#reminder-use-link-only-for-internal-links
+  const internalPath = /^\/(?!\/)/.test(to) // https://www.gatsbyjs.org/docs/gatsby-link/#reminder-use-link-only-for-internal-links
 
   const linkStyles = [
     linkText,
     { position: "relative" },
     styleTransition(),
-    onHover({
-      ...typesetHover(),
-    }),
+    hoverTypesetTransform(),
   ]
 
-  return internal ? (
+  return internalPath ? (
     <GatsbyLink
       to={to}
       title={title}
