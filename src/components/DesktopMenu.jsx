@@ -9,12 +9,15 @@ import {
   flex,
   menuLink,
   styleTransition,
+  onHover,
   CODE_TYPE,
+  typeset,
 } from "../styles"
 import { LogoMaster } from "./logo"
 import { TypesetLink } from "./TypesetLink"
 import { SocialIcon } from "./SocialIcon"
 import { useSocialMedia } from "../hooks/useSocialMedia"
+import { MENU_LINKS } from "../util/navigationLinks"
 
 export const DesktopMenu = ({ ...restProps }) => {
   const socialMedia = useSocialMedia()
@@ -44,34 +47,36 @@ export const DesktopMenu = ({ ...restProps }) => {
           minWidth: TOUCH_TARGET,
           width: "66%",
           margin: "25%",
+
+          ...onHover({
+            ...typeset,
+          }),
         }}
       />
-      <div css={{ ...flex("column"), alignItems: "flex-start" }}>
-        {[
-          ["Work=>", "/"],
-          ["About=>", "/about"],
-          ["Resume=>", "/resume"],
-          // ["Contact=>", "/Contact"],
-        ].map(([label, path]) => (
-          <TypesetLink
-            css={[
-              menuLink,
-              {
-                display: "block",
-                // alignSelf: "flex-end",
-                ...CODE_TYPE,
-                margin: `1rem 0`,
-                padding: `0.25rem`,
-                textTransform: "uppercase",
-              },
-            ]}
-            to={path}
-            key={label}
-          >
-            {label}
-          </TypesetLink>
+      <ul css={{ ...flex("column"), alignItems: "flex-start" }}>
+        {MENU_LINKS.map(([label, path]) => (
+          <li>
+            <TypesetLink
+              css={[
+                menuLink,
+                {
+                  display: "block",
+                  margin: `1rem 0`,
+                  padding: `0.25rem`,
+
+                  ...CODE_TYPE,
+                  fontWeight: 800,
+                  textTransform: "uppercase",
+                },
+              ]}
+              to={path}
+              key={label}
+            >
+              {label}
+            </TypesetLink>
+          </li>
         ))}
-      </div>
+      </ul>
       <div
         css={{
           ...flex("row"),

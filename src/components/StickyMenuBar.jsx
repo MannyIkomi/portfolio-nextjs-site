@@ -8,16 +8,18 @@ import {
   typography,
   onTabletMedia,
   styleTransition,
-  typesetHover,
+  typesetTransform,
   TOUCH_TARGET,
   SANS_HEADING,
   onMedia,
   CODE_TYPE,
+  hoverTypesetTransform,
 } from "../styles"
 import { LogoType } from "./Logo"
 import useToggleSwitch from "../hooks/useToggleSwitch"
 import { MenuButton } from "./MenuButton"
 import { TypesetLink } from "./TypesetLink"
+import { MENU_LINKS } from "../util/navigationLinks"
 
 export const StickyMenuBar = ({ children, ...props }) => {
   const [isToggled, handleToggle] = useToggleSwitch(false)
@@ -51,13 +53,14 @@ export const StickyMenuBar = ({ children, ...props }) => {
   ]
 
   const menuLink = {
-    ...CODE_TYPE,
-    color: colors.darkGray,
-    padding: "0.5rem",
+    padding: "0.5rem 1rem",
     marginBottom: TOUCH_TARGET,
-    backgroundColor: colors.muteGray,
-    boxShadow: "0 0.25rem 1rem 0px rgba(0,0,0,0.5)",
+
+    ...CODE_TYPE,
+    color: colors.NAVY_BLUE,
+    backgroundColor: colors.LIGHT_GRAY_FOREGROUND,
     textTransform: "uppercase",
+    // boxShadow: "0 0.25rem 1rem 0px rgba(0,0,0,0.5)",
   }
 
   return (
@@ -65,70 +68,52 @@ export const StickyMenuBar = ({ children, ...props }) => {
       id={"mobile"}
       css={[
         {
-          position: "sticky",
+          position: "fixed",
           zIndex: 99,
           top: 0,
-          left: 0,
+          right: 0,
 
-          padding: "0.5rem",
-          maxHeight: MENUBAR_HEIGHT,
+          // padding: "0.5rem",
+          // maxHeight: MENUBAR_HEIGHT,
 
           ...flex("row"),
-          justifyContent: "space-between",
-
-          backgroundColor: colors.LIGHT_GRAY_FOREGROUND,
-          boxShadow: "0 0.25rem 1rem 0px rgba(0,0,0,0.5)",
-          // boxShadow: "-0.25rem 0.25rem 1rem 0px hsla(0, 0%, 0%, 0.5)",
+          justifyContent: "flex-end",
         },
       ]}
     >
-      <LogoType
-        css={{
-          ...styleTransition(),
-          ...onMedia("hover: hover", {
-            ...typesetHover(),
-          }),
-          width: "8rem",
-          maxHeight: `calc(${MENUBAR_HEIGHT} - 1rem)`,
-        }}
-      />
       <MenuButton onClick={handleToggle} isToggled={isToggled} />
 
-      <div
+      <ul
         css={[
           {
             position: "absolute",
             zIndex: 999,
-            top: `calc(${MENUBAR_HEIGHT} - 1px)`,
-            right: "0",
+            // top: `calc(${MENUBAR_HEIGHT} - 1px)`,
+            top: TOUCH_TARGET,
+            right: 0,
 
             padding: `${TOUCH_TARGET} 0 ${TOUCH_TARGET} ${TOUCH_TARGET}`,
 
             ...flex("column"),
             alignItems: "flex-end",
 
-            fontFamily: typography.sans,
+            fontFamily: typography.CODE_TYPE,
+            fontWeight: 700,
             overflow: "hidden",
           },
           togglePointerEvents,
         ]}
       >
-        {[
-          ["Work=>", "/"],
-          ["About=> ", "/about"],
-          ["Resume=>", "/resume"],
-        ].map(([label, path]) => (
-          <TypesetLink
-            css={[menuLink, transition, slideInOut]}
-            to={path}
-            key={label}
-          >
-            {label}
-          </TypesetLink>
+        {MENU_LINKS.map(([label, path]) => (
+          <li css={[transition, slideInOut]}>
+            <TypesetLink to={path} key={label} css={[menuLink]}>
+              {label}
+            </TypesetLink>
+          </li>
         ))}
 
         {children}
-      </div>
+      </ul>
     </nav>
   )
 }
