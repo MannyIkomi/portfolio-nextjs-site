@@ -2,113 +2,83 @@
 import { jsx } from "@emotion/core"
 import React from "react"
 import { colors, flex, styleTransition, TOUCH_TARGET, onMedia } from "../styles"
-import { MotifNegative, MotifRight } from "./Motif"
+
+export const OpenMenuIcon = ({}) => {
+  return (
+    <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+      <path
+        fillRule="evenodd"
+        clipRule="evenodd"
+        d="M7 14L25 14V17L7 17V14Z"
+        fill="#4A9497"
+      />
+      <path
+        fillRule="evenodd"
+        clipRule="evenodd"
+        d="M7 7L25 7L25 10L7 10L7 7Z"
+        fill="#4A9497"
+      />
+      <path
+        fillRule="evenodd"
+        clipRule="evenodd"
+        d="M7 21L25 21L25 24L7 24L7 21Z"
+        fill="#4A9497"
+      />
+      <path
+        d="M0 0V-3H-3V0H0ZM32 0H35V-3H32V0ZM32 32V35H35V32H32ZM0 32H-3V35H0V32ZM0 3H32V-3H0V3ZM29 0V32H35V0H29ZM32 29H0V35H32V29ZM3 32V0H-3V32H3Z"
+        fill="#4A9497"
+      />
+    </svg>
+  )
+}
+
+export const CloseMenuIcon = ({}) => {
+  return (
+    <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+      <path
+        fillRule="evenodd"
+        clipRule="evenodd"
+        d="M9.12137 7.00006L24.6777 22.5564L22.5564 24.6777L7.00005 9.12139L9.12137 7.00006Z"
+        fill="#4A9497"
+      />
+      <path
+        fillRule="evenodd"
+        clipRule="evenodd"
+        d="M7.1214 22.5564L22.6778 7.00002L24.7991 9.12134L9.24272 24.6777L7.1214 22.5564Z"
+        fill="#4A9497"
+      />
+      <path
+        d="M0 0V-3H-3V0H0ZM32 0H35V-3H32V0ZM32 32V35H35V32H32ZM0 32H-3V35H0V32ZM0 3H32V-3H0V3ZM29 0V32H35V0H29ZM32 29H0V35H32V29ZM3 32V0H-3V32H3Z"
+        fill="#4A9497"
+      />
+    </svg>
+  )
+}
 
 export const MenuButton = ({ isToggled, ...props }) => {
-  const distance = "0.66rem"
-  const animateHamburger = {
-    ".line:nth-of-type(1)": {
-      transform: `translateY(${distance}) rotate(45deg)`,
-    },
-    ".line:nth-of-type(2)": {
-      opacity: "0",
-    },
-    ".line:nth-of-type(3)": {
-      transform: `translateY(-${distance}) rotate(-45deg)`,
-    },
-  }
-
-  const motifToggled = {
-    "#motif-negative": {
-      fill: "transparent",
-    },
-
-    "#motif-right, #motif-left": {
-      fill: colors.orange,
-    },
-
-    // transform: "rotate(90deg)",
-  }
   return (
     <button
       type={`button`}
       css={[
         {
-          ...flex("column"),
-          justifyContent: "space-between",
-          alignItems: "center",
+          // ...flex("column"),
+          // justifyContent: "space-between",
+          // alignItems: "center",
 
-          backgroundColor: "initial",
+          backgroundColor: colors.LIGHT_GRAY_FOREGROUND,
           padding: 0,
           margin: 0,
           minWidth: "1rem",
-          width: "2rem",
-          height: "auto",
-          maxWidth: TOUCH_TARGET,
+
+          width: TOUCH_TARGET,
+          height: TOUCH_TARGET,
 
           cursor: "pointer",
-
-          "#motif-negative": {
-            ...styleTransition(),
-            fill: colors.darkGray,
-            // ...onMedia("hover: hover", {
-            //   "&:hover": { fill: colors.orange },
-            // }),
-          },
-          "#motif-right, #motif-left": {
-            ...styleTransition(),
-            fill: "transparent",
-          },
-
-          ".line": {
-            display: "block",
-            width: "1.75rem",
-            height: "0.1875rem",
-            backgroundColor: colors.darkGray,
-            // transition: "all 300ms ease-in-out",
-            ...styleTransition(),
-          },
-          ":hover": {
-            ".line": {
-              backgroundColor: colors.orange,
-            },
-          },
         },
-        isToggled && motifToggled,
       ]}
       {...props}
     >
-      <svg
-        css={{ width: "28.67px" }}
-        xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 80.90195 72.49195"
-      >
-        <g id="motif-menu" data-name="Layer 1">
-          <g id={"motif-negative"}>
-            <rect x="64.22959" y="67.65919" width="16.67236" height="4.83276" />
-            <polygon points="33.95 19.331 27.344 19.331 27.344 14.499 50.433 14.499 50.433 9.666 12.748 9.666 12.748 4.833 7.552 4.833 7.552 0 0 0 0 38.662 7.552 38.662 7.552 43.495 12.748 43.495 12.748 48.328 50.433 48.328 50.433 53.161 27.344 53.161 27.344 57.994 33.95 57.994 33.95 62.826 80.902 62.826 80.902 33.83 64.23 33.83 64.23 28.997 80.902 28.997 80.902 24.164 33.95 24.164 33.95 19.331" />
-          </g>
-          <g id={"motif-left"} className={"motif"}>
-            <polygon points="33.95 62.826 33.95 57.994 27.344 57.994 27.344 53.161 50.433 53.161 50.433 48.328 12.748 48.328 12.748 43.495 7.553 43.495 7.553 38.662 0 38.662 0 43.495 0 48.328 0 53.161 0 57.994 0 62.826 0 67.659 0 72.492 64.23 72.492 64.23 67.659 80.902 67.659 80.902 62.826 33.95 62.826" />
-          </g>
-
-          <g id={"motif-right"} className={"motif"}>
-            <rect x="64.22998" y="28.99683" width="16.67188" height="4.83276" />
-            <polygon points="7.553 0 7.553 4.833 12.748 4.833 12.748 9.666 50.433 9.666 50.433 14.499 27.344 14.499 27.344 19.331 33.95 19.331 33.95 24.164 80.902 24.164 80.902 19.331 80.902 14.499 80.902 9.666 80.902 4.833 80.902 0 7.553 0" />
-          </g>
-        </g>
-      </svg>
-      {/* 
-      <MotifNegative
-        css={{
-          width: "100%",
-          // height: "100%",
-        }}
-      />
-       */}
-      {/* <span className="line" />
-      <span className="line" />
-      <span className="line" /> */}
+      {isToggled ? <CloseMenuIcon /> : <OpenMenuIcon />}
     </button>
   )
 }
