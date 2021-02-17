@@ -5,7 +5,6 @@ import Img from "gatsby-image"
 
 import { useHoverState } from "../hooks/useHoverState"
 import { OrangeOverprint } from "./FillOverlay"
-import { MotifRight } from "./Motif"
 import { ProjectPhoto } from "./ProjectPhoto"
 import { TokenList } from "./TokenList"
 import {
@@ -82,20 +81,16 @@ export const ProjectCover = ({
             },
 
             ".willHide": {
-              // color: colors.orange,
-              textShadow: "0px 0px 0.2rem rgba(0, 0, 0, 1)",
               opacity: 0,
             },
 
             "&:hover, &:focus": {
-              // when one project is hovered should all others dim to gray? to further increase contrast.
               zIndex: 2,
               transform: "scale(1.05)",
               transformOrigin: "center",
 
               img: {
                 filter: "blur(3px)", // matte finish
-                // grayscale(50%) contrast(66%) using additional filters hurts firefox performance?
               },
               ".willHide": {
                 opacity: 1,
@@ -103,8 +98,6 @@ export const ProjectCover = ({
             },
           }),
         }}
-        // onMouseEnter={handleHover}
-        // onMouseLeave={handleHover}
       >
         <ProjectPhoto alt={coverAlt} {...imageProps} />
 
@@ -158,15 +151,6 @@ export const ProjectCover = ({
             </span>
           )}
         </figcaption>
-        {/* <Motif
-          css={{
-            fill: colors.darkGray,
-            position: "absolute",
-            top: -1,
-            right: -1,
-            width: "50%",
-          }}
-        /> */}
       </figure>
     </Link>
   )

@@ -15,10 +15,10 @@ import Layout from "../components/layout"
 import HtmlHead from "../components/HtmlHead"
 import { StickyScrollContainer } from "../components/StickyScrollContainer"
 import { StickyMenuBar } from "../components/StickyMenuBar"
-import { MotifRight, MotifLeft } from "../components/Motif"
+
 import { Footer } from "../components/Footer"
 import Markdown from "../components/markdown"
-import { CreativeInspiration } from "../components/CreativeInspiration"
+
 import { ContentArea } from "../components/ContentArea"
 import { SectionBlock } from "../components/SectionBlock"
 import { DesktopMenu } from "../components/DesktopMenu"
@@ -134,34 +134,6 @@ const AboutPage = ({ data }) => {
                 {bio}
               </Markdown>
             </ContentArea>
-            <MotifLeft
-              css={{
-                width: "20%",
-                height: "auto",
-                position: "absolute",
-                left: 0,
-                bottom: "1px",
-
-                transform: "rotateX(180deg)",
-                transformOrigin: "bottom center",
-              }}
-            />
-            <MotifRight
-              css={[
-                {
-                  fill: colors.muteGray,
-
-                  width: "20%",
-                  height: "auto",
-
-                  position: "absolute",
-                  right: 0,
-                  bottom: "-1px",
-                  transform: "rotateX(180deg)",
-                  transformOrigin: "center center",
-                },
-              ]}
-            />
           </SectionBlock>
           <SectionBlock
             css={{
@@ -182,41 +154,6 @@ const AboutPage = ({ data }) => {
               </QuoteBlock>
             </ContentArea>
           </SectionBlock>
-          {/* 
-          <SectionBlock css={{ backgroundColor: colors.muteGray }}>
-            <ContentArea>
-              <div css={{ padding: "1rem" }}>
-                <h2 css={[h1Text()]}>Creatives who inspire&nbsp;me…</h2>
-                <p>
-                  I once heard that we are the sum of the people who are closest
-                  to us. So I like to think of these people as my design
-                  addends, my work is the sum of theirs and what I've learned
-                  from them.
-                </p>
-              </div>
-            </ContentArea>
-            <ContentArea
-              css={{
-                width: "100%",
-                maxWidth: "80rem",
-
-                ...supportsGrid({
-                  gridTemplateColumns:
-                    "repeat(auto-fit, minmax(min(40rem, 100%), 40rem))", // only partial support in firefox https://bugzilla.mozilla.org/show_bug.cgi?id=1341507
-
-                  justifyContent: "center",
-                  // gridAutoColumns: "minmax(100%, 40rem)",
-                }),
-              }}
-            >
-              {inspirations.map(person => (
-                <CreativeInspiration
-                  {...person}
-                  key={person.name}
-                ></CreativeInspiration>
-              ))}
-            </ContentArea>
-          </SectionBlock> */}
         </main>
       </StickyScrollContainer>
       <Footer />

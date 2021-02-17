@@ -10,8 +10,6 @@ import { Gallery } from "../components/Gallery"
 import { Footer } from "../components/Footer"
 import smoothscroll from "smoothscroll-polyfill"
 
-import Select from "react-select"
-
 import {
   supportsGrid,
   onMediaWidth,
@@ -35,7 +33,7 @@ import { SectionBlock } from "../components/SectionBlock"
 import ProjectPhoto from "../components/ProjectPhoto"
 import { TokenList } from "../components/TokenList"
 import { DesktopMenu } from "../components/DesktopMenu"
-import { MotifLeft, MotifRight } from "../components/Motif"
+
 import { ProjectTagHeading } from "../components/ProjectTagHeading"
 import { SectionBreak } from "../components/SectionBreak"
 
@@ -312,22 +310,22 @@ const IndexPage = ({ data }) => {
               </SectionBlock>
             </>
           )}
-          {/* IDENTITY DESIGN */}
           {identityProjects.length > 0 && (
             <>
-              <SectionBreak id={IDENTITY_SECTION} />
               <SectionBlock
                 css={{
-                  backgroundColor: colors.darkGray,
+                  backgroundColor: colors.NAVY_BLUE,
                 }}
               >
                 <ContentArea css={{ maxWidth: "80rem", padding: "1rem" }}>
                   <ProjectTagHeading>Identity Design</ProjectTagHeading>
 
                   <Gallery>
-                    {identityProjects.map(project => (
-                      <ProjectCover {...project} key={project.id} />
-                    ))}
+                    {identityProjects
+                      .filter(project => !project.feature)
+                      .map(project => (
+                        <ProjectCover {...project} key={project.id} />
+                      ))}
                   </Gallery>
                 </ContentArea>
               </SectionBlock>
