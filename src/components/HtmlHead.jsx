@@ -5,6 +5,7 @@
  * See: https://www.gatsbyjs.org/docs/use-static-query/
  */
 
+import "../../src/fonts/Fira_Code/fira_code.css"
 import React from "react"
 import PropTypes from "prop-types"
 import Helmet from "react-helmet"
@@ -18,7 +19,6 @@ function HtmlHead({
   description,
   author,
   lang,
-
   title,
   url,
   path,
@@ -78,6 +78,7 @@ function HtmlHead({
         name="viewport"
         content="width=device-width, initial-scale=1, shrink-to-fit=no"
       />
+      <style></style>
 
       <meta name="description" content={metaDescription} />
       {/* OPEN GRAPH */}
