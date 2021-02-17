@@ -1,7 +1,7 @@
 import React from "react"
 import {
   colors,
-  typesetHover,
+  typesetTransform,
   TOUCH_TARGET,
   styleTransition,
   onMedia,
@@ -20,8 +20,9 @@ export const SocialIcon = ({
       case "Twitter":
         return (
           <svg
-            width="32"
-            height="32"
+            // width="32"
+            // height="32"
+            pointerEvents={"all"}
             viewBox="0 0 32 32"
             xmlns="http://www.w3.org/2000/svg"
           >
@@ -31,8 +32,9 @@ export const SocialIcon = ({
       case "Instagram":
         return (
           <svg
-            width="33"
-            height="32"
+            // width="33"
+            // height="32"
+            pointerEvents={"all"}
             viewBox="0 0 33 32"
             xmlns="http://www.w3.org/2000/svg"
           >
@@ -57,8 +59,9 @@ export const SocialIcon = ({
       case "LinkedIn":
         return (
           <svg
-            width="32"
-            height="32"
+            // width="32"
+            // height="32"
+            pointerEvents={"all"}
             viewBox="0 0 32 32"
             xmlns="http://www.w3.org/2000/svg"
           >
@@ -80,15 +83,17 @@ export const SocialIcon = ({
         display: "block",
         width: "100%",
         height: "auto",
+        // backgroundColor: "rgba(0,0,0,0.5)",
 
         minWidth: TOUCH_TARGET,
 
         ...onHover({
           ...styleTransition(),
-          ...typesetHover(),
+          ...typesetTransform(),
+          transformBox: "view-box",
           svg: {
+            pointerEvents: "all",
             ...styleTransition(),
-
             fill: colors.TURQUOISE,
           },
         }),
