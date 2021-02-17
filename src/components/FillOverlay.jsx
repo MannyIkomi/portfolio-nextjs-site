@@ -3,11 +3,9 @@ import { css, jsx } from "@emotion/core"
 import React from "react"
 import { colors } from "../styles"
 
-const fillOrange = override =>
+const fillYellow = override =>
   css({
-    backgroundColor: colors.orange,
-    opacity: 1,
-
+    backgroundColor: "rgba(255,212,74,0.9)",
     ...override,
   })
 
@@ -26,11 +24,9 @@ export const ColorOverprint = ({ children, ...restProps }) => (
     {children}
   </div>
 )
-export const OrangeOverprint = ({ children, ...restProps }) => (
-  <div
-    css={[positionOverlay(), fillOrange({ mixBlendMode: "multiply" })]}
-    {...restProps}
-  >
+
+export const OverlayFill = ({ children, ...restProps }) => (
+  <div css={[positionOverlay(), fillYellow()]} {...restProps}>
     {children}
   </div>
 )
