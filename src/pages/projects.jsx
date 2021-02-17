@@ -35,7 +35,7 @@ import { SectionBlock } from "../components/SectionBlock"
 import ProjectPhoto from "../components/ProjectPhoto"
 import { TokenList } from "../components/TokenList"
 import { DesktopMenu } from "../components/DesktopMenu"
-import { MotifLeft, MotifRight } from "../components/Motif"
+
 import { ProjectTagHeading } from "../components/ProjectTagHeading"
 import { SectionBreak } from "../components/SectionBreak"
 
