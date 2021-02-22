@@ -19,7 +19,7 @@ import { LogoType } from "./Logo"
 import useToggleSwitch from "../hooks/useToggleSwitch"
 import { MenuButton } from "./MenuButton"
 import { TypesetLink } from "./TypesetLink"
-import { MENU_LINKS } from "../util/navigationLinks"
+import { MENU_LINKS } from "../util/menuLinks"
 
 export const StickyMenuBar = ({ children, ...props }) => {
   const [isToggled, handleToggle] = useToggleSwitch(false)
@@ -81,14 +81,17 @@ export const StickyMenuBar = ({ children, ...props }) => {
         },
       ]}
     >
-      <MenuButton onClick={handleToggle} isToggled={isToggled} />
+      <MenuButton
+        css={{ margin: "1rem" }}
+        onClick={handleToggle}
+        isToggled={isToggled}
+      />
 
       <ul
         css={[
           {
             position: "absolute",
             zIndex: 999,
-            // top: `calc(${MENUBAR_HEIGHT} - 1px)`,
             top: TOUCH_TARGET,
             right: 0,
 
@@ -106,7 +109,11 @@ export const StickyMenuBar = ({ children, ...props }) => {
       >
         {MENU_LINKS.map(([label, path]) => (
           <li css={[transition, slideInOut]}>
-            <TypesetLink to={path} key={label} css={[menuLink]}>
+            <TypesetLink
+              to={path}
+              key={label}
+              css={[menuLink, { whiteSpace: "nowrap" }]}
+            >
               {label}
             </TypesetLink>
           </li>

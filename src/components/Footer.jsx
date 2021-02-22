@@ -15,7 +15,7 @@ import {
   TOUCH_TARGET,
   CODE_TYPE,
 } from "../styles"
-import { MENU_LINKS } from "../util/navigationLinks"
+import { MENU_LINKS } from "../util/menuLinks"
 import { ContentArea } from "./ContentArea"
 
 export const Footer = props => {
@@ -45,6 +45,7 @@ export const Footer = props => {
 
         ...supportsGrid({
           gridTemplateColumns: "repeat(12, 1fr)",
+          gridTemplateRows: `[content] auto [copyright] min-content`,
           gridGap: "1rem",
           alignItems: "center",
         }),
@@ -123,6 +124,7 @@ export const Footer = props => {
                 padding: "1rem 0",
                 textTransform: "uppercase",
                 fontWeight: 600,
+                whiteSpace: "nowrap",
               },
               onTabletMedia({
                 padding: 0,
