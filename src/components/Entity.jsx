@@ -8,16 +8,8 @@ export const TitleResume = props => {
   const { url, title, children, ...rest } = props
 
   return (
-    <>
-      {url ? (
-        <TypesetLink to={url} {...rest}>
-          <h2 css={resumeContentHeading}>{children || title}</h2>
-        </TypesetLink>
-      ) : (
-        <h2 css={resumeContentHeading} {...rest}>
-          {children || title}
-        </h2>
-      )}
-    </>
+    <h2 css={resumeContentHeading} {...rest}>
+      {children || title}
+    </h2>
   )
 }
