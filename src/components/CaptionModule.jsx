@@ -23,8 +23,8 @@ export const CaptionModule = ({ image, imageAlt, imageFill, text, type }) => {
       css={[
         moduleContainer(),
         {
-          color: colors.darkGray,
-          backgroundColor: colors.muteGray,
+          color: colors.NAVY_BLUE,
+          backgroundColor: colors.LIGHT_GRAY,
           width: "100%",
           hangingPunctuation: "first last", // only supported in Safari :(
         },
@@ -53,7 +53,6 @@ export const CaptionModule = ({ image, imageAlt, imageFill, text, type }) => {
             img: {
               width: "50%",
               position: "sticky",
-              top: MENUBAR_HEIGHT,
               zIndex: 2,
             },
           }),
@@ -72,12 +71,12 @@ export const CaptionModule = ({ image, imageAlt, imageFill, text, type }) => {
         <figcaption
           css={{
             position: "sticky",
-            top: MENUBAR_HEIGHT,
+            top: 0,
 
             padding: "2rem",
             alignSelf: "flex-start",
 
-            backgroundColor: colors.muteGray,
+            backgroundColor: colors.LIGHT_GRAY,
           }}
         >
           <Markdown
