@@ -12,7 +12,7 @@ import { Global } from "@emotion/core"
 import { typography, colors, RESET, GLOBAL } from "../styles"
 import { useStaticQuery, graphql } from "gatsby"
 import { Footer } from "./Footer"
-import Header from "./header"
+import Header from "./Header"
 
 const Layout = ({ children }) => {
   const data = useStaticQuery(graphql`
