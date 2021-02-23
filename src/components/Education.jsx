@@ -10,7 +10,7 @@ import {
   MENUBAR_HEIGHT,
 } from "../styles"
 import { getMonthYear } from "../util/dates"
-import { TitleResume } from "./Entity"
+import { ResumeTitle } from "./ResumeTitle"
 import { TimeFrame } from "./TimeFrame"
 import Markdown from "./markdown"
 import useToggleSwitch from "../hooks/useToggleSwitch"
@@ -33,19 +33,19 @@ export const Education = props => {
           toggled && positionSticky(MENUBAR_HEIGHT),
           {
             width: "100%",
-            background: colors.muteGray,
+            background: colors.LIGHT_GRAY,
             padding: "0.5rem 0",
-            borderBottom: `0.1rem solid ${colors.darkGray20}`,
+            borderTop: `0.1rem solid ${colors.TURQUOISE}`,
           },
         ]}
       >
-        <TitleResume>{concentration}</TitleResume>
+        <ResumeTitle>{concentration}</ResumeTitle>
         {school}
         <br />
         {ended ? (
           <span
             css={{
-              fontFamily: typography.sans,
+              fontFamily: typography.SANS_TYPE,
               fontSize: "0.9rem",
               fontStyle: "italic",
             }}
@@ -55,7 +55,7 @@ export const Education = props => {
         ) : (
           <span
             css={{
-              fontFamily: typography.sans,
+              fontFamily: typography.SANS_TYPE,
               fontSize: "0.9rem",
               fontStyle: "italic",
             }}

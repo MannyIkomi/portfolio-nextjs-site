@@ -14,7 +14,7 @@ import {
 import { Markdown } from "./markdown"
 import useToggleSwitch from "../hooks/useToggleSwitch"
 import { TimeFrame } from "./TimeFrame"
-import { TitleResume } from "./Entity"
+import { ResumeTitle } from "./ResumeTitle"
 
 import StickyScrollContainer from "./StickyScrollContainer"
 import { Button } from "./Button"
@@ -46,22 +46,22 @@ export const Experience = props => {
             toggled && positionSticky(MENUBAR_HEIGHT),
             {
               width: "100%",
-              background: colors.muteGray,
+              background: colors.LIGHT_GRAY,
               padding: "0.5rem 0",
-              borderBottom: `0.1rem solid ${colors.darkGray20}`,
+              borderTop: `0.1rem solid ${colors.TURQUOISE}`,
             },
-            onDesktopMedia({
-              ...positionSticky(-1),
-            }),
+            // onDesktopMedia({
+            //   ...positionSticky(-1),
+            // }),
           ]}
         >
-          <TitleResume url={url}>{organization}</TitleResume>
+          <ResumeTitle url={url}>{organization}</ResumeTitle>
           <br />
           {roles}
           <br />
           <TimeFrame
             styles={{
-              fontFamily: typography.sans,
+              fontFamily: typography.SANS_TYPE,
               fontStyle: "italic",
             }}
             start={started}

@@ -7,7 +7,7 @@ import { getMonthYear } from "../util/dates"
 
 export const TimeFrame = ({ start, end, styles, ...props }) => {
   return (
-    <span
+    <span // change to datetime elemen
       css={{
         fontFamily: typography.sans,
         fontSize: "0.9rem",

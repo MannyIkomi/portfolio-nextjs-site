@@ -22,7 +22,7 @@ import { ResumeSection } from "../components/ResumeSection"
 
 import { Education } from "../components/Education"
 import { TokenList } from "../components/TokenList"
-import { TitleResume } from "../components/Entity"
+import { ResumeTitle } from "../components/ResumeTitle"
 
 const ResumePage = ({ data }) => {
   const experiences = data.allStrapiExperience.nodes.filter(
@@ -49,7 +49,7 @@ const ResumePage = ({ data }) => {
   return (
     <Layout>
       <HtmlHead
-        title={"Résumé"}
+        title={"Resume"}
         description={`Design thinker, lifetime learner, digital craftsman.`}
       />
 
@@ -75,7 +75,7 @@ const ResumePage = ({ data }) => {
               ...flex(),
               justifyContent: "center",
               alignItems: "center",
-              backgroundColor: colors.muteGray,
+              backgroundColor: colors.LIGHT_GRAY,
             }}
           >
             <header>
@@ -94,7 +94,7 @@ const ResumePage = ({ data }) => {
                   ["Certifications", "#certifications"],
                   ["Capabilities", "#capabilities"],
                 ].map(([label, path]) => (
-                  <TypesetLink to={path} css={{ padding: "1rem" }}>
+                  <TypesetLink to={path} css={{ padding: "1rem" }} key={label}>
                     {label}
                   </TypesetLink>
                 ))}
@@ -127,9 +127,14 @@ const ResumePage = ({ data }) => {
 
               <ResumeSection id={`capabilities`} heading={"Capabilities"}>
                 <div css={{ margin: `3vh 0` }}>
-                  <TitleResume>Design</TitleResume>
+                  <ResumeTitle>Design</ResumeTitle>
                   <TokenList
-                    css={{ li: { backgroundColor: colors.TURQUOISE } }}
+                    css={{
+                      li: {
+                        backgroundColor: colors.TURQUOISE,
+                        color: colors.LIGHT_GRAY_FOREGROUND,
+                      },
+                    }}
                   >
                     {designSkills.map(capability => (
                       <Expertise {...capability} key={capability.id} />
@@ -137,9 +142,14 @@ const ResumePage = ({ data }) => {
                   </TokenList>
                 </div>
                 <div css={{ margin: `3vh 0` }}>
-                  <TitleResume>Web Development</TitleResume>
+                  <ResumeTitle>Web Development</ResumeTitle>
                   <TokenList
-                    css={{ li: { backgroundColor: colors.TURQUOISE } }}
+                    css={{
+                      li: {
+                        backgroundColor: colors.TURQUOISE,
+                        color: colors.LIGHT_GRAY_FOREGROUND,
+                      },
+                    }}
                   >
                     {developmentSkills.map(capability => (
                       <Expertise {...capability} key={capability.id} />
@@ -147,9 +157,14 @@ const ResumePage = ({ data }) => {
                   </TokenList>
                 </div>
                 <div css={{ margin: `3vh 0` }}>
-                  <TitleResume>Experiences With</TitleResume>
+                  <ResumeTitle>Experiences With</ResumeTitle>
                   <TokenList
-                    css={{ li: { backgroundColor: colors.TURQUOISE } }}
+                    css={{
+                      li: {
+                        backgroundColor: colors.TURQUOISE,
+                        color: colors.LIGHT_GRAY_FOREGROUND,
+                      },
+                    }}
                   >
                     {toolExperiences.map(capability => (
                       <Expertise {...capability} key={capability.id} />
@@ -157,13 +172,10 @@ const ResumePage = ({ data }) => {
                   </TokenList>
                 </div>
               </ResumeSection>
-
-              {/* <footer>resume footer</footer> */}
             </ContentArea>
           </article>
         </main>
       </StickyScrollContainer>
-      {/* <Debug {...data} /> */}
       <Footer />
     </Layout>
   )
