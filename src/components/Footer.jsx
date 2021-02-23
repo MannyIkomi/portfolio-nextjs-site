@@ -125,6 +125,7 @@ export const Footer = props => {
                 textTransform: "uppercase",
                 fontWeight: 600,
                 whiteSpace: "nowrap",
+                textDecorationColor: colors.YELLOW,
               },
               onTabletMedia({
                 padding: 0,
