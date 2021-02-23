@@ -30,7 +30,7 @@ import {
 } from "../styles"
 import { StickyScrollContainer } from "../components/StickyScrollContainer"
 import { StickyMenuBar } from "../components/StickyMenuBar"
-import { ContentArea } from "../components/ContentArea"
+import { ContainerWidth } from "../components/ContainerWidth"
 import { SectionBlock } from "../components/SectionBlock"
 import ProjectPhoto from "../components/ProjectPhoto"
 import { TokenList } from "../components/TokenList"
@@ -149,7 +149,7 @@ const IndexPage = ({ data }) => {
               backgroundColor: colors.NAVY_BLUE,
             }}
           >
-            <ContentArea
+            <ContainerWidth
               css={{
                 ...flex("column"),
                 justifyContent: "space-around",
@@ -310,7 +310,7 @@ const IndexPage = ({ data }) => {
                   }),
                 }}
               />
-            </ContentArea>
+            </ContainerWidth>
           </SectionBlock>
           {feature.length > 0 && (
             <>
@@ -321,7 +321,7 @@ const IndexPage = ({ data }) => {
                   minHeight: "50vh",
                 }}
               >
-                <ContentArea css={{ maxWidth: "80rem", padding: "1rem" }}>
+                <ContainerWidth css={{ maxWidth: "80rem", padding: "1rem" }}>
                   <ProjectTagHeading>Featured Work</ProjectTagHeading>
                   {feature.map(project => (
                     <Link
@@ -409,7 +409,7 @@ const IndexPage = ({ data }) => {
                       </figure>
                     </Link>
                   ))}
-                </ContentArea>
+                </ContainerWidth>
               </SectionBlock>
             </>
           )}
@@ -422,7 +422,7 @@ const IndexPage = ({ data }) => {
                   backgroundColor: colors.darkGray,
                 }}
               >
-                <ContentArea css={{ maxWidth: "80rem", padding: "1rem" }}>
+                <ContainerWidth css={{ maxWidth: "80rem", padding: "1rem" }}>
                   <ProjectTagHeading>Web Design</ProjectTagHeading>
 
                   <Gallery>
@@ -430,7 +430,7 @@ const IndexPage = ({ data }) => {
                       <ProjectCover {...project} key={project.id} />
                     ))}
                   </Gallery>
-                </ContentArea>
+                </ContainerWidth>
               </SectionBlock>
             </>
           )}
@@ -443,7 +443,7 @@ const IndexPage = ({ data }) => {
                   backgroundColor: colors.darkGray,
                 }}
               >
-                <ContentArea css={{ maxWidth: "80rem", padding: "1rem" }}>
+                <ContainerWidth css={{ maxWidth: "80rem", padding: "1rem" }}>
                   <ProjectTagHeading>Identity Design</ProjectTagHeading>
 
                   <Gallery>
@@ -451,7 +451,7 @@ const IndexPage = ({ data }) => {
                       <ProjectCover {...project} key={project.id} />
                     ))}
                   </Gallery>
-                </ContentArea>
+                </ContainerWidth>
               </SectionBlock>
             </>
           )}

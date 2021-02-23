@@ -3,7 +3,13 @@ import React from "react"
 import { css, jsx } from "@emotion/core"
 import { graphql } from "gatsby"
 
-import { menubarHeight, flex, colors, onDesktopMedia } from "../styles"
+import {
+  menubarHeight,
+  flex,
+  colors,
+  onDesktopMedia,
+  MAX_TEXT_WIDTH,
+} from "../styles"
 
 import Layout from "../components/layout"
 import HtmlHead from "../components/HtmlHead"
@@ -13,7 +19,7 @@ import { TypesetLink } from "../components/TypesetLink"
 import { List } from "../components/List"
 import { Footer } from "../components/Footer"
 import { SectionBlock } from "../components/SectionBlock"
-import { ContentArea } from "../components/ContentArea"
+import { ContainerWidth } from "../components/ContainerWidth"
 import { DesktopMenu } from "../components/DesktopMenu"
 
 import { Expertise } from "../components/Expertise"
@@ -100,7 +106,7 @@ const ResumePage = ({ data }) => {
                 ))}
               </nav>
             </header>
-            <ContentArea>
+            <ContainerWidth css={{ ...MAX_TEXT_WIDTH }}>
               <ResumeSection id={`experience`} heading={"Experience"}>
                 {experiences.map(employer => (
                   <Experience {...employer} key={employer.id} />
@@ -172,7 +178,7 @@ const ResumePage = ({ data }) => {
                   </TokenList>
                 </div>
               </ResumeSection>
-            </ContentArea>
+            </ContainerWidth>
           </article>
         </main>
       </StickyScrollContainer>
