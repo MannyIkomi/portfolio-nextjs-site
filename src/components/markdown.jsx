@@ -10,6 +10,8 @@ import {
   linkText,
   styleTransition,
   SANS_TYPE,
+  CODE_TYPE,
+  colors,
 } from "../styles"
 
 const showdown = require("showdown")
@@ -32,7 +34,8 @@ export const Markdown = ({ children, preprocessor, ...props }) => {
     <div
       css={{
         "h1,h2,h3,h4": {
-          ...SANS_TYPE,
+          ...CODE_TYPE,
+          color: colors.NAVY_BLUE,
           textTransform: "initial",
         },
         "p, ul, ol": {
