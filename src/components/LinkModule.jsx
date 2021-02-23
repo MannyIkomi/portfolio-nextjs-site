@@ -11,7 +11,11 @@ import {
   moduleContainer,
   onMediaWidth,
   onMedia,
+  onHover,
+  CODE_TYPE,
+  hoverTypesetTransform,
 } from "../styles"
+import { TypesetLink } from "./TypesetLink"
 
 export const LinkModule = props => {
   const { url, text, type } = props
@@ -24,37 +28,34 @@ export const LinkModule = props => {
   }
 
   return (
-    <a
+    <TypesetLink
       css={{
         ...moduleContainer(),
-        ...styleTransition(),
+        // ...styleTransition(),
 
-        ...onMedia("hover: hover", {
-          ...typesetHover({
-            ":hover": {
-              color: colors.orange,
-              backgroundColor: colors.muteGray,
-              borderBottom: `0.25rem solid ${colors.orange}`,
-            },
-          }),
-        }),
+        // ...hoverTypesetTransform({
+        //   color: colors.YELLOW,
+        //   backgroundColor: colors.LIGHT_GRAY,
+        //   borderBottom: `0.25rem solid ${colors.YELLOW}`,
+        // }),
 
         padding: "1rem",
 
-        ...SANS_HEADING,
+        ...CODE_TYPE,
         fontWeight: "bold",
         fontSize: "2rem",
         textAlign: "center",
 
-        color: colors.muteGray,
-        backgroundColor: colors.orange,
-        borderBottom: `0.25rem solid ${colors.muteGray}`,
+        color: colors.NAVY_BLUE,
+        backgroundColor: colors.YELLOW,
+        textDecoration: "none",
+        // borderBottom: `0.25rem solid ${colors.YELLOW}`,
       }}
       title={text}
       href={url}
     >
-      {text}
-    </a>
+      {text}&nbsp;=>
+    </TypesetLink>
   )
 }
 
