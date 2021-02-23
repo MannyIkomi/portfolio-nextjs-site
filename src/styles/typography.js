@@ -30,7 +30,9 @@ export const linkText = {
   fontSize: 'inherit',
 
   textDecoration: "underline",
-  textDecorationColor: colors.YELLOW,
+  textDecorationThickness: '0.1rem',
+  textUnderlineOffset: '0.25rem',
+  textDecorationColor: colors.TURQUOISE,
   // text underline new CSS features
   // https://www.youtube.com/watch?v=sZS-7RX_c7g
 
