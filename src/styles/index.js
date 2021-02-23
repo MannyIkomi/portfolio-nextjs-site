@@ -52,6 +52,13 @@ export const maxReadingWidth = {
 export const ulStyles = {
   listStyle: "square",
   paddingLeft: "1.25rem",
+  li: {
+    '::marker': {
+      ...CODE_TYPE,
+      content: `"::"`
+    }
+  }
+
 }
 
 export const aspectRatioLetter = {
