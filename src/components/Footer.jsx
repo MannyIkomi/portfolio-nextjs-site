@@ -14,7 +14,10 @@ import {
   styleTransition,
   TOUCH_TARGET,
   CODE_TYPE,
-  MAX_CONTAINER_WIDTH,
+  maxContainerWidth,
+  grid12Columns,
+  onSupport,
+  grid,
 } from "../styles"
 import { MENU_LINKS } from "../util/menuLinks"
 import { ContainerWidth } from "./ContainerWidth"
@@ -37,7 +40,7 @@ export const Footer = props => {
         css={{
           position: "relative",
           minHeight: "100vh",
-          ...MAX_CONTAINER_WIDTH,
+          ...maxContainerWidth,
           margin: "auto",
 
           ...flex(),
@@ -51,16 +54,13 @@ export const Footer = props => {
             fontFamily: typography.SANS_TYPE,
           },
 
-          ...supportsGrid({
-            gridTemplateColumns: "repeat(12, 1fr)",
+          ...grid12Columns({
             gridTemplateRows: `[content] auto [copyright] min-content`,
-            gridGap: "1rem",
-            alignItems: "center",
+            alignItems: "end",
           }),
 
           ...onTabletMedia({
             minHeight: "50vh",
-            alignItems: "end",
           }),
         }}
       >
@@ -72,14 +72,15 @@ export const Footer = props => {
             width: "50%",
             maxWidth: "10rem",
             margin: "1rem 0",
-
-            gridColumn: "2 / -1",
-
-            ...onTabletMedia({
-              width: "100%",
-              gridColumn: "1 / 3",
-              margin: 0,
-              marginBottom: "-1rem", //aligns baseline with links
+            ...supportsGrid({
+              gridColumn: "2 / -1",
+              ...onTabletMedia({
+                width: "100%",
+                gridRow: 1,
+                gridColumn: "1 / 3",
+                margin: 0,
+                marginBottom: "-1rem", //aligns baseline with links
+              }),
             }),
           }}
         />
@@ -90,12 +91,14 @@ export const Footer = props => {
               ...flex("row"),
               alignItems: "center",
               justifyContent: "flex-start",
-
-              gridColumn: "2 / 6",
             },
-            onTabletMedia({
-              gridRow: 1,
-              gridColumn: "-1 / 10 ",
+            supportsGrid({
+              gridColumn: "2 / 6",
+              gridRow: 2,
+              ...onTabletMedia({
+                gridRow: 1,
+                gridColumn: "-1 / 10 ",
+              }),
             }),
           ]}
         >
@@ -114,43 +117,52 @@ export const Footer = props => {
         <ul
           css={[
             flex("column"),
-            { alignItems: "flex-start", gridColumn: "2 / 6" },
+            {
+              listStyle: "none",
+              alignItems: "flex-start",
+            },
+            supportsGrid({
+              gridColumn: "2 / 6",
 
-            onTabletMedia({
-              gridRow: 1,
-              gridColumn: "4 / 9",
-              ...flex("row"),
-              justifyContent: "space-between",
+              ...onTabletMedia({
+                gridRow: 1,
+                gridColumn: "4 / 8",
+                ...flex("row"),
+                //   justifyContent: "space-between",
+              }),
             }),
           ]}
         >
           {MENU_LINKS.map(([label, to]) => (
-            <TypesetLink
-              href={to}
-              css={[
-                {
-                  padding: "1rem 0",
-                  textTransform: "uppercase",
-                  fontWeight: 600,
-                  whiteSpace: "nowrap",
-                  textDecorationColor: colors.YELLOW,
-                },
-                onTabletMedia({
-                  padding: 0,
-                  marginRight: "1rem",
-                }),
-              ]}
-            >
-              {label}
-            </TypesetLink>
+            <li key={label}>
+              <TypesetLink
+                href={to}
+                css={[
+                  {
+                    padding: "1rem 0",
+                    textTransform: "uppercase",
+                    fontWeight: 600,
+                    whiteSpace: "nowrap",
+                    textDecorationColor: colors.YELLOW,
+                  },
+                  onTabletMedia({
+                    padding: 0,
+                    marginRight: "1rem",
+                  }),
+                ]}
+              >
+                {label}
+              </TypesetLink>
+            </li>
           ))}
         </ul>
 
         <ContainerWidth
           css={{
             alignSelf: "flex-end",
-
-            gridColumn: "-1 / 7",
+            ...supportsGrid({
+              gridColumn: "1 / -1",
+            }),
           }}
         >
           <p
@@ -161,6 +173,13 @@ export const Footer = props => {
               textTransform: "uppercase",
 
               opacity: 0.5,
+
+              ...onTabletMedia({
+                ...supportsGrid({
+                  marginTop: TOUCH_TARGET,
+                  textAlign: "left",
+                }),
+              }),
             }}
           >
             Copyright © {new Date().getFullYear()}
