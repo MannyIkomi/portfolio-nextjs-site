@@ -6,7 +6,7 @@ import { graphql, Link } from "gatsby"
 import Layout from "../components/Layout"
 import HtmlHead from "../components/HtmlHead"
 import { ProjectCover } from "../components/ProjectCover"
-import { Gallery } from "../components/Gallery"
+import { ProjectList } from "../components/ProjectList"
 import { Footer } from "../components/Footer"
 import smoothscroll from "smoothscroll-polyfill"
 
@@ -301,12 +301,12 @@ const IndexPage = ({ data }) => {
                 <ContentArea css={{ maxWidth: "80rem", padding: "1rem" }}>
                   <ProjectTagHeading>Web Design</ProjectTagHeading>
 
-                  <Gallery>
+                  <ProjectList>
                     {webProjects.map(project => (
                       <ProjectCover {...project} key={project.id} />
                     ))}
-                  </Gallery>
                 </ContentArea>
+                  </ProjectList>
               </SectionBlock>
             </>
           )}
@@ -320,14 +320,14 @@ const IndexPage = ({ data }) => {
                 <ContentArea css={{ maxWidth: "80rem", padding: "1rem" }}>
                   <ProjectTagHeading>Identity Design</ProjectTagHeading>
 
-                  <Gallery>
+                  <ProjectList>
                     {identityProjects
                       .filter(project => !project.feature)
                       .map(project => (
                         <ProjectCover {...project} key={project.id} />
                       ))}
-                  </Gallery>
                 </ContentArea>
+                  </ProjectList>
               </SectionBlock>
             </>
           )}
