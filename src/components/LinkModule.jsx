@@ -8,7 +8,7 @@ import {
   styleTransition,
   typesetHover,
   colors,
-  moduleContainer,
+  moduleContainerStyles,
   onMediaWidth,
   onMedia,
   onHover,
@@ -30,7 +30,7 @@ export const LinkModule = props => {
   return (
     <TypesetLink
       css={{
-        ...moduleContainer(),
+        ...moduleContainerStyles(),
         // ...styleTransition(),
 
         // ...hoverTypesetTransform({
