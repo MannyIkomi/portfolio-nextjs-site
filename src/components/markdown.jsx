@@ -35,7 +35,8 @@ export const Markdown = ({ children, preprocessor, ...props }) => {
       css={{
         "h1,h2,h3,h4": {
           ...CODE_TYPE,
-          color: colors.NAVY_BLUE,
+          color: colors.PRIMARY,
+
           textTransform: "initial",
         },
         "p, ul, ol": {

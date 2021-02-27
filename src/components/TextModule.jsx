@@ -15,25 +15,15 @@ export const TextModule = ({ text }) => {
   return (
     <figure
       css={[
-        moduleContainer(),
+        moduleContainerStyles(),
         {
-          ...maxLineMeasure,
-          color: colors.darkGray,
-          backgroundColor: colors.muteGray,
+          color: colors.NAVY_BLUE,
+          backgroundColor: colors.LIGHT_GRAY,
           padding: "2rem",
         },
       ]}
     >
-      <Markdown
-        css={{
-          "h1, h2, h3, h4, h5": {
-            color: colors.darkGray,
-            fontWeight: 300,
-          },
-        }}
-      >
-        {text}
-      </Markdown>
+      <ModuleMarkdown>{text}</ModuleMarkdown>
     </figure>
   )
 }

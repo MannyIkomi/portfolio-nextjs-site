@@ -4,7 +4,7 @@ import { css, jsx } from "@emotion/core"
 
 import {
   flex,
-  moduleContainer,
+  moduleContainerStyles,
   colors,
   onTabletMedia,
   MENUBAR_HEIGHT,
@@ -21,7 +21,7 @@ export const CaptionModule = ({ image, imageAlt, imageFill, text, type }) => {
   return (
     <figure
       css={[
-        moduleContainer(),
+        moduleContainerStyles(),
         {
           color: colors.NAVY_BLUE,
           backgroundColor: colors.LIGHT_GRAY,
@@ -60,7 +60,7 @@ export const CaptionModule = ({ image, imageAlt, imageFill, text, type }) => {
       >
         <ProjectPhoto
           alt={imageAlt}
-          // css={{
+          // css={
           //   objectFit: imageFill ? "cover" : "contain",
           //   width: "100%",
           //   height: "100%",
@@ -79,13 +79,7 @@ export const CaptionModule = ({ image, imageAlt, imageFill, text, type }) => {
             backgroundColor: colors.LIGHT_GRAY,
           }}
         >
-          <Markdown
-            css={{
-              hangingPunctuation: "first last", // only supported in Safari :(
-            }}
-          >
-            {text}
-          </Markdown>
+          <ModuleMarkdown>{text}</ModuleMarkdown>
         </figcaption>
       </StickyScrollContainer>
     </figure>
