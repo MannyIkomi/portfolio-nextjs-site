@@ -30,19 +30,7 @@ export const styleTransition = (override = {}) => ({
   ...override,
 })
 
-export const moduleContainer = (override = {}) => ({
-  margin: "2rem 0",
-
-  boxShadow: "-0.25rem 0.25rem 1rem 0px hsla(0, 0%, 0%, 0.5)",
-  ...onTabletMedia({
-    margin: "3rem 0",
-    // maxHeight: "80vh",
-  }),
-  ...onDesktopMedia({
-    margin: "4rem 0",
-  }),
-  ...override,
-})
+export const MODULE_SHADOW = "-0.25rem 0.25rem 1rem 0px hsla(0, 0%, 0%, 0.5)"
 
 
 export const maxReadingWidth = {
@@ -65,6 +53,21 @@ export const aspectRatioLetter = {
   paddingBottom: "calc(100% * (17 / 22) - 1px )",
 }
 
+export const moduleContainerStyles = (override = {}) => ({
+  margin: "2rem 0",
+  width: '100%',
+...maxContainerWidth,
+  boxShadow: MODULE_SHADOW,
+  
+  ...onTabletMedia({
+    margin: "3rem 0",
+    // maxHeight: "80vh",
+  }),
+  ...onDesktopMedia({
+    margin: "4rem 0",
+  }),
+  ...override,
+})
 
 export const h1Text = override => ({
   fontSize: "2rem",
