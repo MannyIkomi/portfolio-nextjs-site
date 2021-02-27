@@ -32,7 +32,7 @@ export const linkText = {
   textDecoration: "underline",
   textDecorationThickness: '0.1rem',
   textUnderlineOffset: '0.25rem',
-  textDecorationColor: colors.TURQUOISE,
+  textDecorationColor: colors.ACCENT,
   // text underline new CSS features
   // https://www.youtube.com/watch?v=sZS-7RX_c7g
 
@@ -46,7 +46,7 @@ export const typeset = (override = {}) => ({
 
 export const typesetTransform = (override = {}) => ({
   transformOrigin: "center center",
-    color: colors.TURQUOISE,
+    color: colors.ACCENT,
     ...typeset(),
     ...override,
 })
