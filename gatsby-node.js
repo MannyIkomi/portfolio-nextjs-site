@@ -31,7 +31,7 @@ exports.createPages = async ({ graphql, actions }) => {
     const slug = node.slug
     createPage({
       path: `/${slug}`,
-      component: path.resolve("src/templates/project.jsx"),
+      component: path.resolve("src/templates/ProjectTemplate.jsx"),
       context: { slug },
     })
     // console.log(JSON.stringify(node, null, 4))

@@ -7,22 +7,20 @@ import {
   MENUBAR_HEIGHT,
   flex,
   colors,
-  SANS_HEADING,
-  SERIF_TYPE,
-  FUTURA_BODY_SIZE,
   TOUCH_TARGET,
   onTabletMedia,
   onMedia,
   onSupport,
   onDesktopMedia,
-  tokenize,
+  SANS_TYPE,
+  maxTypeWidth,
 } from "../styles"
 
-import Layout from "../components/layout"
+import Layout from "../components/Layout"
 import HtmlHead from "../components/HtmlHead"
 import { StickyScrollContainer } from "../components/StickyScrollContainer"
 import { StickyMenuBar } from "../components/StickyMenuBar"
-import { ContentArea } from "../components/ContentArea"
+import { ContainerWidth } from "../components/ContainerWidth"
 import { Footer } from "../components/Footer"
 import { ImageModule } from "../components/ImageModule"
 import { CaptionModule } from "../components/CaptionModule"
@@ -33,7 +31,7 @@ import { ProjectCover } from "../components/ProjectCover"
 import { SectionBlock } from "../components/SectionBlock"
 import { ColorOverprint } from "../components/FillOverlay"
 import { TokenList } from "../components/TokenList"
-import Markdown from "../components/markdown"
+import Markdown from "../components/Markdown"
 import { useEffect } from "react"
 import { useState } from "react"
 import {
@@ -81,6 +79,7 @@ const ProjectTemplate = ({ data, site }) => {
     draft,
     subtitle,
     seoDescription,
+    themeColor,
     tags,
     cover,
     slug,
@@ -131,7 +130,7 @@ const ProjectTemplate = ({ data, site }) => {
             css={{
               ...flex("column"),
               alignItems: "center",
-              backgroundColor: colors.muteGray,
+              backgroundColor: colors.LIGHT_GRAY,
             }}
           >
             <header
@@ -144,11 +143,11 @@ const ProjectTemplate = ({ data, site }) => {
                   justifyContent: "center",
                   minHeight: "66vh",
                   width: "100%",
+
                   padding: "2rem",
 
                   textAlign: "center",
 
-                  background: colors.muteGray,
                   // https://aclaes.com/responsive-background-images-with-srcset-and-sizes/
                   background: `url(${responsiveImgSrc})`,
                   backgroundSize: "cover",
@@ -163,24 +162,24 @@ const ProjectTemplate = ({ data, site }) => {
               <ColorOverprint
                 css={[
                   {
-                    backgroundColor: colors.darkGray,
+                    backgroundColor: "rgba(0,0,0,0.9)",
                   },
-                  onSupport("backdrop-filter: grayscale(0.5rem)", {
-                    backgroundColor: colors.mediumGray,
-                    backdropFilter:
-                      "blur(0.5rem) grayscale(100%) brightness(50%)",
+                  onSupport("backdrop-filter: grayscale(50%)", {
+                    backgroundColor: "rgba(0,0,0,0.8)",
+                    backdropFilter: "blur(0.5rem)",
                   }),
                 ]}
               />
-              <ContentArea
+              <ContainerWidth
                 css={{
                   ...flex("column"),
                   justifyContent: "space-around",
 
                   zIndex: 1,
-                  color: colors.muteGray,
+                  color: colors.LIGHT_GRAY_FOREGROUND,
                   minHeight: "50%",
                   height: "100%",
+                  ...maxTypeWidth,
                 }}
               >
                 <h1
@@ -190,8 +189,8 @@ const ProjectTemplate = ({ data, site }) => {
                     //   backgroundColor: colors.orange,
                     // }),
 
-                    ...SANS_HEADING,
-
+                    // ...SANS_HEADING,
+                    color: colors.YELLOW,
                     textAlign: "right",
                     textTransform: "initial",
 
@@ -203,10 +202,11 @@ const ProjectTemplate = ({ data, site }) => {
                 </h1>
                 <h2
                   css={{
-                    ...SERIF_TYPE,
                     textAlign: "right",
                     fontStyle: "italic",
-                    ...FUTURA_BODY_SIZE,
+
+                    ...SANS_TYPE,
+
                     textTransform: "initial",
 
                     marginBottom: "0.5rem",
@@ -233,7 +233,12 @@ const ProjectTemplate = ({ data, site }) => {
                   return module.type === "intro"
                 }) ? (
                   <>
-                    <Markdown css={{ textAlign: "left" }}>
+                    <Markdown
+                      css={{
+                        textAlign: "left",
+                        "h1,h2,h3,h4": { color: colors.YELLOW },
+                      }}
+                    >
                       {
                         modules.filter(module => module.type === "intro")[0]
                           .text
@@ -247,22 +252,20 @@ const ProjectTemplate = ({ data, site }) => {
                     <br />
                   </>
                 )}
-              </ContentArea>
+              </ContainerWidth>
             </header>
 
             <SectionBlock
-              css={{ backgroundColor: colors.darkGray, width: "100%" }}
+              css={{
+                backgroundColor: themeColor || colors.TURQUOISE,
+                width: "100%",
+              }}
             >
-              <ContentArea
+              <ContainerWidth
                 css={{
                   ...flex("column"),
                   alignItems: "center",
 
-                  // position: "relative",
-                  // top: "-25vh",
-
-                  width: "100%",
-                  maxWidth: "80rem",
                   padding: "0 1rem",
 
                   ...onTabletMedia({
@@ -295,14 +298,17 @@ const ProjectTemplate = ({ data, site }) => {
                       )
                   }
                 })}
-              </ContentArea>
+              </ContainerWidth>
             </SectionBlock>
 
-            <footer css={{ width: "100%", backgroundColor: colors.muteGray }}>
+            <footer css={{ width: "100%", backgroundColor: colors.LIGHT_GRAY }}>
               <SectionBlock
-                css={[onMedia("pointer: coarse", { overflow: "hidden" })]}
+                css={[
+                  onMedia("pointer: coarse", { overflow: "hidden" }),
+                  { backgroundColor: colors.TURQUOISE },
+                ]}
               >
-                <ContentArea
+                <ContainerWidth
                   css={[
                     // progressive enhance from single column vertical scroll
                     {
@@ -310,12 +316,15 @@ const ProjectTemplate = ({ data, site }) => {
                     },
                   ]}
                 >
-                  <h1>You might also like…</h1>
-                </ContentArea>
-                <div
+                  <h1 css={{ color: colors.LIGHT_GRAY }}>
+                    You might also like…
+                  </h1>
+                </ContainerWidth>
+                <ul
                   css={[
                     {
                       // progressive enhance from single column vertical scroll
+                      listStyle: "none",
                       ...flex("row"),
                       alignItems: "center",
                       justifyContent: "center",
@@ -345,7 +354,7 @@ const ProjectTemplate = ({ data, site }) => {
                   )
                     .slice(0, 3)
                     .map(related => (
-                      <div
+                      <li
                         key={related.id}
                         css={[
                           {
@@ -368,9 +377,9 @@ const ProjectTemplate = ({ data, site }) => {
                         ]}
                       >
                         <ProjectCover {...related} key={related.id} />
-                      </div>
+                      </li>
                     ))}
-                </div>
+                </ul>
               </SectionBlock>
             </footer>
           </article>
@@ -390,7 +399,7 @@ export const query = graphql`
       id
       draft
       slug
-
+      themeColor
       cover {
         publicURL
         childImageSharp {
