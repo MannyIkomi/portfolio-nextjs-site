@@ -5,7 +5,8 @@
  * See: https://www.gatsbyjs.org/docs/use-static-query/
  */
 
-import "../../src/fonts/Fira_Code/fira_code.css"
+import "../../src/fonts/fira-code-v10-latin/fira-code.css"
+import "../../src/fonts/fira-sans-v10-latin/fira-sans.css"
 import React from "react"
 import PropTypes from "prop-types"
 import Helmet from "react-helmet"
