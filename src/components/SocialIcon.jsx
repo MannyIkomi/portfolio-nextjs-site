@@ -79,6 +79,7 @@ export const SocialIcon = ({
     <a
       href={href}
       title={alt}
+      // aria-label={platform}
       css={{
         display: "block",
         width: "100%",
