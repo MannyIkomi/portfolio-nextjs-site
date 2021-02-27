@@ -106,7 +106,7 @@ const ResumePage = ({ data }) => {
                 ))}
               </nav>
             </header>
-            <ContainerWidth css={{ ...MAX_TEXT_WIDTH }}>
+            <ContainerWidth css={{ ...maxTypeWidth }}>
               <ResumeSection id={`experience`} heading={"Experience"}>
                 {experiences.map(employer => (
                   <Experience {...employer} key={employer.id} />

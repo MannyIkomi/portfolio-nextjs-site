@@ -197,8 +197,7 @@ const IndexPage = ({ data }) => {
                   minHeight: "50vh",
                 }}
               >
-                <ContentArea css={{ maxWidth: "80rem", padding: "1rem" }}>
-                  <ProjectTagHeading>Featured Work</ProjectTagHeading>
+                <ContainerWidth css={{ ...maxContainerWidth, padding: "1rem" }}>
                   {feature.map(project => (
                     <Link
                       to={"/" + project.slug} /* css={{ display: "block" }} */

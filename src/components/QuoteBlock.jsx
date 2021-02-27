@@ -3,7 +3,7 @@ import { css, jsx } from "@emotion/core"
 import React from "react"
 import {
   flex,
-  maxReadingWidth,
+  maxTypeWidth,
   typography,
   SANS_TYPE,
   SERIF_TYPE,

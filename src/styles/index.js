@@ -33,8 +33,11 @@ export const styleTransition = (override = {}) => ({
 export const MODULE_SHADOW = "-0.25rem 0.25rem 1rem 0px hsla(0, 0%, 0%, 0.5)"
 
 
-export const maxReadingWidth = {
-  maxWidth: "72ch",
+export const maxTypeWidth = {
+  maxWidth: MAX_TEXT_LENGTH,
+}
+export const maxContainerWidth = {
+  maxWidth: MAX_VIEW_LENGTH, 
 }
 
 export const ulStyles = {

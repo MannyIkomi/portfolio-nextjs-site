@@ -58,7 +58,7 @@ export const ProjectCover = ({
 
           width: "100%",
           minWidth: "15rem",
-          ...maxLineMeasure,
+          ...maxReadingWidth,
           cursor: "pointer",
           backgroundColor: "white",
 
