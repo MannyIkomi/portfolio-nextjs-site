@@ -7,30 +7,33 @@ import {
   supportsGrid,
   onTabletMedia,
   TOUCH_TARGET,
+  maxContainerWidth,
+  grid,
 } from "../styles"
 
-export const Gallery = ({ children, css, ...props }) => {
+export const ProjectList = ({ children, css, ...props }) => {
   return (
-    <section
-      // className={"gallery"}
+    <ul
+      className={"gallery"}
       css={{
+        listStyle: "none",
         // backgroundColor: colors.darkGray,
-        width: "100%",
         ...flex("column"),
         alignItems: "center",
+        width: "100%",
 
-        ...onTabletMedia({
-          ...supportsGrid({
+        ...onTabletMedia(
+          grid({
             // padding: TOUCH_TARGET,
             gridTemplateColumns: "1fr 1fr",
-            gridGap: `calc(${TOUCH_TARGET} / 2)`,
+            gridGap: `2rem`,
             gridAutoFlow: "row",
-          }),
-        }),
+          })
+        ),
       }}
       {...props}
     >
       {children}
-    </section>
+    </ul>
   )
 }
