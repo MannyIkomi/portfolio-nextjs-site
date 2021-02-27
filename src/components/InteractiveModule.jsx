@@ -2,7 +2,7 @@
 import React, { Fragment } from "react"
 import { jsx } from "@emotion/core"
 
-import { mixin, moduleContainer, flex } from "../styles"
+import { mixin, moduleContainerStyles, flex } from "../styles"
 import { moduleProps } from "../util/props"
 import ProjectPhoto from "./ProjectPhoto"
 
@@ -11,7 +11,7 @@ export const InteractiveModule = props => {
   return (
     <figure
       css={[
-        moduleContainer(),
+        moduleContainerStyles(),
         {
           // how to make container resizeable?
           display: "block",
