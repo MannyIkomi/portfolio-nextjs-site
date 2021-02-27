@@ -12,7 +12,7 @@ import {
 import { getMonthYear } from "../util/dates"
 import { ResumeTitle } from "./ResumeTitle"
 import { TimeFrame } from "./TimeFrame"
-import Markdown from "./markdown"
+import Markdown from "./Markdown"
 import useToggleSwitch from "../hooks/useToggleSwitch"
 
 export const Education = props => {

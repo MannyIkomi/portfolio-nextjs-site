@@ -11,7 +11,7 @@ import {
   MAX_TEXT_WIDTH,
 } from "../styles"
 
-import Layout from "../components/layout"
+import Layout from "../components/Layout"
 import HtmlHead from "../components/HtmlHead"
 import { StickyScrollContainer } from "../components/StickyScrollContainer"
 import { StickyMenuBar } from "../components/StickyMenuBar"

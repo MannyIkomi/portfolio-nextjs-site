@@ -1,10 +1,9 @@
 import React from "react"
 
-import Layout from "../components/layout"
+import Layout from "../components/Layout"
 import HtmlHead from "../components/HtmlHead"
 import { TypesetLink } from "../components/TypesetLink"
 import { colors, flex, SANS_TYPE } from "../styles"
-import { fon } from "../styles/index"
 
 const NotFoundPage = ({ data }) => (
   <Layout>

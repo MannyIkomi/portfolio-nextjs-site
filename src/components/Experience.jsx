@@ -11,7 +11,7 @@ import {
   MENUBAR_HEIGHT,
   onDesktopMedia,
 } from "../styles"
-import { Markdown } from "./markdown"
+import { Markdown } from "./Markdown"
 import useToggleSwitch from "../hooks/useToggleSwitch"
 import { TimeFrame } from "./TimeFrame"
 import { ResumeTitle } from "./ResumeTitle"

@@ -3,7 +3,7 @@ import { jsx, keyframes } from "@emotion/core"
 import React, { useEffect, useState } from "react"
 import { graphql, Link } from "gatsby"
 
-import Layout from "../components/layout"
+import Layout from "../components/Layout"
 import HtmlHead from "../components/HtmlHead"
 import { ProjectCover } from "../components/ProjectCover"
 import { Gallery } from "../components/Gallery"

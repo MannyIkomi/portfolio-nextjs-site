@@ -11,7 +11,7 @@ import {
 } from "../styles"
 import { moduleProps } from "../util/props"
 
-import Markdown from "./markdown"
+import ModuleMarkdown from "./ModuleMarkdown"
 import StickyScrollContainer from "./StickyScrollContainer"
 import { ProjectPhoto } from "./ProjectPhoto"
 

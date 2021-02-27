@@ -2,8 +2,13 @@
 import React, { Fragment } from "react"
 import { css, jsx } from "@emotion/core"
 
-import Markdown from "./markdown"
-import { colors, moduleContainer, typography, maxLineMeasure } from "../styles"
+import ModuleMarkdown from "./ModuleMarkdown"
+import {
+  colors,
+  moduleContainerStyles,
+  typography,
+  maxLineMeasure,
+} from "../styles"
 import { moduleProps } from "../util/props"
 
 export const TextModule = ({ text }) => {
