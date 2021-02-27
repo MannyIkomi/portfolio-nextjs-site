@@ -133,29 +133,46 @@ const AboutPage = ({ data }) => {
               >
                 {bio}
               </Markdown>
-            </ContentArea>
-          </SectionBlock>
-          <SectionBlock
-            css={{
-              backgroundColor: colors.LIGHT_GRAY_FOREGROUND,
-              minHeight: "100vh",
-              ...onTabletMedia({
-                minHeight: "66vh",
-              }),
-              // ...onMedia("orientation: landscape", {
-              //   minHeight: "100vh",
-              // }),
-            }}
-          >
-            <ContentArea>
-              <QuoteBlock cite={"R. Buckminster Fuller"}>
-                A designer is an emerging synthesis of artist, inventor,
-                mechanic, objective economist, and evolutionary strategist.
-              </QuoteBlock>
-            </ContentArea>
+            </ContainerWidth>
           </SectionBlock>
         </main>
       </StickyScrollContainer>
+      <SectionBlock
+        css={[
+          {
+            backgroundColor: colors.TURQUOISE,
+            color: colors.LIGHT_GRAY,
+            padding: TOUCH_TARGET,
+            ...supportsGrid({
+              padding: "1rem",
+            }),
+          },
+        ]}
+      >
+        <ContainerWidth
+          css={{
+            minHeight: "66vh",
+            ...flex("column"),
+            justifyContent: "center",
+
+            ...grid12Columns({
+              alignItems: "center",
+            }),
+
+            ...onTabletMedia({
+              minHeight: "33vh",
+            }),
+          }}
+        >
+          <QuoteBlock
+            cite={"R. Buckminster Fuller"}
+            css={supportsGrid({ gridColumn: "2 / 12" })}
+          >
+            A designer is an emerging synthesis of artist, inventor, mechanic,
+            objective economist, and evolutionary strategist.
+          </QuoteBlock>
+        </ContainerWidth>
+      </SectionBlock>
       <Footer />
     </Layout>
   )

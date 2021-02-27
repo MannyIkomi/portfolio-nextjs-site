@@ -98,6 +98,7 @@ export const Footer = props => {
               ...onTabletMedia({
                 gridRow: 1,
                 gridColumn: "-1 / 10 ",
+                justifyContent: "flex-end",
               }),
             }),
           ]}
@@ -110,6 +111,9 @@ export const Footer = props => {
                 svg: { fill: colors.YELLOW },
                 marginRight: "1rem",
                 maxWidth: "2rem",
+                ...supportsGrid(
+                  onTabletMedia({ marginLeft: "1rem", marginRight: 0 })
+                ),
               }}
             />
           ))}
@@ -128,7 +132,6 @@ export const Footer = props => {
                 gridRow: 1,
                 gridColumn: "4 / 8",
                 ...flex("row"),
-                //   justifyContent: "space-between",
               }),
             }),
           ]}
