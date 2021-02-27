@@ -16,19 +16,24 @@ import {
   onTabletMedia,
   TOUCH_TARGET,
   colors,
-  SANS_HEADING,
   flex,
   onMedia,
   PROJECT_SHADOW,
-  FUTURA_BODY_SIZE,
   styleTransition,
   onDesktopMedia,
-  maxLineMeasure,
+  maxReadingWidth,
   SANS_TYPE,
+  typography,
+  CODE_TYPE,
+  onHover,
+  grid12Columns,
+  maxContainerWidth,
+  onSupport,
+  maxTypeWidth,
 } from "../styles"
 import { StickyScrollContainer } from "../components/StickyScrollContainer"
 import { StickyMenuBar } from "../components/StickyMenuBar"
-import { ContentArea } from "../components/ContentArea"
+import { ContainerWidth } from "../components/ContainerWidth"
 import { SectionBlock } from "../components/SectionBlock"
 import ProjectPhoto from "../components/ProjectPhoto"
 import { TokenList } from "../components/TokenList"
@@ -36,6 +41,10 @@ import { DesktopMenu } from "../components/DesktopMenu"
 
 import { ProjectTagHeading } from "../components/ProjectTagHeading"
 import { SectionBreak } from "../components/SectionBreak"
+import { QuoteBlock } from "../components/QuoteBlock"
+import { useSocialMedia } from "../hooks/useSocialMedia"
+import { TypesetLink } from "../components/TypesetLink"
+import { List } from "../components/List"
 
 // console.clear()
 
@@ -45,6 +54,7 @@ const IndexPage = ({ data }) => {
   )
 
   const [selectedProjects, setSelectedProjects] = useState(cmsProjects)
+  const socials = useSocialMedia()
   const [scrollId, setScrollId] = useState("")
 
   const useScrollToId = elementId => {
@@ -83,12 +93,10 @@ const IndexPage = ({ data }) => {
   const heroTypesetAnimation = (overrides = {}) => {
     const typeset = keyframes({
       from: {
-        transform: "rotateX(180deg) translateY(-28%)", //translate adjusts optical baseline to the x-height when flipped
+        transform: "rotateX(180deg)",
       },
       to: {
-        // transform: "rotateX(0)",
-
-        transform: "rotateX(0) translateY(0)",
+        transform: "rotateX(0)",
         color: colors.YELLOW,
       },
     })
@@ -97,7 +105,7 @@ const IndexPage = ({ data }) => {
       display: "inline-block",
       transformOrigin: "center center",
 
-      transform: "rotateX(180deg) translateY(-28%)",
+      transform: "rotateX(180deg)",
       color: colors.orange50,
 
       animationName: typeset,
@@ -108,14 +116,12 @@ const IndexPage = ({ data }) => {
       ...overrides,
     }
   }
-  const WEB_SECTION = "interactive"
-  const IDENTITY_SECTION = "identity"
 
   return (
     <Layout>
       <HtmlHead
         title="Portfolio"
-        description={`I create thoughtful visual language that drives delightful brand experiences.`}
+        description={`I design comprehensive brand experiences driven by thoughtful visual language.`}
         project={feature[0]}
       />
       <StickyScrollContainer
@@ -136,18 +142,17 @@ const IndexPage = ({ data }) => {
         <main
           css={{
             width: "100%",
-            backgroundColor: colors.darkGray,
           }}
         >
           <SectionBlock
             css={{
-              minHeight: "25vh",
+              minHeight: "50vh",
               padding: "1rem",
               position: "relative",
               backgroundColor: colors.NAVY_BLUE,
             }}
           >
-            <ContentArea
+            <ContainerWidth
               css={{
                 ...flex("column"),
                 justifyContent: "space-around",
@@ -156,6 +161,11 @@ const IndexPage = ({ data }) => {
             >
               <h1
                 css={[
+                  {
+                    ...SANS_TYPE,
+                    color: colors.LIGHT_GRAY,
+                    fontWeight: 100,
+                  },
                   onTabletMedia({
                     fontSize: "5vmin",
                     margin: `${TOUCH_TARGET} 0`,
@@ -166,41 +176,39 @@ const IndexPage = ({ data }) => {
                   }),
                 ]}
               >
-                I create{" "}
+                I design comprehensive{" "}
                 <span
                   css={[
-                    { font: "inherit" },
+                    CODE_TYPE,
                     heroTypesetAnimation({ animationDelay: "1s" }),
                   ]}
                 >
-                  thoughtful&nbsp;
-                </span>
-                visual language that drives{" "}
+                  brand experiences
+                </span>{" "}
+                driven by thoughtful{" "}
                 <span
                   css={[
-                    { font: "inherit" },
+                    CODE_TYPE,
                     heroTypesetAnimation({ animationDelay: "2s" }),
                   ]}
                 >
-                  delightful&nbsp;
+                  visual language.
                 </span>
-                brand experiences.
               </h1>
-            </ContentArea>
+            </ContainerWidth>
           </SectionBlock>
           {feature.length > 0 && (
             <>
-              <SectionBreak id={"feature"} />
               <SectionBlock
                 css={{
-                  backgroundColor: colors.darkGray,
+                  backgroundColor: colors.NAVY_BLUE,
                   minHeight: "50vh",
                 }}
               >
                 <ContainerWidth css={{ ...maxContainerWidth, padding: "1rem" }}>
                   {feature.map(project => (
                     <Link
-                      to={"/" + project.slug} /* css={{ display: "block" }} */
+                      to={"/" + project.slug}
                       className={"project-cover"}
                       css={{
                         display: "block",
@@ -216,11 +224,11 @@ const IndexPage = ({ data }) => {
                     >
                       <figure
                         css={{
-                          // img: {},
                           ...styleTransition(),
                           ...onMediaWidth(
                             "800px",
                             supportsGrid({
+                              display: "grid",
                               margin: 0,
                               gridTemplateColumns: "1fr 1fr",
                               gridGap: `calc(${TOUCH_TARGET} / 2)`,
@@ -228,12 +236,9 @@ const IndexPage = ({ data }) => {
                           ),
                           ...onMedia("hover: hover", {
                             "&:hover": {
-                              // boxShadow:
-                              // img: {
                               ...styleTransition(),
                               transform: "scale(1.025)",
                               transformOrigin: "center",
-                              // },
                             },
                           }),
                         }}
@@ -246,23 +251,24 @@ const IndexPage = ({ data }) => {
                           css={{
                             ...flex("column"),
                             justifyContent: "flex-end",
-                            color: colors.muteGray,
+                            color: colors.LIGHT_GRAY,
                             marginTop: "1rem",
                           }}
                         >
                           <h3
                             css={{
-                              ...SANS_HEADING,
-                              color: colors.muteGray,
-                              ...FUTURA_BODY_SIZE,
+                              ...CODE_TYPE,
+                              color: colors.LIGHT_GRAY_FOREGROUND,
+
                               textTransform: "initial",
                             }}
                           >
-                            {project.title}
+                            {project.title} =>
                           </h3>
                           <h4
                             css={{
-                              color: colors.orange,
+                              ...SANS_TYPE,
+                              color: colors.YELLOW,
                               fontSize: "2rem",
                               fontStyle: "italic",
 
@@ -284,28 +290,30 @@ const IndexPage = ({ data }) => {
                       </figure>
                     </Link>
                   ))}
-                </ContentArea>
+                </ContainerWidth>
               </SectionBlock>
             </>
           )}
-          {/* WEB DESIGN  */}
           {webProjects.length > 0 && (
             <>
-              <SectionBreak id={WEB_SECTION} />
               <SectionBlock
                 css={{
-                  backgroundColor: colors.darkGray,
+                  backgroundColor: colors.NAVY_BLUE,
                 }}
               >
-                <ContentArea css={{ maxWidth: "80rem", padding: "1rem" }}>
+                <ContainerWidth css={{ padding: "1rem" }}>
                   <ProjectTagHeading>Web Design</ProjectTagHeading>
 
                   <ProjectList>
                     {webProjects.map(project => (
-                      <ProjectCover {...project} key={project.id} />
+                      <ProjectCover
+                        {...project}
+                        key={project.id}
+                        css={maxTypeWidth}
+                      />
                     ))}
-                </ContentArea>
                   </ProjectList>
+                </ContainerWidth>
               </SectionBlock>
             </>
           )}
@@ -316,35 +324,40 @@ const IndexPage = ({ data }) => {
                   backgroundColor: colors.NAVY_BLUE,
                 }}
               >
-                <ContentArea css={{ maxWidth: "80rem", padding: "1rem" }}>
+                <ContainerWidth css={{ padding: "1rem" }}>
                   <ProjectTagHeading>Identity Design</ProjectTagHeading>
 
                   <ProjectList>
                     {identityProjects
                       .filter(project => !project.feature)
                       .map(project => (
-                        <ProjectCover {...project} key={project.id} />
+                        <ProjectCover
+                          {...project}
+                          css={maxTypeWidth}
+                          key={project.id}
+                        />
                       ))}
-                </ContentArea>
                   </ProjectList>
+                </ContainerWidth>
               </SectionBlock>
             </>
           )}
-          <SectionBlock css={{ minHeight: "100vh" }}>
+          <SectionBlock css={{ minHeight: "50vh" }}>
             {/* CONTACT SECTION */}
-            <ContentArea
+            <ContainerWidth
               css={{
                 ...flex("column"),
                 justifyContent: "space-around",
                 textAlign: "center",
               }}
             >
-              <h2>Get In Touch</h2>
+              <h2 css={{ color: colors.NAVY_BLUE }}>Contact Me</h2>
               <ul
                 css={{
                   listStyle: "none",
                   ...flex("column"),
                   alignItems: "center",
+                  flexWrap: "wrap",
                 }}
               >
                 {socials
@@ -360,11 +373,13 @@ const IndexPage = ({ data }) => {
                           border: `0.25rem solid ${colors.TURQUOISE}`,
                           whiteSpace: "nowrap",
 
-                          fontWeight: 500,
+                          fontWeight: 700,
                           lineHeight: 1,
                           textTransform: "uppercase",
                           textDecoration: "none",
                           color: colors.TURQUOISE,
+
+                          marginTop: "3vh",
 
                           ...onHover({
                             backgroundColor: colors.TURQUOISE,
@@ -380,7 +395,7 @@ const IndexPage = ({ data }) => {
                     </li>
                   ))}
               </ul>
-              <button
+              {/* <button
                 onClick={e => console.log(e)}
                 css={{
                   ...styleTransition(),

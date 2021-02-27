@@ -2,6 +2,7 @@
 import React from "react"
 import { jsx } from "@emotion/core"
 import { graphql } from "gatsby"
+import TypeMotif from "../../static/typemotif.svg"
 
 import {
   supportsGrid,
@@ -10,16 +11,20 @@ import {
   flex,
   onDesktopMedia,
   h1Text,
+  TOUCH_TARGET,
+  grid12Columns,
+  maxTypeWidth,
+  grid,
 } from "../styles"
-import Layout from "../components/layout"
+import Layout from "../components/Layout"
 import HtmlHead from "../components/HtmlHead"
 import { StickyScrollContainer } from "../components/StickyScrollContainer"
 import { StickyMenuBar } from "../components/StickyMenuBar"
 
 import { Footer } from "../components/Footer"
-import Markdown from "../components/markdown"
+import Markdown from "../components/Markdown"
 
-import { ContentArea } from "../components/ContentArea"
+import { ContainerWidth } from "../components/ContainerWidth"
 import { SectionBlock } from "../components/SectionBlock"
 import { DesktopMenu } from "../components/DesktopMenu"
 import { QuoteBlock } from "../components/QuoteBlock"
@@ -28,8 +33,6 @@ const AboutPage = ({ data }) => {
   const { bio, cardsCollected, heading, photo } = data.strapiAbout
 
   const imageProps = photo.childImageSharp ? photo.childImageSharp.fluid : photo // for fallback GIF support
-
-  const inspirations = data.allStrapiInspiration.nodes
 
   return (
     <Layout>
@@ -58,55 +61,83 @@ const AboutPage = ({ data }) => {
           <SectionBlock
             css={{
               ...flex("column"),
-              backgroundColor: colors.darkGray,
+              backgroundColor: colors.LIGHT_GRAY_FOREGROUND,
               minHeight: "100vh",
 
               position: "relative",
             }}
           >
-            <ContentArea
+            <ContainerWidth
               css={{
-                ...onTabletMedia({
-                  ...supportsGrid({
-                    gridTemplateAreas: `'headshot h1' 'void body'`,
+                ...onTabletMedia(
+                  grid12Columns({
                     gridTemplateColumns: "1fr 2fr",
-
-                    maxWidth: "60rem",
-                  }),
-                }),
+                    gridTemplateAreas: `'headshot h1' 'VOID body'`,
+                    justifyContent: "end",
+                  })
+                ),
               }}
             >
-              <div
+              <div // portrait container
                 css={{
-                  alignSelf: "flex-end",
-                  margin: "0 0 auto auto",
-
-                  // position: "relative",
-                  width: "50%",
+                  position: "relative",
+                  width: "33%",
                   maxWidth: "20rem",
+
+                  // []fix motif/border on mobile
                   ...onTabletMedia({
                     ...supportsGrid({
                       width: "initial",
                       gridArea: "headshot",
-                      alignSelf: "flex-end",
-                      justifySelf: "flex-end",
+                      alignSelf: "end",
+                      justifySelf: "end",
                     }),
                   }),
                 }}
               >
+                <div
+                  // background motif
+                  css={{
+                    position: "absolute",
+                    bottom: "-20%",
+                    left: "-20%",
+                    width: "100%",
+                    height: "100%",
+
+                    backgroundImage: `url(${TypeMotif})`,
+                    backgroundRepeat: "repeat",
+                    backgroundSize: "25%",
+                  }}
+                />
                 <img
-                  css={{ display: "block", width: "100%", height: "auto" }}
-                  alt="Manny smiling at you"
+                  css={{
+                    position: "relative",
+                    display: "block",
+                    width: "100%",
+                    height: "auto",
+                  }}
+                  alt="Manny smiling at you!"
                   {...imageProps}
+                />
+                <div
+                  css={{
+                    position: "absolute",
+                    top: 0,
+                    left: 0,
+                    width: "100%",
+                    height: "100%",
+                    border: `0.5rem solid ${colors.YELLOW}`,
+                  }}
                 />
               </div>
               <h1
                 css={{
                   whiteSpace: "pre-wrap", // preserves intentional linebreaks
-                  padding: "1rem",
                   color: colors.TURQUOISE,
+                  margin: "1rem 0",
 
                   ...onTabletMedia({
+                    margin: "1rem 1rem 0 1rem",
                     fontSize: "5vmin !important",
                     ...supportsGrid({
                       gridArea: "h1",
@@ -122,9 +153,10 @@ const AboutPage = ({ data }) => {
                   markdown.replace("{{CARDS}}", cardsCollected)
                 }
                 css={{
-                  color: colors.muteGray,
-                  padding: "1rem",
+                  color: colors.NAVY_BLUE,
+                  ...maxTypeWidth,
                   ...onTabletMedia({
+                    padding: "1rem",
                     ...supportsGrid({
                       gridArea: "body",
                     }),

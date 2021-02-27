@@ -18,29 +18,36 @@ export const QuoteBlock = props => {
     <blockquote
       css={[
         {
-          ...flex("column"),
-          alignItems: "center",
-
           // quote body
           ...SANS_TYPE,
-          hangingPunctuation: "first", //only supported in safari
           fontSize: "2rem",
           fontStyle: "normal",
           fontWeight: 200,
 
+          textAlign: "left",
+
+          hangingPunctuation: "first", //only supported in safari
           lineHeight: 1.5,
+
           cite: {
+            display: "block",
             ...SANS_TYPE,
             fontStyle: "italic",
             fontWeight: 200,
-
-            alignSelf: "flex-end",
+            textAlign: "right",
+            marginLeft: "auto",
           },
         },
       ]}
       {...rest}
     >
-      “{children || quote}” {cite && <cite>— {cite} </cite>}
+      “{children || quote}”{" "}
+      {cite && (
+        <>
+          <br />
+          <cite>— {cite}</cite>
+        </>
+      )}
     </blockquote>
   )
 }

@@ -1,10 +1,9 @@
 import React from "react"
 import { Link } from "gatsby"
 import { css } from "@emotion/core"
-import Img from "gatsby-image"
 
-import { useHoverState } from "../hooks/useHoverState"
-import { OrangeOverprint } from "./FillOverlay"
+import { OverlayFill } from "./FillOverlay"
+
 import { ProjectPhoto } from "./ProjectPhoto"
 import { TokenList } from "./TokenList"
 import {
@@ -14,13 +13,15 @@ import {
   SERIF_HEADING,
   colors,
   onTabletMedia,
-  maxLineMeasure,
+  maxReadingWidth,
   onMedia,
   styleTransition,
   onMediaWidth,
   TOUCH_TARGET,
   PROJECT_SHADOW,
   FUTURA_BODY_SIZE,
+  SANS_TYPE,
+  CODE_TYPE,
 } from "../styles"
 
 export const ProjectCover = ({
@@ -33,6 +34,7 @@ export const ProjectCover = ({
   coverAlt,
   draft,
   tags,
+  seoDescription,
   ...props
 }) => {
   // const [isHovered, handleHover] = useHoverState()
@@ -48,6 +50,7 @@ export const ProjectCover = ({
           margin: "1rem",
         }),
       }}
+      {...props}
     >
       <figure
         className={"project-cover"}
@@ -62,11 +65,11 @@ export const ProjectCover = ({
           cursor: "pointer",
           backgroundColor: "white",
 
-          boxShadow: PROJECT_SHADOW,
+          // boxShadow: PROJECT_SHADOW,
 
           ...onMedia("hover: none", {
             // user agent does not have :hover (touch devices)
-            ".willHide.OrangeOverprint": {
+            ".willHide.overlayFill": {
               opacity: 0,
             },
             ".willHide": {
@@ -99,9 +102,8 @@ export const ProjectCover = ({
           }),
         }}
       >
-        <ProjectPhoto alt={coverAlt} {...imageProps} />
-
-        <OrangeOverprint className={"willHide OrangeOverprint"} />
+        <ProjectPhoto className={"photo"} alt={coverAlt} {...imageProps} />
+        <OverlayFill className={"willHide overlayFill"} />
 
         <figcaption
           className={"willHide"}
@@ -109,44 +111,48 @@ export const ProjectCover = ({
             position: "absolute",
             bottom: 0,
             left: 0,
-
             padding: "1rem",
 
-            color: colors.muteGray,
-
-            h3: {
-              ...SANS_HEADING,
-              color: colors.muteGray,
-              ...FUTURA_BODY_SIZE,
+            color: colors.DOMINANT,
+          }}
+        >
+          <h3
+            css={{
+              ...CODE_TYPE,
+              fontSize: "1.33rem",
+              fontWeight: 800,
               lineHeight: 1.2,
               textTransform: "initial",
-              // fontWeight: "bold",
-            },
-            h4: {
-              ...SERIF_HEADING,
-              color: colors.muteGray,
+            }}
+          >
+            {title} =>
+          </h3>
+          <h4
+            css={{
+              ...SANS_TYPE,
+              color: colors.ACCENT,
               fontSize: "1.66rem",
               ...onTabletMedia({
                 fontSize: "2rem",
                 lineHeight: 1.2,
-                // fontSize: "1.33rem",
               }),
               textTransform: "initial",
               fontStyle: "italic",
-              fontWeight: 100,
-            },
-          }}
-        >
-          <h3>{title}</h3>
-          <h4>{subtitle}</h4>
+              fontWeight: 200,
+            }}
+          >
+            {subtitle}
+          </h4>
+          {/* {seoDescription  && <p>{seoDescription}</p>} */}
+
           {tags && (
-            <TokenList css={{ li: { backgroundColor: colors.orange80 } }}>
+            <TokenList>
               {tags.map(({ design, detail }) => detail || design)}
             </TokenList>
           )}
 
           {draft && (
-            <span style={{ color: "blue", textTransform: "uppercase" }}>
+            <span style={{ color: "red", textTransform: "uppercase" }}>
               DRAFT
             </span>
           )}
