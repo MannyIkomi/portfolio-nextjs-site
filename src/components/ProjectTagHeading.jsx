@@ -17,7 +17,7 @@ export const ProjectTagHeading = ({ children, ...restProps }) => {
             fontSize: "3rem",
           }),
         },
-        { textAlign: "right", marginBottom: "1rem", color: colors.YELLOW },
+        { textAlign: "left", marginBottom: "1rem", color: colors.YELLOW },
         onMediaWidth("500px", { textAlign: "center" }),
       ]}
       {...restProps}

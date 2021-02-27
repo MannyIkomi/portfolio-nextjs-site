@@ -18,7 +18,8 @@ export const TokenList = ({ children, ...restProps }) => {
               ...CODE_TYPE,
               textTransform: "uppercase",
               fontSize: "1rem",
-              fontWeight: 500,
+              fontWeight: 400,
+              whiteSpace: "nowrap",
 
               margin: "0.33rem 0",
               marginRight: "0.66rem",

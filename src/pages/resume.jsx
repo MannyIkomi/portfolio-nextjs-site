@@ -9,6 +9,7 @@ import {
   colors,
   onDesktopMedia,
   MAX_TEXT_WIDTH,
+  maxTypeWidth,
 } from "../styles"
 
 import Layout from "../components/Layout"
@@ -16,9 +17,8 @@ import HtmlHead from "../components/HtmlHead"
 import { StickyScrollContainer } from "../components/StickyScrollContainer"
 import { StickyMenuBar } from "../components/StickyMenuBar"
 import { TypesetLink } from "../components/TypesetLink"
-import { List } from "../components/List"
+
 import { Footer } from "../components/Footer"
-import { SectionBlock } from "../components/SectionBlock"
 import { ContainerWidth } from "../components/ContainerWidth"
 import { DesktopMenu } from "../components/DesktopMenu"
 

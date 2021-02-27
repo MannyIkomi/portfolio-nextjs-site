@@ -20,7 +20,7 @@ const positionOverlay = override =>
   })
 
 export const ColorOverprint = ({ children, ...restProps }) => (
-  <div css={[positionOverlay(), { mixBlendMode: "multiply" }]} {...restProps}>
+  <div css={[positionOverlay()]} {...restProps}>
     {children}
   </div>
 )

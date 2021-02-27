@@ -55,7 +55,7 @@ export const DesktopMenu = ({ ...restProps }) => {
       />
       <ul css={{ ...flex("column"), alignItems: "flex-start" }}>
         {MENU_LINKS.map(([label, path]) => (
-          <li>
+          <li key={label}>
             <TypesetLink
               css={[
                 menuLink,
