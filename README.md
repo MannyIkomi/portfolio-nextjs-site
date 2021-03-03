@@ -1,8 +1,6 @@
-Developers usually put important documentation, usage info, and how-to here, but since I'm a designer I'll tell you *why* .
+# Portfolio Site v2.5
 
-# Portfolio Site v2
-
-## Tools and Technologies
+## The Stack
 
 - [x] [React – JavaScript library for building UI's](https://reactjs.org/)
 - [x] [Gatsby – Static site generator framework](https://www.gatsbyjs.org/)
