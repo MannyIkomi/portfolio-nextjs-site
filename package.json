@@ -1,7 +1,7 @@
 {
   "name": "portfolio-site",
-  "version": "2.0.0",
-  "description": "Portfolio site cms backend",
+  "version": "2.5.0",
+  "description": "Portfolio Site",
   "author": "Manny Ikomi",
   "license": "ISC",
   "engines": {
