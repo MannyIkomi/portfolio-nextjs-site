@@ -1,25 +1,19 @@
+/** @jsx jsx */
 import React from "react"
 import { Link } from "gatsby"
-import { css } from "@emotion/core"
+import { css, jsx } from "@emotion/core"
 
 import { OverlayFill } from "./FillOverlay"
 
 import { ProjectPhoto } from "./ProjectPhoto"
 import { TokenList } from "./TokenList"
 import {
-  aspectRatioLetter,
-  typography,
-  SANS_HEADING,
-  SERIF_HEADING,
   colors,
   onTabletMedia,
   maxReadingWidth,
   onMedia,
   styleTransition,
-  onMediaWidth,
   TOUCH_TARGET,
-  PROJECT_SHADOW,
-  FUTURA_BODY_SIZE,
   SANS_TYPE,
   CODE_TYPE,
 } from "../styles"
