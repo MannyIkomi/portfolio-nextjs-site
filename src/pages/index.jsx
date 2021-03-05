@@ -30,6 +30,7 @@ import {
   maxContainerWidth,
   onSupport,
   maxTypeWidth,
+  typesetAnimation,
 } from "../styles"
 import { StickyScrollContainer } from "../components/StickyScrollContainer"
 import { StickyMenuBar } from "../components/StickyMenuBar"
@@ -89,33 +90,6 @@ const IndexPage = ({ data }) => {
   //     ({ design }) => design !== "Identity" && design !== "Interactive"
   //   )
   // )
-
-  const heroTypesetAnimation = (overrides = {}) => {
-    const typeset = keyframes({
-      from: {
-        transform: "rotateX(180deg)",
-      },
-      to: {
-        transform: "rotateX(0)",
-        color: colors.YELLOW,
-      },
-    })
-
-    return {
-      display: "inline-block",
-      transformOrigin: "center center",
-
-      transform: "rotateX(180deg)",
-      color: colors.orange50,
-
-      animationName: typeset,
-      animationDuration: "300ms",
-      animationFillMode: "forwards",
-      animationIterationCount: 1,
-
-      ...overrides,
-    }
-  }
 
   return (
     <Layout>
@@ -180,7 +154,10 @@ const IndexPage = ({ data }) => {
                 <span
                   css={[
                     CODE_TYPE,
-                    heroTypesetAnimation({ animationDelay: "1s" }),
+                    typesetAnimation({
+                      color: colors.YELLOW,
+                      animationDelay: "1s",
+                    }),
                   ]}
                 >
                   brand experiences
@@ -189,7 +166,10 @@ const IndexPage = ({ data }) => {
                 <span
                   css={[
                     CODE_TYPE,
-                    heroTypesetAnimation({ animationDelay: "2s" }),
+                    typesetAnimation({
+                      animationDelay: "2s",
+                      color: colors.YELLOW,
+                    }),
                   ]}
                 >
                   visual language.

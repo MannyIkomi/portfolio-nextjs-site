@@ -1,5 +1,6 @@
 import { colors } from "./colors"
 import { onHover } from "./mixin";
+import { keyframes } from "@emotion/core";
 
 export const SERIF_TYPE = { fontFamily: "baskerville-urw, Georgia, serif" }
 export const SANS_TYPE = {
@@ -53,11 +54,33 @@ export const typesetTransform = (override = {}) => ({
 
 export const hoverTypesetTransform = (override ={}) => ({
   ...onHover({
-
     ...typesetTransform(),
     ...override
   })
 })
+
+export function typesetAnimation(overrides = {}) {
+  const typesetKeyframes = keyframes({
+    from: {
+      ...typeset()
+    },
+    to: {
+      transform: "rotateX(0)",
+    },
+  })
+
+  return {
+    display: "inline-block",
+    ...typeset(),
+
+    animationName: typesetKeyframes,
+    animationDuration: "300ms",
+    animationFillMode: "forwards",
+    animationIterationCount: 1,
+
+    ...overrides,
+  }
+}
 
 export const resumeContentHeading = {
   ...SANS_TYPE,
