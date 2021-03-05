@@ -24,12 +24,7 @@ export const GLOBAL = {
     // best to clear styling an re-apply using composition
     color: "inherit",
     textDecoration: `none`,
-    // textDecoration: `underline solid ${colors.orange}`,
-    // textDecorationColor: colors.orange,
-    // textDecorationStyle: "solid",
-    "&:hover": {
-      color: colors.YELLOW,
-    },
+    
   },
   button: {
     display: "inline-block",
