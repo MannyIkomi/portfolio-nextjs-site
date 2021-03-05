@@ -107,7 +107,7 @@ export const ProjectCover = ({
             left: 0,
             padding: "1rem",
 
-            color: colors.DOMINANT,
+            color: colors.PRIMARY,
           }}
         >
           <h3
@@ -137,7 +137,6 @@ export const ProjectCover = ({
           >
             {subtitle}
           </h4>
-          {/* {seoDescription  && <p>{seoDescription}</p>} */}
 
           {tags && (
             <TokenList>
