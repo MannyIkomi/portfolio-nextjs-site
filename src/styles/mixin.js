@@ -57,5 +57,4 @@ export const grid12Columns = (styles = {}) => supportsGrid(
     })
 )
 
-
 export const positionSticky = (top = 0) => ({ position: "sticky", top })

@@ -12,7 +12,7 @@ export const SERIF_HEADING = { fontFamily: "baskerville-urw, serif" }
 
 export const CODE_TYPE = {
   fontFamily: 'Fira Code, monospace',
-  fontFeatureSettings: `calt 1`, /* Enable ligatures for IE 10+, Edge */
+  // fontFeatureSettings: `calt 1`, /* Enable ligatures for IE 10+, Edge */
   textRendering: 'optimizeLegibility', /* Force ligatures for Webkit, Blink, Gecko */
   fontVariantLigatures: 'contextual',
 }
@@ -41,7 +41,7 @@ export const linkText = {
 
 export const typeset = (override = {}) => ({
   transformOrigin: "center center",
-  transform: "perspective(10vw) rotateX(180deg)", 
+  transform: "perspective(40rem) rotateX(180deg)", 
   ...override,
 })
 
