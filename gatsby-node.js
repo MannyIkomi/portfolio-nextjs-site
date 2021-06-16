@@ -1,4 +1,19 @@
+require("dotenv").config({
+  path: `.env.${process.env.NODE_ENV}`,
+})
+
 const path = require("path")
+
+const { Client } = require("@notionhq/client")
+const notion = new Client({ auth: process.env.NOTION_KEY });
+
+(async () => {
+  const databaseId = process.env.NOTION_DB_ID
+  const response = await notion.databases.retrieve({ database_id: databaseId });
+  console.log(response);
+})();
+
+
 /**
  * Implement Gatsby's Node APIs in this file.
  *
