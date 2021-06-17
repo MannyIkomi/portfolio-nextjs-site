@@ -3,16 +3,7 @@ require("dotenv").config({
 })
 
 const path = require("path")
-
 const { Client } = require("@notionhq/client")
-const notion = new Client({ auth: process.env.NOTION_KEY });
-
-(async () => {
-  const databaseId = process.env.NOTION_DB_ID
-  const response = await notion.databases.retrieve({ database_id: databaseId });
-  console.log(response);
-})();
-
 
 /**
  * Implement Gatsby's Node APIs in this file.
@@ -23,7 +14,38 @@ const notion = new Client({ auth: process.env.NOTION_KEY });
 // You can delete this file if you're not using it
 
 exports.onCreateNode = ({ node, actions }) => {
-  // console.log(node.internal.type)
+  node.internal.type === 'Notion' && console.log(node)
+}
+
+exports.sourceNodes = ({ actions, createNodeId, createContentDigest }) => {
+  const notion = new Client({ auth: process.env.NOTION_KEY });
+  const databaseId = process.env.NOTION_DB_ID
+  const NOTION_NODE_TYPE = "Notion"
+  
+  const response = notion.databases.query({ database_id: databaseId })
+  
+  response.then(data => {
+
+    data.results.forEach(notionPage => {
+      const node = {
+        // required
+        id: createNodeId(`${NOTION_NODE_TYPE}-${notionPage.id}`),
+        parent: null,
+        children: [],
+        internal: {
+          type: NOTION_NODE_TYPE,
+          content: JSON.stringify(notionPage),
+          contentDigest: createContentDigest(notionPage)
+        },
+        // actual data
+        json: JSON.stringify(notionPage),
+        properties: notionPage.properties
+      }
+
+      console.log(JSON.stringify(node, null, 2));
+      actions.createNode(node)
+    })
+  })    
 }
 
 exports.createPages = async ({ graphql, actions }) => {
