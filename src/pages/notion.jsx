@@ -6,20 +6,18 @@ import Layout from "../components/Layout"
 import HtmlHead from "../components/HtmlHead"
 
 const Notion = () => {
-  const [notionData, setNotionData] = useState({})
   const data = useStaticQuery(graphql`
     query notionQuery {
       allNotion {
-        edges {
-          node {
-            id
-            json
-            properties {
-              Name {
-                id
-              }
-              Tags {
-                id
+        nodes {
+          internal {
+            content
+          }
+          notionId
+          properties {
+            Name {
+              title {
+                plain_text
               }
             }
           }
@@ -34,8 +32,15 @@ const Notion = () => {
         title="Portfolio"
         description={`I design comprehensive brand experiences driven by thoughtful visual language.`}
       />
-      <h1>Notion Data</h1>
-      <p>{JSON.stringify(data, null, 2)}</p>
+
+      {data.allNotion.nodes.map(notionPage => {
+        return (
+          <>
+            <h1>{notionPage.properties.Name.title[0].plain_text}</h1>
+            <p>{notionPage.notionId}</p>
+          </>
+        )
+      })}
     </Layout>
   )
 }

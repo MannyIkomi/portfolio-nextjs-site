@@ -4,6 +4,7 @@ require("dotenv").config({
 
 const path = require("path")
 const { Client } = require("@notionhq/client")
+const { get } = require("http")
 
 /**
  * Implement Gatsby's Node APIs in this file.
@@ -12,40 +13,75 @@ const { Client } = require("@notionhq/client")
  */
 
 // You can delete this file if you're not using it
+const Notion = new Client({ auth: process.env.NOTION_KEY });
+const databaseId = process.env.NOTION_DB_ID
+const NOTION_NODE_TYPE = "Notion"
 
 exports.onCreateNode = ({ node, actions }) => {
-  node.internal.type === 'Notion' && console.log(node)
+  // node.internal.type === 'Notion' && console.log(node)
 }
 
-exports.sourceNodes = ({ actions, createNodeId, createContentDigest }) => {
-  const notion = new Client({ auth: process.env.NOTION_KEY });
-  const databaseId = process.env.NOTION_DB_ID
-  const NOTION_NODE_TYPE = "Notion"
-  
-  const response = notion.databases.query({ database_id: databaseId })
-  
-  response.then(data => {
+async function getNotionDatabase(databaseId, notionClient = Notion){
+  return notionClient.databases.query({ database_id: databaseId })
+}
 
-    data.results.forEach(notionPage => {
+async function getNotionPage(pageId, notionClient = Notion){
+ return notionClient.pages.retrieve({ page_id: pageId })
+}
+
+async function getNotionBlockChildren(blockId, notionClient = Notion){
+  // need to traverse children of child blocks using recursion
+  let blockChildren = null 
+  const response = await notionClient.blocks.children.list({
+    block_id: blockId,
+  })
+  blockChildren = response
+  
+  // if (blockChildren.results.some(block => block.has_children)) {
+    // let nestedBlocks
+  //   nestedBlocks = blockchildren.results.map(async (block) => {
+  //     nestedBlocks = await getNotionBlockChildren(block.id)
+  //     return block.results = nestedBlocks
+  //   })
+
+  //   blockChildren = {...nestedBlock}
+  // }
+  console.log(JSON.stringify(blockChildren, null, 2))
+  return blockChildren
+}
+
+exports.sourceNodes = async ({ actions, createNodeId, createContentDigest }) => {
+  
+  const database = await getNotionDatabase(databaseId, Notion)
+
+  const pages = await Promise.all(database.results.map(async (databaseEntry) => {
+    const page = await getNotionPage(databaseEntry.id, Notion)
+    const pageBlocks = await getNotionBlockChildren(page.id, Notion)
+    const pageWithContents = Object.assign(page, { content: pageBlocks })
+
+    return pageWithContents
+
+  }))
+
+  pages.forEach(notionPage => {
       const node = {
+        // notion page data
+        notionId: notionPage.id,
+        json: JSON.stringify(notionPage),
+        ...notionPage,
+
         // required
         id: createNodeId(`${NOTION_NODE_TYPE}-${notionPage.id}`),
         parent: null,
         children: [],
         internal: {
           type: NOTION_NODE_TYPE,
-          content: JSON.stringify(notionPage),
           contentDigest: createContentDigest(notionPage)
         },
-        // actual data
-        json: JSON.stringify(notionPage),
-        properties: notionPage.properties
       }
-
-      console.log(JSON.stringify(node, null, 2));
       actions.createNode(node)
-    })
-  })    
+    
+  })
 }
 
 exports.createPages = async ({ graphql, actions }) => {
