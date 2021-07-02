@@ -82,7 +82,7 @@ export const DesktopMenu = ({ ...restProps }) => {
           ...flex("column"),
           alignItems: "flex-start",
           justifyContent: "space-between",
-          width: "66%",
+          // width: "50%",
           margin: "25% 0",
         }}
       >
@@ -92,8 +92,8 @@ export const DesktopMenu = ({ ...restProps }) => {
             {...social}
             css={{
               fill: colors.NAVY_BLUE,
-              width: TOUCH_TARGET,
-              // minWidth: "initial",
+              width: "2rem",
+              minWidth: "initial",
               // width: "25%",
             }}
           />
