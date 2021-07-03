@@ -79,6 +79,7 @@ const IndexPage = ({ data }) => {
   const feature = selectedProjects.filter(
     ({ draft, feature }) => !draft && feature
   )
+
   const webProjects = selectedProjects.filter(project =>
     project.tags.some(({ design }) => design === "Interactive")
   )
@@ -274,7 +275,8 @@ const IndexPage = ({ data }) => {
               </SectionBlock>
             </>
           )}
-          {webProjects.length > 0 && (
+
+          {selectedProjects.length > 0 && (
             <>
               <SectionBlock
                 css={{
@@ -282,33 +284,9 @@ const IndexPage = ({ data }) => {
                 }}
               >
                 <ContainerWidth css={{ padding: "1rem" }}>
-                  <ProjectTagHeading>Web Design</ProjectTagHeading>
-
+                  {/* <ProjectTagHeading>Identity Design</ProjectTagHeading> */}
                   <ProjectList>
-                    {webProjects.map(project => (
-                      <ProjectCover
-                        {...project}
-                        key={project.id}
-                        css={maxTypeWidth}
-                      />
-                    ))}
-                  </ProjectList>
-                </ContainerWidth>
-              </SectionBlock>
-            </>
-          )}
-          {identityProjects.length > 0 && (
-            <>
-              <SectionBlock
-                css={{
-                  backgroundColor: colors.NAVY_BLUE,
-                }}
-              >
-                <ContainerWidth css={{ padding: "1rem" }}>
-                  <ProjectTagHeading>Identity Design</ProjectTagHeading>
-
-                  <ProjectList>
-                    {identityProjects
+                    {selectedProjects
                       .filter(project => !project.feature)
                       .map(project => (
                         <ProjectCover
@@ -375,24 +353,6 @@ const IndexPage = ({ data }) => {
                     </li>
                   ))}
               </ul>
-              {/* <button
-                onClick={e => console.log(e)}
-                css={{
-                  ...styleTransition(),
-                  ...hoverTypesetTransform({ color: colors.NAVY_BLUE }),
-                  padding: "1.5rem",
-                  backgroundColor: colors.YELLOW,
-
-                  ...CODE_TYPE,
-                  color: colors.NAVY_BLUE,
-                  lineHeight: 1,
-                  fontWeight: 800,
-                  fontSize: "1.25rem",
-                  textTransform: "uppercase",
-                }}
-              >
-                Email Me =>
-              </button> */}
             </ContainerWidth>
           </SectionBlock>
         </main>
