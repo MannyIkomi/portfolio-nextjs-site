@@ -50,11 +50,8 @@ import { List } from "../components/List"
 // console.clear()
 
 const IndexPage = ({ data }) => {
-  const cmsProjects = data.allStrapiProjects.nodes.filter(
-    ({ draft, feature }) => !draft && true // !feature
-  )
+  const projects = data.allPrismicProject.nodes
 
-  const [selectedProjects, setSelectedProjects] = useState(cmsProjects)
   const socials = useSocialMedia()
   const [scrollId, setScrollId] = useState("")
 
@@ -75,29 +72,12 @@ const IndexPage = ({ data }) => {
 
   useScrollToId(scrollId)
 
-  // group project sections by category
-  const feature = selectedProjects.filter(
-    ({ draft, feature }) => !draft && feature
-  )
-
-  const webProjects = selectedProjects.filter(project =>
-    project.tags.some(({ design }) => design === "Interactive")
-  )
-  const identityProjects = selectedProjects.filter(project =>
-    project.tags.some(({ design }) => design === "Identity")
-  )
-  // const graphicProjects = selectedProjects.filter(project =>
-  //   project.tags.every(
-  //     ({ design }) => design !== "Identity" && design !== "Interactive"
-  //   )
-  // )
-
   return (
     <Layout>
       <HtmlHead
         title="Portfolio"
         description={`I design comprehensive brand experiences driven by thoughtful visual language.`}
-        project={feature[0]}
+        // project={feature[0]}
       />
       <StickyScrollContainer
         css={[
@@ -178,7 +158,7 @@ const IndexPage = ({ data }) => {
               </h1>
             </ContainerWidth>
           </SectionBlock>
-          {feature.length > 0 && (
+          {/* {feature.length > 0 && (
             <>
               <SectionBlock
                 css={{
@@ -274,9 +254,9 @@ const IndexPage = ({ data }) => {
                 </ContainerWidth>
               </SectionBlock>
             </>
-          )}
+          )} */}
 
-          {selectedProjects.length > 0 && (
+          {projects.length > 0 && (
             <>
               <SectionBlock
                 css={{
@@ -286,8 +266,8 @@ const IndexPage = ({ data }) => {
                 <ContainerWidth css={{ padding: "1rem" }}>
                   {/* <ProjectTagHeading>Identity Design</ProjectTagHeading> */}
                   <ProjectList>
-                    {selectedProjects
-                      .filter(project => !project.feature)
+                    {projects
+                      // .filter(project => !project.feature)
                       .map(project => (
                         <ProjectCover
                           {...project}
@@ -399,36 +379,26 @@ const IndexPage = ({ data }) => {
 }
 
 export const pageQuery = graphql`
-  query IndexQuery {
-    # add {completed} field to keep rendering in chronological order
-    allStrapiProjects(
-      sort: { fields: completed, order: DESC }
-      filter: { private: { eq: false } }
-    ) {
+  query PrismicQuery {
+    allPrismicProject {
       nodes {
-        id
-        coverAlt
-        title
-        subtitle
-        slug
-        draft
-        feature
-        seoDescription
-        tags {
-          design
-          detail
-        }
-        # private filtered out of query entirely
-        cover {
-          publicURL
-          childImageSharp {
-            fluid(quality: 75, maxWidth: 1024, toFormat: JPG) {
-              src
-              srcSet
-              sizes
-            }
+        data {
+          date
+          description
+          title {
+            text
+            type
+          }
+          subtitle
+          cover_image {
+            url
+            alt
+          }
+          tags {
+            label
           }
         }
+        slugs
       }
     }
   }

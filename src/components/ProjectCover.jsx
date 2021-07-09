@@ -18,25 +18,19 @@ import {
   CODE_TYPE,
 } from "../styles"
 
-export const ProjectCover = ({
-  id,
-  name,
-  subtitle,
-  cover,
-  slug,
-  title,
-  coverAlt,
-  draft,
-  tags,
-  seoDescription,
-  ...props
-}) => {
-  // const [isHovered, handleHover] = useHoverState()
-  const imageProps = cover.childImageSharp ? cover.childImageSharp.fluid : cover // for fallback GIF support
+export const ProjectCover = ({ slugs, data, ...props }) => {
+  const { date, description, title, subtitle, cover_image, tags } = data
+  const { alt, url: coverSrc } = cover_image
+
+  // Refactor this imageProps operations for the new Prismic API on responsive images
+  const imageProps = cover_image.childImageSharp
+    ? cover_image.childImageSharp.fluid
+    : cover_image // for fallback GIF support
+
   return (
     <Link
-      to={"/" + slug}
-      title={title}
+      to={"/" + slugs}
+      title={title[0].text}
       css={{
         display: "block",
         marginBottom: TOUCH_TARGET,
@@ -96,7 +90,7 @@ export const ProjectCover = ({
           }),
         }}
       >
-        <ProjectPhoto className={"photo"} alt={coverAlt} {...imageProps} />
+        <ProjectPhoto className={"photo"} alt={alt} {...imageProps} />
         <OverlayFill className={"willHide overlayFill"} />
 
         <figcaption
@@ -119,7 +113,7 @@ export const ProjectCover = ({
               textTransform: "initial",
             }}
           >
-            {title} =>
+            {title[0].text} =>
           </h3>
           <h4
             css={{
@@ -138,16 +132,8 @@ export const ProjectCover = ({
             {subtitle}
           </h4>
 
-          {tags && (
-            <TokenList>
-              {tags.map(({ design, detail }) => detail || design)}
-            </TokenList>
-          )}
-
-          {draft && (
-            <span style={{ color: "red", textTransform: "uppercase" }}>
-              DRAFT
-            </span>
+          {tags && tags.length > 0 && (
+            <TokenList>{tags.map(({ label }) => label)}</TokenList>
           )}
         </figcaption>
       </figure>

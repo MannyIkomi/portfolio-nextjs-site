@@ -4,16 +4,14 @@ import Img from "gatsby-image"
 
 export const ProjectPhoto = ({
   alt,
-  sizes,
-  srcSet,
-  src,
-  publicURL, //for fallback GIF support
+  url: src,
+
   ...rest
 }) => (
   <img
-    src={src || publicURL}
-    srcSet={srcSet}
-    sizes={sizes}
+    src={src}
+    // srcSet={srcSet}
+    // sizes={sizes}
     alt={alt}
     css={{
       display: "block",
