@@ -20,6 +20,7 @@
     "gatsby-plugin-sharp": "^2.13.1",
     "gatsby-remark-widows": "^1.0.0",
     "gatsby-source-filesystem": "^2.10.0",
+    "gatsby-source-prismic": "^3.3.6",
     "gatsby-source-strapi": "0.0.10",
     "gatsby-transformer-remark": "^2.15.0",
     "gatsby-transformer-sharp": "^2.11.0",

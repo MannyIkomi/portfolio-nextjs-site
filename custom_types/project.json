@@ -1,0 +1,228 @@
+{
+  "Main": {
+    "title": {
+      "type": "StructuredText",
+      "config": {
+        "single": "heading1",
+        "label": "title",
+        "placeholder": "Project Title"
+      }
+    },
+    "subtitle": {
+      "type": "Text",
+      "config": {
+        "label": "subtitle",
+        "placeholder": "Subtitle"
+      }
+    },
+    "cover_image": {
+      "type": "Image",
+      "config": {
+        "constraint": {
+          "width": null,
+          "height": null
+        },
+        "thumbnails": [],
+        "label": "cover image"
+      }
+    },
+    "link": {
+      "type": "Link",
+      "config": {
+        "label": "link",
+        "placeholder": "Live link or prototype",
+        "select": null
+      }
+    },
+    "date": {
+      "type": "Date",
+      "config": {
+        "label": "date",
+        "placeholder": "06-23-1996"
+      }
+    },
+    "description": {
+      "type": "Text",
+      "config": {
+        "label": "description",
+        "placeholder": "Short description for SEO and preview info"
+      }
+    },
+    "tags": {
+      "type": "Group",
+      "config": {
+        "fields": {
+          "label": {
+            "type": "Select",
+            "config": {
+              "options": [
+                "User Research",
+                "UI Design",
+                "Prototype",
+                "Web Design",
+                "Full-Stack Web Development",
+                "Creative Direction",
+                "Branding",
+                "Identity Design"
+              ],
+              "label": "label",
+              "placeholder": "design tag"
+            }
+          }
+        },
+        "label": "tags"
+      }
+    },
+    "body": {
+      "type": "Slices",
+      "fieldset": "Slice zone",
+      "config": {
+        "labels": null,
+        "choices": {
+          "full_width_image": {
+            "type": "Slice",
+            "fieldset": "Full Width Image",
+            "description": "Full Width Image",
+            "icon": "broken_image",
+            "display": "list",
+            "non-repeat": {
+              "image_caption": {
+                "type": "Text",
+                "config": {
+                  "label": "caption",
+                  "placeholder": "Display caption for image"
+                }
+              },
+              "image": {
+                "type": "Image",
+                "config": {
+                  "constraint": {
+                    "width": null,
+                    "height": null
+                  },
+                  "thumbnails": [],
+                  "label": "image"
+                }
+              }
+            },
+            "repeat": {}
+          },
+          "image_gallery": {
+            "type": "Slice",
+            "fieldset": "Image Gallery",
+            "description": "Image Gallery",
+            "icon": "image_aspect_ratio",
+            "display": "grid",
+            "non-repeat": {
+              "gallery_title": {
+                "type": "StructuredText",
+                "config": {
+                  "single": "heading2,heading3,heading4,heading5,heading6",
+                  "label": "Gallery title",
+                  "placeholder": "Heading title for gallery"
+                }
+              }
+            },
+            "repeat": {
+              "image": {
+                "type": "Image",
+                "config": {
+                  "constraint": {},
+                  "thumbnails": [],
+                  "label": "image"
+                }
+              },
+              "image_caption": {
+                "type": "Text",
+                "config": {
+                  "label": "Image Caption",
+                  "placeholder": "Caption Text"
+                }
+              }
+            }
+          },
+          "inline_image": {
+            "type": "Slice",
+            "fieldset": "Inline Image",
+            "description": "Inline Image",
+            "icon": "image",
+            "display": "list",
+            "non-repeat": {
+              "image": {
+                "type": "Image",
+                "config": {
+                  "constraint": {},
+                  "thumbnails": [],
+                  "label": "image"
+                }
+              },
+              "caption": {
+                "type": "Text",
+                "config": {
+                  "label": "caption",
+                  "placeholder": "Image Caption"
+                }
+              }
+            },
+            "repeat": {}
+          },
+          "rich_text": {
+            "type": "Slice",
+            "fieldset": "Content Section",
+            "description": "Content Section",
+            "icon": "check_box_outline_blank",
+            "display": "list",
+            "non-repeat": {
+              "heading_section": {
+                "type": "StructuredText",
+                "config": {
+                  "single": "heading2,heading3,heading4,heading5,heading6",
+                  "label": "Heading Section"
+                }
+              },
+              "rich_text": {
+                "type": "StructuredText",
+                "config": {
+                  "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl",
+                  "label": "Rich Text"
+                }
+              }
+            },
+            "repeat": {}
+          },
+          "accordians": {
+            "type": "Slice",
+            "fieldset": "Accordians",
+            "description": "Accordians",
+            "icon": "list",
+            "display": "list",
+            "non-repeat": {
+              "accordion_section_title": {
+                "type": "StructuredText",
+                "config": {
+                  "single": "heading2,heading3,heading4,heading5,heading6",
+                  "label": "Accordion Section Title"
+                }
+              }
+            },
+            "repeat": {
+              "accordion_summary": {
+                "type": "Text",
+                "config": {
+                  "label": "Accordion Summary"
+                }
+              },
+              "accordion_details": {
+                "type": "StructuredText",
+                "config": {
+                  "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl",
+                  "label": "Accordion Details"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -44,6 +44,16 @@ module.exports = {
       },
     },
     {
+      resolve: 'gatsby-source-prismic',
+      options: {
+        repositoryName: 'manni-portfolio',
+        // linkResolver: () => linkResolver,
+        schemas: {
+          page: require('./custom_types/project.json'),
+        },
+      },
+    },
+    {
       resolve: `gatsby-source-strapi`,
       options: {
         apiURL: `http://localhost:1337`,
