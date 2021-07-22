@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import React from "react"
 import { Link as GatsbyLink } from "gatsby"
-import { css, jsx } from "@emotion/core"
+import { css, jsx } from "@emotion/react"
 
 import {
   typesetTransform,

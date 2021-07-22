@@ -1,6 +1,6 @@
 /** @jsx jsx */
 import React from "react"
-import { jsx } from "@emotion/core"
+import { css, jsx } from "@emotion/react"
 import { colors, onTabletMedia, onMediaWidth, onDesktopMedia } from "../styles"
 
 export const ProjectTagHeading = ({ children, ...restProps }) => {

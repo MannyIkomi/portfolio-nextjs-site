@@ -5,10 +5,10 @@
  * See: https://www.gatsbyjs.org/docs/use-static-query/
  */
 /** @jsx jsx */
-import { css, jsx } from "@emotion/core"
+import { css, jsx, Global } from "@emotion/react"
 import React from "react"
 import PropTypes from "prop-types"
-import { Global } from "@emotion/core"
+
 import { typography, colors, RESET } from "../styles"
 import { GLOBAL } from "../styles/globalStyles"
 import { useStaticQuery, graphql } from "gatsby"

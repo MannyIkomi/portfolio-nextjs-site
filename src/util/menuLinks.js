@@ -1,7 +1,7 @@
 export const MENU_LINKS = [
   ["Work =>", "/"],
-          ["About =>", "/about"],
-          ["Resume =>", "/resume"],
+          // ["About =>", "/about"],
+          // ["Resume =>", "/resume"],
           // ["Contact=>", "/Contact"],
 ]
 

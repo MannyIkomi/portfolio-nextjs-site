@@ -1,6 +1,6 @@
 /** @jsx jsx */
 import React from "react"
-import { jsx } from "@emotion/core"
+import { css, jsx } from "@emotion/react"
 
 export const SectionBreak = props => (
   <hr

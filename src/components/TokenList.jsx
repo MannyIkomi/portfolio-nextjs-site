@@ -1,5 +1,5 @@
 import React from "react"
-import { css } from "@emotion/core"
+import { css, jsx } from "@emotion/react"
 import { CODE_TYPE, colors, tokenize } from "../styles"
 
 export const TokenList = ({ children, ...restProps }) => {
@@ -17,7 +17,7 @@ export const TokenList = ({ children, ...restProps }) => {
               ...tokenize(),
               ...CODE_TYPE,
               textTransform: "uppercase",
-              fontSize: "1rem",
+              fontSize: "0.75rem",
               fontWeight: 400,
               whiteSpace: "nowrap",
 

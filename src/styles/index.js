@@ -1,14 +1,11 @@
 import { colors } from "./colors"
 import { onTabletMedia, onDesktopMedia } from "./mixin"
 
-import { CODE_TYPE} from './typography'
+import { CODE_TYPE } from './typography'
 
 export const MENUBAR_HEIGHT = "2.5rem"
-
 export const TOUCH_TARGET = "3rem"
-// export const
 export const PROJECT_SHADOW = `0rem 1rem 1rem 0.5rem hsla(0, 0%, 0%, 0.5)`
-
 
 export const tokenize = override => ({
   display: "inline-block",
@@ -51,7 +48,9 @@ export const ulStyles = {
 
 export const aspectRatioLetter = {
   height: 0,
-  paddingBottom: "calc(100% * (17 / 22) - 1px )",
+  // change this to aspect-ratio property
+  // https://developer.mozilla.org/en-US/docs/Web/CSS/aspect-ratio
+  paddingBottom: "calc(100% * (17 / 22) - 1px)",
 }
 
 export const moduleContainerStyles = (override = {}) => ({

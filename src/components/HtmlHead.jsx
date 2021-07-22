@@ -49,7 +49,6 @@ function HtmlHead({
       }
     `
   )
-  // console.log(project)
   const metaTitle = title || site.siteMetadata.title
   const metaDescription = description || site.siteMetadata.description
   const metaUrl = url || site.siteMetadata.url
@@ -57,9 +56,9 @@ function HtmlHead({
   const metaAuthor = author || site.siteMetadata.author
 
   const metaSocialImage =
-    coverImageSrc || (project && project.cover.childImageSharp.fluid.src) || ""
+    coverImageSrc || (project && project.cover_image.url) || ""
   const metaSocialImageAlt =
-    coverImageAlt || (project && project.cover.coverAlt) || ""
+    coverImageAlt || (project && project.cover_image.alt) || ""
   const metaOpenGraphType =
     openGraphType || site.siteMetadata.openGraphType || "website"
 

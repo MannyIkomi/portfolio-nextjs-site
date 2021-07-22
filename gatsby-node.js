@@ -18,19 +18,20 @@ exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions
   const { data } = await graphql(`
     query {
-      allStrapiProjects {
+      allPrismicProject {
         nodes {
-          slug
+          slugs
         }
       }
     }
   `)
 
   // generate pages for each project
-  data.allStrapiProjects.nodes.forEach(node => {
-    const slug = node.slug
+  data.allPrismicProject.nodes.forEach(node => {
+    const slug = node.slugs[0]
+
     createPage({
-      path: `/${slug}`,
+      path: `/${slug}`, 
       component: path.resolve("src/templates/ProjectTemplate.jsx"),
       context: { slug },
     })

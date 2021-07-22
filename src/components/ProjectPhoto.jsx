@@ -1,5 +1,5 @@
 import React from "react"
-import { css } from "@emotion/core"
+import { css, jsx } from "@emotion/react"
 import Img from "gatsby-image"
 
 export const ProjectPhoto = ({

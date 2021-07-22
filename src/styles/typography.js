@@ -1,6 +1,6 @@
 import { colors } from "./colors"
 import { onHover } from "./mixin";
-import { keyframes } from "@emotion/core";
+import { keyframes } from "@emotion/react";
 
 export const SERIF_TYPE = { fontFamily: "baskerville-urw, Georgia, serif" }
 export const SANS_TYPE = {

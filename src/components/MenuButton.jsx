@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import { jsx } from "@emotion/core"
+import { css, jsx } from "@emotion/react"
 import React from "react"
 import { colors, flex, styleTransition, TOUCH_TARGET, onMedia } from "../styles"
 

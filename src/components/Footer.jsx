@@ -1,6 +1,6 @@
 /** @jsx jsx */
 import React from "react"
-import { jsx } from "@emotion/core"
+import { css, jsx } from "@emotion/react"
 import { LogoMaster } from "./Logo"
 import { useSocialMedia } from "../hooks/useSocialMedia"
 import { SocialIcon } from "./SocialIcon"
