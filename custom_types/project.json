@@ -168,23 +168,16 @@
           },
           "rich_text": {
             "type": "Slice",
-            "fieldset": "Content Section",
-            "description": "Content Section",
+            "fieldset": "Rich Content",
+            "description": "Rich Content",
             "icon": "check_box_outline_blank",
             "display": "list",
             "non-repeat": {
-              "heading_section": {
-                "type": "StructuredText",
-                "config": {
-                  "single": "heading2,heading3,heading4,heading5,heading6",
-                  "label": "Heading Section"
-                }
-              },
               "rich_text": {
                 "type": "StructuredText",
                 "config": {
-                  "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl",
-                  "label": "Rich Text"
+                  "multi": "paragraph,preformatted,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl",
+                  "label": "rich text"
                 }
               }
             },
