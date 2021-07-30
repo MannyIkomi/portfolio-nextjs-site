@@ -161,23 +161,79 @@ export const query = graphql`
         body {
           slice_type
           primary {
+            caption
+            image {
+              alt
+              url
+              dimensions {
+                height
+                width
+              }
+            }
             rich_text {
               text
+              spans {
+                start
+                end
+                type
+              }
+              type
+              url
+              alt
+              dimensions {
+                height
+                width
+              }
             }
-            caption
+            image_caption
+            gallery_title {
+              text
+              type
+            }
+            accordion_section_title {
+              text
+              type
+            }
+          }
+          items {
+            image_caption
+            accordion_summary
+            image {
+              url
+              alt
+              dimensions {
+                height
+                width
+              }
+            }
+            accordion_details {
+              alt
+              dimensions {
+                height
+                width
+              }
+              text
+              type
+              url
+            }
           }
         }
         tags {
           label
         }
-        title {
-          text
-        }
-        subtitle
-        description
         cover_image {
           url
           alt
+        }
+        title {
+          text
+          type
+        }
+        subtitle
+        description
+        link {
+          url
+          link_type
         }
       }
     }
