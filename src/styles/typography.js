@@ -38,6 +38,14 @@ export const linkText = {
   // https://www.youtube.com/watch?v=sZS-7RX_c7g
 
 }
+export const imageCaption = {
+  
+    ...SANS_TYPE,
+    fontSize: "0.75rem",
+    fontWeight: 300,
+    lineHeight: 1.4,
+  
+}
 
 export const typeset = (override = {}) => ({
   transformOrigin: "center center",
