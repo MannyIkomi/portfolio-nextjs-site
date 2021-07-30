@@ -81,66 +81,17 @@ const ProjectTemplate = ({ data, site }) => {
           >
             <header>
               <ContainerWidth>
-                <h1
-                  css={{
-                    //styleName: DesktopH1Title;
-
-                    fontFamily: "Fira Code",
-                    fontSize: "72px",
-                    fontStyle: "normal",
-                    fontWeight: "300",
-                    lineHeight: "86px",
-                    letterSpacing: "-0.05em",
-                    textAlign: "left",
-
-                    fontWeight: "light",
-                  }}
-                >
-                  {title[0].text}
-                </h1>
+                <h1>{title[0].text}</h1>
                 <h2
                   css={{
-                    //styleName: 'DesktopSubtitle',
-                    fontFamily: "Fira Sans",
-                    fontSize: "36px",
-                    fontStyle: "normal",
-                    fontWeight: "300",
-                    lineHeight: "43px",
-                    letterSpacing: "0em",
-                    textAlign: "left",
+                    color: colors.ACCENT,
                   }}
                 >
                   {subtitle}
                 </h2>
-
                 <TokenList>{tags.map(tag => tag.label)}</TokenList>
               </ContainerWidth>
             </header>
-            <div>
-              {body.map(slice => {
-                switch (slice.slice_type) {
-                  case INTRO:
-                    break
-                  case TEXT:
-                    return <TextModule {...slice} key={slice.id} />
-                  case IMAGE:
-                    return <ImageModule {...slice} key={slice.id} />
-                  case CAPTION:
-                    return <CaptionModule {...slice} key={slice.id} />
-                  case INTERACTIVE:
-                    return <InteractiveModule {...slice} key={slice.id} />
-                  case LINK:
-                    return <LinkModule {...slice} key={slice.id} />
-                  // case SECTION:
-                  // use to split
-                  //   return <div>CREATE SECTION MODULE</div> with glyph
-                  default:
-                    return
-                    throw new Error(
-                      `Could not find matching Component for Slice: ${slice.type}`
-                    )
-                }
-              })}
             </div>
           </article>
         </main>
