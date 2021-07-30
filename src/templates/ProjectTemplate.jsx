@@ -7,13 +7,16 @@ import {
   MENUBAR_HEIGHT,
   flex,
   colors,
-  TOUCH_TARGET,
   onTabletMedia,
   onMedia,
   onSupport,
   onDesktopMedia,
+  CODE_TYPE,
   SANS_TYPE,
   maxTypeWidth,
+  maxContainerWidth,
+  grid,
+  imageCaption,
 } from "../styles"
 
 import Layout from "../components/Layout"
@@ -24,10 +27,104 @@ import { ContainerWidth } from "../components/ContainerWidth"
 import { Footer } from "../components/Footer"
 
 // Refactor Modules into Prismic Slices
+import { ImageSlice } from "../components/slices/ImageSlice"
+import {
+  RichContentSlice,
+  switchRichContentToComponent,
+} from "../components/slices/RichContentSlice"
 
 import { TokenList } from "../components/TokenList"
+
 import {
+  ACCORDIAN,
+  FULL_IMAGE,
+  IMAGE_GALLERY,
+  INLINE_IMAGE,
   LINK,
+  RICH_TEXT,
+} from "../util/sliceTypes"
+import { AccordianSlice } from "../components/slices/AccordianSlice"
+
+function switchSliceToComponent(slice) {
+  switch (slice.slice_type || slice.type) {
+    case FULL_IMAGE:
+    case INLINE_IMAGE:
+      return <ImageSlice {...slice} key={slice.id} />
+    case RICH_TEXT:
+      return <RichContentSlice {...slice} key={slice.id} />
+    case ACCORDIAN:
+      return <AccordianSlice {...slice} key={slice.id} />
+    case IMAGE_GALLERY:
+      return (
+        <section css={{ color: colors.PRIMARY, ...maxTypeWidth }}>
+          {/* <pre css={{ overflow: "hidden" }}>
+            {JSON.stringify(slice, null, 2)}
+          </pre> */}
+          <div css={{ ...maxTypeWidth }}>
+            {slice.primary.gallery_title.map(switchRichContentToComponent)}
+          </div>
+          <div
+            css={[
+              {
+                // progressive enhance from single column vertical scroll
+                width: "100%",
+
+                // maxWidth: "100vw",
+                // padding: "2rem",
+              },
+            ]}
+          >
+            <div
+              css={[
+                {
+                  overflowX: "scroll",
+                  ...flex("row"),
+                  flexWrap: "nowrap",
+                  justifyContent: "initial",
+                },
+              ]}
+            >
+              {slice.items.map(photo => (
+                <figure
+                  key={photo.url}
+                  css={{
+                    margin: "0 1rem",
+                  }}
+                >
+                  <img
+                    css={{
+                      minWidth: "15rem",
+
+                      width: "100%",
+                      height: "auto",
+                      maxWidth: "66vw",
+                    }}
+                    alt={photo.image.alt}
+                    src={photo.image.url}
+                    width={photo.image.dimensions.width}
+                    height={photo.image.dimensions.height}
+                  />
+                  <figcaption css={[imageCaption]}>
+                    {photo.image_caption}
+                  </figcaption>
+                </figure>
+              ))}
+            </div>
+          </div>
+        </section>
+      )
+    case LINK:
+      return <LinkModule {...slice} key={slice.id} />
+
+    default:
+      return (
+        <div css={{ backgroundColor: "red" }}>
+          Could not find matching Component for Slice:{" "}
+          {slice.slice_type || slice.type}
+        </div>
+      )
+  }
+}
 
 const ProjectTemplate = ({ data, site }) => {
   const thisProject = data.prismicProject.data
@@ -55,15 +152,28 @@ const ProjectTemplate = ({ data, site }) => {
       >
         <StickyMenuBar />
         <main>
-          {JSON.stringify(thisProject, null, 2)}
           <article
             css={{
               ...flex("column"),
               alignItems: "center",
-              backgroundColor: colors.LIGHT_GRAY,
+              backgroundColor: colors.LIGHT_GRAY_FOREGROUND,
             }}
           >
-            <header>
+            <header
+              css={[
+                {
+                  color: colors.PRIMARY,
+                  ...flex("row"),
+                  alignItems: "center",
+                  minHeight: "50vh",
+                  padding: "0 1rem",
+                },
+                onTabletMedia({
+                  minHeight: "33vh",
+                  padding: 0,
+                }),
+              ]}
+            >
               <ContainerWidth>
                 <h1>{title[0].text}</h1>
                 <h2
@@ -76,6 +186,10 @@ const ProjectTemplate = ({ data, site }) => {
                 <TokenList>{tags.map(tag => tag.label)}</TokenList>
               </ContainerWidth>
             </header>
+            <div
+              css={[{ ...flex("column"), alignItems: "center", width: "100%" }]}
+            >
+              {body.map(switchSliceToComponent)}
             </div>
           </article>
         </main>
