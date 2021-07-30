@@ -20,7 +20,7 @@ import {
 
 export const ProjectCover = ({ slugs, data, ...props }) => {
   const { date, description, title, subtitle, cover_image, tags } = data
-  const { alt, url: coverSrc } = cover_image
+  const { alt, url: coverSrc, dimensions } = cover_image
 
   // Refactor this imageProps operations for the new Prismic API on responsive images
   const imageProps = cover_image.childImageSharp
