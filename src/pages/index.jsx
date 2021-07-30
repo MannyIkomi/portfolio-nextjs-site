@@ -76,7 +76,7 @@ const IndexPage = ({ data }) => {
     <Layout>
       <HtmlHead
         title="Portfolio"
-        description={`I design comprehensive brand experiences driven by thoughtful visual language.`}
+        description={`I design comprehensive user experiences driven by thoughtful visual language.`}
         // project={feature[0]}
       />
       <StickyScrollContainer
@@ -393,6 +393,10 @@ export const pageQuery = graphql`
           cover_image {
             url
             alt
+            dimensions {
+              height
+              width
+            }
           }
           tags {
             label
