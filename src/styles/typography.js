@@ -2,13 +2,9 @@ import { colors } from "./colors"
 import { onHover } from "./mixin";
 import { keyframes } from "@emotion/react";
 
-export const SERIF_TYPE = { fontFamily: "baskerville-urw, Georgia, serif" }
 export const SANS_TYPE = {
   fontFamily: 'Fira Sans, sans-serif',
 }
-
-export const SERIF_HEADING = { fontFamily: "baskerville-urw, serif" }
-
 
 export const CODE_TYPE = {
   fontFamily: 'Fira Code, monospace',

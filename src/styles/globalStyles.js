@@ -42,7 +42,7 @@ export const GLOBAL = {
   "h1, h2, h3, h4, h5": {
     lineHeight: 1.2,
     ...fontSizeTransition,
-    ...CODE_TYPE,
+    ...SANS_TYPE,
     // textTransform: "lowercase",
     fontWeight: 400,
   },
@@ -61,7 +61,6 @@ export const GLOBAL = {
 
   h1: {
     fontSize: "2rem",
-    color: colors.TURQUOISE,
   },
   h2: {
     fontSize: "1.5rem",
@@ -75,7 +74,7 @@ export const GLOBAL = {
 
   ...onTabletMedia({
     h1: {
-      fontSize: "2.5rem",
+      fontSize: "3rem",
     },
     h2: {
       fontSize: "2rem",
@@ -90,7 +89,7 @@ export const GLOBAL = {
 
   ...onDesktopMedia({
     h1: {
-      fontSize: "3rem",
+      fontSize: "4rem",
     },
     h2: {
       fontSize: "2.25rem",
