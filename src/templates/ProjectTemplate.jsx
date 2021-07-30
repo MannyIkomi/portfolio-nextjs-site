@@ -24,26 +24,10 @@ import { ContainerWidth } from "../components/ContainerWidth"
 import { Footer } from "../components/Footer"
 
 // Refactor Modules into Prismic Slices
-import { ImageModule } from "../components/ImageModule"
-import { CaptionModule } from "../components/CaptionModule"
-import { InteractiveModule } from "../components/InteractiveModule"
-import { LinkModule } from "../components/LinkModule"
-import { TextModule } from "../components/TextModule"
 
-import { ProjectCover } from "../components/ProjectCover"
-import { SectionBlock } from "../components/SectionBlock"
-import { ColorOverprint } from "../components/FillOverlay"
 import { TokenList } from "../components/TokenList"
-import Markdown from "../components/Markdown"
-import { useEffect, useState } from "react"
 import {
-  CAPTION,
-  IMAGE,
-  INTERACTIVE,
-  INTRO,
   LINK,
-  TEXT,
-} from "../util/moduleTypes"
 
 const ProjectTemplate = ({ data, site }) => {
   const thisProject = data.prismicProject.data
