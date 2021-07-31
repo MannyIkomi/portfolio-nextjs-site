@@ -55,7 +55,7 @@ export const RichContentSlice = ({ primary, items, slice_type }) => {
 
   return (
     <section
-      aria-labelledby={rich_text[0].text.replace(slugifyRegex, "-")}
+      aria-labelledby={rich_text[0].text?.replace(slugifyRegex, "-")}
       //the H2 element may not always be the first piece of content in the array
       // we should refactor this to search the array for the first h2 element .text
       css={[
