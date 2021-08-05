@@ -1,6 +1,6 @@
 import { colors } from "./colors";
 import { onTabletMedia, onDesktopMedia } from "./mixin";
-import { SANS_TYPE, fontSizeTransition, CODE_TYPE } from './typography';
+import { SANS_TYPE, fontSizeTransition, CODE_TYPE, headingResponsiveScale } from './typography';
 
 export const GLOBAL = {
   "*": {
@@ -39,13 +39,13 @@ export const GLOBAL = {
     textDecoration: "none",
   },
 
-  "h1, h2, h3, h4, h5": {
-    lineHeight: 1.2,
-    ...fontSizeTransition,
+  "h1, h2, h3, h4, h5, h6": {
     ...SANS_TYPE,
-    // textTransform: "lowercase",
-    fontWeight: 400,
+    ...fontSizeTransition,
+    lineHeight: 1.2,
+    fontWeight: 500,
   },
+
   "p, span, ul, ol, button": {
     ...SANS_TYPE,
     fontWeight: 300,
@@ -53,52 +53,7 @@ export const GLOBAL = {
     lineHeight: 1.5,
     listStyle: "square",
     fontVariantNumeric: "proportional-nums",
+  
   },
-
-  'ul, ol' :{
-
-  },
-
-  h1: {
-    fontSize: "2rem",
-  },
-  h2: {
-    fontSize: "1.5rem",
-  },
-  h3: {
-    fontSize: "1.333rem",
-  },
-  h4: {
-    fontSize: "1.25rem",
-  },
-
-  ...onTabletMedia({
-    h1: {
-      fontSize: "3rem",
-    },
-    h2: {
-      fontSize: "2rem",
-    },
-    h3: {
-      fontSize: "1.5rem",
-    },
-    h4: {
-      fontSize: "1.3333rem",
-    },
-  }),
-
-  ...onDesktopMedia({
-    h1: {
-      fontSize: "4rem",
-    },
-    h2: {
-      fontSize: "2.25rem",
-    },
-    h3: {
-      fontSize: "1.75rem",
-    },
-    h4: {
-      fontSize: "1.5rem",
-    },
-  }),
+  ...headingResponsiveScale
 };

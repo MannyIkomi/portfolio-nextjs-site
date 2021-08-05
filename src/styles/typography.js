@@ -1,5 +1,5 @@
 import { colors } from "./colors"
-import { onHover } from "./mixin";
+import { onHover, onDesktopMedia, onTabletMedia } from "./mixin";
 import { keyframes } from "@emotion/react";
 
 export const SANS_TYPE = {
@@ -106,4 +106,49 @@ export const typography = {
   // linkStyles,
   // typesetAnimation,
   // maxReadingWidth,
+}
+
+export const headingResponsiveScale = {
+  h1: {
+    fontSize: "2rem",
+  },
+  h2: {
+    fontSize: "1.5rem",
+  },
+  h3: {
+    fontSize: "1.333rem",
+  },
+  h4: {
+    fontSize: "1.25rem",
+  },
+
+  ...onTabletMedia({
+    h1: {
+      fontSize: "3rem",
+    },
+    h2: {
+      fontSize: "2rem",
+    },
+    h3: {
+      fontSize: "1.5rem",
+    },
+    h4: {
+      fontSize: "1.3333rem",
+    },
+  }),
+
+  ...onDesktopMedia({
+    h1: {
+      fontSize: "4rem",
+    },
+    h2: {
+      fontSize: "2.25rem",
+    },
+    h3: {
+      fontSize: "1.75rem",
+    },
+    h4: {
+      fontSize: "1.5rem",
+    },
+  }),
 }
