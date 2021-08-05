@@ -44,6 +44,7 @@ import {
   RICH_TEXT,
 } from "../util/sliceTypes"
 import { AccordianSlice } from "../components/slices/AccordianSlice"
+import ImageGallerySlice from "../components/slices/ImageGallery"
 
 function switchSliceToComponent(slice) {
   switch (slice.slice_type || slice.type) {
@@ -55,64 +56,7 @@ function switchSliceToComponent(slice) {
     case ACCORDIAN:
       return <AccordianSlice {...slice} key={slice.id} />
     case IMAGE_GALLERY:
-      return (
-        <section css={{ color: colors.PRIMARY, ...maxTypeWidth }}>
-          {/* <pre css={{ overflow: "hidden" }}>
-            {JSON.stringify(slice, null, 2)}
-          </pre> */}
-          <div css={{ ...maxTypeWidth }}>
-            {slice.primary.gallery_title.map(switchRichContentToComponent)}
-          </div>
-          <div
-            css={[
-              {
-                // progressive enhance from single column vertical scroll
-                width: "100%",
-
-                // maxWidth: "100vw",
-                // padding: "2rem",
-              },
-            ]}
-          >
-            <div
-              css={[
-                {
-                  overflowX: "scroll",
-                  ...flex("row"),
-                  flexWrap: "nowrap",
-                  justifyContent: "initial",
-                },
-              ]}
-            >
-              {slice.items.map(photo => (
-                <figure
-                  key={photo.url}
-                  css={{
-                    margin: "0 1rem",
-                  }}
-                >
-                  <img
-                    css={{
-                      minWidth: "15rem",
-
-                      width: "100%",
-                      height: "auto",
-                      maxWidth: "66vw",
-                    }}
-                    alt={photo.image.alt}
-                    src={photo.image.url}
-                    width={photo.image.dimensions.width}
-                    height={photo.image.dimensions.height}
-                  />
-                  <figcaption css={[imageCaption]}>
-                    {photo.image_caption}
-                  </figcaption>
-                </figure>
-              ))}
-            </div>
-          </div>
-        </section>
-      )
+      return <ImageGallerySlice {...slice} key={slice.id} />
     case LINK:
       return <LinkModule {...slice} key={slice.id} />
 
