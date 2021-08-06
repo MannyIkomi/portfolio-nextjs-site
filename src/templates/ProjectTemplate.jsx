@@ -146,87 +146,107 @@ const ProjectTemplate = ({ data, site }) => {
 export const query = graphql`
   #project has slug
 
-  query($slug: String!) {
+  query($id: String!) {
     #gets the single requested project data for viewing
-    prismicProject(slugs: { eq: $slug }) {
-      slugs
+    prismicProject(id: { eq: $id }) {
+      id
       data {
-        body {
-          slice_type
-          primary {
-            caption
-            image {
-              alt
-              url
-              dimensions {
-                height
-                width
-              }
-            }
-            rich_text {
-              text
-              spans {
-                start
-                end
-                type
-              }
-              type
-              url
-              alt
-              dimensions {
-                height
-                width
-              }
-            }
-            image_caption
-            gallery_title {
-              text
-              type
-            }
-            accordion_section_title {
-              text
-              type
-            }
-          }
-          items {
-            image_caption
-            accordion_summary
-            image {
-              url
-              alt
-              dimensions {
-                height
-                width
-              }
-            }
-            accordion_details {
-              alt
-              dimensions {
-                height
-                width
-              }
-              text
-              type
-              url
-            }
-          }
-        }
         tags {
           label
         }
         cover_image {
+          dimensions {
+            height
+            width
+          }
           url
           alt
         }
+        subtitle
         title {
           text
-          type
         }
-        subtitle
         description
-        link {
-          url
-          link_type
+        body {
+          ... on PrismicProjectBodyFullWidthImage {
+            id
+            slice_type
+            primary {
+              image {
+                alt
+                url
+                dimensions {
+                  height
+                  width
+                }
+              }
+              image_caption
+            }
+          }
+          ... on PrismicProjectBodyRichText {
+            id
+            slice_type
+            primary {
+              rich_text {
+                raw
+                text
+              }
+            }
+          }
+          ... on PrismicProjectBodyAccordians {
+            id
+            items {
+              accordion_details {
+                raw
+                text
+              }
+              accordion_summary
+            }
+            slice_type
+            primary {
+              accordion_section_title {
+                raw
+                text
+                html
+              }
+            }
+          }
+          ... on PrismicProjectBodyImageGallery {
+            id
+            slice_type
+            primary {
+              gallery_title {
+                text
+                raw
+              }
+            }
+            items {
+              image_caption
+              image {
+                alt
+                url
+                dimensions {
+                  height
+                  width
+                }
+              }
+            }
+          }
+          ... on PrismicProjectBodyInlineImage {
+            id
+            slice_type
+            primary {
+              image {
+                alt
+                url
+                dimensions {
+                  height
+                  width
+                }
+              }
+              caption
+            }
+          }
         }
       }
     }

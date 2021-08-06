@@ -382,17 +382,17 @@ export const pageQuery = graphql`
   query PrismicQuery {
     allPrismicProject {
       nodes {
+        id
         data {
           date
           description
+          subtitle
           title {
             text
-            type
           }
-          subtitle
           cover_image {
-            url
             alt
+            url
             dimensions {
               height
               width
@@ -402,7 +402,6 @@ export const pageQuery = graphql`
             label
           }
         }
-        slugs
       }
     }
   }
