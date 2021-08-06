@@ -49,7 +49,7 @@ module.exports = {
         repositoryName: 'manni-portfolio',
         // linkResolver: () => linkResolver,
         schemas: {
-          page: require('./custom_types/project.json'),
+          project: require('./custom_types/project.json'),
         },
       },
     },
