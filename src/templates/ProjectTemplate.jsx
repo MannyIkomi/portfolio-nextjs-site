@@ -71,18 +71,21 @@ function switchSliceToComponent(slice) {
 }
 
 const ProjectTemplate = ({ data, site }) => {
+  console.log(data)
   const thisProject = data.prismicProject.data
-  const slug = data.prismicProject.slugs[0]
+  const id = data.prismicProject.id
 
-  const { title, cover_image, description, subtitle, tags, body } = thisProject
+  const { description, tags, body } = thisProject
+  const title = thisProject.title.text
+  const subtitle = thisProject.subtitle
 
   return (
     <Layout>
       <HtmlHead
-        title={`${title[0].text}: ${subtitle}`}
+        title={`${title}: ${subtitle}`}
         description={description}
         project={thisProject}
-        path={`/${slug}`}
+        path={`/${id}`}
       />
       <StickyScrollContainer
         css={{
@@ -119,7 +122,7 @@ const ProjectTemplate = ({ data, site }) => {
               ]}
             >
               <ContainerWidth>
-                <h1>{title[0].text}</h1>
+                <h1>{title}</h1>
                 <h2
                   css={{
                     color: colors.ACCENT,

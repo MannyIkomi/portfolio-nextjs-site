@@ -18,7 +18,7 @@ import {
   CODE_TYPE,
 } from "../styles"
 
-export const ProjectCover = ({ slugs, data, ...props }) => {
+export const ProjectCover = ({ slugs, id, data, ...props }) => {
   const { date, description, title, subtitle, cover_image, tags } = data
   const { alt, url: coverSrc, dimensions } = cover_image
 
@@ -29,8 +29,8 @@ export const ProjectCover = ({ slugs, data, ...props }) => {
 
   return (
     <Link
-      to={"/" + slugs}
-      title={title[0].text}
+      to={"/" + id}
+      title={title.text}
       css={{
         display: "block",
         marginBottom: TOUCH_TARGET,
@@ -113,7 +113,7 @@ export const ProjectCover = ({ slugs, data, ...props }) => {
               textTransform: "initial",
             }}
           >
-            {title[0].text} =>
+            {title.text} =>
           </h3>
           <h4
             css={{
