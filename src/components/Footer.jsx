@@ -103,7 +103,7 @@ export const Footer = props => {
             }),
           ]}
         >
-          {socialMedia.map(social => (
+          {/* {socialMedia.map(social => (
             <SocialIcon
               key={social.platform}
               {...social}
@@ -116,7 +116,7 @@ export const Footer = props => {
                 ),
               }}
             />
-          ))}
+          ))} */}
         </div>
         <ul
           css={[

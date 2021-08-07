@@ -280,8 +280,8 @@ const IndexPage = ({ data }) => {
               </SectionBlock>
             </>
           )}
-          <SectionBlock css={{ minHeight: "50vh" }}>
-            {/* CONTACT SECTION */}
+          {/* <SectionBlock css={{ minHeight: "50vh" }}>
+            
             <ContainerWidth
               css={{
                 ...flex("column"),
@@ -334,7 +334,7 @@ const IndexPage = ({ data }) => {
                   ))}
               </ul>
             </ContainerWidth>
-          </SectionBlock>
+          </SectionBlock> */}
         </main>
       </StickyScrollContainer>
       <SectionBlock

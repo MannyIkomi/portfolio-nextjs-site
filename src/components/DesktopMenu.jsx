@@ -20,7 +20,7 @@ import { useSocialMedia } from "../hooks/useSocialMedia"
 import { MENU_LINKS } from "../util/menuLinks"
 
 export const DesktopMenu = ({ ...restProps }) => {
-  const socialMedia = useSocialMedia()
+  // const socialMedia = useSocialMedia()
   return (
     <nav
       id={"desktop"}
@@ -77,7 +77,7 @@ export const DesktopMenu = ({ ...restProps }) => {
           </li>
         ))}
       </ul>
-      <div
+      {/* <div
         css={{
           ...flex("column"),
           alignItems: "flex-start",
@@ -98,7 +98,7 @@ export const DesktopMenu = ({ ...restProps }) => {
             }}
           />
         ))}
-      </div>
+      </div> */}
     </nav>
   )
 }
