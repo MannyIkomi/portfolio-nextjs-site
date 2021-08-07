@@ -38,22 +38,20 @@ export const GLOBAL = {
     textAlign: "center",
     textDecoration: "none",
   },
-
   "h1, h2, h3, h4, h5, h6": {
     ...SANS_TYPE,
     ...fontSizeTransition,
     lineHeight: 1.2,
     fontWeight: 500,
   },
-
   "p, span, ul, ol, button": {
     ...SANS_TYPE,
     fontWeight: 300,
-
     lineHeight: 1.5,
-    listStyle: "square",
     fontVariantNumeric: "proportional-nums",
-  
+  },
+  ul: {
+    listStyle: "square",
   },
   ...headingResponsiveScale
 };
