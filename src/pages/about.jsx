@@ -210,44 +210,4 @@ const AboutPage = ({ data }) => {
   )
 }
 
-export const query = graphql`
-  {
-    strapiAbout {
-      bio
-      cardsCollected
-      heading
-      email
-      website
-      photo {
-        publicURL
-        childImageSharp {
-          fluid(quality: 50) {
-            src
-            srcSet
-            sizes
-          }
-        }
-      }
-    }
-    allStrapiInspiration(sort: { fields: sequence }) {
-      nodes {
-        id
-        website
-        photo {
-          publicURL
-          childImageSharp {
-            fluid(quality: 50) {
-              src
-              srcSet
-              sizes
-            }
-          }
-        }
-        name
-        description
-      }
-    }
-  }
-`
-
 export default AboutPage
