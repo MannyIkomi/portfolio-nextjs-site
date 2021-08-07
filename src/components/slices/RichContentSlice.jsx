@@ -15,40 +15,6 @@ import { List } from "../List"
 import ProjectPhoto from "../ProjectPhoto"
 import { ImageSlice } from "./ImageSlice"
 
-const slugifyRegex = /\s+/g
-
-export function switchRichContentToComponent(content) {
-  const { text, type, url, dimensions } = content
-  switch (type) {
-    case "heading2": //slugify the heading text in order to preserve syntax of id
-      return <h2 id={text.replace(slugifyRegex, "-")}>{text}</h2>
-    case "heading3":
-      return <h3>{text}</h3>
-    case "heading4":
-      return <h4>{text}</h4>
-    case "heading5":
-      return <h5>{text}</h5>
-    case "heading6":
-      return <h6>{text}</h6>
-
-    case "paragraph":
-      return <p>{text}</p>
-
-    case "list-item": // unordered list <ul>
-    case "o-list-item": // unordered list <ul>
-      return "How the fuck do I wrap list items inside their semantic elements?"
-
-    case "image":
-      return <ImageSlice {...content} />
-
-    default:
-      return (
-        <div css={{ backgroundColor: "red" }}>
-          {text} <br /> MISSING MATCHING TYPE FOR {type}
-        </div>
-      )
-  }
-}
 
 export const RichContentSlice = ({ primary, items, slice_type }) => {
   const { rich_text } = primary
