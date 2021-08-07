@@ -50,6 +50,7 @@ module.exports = {
         // linkResolver: () => linkResolver,
         schemas: {
           project: require('./custom_types/project.json'),
+          link: require('./custom_types/link.json'),
         },
       },
     },

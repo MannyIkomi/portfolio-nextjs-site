@@ -1,0 +1,16 @@
+{
+  "Main": {
+    "label": {
+      "type": "Text",
+      "config": {
+        "label": "label"
+      }
+    },
+    "url": {
+      "type": "Link",
+      "config": {
+        "label": "url"
+      }
+    }
+  }
+}
