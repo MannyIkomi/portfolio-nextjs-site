@@ -1,5 +1,6 @@
 /** @jsx jsx */
 import { jsx } from "@emotion/react"
+import { RichText } from "prismic-reactjs"
 import React from "react"
 import {
   colors,
@@ -8,6 +9,7 @@ import {
   flex,
   imageCaption,
 } from "../../styles"
+import htmlSerializer from "./htmlSerializer"
 import { switchRichContentToComponent } from "./RichContentSlice"
 
 export const ImageGallerySlice = props => {
@@ -19,7 +21,11 @@ export const ImageGallerySlice = props => {
             {JSON.stringify(slice, null, 2)}
           </pre> */}
       <div css={{ ...maxTypeWidth }}>
-        {primary.gallery_title.map(switchRichContentToComponent)}
+        <RichText
+          render={primary.gallery_title.raw}
+          // serializeHyperlink={CustomLink}
+          htmlSerializer={htmlSerializer}
+        />
       </div>
       <div
         css={[

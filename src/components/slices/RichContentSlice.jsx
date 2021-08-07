@@ -15,13 +15,17 @@ import { List } from "../List"
 import ProjectPhoto from "../ProjectPhoto"
 import { ImageSlice } from "./ImageSlice"
 
+import { RichText } from "prismic-reactjs"
+import { htmlSerializer } from "./htmlSerializer"
+// import { linkResolver } from "./example_path_to_linkResolver"
 
+const slugifyRegex = /\s+/g
 export const RichContentSlice = ({ primary, items, slice_type }) => {
   const { rich_text } = primary
 
   return (
     <section
-      aria-labelledby={rich_text[0].text?.replace(slugifyRegex, "-")}
+      aria-labelledby={rich_text.text?.replace(slugifyRegex, "-")}
       //the H2 element may not always be the first piece of content in the array
       // we should refactor this to search the array for the first h2 element .text
       css={[
@@ -39,8 +43,8 @@ export const RichContentSlice = ({ primary, items, slice_type }) => {
         }),
       ]}
     >
-      {/* <pre>{JSON.stringify(rich_text, null, 2)}</pre> */}
-      {rich_text.map(switchRichContentToComponent)}
+      <RichText render={rich_text.raw} htmlSerializer={htmlSerializer} />
+      <pre>{JSON.stringify(rich_text, null, 2)}</pre>
     </section>
   )
 }

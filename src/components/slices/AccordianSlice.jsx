@@ -1,5 +1,6 @@
 /** @jsx jsx */
 import { jsx } from "@emotion/react"
+import { RichText } from "prismic-reactjs"
 import React from "react"
 import {
   flex,
@@ -9,7 +10,7 @@ import {
   colors,
   onTabletMedia,
 } from "../../styles"
-import { switchRichContentToComponent } from "./RichContentSlice"
+import htmlSerializer from "./htmlSerializer"
 
 export const Accordian = ({ accordion_details, accordion_summary }) => {
   return (
@@ -19,6 +20,8 @@ export const Accordian = ({ accordion_details, accordion_summary }) => {
         padding: "0.75rem",
         width: "100%",
         border: `0.25rem solid ${colors.TURQUOISE}`,
+
+        color: colors.PRIMARY,
 
         "summary::marker": {
           ...CODE_TYPE,
@@ -44,7 +47,11 @@ export const Accordian = ({ accordion_details, accordion_summary }) => {
       >
         {accordion_summary}
       </summary>
-      {accordion_details.map(switchRichContentToComponent)}
+      <RichText
+        render={accordion_details.raw}
+        // serializeHyperlink={CustomLink}
+        htmlSerializer={htmlSerializer}
+      />
     </details>
   )
 }
@@ -54,14 +61,24 @@ export const AccordianSlice = props => {
   return (
     <section
       css={[
-        { padding: "0 1rem", width: "100%", ...maxTypeWidth },
+        {
+          padding: "0 1rem",
+          width: "100%",
+          color: colors.PRIMARY,
+          ...maxTypeWidth,
+        },
         onTabletMedia({
           padding: 0,
         }),
       ]}
     >
       {/* <code css={{ background: "red" }}>{JSON.stringify(props, null, 2)}</code> */}
-      {primary.accordion_section_title.map(switchRichContentToComponent)}
+      <RichText
+        render={primary.accordion_section_title.raw}
+        // serializeHyperlink={CustomLink}
+        htmlSerializer={htmlSerializer}
+      />
+
       {items.map(accordian => (
         <Accordian {...accordian} />
       ))}
