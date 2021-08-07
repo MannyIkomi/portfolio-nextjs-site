@@ -141,7 +141,7 @@ const IndexPage = ({ data }) => {
                     }),
                   ]}
                 >
-                  brand experiences
+                  user experiences
                 </span>{" "}
                 driven by thoughtful{" "}
                 <span
