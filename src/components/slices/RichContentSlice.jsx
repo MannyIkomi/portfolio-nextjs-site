@@ -17,6 +17,7 @@ import { ImageSlice } from "./ImageSlice"
 
 import { RichText } from "prismic-reactjs"
 import { htmlSerializer } from "./htmlSerializer"
+import { DebugDataPre } from "../DebugDataPre"
 // import { linkResolver } from "./example_path_to_linkResolver"
 
 const slugifyRegex = /\s+/g
@@ -43,8 +44,8 @@ export const RichContentSlice = ({ primary, items, slice_type }) => {
         }),
       ]}
     >
+      <DebugDataPre>{rich_text}</DebugDataPre>
       <RichText render={rich_text.raw} htmlSerializer={htmlSerializer} />
-      <pre>{JSON.stringify(rich_text, null, 2)}</pre>
     </section>
   )
 }

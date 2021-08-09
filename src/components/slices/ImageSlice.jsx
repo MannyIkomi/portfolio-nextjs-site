@@ -39,9 +39,8 @@ export const ImageSlice = props => {
         slice_type === INLINE_IMAGE && maxTypeWidth,
       ]}
     >
-      {/* <code css={{ background: "red" }}>
-        {slice_type || type} <br /> {JSON.stringify(props)}
-      </code> */}
+      <DebugDataPre>{props}</DebugDataPre>
+
       <img
         src={image.url}
         alt={image.alt}
