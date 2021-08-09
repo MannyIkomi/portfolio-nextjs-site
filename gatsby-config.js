@@ -51,8 +51,9 @@ module.exports = {
         schemas: {
           project: require('./custom_types/project.json'),
           link: require('./custom_types/link.json'),
-        },
-      },
+        }
+        
+      }
     },
     {
       resolve: `gatsby-source-strapi`,
