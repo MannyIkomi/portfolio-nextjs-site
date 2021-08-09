@@ -10,7 +10,7 @@ import { TokenList } from "./TokenList"
 import {
   colors,
   onTabletMedia,
-  maxReadingWidth,
+  maxTypeWidth,
   onMedia,
   styleTransition,
   TOUCH_TARGET,
@@ -49,7 +49,7 @@ export const ProjectCover = ({ slugs, id, data, ...props }) => {
 
           width: "100%",
           minWidth: "15rem",
-          ...maxReadingWidth,
+          ...maxTypeWidth,
           cursor: "pointer",
           backgroundColor: "white",
 
