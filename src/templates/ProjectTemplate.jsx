@@ -51,14 +51,14 @@ function switchSliceToComponent(slice) {
     case FULL_IMAGE:
     case INLINE_IMAGE:
       return <ImageSlice {...slice} key={slice.id} />
-    case RICH_TEXT:
-      return <RichContentSlice {...slice} key={slice.id} />
     case ACCORDIAN:
       return <AccordianSlice {...slice} key={slice.id} />
     case IMAGE_GALLERY:
       return <ImageGallerySlice {...slice} key={slice.id} />
     case LINK:
       return <LinkModule {...slice} key={slice.id} />
+    case RICH_TEXT:
+      return <RichContentSlice {...slice} key={slice.id} />
 
     default:
       return (
