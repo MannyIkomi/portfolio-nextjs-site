@@ -10,10 +10,11 @@ import {
   MAX_TEXT_LENGTH,
   maxTypeWidth,
   captionText,
+  maxContainerWidth,
 } from "../../styles"
-import { moduleProps } from "../../util/props"
-import ProjectPhoto from "../ProjectPhoto"
+
 import { FULL_IMAGE, INLINE_IMAGE } from "../../util/sliceTypes"
+import { DebugDataPre } from "../DebugDataPre"
 
 export const ImageSlice = props => {
   // always : alt, url
@@ -22,13 +23,13 @@ export const ImageSlice = props => {
     slice_type,
     type,
     primary, // from slice
-    image_caption, // from slice
     url,
     alt,
     dimensions,
   } = props
 
   const image = primary ? primary.image : { dimensions, url, alt }
+  const imageCaption = primary.image_caption || primary.caption
 
   return (
     <figure
@@ -36,6 +37,7 @@ export const ImageSlice = props => {
         {
           width: "100%",
           margin: "2rem 0",
+          // ...flex("column"),
         },
         slice_type === INLINE_IMAGE && maxTypeWidth,
       ]}
@@ -56,7 +58,6 @@ export const ImageSlice = props => {
         width={image?.dimensions?.width}
         height={image?.dimensions?.height}
       />
-      <figcaption css={{ ...maxTypeWidth }}>{image_caption}</figcaption>
       <figcaption
         css={{
           ...maxTypeWidth,
