@@ -51,36 +51,27 @@ export const htmlSerializer = function(raw) {
       return <ol key={key}>{children}</ol>
 
     case Elements.image:
-      // const linkUrl = element.linkTo
-      //   ? element.linkTo.url || linkResolver(element.linkTo)
-      //   : null
-
+      const linkUrl = element.linkTo
+        ? element.linkTo.url || linkResolver(element.linkTo)
+        : null
       return (
-        <figure key={key}>
-          TEST
-          <img src="" alt="" />
-          <figcaption>{children}</figcaption>
-        </figure>
+        <p
+          key={key}
+          className={[element.label, "block-img"].filter(Boolean).join(" ")}
+        >
+          {linkUrl ? (
+            <a
+              href={linkUrl}
+              target={element.linkTo?.target}
+              rel={element.linkTo?.target ? "noopener" : undefined}
+            >
+              <img src={element.url} alt={element.alt || ""} />
+            </a>
+          ) : (
+            <img src={element.url} alt={element.alt || ""} />
+          )}
+        </p>
       )
-
-    // <ImageSlice key={key} {...raw} />
-    // <p
-    //   key={key}
-    //   className={[element.label, "block-img"].filter(Boolean).join(" ")}
-    // >
-    //   {linkUrl ? (
-    //     <a
-    //       href={linkUrl}
-    //       target={element.linkTo?.target}
-    //       rel={element.linkTo?.target ? "noopener" : undefined}
-    //     >
-    //       <img src={element.url} alt={element.alt || ""} />
-    //     </a>
-    //   ) : (
-    //     <img src={element.url} alt={element.alt || ""} />
-    //   )}
-    // </p>
-
     case Elements.embed: // Embed
       return (
         <div
