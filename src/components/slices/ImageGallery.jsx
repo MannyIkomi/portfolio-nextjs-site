@@ -7,7 +7,7 @@ import {
   maxTypeWidth,
   maxContainerWidth,
   flex,
-  imageCaption,
+  captionText,
 } from "../../styles"
 import htmlSerializer from "./htmlSerializer"
 import { switchRichContentToComponent } from "./RichContentSlice"
@@ -68,9 +68,7 @@ export const ImageGallerySlice = props => {
                 width={photo.image.dimensions.width}
                 height={photo.image.dimensions.height}
               />
-              <figcaption css={[imageCaption]}>
-                {photo.image_caption}
-              </figcaption>
+              <figcaption css={[captionText]}>{photo.image_caption}</figcaption>
             </figure>
           ))}
         </div>

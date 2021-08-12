@@ -16,7 +16,7 @@ import {
   maxTypeWidth,
   maxContainerWidth,
   grid,
-  imageCaption,
+  captionText,
 } from "../styles"
 
 import Layout from "../components/Layout"

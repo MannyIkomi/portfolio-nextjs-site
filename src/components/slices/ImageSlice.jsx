@@ -9,6 +9,7 @@ import {
   MAX_VIEW_LENGTH,
   MAX_TEXT_LENGTH,
   maxTypeWidth,
+  captionText,
 } from "../../styles"
 import { moduleProps } from "../../util/props"
 import ProjectPhoto from "../ProjectPhoto"
@@ -56,6 +57,15 @@ export const ImageSlice = props => {
         height={image?.dimensions?.height}
       />
       <figcaption css={{ ...maxTypeWidth }}>{image_caption}</figcaption>
+      <figcaption
+        css={{
+          ...maxTypeWidth,
+          // width: "100%",
+          margin: "auto",
+        }}
+      >
+        <span css={captionText}>{imageCaption}</span>
+      </figcaption>
     </figure>
   )
 }
