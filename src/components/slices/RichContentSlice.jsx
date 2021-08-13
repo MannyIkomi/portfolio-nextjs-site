@@ -1,6 +1,8 @@
 /** @jsx jsx */
 import React, { Fragment } from "react"
 import { css, jsx } from "@emotion/react"
+import { RichText } from "prismic-reactjs"
+import htmlSerializer from "./htmlSerializer"
 
 import {
   colors,
@@ -15,10 +17,8 @@ import { List } from "../List"
 import ProjectPhoto from "../ProjectPhoto"
 import { ImageSlice } from "./ImageSlice"
 
-import { RichText } from "prismic-reactjs"
-import { htmlSerializer } from "./htmlSerializer"
 import { DebugDataPre } from "../DebugDataPre"
-// import { linkResolver } from "./example_path_to_linkResolver"
+import { linkResolver } from "./linkResolver"
 
 const slugifyRegex = /\s+/g
 export const RichContentSlice = ({ primary, items, slice_type }) => {
@@ -44,7 +44,6 @@ export const RichContentSlice = ({ primary, items, slice_type }) => {
         }),
       ]}
     >
-      <DebugDataPre>{rich_text}</DebugDataPre>
       <RichText render={rich_text.raw} htmlSerializer={htmlSerializer} />
     </section>
   )

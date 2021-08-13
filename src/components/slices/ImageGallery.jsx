@@ -1,13 +1,14 @@
 /** @jsx jsx */
+import React from "react"
 import { jsx } from "@emotion/react"
 import { RichText } from "prismic-reactjs"
-import React from "react"
 import {
   colors,
   maxTypeWidth,
   maxContainerWidth,
   flex,
   captionText,
+  onTabletMedia,
 } from "../../styles"
 import htmlSerializer from "./htmlSerializer"
 import { switchRichContentToComponent } from "./RichContentSlice"
@@ -16,10 +17,20 @@ export const ImageGallerySlice = props => {
   const { primary, items } = props
 
   return (
-    <section css={{ color: colors.PRIMARY, ...maxTypeWidth }}>
-      {/* <pre css={{ overflow: "hidden" }}>
-            {JSON.stringify(slice, null, 2)}
-          </pre> */}
+    <section
+      css={[
+        {
+          color: colors.PRIMARY,
+          width: "100%",
+          padding: "0 1rem",
+          margin: "1rem",
+          ...maxTypeWidth,
+        },
+        onTabletMedia({
+          padding: 0,
+        }),
+      ]}
+    >
       <div css={{ ...maxTypeWidth }}>
         <RichText
           render={primary.gallery_title.raw}
@@ -32,7 +43,6 @@ export const ImageGallerySlice = props => {
           {
             // progressive enhance from single column vertical scroll
             width: "100%",
-
             // maxWidth: "100vw",
             // padding: "2rem",
           },
@@ -50,7 +60,7 @@ export const ImageGallerySlice = props => {
         >
           {items.map(photo => (
             <figure
-              key={photo.url}
+              key={photo.image.url}
               css={{
                 margin: "0 1rem",
               }}

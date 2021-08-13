@@ -71,7 +71,6 @@ function switchSliceToComponent(slice) {
 }
 
 const ProjectTemplate = ({ data, site }) => {
-  console.log(data)
   const thisProject = data.prismicProject.data
   const id = data.prismicProject.id
 
@@ -112,10 +111,13 @@ const ProjectTemplate = ({ data, site }) => {
                   color: colors.PRIMARY,
                   ...flex("row"),
                   alignItems: "center",
-                  minHeight: "50vh",
+                  width: "100%",
+                  ...maxTypeWidth,
+                  margin: "2rem 0",
                   padding: "0 1rem",
                 },
                 onTabletMedia({
+                  minHeight: "50vh",
                   minHeight: "33vh",
                   padding: 0,
                 }),
@@ -188,13 +190,13 @@ export const query = graphql`
           }
           ... on PrismicProjectBodyRichText {
             id
-            slice_type
             primary {
               rich_text {
                 raw
-                text
               }
             }
+            slice_label
+            slice_type
           }
           ... on PrismicProjectBodyAccordians {
             id
