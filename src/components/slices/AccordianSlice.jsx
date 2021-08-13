@@ -80,7 +80,7 @@ export const AccordianSlice = props => {
       />
 
       {items.map(accordian => (
-        <Accordian {...accordian} />
+        <Accordian {...accordian} key={accordian.accordion_details.text} />
       ))}
     </section>
   )
