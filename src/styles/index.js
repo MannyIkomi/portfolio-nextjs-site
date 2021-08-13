@@ -42,22 +42,6 @@ export const aspectRatioLetter = {
   paddingBottom: "calc(100% * (17 / 22) - 1px)",
 }
 
-export const moduleContainerStyles = (override = {}) => ({
-  margin: "2rem 0",
-  width: '100%',
-...maxContainerWidth,
-  boxShadow: MODULE_SHADOW,
-  
-  ...onTabletMedia({
-    margin: "3rem 0",
-    // maxHeight: "80vh",
-  }),
-  ...onDesktopMedia({
-    margin: "4rem 0",
-  }),
-  ...override,
-})
-
 export const h1Text = override => ({
   fontSize: "2rem",
   color: colors.ACCENT,
