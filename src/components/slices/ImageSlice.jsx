@@ -11,39 +11,38 @@ import {
   maxTypeWidth,
   captionText,
   maxContainerWidth,
+  onTabletMedia,
 } from "../../styles"
 
 import { FULL_IMAGE, INLINE_IMAGE } from "../../util/sliceTypes"
 import { DebugDataPre } from "../DebugDataPre"
 
 export const ImageSlice = props => {
-  // always : alt, url
-  // slices: primary, image_caption, slice_type
   const {
-    slice_type,
-    type,
     primary, // from slice
+    slice_type, // from slice
+    type, // from RichText
     url,
     alt,
     dimensions,
   } = props
 
   const image = primary ? primary.image : { dimensions, url, alt }
-  const imageCaption = primary.image_caption || primary.caption
+  const imageCaption = primary?.image_caption || primary?.caption || ""
 
   return (
     <figure
       css={[
+        slice_type === INLINE_IMAGE && maxTypeWidth,
         {
           width: "100%",
           margin: "2rem 0",
+          padding: !INLINE_IMAGE ? "0 1rem" : 0,
           // ...flex("column"),
         },
-        slice_type === INLINE_IMAGE && maxTypeWidth,
+        onTabletMedia({ padding: 0 }),
       ]}
     >
-      <DebugDataPre>{props}</DebugDataPre>
-
       <img
         src={image.url}
         alt={image.alt}

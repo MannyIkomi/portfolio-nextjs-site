@@ -1,4 +1,5 @@
 import { jsx } from "@emotion/react"
+import React, { Fragment } from "react"
 import { Link } from "gatsby"
 import { Elements } from "prismic-richtext"
 import { Link as PrismicLink } from "prismic-reactjs"
@@ -6,8 +7,8 @@ import { ImageSlice } from "./ImageSlice"
 
 // modified from https://prismic.io/docs/technologies/html-serializer-reactjs
 // -- HTML Serializer
-export const htmlSerializer = function(raw) {
-  const { type, element, content, children, key } = raw
+const htmlSerializer = function(type, element, content, children, key) {
+  // const { type, element, content, children, key } = raw
 
   switch (type) {
     case Elements.heading1: // Heading 1
@@ -51,27 +52,30 @@ export const htmlSerializer = function(raw) {
       return <ol key={key}>{children}</ol>
 
     case Elements.image:
-      const linkUrl = element.linkTo
-        ? element.linkTo.url || linkResolver(element.linkTo)
-        : null
-      return (
-        <p
-          key={key}
-          className={[element.label, "block-img"].filter(Boolean).join(" ")}
-        >
-          {linkUrl ? (
-            <a
-              href={linkUrl}
-              target={element.linkTo?.target}
-              rel={element.linkTo?.target ? "noopener" : undefined}
-            >
-              <img src={element.url} alt={element.alt || ""} />
-            </a>
-          ) : (
-            <img src={element.url} alt={element.alt || ""} />
-          )}
-        </p>
-      )
+      console.log(arguments)
+      return <ImageSlice {...element} />
+    // const linkUrl = element.linkTo
+    //   ? element.linkTo.url || linkResolver(element.linkTo)
+    //   : null
+    // return (
+    //   <figure
+    //     key={key}
+    //     className={[element.label, "block-img"].filter(Boolean).join(" ")}
+    //   >
+    //     {linkUrl ? (
+    //       <a
+    //         href={linkUrl}
+    //         target={element.linkTo?.target}
+    //         rel={element.linkTo?.target ? "noopener" : undefined}
+    //       >
+    //         <img src={element.url} alt={element.alt || ""} />
+    //       </a>
+    //     ) : (
+    //       <img src={element.url} alt={element.alt || ""} />
+    //     )}
+    //     <figcaption>TEST CAPTION</figcaption>
+    //   </figure>
+    // )
     case Elements.embed: // Embed
       return (
         <div
