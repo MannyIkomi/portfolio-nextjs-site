@@ -7,6 +7,7 @@ export const TokenList = ({ children, ...restProps }) => {
     <ul
       css={{
         listStyle: "none",
+        padding: 0,
       }}
       {...restProps}
     >

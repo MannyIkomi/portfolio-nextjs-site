@@ -35,17 +35,6 @@ export const maxContainerWidth = {
   maxWidth: MAX_VIEW_LENGTH, 
 }
 
-export const ulStyles = {
-  listStyle: "square",
-  paddingLeft: "1.25rem",
-  li: {
-    '::marker': {
-      ...CODE_TYPE,
-      content: `"::"`
-    }
-  }
-}
-
 export const aspectRatioLetter = {
   height: 0,
   // change this to aspect-ratio property

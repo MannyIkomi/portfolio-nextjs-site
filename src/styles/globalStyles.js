@@ -50,8 +50,20 @@ export const GLOBAL = {
     lineHeight: 1.5,
     fontVariantNumeric: "proportional-nums",
   },
+
+  'ul, ol': {
+    paddingLeft: '1.25rem'
+  },
+
   ul: {
     listStyle: "square",
+    paddingLeft: "1.25rem",
+    li: {
+      '::marker': {
+        ...CODE_TYPE,
+        content: `"::"`
+      }
+    }
   },
   ...headingResponsiveScale
 };
