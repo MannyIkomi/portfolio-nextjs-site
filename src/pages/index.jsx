@@ -31,6 +31,7 @@ import {
   onSupport,
   maxTypeWidth,
   typesetAnimation,
+  grid,
 } from "../styles"
 import { StickyScrollContainer } from "../components/StickyScrollContainer"
 import { StickyMenuBar } from "../components/StickyMenuBar"
@@ -81,32 +82,75 @@ const IndexPage = ({ data }) => {
         description={`I design comprehensive user experiences driven by thoughtful visual language.`}
         // project={feature[0]}
       />
+
+      <main
+        css={{
+          width: "100%",
+        }}
       >
-        <main
+        <SectionBlock
           css={{
-            width: "100%",
+            minHeight: "50vh",
+            padding: "1rem",
+            position: "relative",
+            backgroundColor: colors.LIGHT_GRAY_FOREGROUND,
           }}
         >
-          <SectionBlock
+          <ContainerWidth
             css={{
-              minHeight: "50vh",
-              padding: "1rem",
-              position: "relative",
-              backgroundColor: colors.NAVY_BLUE,
+              ...flex("column"),
+              justifyContent: "space-around",
+              ...onTabletMedia({ maxWidth: "75%" }),
             }}
           >
-            <ContainerWidth
+            <figure
               css={{
-                ...flex("column"),
-                justifyContent: "space-around",
-                ...onTabletMedia({ maxWidth: "75%" }),
+                ...grid({
+                  gridTemplateColumns: "2rem 1fr",
+                  alignItems: "center",
+                  gridGap: "1rem",
+                }),
+                margin: "1rem 0",
+              }}
+            >
+              <img
+                css={{
+                  width: "2rem",
+                  height: "auto",
+                  borderRadius: "100%",
+                }}
+                width={about.photo.dimensions.width}
+                height={about.photo.dimensions.height}
+                src={about.photo.url}
+                alt={about.photo.alt}
+              />
+              <figcaption
+                css={{
+                  lineHeight: 1,
+                  width: "100%",
+                  color: colors.PRIMARY,
+                }}
+              >
+                <span css={{ fontWeight: "bold" }}>Manny Ikomi</span>
+                <br />
+                <span>Student, Product Designer</span>
+              </figcaption>
+            </figure>
+            <div
+              css={{
+                ...grid({
+                  gridTemplateColumns: "2rem 1fr",
+                  alignItems: "center",
+                  gridGap: "1rem",
+                }),
               }}
             >
               <h1
                 css={[
                   {
+                    gridColumn: "2/3",
                     ...SANS_TYPE,
-                    color: colors.LIGHT_GRAY,
+                    color: colors.PRIMARY,
                     fontWeight: 100,
                   },
                   onTabletMedia({
@@ -124,7 +168,7 @@ const IndexPage = ({ data }) => {
                   css={[
                     CODE_TYPE,
                     typesetAnimation({
-                      color: colors.YELLOW,
+                      color: colors.ACCENT,
                       animationDelay: "1s",
                     }),
                   ]}
@@ -136,8 +180,8 @@ const IndexPage = ({ data }) => {
                   css={[
                     CODE_TYPE,
                     typesetAnimation({
+                      color: colors.ACCENT,
                       animationDelay: "2s",
-                      color: colors.YELLOW,
                     }),
                   ]}
                 >
@@ -158,15 +202,42 @@ const IndexPage = ({ data }) => {
               </p>
               <div
                 css={{
-                  backgroundColor: colors.NAVY_BLUE,
+                  gridColumn: "1/2",
                 }}
               >
+                <div>LinkedIn</div>
+                <div>Polywork</div>
+              </div>
+            </div>
+          </ContainerWidth>
+        </SectionBlock>
+
+        {projects.length > 0 && (
+          <>
+            <SectionBlock
               css={{
-                ...flex("column"),
-                justifyContent: "space-around",
-                textAlign: "center",
+                backgroundColor: colors.LIGHT_GRAY_FOREGROUND,
               }}
             >
+              <ContainerWidth css={{ padding: "1rem" }}>
+                {/* <ProjectTagHeading>Identity Design</ProjectTagHeading> */}
+                <ProjectList>
+                  {projects
+                    // .filter(project => !project.feature)
+                    .map(project => (
+                      <ProjectCover
+                        {...project}
+                        css={maxTypeWidth}
+                        key={project.id}
+                      />
+                    ))}
+                </ProjectList>
+              </ContainerWidth>
+            </SectionBlock>
+          </>
+        )}
+      </main>
+      {/* 
       <SectionBlock
         css={[
           {
@@ -201,7 +272,7 @@ const IndexPage = ({ data }) => {
             Styles come and go. Good design is a language, not a style.
           </QuoteBlock>
         </ContainerWidth>
-      </SectionBlock>
+      </SectionBlock> */}
 
       <Footer />
     </Layout>
