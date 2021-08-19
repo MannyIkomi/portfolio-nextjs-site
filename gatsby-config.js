@@ -51,8 +51,8 @@ module.exports = {
         schemas: {
           project: require('./custom_types/project.json'),
           link: require('./custom_types/link.json'),
+          about: require('./custom_types/about.json'),
         }
-        
       }
     },
     {
