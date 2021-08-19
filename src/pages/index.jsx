@@ -46,11 +46,13 @@ import { QuoteBlock } from "../components/QuoteBlock"
 import { useSocialMedia } from "../hooks/useSocialMedia"
 import { TypesetLink } from "../components/TypesetLink"
 import { List } from "../components/List"
+import { RichText } from "prismic-reactjs"
 
 // console.clear()
 
 const IndexPage = ({ data }) => {
   const projects = data.allPrismicProject.nodes
+  const about = data.prismicAbout.data
 
   const socials = useSocialMedia()
   const [scrollId, setScrollId] = useState("")
@@ -144,15 +146,15 @@ const IndexPage = ({ data }) => {
                   visual language.
                 </span>
               </h1>
-            </ContainerWidth>
-          </SectionBlock>
-          {/* {feature.length > 0 && (
-            <>
-              <SectionBlock
-                css={{
-                  backgroundColor: colors.NAVY_BLUE,
-                  minHeight: "50vh",
-                }}
+              <p
+                css={[
+                  {
+                    display: "none",
+                  },
+                  onTabletMedia({
+                    display: "intital",
+                  }),
+                ]}
               >
                 <RichText render={about.bio.raw} />
               </p>
