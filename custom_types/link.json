@@ -9,7 +9,8 @@
     "url": {
       "type": "Link",
       "config": {
-        "label": "url"
+        "label": "url",
+        "select": null
       }
     }
   }
