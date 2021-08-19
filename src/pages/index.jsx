@@ -234,6 +234,22 @@ export const pageQuery = graphql`
         }
       }
     }
+    prismicAbout {
+      data {
+        role
+        photo {
+          alt
+          dimensions {
+            height
+            width
+          }
+          url
+        }
+        bio {
+          raw
+        }
+      }
+    }
   }
 `
 
