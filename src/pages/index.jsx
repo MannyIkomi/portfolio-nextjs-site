@@ -82,8 +82,6 @@ const IndexPage = ({ data }) => {
         // project={feature[0]}
       />
       >
-        <DesktopMenu />
-        <StickyMenuBar />
         <main
           css={{
             width: "100%",
