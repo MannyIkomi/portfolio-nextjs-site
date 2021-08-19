@@ -79,18 +79,6 @@ const IndexPage = ({ data }) => {
         description={`I design comprehensive user experiences driven by thoughtful visual language.`}
         // project={feature[0]}
       />
-      <StickyScrollContainer
-        css={[
-          {
-            "#mobile": flex("row"), // show StickyMenuBar
-            "#desktop": { display: "none" },
-          },
-          onDesktopMedia({
-            ...flex("row"), // puts desktop <nav> on the left of <main>
-            "#mobile": { display: "none" },
-            "#desktop": flex("column"), // show DesktopMenu
-          }),
-        ]}
       >
         <DesktopMenu />
         <StickyMenuBar />
@@ -336,7 +324,6 @@ const IndexPage = ({ data }) => {
             </ContainerWidth>
           </SectionBlock> */}
         </main>
-      </StickyScrollContainer>
       <SectionBlock
         css={[
           {
