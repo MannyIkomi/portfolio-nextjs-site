@@ -154,176 +154,19 @@ const IndexPage = ({ data }) => {
                   minHeight: "50vh",
                 }}
               >
-                <ContainerWidth css={{ ...maxContainerWidth, padding: "1rem" }}>
-                  {feature.map(project => (
-                    <Link
-                      to={"/" + project.slug}
-                      className={"project-cover"}
-                      css={{
-                        display: "block",
-                        ...flex("column"),
-                        justifyContent: "center",
-                        marginBottom: TOUCH_TARGET,
-                        ...onTabletMedia({
-                          margin: "1rem",
-                          marginBottom: TOUCH_TARGET,
-                        }),
-                      }}
-                      key={project.id}
-                    >
-                      <figure
-                        css={{
-                          ...styleTransition(),
-                          ...onMediaWidth(
-                            "800px",
-                            supportsGrid({
-                              display: "grid",
-                              margin: 0,
-                              gridTemplateColumns: "1fr 1fr",
-                              gridGap: `calc(${TOUCH_TARGET} / 2)`,
-                            })
-                          ),
-                          ...onMedia("hover: hover", {
-                            "&:hover": {
-                              ...styleTransition(),
-                              transform: "scale(1.025)",
-                              transformOrigin: "center",
-                            },
-                          }),
-                        }}
-                      >
-                        <ProjectPhoto
-                          css={{ boxShadow: PROJECT_SHADOW }}
-                          {...project.cover.childImageSharp.fluid}
-                        />
-                        <figcaption
-                          css={{
-                            ...flex("column"),
-                            justifyContent: "flex-end",
-                            color: colors.LIGHT_GRAY,
-                            marginTop: "1rem",
-                          }}
-                        >
-                          <h3
-                            css={{
-                              ...CODE_TYPE,
-                              color: colors.LIGHT_GRAY_FOREGROUND,
-
-                              textTransform: "initial",
-                            }}
-                          >
-                            {project.title} =>
-                          </h3>
-                          <h4
-                            css={{
-                              ...SANS_TYPE,
-                              color: colors.YELLOW,
-                              fontSize: "2rem",
-                              fontStyle: "italic",
-
-                              textTransform: "initial",
-                            }}
-                          >
-                            {project.subtitle}
-                          </h4>
-                          <p css={{ textDecoration: "none" }}>
-                            {project.seoDescription}
-                          </p>
-
-                          <TokenList>
-                            {project.tags.map(
-                              ({ design, detail }) => detail || design
-                            )}
-                          </TokenList>
-                        </figcaption>
-                      </figure>
-                    </Link>
-                  ))}
-                </ContainerWidth>
-              </SectionBlock>
-            </>
-          )} */}
-
-          {projects.length > 0 && (
-            <>
-              <SectionBlock
+                <RichText render={about.bio.raw} />
+              </p>
+              <div
                 css={{
                   backgroundColor: colors.NAVY_BLUE,
                 }}
               >
-                <ContainerWidth css={{ padding: "1rem" }}>
-                  {/* <ProjectTagHeading>Identity Design</ProjectTagHeading> */}
-                  <ProjectList>
-                    {projects
-                      // .filter(project => !project.feature)
-                      .map(project => (
-                        <ProjectCover
-                          {...project}
-                          css={maxTypeWidth}
-                          key={project.id}
-                        />
-                      ))}
-                  </ProjectList>
-                </ContainerWidth>
-              </SectionBlock>
-            </>
-          )}
-          {/* <SectionBlock css={{ minHeight: "50vh" }}>
-            
-            <ContainerWidth
               css={{
                 ...flex("column"),
                 justifyContent: "space-around",
                 textAlign: "center",
               }}
             >
-              <h2 css={{ color: colors.NAVY_BLUE }}>Contact Me</h2>
-              <ul
-                css={{
-                  listStyle: "none",
-                  ...flex("column"),
-                  alignItems: "center",
-                  flexWrap: "wrap",
-                }}
-              >
-                {socials
-                  .filter(
-                    ({ platform }) =>
-                      platform === "Twitter" || platform === "LinkedIn"
-                  )
-                  .map(({ platform, href }) => (
-                    <li key={platform}>
-                      <TypesetLink
-                        css={{
-                          padding: "0.75rem",
-                          border: `0.25rem solid ${colors.TURQUOISE}`,
-                          whiteSpace: "nowrap",
-
-                          fontWeight: 700,
-                          lineHeight: 1,
-                          textTransform: "uppercase",
-                          textDecoration: "none",
-                          color: colors.TURQUOISE,
-
-                          marginTop: "3vh",
-
-                          ...onHover({
-                            backgroundColor: colors.TURQUOISE,
-                            color: colors.LIGHT_GRAY_FOREGROUND,
-                          }),
-                        }}
-                        to={href}
-                      >
-                        {platform === "Twitter" && "DM on "}
-                        {platform === "LinkedIn" && "Connect on "}
-                        {platform} ->
-                      </TypesetLink>
-                    </li>
-                  ))}
-              </ul>
-            </ContainerWidth>
-          </SectionBlock> */}
-        </main>
       <SectionBlock
         css={[
           {
