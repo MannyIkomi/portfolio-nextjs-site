@@ -185,8 +185,10 @@ export const Footer = props => {
               }),
             }}
           >
-            Copyright © {new Date().getFullYear()}
-            <br /> Manny Ikomi
+            <small>
+              Copyright © {new Date().getFullYear()}
+              <br /> Manny Ikomi
+            </small>
           </p>
         </ContainerWidth>
       </div>
