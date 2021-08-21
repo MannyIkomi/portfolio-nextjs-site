@@ -6,6 +6,7 @@ import { css, jsx } from "@emotion/react"
 import { OverlayFill } from "./FillOverlay"
 
 import { ProjectPhoto } from "./ProjectPhoto"
+import { DebugDataPre } from "../components/DebugDataPre"
 import { TokenList } from "./TokenList"
 import {
   colors,
@@ -23,7 +24,7 @@ export const ProjectCover = ({ slugs, id, data, ...props }) => {
   const { alt, url: coverSrc, dimensions } = cover_image
 
   // Refactor this imageProps operations for the new Prismic API on responsive images
-  const imageProps = cover_image.childImageSharp
+  const coverImage = cover_image.childImageSharp
     ? cover_image.childImageSharp.fluid
     : cover_image // for fallback GIF support
 
@@ -33,107 +34,69 @@ export const ProjectCover = ({ slugs, id, data, ...props }) => {
       title={title.text}
       css={{
         display: "block",
-        marginBottom: TOUCH_TARGET,
-        ...onTabletMedia({
-          margin: "1rem",
-        }),
+        width: "100%",
       }}
-      {...props}
     >
       <figure
-        className={"project-cover"}
         css={{
-          // ...aspectRatioLetter,
-          position: "relative",
-          overflow: "hidden", // clips aspect ratio overflow
-
           width: "100%",
           minWidth: "15rem",
           ...maxTypeWidth,
           cursor: "pointer",
           backgroundColor: "white",
-
-          // boxShadow: PROJECT_SHADOW,
-
-          ...onMedia("hover: none", {
-            // user agent does not have :hover (touch devices)
-            ".willHide.overlayFill": {
-              opacity: 0,
-            },
-            ".willHide": {
-              opacity: 0,
-            },
-          }),
-
-          ...onMedia("hover: hover", {
-            ...styleTransition(),
-            ".willHide, img": {
-              ...styleTransition(),
-            },
-
-            ".willHide": {
-              opacity: 0,
-            },
-
-            "&:hover, &:focus": {
-              zIndex: 2,
-              transform: "scale(1.05)",
-              transformOrigin: "center",
-
-              img: {
-                filter: "blur(3px)", // matte finish
-              },
-              ".willHide": {
-                opacity: 1,
-              },
-            },
-          }),
         }}
       >
-        <ProjectPhoto className={"photo"} alt={alt} {...imageProps} />
-        <OverlayFill className={"willHide overlayFill"} />
+        <img
+          src={coverImage.url}
+          alt={coverImage.alt}
+          height={coverImage.dimensions.height}
+          width={coverImage.dimensions.width}
+          css={{
+            width: "100%",
+            height: "auto",
+            objectFit: "cover",
+          }}
+        />
 
         <figcaption
-          className={"willHide"}
           css={{
-            position: "absolute",
-            bottom: 0,
-            left: 0,
             padding: "1rem",
-
-            color: colors.PRIMARY,
+            color: colors.LIGHT_GRAY,
+            backgroundColor: colors.PRIMARY,
           }}
         >
-          <h3
+          <h2
             css={{
-              ...CODE_TYPE,
-              fontSize: "1.33rem",
+              color: colors.COMPLEMENTARY,
               fontWeight: 800,
               lineHeight: 1.2,
-              textTransform: "initial",
             }}
           >
-            {title.text} =>
-          </h3>
-          <h4
+            {title.text}
+          </h2>
+          <h3
             css={{
               ...SANS_TYPE,
-              color: colors.ACCENT,
-              fontSize: "1.66rem",
-              ...onTabletMedia({
-                fontSize: "2rem",
-                lineHeight: 1.2,
-              }),
+              color: colors.LIGHT_GRAY,
               textTransform: "initial",
-              fontStyle: "italic",
+
               fontWeight: 200,
             }}
           >
             {subtitle}
-          </h4>
+          </h3>
 
           {tags && tags.length > 0 && (
-            <TokenList>{tags.map(({ label }) => label)}</TokenList>
+            <TokenList
+              css={{
+                li: {
+                  backgroundColor: colors.LIGHT_GRAY,
+                  color: colors.PRIMARY,
+                },
+              }}
+            >
+              {tags.map(({ label }) => label)}
+            </TokenList>
           )}
         </figcaption>
       </figure>
