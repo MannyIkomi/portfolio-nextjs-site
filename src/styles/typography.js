@@ -90,22 +90,6 @@ export const resumeContentHeading = {
   lineHeight: 1.2,
 }
 
-export const typography = {
-  CODE_TYPE,
-   
-   SANS_TYPE,
-   
-   
-   typesetTransform,
-   hoverTypesetTransform,
-  fontSizeTransition,
-  linkText,
-  resumeContentHeading,
-  // linkStyles,
-  // typesetAnimation,
-  // maxReadingWidth,
-}
-
 export const headingResponsiveScale = {
   h1: {
     fontSize: "2rem",
@@ -149,4 +133,22 @@ export const headingResponsiveScale = {
       fontSize: "1.5rem",
     },
   }),
+}
+
+
+export const typography = {
+  CODE_TYPE,
+   
+   SANS_TYPE,
+   
+   
+   typesetTransform,
+   hoverTypesetTransform,
+  fontSizeTransition,
+  linkText,
+  resumeContentHeading,
+  headingResponsiveScale
+  // linkStyles,
+  // typesetAnimation,
+  // maxReadingWidth,
 }
