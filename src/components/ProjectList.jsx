@@ -21,7 +21,12 @@ export const ProjectList = ({ children, css, ...props }) => {
         ...flex("column"),
         alignItems: "center",
         width: "100%",
-
+        padding: 0,
+        li: {
+          "::marker": {
+            content: "initial",
+          },
+        },
         ...onTabletMedia(
           grid({
             // padding: TOUCH_TARGET,
@@ -33,7 +38,9 @@ export const ProjectList = ({ children, css, ...props }) => {
       }}
       {...props}
     >
-      {children}
+      {React.Children.map(children, child => (
+        <li>{child}</li>
+      ))}
     </ul>
   )
 }
