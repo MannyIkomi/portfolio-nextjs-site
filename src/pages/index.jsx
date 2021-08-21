@@ -237,42 +237,6 @@ const IndexPage = ({ data }) => {
           </>
         )}
       </main>
-      {/* 
-      <SectionBlock
-        css={[
-          {
-            backgroundColor: colors.TURQUOISE,
-            color: colors.LIGHT_GRAY,
-            padding: TOUCH_TARGET,
-            ...supportsGrid({
-              padding: "1rem",
-            }),
-          },
-        ]}
-      >
-        <ContainerWidth
-          css={{
-            minHeight: "66vh",
-            ...flex("column"),
-            justifyContent: "center",
-
-            ...grid12Columns({
-              alignItems: "center",
-            }),
-
-            ...onTabletMedia({
-              minHeight: "33vh",
-            }),
-          }}
-        >
-          <QuoteBlock
-            cite={"Massimo Vignelli"}
-            css={supportsGrid({ gridColumn: "2 / 12" })}
-          >
-            Styles come and go. Good design is a language, not a style.
-          </QuoteBlock>
-        </ContainerWidth>
-      </SectionBlock> */}
 
       <Footer />
     </Layout>
