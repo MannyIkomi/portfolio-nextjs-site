@@ -30,6 +30,7 @@
     "react-dom": "^16.14.0",
     "react-helmet": "^6.1.0",
     "react-select": "^3.2.0",
+    "react-svg": "^14.0.9",
     "smoothscroll-polyfill": "^0.4.4"
   },
   "devDependencies": {

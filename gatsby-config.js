@@ -50,7 +50,7 @@ module.exports = {
 
         schemas: {
           project: require('./custom_types/project.json'),
-          link: require('./custom_types/link.json'),
+          socials: require('./custom_types/socials.json'),
           about: require('./custom_types/about.json'),
         }
       }

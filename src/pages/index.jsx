@@ -48,6 +48,7 @@ import { useSocialMedia } from "../hooks/useSocialMedia"
 import { TypesetLink } from "../components/TypesetLink"
 import { List } from "../components/List"
 import { RichText } from "prismic-reactjs"
+import { ReactSVG } from "react-svg"
 
 // console.clear()
 
@@ -193,8 +194,23 @@ const IndexPage = ({ data }) => {
                   gridColumn: "1/2",
                 }}
               >
-                <div>LinkedIn</div>
-                <div>Polywork</div>
+                {socials
+                  // .filter(platform => platform.label == "LinkedIn")
+                  .map(linkedIn => {
+                    return (
+                      <a
+                        href={linkedIn.url.url}
+                        css={{
+                          color: colors.ACCENT,
+                        }}
+                      >
+                        <ReactSVG
+                          src={linkedIn.icon.url}
+                          css={{ svg: { fill: "currentcolor" } }}
+                        />
+                      </a>
+                    )
+                  })}
               </div>
             </div>
           </ContainerWidth>
