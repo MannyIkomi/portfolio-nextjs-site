@@ -55,27 +55,7 @@ module.exports = {
         }
       }
     },
-    {
-      resolve: `gatsby-source-strapi`,
-      options: {
-        apiURL: `http://localhost:1337`,
-        queryLimit: 1000, // Default to 100
-        contentTypes: [
-          `projects`,
-          `socials`,
-          `education`,
-          `expertise`,
-          `about`,
-          `inspiration`,
-          `experience`,
-        ],
-        // Possibility to login with a strapi user, when content types are not publically available (optional).
-        // loginData: {
-        //   identifier: "",
-        //   password: "",
-        // },
-      },
-    },
+    
     {
       resolve: `gatsby-transformer-remark`,
       options: {

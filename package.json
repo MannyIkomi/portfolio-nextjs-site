@@ -21,7 +21,6 @@
     "gatsby-remark-widows": "^1.0.0",
     "gatsby-source-filesystem": "^3.9.0",
     "gatsby-source-prismic": "^3.3.6",
-    "gatsby-source-strapi": "^0.0.11",
     "gatsby-transformer-remark": "^4.6.0",
     "gatsby-transformer-sharp": "^3.9.0",
     "latest": "^0.2.0",
