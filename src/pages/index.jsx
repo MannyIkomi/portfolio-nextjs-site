@@ -249,7 +249,7 @@ const IndexPage = ({ data }) => {
 
 export const pageQuery = graphql`
   query PrismicQuery {
-    allPrismicProject {
+    allPrismicProject(sort: { fields: data___date, order: DESC }) {
       nodes {
         id
         data {
@@ -260,8 +260,12 @@ export const pageQuery = graphql`
             text
           }
           cover_image {
+            fluid {
+              srcSet
+              src
+              sizes
+            }
             alt
-            url
             dimensions {
               height
               width
@@ -282,10 +286,25 @@ export const pageQuery = graphql`
             height
             width
           }
-          url
+          fluid {
+            srcSet
+            sizes
+            src
+          }
         }
         bio {
           raw
+        }
+      }
+    }
+    allPrismicSocials {
+      nodes {
+        data {
+          call_to_action
+          label
+          url {
+            url
+          }
         }
       }
     }
