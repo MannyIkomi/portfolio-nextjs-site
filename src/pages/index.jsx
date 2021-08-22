@@ -48,15 +48,17 @@ import { useSocialMedia } from "../hooks/useSocialMedia"
 import { TypesetLink } from "../components/TypesetLink"
 import { List } from "../components/List"
 import { RichText } from "prismic-reactjs"
+import { DebugDataPre } from "../components/DebugDataPre"
 import { ReactSVG } from "react-svg"
+import { SocialIcon } from "../components/SocialIcon"
 
 // console.clear()
 
 const IndexPage = ({ data }) => {
   const projects = data.allPrismicProject.nodes
   const about = data.prismicAbout.data
-
   const socials = useSocialMedia()
+
   const [scrollId, setScrollId] = useState("")
 
   const useScrollToId = elementId => {
@@ -88,7 +90,6 @@ const IndexPage = ({ data }) => {
       <HtmlHead
         title="Portfolio"
         description={`I design comprehensive user experiences driven by thoughtful visual language.`}
-        // project={feature[0]}
       />
 
       <main
@@ -129,7 +130,9 @@ const IndexPage = ({ data }) => {
                 }}
                 width={about.photo.dimensions.width}
                 height={about.photo.dimensions.height}
-                src={about.photo.url}
+                src={about.photo.fluid.src}
+                srcSet={about.photo.fluid.srcSet}
+                sizes={about.photo.fluid.sizes}
                 alt={about.photo.alt}
               />
               <figcaption
@@ -141,7 +144,7 @@ const IndexPage = ({ data }) => {
               >
                 <span css={{ fontWeight: "bold" }}>Manny Ikomi</span>
                 <br />
-                <span>Student, Product Designer</span>
+                <span>{about.role}</span>
               </figcaption>
             </figure>
             <div
@@ -177,21 +180,24 @@ const IndexPage = ({ data }) => {
                 thoughtful <span css={typesetAnimationStyle}>visual</span>{" "}
                 <span css={typesetAnimationStyle}>language</span>.
               </h1>
-              <p
+              {/* <div
                 css={[
                   {
                     display: "none",
                   },
                   onTabletMedia({
-                    display: "intital",
+                    display: "grid",
+                    gridColumn: "2/3",
                   }),
                 ]}
               >
                 <RichText render={about.bio.raw} />
-              </p>
+              </div> */}
               <div
                 css={{
                   gridColumn: "1/2",
+                  gridRow: "1/2",
+                  alignSelf: "end",
                 }}
               >
                 {socials.map(platform => {
@@ -209,25 +215,26 @@ const IndexPage = ({ data }) => {
                 backgroundColor: colors.LIGHT_GRAY_FOREGROUND,
               }}
             >
-              <ContainerWidth css={{ padding: "1rem" }}>
-                {/* <ProjectTagHeading>Identity Design</ProjectTagHeading> */}
-                <ProjectList>
-                  {projects
-                    // .filter(project => !project.feature)
-                    .map(project => (
-                      <ProjectCover
-                        {...project}
-                        css={maxTypeWidth}
-                        key={project.id}
-                      />
-                    ))}
+              <ContainerWidth>
+                <ProjectList
+                  css={{
+                    ...flex("column"),
+                    alignItems: "center",
+                  }}
+                >
+                  {projects.map(project => (
+                    <ProjectCover
+                      {...project}
+                      css={[maxTypeWidth, { marginBottom: "1rem" }]}
+                      key={project.id}
+                    />
+                  ))}
                 </ProjectList>
               </ContainerWidth>
             </SectionBlock>
           </>
         )}
       </main>
-
       <Footer />
     </Layout>
   )
