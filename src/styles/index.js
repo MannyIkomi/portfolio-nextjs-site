@@ -11,7 +11,7 @@ export const tokenize = override => ({
   display: "inline-block",
   padding: "0.1rem 0.33rem",
   color: colors.LIGHT_GRAY,
-  backgroundColor: colors.ACCENT,
+  backgroundColor: colors.PRIMARY,
   ...override,
 })
 
