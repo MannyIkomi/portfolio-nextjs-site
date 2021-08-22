@@ -22,7 +22,6 @@ import { StickyScrollContainer } from "../components/StickyScrollContainer"
 import { StickyMenuBar } from "../components/StickyMenuBar"
 
 import { Footer } from "../components/Footer"
-import Markdown from "../components/Markdown"
 
 import { ContainerWidth } from "../components/ContainerWidth"
 import { SectionBlock } from "../components/SectionBlock"
