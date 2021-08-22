@@ -37,8 +37,7 @@ export const ImageSlice = props => {
         {
           width: "100%",
           margin: "2rem 0",
-          padding: !INLINE_IMAGE ? "0 1rem" : 0,
-          // ...flex("column"),
+          padding: INLINE_IMAGE ? "0 1rem" : 0,
         },
         onTabletMedia({ padding: 0 }),
       ]}

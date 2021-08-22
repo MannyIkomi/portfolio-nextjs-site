@@ -25,6 +25,7 @@ import { StickyScrollContainer } from "../components/StickyScrollContainer"
 import { StickyMenuBar } from "../components/StickyMenuBar"
 import { ContainerWidth } from "../components/ContainerWidth"
 import { Footer } from "../components/Footer"
+import { ActionLinkSlice } from "../components/slices/ActionLinkSlice"
 
 // Refactor Modules into Prismic Slices
 import { ImageSlice } from "../components/slices/ImageSlice"
@@ -40,7 +41,7 @@ import {
   FULL_IMAGE,
   IMAGE_GALLERY,
   INLINE_IMAGE,
-  LINK,
+  ACTION_LINK,
   RICH_TEXT,
 } from "../util/sliceTypes"
 import { AccordianSlice } from "../components/slices/AccordianSlice"
@@ -55,12 +56,23 @@ function switchSliceToComponent(slice) {
       return <AccordianSlice {...slice} key={slice.id} />
     case IMAGE_GALLERY:
       return <ImageGallerySlice {...slice} key={slice.id} />
-    case LINK:
-      return <LinkModule {...slice} key={slice.id} />
+    case ACTION_LINK:
+      if (slice.primary.isBroken) {
+        console.warn(
+          `"${slice.primary.label}" link is broken, the link will not be rendered`,
+          slice
+        )
+        return
+      }
+      return <ActionLinkSlice {...slice} key={slice.id} />
     case RICH_TEXT:
       return <RichContentSlice {...slice} key={slice.id} />
 
     default:
+      console.warn(
+        `Could not find matching Component for Slice: ${slice.slice_type ||
+          slice.type}`
+      )
       return (
         <div css={{ backgroundColor: "red" }}>
           Could not find matching Component for Slice:{" "}
@@ -117,7 +129,9 @@ const ProjectTemplate = ({ data, site }) => {
               <h1>{title}</h1>
               <h2
                 css={{
-                  color: colors.ACCENT,
+                  color: colors.PRIMARY,
+                  // Use Figma to get actual tints of the PRIMARY blue color
+                  opacity: 0.66,
                 }}
               >
                 {subtitle}
@@ -256,6 +270,17 @@ export const query = graphql`
               }
               caption
             }
+          }
+          ... on PrismicProjectBodyActionLink {
+            id
+            primary {
+              label
+              url {
+                isBroken
+                url
+              }
+            }
+            slice_type
           }
         }
       }

@@ -213,6 +213,29 @@
                 }
               }
             }
+          },
+          "action_link": {
+            "type": "Slice",
+            "fieldset": "Action Link",
+            "description": "External link to live project or resource",
+            "icon": "insert_link",
+            "display": "list",
+            "non-repeat": {
+              "label": {
+                "type": "Text",
+                "config": {
+                  "label": "label"
+                }
+              },
+              "url": {
+                "type": "Link",
+                "config": {
+                  "label": "url",
+                  "select": null
+                }
+              }
+            },
+            "repeat": {}
           }
         }
       }
