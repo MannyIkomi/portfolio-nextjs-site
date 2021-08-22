@@ -12,6 +12,7 @@ import {
 } from "../../styles"
 import htmlSerializer from "./htmlSerializer"
 import { switchRichContentToComponent } from "./RichContentSlice"
+import { DebugDataPre } from "../DebugDataPre"
 
 export const ImageGallerySlice = props => {
   const { primary, items } = props
@@ -41,10 +42,7 @@ export const ImageGallerySlice = props => {
       <div
         css={[
           {
-            // progressive enhance from single column vertical scroll
             width: "100%",
-            // maxWidth: "100vw",
-            // padding: "2rem",
           },
         ]}
       >
@@ -52,35 +50,54 @@ export const ImageGallerySlice = props => {
           css={[
             {
               overflowX: "scroll",
+              overflowY: "hidden",
+
               ...flex("row"),
               flexWrap: "nowrap",
               justifyContent: "initial",
             },
           ]}
         >
-          {items.map(photo => (
-            <figure
-              key={photo.image.url}
-              css={{
-                margin: "0 1rem",
-              }}
-            >
-              <img
-                css={{
-                  minWidth: "15rem",
+          {items.map(photo => {
+            const staticWidth = photo.image.dimensions.width
+            const staticHeight = photo.image.dimensions.height
 
-                  width: "100%",
-                  height: "auto",
-                  maxWidth: "66vw",
+            return (
+              <figure
+                key={photo.image.url}
+                css={{
+                  marginRight: "1rem",
                 }}
-                alt={photo.image.alt}
-                src={photo.image.url}
-                width={photo.image.dimensions.width}
-                height={photo.image.dimensions.height}
-              />
-              <figcaption css={[captionText]}>{photo.image_caption}</figcaption>
-            </figure>
-          ))}
+              >
+                <img
+                  css={{
+                    objectFit: "cover",
+                    // objectPosition: "center",
+
+                    aspectRatio: `${staticWidth}/${staticHeight}`,
+
+                    width: "100%",
+                    height: "auto",
+
+                    minWidth: "20rem",
+                    // maxWidth: "66vw",
+
+                    minHeight: "20rem",
+                    // maxHeight: "66vh",
+                  }}
+                  alt={photo.image.alt}
+                  src={photo.image.fluid?.src}
+                  srcSet={photo.image.fluid?.srcSet}
+                  sizes={photo.image.fluid?.sizes}
+                  width={staticWidth}
+                  height={staticHeight}
+                />
+                <figcaption css={[captionText]}>
+                  {photo.image_caption}
+                </figcaption>
+              </figure>
+            )
+          })}
         </div>
       </div>
     </section>

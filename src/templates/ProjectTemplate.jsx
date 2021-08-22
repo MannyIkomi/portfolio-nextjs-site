@@ -86,63 +86,53 @@ const ProjectTemplate = ({ data, site }) => {
         project={thisProject}
         path={`/${id}`}
       />
-      <StickyScrollContainer
-        css={{
-          "::before": {
-            content: '""',
-            display: "block",
-            width: "100%",
-            maxHeight: MENUBAR_HEIGHT,
-          },
-        }}
-      >
-        <StickyMenuBar />
-        <main>
-          <article
-            css={{
-              ...flex("column"),
-              alignItems: "center",
-              backgroundColor: colors.LIGHT_GRAY_FOREGROUND,
-            }}
+
+      <main>
+        <article
+          css={{
+            ...flex("column"),
+            alignItems: "center",
+            backgroundColor: colors.LIGHT_GRAY_FOREGROUND,
+          }}
+        >
+          <header
+            css={[
+              {
+                color: colors.PRIMARY,
+                ...flex("row"),
+                alignItems: "center",
+                width: "100%",
+                ...maxTypeWidth,
+                margin: "2rem 0",
+                padding: "0 1rem",
+              },
+              onTabletMedia({
+                minHeight: "50vh",
+                minHeight: "33vh",
+                padding: 0,
+              }),
+            ]}
           >
-            <header
-              css={[
-                {
-                  color: colors.PRIMARY,
-                  ...flex("row"),
-                  alignItems: "center",
-                  width: "100%",
-                  ...maxTypeWidth,
-                  margin: "2rem 0",
-                  padding: "0 1rem",
-                },
-                onTabletMedia({
-                  minHeight: "50vh",
-                  minHeight: "33vh",
-                  padding: 0,
-                }),
-              ]}
-            >
-              <ContainerWidth>
-                <h1>{title}</h1>
-                <h2
-                  css={{
-                    color: colors.ACCENT,
-                  }}
-                >
-                  {subtitle}
-                </h2>
-                <TokenList>{tags.map(tag => tag.label)}</TokenList>
-              </ContainerWidth>
-            </header>
-            <div
-              css={[{ ...flex("column"), alignItems: "center", width: "100%" }]}
-            >
-              {body.map(switchSliceToComponent)}
-            </div>
-          </article>
-        </main>
-      </StickyScrollContainer>
+            <ContainerWidth>
+              <h1>{title}</h1>
+              <h2
+                css={{
+                  color: colors.ACCENT,
+                }}
+              >
+                {subtitle}
+              </h2>
+              <TokenList>{tags.map(tag => tag.label)}</TokenList>
+            </ContainerWidth>
+          </header>
+          <div
+            css={[{ ...flex("column"), alignItems: "center", width: "100%" }]}
+          >
+            {body.map(switchSliceToComponent)}
+          </div>
+        </article>
+      </main>
+
       <Footer />
     </Layout>
   )
@@ -183,6 +173,11 @@ export const query = graphql`
                 dimensions {
                   height
                   width
+                }
+                fluid {
+                  src
+                  srcSet
+                  sizes
                 }
               }
               image_caption
@@ -234,6 +229,11 @@ export const query = graphql`
                   height
                   width
                 }
+                fluid {
+                  src
+                  srcSet
+                  sizes
+                }
               }
             }
           }
@@ -247,6 +247,11 @@ export const query = graphql`
                 dimensions {
                   height
                   width
+                }
+                fluid {
+                  sizes
+                  srcSet
+                  src
                 }
               }
               caption
