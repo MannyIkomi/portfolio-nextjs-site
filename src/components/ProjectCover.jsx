@@ -17,16 +17,14 @@ import {
   TOUCH_TARGET,
   SANS_TYPE,
   CODE_TYPE,
+  flex,
 } from "../styles"
 
 export const ProjectCover = ({ slugs, id, data, ...props }) => {
   const { date, description, title, subtitle, cover_image, tags } = data
-  const { alt, url: coverSrc, dimensions } = cover_image
 
   // Refactor this imageProps operations for the new Prismic API on responsive images
-  const coverImage = cover_image.childImageSharp
-    ? cover_image.childImageSharp.fluid
-    : cover_image // for fallback GIF support
+  const coverImage = cover_image
 
   return (
     <Link
@@ -36,9 +34,11 @@ export const ProjectCover = ({ slugs, id, data, ...props }) => {
         display: "block",
         width: "100%",
       }}
+      {...props}
     >
-      <figure
+      <div
         css={{
+          ...flex(),
           width: "100%",
           minWidth: "15rem",
           ...maxTypeWidth,
@@ -47,7 +47,9 @@ export const ProjectCover = ({ slugs, id, data, ...props }) => {
         }}
       >
         <img
-          src={coverImage.url}
+          srcSet={coverImage.fluid.srcSet}
+          sizes={coverImage.fluid.sizes}
+          src={coverImage.fluid.src}
           alt={coverImage.alt}
           height={coverImage.dimensions.height}
           width={coverImage.dimensions.width}
@@ -58,7 +60,7 @@ export const ProjectCover = ({ slugs, id, data, ...props }) => {
           }}
         />
 
-        <figcaption
+        <div
           css={{
             padding: "1rem",
             color: colors.LIGHT_GRAY,
@@ -98,8 +100,8 @@ export const ProjectCover = ({ slugs, id, data, ...props }) => {
               {tags.map(({ label }) => label)}
             </TokenList>
           )}
-        </figcaption>
-      </figure>
+        </div>
+      </div>
     </Link>
   )
 }
