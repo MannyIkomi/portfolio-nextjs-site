@@ -6,11 +6,25 @@
         "label": "label"
       }
     },
+    "call_to_action": {
+      "type": "Text",
+      "config": {
+        "label": "call to action"
+      }
+    },
     "url": {
       "type": "Link",
       "config": {
         "label": "url",
         "select": null
+      }
+    },
+    "icon": {
+      "type": "Image",
+      "config": {
+        "constraint": {},
+        "thumbnails": [],
+        "label": "icon"
       }
     }
   }
