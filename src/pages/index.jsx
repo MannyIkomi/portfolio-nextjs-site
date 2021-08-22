@@ -75,6 +75,13 @@ const IndexPage = ({ data }) => {
 
   useScrollToId(scrollId)
 
+  const typesetAnimationStyle = [
+    CODE_TYPE,
+    typesetAnimation({
+      color: colors.ACCENT,
+      animationDelay: "2s",
+    }),
+  ]
   return (
     <Layout>
       <HtmlHead
@@ -164,29 +171,10 @@ const IndexPage = ({ data }) => {
                 ]}
               >
                 I design comprehensive{" "}
-                <span
-                  css={[
-                    CODE_TYPE,
-                    typesetAnimation({
-                      color: colors.ACCENT,
-                      animationDelay: "1s",
-                    }),
-                  ]}
-                >
-                  user experiences
-                </span>{" "}
-                driven by thoughtful{" "}
-                <span
-                  css={[
-                    CODE_TYPE,
-                    typesetAnimation({
-                      color: colors.ACCENT,
-                      animationDelay: "2s",
-                    }),
-                  ]}
-                >
-                  visual language.
-                </span>
+                <span css={typesetAnimationStyle}>user</span>{" "}
+                <span css={typesetAnimationStyle}>experiences</span> driven by
+                thoughtful <span css={typesetAnimationStyle}>visual</span>{" "}
+                <span css={typesetAnimationStyle}>language</span>.
               </h1>
               <p
                 css={[
