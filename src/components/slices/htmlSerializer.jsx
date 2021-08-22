@@ -52,30 +52,8 @@ const htmlSerializer = function(type, element, content, children, key) {
       return <ol key={key}>{children}</ol>
 
     case Elements.image:
-      console.log(arguments)
       return <ImageSlice {...element} />
-    // const linkUrl = element.linkTo
-    //   ? element.linkTo.url || linkResolver(element.linkTo)
-    //   : null
-    // return (
-    //   <figure
-    //     key={key}
-    //     className={[element.label, "block-img"].filter(Boolean).join(" ")}
-    //   >
-    //     {linkUrl ? (
-    //       <a
-    //         href={linkUrl}
-    //         target={element.linkTo?.target}
-    //         rel={element.linkTo?.target ? "noopener" : undefined}
-    //       >
-    //         <img src={element.url} alt={element.alt || ""} />
-    //       </a>
-    //     ) : (
-    //       <img src={element.url} alt={element.alt || ""} />
-    //     )}
-    //     <figcaption>TEST CAPTION</figcaption>
-    //   </figure>
-    // )
+
     case Elements.embed: // Embed
       return (
         <div
