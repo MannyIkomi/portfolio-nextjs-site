@@ -2,6 +2,7 @@
 import { jsx } from "@emotion/react"
 import React, { useEffect, useState } from "react"
 import { graphql, Link } from "gatsby"
+import TypeMotif from "../../static/typemotif.png"
 
 import Layout from "../components/Layout"
 import HtmlHead from "../components/HtmlHead"
@@ -51,6 +52,9 @@ import { RichText } from "prismic-reactjs"
 import { DebugDataPre } from "../components/DebugDataPre"
 import { ReactSVG } from "react-svg"
 import { SocialIcon } from "../components/SocialIcon"
+import { RichContentSlice } from "../components/slices/RichContentSlice"
+import htmlSerializer from "../components/slices/htmlSerializer"
+import { CustomLink } from "../components/CustomLink"
 
 // console.clear()
 
@@ -87,17 +91,15 @@ const IndexPage = ({ data }) => {
   ]
   return (
     <Layout>
-      <HtmlHead
-        title="Portfolio"
-        description={`I design comprehensive user experiences driven by thoughtful visual language.`}
-      />
-
-      <main
-        css={{
-          width: "100%",
-        }}
+      <StickyScrollContainer
+        css={{ backgroundColor: colors.LIGHT_GRAY_FOREGROUND }}
       >
-        <SectionBlock
+        <HtmlHead
+          title="Portfolio"
+          description={`I design comprehensive user experiences driven by thoughtful visual language.`}
+        />
+
+        <main
           css={{
             minHeight: "50vh",
             padding: "1rem",
@@ -174,20 +176,33 @@ const IndexPage = ({ data }) => {
                   }),
                 ]}
               >
-                I design comprehensive{" "}
-                <span css={typesetAnimationStyle}>user</span>{" "}
-                <span css={typesetAnimationStyle}>experiences</span> driven by
-                thoughtful <span css={typesetAnimationStyle}>visual</span>{" "}
-                <span css={typesetAnimationStyle}>language</span>.
-              </h1>
-              {/* <div
-                css={[
-                  {
-                    display: "none",
-                  },
-                  onTabletMedia({
-                    display: "grid",
-                    gridColumn: "2/3",
+                <ContainerWidth>
+                  <ProjectList
+                    css={{
+                      ...flex("column"),
+                      alignItems: "center",
+                    }}
+                  >
+                    {projects.map(project => (
+                      <ProjectCover
+                        {...project}
+                        css={[maxTypeWidth, { marginBottom: "10vh" }]}
+                        key={project.uid}
+                      />
+                    ))}
+                  </ProjectList>
+                </ContainerWidth>
+              </SectionBlock>
+            </>
+          )}
+          <SectionBlock css={{ minHeight: "100vh" }}>
+            <ContainerWidth
+              css={[
+                { ...maxTypeWidth, margin: "auto" },
+                onTabletMedia({
+                  ...grid({
+                    gridTemplateColumns: "1fr 1fr",
+                    gridTemplateRows: "1fr",
                   }),
                 ]}
               >

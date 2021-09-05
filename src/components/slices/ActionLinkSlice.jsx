@@ -18,21 +18,36 @@ export const ActionLinkSlice = props => {
     <TypesetLink
       to={primary.url.url}
       css={{
+        ...CODE_TYPE,
         minHeight: TOUCH_TARGET,
         padding: "1rem 1.5rem",
         margin: "1rem 0",
 
-        colors: colors.PRIMARY,
+        color: colors.PRIMARY,
         backgroundColor: colors.COMPLEMENTARY,
 
         fontWeight: "bold",
         textTransform: "uppercase",
         textAlign: "center",
-        letterSpacing: "0.1rem",
         textDecoration: "none",
+        letterSpacing: "0.1rem",
+
+        "&:hover": {
+          color: colors.PRIMARY,
+        },
       }}
     >
-      {primary.label}&nbsp;=>
+      {primary.label}
+      <span
+        css={{
+          ...CODE_TYPE,
+          letterSpacing: 0,
+          fontWeight: "inherit",
+          textTransform: "inherit",
+        }}
+      >
+        &nbsp;=>
+      </span>
     </TypesetLink>
   )
 }

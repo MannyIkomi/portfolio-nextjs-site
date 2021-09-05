@@ -1,14 +1,20 @@
 import { jsx } from "@emotion/react"
 import React, { Fragment } from "react"
-import { Link } from "gatsby"
+import { Link as GatsbyLink } from "gatsby"
 import { Elements } from "prismic-richtext"
 import { Link as PrismicLink } from "prismic-reactjs"
 import { ImageSlice } from "./ImageSlice"
+import { TypesetLink } from "../TypesetLink"
+import { linkResolver } from "../../util/linkResolver"
+import { CustomLink } from "../CustomLink"
 
 // modified from https://prismic.io/docs/technologies/html-serializer-reactjs
 // -- HTML Serializer
 const htmlSerializer = function(type, element, content, children, key) {
+  const seralizerArguments = { type, element, content, children, key }
   // const { type, element, content, children, key } = raw
+  // element contains structural data
+  // content contains textual data
 
   switch (type) {
     case Elements.heading1: // Heading 1
@@ -52,7 +58,7 @@ const htmlSerializer = function(type, element, content, children, key) {
       return <ol key={key}>{children}</ol>
 
     case Elements.image:
-      return <ImageSlice {...element} />
+      return <ImageSlice {...element} key={key} />
 
     case Elements.embed: // Embed
       return (
@@ -68,26 +74,27 @@ const htmlSerializer = function(type, element, content, children, key) {
 
     case Elements.hyperlink: // Hyperlinks
       const url = PrismicLink.url(element.data, linkResolver)
+      return <CustomLink {...seralizerArguments} key={key}></CustomLink>
 
-      if (element.data.link_type === "Document") {
-        return (
-          <Link key={key} to={url}>
-            {content}
-          </Link>
-        )
-      }
+    // if (element.data.link_type === "Document") {
+    //   return (
+    //     <GatsbyLink key={key} to={url}>
+    //       {content}
+    //     </GatsbyLink>
+    //   )
+    // }
 
-      return (
-        <a
-          key={key}
-          href={url}
-          target={element.data.target}
-          rel={element.data.target ? "noopener" : undefined}
-          className="link-class"
-        >
-          {children}
-        </a>
-      )
+    // return (
+    //   <a
+    //     key={key}
+    //     href={url}
+    //     target={element.data.target}
+    //     rel={element.data.target ? "noopener" : undefined}
+    //     className="link-class"
+    //   >
+    //     {children}
+    //   </a>
+    // )
 
     case Elements.label: // Label
       return (
