@@ -183,12 +183,13 @@ const IndexPage = ({ data }) => {
             <>
               <SectionBlock
                 css={{
-                  backgroundColor: colors.LIGHT_GRAY_FOREGROUND,
+                  overflow: "visible",
                 }}
               >
-                <ContainerWidth>
+                <ContainerWidth css={{ overflow: "visible" }}>
                   <ProjectList
                     css={{
+                      overflow: "visible",
                       ...flex("column"),
                       alignItems: "center",
                     }}

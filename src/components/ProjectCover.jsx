@@ -1,6 +1,6 @@
 /** @jsx jsx */
 import React from "react"
-import { Link } from "gatsby"
+import { Link as GatsbyLink } from "gatsby"
 import { css, jsx } from "@emotion/react"
 
 import { OverlayFill } from "./FillOverlay"
@@ -18,6 +18,7 @@ import {
   SANS_TYPE,
   CODE_TYPE,
   flex,
+  onHover,
 } from "../styles"
 
 export const ProjectCover = ({ slugs, uid, data, ...props }) => {
@@ -27,12 +28,16 @@ export const ProjectCover = ({ slugs, uid, data, ...props }) => {
   const coverImage = cover_image
 
   return (
-    <Link
+    <GatsbyLink
       to={"/" + uid}
       title={title.text}
       css={{
         display: "block",
         width: "100%",
+        transform: "perspective(2000px) rotateX(10deg)",
+        transition: "300ms",
+        boxShadow: "0 1rem 10rem 0 rgba(0,0,0,0.33)",
+        ...onHover({ transform: "initial" }),
       }}
       {...props}
     >
@@ -102,7 +107,7 @@ export const ProjectCover = ({ slugs, uid, data, ...props }) => {
           )}
         </div>
       </div>
-    </Link>
+    </GatsbyLink>
   )
 }
 

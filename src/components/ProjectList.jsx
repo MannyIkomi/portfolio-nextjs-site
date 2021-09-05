@@ -18,6 +18,7 @@ export const ProjectList = ({ children, css, ...props }) => {
         listStyle: "none",
         padding: 0,
         li: {
+          overflow: "visible",
           "::marker": {
             content: "initial",
           },
