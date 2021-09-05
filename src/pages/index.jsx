@@ -200,13 +200,14 @@ const IndexPage = ({ data }) => {
                   alignSelf: "end",
                 }}
               >
-                {socials.map(platform => {
-                  return <SocialIcon {...platform} />
-                })}
-              </div>
-            </div>
-          </ContainerWidth>
-        </SectionBlock>
+                <div
+                  // background motif
+                  css={{
+                    position: "absolute",
+                    bottom: "-20%",
+                    left: "-20%",
+                    width: "100%",
+                    height: "100%",
 
                     opacity: 0.33,
 
