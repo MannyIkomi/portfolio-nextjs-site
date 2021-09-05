@@ -21,6 +21,7 @@ exports.createPages = async ({ graphql, actions }) => {
       allPrismicProject {
         nodes {
           id
+          uid
         }
       }
     }
@@ -28,12 +29,12 @@ exports.createPages = async ({ graphql, actions }) => {
 
   // generate pages for each project
   data.allPrismicProject.nodes.forEach(node => {
-    const id = node.id
+    const slug = node.uid
 
     createPage({
-      path: `/${id}`, 
+      path: `/${slug}`, 
       component: path.resolve("src/templates/ProjectTemplate.jsx"),
-      context: { id },
+      context: { uid: slug },
     })
     // console.log(JSON.stringify(node, null, 4))
   })

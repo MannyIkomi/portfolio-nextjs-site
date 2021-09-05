@@ -154,11 +154,11 @@ const ProjectTemplate = ({ data, site }) => {
 
 export const query = graphql`
   #project has slug
-
-  query($id: String!) {
+  query($uid: String!) {
     #gets the single requested project data for viewing
-    prismicProject(id: { eq: $id }) {
+    prismicProject(uid: { eq: $uid }) {
       id
+      uid
       data {
         tags {
           label

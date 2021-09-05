@@ -208,34 +208,36 @@ const IndexPage = ({ data }) => {
           </ContainerWidth>
         </SectionBlock>
 
-        {projects.length > 0 && (
-          <>
-            <SectionBlock
-              css={{
-                backgroundColor: colors.LIGHT_GRAY_FOREGROUND,
-              }}
-            >
-              <ContainerWidth>
-                <ProjectList
-                  css={{
-                    ...flex("column"),
-                    alignItems: "center",
+                    opacity: 0.33,
+
+                    backgroundImage: `url(${TypeMotif})`,
+                    backgroundRepeat: "repeat",
+                    backgroundSize: "40%",
                   }}
-                >
-                  {projects.map(project => (
-                    <ProjectCover
-                      {...project}
-                      css={[maxTypeWidth, { marginBottom: "1rem" }]}
-                      key={project.id}
-                    />
-                  ))}
-                </ProjectList>
-              </ContainerWidth>
-            </SectionBlock>
-          </>
-        )}
-      </main>
-      <Footer />
+                ></div>
+
+                <img
+                  css={{
+                    position: "relative",
+                    width: "100%",
+                    height: "auto",
+                    border: `solid 0.5rem ${colors.YELLOW}`,
+                  }}
+                  srcSet={about.photo.fluid.srcSet}
+                  width={about.photo.dimensions.width}
+                  height={about.photo.dimensions.height}
+                  alt={about.photo.alt}
+                />
+              </div>
+              <div css={{ h3: { color: colors.MID_BLUE } }}>
+                <RichContentSlice primary={{ rich_text: about.title }} />
+                <RichContentSlice primary={{ rich_text: about.bio }} />
+              </div>
+            </ContainerWidth>
+          </SectionBlock>
+        </main>
+        <Footer />
+      </StickyScrollContainer>
     </Layout>
   )
 }
@@ -245,6 +247,7 @@ export const pageQuery = graphql`
     allPrismicProject(sort: { fields: data___date, order: DESC }) {
       nodes {
         id
+        uid
         data {
           date
           description
@@ -287,6 +290,11 @@ export const pageQuery = graphql`
         }
         bio {
           raw
+          text
+        }
+        title {
+          raw
+          text
         }
       }
     }
