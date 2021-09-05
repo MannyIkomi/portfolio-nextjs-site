@@ -35,26 +35,13 @@ import {
   grid,
 } from "../styles"
 import { StickyScrollContainer } from "../components/StickyScrollContainer"
-import { StickyMenuBar } from "../components/StickyMenuBar"
+
 import { ContainerWidth } from "../components/ContainerWidth"
 import { SectionBlock } from "../components/SectionBlock"
-import ProjectPhoto from "../components/ProjectPhoto"
-import { TokenList } from "../components/TokenList"
-import { DesktopMenu } from "../components/DesktopMenu"
 
-import { ProjectTagHeading } from "../components/ProjectTagHeading"
-import { SectionBreak } from "../components/SectionBreak"
-import { QuoteBlock } from "../components/QuoteBlock"
 import { useSocialMedia } from "../hooks/useSocialMedia"
-import { TypesetLink } from "../components/TypesetLink"
-import { List } from "../components/List"
-import { RichText } from "prismic-reactjs"
-import { DebugDataPre } from "../components/DebugDataPre"
-import { ReactSVG } from "react-svg"
-import { SocialIcon } from "../components/SocialIcon"
+
 import { RichContentSlice } from "../components/slices/RichContentSlice"
-import htmlSerializer from "../components/slices/htmlSerializer"
-import { CustomLink } from "../components/CustomLink"
 
 console.clear()
 

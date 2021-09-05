@@ -7,7 +7,7 @@ import {
   colors,
   SANS_HEADING,
   flex,
-  menuLink,
+  // menuLink,
   styleTransition,
   onHover,
   CODE_TYPE,
@@ -15,12 +15,9 @@ import {
 } from "../styles"
 import { LogoMaster } from "./Logo"
 import { TypesetLink } from "./TypesetLink"
-import { SocialIcon } from "./SocialIcon"
-import { useSocialMedia } from "../hooks/useSocialMedia"
 import { MENU_LINKS } from "../util/menuLinks"
 
 export const DesktopMenu = ({ ...restProps }) => {
-  // const socialMedia = useSocialMedia()
   return (
     <nav
       id={"desktop"}

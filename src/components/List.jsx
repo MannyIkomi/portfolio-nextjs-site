@@ -2,7 +2,6 @@ import React from "react"
 /** @jsx jsx */
 import { css, jsx } from "@emotion/react"
 import { graphql } from "gatsby"
-import { ulStyles } from "../styles"
 
 export const List = props => {
   const { ordered, children, ...rest } = props
