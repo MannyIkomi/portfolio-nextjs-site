@@ -43,12 +43,14 @@ export const GLOBAL = {
     ...fontSizeTransition,
     lineHeight: 1.2,
     fontWeight: 500,
+    color: colors.PRIMARY
   },
   "p, span, ul, ol, button": {
     ...SANS_TYPE,
     fontWeight: 300,
-    lineHeight: 1.5,
+    lineHeight: 1.6,
     fontVariantNumeric: "proportional-nums",
+    color: colors.PRIMARY
   },
 
   'ul, ol': {

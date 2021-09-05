@@ -17,7 +17,9 @@ import {
   maxContainerWidth,
   grid12Columns,
   onSupport,
+  TINT_TURQUOISE,
   grid,
+  onMediaWidth,
 } from "../styles"
 import { MENU_LINKS } from "../util/menuLinks"
 import { ContainerWidth } from "./ContainerWidth"
@@ -26,12 +28,16 @@ export const Footer = props => {
   const socials = useSocialMedia()
   return (
     <footer
-      css={{
-        backgroundColor: colors.LIGHT_GRAY_FOREGROUND,
-        color: colors.PRIMARY,
-        fontFamily: typography.SANS_TYPE,
-        padding: "1rem",
-      }}
+      css={[
+        {
+          // backgroundColor: colors.LIGHT_GRAY_FOREGROUND,
+          color: colors.PRIMARY,
+          fontFamily: typography.SANS_TYPE,
+          padding: "1rem",
+        },
+        onMediaWidth("70rem", { position: "sticky", bottom: 0 }),
+      ]}
+      {...props}
     >
       <div
         css={{
@@ -56,8 +62,7 @@ export const Footer = props => {
           stroke={colors.ACCENT}
           css={{
             minWidth: TOUCH_TARGET,
-            width: "50%",
-            maxWidth: "10rem",
+            maxWidth: "6rem",
             margin: "1rem 0",
           }}
         />
@@ -73,7 +78,7 @@ export const Footer = props => {
         >
           {socials.map(platform => {
             return (
-              <li>
+              <li key={platform.label}>
                 <SocialIcon {...platform} />
               </li>
             )
@@ -86,11 +91,9 @@ export const Footer = props => {
               ...CODE_TYPE,
               fontSize: "0.75rem",
               textTransform: "uppercase",
-
-              opacity: 0.75,
             }}
           >
-            <small>
+            <small css={{ color: colors.TINT_TURQUOISE }}>
               Copyright © {new Date().getFullYear()}
               <br /> Manny Ikomi
             </small>

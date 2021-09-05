@@ -62,6 +62,7 @@ export const AccordianSlice = props => {
     <section
       css={[
         {
+          marginBottom: "3rem",
           padding: "0 1rem",
           width: "100%",
           color: colors.PRIMARY,

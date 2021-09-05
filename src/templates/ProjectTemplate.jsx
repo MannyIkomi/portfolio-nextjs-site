@@ -17,6 +17,7 @@ import {
   maxContainerWidth,
   grid,
   captionText,
+  onMediaWidth,
 } from "../styles"
 
 import Layout from "../components/Layout"
@@ -98,56 +99,58 @@ const ProjectTemplate = ({ data, site }) => {
         project={thisProject}
         path={`/${id}`}
       />
-
-      <main>
-        <article
-          css={{
-            ...flex("column"),
-            alignItems: "center",
-            backgroundColor: colors.LIGHT_GRAY_FOREGROUND,
-          }}
-        >
-          <header
-            css={[
-              {
-                color: colors.PRIMARY,
-                ...flex("row"),
-                alignItems: "center",
-                width: "100%",
-                ...maxTypeWidth,
-                margin: "2rem 0",
-                padding: "0 1rem",
-              },
-              onTabletMedia({
-                minHeight: "50vh",
-                minHeight: "33vh",
-                padding: 0,
-              }),
-            ]}
+      <StickyScrollContainer
+        css={{ backgroundColor: colors.LIGHT_GRAY_FOREGROUND }}
+      >
+        <main>
+          <article
+            css={{
+              ...flex("column"),
+              alignItems: "center",
+            }}
           >
-            <ContainerWidth>
-              <h1>{title}</h1>
-              <h2
-                css={{
+            <header
+              css={[
+                {
                   color: colors.PRIMARY,
-                  // Use Figma to get actual tints of the PRIMARY blue color
-                  opacity: 0.66,
-                }}
-              >
-                {subtitle}
-              </h2>
-              <TokenList>{tags.map(tag => tag.label)}</TokenList>
-            </ContainerWidth>
-          </header>
-          <div
-            css={[{ ...flex("column"), alignItems: "center", width: "100%" }]}
-          >
-            {body.map(switchSliceToComponent)}
-          </div>
-        </article>
-      </main>
+                  ...flex("row"),
+                  alignItems: "center",
+                  width: "100%",
+                  ...maxTypeWidth,
+                  margin: "2rem 0",
+                  padding: "0 1rem",
+                },
+                onTabletMedia({
+                  minHeight: "50vh",
+                  minHeight: "33vh",
+                  padding: 0,
+                }),
+              ]}
+            >
+              <ContainerWidth>
+                <h1>{title}</h1>
+                <h2
+                  css={{
+                    color: colors.MID_BLUE,
+                  }}
+                >
+                  {subtitle}
+                </h2>
+                <TokenList>{tags.map(tag => tag.label)}</TokenList>
+              </ContainerWidth>
+            </header>
+            <div
+              css={[{ ...flex("column"), alignItems: "center", width: "100%" }]}
+            >
+              {body.map(switchSliceToComponent)}
+            </div>
+          </article>
+        </main>
 
-      <Footer />
+        <Footer
+          css={onMediaWidth("70rem", { position: "sticky", bottom: 0 })}
+        />
+      </StickyScrollContainer>
     </Layout>
   )
 }

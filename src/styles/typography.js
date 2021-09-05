@@ -8,7 +8,7 @@ export const SANS_TYPE = {
 
 export const CODE_TYPE = {
   fontFamily: 'Fira Code, monospace',
-  // fontFeatureSettings: `calt 1`, /* Enable ligatures for IE 10+, Edge */
+  fontFeatureSetting: `calt 1`, /* Enable ligatures for IE 10+, Edge */
   textRendering: 'optimizeLegibility', /* Force ligatures for Webkit, Blink, Gecko */
   fontVariantLigatures: 'contextual',
 }
@@ -22,14 +22,18 @@ export const fontSizeTransition = {
 
 export const linkText = {
   ...CODE_TYPE,
-  display: "inline-block",
-  color: 'inherit',
+  display: "inline",
+  color: colors.MID_BLUE,
   fontSize: 'inherit',
-
+  
   textDecoration: "underline",
   textDecorationThickness: '0.1rem',
   textUnderlineOffset: '0.25rem',
-  textDecorationColor: colors.ACCENT,
+  
+  '&:hover': {
+    color: colors.ACCENT,
+  }
+  // textDecorationColor: colors.ACCENT,
   // text underline new CSS features
   // https://www.youtube.com/watch?v=sZS-7RX_c7g
 
@@ -91,46 +95,36 @@ export const resumeContentHeading = {
 }
 
 export const headingResponsiveScale = {
+  // https://type-scale.com/?size=16&scale=1.333&text=A%20Visual%20Type%20Scale&font=Fira%20Sans&fontweight=500&bodyfont=body_font_default&bodyfontweight=300&lineheight=1.5&backgroundcolor=%23ffffff&fontcolor=%23000000&preview=false
   h1: {
-    fontSize: "2rem",
+    fontSize: "2.369rem",
   },
   h2: {
-    fontSize: "1.5rem",
+    fontSize: "1.777rem",
   },
   h3: {
     fontSize: "1.333rem",
   },
   h4: {
-    fontSize: "1.25rem",
+    fontSize: "1",
   },
 
   ...onTabletMedia({
+    
+    // h1: { (for emphasized titles)
+    //   fontSize: "5.61rem",
+    // },
     h1: {
-      fontSize: "3rem",
+      fontSize: "4.209rem",
     },
     h2: {
-      fontSize: "2rem",
+      fontSize: "3.157rem",
     },
     h3: {
-      fontSize: "1.5rem",
+      fontSize: "2.369rem",
     },
     h4: {
-      fontSize: "1.3333rem",
-    },
-  }),
-
-  ...onDesktopMedia({
-    h1: {
-      fontSize: "4rem",
-    },
-    h2: {
-      fontSize: "2.25rem",
-    },
-    h3: {
-      fontSize: "1.75rem",
-    },
-    h4: {
-      fontSize: "1.5rem",
+      fontSize: "1.777rem",
     },
   }),
 }

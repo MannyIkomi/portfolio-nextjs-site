@@ -18,7 +18,6 @@ import ProjectPhoto from "../ProjectPhoto"
 import { ImageSlice } from "./ImageSlice"
 
 import { DebugDataPre } from "../DebugDataPre"
-import { linkResolver } from "./linkResolver"
 
 const slugifyRegex = /\s+/g
 export const RichContentSlice = ({ primary, items, slice_type }) => {
@@ -26,18 +25,22 @@ export const RichContentSlice = ({ primary, items, slice_type }) => {
 
   return (
     <section
-      aria-labelledby={rich_text.text?.replace(slugifyRegex, "-")}
-      //the H2 element may not always be the first piece of content in the array
-      // we should refactor this to search the array for the first h2 element .text
       css={[
         {
-          margin: "1rem 0",
+          marginBottom: "3rem",
           padding: "0 1rem",
 
           width: "100%",
           ...maxTypeWidth,
 
           color: colors.PRIMARY,
+
+          "h1,h2,h3,h4,h5,h6": {
+            marginBottom: "0.25rem",
+          },
+          "p, ul, ol": {
+            marginBottom: "1rem",
+          },
         },
         onTabletMedia({
           padding: 0,

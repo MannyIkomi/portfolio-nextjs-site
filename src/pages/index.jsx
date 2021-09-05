@@ -56,7 +56,7 @@ import { RichContentSlice } from "../components/slices/RichContentSlice"
 import htmlSerializer from "../components/slices/htmlSerializer"
 import { CustomLink } from "../components/CustomLink"
 
-// console.clear()
+console.clear()
 
 const IndexPage = ({ data }) => {
   const projects = data.allPrismicProject.nodes
@@ -84,6 +84,7 @@ const IndexPage = ({ data }) => {
 
   const typesetAnimationStyle = [
     CODE_TYPE,
+    { lineHeight: 1.2 },
     typesetAnimation({
       color: colors.ACCENT,
       animationDelay: "2s",
@@ -101,80 +102,102 @@ const IndexPage = ({ data }) => {
 
         <main
           css={{
-            minHeight: "50vh",
-            padding: "1rem",
-            position: "relative",
-            backgroundColor: colors.LIGHT_GRAY_FOREGROUND,
+            width: "100%",
           }}
         >
-          <ContainerWidth
+          <SectionBlock
             css={{
-              ...flex("column"),
-              justifyContent: "space-around",
-              ...onTabletMedia({ maxWidth: "75%" }),
+              minHeight: "50vh",
+              padding: "1rem",
+              position: "relative",
             }}
           >
-            <figure
+            <ContainerWidth
               css={{
-                ...grid({
-                  gridTemplateColumns: "2rem 1fr",
-                  alignItems: "center",
-                  gridGap: "1rem",
-                }),
-                margin: "1rem 0",
+                ...flex("column"),
+                justifyContent: "space-around",
+                ...onTabletMedia({ maxWidth: "75%" }),
               }}
             >
-              <img
+              <figure
                 css={{
-                  width: "2rem",
-                  height: "auto",
-                  borderRadius: "100%",
-                }}
-                width={about.photo.dimensions.width}
-                height={about.photo.dimensions.height}
-                src={about.photo.fluid.src}
-                srcSet={about.photo.fluid.srcSet}
-                sizes={about.photo.fluid.sizes}
-                alt={about.photo.alt}
-              />
-              <figcaption
-                css={{
-                  lineHeight: 1,
-                  width: "100%",
-                  color: colors.PRIMARY,
+                  ...grid({
+                    gridTemplateColumns: "2rem 1fr",
+                    alignItems: "center",
+                    justifyItems: "center",
+                    gridGap: "1rem",
+                  }),
+                  margin: "1rem 0",
                 }}
               >
-                <span css={{ fontWeight: "bold" }}>Manny Ikomi</span>
-                <br />
-                <span>{about.role}</span>
-              </figcaption>
-            </figure>
-            <div
-              css={{
-                ...grid({
-                  gridTemplateColumns: "2rem 1fr",
-                  alignItems: "center",
-                  gridGap: "1rem",
-                }),
-              }}
-            >
-              <h1
-                css={[
-                  {
-                    gridColumn: "2/3",
-                    ...SANS_TYPE,
+                <img
+                  css={{
+                    width: "3rem",
+                    height: "auto",
+                    borderRadius: "100%",
+                  }}
+                  srcSet={about.photo.fluid.srcSet}
+                  width={about.photo.dimensions.width}
+                  height={about.photo.dimensions.height}
+                  alt={about.photo.alt}
+                />
+                <figcaption
+                  css={{
+                    lineHeight: 1,
+                    width: "100%",
                     color: colors.PRIMARY,
-                    fontWeight: 100,
-                  },
-                  onTabletMedia({
-                    fontSize: "5vmin",
-                    margin: `${TOUCH_TARGET} 0`,
+                  }}
+                >
+                  <span css={{ fontSize: "1.25rem", fontWeight: "bold" }}>
+                    Manny Ikomi
+                  </span>
+                  <br />
+                  <span>{about.role}</span>
+                </figcaption>
+              </figure>
+              <div
+                css={{
+                  ...grid({
+                    gridTemplateColumns: "2rem 1fr",
+                    alignItems: "center",
+                    gridGap: "1rem",
                   }),
+                }}
+              >
+                <h1
+                  css={[
+                    {
+                      gridColumn: "2/3",
+                      ...SANS_TYPE,
+                      color: colors.PRIMARY,
+                      fontWeight: 100,
+                    },
+                    onTabletMedia({
+                      fontSize: "5vmin",
+                      margin: `${TOUCH_TARGET} 0`,
+                    }),
 
-                  onDesktopMedia({
-                    fontSize: "5vmin",
-                  }),
-                ]}
+                    onDesktopMedia({
+                      fontSize: "5vmin",
+                    }),
+                  ]}
+                >
+                  I design comprehensive{" "}
+                  <span css={typesetAnimationStyle}>user</span>{" "}
+                  <span css={typesetAnimationStyle}>experiences</span> driven by
+                  thoughtful <span css={typesetAnimationStyle}>visual</span>{" "}
+                  <span css={typesetAnimationStyle}>language</span>.
+                </h1>
+              </div>
+            </ContainerWidth>
+          </SectionBlock>
+
+          {projects.length > 0 && (
+            <>
+              <SectionBlock
+                css={{
+                  backgroundColor: colors.LIGHT_GRAY_FOREGROUND,
+                }}
               >
                 <ContainerWidth>
                   <ProjectList
@@ -204,15 +227,18 @@ const IndexPage = ({ data }) => {
                     gridTemplateColumns: "1fr 1fr",
                     gridTemplateRows: "1fr",
                   }),
-                ]}
-              >
-                <RichText render={about.bio.raw} />
-              </div> */}
-              <div
+                }),
+              ]}
+            >
+              <div // portrait container
                 css={{
-                  gridColumn: "1/2",
-                  gridRow: "1/2",
-                  alignSelf: "end",
+                  aspectRatio: `1 / 1`,
+                  position: "relative",
+                  minWidth: "5rem",
+                  minHeight: "5rem",
+                  maxWidth: "15rem",
+                  maxHeight: "15rem",
+                  marginBottom: "2rem",
                 }}
               >
                 <div

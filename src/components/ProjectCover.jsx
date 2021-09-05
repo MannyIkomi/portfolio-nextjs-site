@@ -20,7 +20,7 @@ import {
   flex,
 } from "../styles"
 
-export const ProjectCover = ({ slugs, id, data, ...props }) => {
+export const ProjectCover = ({ slugs, uid, data, ...props }) => {
   const { date, description, title, subtitle, cover_image, tags } = data
 
   // Refactor this imageProps operations for the new Prismic API on responsive images
@@ -28,7 +28,7 @@ export const ProjectCover = ({ slugs, id, data, ...props }) => {
 
   return (
     <Link
-      to={"/" + id}
+      to={"/" + uid}
       title={title.text}
       css={{
         display: "block",
@@ -47,9 +47,9 @@ export const ProjectCover = ({ slugs, id, data, ...props }) => {
         }}
       >
         <img
+          // src={coverImage.fluid.src}
           srcSet={coverImage.fluid.srcSet}
-          sizes={coverImage.fluid.sizes}
-          src={coverImage.fluid.src}
+          // sizes={coverImage.fluid.sizes}
           alt={coverImage.alt}
           height={coverImage.dimensions.height}
           width={coverImage.dimensions.width}
