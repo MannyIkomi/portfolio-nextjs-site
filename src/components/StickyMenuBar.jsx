@@ -15,7 +15,6 @@ import {
   CODE_TYPE,
   hoverTypesetTransform,
 } from "../styles"
-import { LogoType } from "./Logo"
 import useToggleSwitch from "../hooks/useToggleSwitch"
 import { MenuButton } from "./MenuButton"
 import { TypesetLink } from "./TypesetLink"
