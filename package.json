@@ -18,10 +18,8 @@
     "gatsby-plugin-offline": "^4.9.0",
     "gatsby-plugin-react-helmet": "^4.9.0",
     "gatsby-plugin-sharp": "^3.9.0",
-    "gatsby-remark-widows": "^1.0.0",
     "gatsby-source-filesystem": "^3.9.0",
     "gatsby-source-prismic": "^3.3.6",
-    "gatsby-transformer-remark": "^4.6.0",
     "gatsby-transformer-sharp": "^3.9.0",
     "latest": "^0.2.0",
     "prismic-reactjs": "^1.3.4",
@@ -29,7 +27,6 @@
     "react": "^16.14.0",
     "react-dom": "^16.14.0",
     "react-helmet": "^6.1.0",
-    "react-select": "^3.2.0",
     "react-svg": "^14.0.9",
     "smoothscroll-polyfill": "^0.4.4"
   },
