@@ -23,8 +23,6 @@ export const styleTransition = (override = {}) => ({
   ...override,
 })
 
-export const MODULE_SHADOW = "-0.25rem 0.25rem 1rem 0px hsla(0, 0%, 0%, 0.5)"
-
 export const MAX_TEXT_LENGTH = '72ch'
 export const MAX_VIEW_LENGTH = '80rem' // about 1280px
 
