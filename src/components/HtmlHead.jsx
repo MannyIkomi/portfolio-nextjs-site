@@ -10,7 +10,7 @@ import "../../src/fonts/fira-sans-v10-latin/fira-sans.css"
 import React from "react"
 import PropTypes from "prop-types"
 import Helmet from "react-helmet"
-import OpenGraphSocialImage from "../../static/OpenGraph Social Image.png"
+import OpenGraphSocialImage from "../../static/OpenGraph-Social-Image.png"
 import { useStaticQuery, graphql } from "gatsby"
 
 function HtmlHead({
@@ -57,12 +57,9 @@ function HtmlHead({
   const metaAuthor = author || site.siteMetadata.author
 
   const metaSocialImage =
-    coverImageSrc ||
-    (project && project.cover_image.url) ||
-    OpenGraphSocialImage
+    coverImageSrc || project?.cover_image.url || OpenGraphSocialImage
 
-  const metaSocialImageAlt =
-    coverImageAlt || (project && project.cover_image.alt) || ""
+  const metaSocialImageAlt = coverImageAlt || project?.cover_image.alt || ""
   const metaOpenGraphType =
     openGraphType || site.siteMetadata.openGraphType || "website"
 
