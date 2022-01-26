@@ -9,6 +9,7 @@ import HtmlHead from "../components/HtmlHead"
 import { ProjectCover } from "../components/ProjectCover"
 import { ProjectList } from "../components/ProjectList"
 import { Footer } from "../components/Footer"
+
 import smoothscroll from "smoothscroll-polyfill"
 
 import {

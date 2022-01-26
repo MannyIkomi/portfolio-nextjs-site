@@ -10,7 +10,7 @@ import "../../src/fonts/fira-sans-v10-latin/fira-sans.css"
 import React from "react"
 import PropTypes from "prop-types"
 import Helmet from "react-helmet"
-import OpenGraphSocialImage from "../../static/OpenGraph-Social-Image.png"
+// import OpenGraphSocialImage from "../../static/OpenGraph-Social-Image.png"
 import { useStaticQuery, graphql } from "gatsby"
 
 function HtmlHead({
@@ -26,15 +26,6 @@ function HtmlHead({
   path,
   project,
 }) {
-  // const cmsProjects =
-  //   data &&
-  //   data.allStrapiProjects.nodes.filter(
-  //     ({ draft, feature }) => !draft && true // !feature
-  //   )
-  // const featureProject = cmsProjects.filter(
-  //   project => project.feature === true
-  // )[0]
-
   const { site } = useStaticQuery(
     graphql`
       query {
@@ -50,6 +41,8 @@ function HtmlHead({
       }
     `
   )
+  const OpenGraphSocialImage = "/OpenGraph-Social-Image.png"
+
   const metaTitle = title || site.siteMetadata.title
   const metaDescription = description || site.siteMetadata.description
   const metaUrl = url || site.siteMetadata.url
@@ -57,7 +50,7 @@ function HtmlHead({
   const metaAuthor = author || site.siteMetadata.author
 
   const metaSocialImage =
-    coverImageSrc || project?.cover_image.url || OpenGraphSocialImage
+    coverImageSrc ?? project?.cover_image.url ?? OpenGraphSocialImage
 
   const metaSocialImageAlt = coverImageAlt || project?.cover_image.alt || ""
   const metaOpenGraphType =
@@ -81,6 +74,7 @@ function HtmlHead({
       />
 
       <meta name="description" content={metaDescription} />
+
       {/* OPEN GRAPH */}
       <meta property="og:url" content={metaUrl + path ? path : ""} />
       <meta property="og:title" content={metaTitle} />
