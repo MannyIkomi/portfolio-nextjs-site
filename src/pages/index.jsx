@@ -84,7 +84,8 @@ const IndexPage = ({ data }) => {
       >
         <HtmlHead
           title="Portfolio"
-          description={`I design comprehensive user experiences driven by thoughtful visual language.`}
+          description={`I use design to take people from what-is
+          to what-ought-to-be.`}
         />
 
         <main
@@ -169,11 +170,9 @@ const IndexPage = ({ data }) => {
                     }),
                   ]}
                 >
-                  I design comprehensive{" "}
-                  <span css={typesetAnimationStyle}>user</span>{" "}
-                  <span css={typesetAnimationStyle}>experiences</span> driven by
-                  thoughtful <span css={typesetAnimationStyle}>visual</span>{" "}
-                  <span css={typesetAnimationStyle}>language</span>.
+                  I use <span css={typesetAnimationStyle}>design</span> to take{" "}
+                  <span css={typesetAnimationStyle}>people</span> from what-is,
+                  to what-ought-to-be.
                 </h1>
               </div>
             </ContainerWidth>

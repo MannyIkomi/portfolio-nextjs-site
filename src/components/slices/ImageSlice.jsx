@@ -51,7 +51,7 @@ export const ImageSlice = props => {
             height: "auto",
             objectFit: slice_type === FULL_IMAGE ? "cover" : "contain",
           },
-          slice_type === FULL_IMAGE && { maxHeight: "66vh" },
+          /* slice_type === FULL_IMAGE &&  */ { maxHeight: "66vh" },
         ]}
         width={image?.dimensions?.width}
         height={image?.dimensions?.height}

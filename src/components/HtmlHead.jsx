@@ -10,6 +10,7 @@ import "../../src/fonts/fira-sans-v10-latin/fira-sans.css"
 import React from "react"
 import PropTypes from "prop-types"
 import Helmet from "react-helmet"
+import OpenGraphSocialImage from "../../static/OpenGraph Social Image.png"
 import { useStaticQuery, graphql } from "gatsby"
 
 function HtmlHead({
@@ -56,7 +57,10 @@ function HtmlHead({
   const metaAuthor = author || site.siteMetadata.author
 
   const metaSocialImage =
-    coverImageSrc || (project && project.cover_image.url) || ""
+    coverImageSrc ||
+    (project && project.cover_image.url) ||
+    OpenGraphSocialImage
+
   const metaSocialImageAlt =
     coverImageAlt || (project && project.cover_image.alt) || ""
   const metaOpenGraphType =
@@ -78,14 +82,13 @@ function HtmlHead({
         name="viewport"
         content="width=device-width, initial-scale=1, shrink-to-fit=no"
       />
-      <style></style>
 
       <meta name="description" content={metaDescription} />
       {/* OPEN GRAPH */}
-      <meta property="og:url" content={metaUrl + path} />
+      <meta property="og:url" content={metaUrl + path ? path : ""} />
       <meta property="og:title" content={metaTitle} />
       <meta property="og:description" content={metaDescription} />
-      <meta property="og:image" content={metaUrl + metaSocialImage} />
+      <meta property="og:image" content={metaSocialImage} />
       <meta property="og:type" content={metaOpenGraphType} />
 
       {/* TWITTER */}
@@ -93,7 +96,7 @@ function HtmlHead({
       <meta name="twitter:description" content={metaDescription} />
       <meta name="twitter:creator" content={metaAuthor} />
       <meta name="twitter:site" content={metaAuthor} />
-      <meta name="twitter:image" content={metaUrl + metaSocialImage} />
+      <meta name="twitter:image" content={metaSocialImage} />
       <meta name="twitter:image:alt" content={metaSocialImageAlt} />
       <meta name="twitter:card" content="summary_large_image" />
     </Helmet>
