@@ -53,11 +53,11 @@ export const ProjectCover = ({ slugs, uid, data, ...props }) => {
       >
         <img
           // src={coverImage.fluid.src}
-          srcSet={coverImage.fluid.srcSet}
+          srcSet={coverImage.fluid?.srcSet}
           // sizes={coverImage.fluid.sizes}
-          alt={coverImage.alt}
-          height={coverImage.dimensions.height}
-          width={coverImage.dimensions.width}
+          alt={coverImage?.alt}
+          height={coverImage?.dimensions?.height}
+          width={coverImage?.dimensions?.width}
           css={{
             width: "100%",
             height: "auto",

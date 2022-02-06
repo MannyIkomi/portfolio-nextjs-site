@@ -1,13 +1,24 @@
+require("dotenv").config({
+  path: `.env.${process.env.NODE_ENV}`,
+})
+
+const { PRISMIC_CUSTOM_TYPES_API_TOKEN, PRISMIC_REPOSITORY_NAME } = process.env
+
 module.exports = {
   siteMetadata: {
     title: `Manny Ikomi`,
     description: `Design Thinker, Lifetime Learner, Digital Craftsman`,
     author: `@MannyIkomi`,
-    socialMention: '@MannyIkomi',
-    url: 'https://mannyikomi.com',
-    openGraphType: 'website'
+    socialMention: "@MannyIkomi",
+    url: "https://mannyikomi.com",
+    openGraphType: "website",
   },
   plugins: [
+    `gatsby-plugin-emotion`,
+    `gatsby-plugin-react-helmet`,
+    `gatsby-plugin-image`,
+    `gatsby-plugin-sharp`,
+    `gatsby-transformer-sharp`,
     {
       resolve: `gatsby-plugin-gtag`,
       options: {
@@ -19,9 +30,6 @@ module.exports = {
         anonymize: true,
       },
     },
-    `gatsby-plugin-emotion`,
-    `gatsby-plugin-react-helmet`,
-    // `gatsby-source-filesystem`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -29,8 +37,6 @@ module.exports = {
         path: `${__dirname}/static`,
       },
     },
-    `gatsby-transformer-sharp`,
-    `gatsby-plugin-sharp`,
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
@@ -44,16 +50,18 @@ module.exports = {
       },
     },
     {
-      resolve: 'gatsby-source-prismic',
+      resolve: "gatsby-source-prismic",
       options: {
-        repositoryName: 'manni-portfolio',
+        repositoryName: PRISMIC_REPOSITORY_NAME,
+        customTypesApiEndpoint: "https://customtypes.prismic.io/customtypes",
+        customTypesApiToken: PRISMIC_CUSTOM_TYPES_API_TOKEN,
 
         schemas: {
-          project: require('./custom_types/project.json'),
-          socials: require('./custom_types/socials.json'),
-          about: require('./custom_types/about.json'),
-        }
-      }
+          project: require("./custom_types/project.json"),
+          socials: require("./custom_types/socials.json"),
+          about: require("./custom_types/about.json"),
+        },
+      },
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
