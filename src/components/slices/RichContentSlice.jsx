@@ -47,7 +47,7 @@ export const RichContentSlice = ({ primary, items, slice_type }) => {
         }),
       ]}
     >
-      <RichText render={rich_text.raw} htmlSerializer={htmlSerializer} />
+      <RichText render={rich_text.richText} htmlSerializer={htmlSerializer} />
     </section>
   )
 }

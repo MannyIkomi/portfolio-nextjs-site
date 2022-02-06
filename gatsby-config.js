@@ -56,11 +56,11 @@ module.exports = {
         customTypesApiEndpoint: "https://customtypes.prismic.io/customtypes",
         customTypesApiToken: PRISMIC_CUSTOM_TYPES_API_TOKEN,
 
-        schemas: {
-          project: require("./custom_types/project.json"),
-          socials: require("./custom_types/socials.json"),
-          about: require("./custom_types/about.json"),
-        },
+        // schemas: {
+        //   project: require("./custom_types/project.json"),
+        //   socials: require("./custom_types/socials.json"),
+        //   about: require("./custom_types/about.json"),
+        // },
       },
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality

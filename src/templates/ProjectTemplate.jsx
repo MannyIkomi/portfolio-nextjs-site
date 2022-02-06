@@ -180,7 +180,7 @@ export const query = graphql`
         }
         description
         body {
-          ... on PrismicProjectBodyFullWidthImage {
+          ... on PrismicProjectDataBodyFullWidthImage {
             id
             slice_type
             primary {
@@ -200,21 +200,21 @@ export const query = graphql`
               image_caption
             }
           }
-          ... on PrismicProjectBodyRichText {
+          ... on PrismicProjectDataBodyRichText {
             id
             primary {
               rich_text {
-                raw
+                richText
               }
             }
             slice_label
             slice_type
           }
-          ... on PrismicProjectBodyAccordians {
+          ... on PrismicProjectDataBodyAccordians {
             id
             items {
               accordion_details {
-                raw
+                richText
                 text
               }
               accordion_summary
@@ -222,19 +222,19 @@ export const query = graphql`
             slice_type
             primary {
               accordion_section_title {
-                raw
+                richText
                 text
                 html
               }
             }
           }
-          ... on PrismicProjectBodyImageGallery {
+          ... on PrismicProjectDataBodyImageGallery {
             id
             slice_type
             primary {
               gallery_title {
                 text
-                raw
+                richText
               }
             }
             items {
@@ -254,7 +254,7 @@ export const query = graphql`
               }
             }
           }
-          ... on PrismicProjectBodyInlineImage {
+          ... on PrismicProjectDataBodyInlineImage {
             id
             slice_type
             primary {
@@ -274,7 +274,7 @@ export const query = graphql`
               caption
             }
           }
-          ... on PrismicProjectBodyActionLink {
+          ... on PrismicProjectDataBodyActionLink {
             id
             primary {
               label

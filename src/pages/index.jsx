@@ -310,11 +310,11 @@ export const pageQuery = graphql`
           }
         }
         bio {
-          raw
+          richText
           text
         }
         title {
-          raw
+          richText
           text
         }
       }
