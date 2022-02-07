@@ -4,16 +4,7 @@ import PropTypes from "prop-types"
 import { Markdown } from "../Markdown"
 
 import { css, jsx } from "@emotion/react"
-import {
-  typography,
-  ulStyles,
-  typesetTransform,
-  linkText,
-  styleTransition,
-  SANS_TYPE,
-  CODE_TYPE,
-  colors,
-} from "../../styles"
+import { colors } from "../../styles"
 
 export const ModuleMarkdown = ({ children, ...props }) => {
   return (

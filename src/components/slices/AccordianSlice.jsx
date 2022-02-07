@@ -6,7 +6,7 @@ import {
   flex,
   maxTypeWidth,
   TOUCH_TARGET,
-  CODE_TYPE,
+  firaCode,
   colors,
   onTabletMedia,
 } from "../../styles"
@@ -24,7 +24,7 @@ export const Accordian = ({ accordion_details, accordion_summary }) => {
         color: colors.PRIMARY,
 
         "summary::marker": {
-          ...CODE_TYPE,
+          ...firaCode,
           display: "block",
           color: colors.ACCENT,
           content: `"=> "`,
@@ -32,7 +32,7 @@ export const Accordian = ({ accordion_details, accordion_summary }) => {
         "&[open]": {
           "summary::marker": {
             display: "block",
-            ...CODE_TYPE,
+            ...firaCode,
             color: colors.ACCENT,
             content: `":: "`,
           },

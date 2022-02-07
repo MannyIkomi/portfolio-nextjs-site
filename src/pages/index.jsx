@@ -2,7 +2,6 @@
 import { jsx } from "@emotion/react"
 import React, { useEffect, useState } from "react"
 import { graphql, Link } from "gatsby"
-import TypeMotif from "../../static/typemotif.png"
 
 import Layout from "../components/Layout"
 import HtmlHead from "../components/HtmlHead"
@@ -17,14 +16,12 @@ import {
   TOUCH_TARGET,
   colors,
   flex,
-  onDesktopMedia,
-  maxReadingWidth,
-  SANS_TYPE,
-  typography,
-  CODE_TYPE,
+  firaCode,
   maxTypeWidth,
   typesetAnimation,
   grid,
+  s1,
+  s05,
 } from "../styles"
 import { StickyScrollContainer } from "../components/StickyScrollContainer"
 
@@ -34,6 +31,10 @@ import { SectionBlock } from "../components/SectionBlock"
 import { useSocialMedia } from "../hooks/useSocialMedia"
 
 import { RichContentSlice } from "../components/slices/RichContentSlice"
+import { SocialIcon } from "../components/SocialIcon"
+import { ProfilePhoto } from "../components/ProfilePhoto"
+import { List, ListElements } from "../components/List"
+import { Heading } from "../components/Heading"
 
 console.clear()
 
@@ -62,111 +63,75 @@ const IndexPage = ({ data }) => {
   useScrollToId(scrollId)
 
   const typesetAnimationStyle = [
-    CODE_TYPE,
+    firaCode,
     { lineHeight: 1.2 },
     typesetAnimation({
       color: colors.ACCENT,
       animationDelay: "2s",
     }),
   ]
+
   return (
     <Layout>
+      <HtmlHead
+        title="Portfolio"
+        description={`I use design to take people from what-is
+        to what-ought-to-be.`}
+      />
       <StickyScrollContainer
         css={{ backgroundColor: colors.LIGHT_GRAY_FOREGROUND }}
       >
-        <HtmlHead
-          title="Portfolio"
-          description={`I use design to take people from what-is
-          to what-ought-to-be.`}
-        />
-
         <main
           css={{
             width: "100%",
           }}
         >
-          <SectionBlock
-            css={{
-              minHeight: "50vh",
-              padding: "1rem",
-              position: "relative",
-            }}
-          >
+          <SectionBlock>
             <ContainerWidth
               css={{
-                ...flex("column"),
-                justifyContent: "space-around",
-                ...onTabletMedia({ maxWidth: "75%" }),
+                minHeight: "50vh",
+                padding: s1,
+
+                ...grid({
+                  gridTemplateColumns: "1fr 3fr",
+                  gridTemplateRows: `min-content 1fr`,
+                  gridTemplateAreas: `"photo title" "socials subtitle" `,
+                  gridGap: s1,
+                  padding: s05,
+                }),
               }}
             >
-              <figure
-                css={{
-                  ...grid({
-                    gridTemplateColumns: "2rem 1fr",
-                    alignItems: "center",
-                    justifyItems: "center",
-                    gridGap: "1rem",
-                  }),
-                  margin: "1rem 0",
-                }}
-              >
-                <img
-                  css={{
-                    width: "3rem",
-                    height: "auto",
-                    borderRadius: "100%",
-                  }}
-                  srcSet={about.photo.fluid.srcSet}
-                  width={about.photo.dimensions.width}
-                  height={about.photo.dimensions.height}
-                  alt={about.photo.alt}
-                />
-                <figcaption
-                  css={{
-                    lineHeight: 1,
-                    width: "100%",
-                    color: colors.PRIMARY,
-                  }}
-                >
-                  <span css={{ fontSize: "1.25rem", fontWeight: "bold" }}>
-                    Manny Ikomi
-                  </span>
-                  <br />
-                  <span>{about.role}</span>
-                </figcaption>
-              </figure>
-              <div
-                css={{
-                  ...grid({
-                    gridTemplateColumns: "2rem 1fr",
-                    alignItems: "center",
-                    gridGap: "1rem",
-                  }),
-                }}
-              >
-                <h1
-                  css={[
-                    {
-                      gridColumn: "2/3",
-                      ...SANS_TYPE,
-                      color: colors.PRIMARY,
-                      fontWeight: 100,
-                    },
-                    onTabletMedia({
-                      fontSize: "5vmin",
-                      margin: `${TOUCH_TARGET} 0`,
-                    }),
+              <ProfilePhoto
+                motif={true}
+                photo={about.photo}
+                css={{ gridArea: "photo", width: "100%" }}
+              />
 
-                    onDesktopMedia({
-                      fontSize: "5vmin",
-                    }),
-                  ]}
-                >
-                  I use <span css={typesetAnimationStyle}>design</span> to take{" "}
-                  <span css={typesetAnimationStyle}>people</span> from what-is,
-                  to what-ought-to-be.
-                </h1>
-              </div>
+              <ContainerWidth
+                css={{ gridArea: "title", placeSelf: "end start" }}
+              >
+                <Heading level={1}>Hi, I'm Manny</Heading>
+                <p>{about.role}</p>
+              </ContainerWidth>
+
+              <Heading
+                level={2}
+                css={[
+                  {
+                    gridArea: "subtitle",
+                  },
+                ]}
+              >
+                I use <span css={typesetAnimationStyle}>design</span> to take{" "}
+                <span css={typesetAnimationStyle}>people</span> from what-is, to
+                what-ought-to-be.
+              </Heading>
+
+              <ListElements>
+                {socials.map(platform => (
+                  <SocialIcon key={platform.label} {...platform} />
+                ))}
+              </ListElements>
             </ContainerWidth>
           </SectionBlock>
 
@@ -209,47 +174,7 @@ const IndexPage = ({ data }) => {
                 }),
               ]}
             >
-              <div // portrait container
-                css={{
-                  aspectRatio: `1 / 1`,
-                  position: "relative",
-                  minWidth: "5rem",
-                  minHeight: "5rem",
-                  maxWidth: "15rem",
-                  maxHeight: "15rem",
-                  marginBottom: "2rem",
-                }}
-              >
-                <div
-                  // background motif
-                  css={{
-                    position: "absolute",
-                    bottom: "-20%",
-                    left: "-20%",
-                    width: "100%",
-                    height: "100%",
-
-                    opacity: 0.33,
-
-                    backgroundImage: `url(${TypeMotif})`,
-                    backgroundRepeat: "repeat",
-                    backgroundSize: "40%",
-                  }}
-                ></div>
-
-                <img
-                  css={{
-                    position: "relative",
-                    width: "100%",
-                    height: "auto",
-                    border: `solid 0.5rem ${colors.YELLOW}`,
-                  }}
-                  srcSet={about.photo.fluid.srcSet}
-                  width={about.photo.dimensions.width}
-                  height={about.photo.dimensions.height}
-                  alt={about.photo.alt}
-                />
-              </div>
+              <ProfilePhoto motif={true} photo={about.photo} />
               <div css={{ h3: { color: colors.MID_BLUE } }}>
                 <RichContentSlice primary={{ rich_text: about.title }} />
                 <RichContentSlice primary={{ rich_text: about.bio }} />

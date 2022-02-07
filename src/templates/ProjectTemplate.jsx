@@ -11,8 +11,8 @@ import {
   onMedia,
   onSupport,
   onDesktopMedia,
-  CODE_TYPE,
-  SANS_TYPE,
+  firaCode,
+  firaSans,
   maxTypeWidth,
   maxContainerWidth,
   grid,
@@ -47,6 +47,7 @@ import {
 } from "../util/sliceTypes"
 import { AccordianSlice } from "../components/slices/AccordianSlice"
 import ImageGallerySlice from "../components/slices/ImageGallery"
+import { Heading } from "../components/Heading"
 
 function switchSliceToComponent(slice) {
   switch (slice.slice_type || slice.type) {
@@ -128,14 +129,15 @@ const ProjectTemplate = ({ data, site }) => {
               ]}
             >
               <ContainerWidth>
-                <h1>{title}</h1>
-                <h2
+                <Heading level={1}>{title}</Heading>
+                <Heading
+                  level={2}
                   css={{
                     color: colors.MID_BLUE,
                   }}
                 >
                   {subtitle}
-                </h2>
+                </Heading>
                 <TokenList>{tags.map(tag => tag.label)}</TokenList>
               </ContainerWidth>
             </header>

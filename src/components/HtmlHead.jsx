@@ -10,7 +10,7 @@ import "../../src/fonts/fira-sans-v10-latin/fira-sans.css"
 import React from "react"
 import PropTypes from "prop-types"
 import Helmet from "react-helmet"
-// import OpenGraphSocialImage from "../../static/OpenGraph-Social-Image.png"
+
 import { useStaticQuery, graphql } from "gatsby"
 
 function HtmlHead({

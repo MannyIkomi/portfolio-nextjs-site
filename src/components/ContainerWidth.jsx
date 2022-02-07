@@ -3,13 +3,12 @@ import { css, jsx } from "@emotion/react"
 import React from "react"
 import { maxContainerWidth, maxTypeWidth } from "../styles"
 
-export const ContainerWidth = props => {
-  const { children, ...rest } = props
+export const ContainerWidth = ({ children, ...props }) => {
   return (
     <div
       className={"container"}
       css={{ width: "100%", ...maxContainerWidth }}
-      {...rest}
+      {...props}
     >
       {children}
     </div>

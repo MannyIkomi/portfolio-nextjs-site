@@ -13,7 +13,7 @@ import {
   supportsGrid,
   styleTransition,
   TOUCH_TARGET,
-  CODE_TYPE,
+  firaCode,
   maxContainerWidth,
   grid12Columns,
   onSupport,
@@ -88,7 +88,7 @@ export const Footer = props => {
         <ContainerWidth>
           <p
             css={{
-              ...CODE_TYPE,
+              ...firaCode,
               fontSize: "0.75rem",
               textTransform: "uppercase",
             }}

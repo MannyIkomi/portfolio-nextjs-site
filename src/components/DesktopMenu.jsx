@@ -10,8 +10,9 @@ import {
   // menuLink,
   styleTransition,
   onHover,
-  CODE_TYPE,
   typeset,
+  s1,
+  firaCode,
 } from "../styles"
 import { LogoMaster } from "./Logo"
 import { TypesetLink } from "./TypesetLink"
@@ -27,7 +28,7 @@ export const DesktopMenu = ({ ...restProps }) => {
 
         width: "10rem",
         height: "100vh",
-        padding: "1rem",
+        padding: s1,
 
         position: "sticky",
         zIndex: 999,
@@ -58,10 +59,10 @@ export const DesktopMenu = ({ ...restProps }) => {
                 menuLink,
                 {
                   display: "block",
-                  margin: `1rem 0`,
+                  margin: `${s1} 0`,
                   padding: `0.25rem`,
 
-                  ...CODE_TYPE,
+                  ...firaCode,
                   fontWeight: 800,
                   textTransform: "uppercase",
                 },

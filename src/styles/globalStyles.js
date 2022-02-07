@@ -1,6 +1,7 @@
-import { colors } from "./colors";
-import { onTabletMedia, onDesktopMedia } from "./mixin";
-import { SANS_TYPE, fontSizeTransition, CODE_TYPE, headingResponsiveScale } from './typography';
+import { headingsDesktop, headings } from "."
+import { colors } from "./colors"
+import { onTabletMedia, onDesktopMedia } from "./mixin"
+import { firaSans, fontSizeTransition, firaCode } from "./typography"
 
 export const GLOBAL = {
   "*": {
@@ -9,22 +10,18 @@ export const GLOBAL = {
   ":root": {
     // fontSize: "100%",
     scrollBehavior: "smooth",
-    ...SANS_TYPE,
+    ...firaSans,
   },
   main: {
     width: "100%",
   },
-  // body: {
-  //   overflow: "hidden",
-  //   overflowX: "hidden",
-  // },
+
   a: {
     // https://stackoverflow.com/questions/1823341/how-do-i-get-this-css-text-decoration-override-to-work
     // setting text decoration as an inherited property cannot be overrided due to user agent implementations
     // best to clear styling an re-apply using composition
     color: "inherit",
     textDecoration: `none`,
-    
   },
   button: {
     display: "inline-block",
@@ -39,33 +36,20 @@ export const GLOBAL = {
     textDecoration: "none",
   },
   "h1, h2, h3, h4, h5, h6": {
-    ...SANS_TYPE,
+    ...firaSans,
     ...fontSizeTransition,
     lineHeight: 1.2,
     fontWeight: 500,
-    color: colors.PRIMARY
+    color: colors.PRIMARY,
   },
   "p, span, ul, ol, button": {
-    ...SANS_TYPE,
+    ...firaSans,
     fontWeight: 300,
     lineHeight: 1.6,
     fontVariantNumeric: "proportional-nums",
-    color: colors.PRIMARY
+    color: colors.PRIMARY,
   },
 
-  'ul, ol': {
-    paddingLeft: '1.25rem'
-  },
-
-  ul: {
-    listStyle: "square",
-    paddingLeft: "1.25rem",
-    li: {
-      '::marker': {
-        ...CODE_TYPE,
-        content: `"::"`
-      }
-    }
-  },
-  ...headingResponsiveScale
-};
+  ...headings,
+  ...onTabletMedia(headingsDesktop),
+}

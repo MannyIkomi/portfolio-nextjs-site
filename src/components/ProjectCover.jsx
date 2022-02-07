@@ -15,8 +15,8 @@ import {
   onMedia,
   styleTransition,
   TOUCH_TARGET,
-  SANS_TYPE,
-  CODE_TYPE,
+  firaSans,
+  firaCode,
   flex,
   onHover,
 } from "../styles"
@@ -83,7 +83,7 @@ export const ProjectCover = ({ slugs, uid, data, ...props }) => {
           </h2>
           <h3
             css={{
-              ...SANS_TYPE,
+              ...firaSans,
               color: colors.LIGHT_GRAY,
               textTransform: "initial",
 

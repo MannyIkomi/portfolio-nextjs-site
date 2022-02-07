@@ -1,11 +1,17 @@
 import { colors } from "./colors"
 import { onTabletMedia, onDesktopMedia } from "./mixin"
+import {
+  MAX_TEXT_LENGTH,
+  MAX_VIEW_LENGTH,
+  MIN_TOUCH_SIZE,
+  s1,
+  s05,
+} from "./spacing"
+import { firaCode } from "./typography"
 
-import { CODE_TYPE } from './typography'
-
-export const MENUBAR_HEIGHT = "2.5rem"
-export const TOUCH_TARGET = "3rem"
-export const PROJECT_SHADOW = `0rem 1rem 1rem 0.5rem hsla(0, 0%, 0%, 0.5)`
+export const MENUBAR_HEIGHT = MIN_TOUCH_SIZE
+export const TOUCH_TARGET = MIN_TOUCH_SIZE
+export const PROJECT_SHADOW = `0rem ${s1} ${s1} ${s05} hsla(0, 0%, 0%, 0.5)`
 
 export const tokenize = override => ({
   display: "inline-block",
@@ -23,14 +29,11 @@ export const styleTransition = (override = {}) => ({
   ...override,
 })
 
-export const MAX_TEXT_LENGTH = '72ch'
-export const MAX_VIEW_LENGTH = '80rem' // about 1280px
-
 export const maxTypeWidth = {
   maxWidth: MAX_TEXT_LENGTH,
 }
 export const maxContainerWidth = {
-  maxWidth: MAX_VIEW_LENGTH, 
+  maxWidth: MAX_VIEW_LENGTH,
 }
 
 export const aspectRatioLetter = {
@@ -49,6 +52,7 @@ export const h1Text = override => ({
   ...onDesktopMedia({
     fontSize: "3rem",
   }),
+  ...override,
 })
 
 export const linkActive = (override = {}) => ({
@@ -56,9 +60,9 @@ export const linkActive = (override = {}) => ({
   ...override,
 })
 
-export * from './globalStyles'
+export * from "./globalStyles"
 export * from "./colors"
 export * from "./mixin"
 export * from "./reset"
-export * from './typography'
-
+export * from "./typography"
+export * from "./spacing"

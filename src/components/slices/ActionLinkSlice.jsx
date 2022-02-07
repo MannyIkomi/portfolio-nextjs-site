@@ -2,7 +2,7 @@
 import React, { Fragment } from "react"
 import { css, jsx } from "@emotion/react"
 
-import { CODE_TYPE, colors, maxTypeWidth, TOUCH_TARGET } from "../../styles"
+import { firaCode, colors, maxTypeWidth, TOUCH_TARGET } from "../../styles"
 
 import { FULL_IMAGE, INLINE_IMAGE } from "../../util/sliceTypes"
 import { DebugDataPre } from "../DebugDataPre"
@@ -18,7 +18,7 @@ export const ActionLinkSlice = props => {
     <TypesetLink
       to={primary.url.url}
       css={{
-        ...CODE_TYPE,
+        ...firaCode,
         minHeight: TOUCH_TARGET,
         padding: "1rem 1.5rem",
         margin: "1rem 0",
@@ -40,7 +40,7 @@ export const ActionLinkSlice = props => {
       {primary.label}
       <span
         css={{
-          ...CODE_TYPE,
+          ...firaCode,
           letterSpacing: 0,
           fontWeight: "inherit",
           textTransform: "inherit",

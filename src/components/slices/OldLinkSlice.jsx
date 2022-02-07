@@ -12,8 +12,8 @@ import {
   onMediaWidth,
   onMedia,
   onHover,
-  CODE_TYPE,
   hoverTypesetTransform,
+  firaCode,
 } from "../../styles"
 import { TypesetLink } from "../TypesetLink"
 
@@ -41,7 +41,7 @@ export const LinkModule = props => {
 
         padding: "1rem",
 
-        ...CODE_TYPE,
+        ...firaCode,
         fontWeight: "bold",
         fontSize: "2rem",
         textAlign: "center",

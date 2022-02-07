@@ -34,7 +34,7 @@ module.exports = {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `static`,
-        path: `${__dirname}/static`,
+        path: `${__dirname}/src/static`,
       },
     },
     {
@@ -55,12 +55,6 @@ module.exports = {
         repositoryName: PRISMIC_REPOSITORY_NAME,
         customTypesApiEndpoint: "https://customtypes.prismic.io/customtypes",
         customTypesApiToken: PRISMIC_CUSTOM_TYPES_API_TOKEN,
-
-        // schemas: {
-        //   project: require("./custom_types/project.json"),
-        //   socials: require("./custom_types/socials.json"),
-        //   about: require("./custom_types/about.json"),
-        // },
       },
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality

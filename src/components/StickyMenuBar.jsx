@@ -12,7 +12,7 @@ import {
   TOUCH_TARGET,
   SANS_HEADING,
   onMedia,
-  CODE_TYPE,
+  firaCode,
   hoverTypesetTransform,
 } from "../styles"
 import useToggleSwitch from "../hooks/useToggleSwitch"
@@ -55,7 +55,7 @@ export const StickyMenuBar = ({ children, ...props }) => {
     padding: "0.5rem 1rem",
     marginBottom: TOUCH_TARGET,
 
-    ...CODE_TYPE,
+    ...firaCode,
     color: colors.NAVY_BLUE,
     backgroundColor: colors.LIGHT_GRAY_FOREGROUND,
     textTransform: "uppercase",
@@ -99,7 +99,7 @@ export const StickyMenuBar = ({ children, ...props }) => {
             ...flex("column"),
             alignItems: "flex-end",
 
-            fontFamily: typography.CODE_TYPE,
+            ...firaCode,
             fontWeight: 700,
             overflow: "hidden",
           },

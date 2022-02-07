@@ -1,18 +1,19 @@
 import React from "react"
 
-import TypeMotif from "../../static/typemotif.svg"
+import TypeMotif from "../static/typemotif.png"
 import Layout from "../components/Layout"
 import HtmlHead from "../components/HtmlHead"
 import { TypesetLink } from "../components/TypesetLink"
 import {
-  CODE_TYPE,
   colors,
+  firaCode,
+  firaSans,
   flex,
   hoverTypesetTransform,
-  SANS_TYPE,
   typesetAnimation,
 } from "../styles"
 import RelativeContainer from "../components/RelativeContainer"
+import { Heading } from "../components/Heading"
 
 const NotFoundPage = ({ data }) => (
   <Layout>
@@ -49,13 +50,14 @@ const NotFoundPage = ({ data }) => (
             textAlign: "center",
           }}
         ></div>
-        <h1
+        <Heading
+          level={1}
           css={{
-            ...CODE_TYPE,
+            ...firaCode,
 
             textAlign: "center",
             fontSize: "50vmin",
-            ...SANS_TYPE,
+            ...firaSans,
             lineHeight: 1,
             whiteSpace: "nowrap",
           }}
@@ -63,7 +65,7 @@ const NotFoundPage = ({ data }) => (
           <span css={typesetAnimation({ animationDelay: "0.5s" })}>4</span>
           <span css={typesetAnimation({ animationDelay: "0.75s" })}>0</span>
           <span css={typesetAnimation({ animationDelay: "1.25s" })}>4</span>
-        </h1>
+        </Heading>
         <p css={{ color: colors.PRIMARY, textAlign: "center" }}>
           Sorry, that page doesn't exist!
         </p>

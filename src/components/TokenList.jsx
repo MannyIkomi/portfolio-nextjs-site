@@ -1,6 +1,6 @@
 import React from "react"
 import { css, jsx } from "@emotion/react"
-import { CODE_TYPE, colors, tokenize } from "../styles"
+import { firaCode, colors, tokenize } from "../styles"
 
 export const TokenList = ({ children, ...restProps }) => {
   return (
@@ -16,7 +16,7 @@ export const TokenList = ({ children, ...restProps }) => {
           <li
             css={{
               ...tokenize(),
-              ...CODE_TYPE,
+              ...firaCode,
               textTransform: "uppercase",
               fontSize: "0.75rem",
               fontWeight: 600,
