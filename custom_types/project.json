@@ -64,12 +64,14 @@
               "options": [
                 "User Research",
                 "UI Design",
+                "UX Design",
                 "Prototype",
                 "Web Design",
                 "Full-Stack Web Development",
                 "Creative Direction",
                 "Branding",
-                "Identity Design"
+                "Identity Design",
+                "Data Analysis"
               ],
               "label": "label",
               "placeholder": "design tag"
@@ -238,6 +240,29 @@
                 "config": {
                   "label": "url",
                   "select": null
+                }
+              }
+            },
+            "repeat": {}
+          },
+          "youtube_video": {
+            "type": "Slice",
+            "fieldset": "YouTube Video",
+            "description": "YouTube Video",
+            "icon": "ondemand_video",
+            "display": "list",
+            "non-repeat": {
+              "video_link": {
+                "type": "Link",
+                "config": {
+                  "label": "Video Link",
+                  "select": null
+                }
+              },
+              "video_embed": {
+                "type": "Embed",
+                "config": {
+                  "label": "Video Embed"
                 }
               }
             },
