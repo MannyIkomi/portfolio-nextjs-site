@@ -185,13 +185,13 @@ const IndexPage = ({ data }) => {
                       alignItems: "center",
                     }}
                   >
-                    {projects.map(project => (
+                    {/* {projects.map(project => (
                       <ProjectCover
                         {...project}
                         css={[maxTypeWidth, { marginBottom: "10vh" }]}
                         key={project.uid}
                       />
-                    ))}
+                    ))} */}
                   </ProjectList>
                 </ContainerWidth>
               </SectionBlock>
