@@ -10,6 +10,7 @@
   "private": true,
   "dependencies": {
     "@emotion/react": "^11.4.0",
+    "@notionhq/client": "^1.0.4",
     "gatsby": "^4.14.1",
     "gatsby-image": "^3.9.0",
     "gatsby-link": "^2.4.13",

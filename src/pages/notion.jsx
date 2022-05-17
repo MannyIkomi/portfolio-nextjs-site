@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import { jsx, keyframes } from "@emotion/core"
+import { jsx } from "@emotion/react"
 import React, { useEffect, useState } from "react"
 import { graphql, Link, useStaticQuery } from "gatsby"
 import Layout from "../components/Layout"

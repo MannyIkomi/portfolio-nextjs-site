@@ -34,6 +34,7 @@ import { SectionBlock } from "../components/SectionBlock"
 import { useSocialMedia } from "../hooks/useSocialMedia"
 
 import { RichContentSlice } from "../components/slices/RichContentSlice"
+import Notion from "./notion"
 
 console.clear()
 
@@ -185,6 +186,7 @@ const IndexPage = ({ data }) => {
                       alignItems: "center",
                     }}
                   >
+                    <Notion />
                     {/* {projects.map(project => (
                       <ProjectCover
                         {...project}
