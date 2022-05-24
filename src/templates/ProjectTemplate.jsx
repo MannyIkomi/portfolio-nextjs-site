@@ -47,6 +47,7 @@ import {
 } from "../util/sliceTypes"
 import { AccordianSlice } from "../components/slices/AccordianSlice"
 import ImageGallerySlice from "../components/slices/ImageGallery"
+import { DebugDataPre } from "../components/DebugDataPre"
 
 function switchSliceToComponent(slice) {
   switch (slice.slice_type || slice.type) {
@@ -84,8 +85,8 @@ function switchSliceToComponent(slice) {
 }
 
 const ProjectTemplate = ({ data, site }) => {
-  const thisProject = data.notion
-  const { id, content, properties } = thisProject
+  const thisProject = data.notionPage
+  const { id, children, properties } = thisProject
 
   const { Role, Status, Name } = properties
   const title = Name.title[0].plain_text
@@ -138,6 +139,7 @@ const ProjectTemplate = ({ data, site }) => {
             <div
               css={[{ ...flex("column"), alignItems: "center", width: "100%" }]}
             >
+              <DebugDataPre>{children}</DebugDataPre>
               {/* {body.map(switchSliceToComponent)} */}
             </div>
           </article>
@@ -152,51 +154,21 @@ const ProjectTemplate = ({ data, site }) => {
 }
 
 export const query = graphql`
-  #project has slug
+  # project has slug
   query($uid: String!) {
     #gets the single requested project data for viewing
-    notion(id: { eq: $uid }) {
+    notionPage(id: { eq: $uid }) {
       id
-      content {
-        object
-        results {
-          heading_1 {
-            rich_text {
-              plain_text
-            }
-          }
-          heading_2 {
-            rich_text {
-              plain_text
-            }
-          }
-          heading_3 {
-            rich_text {
-              plain_text
-            }
-          }
-        }
-      }
+      notionId
       properties {
-        Status {
-          select {
-            name
-          }
-        }
-        Role {
-          multi_select {
-            name
-          }
-        }
         Name {
           title {
             plain_text
           }
         }
-        Link {
-          url
-        }
         Cover {
+          type
+          id
           files {
             file {
               url
@@ -207,6 +179,67 @@ export const query = graphql`
           rich_text {
             plain_text
           }
+        }
+        Link {
+          url
+        }
+        Role {
+          multi_select {
+            name
+          }
+        }
+        Status {
+          select {
+            name
+          }
+        }
+        Subtitle {
+          rich_text {
+            plain_text
+          }
+        }
+        Description {
+          rich_text {
+            plain_text
+          }
+        }
+      }
+      children {
+        ... on NotionBlock_toggle {
+          type
+          notionId
+        }
+        ... on NotionBlock_table_of_contents {
+          id
+          type
+        }
+        ... on NotionBlock_table {
+          id
+          type
+        }
+        ... on NotionBlock_quote {
+          id
+          type
+        }
+        ... on NotionBlock_paragraph {
+          id
+          type
+        }
+        ... on NotionBlock_numbered_list_item {
+          id
+          type
+        }
+        ... on NotionBlock_image {
+          id
+          type
+        }
+        ... on NotionBlock_heading_3 {
+          id
+          type
+        }
+        ... on NotionBlock_heading_2 {
+          id
+          type
         }
       }
     }

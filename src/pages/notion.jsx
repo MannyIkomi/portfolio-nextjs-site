@@ -8,8 +8,9 @@ import HtmlHead from "../components/HtmlHead"
 const Notion = () => {
   const data = useStaticQuery(graphql`
     query notionQuery {
-      allNotion {
+      allNotionPage {
         nodes {
+          id
           internal {
             content
           }
@@ -33,7 +34,7 @@ const Notion = () => {
         description={`I design comprehensive brand experiences driven by thoughtful visual language.`}
       />
 
-      {data.allNotion.nodes.map(notionPage => {
+      {data.allNotionPage.nodes.map(notionPage => {
         return (
           <>
             <h1>{notionPage.properties.Name.title[0].plain_text}</h1>

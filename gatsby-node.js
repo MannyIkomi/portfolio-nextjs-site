@@ -59,14 +59,37 @@ exports.sourceNodes = async ({
     database.results.map(async databaseEntry => {
       const page = await getNotionPage(databaseEntry.id, Notion)
       const pageBlocks = await getNotionBlockChildren(page.id, Notion)
-      const pageWithContents = Object.assign(page, { content: pageBlocks })
+      // TODO: paginate block children responses https://developers.notion.com/reference/get-block-children
+
+      const pageWithContents = Object.assign(page, {
+        content: pageBlocks.results,
+      })
 
       return pageWithContents
     })
   )
 
   pages.forEach(notionPage => {
-    const node = {
+    notionPage.content.forEach(notionBlock => {
+      const block = {
+        notionId: notionBlock.id,
+        json: JSON.stringify(notionBlock),
+        ...notionBlock,
+
+        // required
+        id: createNodeId(`${NOTION_NODE_TYPE}-${notionBlock.id}`),
+        parent: createNodeId(`${NOTION_NODE_TYPE}-${notionPage.id}`),
+        children: [], // TODO: add support for blocks with nested block content
+        internal: {
+          type: `${NOTION_NODE_TYPE}Block_${notionBlock.type}`,
+          contentDigest: createContentDigest(notionBlock),
+        },
+      }
+      console.log(notionBlock)
+      actions.createNode(block)
+    })
+
+    const page = {
       // notion page data
       notionId: notionPage.id,
       json: JSON.stringify(notionPage),
@@ -75,15 +98,18 @@ exports.sourceNodes = async ({
       // required
       id: createNodeId(`${NOTION_NODE_TYPE}-${notionPage.id}`),
       parent: null,
-      children: [],
+      children: notionPage.content.map(block =>
+        createNodeId(`${NOTION_NODE_TYPE}-${block.id}`)
+      ),
       internal: {
-        type: NOTION_NODE_TYPE,
+        type: `${NOTION_NODE_TYPE}Page`,
         contentDigest: createContentDigest(notionPage),
       },
     }
-    actions.createNode(node)
+    actions.createNode(page)
   })
 }
+exports.onCreateNode = async ({ node, actions }) => {}
 
 exports.createPages = async ({ graphql, actions }) => {
   // **Note:** The graphql function call returns a Promise
@@ -92,10 +118,10 @@ exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions
   const { data } = await graphql(`
     query {
-      allNotion {
+      allNotionPage {
         nodes {
-          notionId
           id
+          notionId
           properties {
             Name {
               title {
@@ -109,7 +135,7 @@ exports.createPages = async ({ graphql, actions }) => {
   `)
 
   // generate pages for each project
-  data.allNotion.nodes.forEach(node => {
+  data.allNotionPage.nodes.forEach(node => {
     const { id, properties } = node
     const slug = slugify(properties.Name.title[0].plain_text)
     createPage({
