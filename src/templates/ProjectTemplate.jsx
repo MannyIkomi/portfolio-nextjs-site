@@ -84,18 +84,18 @@ function switchSliceToComponent(slice) {
 }
 
 const ProjectTemplate = ({ data, site }) => {
-  const thisProject = data.prismicProject.data
-  const id = data.prismicProject.id
+  const thisProject = data.notion
+  const { id, content, properties } = thisProject
 
-  const { description, tags, body } = thisProject
-  const title = thisProject.title.text
-  const subtitle = thisProject.subtitle
+  const { Role, Status, Name } = properties
+  const title = Name.title[0].plain_text
+  console.log(properties)
 
   return (
     <Layout>
       <HtmlHead
-        title={`${title}: ${subtitle}`}
-        description={description}
+        title={`${title}`}
+        // description={description}
         project={thisProject}
         path={`/${id}`}
       />
@@ -129,20 +129,16 @@ const ProjectTemplate = ({ data, site }) => {
             >
               <ContainerWidth>
                 <h1>{title}</h1>
-                <h2
-                  css={{
-                    color: colors.MID_BLUE,
-                  }}
-                >
-                  {subtitle}
-                </h2>
-                <TokenList>{tags.map(tag => tag.label)}</TokenList>
+
+                <TokenList>
+                  {Role.multi_select.map(role => role.name)}
+                </TokenList>
               </ContainerWidth>
             </header>
             <div
               css={[{ ...flex("column"), alignItems: "center", width: "100%" }]}
             >
-              {body.map(switchSliceToComponent)}
+              {/* {body.map(switchSliceToComponent)} */}
             </div>
           </article>
         </main>
@@ -159,131 +155,57 @@ export const query = graphql`
   #project has slug
   query($uid: String!) {
     #gets the single requested project data for viewing
-    prismicProject(uid: { eq: $uid }) {
+    notion(id: { eq: $uid }) {
       id
-      uid
-      data {
-        tags {
-          label
-        }
-        cover_image {
-          dimensions {
-            height
-            width
+      content {
+        object
+        results {
+          heading_1 {
+            rich_text {
+              plain_text
+            }
           }
+          heading_2 {
+            rich_text {
+              plain_text
+            }
+          }
+          heading_3 {
+            rich_text {
+              plain_text
+            }
+          }
+        }
+      }
+      properties {
+        Status {
+          select {
+            name
+          }
+        }
+        Role {
+          multi_select {
+            name
+          }
+        }
+        Name {
+          title {
+            plain_text
+          }
+        }
+        Link {
           url
-          alt
         }
-        subtitle
-        title {
-          text
+        Cover {
+          files {
+            file {
+              url
+            }
+          }
         }
-        description
-        body {
-          ... on PrismicProjectBodyFullWidthImage {
-            id
-            slice_type
-            primary {
-              image {
-                alt
-                url
-                dimensions {
-                  height
-                  width
-                }
-                fluid {
-                  src
-                  srcSet
-                  sizes
-                }
-              }
-              image_caption
-            }
-          }
-          ... on PrismicProjectBodyRichText {
-            id
-            primary {
-              rich_text {
-                raw
-              }
-            }
-            slice_label
-            slice_type
-          }
-          ... on PrismicProjectBodyAccordians {
-            id
-            items {
-              accordion_details {
-                raw
-                text
-              }
-              accordion_summary
-            }
-            slice_type
-            primary {
-              accordion_section_title {
-                raw
-                text
-                html
-              }
-            }
-          }
-          ... on PrismicProjectBodyImageGallery {
-            id
-            slice_type
-            primary {
-              gallery_title {
-                text
-                raw
-              }
-            }
-            items {
-              image_caption
-              image {
-                alt
-                url
-                dimensions {
-                  height
-                  width
-                }
-                fluid {
-                  src
-                  srcSet
-                  sizes
-                }
-              }
-            }
-          }
-          ... on PrismicProjectBodyInlineImage {
-            id
-            slice_type
-            primary {
-              image {
-                alt
-                url
-                dimensions {
-                  height
-                  width
-                }
-                fluid {
-                  sizes
-                  srcSet
-                  src
-                }
-              }
-              caption
-            }
-          }
-          ... on PrismicProjectBodyActionLink {
-            id
-            primary {
-              label
-              url {
-                isBroken
-                url
-              }
-            }
-            slice_type
+        Cover_Alt {
+          rich_text {
+            plain_text
           }
         }
       }

@@ -4,8 +4,7 @@ require("dotenv").config({
 
 const path = require("path")
 const { Client } = require("@notionhq/client")
-const { get } = require("http")
-
+const slugify = require("slugify")
 /**
  * Implement Gatsby's Node APIs in this file.
  *
@@ -13,7 +12,7 @@ const { get } = require("http")
  */
 
 // You can delete this file if you're not using it
-const Notion = new Client({ auth: process.env.NOTION_KEY });
+const Notion = new Client({ auth: process.env.NOTION_KEY })
 const databaseId = process.env.NOTION_DB_ID
 const NOTION_NODE_TYPE = "Notion"
 
@@ -21,24 +20,24 @@ exports.onCreateNode = ({ node, actions }) => {
   // node.internal.type === 'Notion' && console.log(node)
 }
 
-async function getNotionDatabase(databaseId, notionClient = Notion){
+async function getNotionDatabase(databaseId, notionClient = Notion) {
   return notionClient.databases.query({ database_id: databaseId })
 }
 
-async function getNotionPage(pageId, notionClient = Notion){
- return notionClient.pages.retrieve({ page_id: pageId })
+async function getNotionPage(pageId, notionClient = Notion) {
+  return notionClient.pages.retrieve({ page_id: pageId })
 }
 
-async function getNotionBlockChildren(blockId, notionClient = Notion){
+async function getNotionBlockChildren(blockId, notionClient = Notion) {
   // need to traverse children of child blocks using recursion
-  let blockChildren = null 
+  let blockChildren = null
   const response = await notionClient.blocks.children.list({
     block_id: blockId,
   })
   blockChildren = response
-  
+
   // if (blockChildren.results.some(block => block.has_children)) {
-    // let nestedBlocks
+  // let nestedBlocks
   //   nestedBlocks = blockchildren.results.map(async (block) => {
   //     nestedBlocks = await getNotionBlockChildren(block.id)
   //     return block.results = nestedBlocks
@@ -46,41 +45,43 @@ async function getNotionBlockChildren(blockId, notionClient = Notion){
 
   //   blockChildren = {...nestedBlock}
   // }
-  console.log(JSON.stringify(blockChildren, null, 2))
   return blockChildren
 }
 
-exports.sourceNodes = async ({ actions, createNodeId, createContentDigest }) => {
-  
+exports.sourceNodes = async ({
+  actions,
+  createNodeId,
+  createContentDigest,
+}) => {
   const database = await getNotionDatabase(databaseId, Notion)
 
-  const pages = await Promise.all(database.results.map(async (databaseEntry) => {
-    const page = await getNotionPage(databaseEntry.id, Notion)
-    const pageBlocks = await getNotionBlockChildren(page.id, Notion)
-    const pageWithContents = Object.assign(page, { content: pageBlocks })
+  const pages = await Promise.all(
+    database.results.map(async databaseEntry => {
+      const page = await getNotionPage(databaseEntry.id, Notion)
+      const pageBlocks = await getNotionBlockChildren(page.id, Notion)
+      const pageWithContents = Object.assign(page, { content: pageBlocks })
 
-    return pageWithContents
-
-  }))
+      return pageWithContents
+    })
+  )
 
   pages.forEach(notionPage => {
-      const node = {
-        // notion page data
-        notionId: notionPage.id,
-        json: JSON.stringify(notionPage),
-        ...notionPage,
+    const node = {
+      // notion page data
+      notionId: notionPage.id,
+      json: JSON.stringify(notionPage),
+      ...notionPage,
 
-        // required
-        id: createNodeId(`${NOTION_NODE_TYPE}-${notionPage.id}`),
-        parent: null,
-        children: [],
-        internal: {
-          type: NOTION_NODE_TYPE,
-          contentDigest: createContentDigest(notionPage)
-        },
-      }
-      actions.createNode(node)
-    
+      // required
+      id: createNodeId(`${NOTION_NODE_TYPE}-${notionPage.id}`),
+      parent: null,
+      children: [],
+      internal: {
+        type: NOTION_NODE_TYPE,
+        contentDigest: createContentDigest(notionPage),
+      },
+    }
+    actions.createNode(node)
   })
 }
 
@@ -91,23 +92,30 @@ exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions
   const { data } = await graphql(`
     query {
-      allPrismicProject {
+      allNotion {
         nodes {
+          notionId
           id
-          uid
+          properties {
+            Name {
+              title {
+                plain_text
+              }
+            }
+          }
         }
       }
     }
   `)
 
   // generate pages for each project
-  data.allPrismicProject.nodes.forEach(node => {
-    const slug = node.uid
-
+  data.allNotion.nodes.forEach(node => {
+    const { id, properties } = node
+    const slug = slugify(properties.Name.title[0].plain_text)
     createPage({
-      path: `/${slug}`, 
+      path: `/${slug}`,
       component: path.resolve("src/templates/ProjectTemplate.jsx"),
-      context: { uid: slug },
+      context: { uid: id },
     })
     // console.log(JSON.stringify(node, null, 4))
   })

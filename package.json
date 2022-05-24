@@ -29,6 +29,7 @@
     "react-dom": "^16.14.0",
     "react-helmet": "^6.1.0",
     "react-svg": "^14.0.9",
+    "slugify": "^1.6.5",
     "smoothscroll-polyfill": "^0.4.4"
   },
   "devDependencies": {

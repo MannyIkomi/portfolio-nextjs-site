@@ -41,6 +41,7 @@ function HtmlHead({
       }
     `
   )
+  const { properties } = project
   const OpenGraphSocialImage = "/OpenGraph-Social-Image.png"
 
   const metaTitle = title || site.siteMetadata.title
@@ -50,9 +51,10 @@ function HtmlHead({
   const metaAuthor = author || site.siteMetadata.author
 
   const metaSocialImage =
-    coverImageSrc ?? project?.cover_image.url ?? OpenGraphSocialImage
+    coverImageSrc ?? properties?.Cover.files[0].url ?? OpenGraphSocialImage
 
-  const metaSocialImageAlt = coverImageAlt || project?.cover_image.alt || ""
+  const metaSocialImageAlt =
+    coverImageAlt || properties?.Cover_Alt.rich_text[0].plain_text || ""
   const metaOpenGraphType =
     openGraphType || site.siteMetadata.openGraphType || "website"
 
