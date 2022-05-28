@@ -33,7 +33,7 @@ import { SectionBlock } from "../components/SectionBlock"
 
 import { useSocialMedia } from "../hooks/useSocialMedia"
 
-import { RichContentSlice } from "../components/slices/RichContentSlice"
+import { ParagraphBlock } from "../components/blocks/ParagraphBlock"
 import Notion from "./notion"
 
 console.clear()
@@ -252,10 +252,7 @@ const IndexPage = ({ data }) => {
                   alt={about.photo.alt}
                 />
               </div>
-              <div css={{ h3: { color: colors.MID_BLUE } }}>
-                <RichContentSlice primary={{ rich_text: about.title }} />
-                <RichContentSlice primary={{ rich_text: about.bio }} />
-              </div>
+              {/* TODO: Use notion to render about section content https://www.notion.so/mannyikomi/About-1df0d681481d44a78cbd14df96266fd1 */}
             </ContainerWidth>
           </SectionBlock>
         </main>
