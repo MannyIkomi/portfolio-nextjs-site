@@ -3,7 +3,7 @@ import React, { Fragment } from "react"
 import { Link as GatsbyLink } from "gatsby"
 import { Elements } from "prismic-richtext"
 import { Link as PrismicLink } from "prismic-reactjs"
-import { ImageSlice } from "./ImageSlice"
+import { ImageBlock } from "./ImageBlock"
 import { TypesetLink } from "../TypesetLink"
 import { linkResolver } from "../../util/linkResolver"
 import { CustomLink } from "../CustomLink"
@@ -58,7 +58,7 @@ const htmlSerializer = function(type, element, content, children, key) {
       return <ol key={key}>{children}</ol>
 
     case Elements.image:
-      return <ImageSlice {...element} key={key} />
+      return <ImageBlock {...element} key={key} />
 
     case Elements.embed: // Embed
       return (
