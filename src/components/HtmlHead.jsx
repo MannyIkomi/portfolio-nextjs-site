@@ -5,11 +5,11 @@
  * See: https://www.gatsbyjs.org/docs/use-static-query/
  */
 
-import "../../src/fonts/fira-code-v10-latin/fira-code.css"
-import "../../src/fonts/fira-sans-v10-latin/fira-sans.css"
 import React from "react"
 import PropTypes from "prop-types"
 import Helmet from "react-helmet"
+import "../../src/fonts/fira-code-v10-latin/fira-code.css"
+import "../../src/fonts/fira-sans-v10-latin/fira-sans.css"
 // import OpenGraphSocialImage from "../../static/OpenGraph-Social-Image.png"
 import { useStaticQuery, graphql } from "gatsby"
 
@@ -41,7 +41,9 @@ function HtmlHead({
       }
     `
   )
-  const { properties } = project
+
+  console.log(project)
+  const { properties } = project ?? {}
   const OpenGraphSocialImage = "/OpenGraph-Social-Image.png"
 
   const metaTitle = title || site.siteMetadata.title
