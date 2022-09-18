@@ -1,0 +1,13 @@
+.primary {
+  composes: CODE_TYPE from "./typography.module.scss";
+  background-color: var(--secondary);
+
+  display: inline-block;
+  white-space: nowrap;
+
+  padding: 1rem;
+  font-size: 1.5rem;
+  font-weight: 600;
+  text-transform: uppercase;
+
+}

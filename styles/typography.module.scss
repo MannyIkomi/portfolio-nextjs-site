@@ -1,0 +1,17 @@
+.SANS_TYPE {
+  font-family: var(--sans-type);
+}
+
+.CODE_TYPE {
+  font-family: var(--code-type);
+  font-feature-settings: calt 1; /* Enable ligatures for IE 10+, Edge */
+  text-rendering: optimizeLegibility;/* Force ligatures for Webkit, Blink, Gecko */
+  font-variant-ligatures: contextual;
+}
+
+.bodyText {
+  composes: SANS_TYPE;
+  color: var(--primary);
+  font-size: 1rem;
+  font-weight: 300;
+}

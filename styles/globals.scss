@@ -1,3 +1,11 @@
+:root {
+  --sans-type: 'Fira Sans', -apple-system, sans-serif;
+  --code-type: 'Fira Code', monospace;
+  --primary: #00234D;
+  --secondary: #FFD44A;
+  --tertiary: #2A8083;
+}
+
 html,
 body {
   padding: 0;
@@ -15,7 +23,7 @@ a {
 }
 
 body {
-  font-family: 'Fira Sans';
+  font-family: var(--sans-type);
   font-weight: 300;
 }
 
@@ -84,4 +92,23 @@ body {
        url('/fonts/fira-sans-v16-latin-600.woff') format('woff'), /* Modern Browsers */
        url('/fonts/fira-sans-v16-latin-600.ttf') format('truetype'), /* Safari, Android, iOS */
        url('/fonts/fira-sans-v16-latin-600.svg#FiraSans') format('svg'); /* Legacy iOS */
+}
+
+// 
+h1,h2,h3,h4,h5,h6{
+  font-family: 'Fira Sans', sans-serif;
+  color: var(--primary);
+  font-weight: 600;
+}
+
+h1{
+  font-size: 2rem;
+}
+
+h2{
+  font-size: 1.75rem;
+}
+
+h3{
+  font-size: 1.5rem;
 }

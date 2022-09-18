@@ -1,0 +1,9 @@
+.mobileGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: min-content;
+}
+
+.height100vh {
+  min-height: 100vh;
+}

@@ -1,0 +1,12 @@
+.container {
+  // border: 1px solid red;
+  width: 100%;
+  height: min-content;
+  border: 0.25rem solid var(--secondary);
+}
+
+.img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1 / 1;
+}
