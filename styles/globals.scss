@@ -4,6 +4,8 @@
   --primary: #00234D;
   --secondary: #FFD44A;
   --tertiary: #2A8083;
+  --max-text-length: 72ch;
+  --max-view-length: 80rem; // about 1280px
 }
 
 html,
@@ -94,10 +96,12 @@ body {
        url('/fonts/fira-sans-v16-latin-600.svg#FiraSans') format('svg'); /* Legacy iOS */
 }
 
-// 
+
 h1,h2,h3,h4,h5,h6{
   font-family: 'Fira Sans', sans-serif;
   color: var(--primary);
+  margin: 0;
+  margin-bottom: 0.5rem;
   font-weight: 600;
 }
 

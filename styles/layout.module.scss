@@ -1,9 +1,33 @@
-.mobileGrid {
+.gridLayout {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: min-content;
+  // grid-template-rows: min-content;
+  @media screen and (min-width: 40rem) {
+    grid-template-columns: repeat(8, 1fr);
+  }
+  @media screen and (min-width: 80rem) {
+    grid-template-columns: repeat(12, 1fr);
+  }
+}
+
+.maxTypeWidth{
+  max-width: var(--max-text-length)
+}
+
+.maxViewWidth{
+  max-width: var(--max-view-length)
+}
+
+.container{
+  composes: maxViewWidth;
+  width: 100%;
 }
 
 .height100vh {
   min-height: 100vh;
+}
+.section{
+  composes: gridLayout height100vh;
+  min-height: 100vh;
+  width: 100%;
 }
