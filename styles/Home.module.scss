@@ -4,12 +4,21 @@
 }
 
 .intro {
+  // composes: container from './layout.module.scss';
+  align-self: start;
+  grid-column: 2 / -1;
+  grid-row: 2 / 3;
+
+  h1 {
     color: var(--primary);
     font-family: 'Fira Code';
     font-weight: 300;
     font-size: 2rem;
-    
+  
     .keyword {
       color: var(--tertiary);
     }
-} 
+    }
+  }
+
+

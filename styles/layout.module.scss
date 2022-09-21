@@ -18,10 +18,17 @@
   max-width: var(--max-view-length)
 }
 
-.container{
-  composes: maxViewWidth;
+.flexCol{
+  display: flex;
+  flex-direction: column;
+}
+
+.container {
+  composes: maxViewWidth flexCol;
+  position: relative;
   width: 100%;
-  // padding: 0 1rem;
+  align-items: flex-start;
+  padding: 0 1rem;
 }
 
 .height100vh {

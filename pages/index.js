@@ -9,11 +9,12 @@ import ContentContainer from '../components/ContentContainer';
 import SectionContainer from '../components/SectionContainer';
 import PrimaryLink from '../components/PrimaryLink';
 import InlineLink from '../components/InlineLink';
-import Footer from '../components/Footer/index';
+import Footer from '../components/Footer';
+import LurkEmote from '../components/LurkEmote';
 
 export default function Home() {
   return (
-    <div className={HomeStyles.container}>
+    <div style={{ position: 'relative' }}>
       <Head>
         <title>Manny Ikomi</title>
         <meta
@@ -74,6 +75,8 @@ export default function Home() {
         </SectionContainer>
       </main>
       <Footer />
+
+      <LurkEmote />
     </div>
   );
 }
