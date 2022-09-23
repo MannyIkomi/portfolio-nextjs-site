@@ -1,24 +1,33 @@
+@use 'mixin.scss';
 
 .main {
   min-height: 100vh;
 }
 
 .intro {
-  // composes: container from './layout.module.scss';
+  composes: container from './layout.module.scss';
   align-self: start;
   grid-column: 2 / -1;
   grid-row: 2 / 3;
-
-  h1 {
-    color: var(--primary);
-    font-family: 'Fira Code';
-    font-weight: 300;
-    font-size: 2rem;
   
-    .keyword {
-      color: var(--tertiary);
-    }
-    }
+  @include mixin.onTabletMedia {
+    grid-column: 3 / 8;
   }
+}
+
+.title {
+  color: var(--primary);
+  font-family: 'Fira Code';
+  font-weight: 300;
+  font-size: 2rem;
+
+  .keyword {
+    color: var(--tertiary);
+  }
+}
+
+.about{
+  composes: intro;
+}
 
 

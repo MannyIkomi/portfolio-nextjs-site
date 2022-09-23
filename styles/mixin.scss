@@ -1,0 +1,9 @@
+@use './_vars.scss';
+
+@mixin onTabletMedia {
+  @media (min-width: vars.$tablet-viewport) { @content; }
+}
+
+@mixin onDesktopMedia {
+  @media (min-width: vars.$desktop-viewport) { @content; }
+}

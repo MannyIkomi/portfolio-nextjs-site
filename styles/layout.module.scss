@@ -1,11 +1,14 @@
+$desktop-viewport: 80rem;// about 1280px
+$tablet-viewport: 40rem;// about 640px
+
 .gridLayout {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   // grid-template-rows: min-content;
-  @media screen and (min-width: 40rem) {
+  @media screen and (min-width: $tablet-viewport) {
     grid-template-columns: repeat(8, 1fr);
   }
-  @media screen and (min-width: 80rem) {
+  @media screen and (min-width: $desktop-viewport) {
     grid-template-columns: repeat(12, 1fr);
   }
 }
@@ -25,6 +28,7 @@
 
 .container {
   composes: maxViewWidth flexCol;
+
   position: relative;
   width: 100%;
   align-items: flex-start;

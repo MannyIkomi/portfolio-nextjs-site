@@ -1,6 +1,6 @@
 import Head from 'next/head';
 import Image from 'next/image';
-import HomeStyles from '../styles/Home.module.scss';
+import HomeStyles from '../styles/home.module.scss';
 import ButtonStyles from '../styles/buttons.module.scss';
 import LayoutStyles from '../styles/layout.module.scss';
 import profilePhoto from '../styles/profilePhoto.module.scss';
@@ -35,14 +35,8 @@ export default function Home() {
             </div>
           </ContentContainer>
 
-          <ContentContainer
-            style={{
-              alignSelf: 'start',
-              gridColumn: '2 / -1',
-              gridRow: '2 / 3',
-            }}
-          >
-            <h1 className={HomeStyles.intro}>
+          <ContentContainer className={HomeStyles.intro}>
+            <h1 className={HomeStyles.title}>
               I use <span className={HomeStyles.keyword}>design</span> to take{' '}
               <span className={HomeStyles.keyword}>people</span> from what-is,
               to what-ought-to-be.
@@ -50,7 +44,7 @@ export default function Home() {
           </ContentContainer>
         </SectionContainer>
         <SectionContainer>
-          <ContentContainer style={{ gridColumn: '2/-1', alignSelf: 'center' }}>
+          <ContentContainer className={HomeStyles.about}>
             <h2>Hi, I’m Manny!</h2>
             <h3>UX designer, lifetime learner, digital craftsman.</h3>
             <ParagraphText>

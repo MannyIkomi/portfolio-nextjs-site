@@ -7,7 +7,7 @@ import Logotype from '../public/logotype.svg';
 
 export default function Footer() {
   return (
-    <footer className={[Styles.footPer, Layout.gridLayout].join(' ')}>
+    <footer className={[Styles.footer, Layout.gridLayout].join(' ')}>
       <ContentContainer style={{ gridColumn: '1/2' }}>
         <Link href={'/'}>
           <a>
