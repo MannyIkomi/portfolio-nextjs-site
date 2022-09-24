@@ -25,7 +25,7 @@ export default function Home() {
       </Head>
       <main className={HomeStyles.main}>
         <SectionContainer>
-          <ContentContainer style={{ gridColumn: '1/3', alignSelf: 'end' }}>
+          <ContentContainer className={HomeStyles.photo}>
             <div className={profilePhoto.container}>
               <img
                 className={profilePhoto.img}
@@ -69,8 +69,6 @@ export default function Home() {
         </SectionContainer>
       </main>
       <Footer />
-
-      <LurkEmote />
     </div>
   );
 }

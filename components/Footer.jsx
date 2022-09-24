@@ -4,11 +4,12 @@ import Styles from './styles/footer.module.scss';
 import SocialIcon from './SocialIcon';
 import ContentContainer from './ContentContainer';
 import Logotype from '../public/logotype.svg';
+import LurkEmote from './LurkEmote';
 
 export default function Footer() {
   return (
-    <footer className={[Styles.footer, Layout.gridLayout].join(' ')}>
-      <ContentContainer style={{ gridColumn: '1/2' }}>
+    <footer className={Styles.footer}>
+      <ContentContainer className={Styles.content}>
         <Link href={'/'}>
           <a>
             <Logotype
@@ -17,7 +18,7 @@ export default function Footer() {
             />
           </a>
         </Link>
-        <div className={Layout.flexCol}>
+        <div className={Styles.social}>
           <SocialIcon href={'https://poly.mannyikomi.com'} icon={'Polywork'} />
           <SocialIcon
             href={'https://www.linkedin.com/in/ikomi/'}
@@ -25,6 +26,7 @@ export default function Footer() {
           />
         </div>
       </ContentContainer>
+      <LurkEmote className={Styles.emote} />
     </footer>
   );
 }

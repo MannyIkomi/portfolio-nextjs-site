@@ -4,6 +4,21 @@
   min-height: 100vh;
 }
 
+.photo {
+  composes: container from './layout.module.scss';
+  grid-column: 1/3;
+  align-self: end;
+
+  @include mixin.onTabletMedia {
+    grid-column: 1 / 3;
+  }
+  
+  @include mixin.onDesktopMedia {
+    grid-column: 3 / 5;
+  }
+  
+}
+
 .intro {
   composes: container from './layout.module.scss';
   align-self: start;
@@ -12,6 +27,11 @@
   
   @include mixin.onTabletMedia {
     grid-column: 3 / 8;
+  }
+  
+  @include mixin.onDesktopMedia {
+    grid-column: 5 / 11;
+    
   }
 }
 

@@ -1,3 +1,36 @@
+@use '../../styles/mixin.scss';
+
 .footer {
-  min-height: 50vh;
+  composes: gridColumns from '../../styles/layout.module.scss';
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+.content{
+  composes: container from '../../styles/layout.module.scss';
+  grid-column: 1/2;
+}
+
+.social{
+  composes: flexCol from '../../styles/layout.module.scss';
+  gap: 1rem;
+  padding: 1rem 0;
+  align-items: flex-start;
+}
+
+.emote{
+  grid-column: 4 / -1;
+  align-self: end;
+  
+  width: 5rem;
+  height: auto;
+  
+  @include mixin.onTabletMedia {
+    grid-column: 8/-1;
+  }
+
+  @include mixin.onDesktopMedia {
+    grid-column: 12/-1;
+  }
 }

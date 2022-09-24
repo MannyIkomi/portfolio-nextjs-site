@@ -1,11 +1,9 @@
-import Styles from './styles/LurkEmote.module.scss';
-
-export default function LurkEmote() {
+export default function LurkEmote({ className }) {
   return (
     <img
+      className={className}
       src="/Lurk-emote.png"
       alt="Dog emote with glasses looking up with a smile"
-      className={Styles.emote}
     />
   );
 }

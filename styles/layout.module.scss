@@ -1,14 +1,16 @@
-$desktop-viewport: 80rem;// about 1280px
-$tablet-viewport: 40rem;// about 640px
+@use './vars';
 
-.gridLayout {
+.gridColumns {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  // grid-template-rows: min-content;
-  @media screen and (min-width: $tablet-viewport) {
+
+  @media screen and (min-width: vars.$tablet-viewport) {
+    display: grid;
     grid-template-columns: repeat(8, 1fr);
   }
-  @media screen and (min-width: $desktop-viewport) {
+  
+  @media screen and (min-width: vars.$desktop-viewport) {
+    display: grid;
     grid-template-columns: repeat(12, 1fr);
   }
 }
@@ -38,8 +40,9 @@ $tablet-viewport: 40rem;// about 640px
 .height100vh {
   min-height: 100vh;
 }
+
 .section{
-  composes: gridLayout height100vh;
+  composes: gridColumns height100vh;
   min-height: 100vh;
   width: 100%;
 }
