@@ -1,16 +1,14 @@
 import Head from 'next/head';
 import Image from 'next/image';
 import HomeStyles from '../styles/home.module.scss';
-import ButtonStyles from '../styles/buttons.module.scss';
-import LayoutStyles from '../styles/layout.module.scss';
-import profilePhoto from '../styles/profilePhoto.module.scss';
+import ButtonStyles from '../styles/Buttons.module.scss';
+import LayoutStyles from '../styles/Layout.module.scss';
+import profilePhoto from '../styles/ProfilePhoto.module.scss';
 import ParagraphText from '../components/ParagraphText';
 import ContentContainer from '../components/ContentContainer';
 import SectionContainer from '../components/SectionContainer';
 import PrimaryLink from '../components/PrimaryLink';
-import InlineLink from '../components/InlineLink';
 import Footer from '../components/Footer';
-import LurkEmote from '../components/LurkEmote';
 
 // TODO: add background motif to photo
 
