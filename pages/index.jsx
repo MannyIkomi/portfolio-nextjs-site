@@ -12,14 +12,16 @@ import InlineLink from '../components/InlineLink';
 import Footer from '../components/Footer';
 import LurkEmote from '../components/LurkEmote';
 
+// TODO: why is my photo misaligned by a few pixels at the bottom
+// TODO: add background motif to photo
 export default function Home() {
   return (
     <div style={{ position: 'relative' }}>
       <Head>
-        <title>Manny Ikomi</title>
+        <title>Manny Ikomi, UX Designer</title>
         <meta
           name="description"
-          content="UX Design consultant at IBM iX, lifetime learner, digital craftsman."
+          content="UX Design consultant at IBM, lifetime learner, digital craftsman."
         />
         <link rel="icon" href="/favicon.svg" />
       </Head>
