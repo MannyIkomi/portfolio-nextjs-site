@@ -1,9 +1,11 @@
 import Head from 'next/head';
 import Image from 'next/image';
-import HomeStyles from '../styles/home.module.scss';
+
+import HomeStyles from '../styles/Home.module.scss';
 import ButtonStyles from '../styles/Buttons.module.scss';
 import LayoutStyles from '../styles/Layout.module.scss';
 import profilePhoto from '../styles/ProfilePhoto.module.scss';
+
 import ParagraphText from '../components/ParagraphText';
 import ContentContainer from '../components/ContentContainer';
 import SectionContainer from '../components/SectionContainer';

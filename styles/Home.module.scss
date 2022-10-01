@@ -1,11 +1,11 @@
-@use 'mixin.scss';
+@use 'Mixin.scss';
 
 .main {
   min-height: 100vh;
 }
 
 .photo {
-  composes: container from './layout.module.scss';
+  composes: container from './Layout.module.scss';
   grid-column: 1/3;
   align-self: end;
 
@@ -20,7 +20,7 @@
 }
 
 .intro {
-  composes: container from './layout.module.scss';
+  composes: container from './Layout.module.scss';
   align-self: start;
   grid-column: 2 / -1;
   grid-row: 2 / 3;

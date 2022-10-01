@@ -11,7 +11,7 @@
 
 .bodyText {
   composes: SANS_TYPE;
-  composes: maxTypeWidth from './layout.module.scss';
+  composes: maxTypeWidth from './Layout.module.scss';
   color: var(--primary);
   font-size: 1rem;
   font-weight: 300;

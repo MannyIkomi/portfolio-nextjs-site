@@ -1,5 +1,5 @@
 .primary {
-  composes: CODE_TYPE from "./typography.module.scss";
+  composes: CODE_TYPE from "./Typography.module.scss";
   background-color: var(--secondary);
 
   display: inline-block;

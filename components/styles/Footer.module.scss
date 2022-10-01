@@ -1,19 +1,19 @@
-@use '../../styles/mixin.scss';
+@use '../../styles/Mixin.scss';
 
 .footer {
-  composes: gridColumns from '../../styles/layout.module.scss';
-  position: fixed;
+  composes: gridColumns from '../../styles/Layout.module.scss';
   bottom: 0;
+  position: fixed;
   width: 100%;
 }
 
 .content{
-  composes: container from '../../styles/layout.module.scss';
+  composes: container from '../../styles/Layout.module.scss';
   grid-column: 1/2;
 }
 
 .social{ 
-  composes: flexCol from '../../styles/layout.module.scss';
+  composes: flexCol from '../../styles/Layout.module.scss';
   gap: 1rem;
   padding: 1rem 0;
   align-items: flex-start;

@@ -1,5 +1,5 @@
 .link {
-  composes: CODE_TYPE from "./typography.module.scss";
+  composes: CODE_TYPE from "./Typography.module.scss";
   display: inline;
   color: var(--primary);
   
