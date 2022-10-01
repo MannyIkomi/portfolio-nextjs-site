@@ -30,11 +30,11 @@
     height: auto;
   }
   
-  @include mixin.onTabletMedia {
+  @include Mixin.onTabletMedia {
     grid-column: 8/-1;
   }
 
-  @include mixin.onDesktopMedia {
+  @include Mixin.onDesktopMedia {
     grid-column: 12/-1;
   }
 }
