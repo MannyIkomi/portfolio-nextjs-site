@@ -13,6 +13,7 @@ import PrimaryLink from '../components/PrimaryLink';
 import Footer from '../components/Footer';
 
 // TODO: add background motif to photo
+// TODO: pull 404 page from old version
 
 export default function Home() {
   return (
