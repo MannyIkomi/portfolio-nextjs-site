@@ -14,7 +14,7 @@ export default function Footer() {
           <a>
             <Logotype
               viewBox={'0 0 177 125'} // allows proportional scaling
-              style={{ width: '5rem', height: 'auto' }}
+              style={{ width: '100%', height: 'auto' }}
             />
           </a>
         </Link>

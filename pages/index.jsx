@@ -12,8 +12,8 @@ import InlineLink from '../components/InlineLink';
 import Footer from '../components/Footer';
 import LurkEmote from '../components/LurkEmote';
 
-// TODO: why is my photo misaligned by a few pixels at the bottom
 // TODO: add background motif to photo
+
 export default function Home() {
   return (
     <div style={{ position: 'relative' }}>

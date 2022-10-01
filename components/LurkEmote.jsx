@@ -1,9 +1,15 @@
-export default function LurkEmote({ className }) {
+import AnchorLink from './AnchorLink';
+
+export default function LurkEmote({ className, href }) {
   return (
-    <img
+    <AnchorLink
       className={className}
-      src="/Lurk-emote.png"
-      alt="Dog emote with glasses looking up with a smile"
-    />
+      href={href || 'https://www.twitch.tv/mannimoki'}
+    >
+      <img
+        src="/Lurk-emote.png"
+        alt="Dog emote with glasses looking up with a smile"
+      />
+    </AnchorLink>
   );
 }
