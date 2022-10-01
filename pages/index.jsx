@@ -14,6 +14,7 @@ import Footer from '../components/Footer';
 
 // TODO: add background motif to photo
 // TODO: pull 404 page from old version
+// TODO: Verify fonts are being served via public/static folder
 
 export default function Home() {
   return (
