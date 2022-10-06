@@ -33,7 +33,7 @@ export default function Home() {
             <div className={profilePhoto.container}>
               <img
                 className={profilePhoto.img}
-                src="/headshot-transparent-square.png"
+                src="/headshot.jpg"
                 alt="Manny smiling"
               />
             </div>
